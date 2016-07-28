@@ -1,14 +1,10 @@
 package com.web.restcontroller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.data.entities.BasicDetail;
-import com.data.repository.BasicDetailJpaRepository;
 import com.web.model.BasicDetailModel;
 import com.web.services.BasicDetailService;
 
@@ -16,12 +12,15 @@ import com.web.services.BasicDetailService;
 @RequestMapping(value="/basicDetail")
 public class BasicDetailRestController {
 	
+	/*@Autowired
+	BasicDetailJpaRepository basicDetailJpaRepository;*/
+	
 	@Autowired
-	BasicDetailJpaRepository basicDetailJpaRepository;
+	BasicDetailService basicDetailService;
 	
 	@RequestMapping(value="/getBasicDetail/")
 	public BasicDetailModel getBasicDetail(Model model){
-		BasicDetailService basicDetailService = new BasicDetailService();
+		//BasicDetailServiceImpl basicDetailService = new BasicDetailServiceImpl();
 		System.out.println("In basic detail controller");
 		
 		/*List<BasicDetail> basicDetails = basicDetailJpaRepository.findAll();
