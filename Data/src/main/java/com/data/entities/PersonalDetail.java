@@ -24,6 +24,7 @@ public class PersonalDetail {
 	private int PersonalDetailId;
 	private int UserId;
 	private int Gender;
+	private String Domicil;
 	@ManyToOne(cascade=CascadeType.ALL)
 	private BloodGroup BloodGroup;
 
@@ -51,6 +52,13 @@ public class PersonalDetail {
 		Gender = gender.getValue();
 	}
 
+	//Domicil
+	public String getDomicil() {
+		return Domicil;
+	}
+	public void setDomicil(String domicil) {
+		Domicil = domicil;
+	}
 	//BloodGroup
 	public BloodGroup getBloodGroup() {
 		return BloodGroup;
