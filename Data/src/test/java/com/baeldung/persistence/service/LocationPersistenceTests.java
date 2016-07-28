@@ -12,7 +12,9 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
+import com.data.entities.BasicDetail;
 import com.data.entities.PersonalDetail;
+import com.data.repository.BasicDetailJpaRepository;
 import com.data.repository.PersonalDetailJpaRepository;
 
 import config.data.PersistenceConfig;
@@ -24,6 +26,8 @@ public class LocationPersistenceTests {
 	@Autowired
 	private PersonalDetailJpaRepository personalDetailJpaRepository;
 
+	@Autowired
+	BasicDetailJpaRepository basicDetailJpaRepository;
 	/*@PersistenceContext
 	private EntityManager entityManager;*/
 
@@ -34,6 +38,15 @@ public class LocationPersistenceTests {
 			System.out.println("\n\n\n\n Id is - " + pd.getUserId() + " Gender is - " + pd.getGender() + "\n\n\n\n");
 		}
 		assertNotNull(personalDetail);
+	}
+	
+	@Test
+	public void testBasicDetailJpaFind() {
+		List<BasicDetail> basicDetails = basicDetailJpaRepository.findAll();
+		for (BasicDetail bd : basicDetails) {
+			System.out.println("\n\n\n\n Id is - " + bd.getFirstName() + " Gender is - " + bd.getLastName() + "\n\n\n\n");
+		}
+		assertNotNull(basicDetails);
 	}
 
 	/*@Test
