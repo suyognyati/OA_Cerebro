@@ -1,0 +1,113 @@
+<div class="container-fluid">
+<form name="personalDetailForm">
+	<fieldset>
+		<legend>Personal Details</legend>
+	</fieldset>
+	<div class="form-group">
+		<div class="bg-warning">NOTE: Please Enter the Name in Capital Letters and same as per your SSC Marksheet / Leaving Certificate</div>
+	</div>
+	
+	<div class="row">
+		<div class="col-lg-6 form-inline">
+				Gender	
+				<br>	
+				<span class="form-control">
+					<input type="radio" 
+							name="gender" 
+							id="gender1"
+							tabindex="1">
+					<label for="gender1">Male</label>
+				</span>
+				<span class="form-control">
+					<input type="radio" 
+							name="gender" 
+							id="gender2"
+							tabindex="2">
+					<label for="gender2">Female</label>
+				</span>
+				
+		</div>
+		<div class="col-lg-6">
+			<div class="form-group">
+				<label for="bloodgroup">Blood Group</label>
+				<select class="form-control" id="bloodgroup">
+					<option selected disabled>--Select--</option>					
+					<option>O +ve</option>
+					<option>A +ve</option>
+					<option>B +ve</option>
+					<option>AB +ve</option>
+					<option>A -ve</option>
+					<option>B -ve</option>
+					<option>AB -ve</option>
+					<option>O -ve</option>
+				</select>
+			</div>
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="col-lg-6">
+			<div class="form-group">
+				<label for="placeofbirth">Place of Birth</label>
+				<br>
+				<input type="text" 
+						class="form-control" 
+						id="placeofbirth">
+			</div>
+		</div>
+		<div class="col-lg-6">
+			<div class="form-group">
+				<label for="domiciled">Domiciled In</label>
+				<br>
+				<input type="text" 
+						class="form-control" 
+						id="domiciled">
+			</div>
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="col-lg-6">
+			<div class="form-group">
+				<label for="maritalstatus">Marital Status</label>
+				<br>
+				<select class="form-control" 
+						id="maritalstatus">
+				<option selected disabled>--Select--</option>
+				<option>Married</option>
+				<option>Unmarried</option>
+				</select>
+			</div>
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="col-lg-6">
+			<div class="form-group">
+				<label for="address">Address</label>
+				<br>
+			<div class="form-inline">
+				<input type="text" 
+						class="col-xs-6 form-control" 
+						id="address">&nbsp&nbsp
+				<input type="text" 
+						class="col-xs-6 form-control" 
+						id="address">
+			</div>
+			</div>
+		</div>
+		
+	</div>
+	
+	<div class="row">
+		<div class="col-xs-12 col-md-12">
+        	<input type="submit" 
+        		value="SAVE &amp; CONTINUE" 
+        		class="btn btn-success btn-block btn-lg topMargin" 
+        		style="margin-bottom: 10px"
+        		ng-click="vm.submit()">
+        </div>
+	</div>
+	
+</form>
+</div>
