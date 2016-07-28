@@ -17,6 +17,7 @@ hs_err_pid*
 # Other Files #
 /RemoteSystemsTempFiles
 .metadata/
+.recommenders/
 Web/target/
 Web/.settings/
 Data/.settings/
