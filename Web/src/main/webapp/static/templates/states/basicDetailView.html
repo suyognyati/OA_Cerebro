@@ -1,122 +1,136 @@
 <div class="panel panel-primary">
-<div class="panel-header">
-	<h2>Basic Details</h2>
-</div>
-<div class="panel panel-body">	
-	<div class="form-group">
-		<div class="bg-warning">NOTE: Please Enter the Name in Capital Letters and same as per your SSC Marksheet / Leaving Certificate</div>
+	<div class="panel-heading">
+		<span style="font-family: Verdana; font-size: 18pt">
+        	<strong>Basic Details</strong>
+        </span>
 	</div>
-	
-	<div class="row">
-		<div class="col-lg-6">
-			<div class="form-group">
-				<label for="lastname">Last Name</label>
-				<br>
-				<input type="text" 
-						class="form-control" 
-						id="lastname" 
-						ng-model="vm.basicdetail.lastName">
-			</div>
+	<div class="panel panel-body">	
+		<div class="row">
+	       	<div class="well alert-danger">
+	           <span><strong>NOTE:</strong> 
+	           Please Enter the Name in Capital Letters and same as per your SSC Marksheet / Leaving Certificate</span>
+	        </div>
 		</div>
-		<div class="col-lg-6">
-			<div class="form-group">
-				<label for="firstname">First Name</label>
-				<br>
-				<input type="text" 
-						class="form-control" 
-						id="firstname" 
-						ng-model="vm.basicdetail.firstName">
+			
+		<div class="row">
+			<div class="col-lg-6">
+				<div class="form-group">
+					<label for="lastname">Last Name</label>
+					<br>
+					<input type="text" 
+							class="uppercase form-control" 
+							id="lastname" 
+							tabindex="1"
+							ng-model="vm.basicdetail.lastName">
+				</div>
 			</div>
-		</div>
-	</div>
-	
-	<div class="row">
-		<div class="col-lg-6">
-			<div class="form-group">
-				<label for="middlename">Middle Name</label>
-				<br>
-				<input type="text" 
-						class="form-control" 
-						id="middlename" 
-						ng-model="vm.basicdetail.middleName">
-			</div>
-		</div>
-		<div class="col-lg-6">
-			<div class="form-group">
-				<label for="mothersname">Mother's Name</label>
-				<br>
-				<input type="text" 
-						class="form-control" 
-						id="mothersname" 
-						ng-model="vm.basicdetail.mothersName">
-			</div>
-		</div>
-	</div>
-	
-	<div class="row">
-		<div class="col-lg-6">
-			<div class="form-group">
-				<label for="dateofbirth">D.O.B.</label>
-				<br>
-				<div class="input-group">
+			<div class="col-lg-6">
+				<div class="form-group">
+					<label for="firstname">First Name</label>
+					<br>
 					<input type="text" 
 							class="form-control" 
-							id="dateofbirth"  
-							datepicker-popup="dd MMM yyyy"
-							is-open="vm.opened"
-							ng-model="vm.basicdetail.birthDate">
-					<span class="input-group-btn">
-						<button class="btn btn-default"
-								ng-click="vm.open($event)">
-							<i class="glyphicon glyphicon-calendar"></i>
-						</button>
-					</span>
+							id="firstname" 
+							tabindex="2"
+							ng-model="vm.basicdetail.firstName">
 				</div>
 			</div>
 		</div>
-		<div class="col-lg-6">
-			<div class="form-group">
-				<label for="email">Email Address</label>
-				<br>
-				<input type="email" 
-						class="form-control" 
-						id="email" 
-						ng-model="vm.basicdetail.email">
+		
+		<div class="row">
+			<div class="col-lg-6">
+				<div class="form-group">
+					<label for="middlename">Middle Name</label>
+					<br>
+					<input type="text" 
+							class="form-control" 
+							id="middlename" 
+							tabindex="3"
+							ng-model="vm.basicdetail.middleName">
+				</div>
+			</div>
+			<div class="col-lg-6">
+				<div class="form-group">
+					<label for="mothersname">Mother's Name</label>
+					<br>
+					<input type="text" 
+							class="form-control" 
+							id="mothersname" 
+							tabindex="4"
+							ng-model="vm.basicdetail.mothersName">
+				</div>
 			</div>
 		</div>
-	</div>
 	
-	<div class="row">
-		<div class="col-lg-6">
-			<div class="form-group">
-				<label for="mobileno">Mobile No.</label>
-				<br>
-				<input type="text" 
-						class="form-control" 
-						id="mobileno" 
-						ng-model="vm.basicdetail.mobileNo">
+		<div class="row">
+			<div class="col-lg-6">
+				<div class="form-group">
+					<label for="dateofbirth">D.O.B.</label>
+					<br>
+					<div class="input-group">
+						<input type="text" 
+								class="form-control" 
+								id="dateofbirth"  
+								tabindex="5"
+								datepicker-popup="dd MMM yyyy"
+								is-open="vm.opened"
+								ng-model="vm.basicdetail.birthDate">
+						<span class="input-group-btn">
+							<button class="btn btn-default"
+									ng-click="vm.open($event)">
+								<i class="glyphicon glyphicon-calendar"></i>
+							</button>
+						</span>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-6">
+				<div class="form-group">
+					<label for="email">Email Address</label>
+					<br>
+					<input type="email" 
+							class="form-control" 
+							id="email" 
+							tabindex="6"
+							ng-model="vm.basicdetail.email">
+				</div>
 			</div>
 		</div>
-		<div class="col-lg-6">
-			<div class="form-group">
-				<label for="othercontactno">Other Contact No.</label>
-				<br>
-				<input type="text" 
-						class="form-control" 
-						id="othercontactno" 
-						ng-model="vm.basicdetail.otherContactNo">
-			</div>
-		</div>
-	</div>
 	
-	<div class="row">
-		<div class="col-xs-12 col-md-12">
-        	<input type="submit" 
-        		value="SAVE &amp; CONTINUE" 
-        		class="btn btn-success btn-block btn-lg topMargin" 
-        		style="margin-bottom: 10px"
-        		ng-click="vm.submit()">
-        </div>
+		<div class="row">
+			<div class="col-lg-6">
+				<div class="form-group">
+					<label for="mobileno">Mobile No.</label>
+					<br>
+					<input type="text" 
+							class="form-control" 
+							id="mobileno"
+							tabindex="7" 
+							ng-model="vm.basicdetail.mobileNo">
+				</div>
+			</div>
+			<div class="col-lg-6">
+				<div class="form-group">
+					<label for="othercontactno">Other Contact No.</label>
+					<br>
+					<input type="text" 
+							class="form-control" 
+							id="othercontactno"
+							tabindex="8" 
+							ng-model="vm.basicdetail.otherContactNo">
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-xs-12 col-md-12">
+	        	<input type="submit" 
+	        		tabindex="9"
+	        		value="SAVE &amp; CONTINUE" 
+	        		class="btn btn-success btn-block btn-lg topMargin" 
+	        		style="margin-bottom: 10px"
+	        		ng-click="vm.submit()">
+	        </div>
+		</div>
 	</div>
-</div>
 </div>

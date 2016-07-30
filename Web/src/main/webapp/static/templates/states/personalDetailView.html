@@ -1,15 +1,20 @@
-<div class="container-fluid">
-<form name="personalDetailForm">
-	<fieldset>
-		<legend>Personal Details</legend>
-	</fieldset>
-	<div class="form-group">
-		<div class="bg-warning">NOTE: Please Enter the Name in Capital Letters and same as per your SSC Marksheet / Leaving Certificate</div>
+<div class="panel panel-primary">
+	<div class="panel-heading">
+		<span style="font-family: Verdana; font-size: 18pt">
+        	<strong>Personal Details</strong>
+        </span>
 	</div>
-	
-	<div class="row">
-		<div class="col-lg-6 form-inline">
-				Gender	
+	<div class="panel panel-body">	
+		<div class="row">
+	       	<div class="well alert-danger">
+	           <span><strong>NOTE:</strong> 
+	           Please Enter the Name in Capital Letters and same as per your SSC Marksheet / Leaving Certificate</span>
+	        </div>
+		</div>
+			
+		<div class="row">
+			<div class="col-lg-6 form-inline">
+				<label>Gender</label>	
 				<br>	
 				<span class="form-control">
 					<input type="radio" 
@@ -25,89 +30,121 @@
 							tabindex="2">
 					<label for="gender2">Female</label>
 				</span>
-				
-		</div>
-		<div class="col-lg-6">
-			<div class="form-group">
-				<label for="bloodgroup">Blood Group</label>
-				<select class="form-control" id="bloodgroup">
-					<option selected disabled>--Select--</option>					
-					<option>O +ve</option>
-					<option>A +ve</option>
-					<option>B +ve</option>
-					<option>AB +ve</option>
-					<option>A -ve</option>
-					<option>B -ve</option>
-					<option>AB -ve</option>
-					<option>O -ve</option>
-				</select>
 			</div>
-		</div>
-	</div>
-	
-	<div class="row">
-		<div class="col-lg-6">
-			<div class="form-group">
-				<label for="placeofbirth">Place of Birth</label>
-				<br>
-				<input type="text" 
-						class="form-control" 
-						id="placeofbirth">
-			</div>
-		</div>
-		<div class="col-lg-6">
-			<div class="form-group">
-				<label for="domiciled">Domiciled In</label>
-				<br>
-				<input type="text" 
-						class="form-control" 
-						id="domiciled">
-			</div>
-		</div>
-	</div>
-	
-	<div class="row">
-		<div class="col-lg-6">
-			<div class="form-group">
-				<label for="maritalstatus">Marital Status</label>
-				<br>
-				<select class="form-control" 
-						id="maritalstatus">
-				<option selected disabled>--Select--</option>
-				<option>Married</option>
-				<option>Unmarried</option>
-				</select>
-			</div>
-		</div>
-	</div>
-	
-	<div class="row">
-		<div class="col-lg-6">
-			<div class="form-group">
-				<label for="address">Address</label>
-				<br>
-			<div class="form-inline">
-				<input type="text" 
-						class="col-xs-6 form-control" 
-						id="address">&nbsp&nbsp
-				<input type="text" 
-						class="col-xs-6 form-control" 
-						id="address">
+			<div class="col-lg-6">
+				<div class="form-group">
+					<label for="bloodgroup">Blood Group</label>
+					<select class="form-control" 
+							id="bloodgroup" 
+							tabindex="3"
+							ng-model="vm.personaldetail.bloodGroup">
+						<option>--Select--</option>					
+						<option>O +ve</option>
+						<option>A +ve</option>
+						<option>B +ve</option>
+						<option>AB +ve</option>
+						<option>A -ve</option>
+						<option>B -ve</option>
+						<option>AB -ve</option>
+						<option>O -ve</option>
+					</select>
 			</div>
 			</div>
 		</div>
 		
-	</div>
+		<div class="row">
+			<div class="col-lg-6">
+				<div class="form-group">
+					<label for="placeofbirth">Place of Birth</label>
+					<br>
+					<input type="text" 
+							class="form-control" 
+							id="placeofbirth"
+							tabindex="4"
+							ng-model="vm.personaldetail.placeOfBirth">
+				</div>
+			</div>
+			<div class="col-lg-6">
+				<div class="form-group">
+					<label for="domiciled">Domiciled In</label>
+					<br>
+					<input type="text" 
+							class="form-control" 
+							id="domiciled"
+							tabindex="5"
+							ng-model="vm.personaldetail.domiciledIn">
+				</div>
+			</div>
+		</div>
 	
-	<div class="row">
-		<div class="col-xs-12 col-md-12">
-        	<input type="submit" 
-        		value="SAVE &amp; CONTINUE" 
-        		class="btn btn-success btn-block btn-lg topMargin" 
-        		style="margin-bottom: 10px"
-        		ng-click="vm.submit()">
-        </div>
-	</div>
+		<div class="row">
+			<div class="col-lg-6">
+				<div class="form-group">
+					<label for="maritalstatus">Marital Status</label>
+					<br>
+					<select class="form-control" 
+							id="maritalstatus"
+							tabindex="6"
+							ng-model="vm.personaldetail.maritalStatus">
+						<option>--Select--</option>
+						<option>Married</option>
+						<option>Unmarried</option>
+					</select>
+				</div>
+			</div>
+		</div>
 	
-</form>
+		<div class="row">
+			<div class="col-lg-6">
+				<div class="form-group">
+					<label for="address">Address</label>
+					<br>
+					<input type="text" 
+						class="form-control" 
+						id="address"
+						tabindex="7">
+					<br>
+					<input type="text" 
+						class="form-control" 
+						id="address"
+						tabindex="8">
+					<br>
+					<input type="text" 
+						class="form-control" 
+						id="address"
+						tabindex="9">
+				</div>
+			</div>
+			<div class="col-lg-6">
+				<div class="form-group">
+					<label for="city">City</label>
+					<br>
+					<input type="text" 
+							class="form-control" 
+							id="city" 
+							tabindex="10"
+							ng-model="vm.personaldetail.city">
+					<br>
+					<label for="state">State</label>
+					<br>
+					<input type="text" 
+							class="form-control" 
+							id="state" 
+							tabindex="11"
+							ng-model="vm.personaldetail.state">
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-xs-12 col-md-12">
+	        	<input type="submit" 
+	        		tabindex="12"
+	        		value="SAVE &amp; CONTINUE" 
+	        		class="btn btn-success btn-block btn-lg topMargin" 
+	        		style="margin-bottom: 10px"
+	        		ng-click="vm.submit()">
+	        </div>
+		</div>
+	</div>
 </div>

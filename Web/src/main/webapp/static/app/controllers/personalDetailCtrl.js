@@ -4,10 +4,10 @@
 		.module("admission")
 		.controller("PersonalDetailCtrl",
 					["$http",
-					 "personalDetailResource",
+					 /*"personalDetailResource",*/
 					 PersonalDetailCtrl]);
 	
-	function PersonalDetailCtrl($http, personalDetailResource) {
+	function PersonalDetailCtrl($http/*, personalDetailResource*/) {
 		var vm = this;
 		
 		$http({
@@ -18,8 +18,8 @@
 			vm.personaldetail = data;
 		});
 		
-		personalDetailResource.query(function(data){
-			vm.personaldetail = data;
+		/*personalDetailResource.query(function(data){
+			vm.personaldetail = data;*/
 		});
 		
 	};
