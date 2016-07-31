@@ -1,113 +1,119 @@
 package com.web.model;
 
+import java.util.List;
+
+import com.data.entities.BloodGroup;
+import com.data.entities.Enums;
+import com.data.entities.Enums.GenderType;
+import com.data.entities.Enums.MaritalStatusType;
+
 public class PersonalDetailModel {
-	private String gender;
+	private int gender;
 	private String bloodGroup;
 	private String placeOfBirth;
 	private String domiciledIn;
-	private String maritalStatus;
-	private String address;
-	private String state;
+	private int maritalStatus;
+	private String flatNo;
+	private String street;
+	private String area;
+	private String pinCode;
 	private String city;
+	private String state;
+	private List<BloodGroup> bloodGroups;
 	
-	/**
-	 * @return the gender
-	 */
-	public String getGender() {
+	//Gender getter setter
+	public GenderType getGender() {
+		GenderType gender = Enums.GenderTypes[this.gender - 1];
 		return gender;
 	}
-	/**
-	 * @param gender the gender to set
-	 */
-	public void setGender(String gender) {
-		this.gender = gender;
+	public void setGender(GenderType genderType) {
+		this.gender = genderType.getValue();
 	}
-	/**
-	 * @return the bloodGroup
-	 */
+	
+	//Blood Group getter setter
 	public String getBloodGroup() {
 		return bloodGroup;
 	}
-	/**
-	 * @param bloodGroup the bloodGroup to set
-	 */
 	public void setBloodGroup(String bloodGroup) {
 		this.bloodGroup = bloodGroup;
 	}
-	/**
-	 * @return the placeOfBirth
-	 */
+	
+	//Place of Birth getter setter
 	public String getPlaceOfBirth() {
 		return placeOfBirth;
 	}
-	/**
-	 * @param placeOfBirth the placeOfBirth to set
-	 */
 	public void setPlaceOfBirth(String placeOfBirth) {
 		this.placeOfBirth = placeOfBirth;
 	}
-	/**
-	 * @return the domiciledIn
-	 */
+	
+	//Domiciled In getter setter
 	public String getDomiciledIn() {
 		return domiciledIn;
 	}
-	/**
-	 * @param domiciledIn the domiciledIn to set
-	 */
 	public void setDomiciledIn(String domiciledIn) {
 		this.domiciledIn = domiciledIn;
 	}
-	/**
-	 * @return the maritalStatus
-	 */
-	public String getMaritalStatus() {
+	
+	//Marrital Status getter setter
+	public MaritalStatusType getMaritalStatus() {
+		MaritalStatusType maritalStatus = Enums.MaritalStatusTypes[this.maritalStatus - 1];
 		return maritalStatus;
 	}
-	/**
-	 * @param maritalStatus the maritalStatus to set
-	 */
-	public void setMaritalStatus(String maritalStatus) {
-		this.maritalStatus = maritalStatus;
+	public void setMaritalStatus(MaritalStatusType maritalStatus) {
+		this.maritalStatus = maritalStatus.getValue();
 	}
-	/**
-	 * @return the address
-	 */
-	public String getAddress() {
-		return address;
+	
+	//Flat No getter setter
+	public String getFlatNo() {
+		return flatNo;
 	}
-	/**
-	 * @param address the address to set
-	 */
-	public void setAddress(String address) {
-		this.address = address;
+	public void setFlatNo(String flatNo) {
+		this.flatNo = flatNo;
 	}
-	/**
-	 * @return the state
-	 */
-	public String getState() {
-		return state;
+	
+	//Street getter setter
+	public String getStreet() {
+		return street;
 	}
-	/**
-	 * @param state the state to set
-	 */
-	public void setState(String state) {
-		this.state = state;
+	public void setStreet(String street) {
+		this.street = street;
 	}
-	/**
-	 * @return the city
-	 */
+	
+	//Area getter setter
+	public String getArea() {
+		return area;
+	}
+	public void setArea(String area) {
+		this.area = area;
+	}
+	
+	//Pin Code getter setter
+	public String getPinCode() {
+		return pinCode;
+	}
+	public void setPinCode(String pinCode) {
+		this.pinCode = pinCode;
+	}
+	
+	//City getter setter
 	public String getCity() {
 		return city;
 	}
-	/**
-	 * @param city the city to set
-	 */
 	public void setCity(String city) {
 		this.city = city;
 	}
 	
-	
-		
-	
+	//State getter setter
+	public String getState() {
+		return state;
+	}
+	public void setState(String state) {
+		this.state = state;
+	}
+	public List<BloodGroup> getBloodGroups() {
+		return bloodGroups;
+	}
+	public void setBloodGroups(List<BloodGroup> bloodGroups) {
+		this.bloodGroups = bloodGroups;
+	}	
 }

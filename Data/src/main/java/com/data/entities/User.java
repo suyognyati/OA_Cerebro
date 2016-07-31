@@ -12,12 +12,11 @@ import javax.persistence.Table;
  */
 
 @Entity
-@Table(name="BasicDetails")
-public class BasicDetail {
+@Table(name="Users")
+public class User {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private int BasicDetailId;
 	private int UserId;
 	private String FirstName;
 	private String LastName;
@@ -27,15 +26,7 @@ public class BasicDetail {
 	private String Email;
 	private String MobileNo;
 	private String OtherContact;
-	
-	//BasicDetailId
-	public int getBasicDetailId() {
-		return BasicDetailId;
-	}
-	public void setBasicDetailId(int basicDetailId) {
-		BasicDetailId = basicDetailId;
-	}
-	
+		
 	//UserId
 	public int getUserId() {
 		return UserId;

@@ -20,14 +20,18 @@
 					<input type="radio" 
 							name="gender" 
 							id="gender1"
-							tabindex="1">
+							value="Male"
+							tabindex="1"
+							ng-model="vm.personaldetail.gender">
 					<label for="gender1">Male</label>
 				</span>
 				<span class="form-control">
 					<input type="radio" 
 							name="gender" 
 							id="gender2"
-							tabindex="2">
+							value="Female"
+							tabindex="2"
+							ng-model="vm.personaldetail.gender">
 					<label for="gender2">Female</label>
 				</span>
 			</div>
@@ -37,17 +41,23 @@
 					<select class="form-control" 
 							id="bloodgroup" 
 							tabindex="3"
+							ng-model="vm.personaldetail.bloodGroup"
+							ng-options="bloodgroup.bloodGroupName as bloodgroup.bloodGroupName for bloodgroup in vm.personaldetail.bloodGroups">
+					</select>
+					<!-- <select class="form-control" 
+							id="bloodgroup" 
+							tabindex="3"
 							ng-model="vm.personaldetail.bloodGroup">
 						<option>--Select--</option>					
 						<option>O +ve</option>
-						<option>A +ve</option>
-						<option>B +ve</option>
-						<option>AB +ve</option>
-						<option>A -ve</option>
-						<option>B -ve</option>
-						<option>AB -ve</option>
 						<option>O -ve</option>
-					</select>
+						<option>A +ve</option>
+						<option>A -ve</option>
+						<option>B +ve</option>
+						<option>B -ve</option>
+						<option>AB +ve</option>
+						<option>AB -ve</option>
+					</select> -->
 			</div>
 			</div>
 		</div>
@@ -101,18 +111,31 @@
 					<br>
 					<input type="text" 
 						class="form-control" 
-						id="address"
+						id="address_flatNo"
+						placeholder="Flat No./Building"
+						ng-model="vm.personaldetail.flatNo"
 						tabindex="7">
 					<br>
 					<input type="text" 
 						class="form-control" 
-						id="address"
+						id="address_area"
+						placeholder="Area"
+						ng-model="vm.personaldetail.area"
 						tabindex="8">
 					<br>
 					<input type="text" 
 						class="form-control" 
-						id="address"
+						id="address_street"
+						placeholder="Street"
+						ng-model="vm.personaldetail.street"
 						tabindex="9">
+					<br>
+					<input type="text" 
+						class="form-control" 
+						id="address_pinCode"
+						placeholder="Pin Code"
+						ng-model="vm.personaldetail.pinCode"
+						tabindex="10">
 				</div>
 			</div>
 			<div class="col-lg-6">
@@ -122,7 +145,8 @@
 					<input type="text" 
 							class="form-control" 
 							id="city" 
-							tabindex="10"
+							placeholder="City"
+							tabindex="11"
 							ng-model="vm.personaldetail.city">
 					<br>
 					<label for="state">State</label>
@@ -130,7 +154,8 @@
 					<input type="text" 
 							class="form-control" 
 							id="state" 
-							tabindex="11"
+							placeholder="State"
+							tabindex="12"
 							ng-model="vm.personaldetail.state">
 				</div>
 			</div>
@@ -139,7 +164,7 @@
 		<div class="row">
 			<div class="col-xs-12 col-md-12">
 	        	<input type="submit" 
-	        		tabindex="12"
+	        		tabindex="13"
 	        		value="SAVE &amp; CONTINUE" 
 	        		class="btn btn-success btn-block btn-lg topMargin" 
 	        		style="margin-bottom: 10px"

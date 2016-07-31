@@ -17,7 +17,7 @@ public class BloodGroup {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int BloodGroupId;
-	private String BolldGroupName;
+	private String BloodGroupName;
 	
 	//BloodGroupId
 	public int getBloodGroupId() {
@@ -28,10 +28,10 @@ public class BloodGroup {
 	}
 	
 	//BolldGroupName
-	public String getBolldGroupName() {
-		return BolldGroupName;
+	public String getBloodGroupName() {
+		return BloodGroupName;
 	}
-	public void setBolldGroupName(String bolldGroupName) {
-		BolldGroupName = bolldGroupName;
+	public void setBloodGroupName(String bloodGroupName) {
+		BloodGroupName = bloodGroupName;
 	}
 }

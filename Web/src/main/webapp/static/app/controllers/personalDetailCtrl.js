@@ -19,8 +19,8 @@
 		});
 		
 		/*personalDetailResource.query(function(data){
-			vm.personaldetail = data;*/
-		});
+			vm.personaldetail = data;
+		});*/
 		
 	};
 	
