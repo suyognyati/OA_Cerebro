@@ -3,7 +3,8 @@
 	<persistence-unit name="punit">
 		<class>com.data.entities.BloodGroup</class>
 		<class>com.data.entities.PersonalDetail</class>
-		<class>com.data.entities.BasicDetail</class>
-		<class>com.data.entities.Product</class>
+		<class>com.data.entities.Address</class>
+		<class>com.data.entities.EducationalInformation</class>
+		<class>com.data.entities.User</class>
 	</persistence-unit>
 </persistence>

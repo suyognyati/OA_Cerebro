@@ -4,10 +4,9 @@
 		.module("admission")
 		.controller("BasicDetailCtrl",
 					["$http",
-					 "basicDetailResource",
 					 BasicDetailCtrl]);
 	
-	function BasicDetailCtrl($http, basicDetailResource) {
+	function BasicDetailCtrl($http) {
 		var vm = this;
 		
 		$http({
