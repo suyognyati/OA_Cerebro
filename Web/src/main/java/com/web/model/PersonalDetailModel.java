@@ -9,7 +9,7 @@ import com.data.entities.Enums.MaritalStatusType;
 
 public class PersonalDetailModel {
 	private int gender;
-	private String bloodGroup;
+	private int bloodGroup;
 	private String placeOfBirth;
 	private String domiciledIn;
 	private int maritalStatus;
@@ -22,19 +22,18 @@ public class PersonalDetailModel {
 	private List<BloodGroup> bloodGroups;
 	
 	//Gender getter setter
-	public GenderType getGender() {
-		GenderType gender = Enums.GenderTypes[this.gender - 1];
-		return gender;
+	public int getGender() {
+		return this.gender;
 	}
 	public void setGender(GenderType genderType) {
 		this.gender = genderType.getValue();
 	}
 	
 	//Blood Group getter setter
-	public String getBloodGroup() {
+	public int getBloodGroup() {
 		return bloodGroup;
 	}
-	public void setBloodGroup(String bloodGroup) {
+	public void setBloodGroup(int bloodGroup) {
 		this.bloodGroup = bloodGroup;
 	}
 	

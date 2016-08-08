@@ -19,8 +19,8 @@
 				<span class="form-control">
 					<input type="radio" 
 							name="gender" 
-							id="gender1"
-							value="Male"
+							id="genderMale"
+							value="1"
 							tabindex="1"
 							ng-model="vm.personaldetail.gender">
 					<label for="gender1">Male</label>
@@ -28,8 +28,8 @@
 				<span class="form-control">
 					<input type="radio" 
 							name="gender" 
-							id="gender2"
-							value="Female"
+							id="genderFemale"
+							value="2"
 							tabindex="2"
 							ng-model="vm.personaldetail.gender">
 					<label for="gender2">Female</label>
@@ -42,7 +42,7 @@
 							id="bloodgroup" 
 							tabindex="3"
 							ng-model="vm.personaldetail.bloodGroup"
-							ng-options="bloodgroup.bloodGroupName as bloodgroup.bloodGroupName for bloodgroup in vm.personaldetail.bloodGroups">
+							ng-options="bloodgroup.bloodGroupId as bloodgroup.bloodGroupName for bloodgroup in vm.personaldetail.bloodGroups">
 					</select>
 					<!-- <select class="form-control" 
 							id="bloodgroup" 

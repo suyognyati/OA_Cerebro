@@ -26,7 +26,7 @@ public class PersonalDetailServiceImpl implements PersonalDetailService {
 		
 		for (PersonalDetail personalDetail : personalDetails) {
 			personalDetailModel.setGender(personalDetail.getGender());
-			personalDetailModel.setBloodGroup(personalDetail.getBloodGroup().getBloodGroupName());
+			personalDetailModel.setBloodGroup(personalDetail.getBloodGroup().getBloodGroupId());
 			personalDetailModel.setPlaceOfBirth(personalDetail.getPlaceOfBirth());
 			personalDetailModel.setDomiciledIn(personalDetail.getDomicil());
 			personalDetailModel.setMaritalStatus(personalDetail.getMaritalStatus());
