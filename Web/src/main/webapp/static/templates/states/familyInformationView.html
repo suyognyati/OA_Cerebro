@@ -1,10 +1,261 @@
-<div class="container-fluid">
-<form name="familyInformationForm">
-	<fieldset>
-		<legend>Family Information</legend>
-	</fieldset>
-	<div class="form-group">
-		<div class="bg-warning">NOTE: Please Enter the Name in Capital Letters and same as per your SSC Marksheet / Leaving Certificate</div>
+<div class="panel panel-primary">
+	<div class="panel-heading">
+		<span style="font-family: Verdana; font-size: 18pt">
+        	<strong>Family Information</strong>
+        </span>
 	</div>
-</form>
+	<div class="panel panel-body">	
+		<div class="row">
+		   	<div class="well alert-danger">
+		      <span><strong>NOTE:</strong> 
+		          Please Enter the Name in Capital Letters and same as per your SSC Marksheet / Leaving Certificate
+		      </span>
+		    </div>
+		</div>
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="panel panel-default">	
+					<div class="panel-heading">
+						<span style="font-family: Verdana"><b>Father's Detail</b></span>
+					</div>
+					<div class="panel-body">	
+						<div class="row">
+							<div class="col-lg-6">
+								<div class="form-group">
+									<label for="fathersname">Father's Name</label>
+									<br>
+									<input	type="text"
+											class="form-control" 
+											id="fathersname"
+											tabindex="1" 
+											ng-model="vm.familyinformation.fathersName">
+								</div>
+							</div>
+							<div class="col-lg-6">
+								<div class="form-group">
+									<label for="fathersmiddlename">Father's Middle Name</label>
+									<br>
+									<input	type="text"
+											class="form-control" 
+											id="fathersmiddlename"
+											tabindex="2" 
+											ng-model="vm.familyinformation.fathersMiddleName">
+								</div>
+							</div>
+						</div>
+						
+						<div class="row">
+							<div class="col-lg-4">
+								<div class="form-group">
+									<label for="fathersAge">Father's Age</label>
+									<br>
+									<input type="text" 
+											class="form-control" 
+											id="fathersAge"
+											tabindex="3" 
+											ng-model="vm.familyinformation.fathersAge">
+								</div>
+							</div>
+							<div class="col-lg-4">
+								<div class="form-group">
+									<label for="fathersemail">Email Id</label>
+									<br>
+									<input type="text" 
+											class="form-control" 
+											id="fathersemail"
+											tabindex="4" 
+											ng-model="vm.familyinformation.fathersEmail">
+								</div>
+							</div>
+							<div class="col-lg-4">
+								<div class="form-group">
+									<label for="fatherscontact">Contact No</label>
+									<br>
+									<input type="text" 
+											class="form-control" 
+											id="fatherscontact"
+											tabindex="5" 
+											ng-model="vm.familyinformation.fathersContact">
+								</div>
+							</div>
+						</div>
+					
+						<div class="row">
+							<div class="col-lg-6">
+								<div class="form-group">
+									<label for="fathersqualification">Father's Qualification</label>
+									<br>
+									<input type="text"
+											class="form-control" 
+											id="fathersqualification"
+											tabindex="6" 
+											ng-model="vm.familyinformation.fathersQualification">
+								</div>
+							</div>
+							<div class="col-lg-6">
+								<div class="form-group">
+									<label for="fathersoccupation">Father's Occupation</label>
+									<br>
+									<select	class="form-control" 
+											id="fathersoccupation"
+											tabindex="7" 
+											ng-model="vm.familyinformation.fathersOccupation">
+										<option>--Select--</option>
+									</select>
+								</div>
+							</div>
+						</div>
+						
+						<div class="row">
+							<div class="col-lg-6">
+								<div class="form-group">
+									<label for="fathersdesignation">Father's Designation</label>
+									<br>
+									<input type="text" 
+											class="form-control" 
+											id="fathersdesignation"
+											tabindex="8" 
+											ng-model="vm.familyinformation.fathersDesignation">
+								</div>
+							</div>
+							<div class="col-lg-6">
+								<div class="form-group">
+									<label for="fathersbusinessaddress">Father's Business/Service Address</label>
+									<br>
+									<input type="text" 
+											class="form-control" 
+											id="fathersbusinessaaddress"
+											tabindex="9" 
+											ng-model="vm.familyinformation.fathersBusinessAddress">
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>			
+		
+		<div class="row">
+				<div class="col-lg-12">
+					<div class="panel panel-default">	
+						<div class="panel-heading">
+							<span style="font-family: Verdana"><b>Mother's Detail</b></span>
+						</div>
+						<div class="panel-body">	
+							<div class="row">
+								<div class="col-lg-6">
+									<div class="form-group">
+										<label for="mothersname">Mother's Name</label>
+										<br>
+										<input	type="text"
+												class="form-control" 
+												id="mothersname"
+												tabindex="10" 
+												ng-model="vm.familyinformation.mothersName">
+									</div>
+								</div>
+								<div class="col-lg-6">
+									<div class="form-group">
+										<label for="mothersAge">Mother's Age</label>
+										<br>
+										<input type="text" 
+												class="form-control" 
+												id="mothersAge"
+												tabindex="11" 
+												ng-model="vm.familyinformation.mothersAge">
+									</div>
+								</div>
+							</div>
+							
+							<div class="row">
+								<div class="col-lg-6">
+									<div class="form-group">
+										<label for="mothersemail">Email Id</label>
+										<br>
+										<input type="text" 
+												class="form-control" 
+												id="mothersemail"
+												tabindex="12" 
+												ng-model="vm.familyinformation.mothersEmail">
+									</div>
+								</div>
+								<div class="col-lg-6">
+									<div class="form-group">
+										<label for="motherscontact">Contact No</label>
+										<br>
+										<input type="text" 
+												class="form-control" 
+												id="motherscontact"
+												tabindex="13" 
+												ng-model="vm.familyinformation.mothersContact">
+									</div>
+								</div>
+							</div>
+						
+							<div class="row">
+								<div class="col-lg-6">
+									<div class="form-group">
+										<label for="mothersqualification">Mother's Qualification</label>
+										<br>
+										<input type="text"
+												class="form-control" 
+												id="mothersqualification"
+												tabindex="14" 
+												ng-model="vm.familyinformation.mothersQualification">
+									</div>
+								</div>
+								<div class="col-lg-6">
+									<div class="form-group">
+										<label for="mothersoccupation">Mother's Occupation</label>
+										<br>
+										<select	class="form-control" 
+												id="fathersoccupation"
+												tabindex="15" 
+												ng-model="vm.familyinformation.mothersOccupation">
+											<option>--Select--</option>
+										</select>
+									</div>
+								</div>
+							</div>
+							
+							<div class="row">
+								<div class="col-lg-6">
+									<div class="form-group">
+										<label for="mothersdesignation">Mother's Designation</label>
+										<br>
+										<input type="text" 
+												class="form-control" 
+												id="mothersdesignation"
+												tabindex="16" 
+												ng-model="vm.familyinformation.mothersDesignation">
+									</div>
+								</div>
+								<div class="col-lg-6">
+									<div class="form-group">
+										<label for="mothersbusinessaddress">Mother's Business/Service Address</label>
+										<br>
+										<input type="text" 
+												class="form-control" 
+												id="mothersbusinessaaddress"
+												tabindex="17" 
+												ng-model="vm.familyinformation.mothersBusinessAddress">
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>	
+			
+			<div class="row">
+				<div class="col-xs-12 col-md-12">
+			       	<input type="submit" 
+			        		tabindex="18"
+			        		value="SAVE &amp; CONTINUE" 
+			        		class="btn btn-success btn-block btn-lg topMargin" 
+			        		style="margin-bottom: 10px"
+			        		ng-click="vm.submit()">
+			</div>
+		</div>
+	</div>
 </div>
