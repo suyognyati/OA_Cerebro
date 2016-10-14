@@ -31,6 +31,10 @@
 </head>
 <body ng-app="admission">
 <div class="container-fluid">
+	<ul class="nav nav-pills" role="tablist">
+		<a href="<c:url value="/logout" />">Logout</a>
+		<!-- <li ng-show="authenticated"><a href="" ng-click="nav.logout()">logout</a></li> -->
+	</ul>
 	<div>
 		<h4 align="center">Shri Vishnu Waman Thakur Charitable Trust's</h4>
 		<h1 align="center">Utkarsh Vidyalaya & Junior College</h1>
