@@ -35,7 +35,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 	private String getUserQuery() {
         //return "select username,password, enabled from usertable where username=?";
-        return "select username,password, UserId from users where username=?";
+        return "select username,password, enabled from usertable where username=?";
     }
 
     private String getAuthoritiesQuery() {
@@ -47,10 +47,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 	  http.authorizeRequests()
 	    .antMatchers("/login", "/static/**").permitAll()
-	    .antMatchers("/", "/home").access("hasAuthority('USER')").anyRequest().authenticated()
-	  	.antMatchers("/personalDetail/**").access("hasAuthority('USER')").anyRequest().authenticated()
-	  	.antMatchers("/admin/**").access("hasAuthority('ADMIN')").anyRequest().authenticated()
-	  	.antMatchers("/db/**").access("hasAuthority('ADMIN') and hasAuthority('DBA')").anyRequest().authenticated()
+	    .antMatchers("/user/").access("hasRole('USER')").anyRequest().authenticated()
+	  	.antMatchers("/admin/**").access("hasRole('ADMIN')").anyRequest().authenticated()
+	  	.antMatchers("/db/**").access("hasRole('ADMIN') and hasRole('DBA')").anyRequest().authenticated()
 	  	.and().formLogin().loginPage("/login").successHandler(customSuccessHandler)
 	  	.usernameParameter("ssoId").passwordParameter("password")
 	  	.and().csrf()

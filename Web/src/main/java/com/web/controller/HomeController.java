@@ -21,7 +21,7 @@ public class HomeController {
 		return "HomePage";
 	}
 
-	@RequestMapping(value = { "home" }, method = RequestMethod.GET)
+	@RequestMapping(value = { "user/" }, method = RequestMethod.GET)
 	public String homePage(ModelMap model) {
 		model.addAttribute("user", getPrincipal());
 		return "HomePage";

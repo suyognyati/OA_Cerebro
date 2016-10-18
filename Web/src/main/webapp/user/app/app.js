@@ -17,7 +17,7 @@
 							url: "/basicdetails",
 							views: {
 								"view":{
-				                	templateUrl:"static/templates/states/basicDetailView.html",
+				                	templateUrl:"templates/states/basicDetailView.html",
 				                	controller:"BasicDetailCtrl as vm",
 								}
 							},
@@ -26,8 +26,8 @@
 									return $ocLazyLoad.load({
 										name : 'admission',
 										files : [
-										     'static/app/controllers/basicDetailCtrl.js',
-										     'static/common/services/basicDetailResource.js'
+										     'app/controllers/basicDetailCtrl.js',
+										     'common/services/basicDetailResource.js'
 										]
 								
 									})
@@ -56,7 +56,7 @@
 							url: "/personaldetails",
 							views: {
 								"view":{
-									templateUrl:"static/templates/states/personalDetailView.html",
+									templateUrl:"templates/states/personalDetailView.html",
 									controller:"PersonalDetailCtrl as vm",
 								}
 							},
@@ -65,7 +65,7 @@
 									return $ocLazyLoad.load({
 										name : 'admission',
 										files : [
-										     'static/app/controllers/personalDetailCtrl.js'
+										     'app/controllers/personalDetailCtrl.js'
 										]
 								
 									})
@@ -77,7 +77,7 @@
 							url: "/educationinformation",
 							views: {
 								"view":{
-									templateUrl:"static/templates/states/educationInformationView.html",
+									templateUrl:"templates/states/educationInformationView.html",
 									controller:"EducationInformationCtrl as vm",
 								}
 							},
@@ -86,7 +86,7 @@
 									return $ocLazyLoad.load({
 										name : 'admission',
 										files : [
-										     'static/app/controllers/educationInformationCtrl.js'
+										     'app/controllers/educationInformationCtrl.js'
 										]
 								
 									})
@@ -107,7 +107,7 @@
 									return $ocLazyLoad.load({
 										name : 'admission',
 										files : [
-										     'static/app/controllers/familyInformationCtrl.js'
+										     'app/controllers/familyInformationCtrl.js'
 										]
 								
 									})
@@ -119,7 +119,7 @@
 							url: "/otherinformation",
 							views: {
 								"view":{
-									templateUrl:"static/templates/states/otherInformationView.html",
+									templateUrl:"templates/states/otherInformationView.html",
 									controller:"OtherInformationCtrl as vm",
 								}
 							},
@@ -128,7 +128,7 @@
 									return $ocLazyLoad.load({
 										name : 'admission',
 										files : [
-										     'static/app/controllers/otherInformationCtrl.js'
+										     'app/controllers/otherInformationCtrl.js'
 										]
 								
 									})
