@@ -35,11 +35,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 	private String getUserQuery() {
         //return "select username,password, enabled from usertable where username=?";
-        return "select username,password, enabled from usertable where username=?";
+        return "select UserName,Password, Enabled from users where UserName=?";
+        //return "select username,password, enabled from users_temp where username=?";
     }
 
     private String getAuthoritiesQuery() {
-        return "select username, role from user_roles where username=?";
+        return "select UserName_UserName, Role from userroles where UserName_UserName=?";
+    	//return "select username, role from user_temp_roles where username=?";
     }
 	
 	
@@ -47,13 +49,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 	  http.authorizeRequests()
 	    .antMatchers("/login", "/static/**").permitAll()
-	    .antMatchers("/user/").access("hasRole('USER')").anyRequest().authenticated()
-	  	.antMatchers("/admin/**").access("hasRole('ADMIN')").anyRequest().authenticated()
-	  	.antMatchers("/db/**").access("hasRole('ADMIN') and hasRole('DBA')").anyRequest().authenticated()
+	    .antMatchers("/user/").access("hasRole('USER')")
+	  	.antMatchers("/db/").access("hasRole('ADMIN') and hasRole('DBA')")
+	  	.antMatchers("/admin/").access("hasRole('ADMIN')").anyRequest().authenticated()
 	  	.and().formLogin().loginPage("/login").successHandler(customSuccessHandler)
 	  	.usernameParameter("ssoId").passwordParameter("password")
 	  	.and().csrf()
-	  	.and().exceptionHandling().accessDeniedPage("/Access_Denied");
+	  	.and().exceptionHandling().accessDeniedPage("/Access_Denied/");
 		
 		/*http.authorizeRequests()
 		.antMatchers("/", "/home").access("hasRole('USER')")

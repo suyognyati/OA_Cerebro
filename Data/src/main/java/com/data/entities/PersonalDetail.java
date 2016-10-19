@@ -25,7 +25,7 @@ public class PersonalDetail {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int PersonalDetailId;
 	@OneToOne(cascade=CascadeType.ALL)
-	private User UserId;
+	private BasicDetail UserId;
 	private int Gender;
 	private String Domicil;
 	private String PlaceOfBirth;
@@ -44,10 +44,10 @@ public class PersonalDetail {
 	}
 
 	//UserId
-	public User getUserId() {
+	public BasicDetail getUserId() {
 		return UserId;
 	}
-	public void setUserId(final User userId) {
+	public void setUserId(final BasicDetail userId) {
 		UserId = userId;
 	}
 

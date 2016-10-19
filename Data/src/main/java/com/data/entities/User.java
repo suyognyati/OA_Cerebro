@@ -6,97 +6,33 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-/**
- * The persistent class for the BasicDetails database table.
- *
- */
-
 @Entity
 @Table(name="Users")
 public class User {
-
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private int UserId;
-	private String FirstName;
-	private String LastName;
-	private String MidleName;
-	private String MotherName;
-	private String DateOfBirth;
-	private String Email;
-	private String MobileNo;
-	private String OtherContact;
-		
-	//UserId
-	public int getUserId() {
-		return UserId;
+	private String UserName;
+	private String Password;
+	private Integer Enabled;
+	
+	public String getUserName() {
+		return UserName;
 	}
-	public void setUserId(int userId) {
-		UserId = userId;
+	public void setUserName(String userName) {
+		UserName = userName;
 	}
 	
-	//FirstName
-	public String getFirstName() {
-		return FirstName;
+	public String getPassword() {
+		return Password;
 	}
-	public void setFirstName(String firstName) {
-		FirstName = firstName;
-	}
-	
-	//LastName
-	public String getLastName() {
-		return LastName;
-	}
-	public void setLastName(String lastName) {
-		LastName = lastName;
+	public void setPassword(String password) {
+		Password = password;
 	}
 	
-	//MidleName
-	public String getMidleName() {
-		return MidleName;
+	public Integer getEnabled() {
+		return Enabled;
 	}
-	public void setMidleName(String midleName) {
-		MidleName = midleName;
+	public void setEnabled(Integer enabled) {
+		Enabled = enabled;
 	}
-	
-	//MotherName
-	public String getMotherName() {
-		return MotherName;
-	}
-	public void setMotherName(String motherName) {
-		MotherName = motherName;
-	}
-	
-	//DateOfBirth
-	public String getDateOfBirth() {
-		return DateOfBirth;
-	}
-	public void setDateOfBirth(String dateOfBirth) {
-		DateOfBirth = dateOfBirth;
-	}
-	
-	//Email
-	public String getEmail() {
-		return Email;
-	}
-	public void setEmail(String email) {
-		Email = email;
-	}
-	
-	//MobileNo
-	public String getMobileNo() {
-		return MobileNo;
-	}
-	public void setMobileNo(String mobileNo) {
-		MobileNo = mobileNo;
-	}
-	
-	//OtherContact
-	public String getOtherContact() {
-		return OtherContact;
-	}
-	public void setOtherContact(String otherContact) {
-		OtherContact = otherContact;
-	}
-	
 }

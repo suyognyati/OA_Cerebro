@@ -5,22 +5,22 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.data.entities.User;
-import com.data.repository.UserJpaRepository;
+import com.data.entities.BasicDetail;
+import com.data.repository.BasicDetailJpaRepository;
 import com.web.model.BasicDetailModel;
 
 @Service("basicDetailService")
 public class BasicDetailServiceImpl implements BasicDetailService{
 
 	@Autowired
-	UserJpaRepository userJpaRepository;
+	BasicDetailJpaRepository basicDetailJpaRepository;
 	
 	public BasicDetailModel getBasicDetail(){
 		
-		List<User> basicDetails = userJpaRepository.findAll();
+		List<BasicDetail> basicDetails = basicDetailJpaRepository.findAll();
 		BasicDetailModel basicDetailModel = new BasicDetailModel();	
 		
-		for (User basicDetail : basicDetails) {
+		for (BasicDetail basicDetail : basicDetails) {
 			basicDetailModel.setLastName(basicDetail.getLastName());
 			basicDetailModel.setFirstName(basicDetail.getFirstName());
 			basicDetailModel.setMiddleName(basicDetail.getMidleName());

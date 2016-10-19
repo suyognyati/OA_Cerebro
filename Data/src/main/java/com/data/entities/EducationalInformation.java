@@ -19,7 +19,7 @@ public class EducationalInformation {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int EducationInformationId;
 	@OneToOne(cascade=CascadeType.ALL)
-	private User UserId;
+	private BasicDetail UserId;
 	private String State;
 	private String Board;
 	private String SchoolName;
@@ -42,10 +42,10 @@ public class EducationalInformation {
 	}
 	
 	//UserId
-	public User getUserId() {
+	public BasicDetail getUserId() {
 		return UserId;
 	}
-	public void setUserId(final User userId) {
+	public void setUserId(final BasicDetail userId) {
 		UserId = userId;
 	}
 	

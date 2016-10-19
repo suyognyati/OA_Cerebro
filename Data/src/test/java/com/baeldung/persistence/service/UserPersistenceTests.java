@@ -13,9 +13,9 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
 import com.data.entities.PersonalDetail;
-import com.data.entities.User;
+import com.data.entities.BasicDetail;
 import com.data.repository.PersonalDetailJpaRepository;
-import com.data.repository.UserJpaRepository;
+import com.data.repository.BasicDetailJpaRepository;
 
 import config.data.PersistenceConfig;
 
@@ -26,7 +26,7 @@ public class UserPersistenceTests {
 	private PersonalDetailJpaRepository personalDetailJpaRepository;
 
 	@Autowired
-	UserJpaRepository userJpaRepository;
+	BasicDetailJpaRepository userJpaRepository;
 	
 	@Test
 	public void testJpaFind() {
@@ -39,8 +39,8 @@ public class UserPersistenceTests {
 	
 	@Test
 	public void testBasicDetailJpaFind() {
-		List<User> users = userJpaRepository.findAll();
-		for (User user : users) {
+		List<BasicDetail> users = userJpaRepository.findAll();
+		for (BasicDetail user : users) {
 			System.out.println("\n\n\n\n Id is - " + user.getFirstName() + " Gender is - " + user.getLastName() + "\n\n\n\n");
 		}
 		assertNotNull(users);
