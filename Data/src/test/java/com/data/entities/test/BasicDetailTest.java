@@ -1,4 +1,4 @@
-package com.baeldung.persistence.service;
+package com.data.entities.test;
 
 
 import static org.junit.Assert.assertNotNull;
@@ -12,37 +12,23 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
-import com.data.entities.PersonalDetail;
 import com.data.entities.BasicDetail;
-import com.data.repository.PersonalDetailJpaRepository;
 import com.data.repository.BasicDetailJpaRepository;
 
 import config.data.PersistenceConfig;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { PersistenceConfig.class }, loader = AnnotationConfigContextLoader.class)
-public class UserPersistenceTests {
+public class BasicDetailTest {
 	@Autowired
-	private PersonalDetailJpaRepository personalDetailJpaRepository;
-
-	@Autowired
-	BasicDetailJpaRepository userJpaRepository;
-	
-	@Test
-	public void testJpaFind() {
-		List<PersonalDetail> personalDetail = personalDetailJpaRepository.findAll();
-		for (PersonalDetail pd : personalDetail) {
-			System.out.println("\n\n\n\n Id is - " + pd.getUserId() + " Gender is - " + pd.getGender() + "\n\n\n\n");
-		}
-		assertNotNull(personalDetail);
-	}
+	BasicDetailJpaRepository basicDetailJpaRepository;
 	
 	@Test
 	public void testBasicDetailJpaFind() {
-		List<BasicDetail> users = userJpaRepository.findAll();
-		for (BasicDetail user : users) {
+		List<BasicDetail> basicDetailList = basicDetailJpaRepository.findAll();
+		for (BasicDetail user : basicDetailList) {
 			System.out.println("\n\n\n\n Id is - " + user.getFirstName() + " Gender is - " + user.getLastName() + "\n\n\n\n");
 		}
-		assertNotNull(users);
+		assertNotNull(basicDetailList);
 	}
 }
