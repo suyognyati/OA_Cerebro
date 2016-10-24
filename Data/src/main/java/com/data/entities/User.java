@@ -1,8 +1,7 @@
 package com.data.entities;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -10,29 +9,33 @@ import javax.persistence.Table;
 @Table(name="Users")
 public class User {
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	private String UserName;
-	private String Password;
-	private Integer Enabled;
+	@Column(name="UserName")
+	private String userName;
+
+	@Column(name="Password")
+	private String password;
+
+	@Column(name="Enabled")
+	private Integer enabled;
 	
 	public String getUserName() {
-		return UserName;
+		return userName;
 	}
 	public void setUserName(String userName) {
-		UserName = userName;
+		this.userName = userName;
 	}
 	
 	public String getPassword() {
-		return Password;
+		return password;
 	}
 	public void setPassword(String password) {
-		Password = password;
+		this.password = password;
 	}
 	
 	public Integer getEnabled() {
-		return Enabled;
+		return enabled;
 	}
 	public void setEnabled(Integer enabled) {
-		Enabled = enabled;
+		this.enabled = enabled;
 	}
 }

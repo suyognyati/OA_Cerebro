@@ -1,10 +1,12 @@
 package com.data.entities;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -17,134 +19,161 @@ public class EducationalInformation {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private int EducationInformationId;
+	@Column(name="EducationInformationId")
+	private int educationInformationId;
+	
 	@OneToOne(cascade=CascadeType.ALL)
-	private BasicDetail UserId;
-	private String State;
-	private String Board;
-	private String SchoolName;
-	private String SchoolPlace;
-	private int FirstAttempt;
-	private int MathsType;
-	private String PassingYear;
-	private String PassingMonth;
-	private String TotalMarksObtained;
-	private String OutOfMarks;
-	private String GradeObtained;
-	private String SeatNo;
+	@JoinColumn(name="FK_UserId")
+	private BasicDetail basicDetail;
+
+	@Column(name="State")
+	private String state;
+
+	@Column(name="Board")
+	private String board;
+
+	@Column(name="SchoolName")
+	private String schoolName;
+
+	@Column(name="SchoolPlace")
+	private String schoolPlace;
+
+	@Column(name="FirstAttempt")
+	private int firstAttempt;
+
+	@Column(name="MathsType")
+	private int mathsType;
+
+	@Column(name="PassingYear")
+	private String passingYear;
+
+	@Column(name="PassingMonth")
+	private String passingMonth;
+
+	@Column(name="TotalMarksObtained")
+	private String totalMarksObtained;
+
+	@Column(name="OutOfMarks")
+	private String outOfMarks;
+
+	@Column(name="GradeObtained")
+	private String gradeObtained;
+
+	@Column(name="SeatNo")
+	private String seatNo;
 	
 	//EducationInformationId
 	public int getEducationInformationId() {
-		return EducationInformationId;
+		return educationInformationId;
 	}
 	public void setEducationInformationId(final int educationInformationId) {
-		EducationInformationId = educationInformationId;
+		this.educationInformationId = educationInformationId;
 	}
 	
 	//UserId
 	public BasicDetail getUserId() {
-		return UserId;
+		return basicDetail;
 	}
 	public void setUserId(final BasicDetail userId) {
-		UserId = userId;
+		this.basicDetail = userId;
 	}
 	
 	//State
 	public String getState() {
-		return State;
+		return state;
 	}
 	public void setState(String state) {
-		State = state;
+		this.state = state;
 	}
 	
 	//Board
 	public String getBoard() {
-		return Board;
+		return board;
 	}
 	public void setBoard(String board) {
-		Board = board;
+		this.board = board;
 	}
 	
 	//SchoolName
 	public String getSchoolName() {
-		return SchoolName;
+		return schoolName;
 	}
 	public void setSchoolName(String schoolName) {
-		SchoolName = schoolName;
+		this.schoolName = schoolName;
 	}
 	
 	//SchoolPlace
 	public String getSchoolPlace() {
-		return SchoolPlace;
+		return schoolPlace;
 	}
 	public void setSchoolPlace(String schoolPlace) {
-		SchoolPlace = schoolPlace;
+		this.schoolPlace = schoolPlace;
 	}
 	
 	//FirstAttempt
 	public FirstAttemptType getFirstAttempt() {
-		FirstAttemptType firstAttempt = Enums.FirstAttemptTypes[this.FirstAttempt - 1];
+		FirstAttemptType firstAttempt = Enums.FirstAttemptTypes[this.firstAttempt - 1];
 		return firstAttempt;
 	}
 	public void setFirstAttempt(final FirstAttemptType firstAttempt) {
-		this.FirstAttempt = firstAttempt.getValue();
+		this.firstAttempt = firstAttempt.getValue();
 	}
 	
 	//MathsType
 	public MathsTypeType getMathsType() {
-		MathsTypeType mathsType = Enums.MathsTypeTypes[this.MathsType - 1];
+		MathsTypeType mathsType = Enums.MathsTypeTypes[this.mathsType - 1];
 		return mathsType;
 	}
 	public void setMathsType(final MathsTypeType mathsType) {
-		this.MathsType = mathsType.getValue();
+		this.mathsType = mathsType.getValue();
 	}
 	
 	//PassingYear
 	public String getPassingYear() {
-		return PassingYear;
+		return passingYear;
 	}
 	public void setPassingYear(String passingYear) {
-		PassingYear = passingYear;
+		this.passingYear = passingYear;
 	}
 	
 	//PassingMonth
 	public String getPassingMonth() {
-		return PassingMonth;
+		return passingMonth;
 	}
 	public void setPassingMonth(String passingMonth) {
-		PassingMonth = passingMonth;
+		this.passingMonth = passingMonth;
 	}
 	
 	//TotalMarksObtained
 	public String getTotalMarksObtained() {
-		return TotalMarksObtained;
+		return totalMarksObtained;
 	}
 	public void setTotalMarksObtained(String totalMarksObtained) {
-		TotalMarksObtained = totalMarksObtained;
+		this.totalMarksObtained = totalMarksObtained;
 	}
 	
 	//OutOfMarks
 	public String getOutOfMarks() {
-		return OutOfMarks;
+		return outOfMarks;
 	}
 	public void setOutOfMarks(String outOfMarks) {
-		OutOfMarks = outOfMarks;
+		this.outOfMarks = outOfMarks;
 	}
 	
 	//GradeObtained
 	public String getGradeObtained() {
-		return GradeObtained;
+		return gradeObtained;
 	}
 	public void setGradeObtained(String gradeObtained) {
-		GradeObtained = gradeObtained;
+		this.gradeObtained = gradeObtained;
 	}
 	
 	//SeatNo
 	public String getSeatNo() {
-		return SeatNo;
+		return seatNo;
 	}
 	public void setSeatNo(String seatNo) {
-		SeatNo = seatNo;
+		this.seatNo = seatNo;
 	}
 	
 	

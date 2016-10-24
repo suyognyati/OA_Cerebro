@@ -2,6 +2,7 @@ package com.data.entities.test;
 
 
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertEquals;
 
 import java.util.List;
 
@@ -30,5 +31,17 @@ public class BasicDetailTest {
 			System.out.println("\n\n\n\n Id is - " + user.getFirstName() + " Gender is - " + user.getLastName() + "\n\n\n\n");
 		}
 		assertNotNull(basicDetailList);
+	}
+	
+	@Test
+	public void testFindFirstName() {
+		List<BasicDetail> basicDetailList = basicDetailJpaRepository.findByFirstName("Manali");
+		for (BasicDetail user : basicDetailList) {
+			System.out.println("\n\n\n\n Id is - " + user.getFirstName() + " Gender is - " + user.getLastName() + "\n\n\n\n");
+		}
+		if(basicDetailList != null && basicDetailList.size() > 0)
+			assertEquals("Manali", basicDetailList.get(0).getFirstName());
+		else
+			assertNotNull(basicDetailList);
 	}
 }

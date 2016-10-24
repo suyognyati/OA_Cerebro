@@ -1,5 +1,6 @@
 package com.data.entities;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,23 +13,26 @@ public class State {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private int StateId;
-	private String StateName;
+	@Column(name="StateId")
+	private int stateId;
+
+	@Column(name="StateName")
+	private String stateName;
 	
 	//StateId
 	public int getStateId() {
-		return StateId;
+		return stateId;
 	}
 	public void setStateId(int stateId) {
-		StateId = stateId;
+		this.stateId = stateId;
 	}
 	
 	//StateName
 	public String getStateName() {
-		return StateName;
+		return stateName;
 	}
 	public void setStateName(String stateName) {
-		StateName = stateName;
+		this.stateName = stateName;
 	}
 	
 }

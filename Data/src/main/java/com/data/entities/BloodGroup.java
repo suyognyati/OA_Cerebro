@@ -1,5 +1,6 @@
 package com.data.entities;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,22 +17,25 @@ import javax.persistence.Table;
 public class BloodGroup {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private int BloodGroupId;
-	private String BloodGroupName;
+	@Column(name="BloodGroupId")
+	private int bloodGroupId;
+
+	@Column(name="BloodGroupName")
+	private String bloodGroupName;
 	
 	//BloodGroupId
 	public int getBloodGroupId() {
-		return BloodGroupId;
+		return bloodGroupId;
 	}
 	public void setBloodGroupId(int bloodGroupId) {
-		BloodGroupId = bloodGroupId;
+		this.bloodGroupId = bloodGroupId;
 	}
 	
 	//BolldGroupName
 	public String getBloodGroupName() {
-		return BloodGroupName;
+		return bloodGroupName;
 	}
 	public void setBloodGroupName(String bloodGroupName) {
-		BloodGroupName = bloodGroupName;
+		this.bloodGroupName = bloodGroupName;
 	}
 }

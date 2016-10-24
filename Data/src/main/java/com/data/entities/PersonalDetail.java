@@ -1,10 +1,12 @@
 package com.data.entities;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -23,81 +25,96 @@ public class PersonalDetail {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private int PersonalDetailId;
+	@Column(name="PersonalDetailId")
+	private int personalDetailId;
+	
+	@JoinColumn(name="FK_BasicDetailId")
 	@OneToOne(cascade=CascadeType.ALL)
-	private BasicDetail UserId;
-	private int Gender;
-	private String Domicil;
-	private String PlaceOfBirth;
-	private int MaritalStatus;
+	private BasicDetail basicDetail;
+	
+	@Column(name="Gender")
+	private int gender;
+
+	@Column(name="Domicil")
+	private String domicil;
+
+	@Column(name="PlaceOfBirth")
+	private String placeOfBirth;
+
+	@Column(name="MaritalStatus")
+	private int maritalStatus;
+
+	@JoinColumn(name="FK_AddressId")
 	@OneToOne(cascade=CascadeType.ALL)
-	private Address Address;
+	private Address address;
+
+	@JoinColumn(name="FK_BloodGroupId")
 	@ManyToOne(cascade=CascadeType.ALL)
-	private BloodGroup BloodGroup;
+	private BloodGroup bloodGroup;
 
 	//PersonalDetailId
 	public int getPersonalDetailId() {
-		return PersonalDetailId;
+		return personalDetailId;
 	}
 	public void setPersonalDetailId(final int personalDetailId) {
-		PersonalDetailId = personalDetailId;
+		this.personalDetailId = personalDetailId;
 	}
 
 	//UserId
 	public BasicDetail getUserId() {
-		return UserId;
+		return basicDetail;
 	}
 	public void setUserId(final BasicDetail userId) {
-		UserId = userId;
+		this.basicDetail = userId;
 	}
 
 	//Gender
 	public GenderType getGender() {
-		GenderType gender = Enums.GenderTypes[this.Gender - 1];
+		GenderType gender = Enums.GenderTypes[this.gender - 1];
 		return gender;
 	}
 	public void setGender(final GenderType gender) {
-		this.Gender = gender.getValue();
+		this.gender = gender.getValue();
 	}
 
 	//Domicil
 	public String getDomicil() {
-		return Domicil;
+		return domicil;
 	}
 	public void setDomicil(String domicil) {
-		Domicil = domicil;
+		this.domicil = domicil;
 	}
 	
 	//PlaceOfBirth
 	public String getPlaceOfBirth() {
-		return PlaceOfBirth;
+		return placeOfBirth;
 	}
 	public void setPlaceOfBirth(String placeOfBirth) {
-		PlaceOfBirth = placeOfBirth;
+		this.placeOfBirth = placeOfBirth;
 	}
 	
 	//MaritalStatus
 	public MaritalStatusType getMaritalStatus() {
-		MaritalStatusType maritalStatus = Enums.MaritalStatusTypes[this.MaritalStatus - 1];
+		MaritalStatusType maritalStatus = Enums.MaritalStatusTypes[this.maritalStatus - 1];
 		return maritalStatus;
 	}
 	public void setMaritalStatus(MaritalStatusType maritalStatus) {
-		this.MaritalStatus = maritalStatus.getValue();
+		this.maritalStatus = maritalStatus.getValue();
 	}
 	
 	//Address
 	public Address getAddress() {
-		return Address;
+		return address;
 	}
 	public void setAddress(Address address) {
-		Address = address;
+		this.address = address;
 	}
 	
 	//BloodGroup
 	public BloodGroup getBloodGroup() {
-		return BloodGroup;
+		return bloodGroup;
 	}
 	public void setBloodGroup(final BloodGroup bloodGroup) {
-		BloodGroup = bloodGroup;
+		this.bloodGroup = bloodGroup;
 	}
 }

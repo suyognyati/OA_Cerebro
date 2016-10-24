@@ -1,10 +1,12 @@
 package com.data.entities;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -13,29 +15,34 @@ import javax.persistence.Table;
 public class UserRole {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Integer UserRoleId;
+	@Column(name="UserRoleId")
+	private Integer userRoleId;
+
+	@JoinColumn(name="FK_UserName")
 	@ManyToOne(cascade=CascadeType.ALL)
-	private User UserName;
-	private String Role;
+	private User user;
+
+	@Column(name="Role")
+	private String role;
 	
 	public Integer getUserRoleId() {
-		return UserRoleId;
+		return userRoleId;
 	}
 	public void setUserRoleId(Integer userRoleId) {
-		UserRoleId = userRoleId;
+		this.userRoleId = userRoleId;
 	}
 	
 	public User getUserName() {
-		return UserName;
+		return user;
 	}
 	public void setUserName(User userName) {
-		UserName = userName;
+		this.user = userName;
 	}
 	
 	public String getRole() {
-		return Role;
+		return role;
 	}
 	public void setRole(String role) {
-		Role = role;
+		this.role = role;
 	}
 }
