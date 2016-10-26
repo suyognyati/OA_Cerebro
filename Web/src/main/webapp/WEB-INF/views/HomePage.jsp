@@ -36,8 +36,8 @@
 		<!-- <li ng-show="authenticated"><a href="" ng-click="nav.logout()">logout</a></li> -->
 	</ul>
 	<div>
-		<h4 align="center">Shri Vishnu Waman Thakur Charitable Trust's</h4>
-		<h1 align="center">Utkarsh Vidyalaya & Junior College</h1>
+		<h4 align="center">Narmada Shaligram Kasat Charitable Trust</h4>
+		<h1 align="center">Suyog Jr College</h1>
 		<h5 align="center"><big>Online Admission for FYJC</big></h5>
 	</div>
 	<nav class="navbar navbar-default">
@@ -50,7 +50,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">Brand</a>
+      <!-- <a class="navbar-brand" href="#">Brand</a> -->
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
