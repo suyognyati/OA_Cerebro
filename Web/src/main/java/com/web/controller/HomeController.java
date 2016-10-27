@@ -24,7 +24,7 @@ public class HomeController {
 	@RequestMapping(value = { "user/" }, method = RequestMethod.GET)
 	public String homePage(ModelMap model) {
 		model.addAttribute("user", getPrincipal());
-		return "HomePage";
+		return "HomePage-topnavbar";
 	}
 
 	@RequestMapping(value = "admin/", method = RequestMethod.GET)

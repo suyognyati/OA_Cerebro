@@ -20,14 +20,10 @@
 
 	<!-- Application Scripts -->
 <script src="<c:url value='/user/app/app.js' />"></script>
+<script src="<c:url value='/user/app/state.js' />"></script>
 
 	<!-- Services -->
 <script src="<c:url value='/user/common/common.services.js' />"></script>
-<%-- <script src="<c:url value='/static/common/services/basicDetailResource.js' />"></script> --%>
-<script src="<c:url value='/user/common/services/basicDetailMock.js' />"></script>
-
-	<!-- Product Controllers -->
-<%-- <script src="<c:url value='/user/app/controllers/basicDetailCtrl.js' />"></script> --%>
 
 </head>
 <body ng-app="admission">

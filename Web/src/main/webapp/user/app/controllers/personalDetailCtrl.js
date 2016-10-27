@@ -4,16 +4,17 @@
 		.module("admission")
 		.controller("PersonalDetailCtrl",
 					["$http",
-					 /*"personalDetailResource",*/
+					 "personalDetailService",
 					 PersonalDetailCtrl]);
 	
-	function PersonalDetailCtrl($http/*, personalDetailResource*/) {
+	function PersonalDetailCtrl($http, personalDetailService) {
 		var vm = this;
 		
-		$http({
+		/*$http({
 			method: 'GET',
 			url: '/Web/personalDetail/getPersonalDetail/'
-		})
+		})*/
+		personalDetailService.getPersonalDetail()
 		.success(function(data){
 			vm.personaldetail = data;
 		});
