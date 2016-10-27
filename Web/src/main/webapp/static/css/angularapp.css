@@ -1,0 +1,49 @@
+body {
+	background-color: #C6D9F1;
+}
+
+.navbar-fixed-left {
+  width: 200px;
+  position: fixed;
+  border-radius: 0;
+  height: 100%;
+  margin-left: -15px;
+  margin-right: -15px
+}
+
+.navbar-fixed-left .navbar-nav > li {
+  float: none;  /* Cancel default li float: left */
+  width: 199px;
+  padding-left: -20px;
+}
+
+.navbar-fixed-left + .container {
+  padding-left: 200px;
+  padding-top: 20px
+}
+
+/* On using dropdown menu (To right shift popuped) */
+.navbar-fixed-left .navbar-nav > li > .dropdown-menu {
+  margin-top: -50px;
+  margin-left: 200px;
+}
+
+.bold-label {
+    font-weight: bold;
+}
+
+.theme-color {
+    color: #C6D9F1 !important;
+}
+
+.logo {
+	font-weight: 900;
+}
+
+.pills-content {
+    border-bottom: 1px solid #ddd;
+}
+
+.nav-pills {
+    margin-bottom: 0;
+}
