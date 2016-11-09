@@ -24,7 +24,7 @@ public class BasicDetailRestController {
 	}
 	
 	@RequestMapping(value="/save/", method=RequestMethod.POST)
-	public void save(@RequestBody String name) {
-		System.out.println("BasicDetailRestController - save" + name);
+	public void save(@RequestBody BasicDetailModel basicDetailModel) {
+		System.out.println("BasicDetailRestController - save" + basicDetailModel);
 	}
 }

@@ -7,9 +7,20 @@
 	            "$httpProvider",
 		         function($stateProvider, $urlRouterProvider, $httpProvider){
 		
-					$httpProvider.defaults.xsrfCookieName = 'csrftoken';
-				    $httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';
-					$urlRouterProvider.otherwise("/basicdetails");
+					//$httpProvider.defaults.xsrfHeaderName = 'X-CSRF-TOKEN';
+				    /*$httpProvider.interceptors.push(function() {
+				        return {
+				            response: function(response) {
+				                $httpProvider.defaults.headers.common['X-XSRF-TOKEN'] = response.headers('XSRF-TOKEN');
+				                return response;
+				            }
+				        }    
+				    });*/
+		
+					/*$httpProvider.defaults.xsrfCookieName = 'csrftoken';
+				    $httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';*/
+					
+				    $urlRouterProvider.otherwise("/basicdetails");
 					
 					$stateProvider
 					
