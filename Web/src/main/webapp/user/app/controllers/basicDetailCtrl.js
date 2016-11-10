@@ -10,19 +10,7 @@
 	function BasicDetailCtrl($http, basicDetailService) {
 		var vm = this;
 		
-		/*$http({
-			method: 'GET',
-			url: '/Web/basicDetail/getBasicDetail/'
-		})
-		.success(function(data){
-			vm.basicdetail = data;
-		});*/
-		
-		/*basicDetailResource.query(function(data){
-			vm.basicdetail = data;
-		});*/
-		
-		basicDetailService.getBasicDetail()
+		basicDetailService.get()
 		.success(function(data){
 			vm.basicdetail = data;
 		});
@@ -30,14 +18,10 @@
 		vm.submit = function() {
 			basicDetailService.save(vm.basicdetail)
 			.success(function (data, status, headers, config) {
-                vm.successMessage = "Subjects created successfully";
-              //  alert('subject created successfully');
-
+                vm.successMessage = "Detail saved successfully";
             })
             .error(function (data, status, headers, config) {
-                vm.errorMessage = "Error in subject creation";
-               // alert('Error in subject creation');
-
+                vm.errorMessage = "Error while saving detail";
             });
 		}
 		

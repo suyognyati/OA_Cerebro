@@ -1,13 +1,18 @@
 package com.web.services;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.data.entities.Address;
+import com.data.entities.BasicDetail;
+import com.data.entities.BloodGroup;
 import com.data.entities.PersonalDetail;
+import com.data.repository.BasicDetailJpaRepository;
 import com.data.repository.BloodGroupJpaRepository;
 import com.data.repository.PersonalDetailJpaRepository;
+import com.data.repository.UserJpaRepository;
+import com.data.entities.Enums;
+import com.web.common.UserSession;
 import com.web.model.PersonalDetailModel;
 
 @Service("personalDetailService")
@@ -17,38 +22,74 @@ public class PersonalDetailServiceImpl implements PersonalDetailService {
 	PersonalDetailJpaRepository personalDetailJpaRepository;
 	
 	@Autowired
+	BasicDetailJpaRepository basicDetailJpaRepository; 
+	
+	@Autowired
+	UserJpaRepository userJpaRepository;
+	
+	@Autowired
 	BloodGroupJpaRepository bloodGroupJpaRepository;
 	
+	@Autowired
+	UserSession userSession;
+	
 	public PersonalDetailModel getPersonalDetail(){
-		List<PersonalDetail> personalDetails = personalDetailJpaRepository.findAll();
-		
+		BasicDetail basicDetail = basicDetailJpaRepository.findByUser(userSession.getCurrentUser());
+		PersonalDetail personalDetail = personalDetailJpaRepository.findByUser(userSession.getCurrentUser());
 		PersonalDetailModel personalDetailModel = new PersonalDetailModel();
 		
-		for (PersonalDetail personalDetail : personalDetails) {
-			personalDetailModel.setGender(personalDetail.getGender());
-			personalDetailModel.setBloodGroup(personalDetail.getBloodGroup().getBloodGroupId());
-			personalDetailModel.setPlaceOfBirth(personalDetail.getPlaceOfBirth());
-			personalDetailModel.setDomiciledIn(personalDetail.getDomicil());
-			personalDetailModel.setMaritalStatus(personalDetail.getMaritalStatus());
-			personalDetailModel.setFlatNo(personalDetail.getAddress().getFlatNo());
-			personalDetailModel.setStreet(personalDetail.getAddress().getStreet());
-			personalDetailModel.setArea(personalDetail.getAddress().getArea());
-			personalDetailModel.setCity(personalDetail.getAddress().getCity());
-			personalDetailModel.setState(personalDetail.getAddress().getState());
-			personalDetailModel.setPinCode(personalDetail.getAddress().getPinCode());
-			personalDetailModel.setBloodGroups(bloodGroupJpaRepository.findAll());
-		}
+		personalDetailModel.setLastName(basicDetail.getLastName());
+		personalDetailModel.setFirstName(basicDetail.getFirstName());
+		personalDetailModel.setMiddleName(basicDetail.getMidleName());
+		personalDetailModel.setMothersName(basicDetail.getMotherName());
+		personalDetailModel.setBirthDate(basicDetail.getDateOfBirth());
+		personalDetailModel.setEmail(basicDetail.getEmail());
+		personalDetailModel.setMobileNo(basicDetail.getMobileNo());
+		personalDetailModel.setOtherContactNo(basicDetail.getOtherContact());		
+		personalDetailModel.setGender(personalDetail.getGender().getValue());
+		personalDetailModel.setBloodGroup(personalDetail.getBloodGroup().getBloodGroupId());
+		personalDetailModel.setPlaceOfBirth(personalDetail.getPlaceOfBirth());
+		personalDetailModel.setDomiciledIn(personalDetail.getDomicil());
+		personalDetailModel.setMaritalStatus(personalDetail.getMaritalStatus());
+		personalDetailModel.setFlatNo(personalDetail.getAddress().getFlatNo());
+		personalDetailModel.setStreet(personalDetail.getAddress().getStreet());
+		personalDetailModel.setArea(personalDetail.getAddress().getArea());
+		personalDetailModel.setCity(personalDetail.getAddress().getCity());
+		personalDetailModel.setState(personalDetail.getAddress().getState());
+		personalDetailModel.setPinCode(personalDetail.getAddress().getPinCode());
+		personalDetailModel.setBloodGroups(bloodGroupJpaRepository.findAll());
 		
-		
-				
-		/*personalDetailModel.setGender("Female");
-		personalDetailModel.setBloodGroup("O+ve");
-		personalDetailModel.setPlaceOfBirth("Jalgaon");
-		personalDetailModel.setDomiciledIn("Maharashtrs");
-		personalDetailModel.setMaritalStatus("Married");
-		personalDetailModel.setAddress("Runwal Swaranjali, Prathamesh Park, Baner");
-		personalDetailModel.setCity("Pune");
-		personalDetailModel.setState("Maharashtra");*/
 		return personalDetailModel;
+	}
+	
+	public void savePersonalDetail(PersonalDetailModel personalDetailModel){
+		BasicDetail basicDetail = basicDetailJpaRepository.findByUser(userSession.getCurrentUser());
+		PersonalDetail personalDetail = personalDetailJpaRepository.findByUser(userSession.getCurrentUser());
+
+		basicDetail.setLastName(personalDetailModel.getLastName());
+		basicDetail.setFirstName(personalDetailModel.getFirstName());
+		basicDetail.setMidleName(personalDetailModel.getMiddleName());
+		basicDetail.setMotherName(personalDetailModel.getMothersName());
+		basicDetail.setDateOfBirth(personalDetailModel.getBirthDate());
+		basicDetail.setOtherContact(personalDetailModel.getOtherContactNo());		
+		basicDetailJpaRepository.save(basicDetail);
+		
+		BloodGroup bloodGroup = bloodGroupJpaRepository.findByBloodGroupId(personalDetailModel.getBloodGroup());
+		personalDetail.setBloodGroup(bloodGroup);
+		personalDetail.setDomicil(personalDetailModel.getDomiciledIn());
+		personalDetail.setGender(Enums.GenderTypes[personalDetailModel.getGender() - 1]);
+		personalDetail.setMaritalStatus(personalDetailModel.getMaritalStatus());
+		personalDetail.setPlaceOfBirth(personalDetailModel.getPlaceOfBirth());
+		
+		Address address = personalDetail.getAddress();
+		address.setFlatNo(personalDetailModel.getFlatNo());
+		address.setStreet(personalDetailModel.getStreet());
+		address.setArea(personalDetailModel.getArea());
+		address.setCity(personalDetailModel.getCity());
+		address.setState(personalDetailModel.getState());
+		address.setPinCode(personalDetailModel.getPinCode());
+		
+		personalDetailJpaRepository.save(personalDetail);
+		
 	}
 }

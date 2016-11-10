@@ -28,10 +28,6 @@ public class PersonalDetail {
 	@Column(name="PersonalDetailId")
 	private int personalDetailId;
 	
-	@JoinColumn(name="FK_BasicDetailId")
-	@OneToOne(cascade=CascadeType.ALL)
-	private BasicDetail basicDetail;
-	
 	@Column(name="Gender")
 	private int gender;
 
@@ -44,11 +40,15 @@ public class PersonalDetail {
 	@Column(name="MaritalStatus")
 	private int maritalStatus;
 
-	@JoinColumn(name="FK_AddressId")
+	@JoinColumn(name="FK_User")
+	@OneToOne(cascade=CascadeType.ALL)
+	private User user;
+	
+	@JoinColumn(name="FK_Address")
 	@OneToOne(cascade=CascadeType.ALL)
 	private Address address;
 
-	@JoinColumn(name="FK_BloodGroupId")
+	@JoinColumn(name="FK_BloodGroup")
 	@ManyToOne(cascade=CascadeType.ALL)
 	private BloodGroup bloodGroup;
 
@@ -60,12 +60,12 @@ public class PersonalDetail {
 		this.personalDetailId = personalDetailId;
 	}
 
-	//UserId
-	public BasicDetail getUserId() {
-		return basicDetail;
+	//User
+	public User getUser() {
+		return user;
 	}
-	public void setUserId(final BasicDetail userId) {
-		this.basicDetail = userId;
+	public void setUser(final User user) {
+		this.user = user;
 	}
 
 	//Gender

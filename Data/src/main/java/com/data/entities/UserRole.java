@@ -18,7 +18,7 @@ public class UserRole {
 	@Column(name="UserRoleId")
 	private Integer userRoleId;
 
-	@JoinColumn(name="FK_UserName")
+	@JoinColumn(name="FK_UserId")
 	@ManyToOne(cascade=CascadeType.ALL)
 	private User user;
 

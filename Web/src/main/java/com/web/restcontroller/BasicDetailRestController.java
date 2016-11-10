@@ -17,14 +17,14 @@ public class BasicDetailRestController {
 	@Autowired
 	BasicDetailService basicDetailService;
 	
-	@RequestMapping(value="/getBasicDetail/")
-	public BasicDetailModel getBasicDetail(Model model){
+	@RequestMapping(value="/get/")
+	public BasicDetailModel get(Model model){
 		System.out.println("BasicDetailRestController - getBasicDetail");
 		return basicDetailService.getBasicDetail();
 	}
 	
 	@RequestMapping(value="/save/", method=RequestMethod.POST)
 	public void save(@RequestBody BasicDetailModel basicDetailModel) {
-		System.out.println("BasicDetailRestController - save" + basicDetailModel);
+		basicDetailService.saveBasicDetail(basicDetailModel);
 	}
 }

@@ -8,12 +8,19 @@
 	
 	function PersonalDetailService($http) {
 		return {
-			getPersonalDetail : function() {
+			get : function() {
 				return $http({
 					method: "GET",
-					url: "/Web/personalDetail/getPersonalDetail/"
+					url: "/Web/personalDetail/get/"
 				})
-			}
+			},
+			save: function (personalDetail) {
+				return $http({
+                    method: 'POST',
+                    url: '/Web/personalDetail/save/',
+                    data: personalDetail
+                });
+            }
 		}
 	}
 }());

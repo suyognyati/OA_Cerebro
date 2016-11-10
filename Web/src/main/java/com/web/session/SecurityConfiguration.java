@@ -40,7 +40,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     }
 
     private String getAuthoritiesQuery() {
-        return "select FK_UserName, Role from userroles where FK_UserName=?";
+        return "select FK_UserId, Role from userroles where FK_UserId=(select UserId from users where UserName=?)";
     	//return "select username, role from user_temp_roles where username=?";
     }
 	

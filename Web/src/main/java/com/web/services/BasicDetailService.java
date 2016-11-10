@@ -5,5 +5,5 @@ import com.web.model.BasicDetailModel;
 public interface BasicDetailService {
 
 	BasicDetailModel getBasicDetail();
-	
+	void saveBasicDetail(BasicDetailModel basicDetailModel);	
 }

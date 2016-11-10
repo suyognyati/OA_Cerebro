@@ -10,19 +10,20 @@
 	function PersonalDetailCtrl($http, personalDetailService) {
 		var vm = this;
 		
-		/*$http({
-			method: 'GET',
-			url: '/Web/personalDetail/getPersonalDetail/'
-		})*/
-		personalDetailService.getPersonalDetail()
+		personalDetailService.get()
 		.success(function(data){
 			vm.personaldetail = data;
 		});
 		
-		/*personalDetailResource.query(function(data){
-			vm.personaldetail = data;
-		});*/
-		
+		vm.submit = function() {
+			personalDetailService.save(vm.personaldetail)
+			.success(function (data, status, headers, config) {
+                vm.successMessage = "Detail saved successfully";
+            })
+            .error(function (data, status, headers, config) {
+                vm.errorMessage = "Error while saving detail";
+            });
+		}		
 	};
 	
 }());

@@ -7,5 +7,5 @@ import com.data.entities.BloodGroup;
 
 @Repository("bloodGroupJpaRepository")
 public interface BloodGroupJpaRepository extends JpaRepository<BloodGroup, Integer> {
-
+	BloodGroup findByBloodGroupId(int bloodGroupId);
 }

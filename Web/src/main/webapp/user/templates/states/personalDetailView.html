@@ -13,6 +13,118 @@
 		</div>
 			
 		<div class="row">
+			<div class="col-lg-6">
+				<div class="form-group">
+					<label for="lastname">Last Name</label>
+					<br>
+					<input type="text" 
+							class="uppercase form-control" 
+							id="lastname" 
+							tabindex="1"
+							ng-model="vm.personaldetail.lastName">
+				</div>
+			</div>
+			<div class="col-lg-6">
+				<div class="form-group">
+					<label for="firstname">First Name</label>
+					<br>
+					<input type="text" 
+							class="form-control" 
+							id="firstname" 
+							tabindex="2"
+							ng-model="vm.personaldetail.firstName">
+				</div>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="col-lg-6">
+				<div class="form-group">
+					<label for="middlename">Middle Name</label>
+					<br>
+					<input type="text" 
+							class="form-control" 
+							id="middlename" 
+							tabindex="3"
+							ng-model="vm.personaldetail.middleName">
+				</div>
+			</div>
+			<div class="col-lg-6">
+				<div class="form-group">
+					<label for="mothersname">Mother's Name</label>
+					<br>
+					<input type="text" 
+							class="form-control" 
+							id="mothersname" 
+							tabindex="4"
+							ng-model="vm.personaldetail.mothersName">
+				</div>
+			</div>
+		</div>
+	
+		<div class="row">
+			<div class="col-lg-6">
+				<div class="form-group">
+					<label for="dateofbirth">D.O.B.</label>
+					<br>
+					<div class="input-group">
+						<input type="text" 
+								class="form-control" 
+								id="dateofbirth"  
+								tabindex="5"
+								datepicker-popup="dd MMM yyyy"
+								is-open="vm.opened"
+								ng-model="vm.personaldetail.birthDate">
+						<span class="input-group-btn">
+							<button class="btn btn-default"
+									ng-click="vm.open($event)">
+								<i class="glyphicon glyphicon-calendar"></i>
+							</button>
+						</span>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-6">
+				<div class="form-group">
+					<label for="email">Email Address</label>
+					<br>
+					<input type="email" 
+							class="form-control" 
+							id="email" 
+							tabindex="6"
+							ng-model="vm.personaldetail.email"
+							disabled="disabled">
+				</div>
+			</div>
+		</div>
+	
+		<div class="row">
+			<div class="col-lg-6">
+				<div class="form-group">
+					<label for="mobileno">Mobile No.</label>
+					<br>
+					<input type="text" 
+							class="form-control" 
+							id="mobileno"
+							tabindex="7" 
+							ng-model="vm.personaldetail.mobileNo"
+							disabled="disabled">
+				</div>
+			</div>
+			<div class="col-lg-6">
+				<div class="form-group">
+					<label for="othercontactno">Other Contact No.</label>
+					<br>
+					<input type="text" 
+							class="form-control" 
+							id="othercontactno"
+							tabindex="8" 
+							ng-model="vm.personaldetail.otherContactNo">
+				</div>
+			</div>
+		</div>
+		
+		<div class="row">
 			<div class="col-lg-6 form-inline">
 				<label>Gender</label>	
 				<br>	
@@ -21,7 +133,7 @@
 							name="gender" 
 							id="genderMale"
 							value="1"
-							tabindex="1"
+							tabindex="8"
 							ng-model="vm.personaldetail.gender">
 					<label for="gender1">Male</label>
 				</span>
@@ -30,7 +142,7 @@
 							name="gender" 
 							id="genderFemale"
 							value="2"
-							tabindex="2"
+							tabindex="9"
 							ng-model="vm.personaldetail.gender">
 					<label for="gender2">Female</label>
 				</span>
@@ -40,24 +152,10 @@
 					<label for="bloodgroup">Blood Group</label>
 					<select class="form-control" 
 							id="bloodgroup" 
-							tabindex="3"
+							tabindex="10"
 							ng-model="vm.personaldetail.bloodGroup"
 							ng-options="bloodgroup.bloodGroupId as bloodgroup.bloodGroupName for bloodgroup in vm.personaldetail.bloodGroups">
 					</select>
-					<!-- <select class="form-control" 
-							id="bloodgroup" 
-							tabindex="3"
-							ng-model="vm.personaldetail.bloodGroup">
-						<option>--Select--</option>					
-						<option>O +ve</option>
-						<option>O -ve</option>
-						<option>A +ve</option>
-						<option>A -ve</option>
-						<option>B +ve</option>
-						<option>B -ve</option>
-						<option>AB +ve</option>
-						<option>AB -ve</option>
-					</select> -->
 			</div>
 			</div>
 		</div>
@@ -70,7 +168,7 @@
 					<input type="text" 
 							class="form-control" 
 							id="placeofbirth"
-							tabindex="4"
+							tabindex="11"
 							ng-model="vm.personaldetail.placeOfBirth">
 				</div>
 			</div>
@@ -81,7 +179,7 @@
 					<input type="text" 
 							class="form-control" 
 							id="domiciled"
-							tabindex="5"
+							tabindex="12"
 							ng-model="vm.personaldetail.domiciledIn">
 				</div>
 			</div>
@@ -94,7 +192,7 @@
 					<br>
 					<select class="form-control" 
 							id="maritalstatus"
-							tabindex="6"
+							tabindex="13"
 							ng-model="vm.personaldetail.maritalStatus">
 						<option>--Select--</option>
 						<option>Married</option>
@@ -114,28 +212,28 @@
 						id="address_flatNo"
 						placeholder="Flat No./Building"
 						ng-model="vm.personaldetail.flatNo"
-						tabindex="7">
+						tabindex="14">
 					<br>
 					<input type="text" 
 						class="form-control" 
 						id="address_area"
 						placeholder="Area"
 						ng-model="vm.personaldetail.area"
-						tabindex="8">
+						tabindex="15">
 					<br>
 					<input type="text" 
 						class="form-control" 
 						id="address_street"
 						placeholder="Street"
 						ng-model="vm.personaldetail.street"
-						tabindex="9">
+						tabindex="16">
 					<br>
 					<input type="text" 
 						class="form-control" 
 						id="address_pinCode"
 						placeholder="Pin Code"
 						ng-model="vm.personaldetail.pinCode"
-						tabindex="10">
+						tabindex="17">
 				</div>
 			</div>
 			<div class="col-lg-6">
@@ -146,7 +244,7 @@
 							class="form-control" 
 							id="city" 
 							placeholder="City"
-							tabindex="11"
+							tabindex="18"
 							ng-model="vm.personaldetail.city">
 					<br>
 					<label for="state">State</label>
@@ -155,7 +253,7 @@
 							class="form-control" 
 							id="state" 
 							placeholder="State"
-							tabindex="12"
+							tabindex="19"
 							ng-model="vm.personaldetail.state">
 				</div>
 			</div>
@@ -164,7 +262,7 @@
 		<div class="row">
 			<div class="col-xs-12 col-md-12">
 	        	<input type="submit" 
-	        		tabindex="13"
+	        		tabindex="20"
 	        		value="SAVE &amp; CONTINUE" 
 	        		class="btn btn-success btn-block btn-lg topMargin" 
 	        		style="margin-bottom: 10px"

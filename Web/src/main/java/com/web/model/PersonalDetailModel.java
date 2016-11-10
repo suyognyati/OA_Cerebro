@@ -4,10 +4,17 @@ import java.util.List;
 
 import com.data.entities.BloodGroup;
 import com.data.entities.Enums;
-import com.data.entities.Enums.GenderType;
 import com.data.entities.Enums.MaritalStatusType;
 
 public class PersonalDetailModel {
+	private String lastName;
+	private String firstName;
+	private String middleName;
+	private String mothersName;
+	private String birthDate;
+	private String email;
+	private String mobileNo;
+	private String otherContactNo;
 	private int gender;
 	private int bloodGroup;
 	private String placeOfBirth;
@@ -21,12 +28,76 @@ public class PersonalDetailModel {
 	private String state;
 	private List<BloodGroup> bloodGroups;
 	
+	// LastName getter setter
+	public String getLastName() {
+		return lastName;
+	}
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+	
+	// FirstName getter setter
+	public String getFirstName() {
+		return firstName;
+	}
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+	
+	// MiddleName getter setter
+	public String getMiddleName() {
+		return middleName;
+	}
+	public void setMiddleName(String middleName) {
+		this.middleName = middleName;
+	}
+	
+	// MotherName getter setter
+	public String getMothersName() {
+		return mothersName;
+	}
+	public void setMothersName(String mothersName) {
+		this.mothersName = mothersName;
+	}
+	
+	// BirthDate getter setter
+	public String getBirthDate() {
+		return birthDate;
+	}
+	public void setBirthDate(String birthDate) {
+		this.birthDate = birthDate;
+	}
+	
+	// Email getter setter
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	
+	// MobileNo getter setter
+	public String getMobileNo() {
+		return mobileNo;
+	}
+	public void setMobileNo(String mobileNo) {
+		this.mobileNo = mobileNo;
+	}
+	
+	// OtherContactNo getter setter
+	public String getOtherContactNo() {
+		return otherContactNo;
+	}
+	public void setOtherContactNo(String otherContactNo) {
+		this.otherContactNo = otherContactNo;
+	}
+	
 	//Gender getter setter
 	public int getGender() {
 		return this.gender;
 	}
-	public void setGender(GenderType genderType) {
-		this.gender = genderType.getValue();
+	public void setGender(int genderval) {
+		this.gender = genderval;
 	}
 	
 	//Blood Group getter setter

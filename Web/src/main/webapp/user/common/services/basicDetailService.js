@@ -8,17 +8,18 @@
 	
 	function basicDetailService($http){
 		return {
-			getBasicDetail : function() {
+			get : function() {
 				return $http({
 					method: 'GET',
-					url: '/Web/basicDetail/getBasicDetail/'
+					url: '/Web/basicDetail/get/'
 				})
 			},
 			save: function (basicDetail) {
-                return $http({
+				return $http({
                     method: 'POST',
                     url: '/Web/basicDetail/save/',
-                    data: {'name':"Suyog"} 
+                    data: basicDetail/*,
+                    headers : { 'Content-Type': 'application/x-www-form-urlencoded' }*/
                 });
             },
 		}
