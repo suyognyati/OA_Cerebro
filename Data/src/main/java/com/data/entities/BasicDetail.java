@@ -1,6 +1,5 @@
 package com.data.entities;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -48,16 +47,16 @@ public class BasicDetail {
 	@Column(name="OtherContact")
 	private String otherContact;
 	
-	@OneToOne(cascade=CascadeType.ALL)
+	@OneToOne
 	@JoinColumn(name="FK_User")
 	private User user;
 	
 		
-	//UserId
-	public int getUserId() {
+	//BasicDetailId
+	public int getBasicDetailId() {
 		return basicDetailId;
 	}
-	public void setUserId(int userId) {
+	public void setBasicDetailId(int userId) {
 		this.basicDetailId = userId;
 	}
 	
@@ -123,6 +122,14 @@ public class BasicDetail {
 	}
 	public void setOtherContact(String otherContact) {
 		this.otherContact = otherContact;
+	}
+	
+	//User
+	public User getUser() {
+		return user;
+	}
+	public void setUser(final User user) {
+		this.user = user;
 	}
 	
 }

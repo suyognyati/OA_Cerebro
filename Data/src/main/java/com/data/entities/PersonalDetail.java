@@ -41,7 +41,7 @@ public class PersonalDetail {
 	private int maritalStatus;
 
 	@JoinColumn(name="FK_User")
-	@OneToOne(cascade=CascadeType.ALL)
+	@OneToOne
 	private User user;
 	
 	@JoinColumn(name="FK_Address")
@@ -49,7 +49,7 @@ public class PersonalDetail {
 	private Address address;
 
 	@JoinColumn(name="FK_BloodGroup")
-	@ManyToOne(cascade=CascadeType.ALL)
+	@ManyToOne
 	private BloodGroup bloodGroup;
 
 	//PersonalDetailId

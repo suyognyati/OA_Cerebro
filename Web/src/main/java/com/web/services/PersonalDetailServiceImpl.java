@@ -6,12 +6,12 @@ import org.springframework.stereotype.Service;
 import com.data.entities.Address;
 import com.data.entities.BasicDetail;
 import com.data.entities.BloodGroup;
+import com.data.entities.Enums;
 import com.data.entities.PersonalDetail;
 import com.data.repository.BasicDetailJpaRepository;
 import com.data.repository.BloodGroupJpaRepository;
 import com.data.repository.PersonalDetailJpaRepository;
 import com.data.repository.UserJpaRepository;
-import com.data.entities.Enums;
 import com.web.common.UserSession;
 import com.web.model.PersonalDetailModel;
 
@@ -38,27 +38,30 @@ public class PersonalDetailServiceImpl implements PersonalDetailService {
 		PersonalDetail personalDetail = personalDetailJpaRepository.findByUser(userSession.getCurrentUser());
 		PersonalDetailModel personalDetailModel = new PersonalDetailModel();
 		
-		personalDetailModel.setLastName(basicDetail.getLastName());
-		personalDetailModel.setFirstName(basicDetail.getFirstName());
-		personalDetailModel.setMiddleName(basicDetail.getMidleName());
-		personalDetailModel.setMothersName(basicDetail.getMotherName());
-		personalDetailModel.setBirthDate(basicDetail.getDateOfBirth());
-		personalDetailModel.setEmail(basicDetail.getEmail());
-		personalDetailModel.setMobileNo(basicDetail.getMobileNo());
-		personalDetailModel.setOtherContactNo(basicDetail.getOtherContact());		
-		personalDetailModel.setGender(personalDetail.getGender().getValue());
-		personalDetailModel.setBloodGroup(personalDetail.getBloodGroup().getBloodGroupId());
-		personalDetailModel.setPlaceOfBirth(personalDetail.getPlaceOfBirth());
-		personalDetailModel.setDomiciledIn(personalDetail.getDomicil());
-		personalDetailModel.setMaritalStatus(personalDetail.getMaritalStatus());
-		personalDetailModel.setFlatNo(personalDetail.getAddress().getFlatNo());
-		personalDetailModel.setStreet(personalDetail.getAddress().getStreet());
-		personalDetailModel.setArea(personalDetail.getAddress().getArea());
-		personalDetailModel.setCity(personalDetail.getAddress().getCity());
-		personalDetailModel.setState(personalDetail.getAddress().getState());
-		personalDetailModel.setPinCode(personalDetail.getAddress().getPinCode());
+		if(basicDetail != null) {
+			personalDetailModel.setLastName(basicDetail.getLastName());
+			personalDetailModel.setFirstName(basicDetail.getFirstName());
+			personalDetailModel.setMiddleName(basicDetail.getMidleName());
+			personalDetailModel.setMothersName(basicDetail.getMotherName());
+			personalDetailModel.setBirthDate(basicDetail.getDateOfBirth());
+			personalDetailModel.setEmail(basicDetail.getEmail());
+			personalDetailModel.setMobileNo(basicDetail.getMobileNo());
+			personalDetailModel.setOtherContactNo(basicDetail.getOtherContact());
+		}
+		if(personalDetail != null) {
+			personalDetailModel.setGender(personalDetail.getGender().getValue());
+			personalDetailModel.setBloodGroup(personalDetail.getBloodGroup().getBloodGroupId());
+			personalDetailModel.setPlaceOfBirth(personalDetail.getPlaceOfBirth());
+			personalDetailModel.setDomiciledIn(personalDetail.getDomicil());
+			personalDetailModel.setMaritalStatus(personalDetail.getMaritalStatus());
+			personalDetailModel.setFlatNo(personalDetail.getAddress().getFlatNo());
+			personalDetailModel.setStreet(personalDetail.getAddress().getStreet());
+			personalDetailModel.setArea(personalDetail.getAddress().getArea());
+			personalDetailModel.setCity(personalDetail.getAddress().getCity());
+			personalDetailModel.setState(personalDetail.getAddress().getState());
+			personalDetailModel.setPinCode(personalDetail.getAddress().getPinCode());
+		}
 		personalDetailModel.setBloodGroups(bloodGroupJpaRepository.findAll());
-		
 		return personalDetailModel;
 	}
 	
@@ -66,6 +69,16 @@ public class PersonalDetailServiceImpl implements PersonalDetailService {
 		BasicDetail basicDetail = basicDetailJpaRepository.findByUser(userSession.getCurrentUser());
 		PersonalDetail personalDetail = personalDetailJpaRepository.findByUser(userSession.getCurrentUser());
 
+		if(basicDetail == null) {
+			basicDetail = new BasicDetail();
+			basicDetail.setUser(userSession.getCurrentUser());
+		}
+		
+		if(personalDetail == null) {
+			personalDetail = new PersonalDetail();
+			personalDetail.setUser(userSession.getCurrentUser());
+		}
+		
 		basicDetail.setLastName(personalDetailModel.getLastName());
 		basicDetail.setFirstName(personalDetailModel.getFirstName());
 		basicDetail.setMidleName(personalDetailModel.getMiddleName());
@@ -82,6 +95,12 @@ public class PersonalDetailServiceImpl implements PersonalDetailService {
 		personalDetail.setPlaceOfBirth(personalDetailModel.getPlaceOfBirth());
 		
 		Address address = personalDetail.getAddress();
+		
+		if(address == null) {
+			address = new Address();
+			personalDetail.setAddress(address);
+		}
+		
 		address.setFlatNo(personalDetailModel.getFlatNo());
 		address.setStreet(personalDetailModel.getStreet());
 		address.setArea(personalDetailModel.getArea());

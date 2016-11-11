@@ -22,20 +22,27 @@ public class BasicDetailServiceImpl implements BasicDetailService{
 		BasicDetail basicDetail = basicDetailJpaRepository.findByUser(userSession.getCurrentUser());
 		BasicDetailModel basicDetailModel = new BasicDetailModel();
 		
-		basicDetailModel.setLastName(basicDetail.getLastName());
-		basicDetailModel.setFirstName(basicDetail.getFirstName());
-		basicDetailModel.setMiddleName(basicDetail.getMidleName());
-		basicDetailModel.setMothersName(basicDetail.getMotherName());
-		basicDetailModel.setBirthDate(basicDetail.getDateOfBirth());
-		basicDetailModel.setEmail(basicDetail.getEmail());
-		basicDetailModel.setMobileNo(basicDetail.getMobileNo());
-		basicDetailModel.setOtherContactNo(basicDetail.getOtherContact());
-		
+		if(basicDetail != null) {
+			basicDetailModel.setLastName(basicDetail.getLastName());
+			basicDetailModel.setFirstName(basicDetail.getFirstName());
+			basicDetailModel.setMiddleName(basicDetail.getMidleName());
+			basicDetailModel.setMothersName(basicDetail.getMotherName());
+			basicDetailModel.setBirthDate(basicDetail.getDateOfBirth());
+			basicDetailModel.setEmail(basicDetail.getEmail());
+			basicDetailModel.setMobileNo(basicDetail.getMobileNo());
+			basicDetailModel.setOtherContactNo(basicDetail.getOtherContact());
+		}
 		return basicDetailModel;
 	}
 	
 	public void saveBasicDetail(BasicDetailModel basicDetailModel) {
 		BasicDetail basicDetail = basicDetailJpaRepository.findByUser(userSession.getCurrentUser());
+		
+		if(basicDetail == null) {
+			basicDetail = new BasicDetail();
+			basicDetail.setUser(userSession.getCurrentUser());
+		}
+		
 		basicDetail.setLastName(basicDetailModel.getLastName());
 		basicDetail.setFirstName(basicDetailModel.getFirstName());
 		basicDetail.setMidleName(basicDetailModel.getMiddleName());
@@ -44,6 +51,6 @@ public class BasicDetailServiceImpl implements BasicDetailService{
 		basicDetail.setEmail(basicDetailModel.getEmail());
 		basicDetail.setMobileNo(basicDetailModel.getMobileNo());
 		basicDetail.setOtherContact(basicDetailModel.getOtherContactNo());		
-		basicDetailJpaRepository.save(basicDetail);
+		basicDetail = basicDetailJpaRepository.save(basicDetail);
 	}
 }

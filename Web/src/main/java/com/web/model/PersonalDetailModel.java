@@ -126,7 +126,8 @@ public class PersonalDetailModel {
 	
 	//Marrital Status getter setter
 	public MaritalStatusType getMaritalStatus() {
-		MaritalStatusType maritalStatus = Enums.MaritalStatusTypes[this.maritalStatus - 1];
+		int index = (this.maritalStatus > 0 && this.maritalStatus < 3) ? this.maritalStatus - 1 : 0;
+		MaritalStatusType maritalStatus = Enums.MaritalStatusTypes[index];
 		return maritalStatus;
 	}
 	public void setMaritalStatus(MaritalStatusType maritalStatus) {
