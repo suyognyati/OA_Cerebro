@@ -54,7 +54,7 @@ public class HomeController {
 
 	@RequestMapping(value = "login", method = RequestMethod.GET)
 	public String loginPage() {
-		return "login";
+		return "login-angular";
 	}
 
 	@RequestMapping(value = "logout", method = RequestMethod.GET)

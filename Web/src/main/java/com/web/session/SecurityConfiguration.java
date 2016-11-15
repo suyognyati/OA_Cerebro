@@ -54,7 +54,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	  	.antMatchers("/db/").access("hasRole('ADMIN') and hasRole('DBA')")
 	  	.antMatchers("/admin/").access("hasRole('ADMIN')").anyRequest().authenticated()
 	  	.and().formLogin().loginPage("/login").successHandler(customSuccessHandler)
-	  	.usernameParameter("ssoId").passwordParameter("password")
+	  	.usernameParameter("username").passwordParameter("password")
 	  	.and().csrf().csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
 	  	.and().exceptionHandling().accessDeniedPage("/Access_Denied/");
 		
