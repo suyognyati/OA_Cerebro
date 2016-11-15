@@ -1,7 +1,7 @@
 (function(){
 	"use strict";
 	angular
-		.module("admission")
+		.module("user")
 		.controller("mainController",
 					["$rootScope",
 					 "$scope",

@@ -1,11 +1,16 @@
 (function(){
 	"use strict";
-	var app = angular.module("hello");
+	var app = angular.module("login");
 	
 	app.config(["$stateProvider",
 	            "$urlRouterProvider",
 	            "$httpProvider",
-		         function($stateProvider, $urlRouterProvider, $httpProvider){
+	            "globalConstants",
+	            "loginConstants",
+		         function($stateProvider, $urlRouterProvider, $httpProvider, globalConstants, loginConstants){
+		
+					var basePath = "";
+					basePath = globalConstants.rootLocation + loginConstants.loginLocation;
 		
 					$urlRouterProvider.otherwise("/login");
 					
@@ -15,7 +20,7 @@
 							url: "/login",
 							views: {
 								"view":{
-				                	templateUrl:"static/templates/states/login.html",
+				                	templateUrl: basePath + "templates/states/login.html",
 				                	controller:"LoginCtrl as vm",
 								}
 							},
@@ -24,7 +29,7 @@
 									return $ocLazyLoad.load({
 										name : 'hello',
 										files : [
-										     'static/app/controllers/loginCtrl.js'
+										       basePath + 'app/controllers/loginCtrl.js'
 										]
 								
 									})
@@ -35,7 +40,7 @@
 							url: "/register",
 							views: {
 								"view":{
-				                	templateUrl:"static/templates/states/register.html",
+				                	templateUrl: basePath + "templates/states/register.html",
 				                	controller:"RegisterCtrl as vm",
 								}
 							},
@@ -44,7 +49,7 @@
 									return $ocLazyLoad.load({
 										name : 'hello',
 										files : [
-										     'static/app/controllers/registerCtrl.js'
+										       basePath + 'app/controllers/registerCtrl.js'
 										]
 								
 									})

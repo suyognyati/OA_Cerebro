@@ -19,6 +19,7 @@
 <script src="<c:url value='/static/js/angular-ui-bootstrap.min.js' />"></script>
 
 	<!-- Application Scripts -->
+<script src="<c:url value='/static/app/app.js' />"></script>
 <script src="<c:url value='/user/app/app.js' />"></script>
 <script src="<c:url value='/user/app/state.js' />"></script>
 
@@ -26,7 +27,7 @@
 <script src="<c:url value='/user/common/common.services.js' />"></script>
 
 </head>
-<body ng-app="admission">
+<body ng-app="user">
 	<div class="container-fluid">
 		<nav class="navbar navbar-inverse navbar-fixed-top">
 			<div class="container-fluid">

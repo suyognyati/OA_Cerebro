@@ -1,25 +1,17 @@
 (function(){
 	"use strict";
-	var app = angular.module("admission");
+	var app = angular.module("user");
 	
 	app.config(["$stateProvider",
 	            "$urlRouterProvider",
 	            "$httpProvider",
-		         function($stateProvider, $urlRouterProvider, $httpProvider){
+	            "globalConstants",
+	            "userConstants",
+		         function($stateProvider, $urlRouterProvider, $httpProvider, globalConstants, userConstants){
 		
-					//$httpProvider.defaults.xsrfHeaderName = 'X-CSRF-TOKEN';
-				    /*$httpProvider.interceptors.push(function() {
-				        return {
-				            response: function(response) {
-				                $httpProvider.defaults.headers.common['X-XSRF-TOKEN'] = response.headers('XSRF-TOKEN');
-				                return response;
-				            }
-				        }    
-				    });*/
+					var basePath = "";
+					basePath = globalConstants.rootLocation + userConstants.userLocation;
 		
-					/*$httpProvider.defaults.xsrfCookieName = 'csrftoken';
-				    $httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';*/
-					
 				    $urlRouterProvider.otherwise("/basicdetails");
 					
 					$stateProvider
@@ -28,7 +20,7 @@
 							url: "/basicdetails",
 							views: {
 								"view":{
-				                	templateUrl:"/Web/user/templates/states/basicDetailView.html",
+				                	templateUrl: basePath + "templates/states/basicDetailView.html",
 				                	controller:"BasicDetailCtrl as vm",
 								}
 							},
@@ -37,8 +29,8 @@
 									return $ocLazyLoad.load({
 										name : 'admission',
 										files : [
-										     '/Web/user/app/controllers/basicDetailCtrl.js',
-										     '/Web/user/common/services/basicDetailService.js'
+										     basePath + 'app/controllers/basicDetailCtrl.js',
+										     basePath + 'common/services/basicDetailService.js'
 										]
 								
 									})
@@ -67,7 +59,7 @@
 							url: "/personaldetails",
 							views: {
 								"view":{
-									templateUrl:"/Web/user/templates/states/personalDetailView.html",
+									templateUrl: basePath + "templates/states/personalDetailView.html",
 									controller:"PersonalDetailCtrl as vm",
 								}
 							},
@@ -76,8 +68,8 @@
 									return $ocLazyLoad.load({
 										name : 'admission',
 										files : [
-										     '/Web/user/app/controllers/personalDetailCtrl.js',
-										     '/Web/user/common/services/personalDetailService.js'
+										     basePath + 'app/controllers/personalDetailCtrl.js',
+										     basePath + 'common/services/personalDetailService.js'
 										]
 								
 									})
@@ -89,7 +81,7 @@
 							url: "/educationinformation",
 							views: {
 								"view":{
-									templateUrl:"/Web/user/templates/states/educationInformationView.html",
+									templateUrl: basePath + "templates/states/educationInformationView.html",
 									controller:"EducationInformationCtrl as vm",
 								}
 							},
@@ -98,7 +90,7 @@
 									return $ocLazyLoad.load({
 										name : 'admission',
 										files : [
-										     '/Web/user/app/controllers/educationInformationCtrl.js'
+										     basePath + 'app/controllers/educationInformationCtrl.js'
 										]
 								
 									})
@@ -110,7 +102,7 @@
 							url: "/familyinformation",
 							views: {
 								"view":{
-									templateUrl:"/Web/user/templates/states/familyInformationView.html",
+									templateUrl: basePath + "templates/states/familyInformationView.html",
 									controller:"FamilyInformationCtrl as vm",
 								}
 							},
@@ -119,7 +111,7 @@
 									return $ocLazyLoad.load({
 										name : 'admission',
 										files : [
-										     '/Web/user/app/controllers/familyInformationCtrl.js'
+										       basePath + 'app/controllers/familyInformationCtrl.js'
 										]
 								
 									})
@@ -131,7 +123,7 @@
 							url: "/otherinformation",
 							views: {
 								"view":{
-									templateUrl:"/Web/user/templates/states/otherInformationView.html",
+									templateUrl: basePath + "templates/states/otherInformationView.html",
 									controller:"OtherInformationCtrl as vm",
 								}
 							},
@@ -140,7 +132,7 @@
 									return $ocLazyLoad.load({
 										name : 'admission',
 										files : [
-										     '/Web/user/app/controllers/otherInformationCtrl.js'
+										       basePath + 'app/controllers/otherInformationCtrl.js'
 										]
 								
 									})

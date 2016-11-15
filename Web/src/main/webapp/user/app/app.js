@@ -1,8 +1,14 @@
 (function(){
 	"use strict";
 	var app = angular
-		.module("admission", ["common.services",
-		                      "ui.router",
-		                      "oc.lazyLoad",
-		                      "ui.bootstrap"]);	
+		.module("user", ["globalapp",
+		                 "common.services",
+		                 "ui.router",
+		                 "oc.lazyLoad",
+		                 "ui.bootstrap"]);	
+	
+	app.constant('userConstants', {
+	    userLocation : 'user/'
+	});
+		
 }());

@@ -15,11 +15,12 @@
     <script src="<c:url value='/static/js/bootstrap.js' />"></script>
 	<script src="<c:url value='/static/js/angular-ui-bootstrap.min.js' />"></script>
    	<!-- Application Scripts -->
-	<script src="<c:url value='/static/app/app.js' />"></script>
-	<script src="<c:url value='/static/app/state.js' />"></script>
-	<script src="<c:url value='/static/app/controllers/loginCtrl.js' />"></script>
+   	<script src="<c:url value='/static/app/app.js' />"></script>
+	<script src="<c:url value='/login/app/app.js' />"></script>
+	<script src="<c:url value='/login/app/state.js' />"></script>
+	<script src="<c:url value='/login/app/controllers/loginCtrl.js' />"></script>
 </head>                       
-<body ng-app="hello">
+<body ng-app="login">
 	<%! int data=50; %>  
     <div class="jumbotron">
         <div class="container">

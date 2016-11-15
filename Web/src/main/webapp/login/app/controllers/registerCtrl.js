@@ -1,7 +1,7 @@
 (function(){
 	"use strict";
 	angular
-		.module("hello")
+		.module("login")
 		.controller("RegisterCtrl",
 					["$http",
 					 "$state",

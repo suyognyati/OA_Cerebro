@@ -25,7 +25,7 @@
 <script src="<c:url value='/user/common/common.services.js' />"></script>
 
 </head>
-<body ng-app="admission">
+<body ng-app="user">
 <div class="container-fluid">
 	<ul class="nav nav-pills" role="tablist">
 		<a href="<c:url value="/logout" />">Logout</a>
