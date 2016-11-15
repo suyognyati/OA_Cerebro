@@ -1,7 +1,7 @@
 <div class="panel panel-primary">
 	<div class="panel-heading">
 		<span style="font-family: Verdana; font-size: 15pt">
-        	<strong>Basic Details</strong>
+        	<strong>User Details</strong>
         </span>
 	</div>
 	<div class="panel panel-body">	
@@ -40,38 +40,13 @@
 		<div class="row">
 			<div class="col-lg-6">
 				<div class="form-group">
-					<label for="middlename">Middle Name</label>
-					<br>
-					<input type="text" 
-							class="form-control" 
-							id="middlename" 
-							tabindex="3"
-							ng-model="vm.basicdetail.middleName">
-				</div>
-			</div>
-			<div class="col-lg-6">
-				<div class="form-group">
-					<label for="mothersname">Mother's Name</label>
-					<br>
-					<input type="text" 
-							class="form-control" 
-							id="mothersname" 
-							tabindex="4"
-							ng-model="vm.basicdetail.mothersName">
-				</div>
-			</div>
-		</div>
-	
-		<div class="row">
-			<div class="col-lg-6">
-				<div class="form-group">
 					<label for="dateofbirth">D.O.B.</label>
 					<br>
 					<div class="input-group">
 						<input type="text" 
 								class="form-control" 
 								id="dateofbirth"  
-								tabindex="5"
+								tabindex="3"
 								datepicker-popup="dd MMM yyyy"
 								is-open="vm.opened"
 								ng-model="vm.basicdetail.birthDate">
@@ -91,7 +66,7 @@
 					<input type="email" 
 							class="form-control" 
 							id="email" 
-							tabindex="6"
+							tabindex="4"
 							ng-model="vm.basicdetail.email">
 				</div>
 			</div>
@@ -105,19 +80,8 @@
 					<input type="text" 
 							class="form-control" 
 							id="mobileno"
-							tabindex="7" 
+							tabindex="5" 
 							ng-model="vm.basicdetail.mobileNo">
-				</div>
-			</div>
-			<div class="col-lg-6">
-				<div class="form-group">
-					<label for="othercontactno">Other Contact No.</label>
-					<br>
-					<input type="text" 
-							class="form-control" 
-							id="othercontactno"
-							tabindex="8" 
-							ng-model="vm.basicdetail.otherContactNo">
 				</div>
 			</div>
 		</div>
@@ -125,7 +89,7 @@
 		<div class="row">
 			<div class="col-xs-12 col-md-12">
 	        	<input type="submit" 
-	        		tabindex="9"
+	        		tabindex="6"
 	        		value="SAVE &amp; CONTINUE" 
 	        		class="btn btn-success btn-block btn-lg topMargin" 
 	        		style="margin-bottom: 10px"

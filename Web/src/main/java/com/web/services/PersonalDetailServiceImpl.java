@@ -4,11 +4,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.data.entities.Address;
-import com.data.entities.BasicDetail;
+import com.data.entities.UserDetail;
 import com.data.entities.BloodGroup;
 import com.data.entities.Enums;
 import com.data.entities.PersonalDetail;
-import com.data.repository.BasicDetailJpaRepository;
+import com.data.repository.UserDetailJpaRepository;
 import com.data.repository.BloodGroupJpaRepository;
 import com.data.repository.PersonalDetailJpaRepository;
 import com.data.repository.UserJpaRepository;
@@ -22,7 +22,7 @@ public class PersonalDetailServiceImpl implements PersonalDetailService {
 	PersonalDetailJpaRepository personalDetailJpaRepository;
 	
 	@Autowired
-	BasicDetailJpaRepository basicDetailJpaRepository; 
+	UserDetailJpaRepository basicDetailJpaRepository; 
 	
 	@Autowired
 	UserJpaRepository userJpaRepository;
@@ -34,21 +34,23 @@ public class PersonalDetailServiceImpl implements PersonalDetailService {
 	UserSession userSession;
 	
 	public PersonalDetailModel getPersonalDetail(){
-		BasicDetail basicDetail = basicDetailJpaRepository.findByUser(userSession.getCurrentUser());
+		UserDetail basicDetail = basicDetailJpaRepository.findByUser(userSession.getCurrentUser());
 		PersonalDetail personalDetail = personalDetailJpaRepository.findByUser(userSession.getCurrentUser());
 		PersonalDetailModel personalDetailModel = new PersonalDetailModel();
 		
 		if(basicDetail != null) {
-			personalDetailModel.setLastName(basicDetail.getLastName());
-			personalDetailModel.setFirstName(basicDetail.getFirstName());
-			personalDetailModel.setMiddleName(basicDetail.getMidleName());
-			personalDetailModel.setMothersName(basicDetail.getMotherName());
+			personalDetailModel.setLastName(basicDetail.getLastName().toUpperCase());
+			personalDetailModel.setFirstName(basicDetail.getFirstName().toUpperCase());
 			personalDetailModel.setBirthDate(basicDetail.getDateOfBirth());
 			personalDetailModel.setEmail(basicDetail.getEmail());
 			personalDetailModel.setMobileNo(basicDetail.getMobileNo());
-			personalDetailModel.setOtherContactNo(basicDetail.getOtherContact());
 		}
 		if(personalDetail != null) {
+			personalDetailModel.setLastName(personalDetail.getLastName().toUpperCase());
+			personalDetailModel.setFirstName(personalDetail.getFirstName().toUpperCase());
+			personalDetailModel.setMiddleName(personalDetail.getMiddleName().toUpperCase());
+			personalDetailModel.setMothersName(personalDetail.getMotherName());
+			personalDetailModel.setOtherContactNo(personalDetail.getOtherContact());
 			personalDetailModel.setGender(personalDetail.getGender().getValue());
 			personalDetailModel.setBloodGroup(personalDetail.getBloodGroup().getBloodGroupId());
 			personalDetailModel.setPlaceOfBirth(personalDetail.getPlaceOfBirth());
@@ -66,26 +68,18 @@ public class PersonalDetailServiceImpl implements PersonalDetailService {
 	}
 	
 	public void savePersonalDetail(PersonalDetailModel personalDetailModel){
-		BasicDetail basicDetail = basicDetailJpaRepository.findByUser(userSession.getCurrentUser());
 		PersonalDetail personalDetail = personalDetailJpaRepository.findByUser(userSession.getCurrentUser());
 
-		if(basicDetail == null) {
-			basicDetail = new BasicDetail();
-			basicDetail.setUser(userSession.getCurrentUser());
-		}
-		
 		if(personalDetail == null) {
 			personalDetail = new PersonalDetail();
 			personalDetail.setUser(userSession.getCurrentUser());
 		}
 		
-		basicDetail.setLastName(personalDetailModel.getLastName());
-		basicDetail.setFirstName(personalDetailModel.getFirstName());
-		basicDetail.setMidleName(personalDetailModel.getMiddleName());
-		basicDetail.setMotherName(personalDetailModel.getMothersName());
-		basicDetail.setDateOfBirth(personalDetailModel.getBirthDate());
-		basicDetail.setOtherContact(personalDetailModel.getOtherContactNo());		
-		basicDetailJpaRepository.save(basicDetail);
+		personalDetail.setLastName(personalDetailModel.getLastName());
+		personalDetail.setFirstName(personalDetailModel.getFirstName());
+		personalDetail.setMiddleName(personalDetailModel.getMiddleName());
+		personalDetail.setMotherName(personalDetailModel.getMothersName());
+		personalDetail.setOtherContact(personalDetailModel.getOtherContactNo());		
 		
 		BloodGroup bloodGroup = bloodGroupJpaRepository.findByBloodGroupId(personalDetailModel.getBloodGroup());
 		personalDetail.setBloodGroup(bloodGroup);

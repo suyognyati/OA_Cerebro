@@ -52,7 +52,7 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav nav-pills">
-        <li><a ui-sref="basicDetail"><h4>Basic Details </h4></a></li>
+        <li><a ui-sref="userDetail"><h4>User Details </h4></a></li>
         <li><a ui-sref="personalDetail"><h4>Personal Details</h4></a></li>
         <li><a ui-sref="educationInformation"><h4>Education Information</h4></a></li>
         <li><a ui-sref="familyInformation"><h4>Family Information</h4></a></li>

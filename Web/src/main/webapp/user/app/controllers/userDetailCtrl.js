@@ -2,21 +2,21 @@
 	"use strict";
 	angular
 		.module("user")
-		.controller("BasicDetailCtrl",
+		.controller("UserDetailCtrl",
 					["$http",
-					 "basicDetailService",
-					 BasicDetailCtrl]);
+					 "userDetailService",
+					 UserDetailCtrl]);
 	
-	function BasicDetailCtrl($http, basicDetailService) {
+	function UserDetailCtrl($http, userDetailService) {
 		var vm = this;
 		
-		basicDetailService.get()
+		userDetailService.get()
 		.success(function(data){
 			vm.basicdetail = data;
 		});
 		
 		vm.submit = function() {
-			basicDetailService.save(vm.basicdetail)
+			userDetailService.save(vm.basicdetail)
 			.success(function (data, status, headers, config) {
                 vm.successMessage = "Detail saved successfully";
             })

@@ -12,25 +12,25 @@
 					var basePath = "";
 					basePath = globalConstants.rootLocation + userConstants.userLocation;
 		
-				    $urlRouterProvider.otherwise("/basicdetails");
+				    $urlRouterProvider.otherwise("/personaldetails");
 					
 					$stateProvider
 					
-					.state("basicDetail",{
-							url: "/basicdetails",
+					.state("userDetail",{
+							url: "/userdetails",
 							views: {
 								"view":{
-				                	templateUrl: basePath + "templates/states/basicDetailView.html",
-				                	controller:"BasicDetailCtrl as vm",
+				                	templateUrl: basePath + "templates/states/userDetailView.html",
+				                	controller:"UserDetailCtrl as vm",
 								}
 							},
 							resolve: {
-								basicDetail : ['$ocLazyLoad', function($ocLazyLoad){
+								userDetail : ['$ocLazyLoad', function($ocLazyLoad){
 									return $ocLazyLoad.load({
 										name : 'admission',
 										files : [
-										     basePath + 'app/controllers/basicDetailCtrl.js',
-										     basePath + 'common/services/basicDetailService.js'
+										     basePath + 'app/controllers/userDetailCtrl.js',
+										     basePath + 'common/services/userDetailService.js'
 										]
 								
 									})

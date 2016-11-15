@@ -5,7 +5,7 @@
 		<class>com.data.entities.PersonalDetail</class>
 		<class>com.data.entities.Address</class>
 		<class>com.data.entities.EducationalInformation</class>
-		<class>com.data.entities.BasicDetail</class>
+		<class>com.data.entities.UserDetail</class>
 		<class>com.data.entities.State</class>
 		<class>com.data.entities.User</class>
 		<class>com.data.entities.UserRole</class>

@@ -24,7 +24,7 @@ public class EducationalInformation {
 	
 	@OneToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="FK_UserId")
-	private BasicDetail basicDetail;
+	private UserDetail userDetail;
 
 	@Column(name="State")
 	private String state;
@@ -71,11 +71,11 @@ public class EducationalInformation {
 	}
 	
 	//UserId
-	public BasicDetail getUserId() {
-		return basicDetail;
+	public UserDetail getUserId() {
+		return userDetail;
 	}
-	public void setUserId(final BasicDetail userId) {
-		this.basicDetail = userId;
+	public void setUserId(final UserDetail userId) {
+		this.userDetail = userId;
 	}
 	
 	//State

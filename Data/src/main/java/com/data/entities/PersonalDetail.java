@@ -28,6 +28,21 @@ public class PersonalDetail {
 	@Column(name="PersonalDetailId")
 	private int personalDetailId;
 	
+	@Column(name="FirstName")
+	private String firstName;
+	
+	@Column(name="LastName")
+	private String lastName;
+	
+	@Column(name="MiddleName")
+	private String middleName;
+	
+	@Column(name="MotherName")
+	private String motherName;
+	
+	@Column(name="OtherContact")
+	private String otherContact;
+	
 	@Column(name="Gender")
 	private int gender;
 
@@ -40,7 +55,7 @@ public class PersonalDetail {
 	@Column(name="MaritalStatus")
 	private int maritalStatus;
 
-	@JoinColumn(name="FK_User")
+	@JoinColumn(name="FK_User", nullable = false)
 	@OneToOne
 	private User user;
 	
@@ -60,6 +75,46 @@ public class PersonalDetail {
 		this.personalDetailId = personalDetailId;
 	}
 
+	//FirstName
+	public String getFirstName() {
+		return firstName;
+	}
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+	
+	//LastName
+	public String getLastName() {
+		return lastName;
+	}
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+	
+	//MidleName
+	public String getMiddleName() {
+		return middleName;
+	}
+	public void setMiddleName(String midleName) {
+		this.middleName = midleName;
+	}
+	
+	//MotherName
+	public String getMotherName() {
+		return motherName;
+	}
+	public void setMotherName(String motherName) {
+		this.motherName = motherName;
+	}
+	
+	//OtherContact
+	public String getOtherContact() {
+		return otherContact;
+	}
+	public void setOtherContact(String otherContact) {
+		this.otherContact = otherContact;
+	}
+	
 	//User
 	public User getUser() {
 		return user;

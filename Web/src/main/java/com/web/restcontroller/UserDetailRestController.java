@@ -7,24 +7,24 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.web.model.BasicDetailModel;
-import com.web.services.BasicDetailService;
+import com.web.model.UserDetailModel;
+import com.web.services.UserDetailService;
 
 @RestController
-@RequestMapping(value="/basicDetail")
-public class BasicDetailRestController {
+@RequestMapping(value="/userDetail")
+public class UserDetailRestController {
 	
 	@Autowired
-	BasicDetailService basicDetailService;
+	UserDetailService userDetailService;
 	
 	@RequestMapping(value="/get/")
-	public BasicDetailModel get(Model model){
+	public UserDetailModel get(Model model){
 		System.out.println("BasicDetailRestController - getBasicDetail");
-		return basicDetailService.getBasicDetail();
+		return userDetailService.getUserDetail();
 	}
 	
 	@RequestMapping(value="/save/", method=RequestMethod.POST)
-	public void save(@RequestBody BasicDetailModel basicDetailModel) {
-		basicDetailService.saveBasicDetail(basicDetailModel);
+	public void save(@RequestBody UserDetailModel basicDetailModel) {
+		userDetailService.saveUserDetail(basicDetailModel);
 	}
 }

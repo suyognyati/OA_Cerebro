@@ -1,6 +1,6 @@
 package com.web.model;
 
-public class BasicDetailModel {
+public class UserDetailModel {
 	private String lastName;
 	private String firstName;
 	private String middleName;

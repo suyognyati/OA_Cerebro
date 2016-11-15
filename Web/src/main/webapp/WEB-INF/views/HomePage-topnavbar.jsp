@@ -71,7 +71,7 @@
 		        </span>
 			</div> -->
 			<ul class="nav nav-pills nav-stacked">
-				<li class="pills-content"><a ui-sref="basicDetail"><strong>Basic Details </strong></a></li>
+				<li class="pills-content"><a ui-sref="userDetail"><strong>User Details </strong></a></li>
 				<li class="pills-content"><a ui-sref="personalDetail"><strong>Personal Details</strong></a></li>
 				<li class="pills-content"><a ui-sref="educationInformation"><strong>Education Information</strong></a></li>
 				<li class="pills-content"><a ui-sref="familyInformation"><strong>Family Information</strong></a></li>

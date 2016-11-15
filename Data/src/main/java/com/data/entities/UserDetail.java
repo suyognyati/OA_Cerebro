@@ -15,25 +15,19 @@ import javax.persistence.Table;
  */
 
 @Entity
-@Table(name="BasicDetails")
-public class BasicDetail {
+@Table(name="UserDetails")
+public class UserDetail {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="BasicDetailId")
-	private int basicDetailId;
+	@Column(name="UserDetailId")
+	private int userDetailId;
 	
 	@Column(name="FirstName")
 	private String firstName;
 	
 	@Column(name="LastName")
 	private String lastName;
-	
-	@Column(name="MidleName")
-	private String midleName;
-	
-	@Column(name="MotherName")
-	private String motherName;
 	
 	@Column(name="DateOfBirth")
 	private String dateOfBirth;
@@ -44,20 +38,16 @@ public class BasicDetail {
 	@Column(name="MobileNo")
 	private String mobileNo;
 	
-	@Column(name="OtherContact")
-	private String otherContact;
-	
 	@OneToOne
-	@JoinColumn(name="FK_User")
+	@JoinColumn(name="FK_User", nullable = false)
 	private User user;
 	
-		
-	//BasicDetailId
-	public int getBasicDetailId() {
-		return basicDetailId;
+	//UserDetailId
+	public int getUserDetailId() {
+		return userDetailId;
 	}
-	public void setBasicDetailId(int userId) {
-		this.basicDetailId = userId;
+	public void setUserDetailId(int userId) {
+		this.userDetailId = userId;
 	}
 	
 	//FirstName
@@ -74,22 +64,6 @@ public class BasicDetail {
 	}
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
-	}
-	
-	//MidleName
-	public String getMidleName() {
-		return midleName;
-	}
-	public void setMidleName(String midleName) {
-		this.midleName = midleName;
-	}
-	
-	//MotherName
-	public String getMotherName() {
-		return motherName;
-	}
-	public void setMotherName(String motherName) {
-		this.motherName = motherName;
 	}
 	
 	//DateOfBirth
@@ -114,14 +88,6 @@ public class BasicDetail {
 	}
 	public void setMobileNo(String mobileNo) {
 		this.mobileNo = mobileNo;
-	}
-	
-	//OtherContact
-	public String getOtherContact() {
-		return otherContact;
-	}
-	public void setOtherContact(String otherContact) {
-		this.otherContact = otherContact;
 	}
 	
 	//User
