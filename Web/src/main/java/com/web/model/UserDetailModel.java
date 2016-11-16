@@ -3,12 +3,12 @@ package com.web.model;
 public class UserDetailModel {
 	private String lastName;
 	private String firstName;
-	private String middleName;
-	private String mothersName;
+	private String userName;
+	private String password;
 	private String birthDate;
 	private String email;
 	private String mobileNo;
-	private String otherContactNo;
+	/*private String otherContactNo;*/
 	
 	/**
 	 * @return the lastName
@@ -35,28 +35,28 @@ public class UserDetailModel {
 		this.firstName = firstName;
 	}
 	/**
-	 * @return the middleName
+	 * @return the userName
 	 */
-	public String getMiddleName() {
-		return middleName;
+	public String getUserName() {
+		return userName;
 	}
 	/**
-	 * @param middleName the middleName to set
+	 * @param userName the userName to set
 	 */
-	public void setMiddleName(String middleName) {
-		this.middleName = middleName;
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 	/**
-	 * @return the mothersName
+	 * @return the passwordName
 	 */
-	public String getMothersName() {
-		return mothersName;
+	public String getPassword() {
+		return password;
 	}
 	/**
-	 * @param mothersName the mothersName to set
+	 * @param password the passwordName to set
 	 */
-	public void setMothersName(String mothersName) {
-		this.mothersName = mothersName;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 	/**
 	 * @return the birthDate
@@ -96,16 +96,16 @@ public class UserDetailModel {
 	}
 	/**
 	 * @return the otherContactNo
-	 */
+	 *//*
 	public String getOtherContactNo() {
 		return otherContactNo;
 	}
-	/**
+	*//**
 	 * @param otherContactNo the otherContactNo to set
-	 */
+	 *//*
 	public void setOtherContactNo(String otherContactNo) {
 		this.otherContactNo = otherContactNo;
-	}
+	}*/
 	
 	
 }

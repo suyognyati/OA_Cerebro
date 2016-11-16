@@ -49,7 +49,8 @@
 									return $ocLazyLoad.load({
 										name : 'hello',
 										files : [
-										       basePath + 'app/controllers/registerCtrl.js'
+										       basePath + 'app/controllers/registerCtrl.js',
+										       basePath + 'app/services/registerService.js'
 										]
 								
 									})

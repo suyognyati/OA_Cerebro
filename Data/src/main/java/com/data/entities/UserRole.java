@@ -1,6 +1,5 @@
 package com.data.entities;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -19,7 +18,7 @@ public class UserRole {
 	private Integer userRoleId;
 
 	@JoinColumn(name="FK_UserId")
-	@ManyToOne(cascade=CascadeType.ALL)
+	@ManyToOne
 	private User user;
 
 	@Column(name="Role")
