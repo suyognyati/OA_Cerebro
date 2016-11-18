@@ -1,6 +1,7 @@
 package com.web.restcontroller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,6 +12,7 @@ import com.web.model.PersonalDetailModel;
 import com.web.services.PersonalDetailService;
 
 @RestController
+@PreAuthorize("hasRole('ROLE_USER')")
 @RequestMapping(value="/personalDetail")
 public class PersonalDetailRestController {
 	
