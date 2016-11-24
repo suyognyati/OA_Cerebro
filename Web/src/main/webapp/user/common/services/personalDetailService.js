@@ -8,16 +8,16 @@
 	
 	function PersonalDetailService($http) {
 		return {
-			get : function() {
+			get : function(accessTokenParam) {
 				return $http({
 					method: "GET",
-					url: "/Web/personalDetail/get/"
+					url: "/Web/personalDetail/get/" + accessTokenParam
 				})
 			},
-			save: function (personalDetail) {
+			save: function (personalDetail, accessTokenParam) {
 				return $http({
                     method: 'POST',
-                    url: '/Web/personalDetail/save/',
+                    url: '/Web/personalDetail/save/' + accessTokenParam,
                     data: personalDetail
                 });
             }

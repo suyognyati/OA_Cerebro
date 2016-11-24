@@ -1,4 +1,4 @@
-package com.web.session;
+package com.web.oauth2;
 
 import org.springframework.security.web.context.AbstractSecurityWebApplicationInitializer;
 

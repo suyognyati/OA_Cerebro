@@ -1,4 +1,4 @@
-package com.web.session;
+package com.web.oauth2;
 
 import java.lang.reflect.Method;
 import java.util.UUID;
