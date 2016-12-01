@@ -30,7 +30,9 @@ public class HomeController {
 	public String homePage(ModelMap model) {
 		userSession.setCurrentUserName();
 		userSession.setCurrentUser();
-		model.addAttribute("user", userSession.getCurrentUserName());
+		userSession.setCurrentUserDetail();
+		model.addAttribute("user", userSession.getCurrentUser());
+		model.addAttribute("userdetail", userSession.getCurrentUserDetail());
 		return "HomePage-topnavbar";
 	}
 

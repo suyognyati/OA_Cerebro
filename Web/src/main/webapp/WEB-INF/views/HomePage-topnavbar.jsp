@@ -28,6 +28,11 @@
 
 </head>
 <body ng-app="user">
+	<%! 
+		String imgsrc_old = "https://lh3.googleusercontent.com/-0tBZQoBE-QI/UwD16xm0m3I/AAAAAAAAAkU/mL1WSMcKfqA9il1M_4a0zt_yLP8z_YvSwCEw/w140-h140-p/f1bafc98-5fb5-4bc4-be04-f28b1c60332c";
+		String imgsrc = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3ZxBKSEMF2gsHcvLH3NlMothBXSiSanwj-pxr6IEgZZtecMtJdA";
+	%>
+
 	<div class="container-fluid">
 		<nav class="navbar navbar-inverse navbar-fixed-top">
 			<div class="container-fluid">
@@ -47,11 +52,35 @@
 			    <!-- Collect the nav links, forms, and other content for toggling -->
 			    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			    	<ul class="nav navbar-nav navbar-right">
-				    	<li>
-				        	<a href="<c:url value="/logout" />" class="theme-color">
-				        		<span class="glyphicon glyphicon-log-out"></span> Logout
-				        	</a>
-				        </li>
+				    	<li class="dropdown-open">
+				    		<a class="dropdown-toggle" href="#" data-toggle="dropdown">
+				    			<img src= <%=imgsrc %>
+				    				 class="img-circle"
+				    				 width="35px"
+				    				 height="30px"
+				    				 style="margin-right:20px">
+				    		</a>
+				    		<div class="dropdown-menu" style="width:300px; height:150px; margin:10px;">
+				    			<div class="">
+				    				<div class="col-md-4 col-sm-4" style="padding-top: 15px">
+				    					<img src=<%=imgsrc %> 
+				    						 class="img-circle"
+				    						 width="100px"
+				    						 height="100px">
+				    				</div>
+				    				<div class="col-md-8 col-sm-8" style="padding-left: 50px; padding-top: 10px">
+				    					<label><span>${userdetail.firstName}</span>&nbsp<span>${userdetail.lastName}</span></label>
+				    					<br><br>
+				    					<input type="button" class="btn btn-primary" value="View Profile">
+				    					<br><br>
+				    					<a href="<c:url value="/logout" />" class="theme-color">
+				        					<span class="glyphicon glyphicon-log-out"></span> Logout
+				        				</a>
+				    				</div>
+				    			</div>
+				    		</div>
+				    	</li>
+				    	
 				        <!-- <button type="button" class="btn btn-primary btn-warning-style navbar-btn" 
 				        	id="signUpButton" data-toggle="modal" onclick="location.href='/Web/logout'">
 				        	Log out

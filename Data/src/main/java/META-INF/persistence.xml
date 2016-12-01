@@ -9,5 +9,6 @@
 		<class>com.data.entities.State</class>
 		<class>com.data.entities.User</class>
 		<class>com.data.entities.UserRole</class>
+		<class>com.data.entities.StudentCredentials</class>
 	</persistence-unit>
 </persistence>

@@ -8,6 +8,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
 import com.data.entities.User;
+import com.data.entities.UserDetail;
+import com.data.repository.UserDetailJpaRepository;
 import com.data.repository.UserJpaRepository;
 
 @Component
@@ -16,8 +18,12 @@ public class UserSession {
 	@Autowired
 	UserJpaRepository userJpaRepository;
 	
+	@Autowired
+	UserDetailJpaRepository userDetailJpaRepository;
+	
 	private String CurrentUserName = null;
 	private User CurrentUser = null;
+	private UserDetail CurrentUserDetail = null;
 	
 	public String getCurrentUserName() {
 		return CurrentUserName;
@@ -25,6 +31,10 @@ public class UserSession {
 
 	public User getCurrentUser() {
 		return CurrentUser;
+	}
+
+	public UserDetail getCurrentUserDetail() {
+		return CurrentUserDetail;
 	}
 
 	public void setCurrentUserName()	{
@@ -38,6 +48,16 @@ public class UserSession {
 			if(CurrentUserName == null)
 				setCurrentUserName();
 			CurrentUser = userJpaRepository.findByUserName(CurrentUserName);
+		//}
+	}
+	
+	public void setCurrentUserDetail() {
+		//if(CurrentUser == null) {
+			if(CurrentUserName == null)
+				setCurrentUserName();
+			if(CurrentUser == null)
+				setCurrentUser();
+			CurrentUserDetail = userDetailJpaRepository.findByUser(CurrentUser);
 		//}
 	}
 	

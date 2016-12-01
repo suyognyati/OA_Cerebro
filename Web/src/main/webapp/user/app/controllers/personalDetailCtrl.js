@@ -6,34 +6,38 @@
 					["$http",
 					 "$httpParamSerializer",
 					 "personalDetailService",
+					 "$scope",
 					 PersonalDetailCtrl]);
 	
-	function PersonalDetailCtrl($http, $httpParamSerializer, personalDetailService) {
-		var vm = this;
+	function PersonalDetailCtrl($http, $httpParamSerializer, personalDetailService, $scope) {
+		var vm = this;		
 		
 		vm.accessToken = "";
 		vm.accessTokenParam = "";
 
-		vm.credentials = {
-	        grant_type:"password", 
-	        username: "manalinyati", 
-	        password: "manalinyati"
-	    };
-		
-		vm.basicAuth = {};
-		vm.basicAuth.username = "my-trusted-client";
-		vm.basicAuth.password = "secret";
+		vm.basicAuth = {
+			username : "manalinyati",
+			password : "manalinyati"
+		};
 
+		vm.credentials = {
+		        username: "manalinyati", 
+		        password: "manalinyati"
+		};
+			
 		var headers = vm.basicAuth ? {
 			authorization : "Basic "
 					+ btoa(vm.basicAuth.username + ":"
 							+ vm.basicAuth.password)
 		} : {};
 
-		var oauthlink = "/Web/oauth/token?grant_type=password&username=manalinyati&password=manalinyati";
-		//var oauthlink = "/Web/oauth/token";
-
-		$http.post(oauthlink, {headers : headers})
+		var oauthlink = "/Web/oauth/token?grant_type=password&username=" + vm.credentials.username + "&password=" + vm.credentials.password;
+		
+		$http({
+            method: 'POST',
+            url: oauthlink,
+            headers:headers
+        })		
 		.success(function(data, status, headers, config) {
 			vm.accessToken = data.access_token;
 			vm.accessTokenParam = "?access_token=" + vm.accessToken;

@@ -100,9 +100,9 @@ public class ConfigurationWebSecurity extends WebSecurityConfigurerAdapter {
 		.logout()
 		.logoutUrl("/logout")
 		.and().exceptionHandling().accessDeniedPage("/Access_Denied/")
-		.and()
+		/*.and()
 		.formLogin()
-		.loginProcessingUrl("/login");
+		.loginProcessingUrl("/login")*/;
 	}
 	
 	@Bean
