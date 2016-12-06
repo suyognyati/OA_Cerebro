@@ -52,6 +52,8 @@ public class CustomSuccessHandler extends SimpleUrlAuthenticationSuccessHandler 
 			url = "/db/";
 		} else if (isAdmin(roles)) {
 			url = "/admin/";
+		} else if (isVendor(roles)) {
+			url = "/vendor/";
 		} else if (isUser(roles)) {
 			url = "/user/";
 		} else {
@@ -68,6 +70,13 @@ public class CustomSuccessHandler extends SimpleUrlAuthenticationSuccessHandler 
 		return false;
 	}
 
+	private boolean isVendor(List<String> roles) {
+		if (roles.contains("ROLE_VENDOR")) {
+			return true;
+		}
+		return false;
+	}
+	
 	private boolean isAdmin(List<String> roles) {
 		if (roles.contains("ROLE_ADMIN")) {
 			return true;

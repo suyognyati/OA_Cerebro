@@ -1,5 +1,6 @@
 body {
-	background-color: #C6D9F1;
+	background-color: #fafafa;
+	/* background-color: #C6D9F1; */
 }
 
 .navbar-fixed-left {
@@ -46,4 +47,8 @@ body {
 
 .nav-pills {
     margin-bottom: 0;
+}
+
+.menu-div {
+	border-color : #32CCFE;
 }

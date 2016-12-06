@@ -86,7 +86,8 @@ public class ConfigurationWebSecurity extends WebSecurityConfigurerAdapter {
 		.antMatchers("/oauth/token").permitAll()
 		.antMatchers("/oauth/authorize").permitAll()
 		.antMatchers("/user/").access("hasRole('USER')")
-		.antMatchers("/basicDetail/**").access("hasRole('USER')")
+		.antMatchers("/vendor/").access("hasRole('VENDOR')")
+		/*.antMatchers("/basicDetail/**").access("hasRole('USER')")*/
 		.antMatchers("/db/").access("hasRole('ADMIN') and hasRole('DBA')")
 		.antMatchers("/admin/").access("hasRole('ADMIN')").anyRequest().authenticated()
 		.and().formLogin().loginPage("/login").successHandler(customSuccessHandler)
@@ -96,7 +97,8 @@ public class ConfigurationWebSecurity extends WebSecurityConfigurerAdapter {
 		.csrf()
 		.csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
 		.requireCsrfProtectionMatcher(new AntPathRequestMatcher("/oauth/authorize"))
-		.disable()
+		/*.disable()*/
+		.and()
 		.logout()
 		.logoutUrl("/logout")
 		.and().exceptionHandling().accessDeniedPage("/Access_Denied/")

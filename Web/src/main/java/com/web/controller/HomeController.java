@@ -21,13 +21,8 @@ public class HomeController {
 	@Autowired
 	private UserSession userSession;
 	
-	@RequestMapping(method = RequestMethod.GET)
-	public String getIndexPage() {
-		return "HomePage";
-	}
-
 	@RequestMapping(value = { "user/" }, method = RequestMethod.GET)
-	public String homePage(ModelMap model) {
+	public String userPage(ModelMap model) {
 		userSession.setCurrentUserName();
 		userSession.setCurrentUser();
 		userSession.setCurrentUserDetail();
@@ -36,6 +31,16 @@ public class HomeController {
 		return "HomePage-topnavbar";
 	}
 
+	@RequestMapping(value = { "vendor/" }, method = RequestMethod.GET)
+	public String vendorPage(ModelMap model) {
+		userSession.setCurrentUserName();
+		userSession.setCurrentUser();
+		userSession.setCurrentUserDetail();
+		model.addAttribute("user", userSession.getCurrentUser());
+		model.addAttribute("userdetail", userSession.getCurrentUserDetail());
+		return "vendor/VendorPage-topnavbar";
+	}
+	
 	@RequestMapping(value = "admin/", method = RequestMethod.GET)
 	public String adminPage(ModelMap model) {
 		model.addAttribute("user", getPrincipal());
