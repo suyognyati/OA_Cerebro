@@ -9,6 +9,7 @@
 	<link href="<c:url value='/static/css/angularapp.css' />" rel="stylesheet" />
 	<link href="<c:url value='/static/css/customnavbar.css' />" rel="stylesheet" />
 	<link href="<c:url value='/static/css/custombootstrap.css' />" rel="stylesheet" />
+	<link href="<c:url value='/vendor/css/vendor.css' />" rel="stylesheet" />
 
 	<!-- Library Scripts -->
 <script src="<c:url value='/static/js/jquery-1.10.2.js' />"></script>
@@ -30,8 +31,11 @@
 	<%! 
 		String imgsrc_old = "https://lh3.googleusercontent.com/-0tBZQoBE-QI/UwD16xm0m3I/AAAAAAAAAkU/mL1WSMcKfqA9il1M_4a0zt_yLP8z_YvSwCEw/w140-h140-p/f1bafc98-5fb5-4bc4-be04-f28b1c60332c";
 		String imgsrc_old2 = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3ZxBKSEMF2gsHcvLH3NlMothBXSiSanwj-pxr6IEgZZtecMtJdA";
-		String imgsrc = "/Web/static/images/new-user.png";
+		String imgsrc = "/Web/static/images/user-icon.png";
 		String img_new_user = "/Web/static/images/new-user.png";
+		String img_existing_user = "/Web/static/images/existing-user.png";
+		String img_search = "/Web/static/images/search.png";
+		String img_dashboard = "/Web/static/images/dashboard.png";
 	%>
 
 	<div class="container-fluid">
@@ -88,18 +92,59 @@
 	</div>
 
 	<div class="container-fluid" style="margin-top: 8%">
-		<div class="col-md-3 col-sm-3">
+		<div class="col-md-2 col-sm-2 menubar-div">
 			<div class="panel panel-primary menu-div">
-				<a ui-sref="userDetail">
-					<img src= <%=img_new_user%>
-			    				 width="90px"
-			    				 height="85px">
+				<a ui-sref="vendorHome">
+					<img src= <%=img_new_user%> 
+						class="menu-img">
 				</a>
-			
+				<br/>
+				New entry
+			</div>
+			<br/>
+			<div class="panel panel-primary menu-div">
+				<a ui-sref="vendorHome">
+					<img src= <%=img_existing_user%> 
+						class="menu-img">
+				</a>
+				<br/>
+				Existing entry
+			</div>
+			<br/>
+			<div class="panel panel-primary menu-div">
+				<a ui-sref="vendorHome">
+					<img src= <%=img_search%> 
+						class="menu-img">
+				</a>
+				<br>
+				Search
 			</div>
 		</div>
+		
+		
 		<div class="col-md-8 col-sm-8">
 			<div ui-view="view"></div>
+		</div>
+		
+		
+		<div class="col-md-2 col-sm-2 menubar-div">
+			<div class="panel panel-primary menu-div">
+				<a ui-sref="vendorHome">
+					<img src= <%=img_dashboard%> 
+						class="menu-img">
+				</a>
+				<br/>
+				Dashboard
+			</div>
+			<br/>
+			<div class="panel panel-primary menu-div">
+				<a ui-sref="vendorHome">
+					<img src= <%=img_existing_user%> 
+						class="menu-img">
+				</a>
+				<br/>
+				College List
+			</div>
 		</div>
 	</div>
 
