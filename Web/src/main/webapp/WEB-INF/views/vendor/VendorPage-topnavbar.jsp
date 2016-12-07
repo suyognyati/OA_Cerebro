@@ -94,7 +94,7 @@
 	<div class="container-fluid" style="margin-top: 8%">
 		<div class="col-md-2 col-sm-2 menubar-div">
 			<div class="panel panel-primary menu-div">
-				<a ui-sref="vendorHome">
+				<a ui-sref="newEntry">
 					<img src= <%=img_new_user%> 
 						class="menu-img">
 				</a>
@@ -103,7 +103,7 @@
 			</div>
 			<br/>
 			<div class="panel panel-primary menu-div">
-				<a ui-sref="vendorHome">
+				<a ui-sref="existingEntry">
 					<img src= <%=img_existing_user%> 
 						class="menu-img">
 				</a>
@@ -112,7 +112,7 @@
 			</div>
 			<br/>
 			<div class="panel panel-primary menu-div">
-				<a ui-sref="vendorHome">
+				<a ui-sref="search">
 					<img src= <%=img_search%> 
 						class="menu-img">
 				</a>
@@ -129,7 +129,7 @@
 		
 		<div class="col-md-2 col-sm-2 menubar-div">
 			<div class="panel panel-primary menu-div">
-				<a ui-sref="vendorHome">
+				<a ui-sref="dashboard">
 					<img src= <%=img_dashboard%> 
 						class="menu-img">
 				</a>
@@ -138,7 +138,7 @@
 			</div>
 			<br/>
 			<div class="panel panel-primary menu-div">
-				<a ui-sref="vendorHome">
+				<a ui-sref="collegeList">
 					<img src= <%=img_existing_user%> 
 						class="menu-img">
 				</a>
