@@ -13,31 +13,31 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.web.common.UserSession;
+import com.web.session.Session;
 
 @Controller
 @RequestMapping("/")
 public class HomeController {
 	@Autowired
-	private UserSession userSession;
+	private Session session;
 	
 	@RequestMapping(value = { "user/" }, method = RequestMethod.GET)
 	public String userPage(ModelMap model) {
-		userSession.setCurrentUserName();
-		userSession.setCurrentUser();
-		userSession.setCurrentUserDetail();
-		model.addAttribute("user", userSession.getCurrentUser());
-		model.addAttribute("userdetail", userSession.getCurrentUserDetail());
+		session.setCurrentUserName();
+		session.setCurrentUser();
+		session.setCurrentUserDetail();
+		model.addAttribute("user", session.getCurrentUser());
+		model.addAttribute("userdetail", session.getCurrentUserDetail());
 		return "HomePage-topnavbar";
 	}
 
 	@RequestMapping(value = { "vendor/" }, method = RequestMethod.GET)
 	public String vendorPage(ModelMap model) {
-		userSession.setCurrentUserName();
-		userSession.setCurrentUser();
-		userSession.setCurrentUserDetail();
-		model.addAttribute("user", userSession.getCurrentUser());
-		model.addAttribute("userdetail", userSession.getCurrentUserDetail());
+		session.setCurrentVendorName();
+		session.setCurrentVendor();
+		session.setCurrentVendorDetail();
+		model.addAttribute("vendor", session.getCurrentVendor());
+		model.addAttribute("vendordetail", session.getCurrentVendorDetail());
 		return "vendor/VendorPage-topnavbar";
 	}
 	

@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.web.model.FamilyInformationModel;
-import com.web.services.FamilyInformationService;
+import com.web.services.impl.FamilyInformationService;
 
 @RestController
 public class FamilyInformationRestController {

@@ -18,6 +18,12 @@
 		            url: oauthlink + grantTypeandCredentials,
 		            headers:headers
 		        })
+			},
+			setUser : function(accessTokenParam) {
+				return $http({
+		            method: 'GET',
+		            url: "/Web/rest/init/setuser/" + accessTokenParam
+		        })
 			}
 		}
 	}

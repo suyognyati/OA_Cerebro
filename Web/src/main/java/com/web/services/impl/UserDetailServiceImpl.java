@@ -1,12 +1,13 @@
-package com.web.services;
+package com.web.services.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.data.entities.UserDetail;
 import com.data.repository.UserDetailJpaRepository;
-import com.web.common.UserSession;
 import com.web.model.UserDetailModel;
+import com.web.services.UserDetailService;
+import com.web.session.Session;
 
 @Service("userDetailService")
 public class UserDetailServiceImpl implements UserDetailService{
@@ -15,7 +16,7 @@ public class UserDetailServiceImpl implements UserDetailService{
 	UserDetailJpaRepository userDetailJpaRepository;
 	
 	@Autowired
-	UserSession userSession;
+	Session userSession;
 	
 	public UserDetailModel getUserDetail(){
 		

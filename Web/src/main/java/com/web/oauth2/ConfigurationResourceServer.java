@@ -23,8 +23,10 @@ public class ConfigurationResourceServer extends ResourceServerConfigurerAdapter
 		http.
 		anonymous().disable()
 		.requestMatchers().antMatchers("/personalDetail/**")
+		.requestMatchers().antMatchers("/rest/**")
 		.and().authorizeRequests()
 		.antMatchers("/personalDetail/**").access("hasRole('USER')")
+		.antMatchers("/rest/**").access("hasRole('USER')")
 		.and().exceptionHandling().accessDeniedHandler(new OAuth2AccessDeniedHandler());
 	}
 

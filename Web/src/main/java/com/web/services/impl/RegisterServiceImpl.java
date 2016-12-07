@@ -1,4 +1,4 @@
-package com.web.services;
+package com.web.services.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,6 +10,7 @@ import com.data.repository.UserDetailJpaRepository;
 import com.data.repository.UserJpaRepository;
 import com.data.repository.UserRoleJpaRepository;
 import com.web.model.UserDetailModel;
+import com.web.services.RegisterService;
 
 @Service("registerService")
 public class RegisterServiceImpl implements RegisterService {

@@ -39,10 +39,21 @@
 		vm.login = function() {
 			existingUserService.getToken(headers, vm.credentials)
 			.success(function (data, status, headers, config) {
-                vm.successMessage = "Detail saved successfully";
+				vm.accessToken = data.access_token;
+				vm.accessTokenParam = "?access_token=" + vm.accessToken;
+				
+				existingUserService.setUser(vm.accessTokenParam)
+				.success(function (data, status, headers, config) {
+					
+				})
+				.error(function (data, status, headers, config) {
+					
+				})
+				
             })
             .error(function (data, status, headers, config) {
-                vm.errorMessage = "Error while saving detail";
+            	vm.accessToken = "";
+    			vm.accessTokenParam = "";
             });
 			vm.username = "";
 		};

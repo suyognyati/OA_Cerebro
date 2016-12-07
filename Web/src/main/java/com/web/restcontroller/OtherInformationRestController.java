@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.web.model.OtherInformationModel;
-import com.web.services.OtherInformationService;
+import com.web.services.impl.OtherInformationService;
 
 @RestController
 public class OtherInformationRestController {

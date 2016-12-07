@@ -74,7 +74,7 @@
 				    						 height="100px">
 				    				</div>
 				    				<div class="col-md-8 col-sm-8" style="padding-left: 50px; padding-top: 10px">
-				    					<label><span>${userdetail.firstName}</span>&nbsp<span>${userdetail.lastName}</span></label>
+				    					<label><span>${vendordetail.firstName}</span>&nbsp<span>${vendordetail.lastName}</span></label>
 				    					<br><br>
 				    					<input type="button" class="btn btn-primary" value="View Profile">
 				    					<br><br>

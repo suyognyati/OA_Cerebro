@@ -1,4 +1,4 @@
-package com.web.services;
+package com.web.services.impl;
 
 import java.util.List;
 
@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.data.entities.EducationalInformation;
 import com.data.repository.EducationalInformationJpaRepository;
 import com.web.model.EducationalInformationModel;
+import com.web.services.EducationalInformationService;
 
 
 @Service("educationalInformationService")

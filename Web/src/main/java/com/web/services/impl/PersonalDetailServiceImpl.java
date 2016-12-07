@@ -1,4 +1,4 @@
-package com.web.services;
+package com.web.services.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,8 +12,9 @@ import com.data.repository.UserDetailJpaRepository;
 import com.data.repository.BloodGroupJpaRepository;
 import com.data.repository.PersonalDetailJpaRepository;
 import com.data.repository.UserJpaRepository;
-import com.web.common.UserSession;
 import com.web.model.PersonalDetailModel;
+import com.web.services.PersonalDetailService;
+import com.web.session.Session;
 
 @Service("personalDetailService")
 public class PersonalDetailServiceImpl implements PersonalDetailService {
@@ -31,7 +32,7 @@ public class PersonalDetailServiceImpl implements PersonalDetailService {
 	BloodGroupJpaRepository bloodGroupJpaRepository;
 	
 	@Autowired
-	UserSession userSession;
+	Session userSession;
 	
 	public PersonalDetailModel getPersonalDetail(){
 		UserDetail basicDetail = basicDetailJpaRepository.findByUser(userSession.getCurrentUser());
