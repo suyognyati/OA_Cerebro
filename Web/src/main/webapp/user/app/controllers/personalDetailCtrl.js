@@ -7,50 +7,22 @@
 					 "$httpParamSerializer",
 					 "personalDetailService",
 					 "$scope",
+					 "$window",
 					 PersonalDetailCtrl]);
 	
-	function PersonalDetailCtrl($http, $httpParamSerializer, personalDetailService, $scope) {
+	function PersonalDetailCtrl($http, $httpParamSerializer, personalDetailService, $scope, $window) {
 		var vm = this;		
 		
-		vm.accessToken = "";
-		vm.accessTokenParam = "";
+		vm.accessToken = $window.bearer_token;
+		vm.accessTokenParam = "?access_token=" + vm.accessToken;
 
-		vm.basicAuth = {
-			username : "manalinyati",
-			password : "manalinyati"
-		};
-
-		vm.credentials = {
-		        username: "manalinyati", 
-		        password: "manalinyati"
-		};
-			
-		var headers = vm.basicAuth ? {
-			authorization : "Basic "
-					+ btoa(vm.basicAuth.username + ":"
-							+ vm.basicAuth.password)
-		} : {};
-
-		var oauthlink = "/Web/oauth/token?grant_type=password&username=" + vm.credentials.username + "&password=" + vm.credentials.password;
-		
-		$http({
-            method: 'POST',
-            url: oauthlink,
-            headers:headers
-        })		
-		.success(function(data, status, headers, config) {
-			vm.accessToken = data.access_token;
-			vm.accessTokenParam = "?access_token=" + vm.accessToken;
-
-			personalDetailService.get(vm.accessTokenParam)
-			.success(function(data) {
-				vm.personaldetail = data;
-			});
+		personalDetailService.get(vm.accessTokenParam)
+		.success(function (data, status, headers, config) {
+			vm.personaldetail = data;
 		})
-		.error(function(data, status, headers, config) {
-			vm.accessToken = "";
-			vm.accessTokenParam = "";
-		});
+		.error(function (data, status, headers, config) {
+			vm.personaldetail = {};
+        });
 		
 		vm.submit = function() {
 			personalDetailService.save(vm.personaldetail, vm.accessTokenParam)

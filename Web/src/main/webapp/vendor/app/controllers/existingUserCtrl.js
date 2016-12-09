@@ -5,10 +5,12 @@
 		.controller("ExistingUserCtrl",
 					["$http",
 					 "$state",
+					 "$location",
+					 "$window",
 					 "existingUserService",
 					 ExistingUserCtrl]);
 	
-	function ExistingUserCtrl($http, $state, existingUserService) {
+	function ExistingUserCtrl($http, $state, $location, $window, existingUserService) {
 		var vm = this;
 		vm.username = "";
 		vm.password = "";
@@ -18,25 +20,26 @@
 		vm.accessTokenParam = "";
 
 		vm.basicAuth = {
-			username : "manalinyati",
-			password : "manalinyati"
+			username : "",
+			password : ""
 		};
 
 		vm.credentials = {
-		        username: "manalinyati", 
-		        password: "manalinyati"
+		        username: "", 
+		        password: ""
 		};
 			
-		var headers = vm.basicAuth ? {
-			authorization : "Basic "
-					+ btoa(vm.basicAuth.username + ":"
-							+ vm.basicAuth.password)
-		} : {};
-		
-		
 		vm.isInvalidUser = false;
 		
 		vm.login = function() {
+			vm.basicAuth.username = vm.credentials.username;
+			vm.basicAuth.password = vm.credentials.password;
+			var headers = vm.basicAuth ? {
+				authorization : "Basic "
+						+ btoa(vm.basicAuth.username + ":"
+								+ vm.basicAuth.password)
+			} : {};
+			
 			existingUserService.getToken(headers, vm.credentials)
 			.success(function (data, status, headers, config) {
 				vm.accessToken = data.access_token;
@@ -44,7 +47,10 @@
 				
 				existingUserService.setUser(vm.accessTokenParam)
 				.success(function (data, status, headers, config) {
-					
+					var currenturl = $location.$$absUrl;
+					var baseurl = currenturl.split("#");
+					var userpageurl = baseurl[0] + "user/";
+					$window.location.href = userpageurl;
 				})
 				.error(function (data, status, headers, config) {
 					

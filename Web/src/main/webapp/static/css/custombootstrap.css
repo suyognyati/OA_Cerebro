@@ -1,3 +1,7 @@
-/* .panel-primary {
+.panel-primary {
      border-color: #32CCFE !important;
-} */
+}
+.panel-primary > .panel-heading {
+	background-color: #32CCFE !important;
+	border-color: #32CCFE !important;
+}

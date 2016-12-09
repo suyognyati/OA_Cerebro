@@ -1,5 +1,5 @@
 .menubar-div {
-	padding-left: 30px;
+	/* padding-left: 30px; */
 	float: left;
 }
 .menu-div {
@@ -7,7 +7,7 @@
 	width: 175px;
 	height : 150px;
 	border-width: medium;
-	border-radius: 30px;
+	border-radius: 20px;
 	
 	/* center - horizontally and vertically  */
 	display:table-cell; 

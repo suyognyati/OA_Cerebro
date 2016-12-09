@@ -93,57 +93,61 @@
 
 	<div class="container-fluid" style="margin-top: 8%">
 		<div class="col-md-2 col-sm-2 menubar-div">
-			<div class="panel panel-primary menu-div">
-				<a ui-sref="newEntry">
-					<img src= <%=img_new_user%> 
-						class="menu-img">
-				</a>
+			<div class="sidebar-nav-fixed affix">
+				<div class="panel panel-primary menu-div">
+					<a ui-sref="newEntry">
+						<img src= <%=img_new_user%> 
+							class="menu-img">
+					</a>
+					<br/>
+					New entry
+				</div>
 				<br/>
-				New entry
-			</div>
-			<br/>
-			<div class="panel panel-primary menu-div">
-				<a ui-sref="existingEntry">
-					<img src= <%=img_existing_user%> 
-						class="menu-img">
-				</a>
+				<div class="panel panel-primary menu-div">
+					<a ui-sref="existingEntry">
+						<img src= <%=img_existing_user%> 
+							class="menu-img">
+					</a>
+					<br/>
+					Existing entry
+				</div>
 				<br/>
-				Existing entry
-			</div>
-			<br/>
-			<div class="panel panel-primary menu-div">
-				<a ui-sref="search">
-					<img src= <%=img_search%> 
-						class="menu-img">
-				</a>
-				<br>
-				Search
+				<div class="panel panel-primary menu-div">
+					<a ui-sref="search">
+						<img src= <%=img_search%> 
+							class="menu-img">
+					</a>
+					<br>
+					Search
+				</div>
 			</div>
 		</div>
 		
-		
-		<div class="col-md-8 col-sm-8">
+		<div class="col-md-8 col-sm-8 jumbotron" style="border-radius: 20px;">
 			<div ui-view="view"></div>
 		</div>
 		
-		
 		<div class="col-md-2 col-sm-2 menubar-div">
-			<div class="panel panel-primary menu-div">
-				<a ui-sref="dashboard">
-					<img src= <%=img_dashboard%> 
-						class="menu-img">
-				</a>
-				<br/>
-				Dashboard
-			</div>
-			<br/>
-			<div class="panel panel-primary menu-div">
-				<a ui-sref="collegeList">
-					<img src= <%=img_existing_user%> 
-						class="menu-img">
-				</a>
-				<br/>
-				College List
+			<div class="sidebar-nav-fixed pull-right affix">
+				<div class="">
+					<div class="panel panel-primary menu-div">
+						<a ui-sref="dashboard">
+							<img src= <%=img_dashboard%> 
+								class="menu-img">
+						</a>
+						<br/>
+						Dashboard
+					</div>
+					<br/>
+					<div class="panel panel-primary menu-div">
+						<a ui-sref="collegeList">
+							<img src= <%=img_existing_user%> 
+								class="menu-img">
+						</a>
+						<br/>
+						College List
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>

@@ -1,5 +1,7 @@
 package com.web.controller;
 
+import java.util.Collection;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -7,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.oauth2.common.OAuth2AccessToken;
+import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -21,6 +25,33 @@ public class HomeController {
 	@Autowired
 	private Session session;
 	
+	@Autowired
+    private TokenStore tokenStore;
+	
+	@RequestMapping(value = { "vendor/user/" }, method = RequestMethod.GET)
+	public String userPageForVendor(ModelMap model) {
+		String userName = session.getCurrentUserName();
+		String accessTokenValue = "";
+		Collection<OAuth2AccessToken> accessTokens = null;
+		if(userName != null && userName != "") {
+			accessTokens = tokenStore.findTokensByClientId(userName);
+	        for(OAuth2AccessToken accessToken : accessTokens) {
+	        	if(accessToken.isExpired() == false) {
+	        		accessTokenValue = accessToken.getValue();
+	        		break;	
+	        	}
+	        }
+		}
+		if(accessTokenValue == null || accessTokenValue == "") {
+			return "redirect:/vendor/";
+		}
+		
+		model.addAttribute("Bearer", accessTokenValue);
+		model.addAttribute("user", session.getCurrentUser());
+		model.addAttribute("userdetail", session.getCurrentUserDetail());
+		return "user/UserPage-topnavbar";
+	}
+	
 	@RequestMapping(value = { "user/" }, method = RequestMethod.GET)
 	public String userPage(ModelMap model) {
 		session.setCurrentUserName();
@@ -28,7 +59,7 @@ public class HomeController {
 		session.setCurrentUserDetail();
 		model.addAttribute("user", session.getCurrentUser());
 		model.addAttribute("userdetail", session.getCurrentUserDetail());
-		return "HomePage-topnavbar";
+		return "user/UserPage-topnavbar";
 	}
 
 	@RequestMapping(value = { "vendor/" }, method = RequestMethod.GET)
