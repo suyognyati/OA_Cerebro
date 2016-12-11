@@ -4,11 +4,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.data</groupId>
-	<artifactId>DataTrial</artifactId>
+	<artifactId>Data</artifactId>
 	<version>0.0.1-Version</version>
 	<packaging>jar</packaging>
 
-	<name>DataTrial</name>
+	<name>Data</name>
 	<description>Data Project of Online Admission</description>
 
 	<parent>
