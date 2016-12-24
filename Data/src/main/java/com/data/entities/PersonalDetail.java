@@ -186,8 +186,8 @@ public class PersonalDetail {
 
 //******************** REGION SELFDETAIL
 	
-	@Column(name="OtherContact")
-	private String otherContact;
+	@Column(name="AdharNo")
+	private String adharNo;
 	
 	@Column(name="Gender")
 	private int gender;
@@ -202,12 +202,12 @@ public class PersonalDetail {
 	@ManyToOne
 	private BloodGroup bloodGroup;
 	
-		//OtherContact
-		public String getOtherContact() {
-			return otherContact;
+		//AdharNo
+		public String getAdharNo() {
+			return adharNo;
 		}
-		public void setOtherContact(String otherContact) {
-			this.otherContact = otherContact;
+		public void setAdharNo(String adharNo) {
+			this.adharNo = adharNo;
 		}
 		
 		//Gender

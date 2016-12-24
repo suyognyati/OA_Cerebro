@@ -43,21 +43,31 @@ public class PersonalDetailServiceImpl implements PersonalDetailService {
 			personalDetailModel.setLastName(basicDetail.getLastName().toUpperCase());
 			personalDetailModel.setFirstName(basicDetail.getFirstName().toUpperCase());
 			personalDetailModel.setBirthDate(basicDetail.getDateOfBirth());
-			personalDetailModel.setEmail(basicDetail.getEmail());
-			personalDetailModel.setMobileNo(basicDetail.getMobileNo());
 		}
 		if(personalDetail != null) {
 			personalDetailModel.setLastName(personalDetail.getLastName().toUpperCase());
 			personalDetailModel.setFirstName(personalDetail.getFirstName().toUpperCase());
+			personalDetailModel.setRelationType(personalDetail.getRelationType());
 			personalDetailModel.setMiddleName(personalDetail.getMiddleName().toUpperCase());
 			personalDetailModel.setMothersName(personalDetail.getMotherName());
-			personalDetailModel.setOtherContactNo(personalDetail.getOtherContact());
+			personalDetailModel.setLastNameRegional(personalDetail.getLastNameRegional());
+			personalDetailModel.setFirstNameRegional(personalDetail.getFirstNameRegional());
+			personalDetailModel.setMiddleNameRegional(personalDetail.getMiddleNameRegional());
+			personalDetailModel.setIsPreviousName(personalDetail.getIsPreviousName());
+			personalDetailModel.setLastNamePrevious(personalDetail.getLastNamePrevious());
+			personalDetailModel.setFirstNamePrevious(personalDetail.getFirstNamePrevious());
+			personalDetailModel.setMiddleNamePrevious(personalDetail.getMiddleNamePrevious());
+			personalDetailModel.setNameChangeReason(personalDetail.getNameChangeReason());
+			
+			
+			personalDetailModel.setAdharNo(personalDetail.getAdharNo());
 			personalDetailModel.setGender(personalDetail.getGender().getValue());
-			personalDetailModel.setBloodGroup(
-					personalDetail.getBloodGroup() != null ? personalDetail.getBloodGroup().getBloodGroupId() : -1);
 			personalDetailModel.setPlaceOfBirth(personalDetail.getPlaceOfBirth());
-			personalDetailModel.setDomiciledIn(personalDetail.getDomicil());
 			personalDetailModel.setMaritalStatus(personalDetail.getMaritalStatus());
+			personalDetailModel.setBloodGroup(personalDetail.getBloodGroup() != null ? personalDetail.getBloodGroup().getBloodGroupId() : -1);
+			
+			personalDetailModel.setDomiciledIn(personalDetail.getDomicil());
+			
 			personalDetailModel.setFlatNo(personalDetail.getAddress().getFlatNo());
 			personalDetailModel.setStreet(personalDetail.getAddress().getStreet());
 			personalDetailModel.setArea(personalDetail.getAddress().getArea());
@@ -81,7 +91,7 @@ public class PersonalDetailServiceImpl implements PersonalDetailService {
 		personalDetail.setFirstName(personalDetailModel.getFirstName());
 		personalDetail.setMiddleName(personalDetailModel.getMiddleName());
 		personalDetail.setMotherName(personalDetailModel.getMothersName());
-		personalDetail.setOtherContact(personalDetailModel.getOtherContactNo());		
+		personalDetail.setAdharNo(personalDetailModel.getAdharNo());		
 		
 		BloodGroup bloodGroup = bloodGroupJpaRepository.findByBloodGroupId(personalDetailModel.getBloodGroup());
 		personalDetail.setBloodGroup(bloodGroup);
