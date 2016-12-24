@@ -10,5 +10,7 @@
 		<class>com.data.entities.User</class>
 		<class>com.data.entities.UserRole</class>
 		<class>com.data.entities.StudentCredentials</class>
+		<class>com.data.entities.Country</class>
+		<class>com.data.entities.City</class>
 	</persistence-unit>
 </persistence>
