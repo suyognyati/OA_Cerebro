@@ -6,14 +6,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.web.model.EducationalInformationModel;
-import com.web.services.EducationalInformationService;
+import com.web.services.EducationalInformationRCService;
 
 @RestController
 @RequestMapping(value="/educationalInformation")
 public class EducationalInformationRestController {
 	
 	@Autowired
-	EducationalInformationService educationalInformationService;
+	EducationalInformationRCService educationalInformationService;
 	
 	@RequestMapping(value="/getEducationalInformation/")
 	public EducationalInformationModel getEducationalInformation(Model model){

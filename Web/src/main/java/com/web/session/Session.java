@@ -9,13 +9,13 @@ import org.springframework.stereotype.Component;
 
 import com.data.entities.User;
 import com.data.entities.UserDetail;
-import com.web.services.SessionService;
+import com.web.services.SessionRCService;
 
 @Component
 @Scope(value="session",proxyMode=ScopedProxyMode.TARGET_CLASS)
 public class Session {
 	@Autowired
-	SessionService sessionService;
+	SessionRCService sessionService;
 	
 	private String CurrentVendorName = null;
 	private User CurrentVendor = null;

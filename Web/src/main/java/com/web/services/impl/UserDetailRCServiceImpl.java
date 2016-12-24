@@ -4,23 +4,23 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.data.entities.UserDetail;
-import com.data.repository.UserDetailJpaRepository;
+import com.data.services.UserDetailService;
 import com.web.model.UserDetailModel;
-import com.web.services.UserDetailService;
+import com.web.services.UserDetailRCService;
 import com.web.session.Session;
 
-@Service("userDetailService")
-public class UserDetailServiceImpl implements UserDetailService{
+@Service("userDetailRCService")
+public class UserDetailRCServiceImpl implements UserDetailRCService{
 
 	@Autowired
-	UserDetailJpaRepository userDetailJpaRepository;
+	UserDetailService userDetailService;
 	
 	@Autowired
 	Session userSession;
 	
 	public UserDetailModel getUserDetail(){
 		
-		UserDetail userDetail = userDetailJpaRepository.findByUser(userSession.getCurrentUser());
+		UserDetail userDetail = userDetailService.getByUser(userSession.getCurrentUser());
 		UserDetailModel userDetailModel = new UserDetailModel();
 		
 		if(userDetail != null) {
@@ -34,7 +34,7 @@ public class UserDetailServiceImpl implements UserDetailService{
 	}
 	
 	public void saveUserDetail(UserDetailModel userDetailModel) {
-		UserDetail userDetail = userDetailJpaRepository.findByUser(userSession.getCurrentUser());
+		UserDetail userDetail = userDetailService.getByUser(userSession.getCurrentUser());
 		
 		if(userDetail == null) {
 			userDetail = new UserDetail();
@@ -46,6 +46,6 @@ public class UserDetailServiceImpl implements UserDetailService{
 		userDetail.setDateOfBirth(userDetailModel.getBirthDate());
 		userDetail.setEmail(userDetailModel.getEmail());
 		userDetail.setMobileNo(userDetailModel.getMobileNo());
-		userDetail = userDetailJpaRepository.save(userDetail);
+		userDetail = userDetailService.save(userDetail);
 	}
 }

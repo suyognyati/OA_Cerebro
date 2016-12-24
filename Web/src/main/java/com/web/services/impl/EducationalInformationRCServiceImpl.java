@@ -6,19 +6,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.data.entities.EducationalInformation;
-import com.data.repository.EducationalInformationJpaRepository;
+import com.data.services.EducationalInformationService;
 import com.web.model.EducationalInformationModel;
-import com.web.services.EducationalInformationService;
+import com.web.services.EducationalInformationRCService;
 
 
-@Service("educationalInformationService")
-public class EducationalInformationServiceImpl implements EducationalInformationService {
+@Service("educationalInformationRCService")
+public class EducationalInformationRCServiceImpl implements EducationalInformationRCService {
 
 	@Autowired
-	EducationalInformationJpaRepository educationalInformationJpaRepository;
+	EducationalInformationService educationalInformationService;
 	
 	public EducationalInformationModel getEducationalInformation(){
-		List<EducationalInformation> educationalInformations = educationalInformationJpaRepository.findAll();
+		List<EducationalInformation> educationalInformations = educationalInformationService.getAll();
 		
 		EducationalInformationModel educationalInformationModel = new EducationalInformationModel();
 		
@@ -36,22 +36,6 @@ public class EducationalInformationServiceImpl implements EducationalInformation
 			educationalInformationModel.setGradeObtained(educationalInformation.getGradeObtained());
 			educationalInformationModel.setSeatNo(educationalInformation.getSeatNo());
 		}
-		
-		/*public EducationalInformationModel getEducationInformation(){
-		EducationalInformationModel educationInformationModel = new EducationalInformationModel();		
-		educationInformationModel.setState("Maharashtra");
-		educationInformationModel.setBoard("Maharashtra State Board");
-		educationInformationModel.setSchoolName("NEMS");
-		educationInformationModel.setSchoolPlace("Jalgaon");
-		educationInformationModel.setFirstAttempt("YES");
-		educationInformationModel.setMathsType("Easy Type");
-		educationInformationModel.setPassingYear("2004");
-		educationInformationModel.setPassingMonth("June");
-		educationInformationModel.setTotalMarksObtained("615");
-		educationInformationModel.setOutOfMarks("750");
-		educationInformationModel.setGradeObtained("A+");
-		educationInformationModel.setSeatNo("D456923");
-	}*/
 		return educationalInformationModel;
 
 	}

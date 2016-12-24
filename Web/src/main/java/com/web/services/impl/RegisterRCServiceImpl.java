@@ -6,26 +6,26 @@ import org.springframework.stereotype.Service;
 import com.data.entities.User;
 import com.data.entities.UserDetail;
 import com.data.entities.UserRole;
-import com.data.repository.UserDetailJpaRepository;
-import com.data.repository.UserJpaRepository;
-import com.data.repository.UserRoleJpaRepository;
+import com.data.services.UserDetailService;
+import com.data.services.UserRoleService;
+import com.data.services.UserService;
 import com.web.model.UserDetailModel;
-import com.web.services.RegisterService;
+import com.web.services.RegisterRCService;
 
-@Service("registerService")
-public class RegisterServiceImpl implements RegisterService {
+@Service("registerRCService")
+public class RegisterRCServiceImpl implements RegisterRCService {
 
 	@Autowired
-	UserJpaRepository userJpaRepository;
+	UserService userService;
 	
 	@Autowired
-	UserRoleJpaRepository userRoleJpaRepository;
+	UserRoleService userRoleService;
 	
 	@Autowired
-	UserDetailJpaRepository userDetailJpaRepository;
+	UserDetailService userDetailService;
 	
 	public Boolean IsUserAvailable(String userName) {
-		User user = userJpaRepository.findByUserName(userName);
+		User user = userService.getByUserName(userName);
 		return (user == null) ? true : false;
 	}
 	
@@ -37,7 +37,7 @@ public class RegisterServiceImpl implements RegisterService {
 		user.setUserName(userDetailModel.getUserName());
 		user.setPassword(userDetailModel.getPassword());
 		user.setEnabled(1);
-		user = userJpaRepository.save(user);
+		user = userService.save(user);
 		
 		UserDetail userDetail = new UserDetail();
 		userDetail.setFirstName(userDetailModel.getFirstName());
@@ -46,12 +46,12 @@ public class RegisterServiceImpl implements RegisterService {
 		userDetail.setMobileNo(userDetailModel.getMobileNo());
 		userDetail.setDateOfBirth(userDetailModel.getBirthDate());
 		userDetail.setUser(user);
-		userDetail = userDetailJpaRepository.save(userDetail);
+		userDetail = userDetailService.save(userDetail);
 		
 		UserRole userRole = new UserRole();
 		userRole.setUserName(user);
 		userRole.setRole("ROLE_USER");
-		userRole = userRoleJpaRepository.save(userRole);
+		userRole = userRoleService.save(userRole);
 		
 		return true;
 	}

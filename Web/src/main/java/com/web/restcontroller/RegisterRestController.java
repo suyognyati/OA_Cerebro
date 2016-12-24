@@ -10,13 +10,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.web.model.UserDetailModel;
-import com.web.services.RegisterService;
+import com.web.services.RegisterRCService;
 
 @RestController
 @RequestMapping(value = "/login")
 public class RegisterRestController {
 	@Autowired
-	RegisterService registerService;
+	RegisterRCService registerService;
 	
 	@SuppressWarnings("unchecked")
 	@RequestMapping(value = "/checkuseravailability", method = RequestMethod.POST)

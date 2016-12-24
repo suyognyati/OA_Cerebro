@@ -8,7 +8,7 @@ import com.data.entities.User;
 import com.data.repository.PersonalDetailJpaRepository;
 import com.data.services.PersonalDetailService;
 
-@Service("personalDetailRepositoryService")
+@Service("personalDetailService")
 public class PersonalDetailServiceImpl implements PersonalDetailService {
 
 	@Autowired

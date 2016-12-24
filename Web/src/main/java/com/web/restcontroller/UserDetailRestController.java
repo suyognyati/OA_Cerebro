@@ -8,14 +8,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.web.model.UserDetailModel;
-import com.web.services.UserDetailService;
+import com.web.services.UserDetailRCService;
 
 @RestController
 @RequestMapping(value="/userDetail")
 public class UserDetailRestController {
 	
 	@Autowired
-	UserDetailService userDetailService;
+	UserDetailRCService userDetailService;
 	
 	@RequestMapping(value="/get/")
 	public UserDetailModel get(Model model){

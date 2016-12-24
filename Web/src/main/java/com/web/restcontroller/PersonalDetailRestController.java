@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.web.model.PersonalDetailModel;
-import com.web.services.PersonalDetailService;
+import com.web.services.PersonalDetailRCService;
 
 @RestController
 @PreAuthorize("hasRole('ROLE_USER')")
@@ -17,7 +17,7 @@ import com.web.services.PersonalDetailService;
 public class PersonalDetailRestController {
 	
 	@Autowired
-	PersonalDetailService personalDetailService;
+	PersonalDetailRCService personalDetailService;
 	
 	@RequestMapping(value="/get/")
 	public PersonalDetailModel get(Model model){
