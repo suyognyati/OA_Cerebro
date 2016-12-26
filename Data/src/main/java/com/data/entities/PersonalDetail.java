@@ -266,7 +266,7 @@ public class PersonalDetail {
 	private User user;
 	
 	@JoinColumn(name="FK_Address")
-	@OneToOne(cascade=CascadeType.ALL)
+	@OneToOne
 	private Address address;
 
 		//User

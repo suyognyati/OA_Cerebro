@@ -1,22 +1,6 @@
-package com.data.entities;
+package com.web.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
-
-
-@Entity
-@Table(name="Address")
-public class Address {
-
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="AddressId")
+public class AddressModel {
 	private int addressId;
 	
 		//Address Id
@@ -30,31 +14,14 @@ public class Address {
 		
 //******************** REGION CORRESPONDENCE ADDRESS
 	
-	@Column(name="FlatNo")
 	private String flatNo;
-	
-	@Column(name="Street")
 	private String street;
-	
-	@Column(name="Area")
 	private String area;
-	
-	@Column(name="Landmark")
 	private String landmark;
-	
-	@Column(name="PinCode")
 	private String pinCode;
-	
-	@Column(name="City")
 	private String city;
-	
-	@Column(name="District")
 	private String district;
-	
-	@Column(name="State")
 	private String state;
-	
-	@Column(name="Country")
 	private String country;
 	
 		//Flat No
@@ -133,34 +100,15 @@ public class Address {
 
 //******************** REGION PERMENENT ADDRESS
 	
-	@Column(name="IsNotSameAsCorrespondence")
 	private Boolean IsNotSameAsCorrespondence;
-	
-	@Column(name="FlatNoPermenent")
 	private String flatNoPermenent;
-	
-	@Column(name="StreetPermenent")
 	private String streetPermenent;
-	
-	@Column(name="AreaPermenent")
 	private String areaPermenent;
-	
-	@Column(name="LandmarkPermenent")
 	private String landmarkPermenent;
-	
-	@Column(name="PinCodePermenent")
 	private String pinCodePermenent;
-	
-	@Column(name="CityPermenent")
 	private String cityPermenent;
-	
-	@Column(name="DistrictPermenent")
 	private String districtPermenent;
-	
-	@Column(name="StatePermenent")
 	private String statePermenent;
-	
-	@Column(name="CountryPermenent")
 	private String countryPermenent;
 
 		//IsNotSameAsCorrespondence
@@ -244,16 +192,4 @@ public class Address {
 		}
 		
 //END REGION ********************
-	
-	@JoinColumn(name="FK_User")
-	@OneToOne
-	User user;
-
-		//User
-		public User getUser() {
-			return user;
-		}
-		public void setUser(User user) {
-			this.user = user;
-		}		
 }
