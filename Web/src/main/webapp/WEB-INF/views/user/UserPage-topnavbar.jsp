@@ -103,11 +103,9 @@
 			<ul class="nav nav-pills nav-stacked">
 				<li class="pills-content"><a ui-sref="userDetail"><strong>User Details </strong></a></li>
 				<li class="pills-content"><a ui-sref="personalDetail"><strong>Personal Details</strong></a></li>
-				<li class="pills-content"><a ui-sref="educationInformation"><strong>Education Information</strong></a></li>
-				<li class="pills-content"><a ui-sref="familyInformation"><strong>Family Information</strong></a></li>
-				<li class="pills-content"><a ui-sref="otherInformation"><strong>Other Information</strong></a></li>
-				<li class="pills-content"><a href="#"><strong>Upload Documents</strong></a></li>
-				<li class="pills-content"><a href="#"><strong>Apply Courses</strong></a></li>
+				<li class="pills-content"><a ui-sref="address"><strong>Address Details</strong></a></li>
+				<li class="pills-content"><a ui-sref="educationInformation"><strong>Educational Information</strong></a></li>
+				<li class="pills-content"><a href="#"><strong>Upload Photo & Signature</strong></a></li>
 			</ul>
 			</div>
 		</div>
