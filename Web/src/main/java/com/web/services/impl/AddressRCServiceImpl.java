@@ -21,8 +21,10 @@ public class AddressRCServiceImpl implements AddressRCService {
 	public AddressModel getAddress() {
 		AddressModel addressModel = new AddressModel();
 		Address address = addressService.getByUser(userSession.getCurrentUser());
-		addressModel = setAddressModelObject(addressModel, address);
-		return null;
+		if(address != null) {
+			addressModel = setAddressModelObject(addressModel, address);
+		}
+		return addressModel;
 	}
 	
 	public Boolean saveAddress(AddressModel addressModel) {
@@ -30,7 +32,8 @@ public class AddressRCServiceImpl implements AddressRCService {
 		if(address == null) {
 			address = new Address();
 		}
-		address = setAddressObject(address, addressModel);		
+		address = setAddressObject(address, addressModel);
+		addressService.save(address);
 		return true;
 	}
 	

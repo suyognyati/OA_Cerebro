@@ -77,6 +77,28 @@
 							}
 					})
 					
+					.state("address",{
+							url: "/address",
+							views: {
+								"view":{
+									templateUrl: basePath + "templates/states/addressView.html",
+									controller:"AddressCtrl as vm",
+								}
+							},
+							resolve: {
+								address : ['$ocLazyLoad', function($ocLazyLoad){
+									return $ocLazyLoad.load({
+										name : 'admission',
+										files : [
+										     basePath + 'app/controllers/addressCtrl.js',
+										     basePath + 'app/services/addressService.js'
+										]
+								
+									})
+								}]
+							}
+					})
+					
 					.state("educationInformation",{
 							url: "/educationinformation",
 							views: {
