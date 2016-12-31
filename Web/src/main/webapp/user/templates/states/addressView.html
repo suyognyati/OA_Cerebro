@@ -1,343 +1,341 @@
+<div class="heading">
+	<h1>
+       	Address Details
+    </h1>
+</div>
 <form name="addressform" novalidate>
-	<div class="panel panel-primary">
-		<div class="panel-heading">
-			<span style="font-family: Verdana; font-size: 15pt">
-	        	<strong>Address Details</strong>
-	        </span>
+	<div class="panel panel-body">
+		
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<span style="font-family: Verdana">Correspondence Address</span>
+			</div>
+			<div class="panel-body">
+				<div class="row">
+					<div class="col-sm-6">
+						<div class="form-group">
+							<label for="flatNo">Flat No. / Building Name</label>
+							<br>
+							<input type="text" 
+									class="form-control" 
+									id="flatNo"
+									placeholder="Flat No./Building"
+									ng-model="vm.address.flatNo"
+									tabindex="2"
+									required>
+						</div>
+					</div>
+					<div class="col-sm-6">
+						<div class="form-group">
+							<label for="area">Area</label>
+							<br>
+							<input type="text" 
+									class="form-control" 
+									id="area"
+									placeholder="Area"
+									ng-model="vm.address.area"
+									tabindex="3"
+									required>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-6">
+						<div class="form-group">
+							<label for="street">Street</label>
+							<br>
+							<input type="text" 
+									class="form-control" 
+									id="street"
+									placeholder="Street"
+									ng-model="vm.address.street"
+									tabindex="4"
+									required>
+						</div>
+					</div>
+					<div class="col-sm-6">
+						<div class="form-group">
+							<label for="landmark">Landmark</label>
+							<br>
+							<input type="text" 
+									class="form-control" 
+									id="landmark"
+									placeholder="Landmark"
+									ng-model="vm.address.landmark"
+									tabindex="5"
+									required>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-6">
+						<div class="form-group">
+							<label for="locationarea">Location Area</label>
+							<br>
+							<select class="form-control" 
+									id="locationarea" 
+									tabindex="6"
+									ng-model="vm.address.locationarea"
+									required>
+								<option>--Select--</option>		
+							</select>
+						</div>
+					</div>
+					<div class="col-sm-6">
+						<div class="form-group">
+							<label for="district">District</label>
+							<br>
+							<input type="text" 
+									class="form-control" 
+									id="district" 
+									placeholder="District"
+									tabindex="7"
+									ng-model="vm.address.district"
+									required>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-6">
+						<div class="form-group">
+							<label for="city">City</label>
+							<br>
+							<input type="text" 
+									class="form-control" 
+									id="city" 
+									placeholder="City"
+									tabindex="8"
+									ng-model="vm.address.city"
+									required>
+						</div>
+					</div>
+					<div class="col-sm-6">
+						<div class="form-group">
+							<label for="pincode">Pin Code</label>
+							<br>
+							<input type="text" 
+									class="form-control" 
+									id="pincode"
+									placeholder="Pin Code"
+									ng-model="vm.address.pinCode"
+									tabindex="9"
+									required>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-6">
+						<div class="form-group">
+							<label for="state">Select State</label>
+							<br>
+							<input type="text" 
+									class="form-control" 
+									id="state" 
+									placeholder="State"
+									tabindex="10"
+									ng-model="vm.address.state"
+									required>
+							<!-- <select	class="form-control" 
+									id="state" 
+									tabindex="20"
+									ng-model="vm.address.state"
+									required>
+								<option>--Select--</option>
+							</select> -->
+						</div>
+					</div>
+					<div class="col-sm-6">
+						<div class="form-group">
+							<label for="country">Select Country</label>
+							<br>
+							<select	class="form-control" 
+									id="country" 
+									tabindex="11"
+									ng-model="vm.address.country"
+									required>
+								<option>--Select--</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				
+			</div>
 		</div>
-		<div class="panel panel-body">
-			
+		
+		<div class="row">
+			<div class="col-lg-12">
+				<input type="checkbox"
+					   id="forpermanentaddress"
+					   tabindex="1"
+					   ng-model="vm.address.isNotSameAsCorrespondence">
+				<label for="forpermanentaddress"> Is permanent address same as address for correspondence?
+					<span>[Tick if Yes]</span>
+				</label>
+			</div>
+		</div>	
+		<br>
+		
+		<div ng-show="!vm.address.isNotSameAsCorrespondence">
 			<div class="panel panel-default">
 				<div class="panel-heading">
-					<span style="font-family: Verdana">Correspondence Address</span>
+					<span style="font-family: Verdana">Permanent Address</span>
 				</div>
 				<div class="panel-body">
 					<div class="row">
-						<div class="col-lg-6">
+						<div class="col-sm-6">
 							<div class="form-group">
-								<label for="flatNo">Flat No. / Building Name</label>
+								<label for="flatNoPermenent">Flat No. / Building Name</label>
 								<br>
 								<input type="text" 
 										class="form-control" 
-										id="flatNo"
+										id="flatNoPermenent"
 										placeholder="Flat No./Building"
-										ng-model="vm.address.flatNo"
-										tabindex="2"
+										ng-model="vm.address.flatNoPermenent"
+										tabindex="12"
 										required>
 							</div>
 						</div>
-						<div class="col-lg-6">
+						<div class="col-sm-6">
 							<div class="form-group">
-								<label for="area">Area</label>
+								<label for="areaPermenent">Area</label>
 								<br>
 								<input type="text" 
 										class="form-control" 
-										id="area"
+										id="areaPermenent"
 										placeholder="Area"
-										ng-model="vm.address.area"
-										tabindex="3"
+										ng-model="vm.address.areaPermenent"
+										tabindex="13"
 										required>
 							</div>
 						</div>
 					</div>
 					<div class="row">
-						<div class="col-lg-6">
+						<div class="col-sm-6">
 							<div class="form-group">
-								<label for="street">Street</label>
+								<label for="streetPermenent">Street</label>
 								<br>
 								<input type="text" 
 										class="form-control" 
-										id="street"
+										id="streetPermenent"
 										placeholder="Street"
-										ng-model="vm.address.street"
-										tabindex="4"
+										ng-model="vm.address.streetPermenent"
+										tabindex="14"
 										required>
 							</div>
 						</div>
-						<div class="col-lg-6">
+						<div class="col-sm-6">
 							<div class="form-group">
-								<label for="landmark">Landmark</label>
+								<label for="landmarkPermenent">Landmark</label>
 								<br>
 								<input type="text" 
 										class="form-control" 
-										id="landmark"
+										id="landmarkPermenent"
 										placeholder="Landmark"
-										ng-model="vm.address.landmark"
-										tabindex="5"
+										ng-model="vm.address.landmarkPermenent"
+										tabindex="15"
 										required>
 							</div>
 						</div>
 					</div>
 					<div class="row">
-						<div class="col-lg-6">
+						<div class="col-sm-6">
 							<div class="form-group">
-								<label for="locationarea">Location Area</label>
+								<label for="locationareaPermenent">Location Area</label>
 								<br>
 								<select class="form-control" 
-										id="locationarea" 
-										tabindex="6"
-										ng-model="vm.address.locationarea"
+										id="locationareaPermenent" 
+										tabindex="16"
+										ng-model="vm.address.locationareaPermenent"
 										required>
 									<option>--Select--</option>		
 								</select>
 							</div>
 						</div>
-						<div class="col-lg-6">
+						<div class="col-sm-6">
 							<div class="form-group">
-								<label for="district">District</label>
+								<label for="districtPermenent">District</label>
 								<br>
 								<input type="text" 
 										class="form-control" 
-										id="district" 
+										id="districtPermenent" 
 										placeholder="District"
-										tabindex="7"
-										ng-model="vm.address.district"
+										tabindex="17"
+										ng-model="vm.address.districtPermenent"
 										required>
 							</div>
 						</div>
 					</div>
 					<div class="row">
-						<div class="col-lg-6">
+						<div class="col-sm-6">
 							<div class="form-group">
-								<label for="city">City</label>
+								<label for="cityPermenent">City</label>
 								<br>
 								<input type="text" 
 										class="form-control" 
-										id="city" 
+										id="cityPermenent" 
 										placeholder="City"
-										tabindex="8"
-										ng-model="vm.address.city"
+										tabindex="18"
+										ng-model="vm.address.cityPermenent"
 										required>
 							</div>
 						</div>
-						<div class="col-lg-6">
+						<div class="col-sm-6">
 							<div class="form-group">
-								<label for="pincode">Pin Code</label>
+								<label for="pincodePermenent">Pin Code</label>
 								<br>
 								<input type="text" 
 										class="form-control" 
-										id="pincode"
+										id="pincodePermenent"
 										placeholder="Pin Code"
-										ng-model="vm.address.pinCode"
-										tabindex="9"
+										ng-model="vm.address.pinCodePermenent"
+										tabindex="19"
 										required>
 							</div>
 						</div>
 					</div>
 					<div class="row">
-						<div class="col-lg-6">
+						<div class="col-sm-6">
 							<div class="form-group">
-								<label for="state">Select State</label>
-								<br>
-								<input type="text" 
-										class="form-control" 
-										id="state" 
-										placeholder="State"
-										tabindex="10"
-										ng-model="vm.address.state"
-										required>
-								<!-- <select	class="form-control" 
-										id="state" 
-										tabindex="20"
-										ng-model="vm.address.state"
-										required>
-									<option>--Select--</option>
-								</select> -->
-							</div>
-						</div>
-						<div class="col-lg-6">
-							<div class="form-group">
-								<label for="country">Select Country</label>
+								<label for="statePermenent">Select State</label>
 								<br>
 								<select	class="form-control" 
-										id="country" 
-										tabindex="11"
-										ng-model="vm.address.country"
+										id="statePermenent" 
+										tabindex="20"
+										ng-model="vm.address.statePermenent"
+										required>
+									<option>--Select--</option>
+								</select>
+							</div>
+						</div>
+						<div class="col-sm-6">
+							<div class="form-group">
+								<label for="countryPermenent">Select Country</label>
+								<br>
+								<select	class="form-control" 
+										id="countryPermenent" 
+										tabindex="21"
+										ng-model="vm.address.countryPermenent"
 										required>
 									<option>--Select--</option>
 								</select>
 							</div>
 						</div>
 					</div>
-					
 				</div>
 			</div>
-			
-			<div class="row">
-				<div class="col-lg-12">
-					<input type="checkbox"
-						   id="forpermanentaddress"
-						   tabindex="1"
-						   ng-model="vm.address.isNotSameAsCorrespondence">
-					<label for="forpermanentaddress"> Is permanent address same as address for correspondence?
-						<span>[Tick if Yes]</span>
-					</label>
-				</div>
-			</div>	
-			<br>
-			
-			<div ng-show="!vm.address.isNotSameAsCorrespondence">
-				<div class="panel panel-default">
-					<div class="panel-heading">
-						<span style="font-family: Verdana">Permanent Address</span>
-					</div>
-					<div class="panel-body">
-						<div class="row">
-							<div class="col-lg-6">
-								<div class="form-group">
-									<label for="flatNoPermenent">Flat No. / Building Name</label>
-									<br>
-									<input type="text" 
-											class="form-control" 
-											id="flatNoPermenent"
-											placeholder="Flat No./Building"
-											ng-model="vm.address.flatNoPermenent"
-											tabindex="12"
-											required>
-								</div>
-							</div>
-							<div class="col-lg-6">
-								<div class="form-group">
-									<label for="areaPermenent">Area</label>
-									<br>
-									<input type="text" 
-											class="form-control" 
-											id="areaPermenent"
-											placeholder="Area"
-											ng-model="vm.address.areaPermenent"
-											tabindex="13"
-											required>
-								</div>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-lg-6">
-								<div class="form-group">
-									<label for="streetPermenent">Street</label>
-									<br>
-									<input type="text" 
-											class="form-control" 
-											id="streetPermenent"
-											placeholder="Street"
-											ng-model="vm.address.streetPermenent"
-											tabindex="14"
-											required>
-								</div>
-							</div>
-							<div class="col-lg-6">
-								<div class="form-group">
-									<label for="landmarkPermenent">Landmark</label>
-									<br>
-									<input type="text" 
-											class="form-control" 
-											id="landmarkPermenent"
-											placeholder="Landmark"
-											ng-model="vm.address.landmarkPermenent"
-											tabindex="15"
-											required>
-								</div>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-lg-6">
-								<div class="form-group">
-									<label for="locationareaPermenent">Location Area</label>
-									<br>
-									<select class="form-control" 
-											id="locationareaPermenent" 
-											tabindex="16"
-											ng-model="vm.address.locationareaPermenent"
-											required>
-										<option>--Select--</option>		
-									</select>
-								</div>
-							</div>
-							<div class="col-lg-6">
-								<div class="form-group">
-									<label for="districtPermenent">District</label>
-									<br>
-									<input type="text" 
-											class="form-control" 
-											id="districtPermenent" 
-											placeholder="District"
-											tabindex="17"
-											ng-model="vm.address.districtPermenent"
-											required>
-								</div>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-lg-6">
-								<div class="form-group">
-									<label for="cityPermenent">City</label>
-									<br>
-									<input type="text" 
-											class="form-control" 
-											id="cityPermenent" 
-											placeholder="City"
-											tabindex="18"
-											ng-model="vm.address.cityPermenent"
-											required>
-								</div>
-							</div>
-							<div class="col-lg-6">
-								<div class="form-group">
-									<label for="pincodePermenent">Pin Code</label>
-									<br>
-									<input type="text" 
-											class="form-control" 
-											id="pincodePermenent"
-											placeholder="Pin Code"
-											ng-model="vm.address.pinCodePermenent"
-											tabindex="19"
-											required>
-								</div>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-lg-6">
-								<div class="form-group">
-									<label for="statePermenent">Select State</label>
-									<br>
-									<select	class="form-control" 
-											id="statePermenent" 
-											tabindex="20"
-											ng-model="vm.address.statePermenent"
-											required>
-										<option>--Select--</option>
-									</select>
-								</div>
-							</div>
-							<div class="col-lg-6">
-								<div class="form-group">
-									<label for="countryPermenent">Select Country</label>
-									<br>
-									<select	class="form-control" 
-											id="countryPermenent" 
-											tabindex="21"
-											ng-model="vm.address.countryPermenent"
-											required>
-										<option>--Select--</option>
-									</select>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<div class="row">
-				<div class="col-xs-12 col-md-12">
-		        	<input type="submit" 
-		        		tabindex="22"
-		        		value="SAVE &amp; CONTINUE" 
-		        		class="btn btn-success btn-block btn-lg topMargin" 
-		        		style="margin-bottom: 10px"
-		        		ng-click="vm.submit()">
-		        </div>
-			</div>
-		
-		
 		</div>
+
+		<div class="row">
+			<div class="col-xs-12 col-md-12">
+	        	<input type="submit" 
+	        		tabindex="22"
+	        		value="SAVE &amp; CONTINUE" 
+	        		class="btn btn-success btn-block btn-lg topMargin" 
+	        		style="margin-bottom: 10px"
+	        		ng-click="vm.submit()">
+	        </div>
+		</div>
+	
+	
 	</div>
 </form>

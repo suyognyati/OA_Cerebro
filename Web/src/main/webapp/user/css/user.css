@@ -1,0 +1,59 @@
+@charset "utf-8";
+/* CSS Document */
+
+.customfont > li > a {
+	color : #becfe0;
+}
+
+.col-sm-custompadding {
+	padding-right:0px!important;
+	padding-left:0px!important;
+}
+
+.headercontent {
+	padding: 10px 0 0 0;
+	color: #00a0d3;
+}
+
+.colcontent {
+	background-color: #3cf;
+	border: #030 1px solid;
+}
+
+.colcontent1 {
+	height: 450px;
+	background-color: #3cf;
+	border: #030 1px solid;
+}
+
+.section {
+	
+}
+
+.submenubar {
+	background-color: #495B6C;
+}
+
+.footer {
+	height: 50px;
+	width: 100%;
+	background: #495B6C;
+	bottom: 0;
+}
+
+.fixed-bar {
+	position: fixed;
+}
+
+.heading {
+	border-bottom: #333 1px solid;
+	padding: 0 2%;
+}
+
+.heading h1 {
+	padding: 5px 0;
+	color: #185086;
+	font-family: sans-serif;
+	font-size: 18pt;
+	font-weight: lighter;
+}

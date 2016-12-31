@@ -1,29 +1,29 @@
+<div class="heading">
+	<h1>
+       	Personal Details
+    </h1>
+</div>
+
+<div class="well alert-danger">
+	<span>
+		<strong>NOTE:</strong> 
+		Please Enter the Name as per your SSC Marksheet / Leaving Certificate
+	</span>
+	<br>
+	<div style="margin-top:10px">
+		<span style="color:red"><big>*</big></span><span>Indicates Required Fields</span>
+	</div>
+</div>
+
 <form name="personaldetailform" novalidate>
-	<div class="panel panel-primary">
-		<div class="panel-heading">
-			<span style="font-family: Verdana; font-size: 15pt">
-	        	<strong>Personal Details</strong>
-	        </span>
-		</div>
 		<div class="panel panel-body">	
-			<div class="row">
-		       	<div class="well alert-danger">
-		           <span><strong>NOTE:</strong> 
-		           Please Enter the Name as per your SSC Marksheet / Leaving Certificate</span>
-		           <br>
-		           <div style="margin-top:10px">
-		           	  <span style="color:red"><big>*</big></span><span>Indicates Required Fields</span>
-		           </div>
-		        </div>
-			</div>
-		
 			<div class="panel panel-default">
 				<div class="panel-heading">
 					<span style="font-family:Verdana">Applicant's Name</span>
 				</div>
 				<div class="panel-body">							
 					<div class="row">
-						<div class="col-lg-6">
+						<div class="col-sm-6">
 							<div class="form-group"
 								 ng-class="{'has-error':personaldetailform.lastname.$invalid &&
 								 						personaldetailform.lastname.$dirty}">
@@ -44,7 +44,7 @@
 							</span>
 							
 						</div>
-						<div class="col-lg-6">
+						<div class="col-sm-6">
 							<div class="form-group"
 								 ng-class="{'has-error':personaldetailform.firstname.$invalid &&
 								 						personaldetailform.firstname.$dirty}">
@@ -67,7 +67,7 @@
 					</div>
 					
 					<div class="row">
-						<div class="col-lg-6">
+						<div class="col-sm-6">
 							<div class="form-group"
 								 ng-class="{'has-error':personaldetailform.middlename.$invalid &&
 								 						personaldetailform.middlename.$dirty}">
@@ -87,7 +87,7 @@
 								Middle Name is required	!  
 							</span>
 						</div>
-						<div class="col-lg-6">
+						<div class="col-sm-6">
 							<div class="form-group"
 								 ng-class="{'has-error':personaldetailform.mothersname.$invalid &&
 								 						personaldetailform.mothersname.$dirty}">
@@ -182,7 +182,7 @@
 					</div>
 					<br>
 					<div class="row" ng-show="vm.personaldetail.isPreviousName">
-						<div class="col-lg-6">
+						<div class="col-sm-6">
 							<div class="form-group">
 								<label for="reason">Reason for Name Change</label>
 								<br>
@@ -203,7 +203,7 @@
 				</div>
 				<div class="panel-body">
 					<div class="row">
-						<div class="col-lg-6 form-inline">
+						<div class="col-sm-6 form-inline">
 							<label>Gender <span style="color:red"><big>*</big></span></label>	
 							<br>	
 							<span class="form-control">
@@ -237,7 +237,7 @@
 								<label for="transGender">Transgender</label>
 							</span>
 						</div>
-						<div class="col-lg-6">
+						<div class="col-sm-6">
 							<div class="form-group">
 								<label for="dateofbirth">D.O.B. <span style="color:red"><big>*</big></span></label>
 								<br>
@@ -267,7 +267,7 @@
 					</div>
 				
 					<div class="row">
-						<div class="col-lg-6">
+						<div class="col-sm-6">
 							<div class="form-group">
 								<label for="placeofbirth">Place of Birth <span style="color:red"><big>*</big></span></label>
 								<br>
@@ -279,7 +279,7 @@
 										required>
 							</div>
 						</div>
-						<div class="col-lg-6">
+						<div class="col-sm-6">
 							<div class="form-group">
 								<label for="bloodgroup">Blood Group</label>
 								<select class="form-control" 
@@ -292,7 +292,7 @@
 						</div>
 					</div>
 					<div class="row">
-						<div class="col-lg-6">
+						<div class="col-sm-6">
 							<div class="form-group">
 								<label for="maritalstatus">Marital Status</label>
 								<br>
@@ -389,7 +389,7 @@
 					</div>
 					<br>
 					<div class="row">
-						<div class="col-lg-6">
+						<div class="col-sm-6">
 							<div class="form-group">
 								<label for="parentsemail">Parent's Email Id <span style="color:red"><big>*</big></span></label>
 								<br>
@@ -400,7 +400,7 @@
 										required>
 							</div>
 						</div>
-						<div class="col-lg-6">
+						<div class="col-sm-6">
 							<div class="form-group">
 								<label for="parentscontact">Parent's Contact No.</label>
 								<input type="text" 
@@ -445,7 +445,7 @@
 					</div>
 					<br>
 					<div class="row">
-						<div class="col-lg-6">
+						<div class="col-sm-6">
 							<div class="form-group">
 								<label for="selfoccupation">Occupation</label>
 								<br>
@@ -456,7 +456,7 @@
 								</select>
 							</div>
 						</div>
-						<div class="col-lg-6">
+						<div class="col-sm-6">
 							<div class="form-group">
 								<label for="selfincome">Your Annual Income</label>
 								<br>
@@ -477,7 +477,7 @@
 					</div>
 					<br>
 					<div class="row">
-						<div class="col-lg-6">
+						<div class="col-sm-6">
 							<div class="form-group">
 								<label for="parnetsoccupation">Occupation of Parent/Guardian</label>
 								<br>
@@ -488,7 +488,7 @@
 								</select>
 							</div>
 						</div>
-						<div class="col-lg-6">
+						<div class="col-sm-6">
 							<div class="form-group">
 								<label for="parentsincome">Annual Income of Parent/Guardian</label>
 								<br>
@@ -529,7 +529,7 @@
 				</div>
 				<div class="panel-body">
 					<div class="row">
-						<div class="col-lg-6">
+						<div class="col-sm-6">
 							<div class="form-group">
 								<label for="citizenship">Country of Citizenship<span style="color:red"><big>*</big></span></label>
 								<br>
@@ -540,7 +540,7 @@
 								</select>
 							</div>
 						</div>
-						<div class="col-lg-6">
+						<div class="col-sm-6">
 							<div class="form-group">
 								<label for="domiciled">Domicile of State <span style="color:red"><big>*</big></span></label>
 								<br>
@@ -564,7 +564,7 @@
 				</div>
 				<div class="panel-body">
 					<div class="row">
-						<div class="col-lg-6">
+						<div class="col-sm-6">
 							<div class="form-group">
 								<label for="category">Category</label>
 								<br>
@@ -575,7 +575,7 @@
 								</select>
 							</div>
 						</div>
-						<div class="col-lg-6">
+						<div class="col-sm-6">
 							<div class="form-group">
 								<label for="caste">Caste <span style="color:red"><big>*</big></span></label>
 								<br>
@@ -589,7 +589,7 @@
 					</div>
 				
 					<div class="row">
-						<div class="col-lg-6">
+						<div class="col-sm-6">
 							<div class="form-group">
 								<label for="religion">Religion</label>
 								<br>
@@ -600,7 +600,7 @@
 								</select>
 							</div>
 						</div>
-						<div class="col-lg-6">
+						<div class="col-sm-6">
 							<div class="form-group">
 								<label for="mothertongue">Mother Tongue</label>
 								<br>
@@ -613,7 +613,7 @@
 						</div>
 					</div>
 					<div class="row">
-						<div class="col-lg-6">
+						<div class="col-sm-6">
 							<div class="form-group">
 								<label for="socialreservation">Social Reservation</label>
 								<br>
@@ -624,7 +624,7 @@
 								</select>
 							</div>
 						</div>
-						<div class="col-lg-6">
+						<div class="col-sm-6">
 							<div class="form-group">
 								<label for="speciallyabled">Specially Abled</label>
 								<br>

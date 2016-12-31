@@ -1,208 +1,209 @@
-<div class="panel panel-primary">
-	<div class="panel-heading">
-		<span style="font-family: Verdana; font-size: 15pt">
-        	<strong>Educational Information</strong>
-        </span>
-	</div>
-	<div class="panel panel-body">	
+<div class="heading">
+	<h1>
+       	Educational Information
+    </h1>
+</div>
+
+<div class="well alert-danger">
+	<span><strong>NOTE:</strong> 
+		It is mandatory to fill all details of educational qualification (as applicable) from class X onwards till last completed year. 
+		If the system of marking of your school is on grading pattern,
+		convert grade into marks as applicable and fill in the respective fields. 
+		In absence of complete information, form will be rejected.
+	</span>
+</div>
+
+<div class="panel panel-body">	
 	<div class="row">
-	   	<div class="well alert-danger">
-	      <span><strong>NOTE:</strong> 
-	        It is mandatory to fill all details of educational qualification (as applicable) from class X onwards till last completed year. 
-	        If the system of marking of your school is on grading pattern,
-	        convert grade into marks as applicable and fill in the respective fields. 
-	        In absence of complete information, form will be rejected.
-	      </span>
-	    </div>
+	   	
 	</div>
 	<div class="row">
-	<div class="col-lg-12">
-		<div class="panel panel-default">	
-			<div class="panel-heading">
-				<span style="font-family: Verdana">S.S.C.</span>
-			</div>
-			<div class="panel-body">	
-				<div class="row">
-					<div class="col-lg-6">
-						<div class="form-group">
-							<label for="state">State</label>
-							<br>
-							<select	class="form-control" 
-									id="state"
-									tabindex="1" 
-									ng-model="vm.educationinformation.state">
-								<option>--Select--</option>
-							</select>
-						</div>
-					</div>
-					<div class="col-lg-6">
-						<div class="form-group">
-							<label for="board">Board</label>
-							<br>
-							<select	class="form-control" 
-									id="board"
-									tabindex="2" 
-									ng-model="vm.educationinformation.board">
-								<option>--Select--</option>
-							</select>
-						</div>
-					</div>
+		<div class="col-sm-12">
+			<div class="panel panel-default">	
+				<div class="panel-heading">
+					<span style="font-family: Verdana">S.S.C.</span>
 				</div>
+				<div class="panel-body">	
+					<div class="row">
+						<div class="col-sm-6">
+							<div class="form-group">
+								<label for="state">State</label>
+								<br>
+								<select	class="form-control" 
+										id="state"
+										tabindex="1" 
+										ng-model="vm.educationinformation.state">
+									<option>--Select--</option>
+								</select>
+							</div>
+						</div>
+						<div class="col-sm-6">
+							<div class="form-group">
+								<label for="board">Board</label>
+								<br>
+								<select	class="form-control" 
+										id="board"
+										tabindex="2" 
+										ng-model="vm.educationinformation.board">
+									<option>--Select--</option>
+								</select>
+							</div>
+						</div>
+					</div>
+					
+					<div class="row">
+						<div class="col-sm-6">
+							<div class="form-group">
+								<label for="schoolname">Institute/School Name</label>
+								<br>
+								<input type="text" 
+										class="form-control" 
+										id="schoolname"
+										tabindex="3" 
+										ng-model="vm.educationinformation.schoolName">
+							</div>
+						</div>
+						<div class="col-sm-6">
+							<div class="form-group">
+								<label for="schoolplace">Institute/School Place</label>
+								<br>
+								<input type="text" 
+										class="form-control" 
+										id="schoolplace"
+										tabindex="4" 
+										ng-model="vm.educationinformation.schoolPlace">
+							</div>
+						</div>
+					</div>
 				
-				<div class="row">
-					<div class="col-lg-6">
-						<div class="form-group">
-							<label for="schoolname">Institute/School Name</label>
-							<br>
-							<input type="text" 
-									class="form-control" 
-									id="schoolname"
-									tabindex="3" 
-									ng-model="vm.educationinformation.schoolName">
+					<div class="row">
+						<div class="col-sm-6 form-inline">
+							<label>First Attempt</label>	
+							<br>	
+							<span class="form-control">
+								<input type="radio" 
+										name="firstattempt" 
+										id="yes"
+										tabindex="5">
+								<label for="yes">Yes</label>
+							</span>
+							<span class="form-control">
+								<input type="radio" 
+										name="firstattempt" 
+										id="no"
+										tabindex="6">
+								<label for="no">No</label>
+							</span>
+						</div>
+						<div class="col-sm-6 form-inline">
+							<label>Maths Type</label>	
+							<br>	
+							<span class="form-control">
+								<input type="radio" 
+										name="mathstype" 
+										id="regular"
+										tabindex="7">
+								<label for="regular">Regular Maths</label>
+							</span>
+							<span class="form-control">
+								<input type="radio" 
+										name="mathstype" 
+										id="easy"
+										tabindex="8">
+								<label for="easy">Easy Maths</label>
+							</span>
 						</div>
 					</div>
-					<div class="col-lg-6">
-						<div class="form-group">
-							<label for="schoolplace">Institute/School Place</label>
-							<br>
-							<input type="text" 
-									class="form-control" 
-									id="schoolplace"
-									tabindex="4" 
-									ng-model="vm.educationinformation.schoolPlace">
+					<br>
+					<div class="row">
+						<div class="col-sm-6">
+							<div class="form-group">
+								<label for="passingyear">Passing Year</label>
+								<br>
+								<select	class="form-control" 
+										id="passingyear"
+										tabindex="9" 
+										ng-model="vm.educationinformation.passingYear">
+									<option>--Select--</option>
+								</select>
+							</div>
+						</div>
+						<div class="col-sm-6">
+							<div class="form-group">
+								<label for="passingmonth">Passing Month</label>
+								<br>
+								<select	class="form-control" 
+										id="passingmonth"
+										tabindex="10" 
+										ng-model="vm.educationinformation.passingMonth">
+									<option>--Select--</option>
+								</select>
+							</div>
 						</div>
 					</div>
-				</div>
-			
-				<div class="row">
-					<div class="col-lg-6 form-inline">
-						<label>First Attempt</label>	
-						<br>	
-						<span class="form-control">
-							<input type="radio" 
-									name="firstattempt" 
-									id="yes"
-									tabindex="5">
-							<label for="yes">Yes</label>
-						</span>
-						<span class="form-control">
-							<input type="radio" 
-									name="firstattempt" 
-									id="no"
-									tabindex="6">
-							<label for="no">No</label>
-						</span>
-					</div>
-					<div class="col-lg-6 form-inline">
-						<label>Maths Type</label>	
-						<br>	
-						<span class="form-control">
-							<input type="radio" 
-									name="mathstype" 
-									id="regular"
-									tabindex="7">
-							<label for="regular">Regular Maths</label>
-						</span>
-						<span class="form-control">
-							<input type="radio" 
-									name="mathstype" 
-									id="easy"
-									tabindex="8">
-							<label for="easy">Easy Maths</label>
-						</span>
-					</div>
-				</div>
-				<br>
-				<div class="row">
-					<div class="col-lg-6">
-						<div class="form-group">
-							<label for="passingyear">Passing Year</label>
-							<br>
-							<select	class="form-control" 
-									id="passingyear"
-									tabindex="9" 
-									ng-model="vm.educationinformation.passingYear">
-								<option>--Select--</option>
-							</select>
+					
+					<div class="row">
+						<div class="col-sm-6">
+							<div class="form-group">
+								<label for="marksobtained">Total Marks Obtained</label>
+								<br>
+								<input type="text" 
+										class="form-control" 
+										id="marksobtained"
+										tabindex="11" 
+										ng-model="vm.educationinformation.totalMarksObtained">
+							</div>
+						</div>
+						<div class="col-sm-6">
+							<div class="form-group">
+								<label for="outofmarks">Out of Marks</label>
+								<br>
+								<input type="text" 
+										class="form-control" 
+										id="outofmarks"
+										tabindex="12" 
+										ng-model="vm.educationinformation.outOfMarks">
+							</div>
 						</div>
 					</div>
-					<div class="col-lg-6">
-						<div class="form-group">
-							<label for="passingmonth">Passing Month</label>
-							<br>
-							<select	class="form-control" 
-									id="passingmonth"
-									tabindex="10" 
-									ng-model="vm.educationinformation.passingMonth">
-								<option>--Select--</option>
-							</select>
+					
+					<div class="row">
+						<div class="col-sm-6">
+							<div class="form-group">
+								<label for="gradeobtained">Grade Obtained</label>
+								<br>
+								<input type="text" 
+										class="form-control" 
+										id="gradeobtained"
+										tabindex="13" 
+										ng-model="vm.educationinformation.gradeObtained">
+							</div>
+						</div>
+						<div class="col-sm-6">
+							<div class="form-group">
+								<label for="seatno">Seat No.</label>
+								<br>
+								<input type="text" 
+										class="form-control" 
+										id="seatno"
+										tabindex="14" 
+										ng-model="vm.educationinformation.seatNo">
+							</div>
 						</div>
 					</div>
-				</div>
-				
-				<div class="row">
-					<div class="col-lg-6">
-						<div class="form-group">
-							<label for="marksobtained">Total Marks Obtained</label>
-							<br>
-							<input type="text" 
-									class="form-control" 
-									id="marksobtained"
-									tabindex="11" 
-									ng-model="vm.educationinformation.totalMarksObtained">
-						</div>
+					
+					<div class="row">
+						<div class="col-xs-12 col-md-12">
+				        	<input type="submit" 
+				        		tabindex="15"
+				        		value="SAVE &amp; CONTINUE" 
+				        		class="btn btn-success btn-block btn-lg topMargin" 
+				        		style="margin-bottom: 10px"
+				        		ng-click="vm.submit()">
+				        </div>
 					</div>
-					<div class="col-lg-6">
-						<div class="form-group">
-							<label for="outofmarks">Out of Marks</label>
-							<br>
-							<input type="text" 
-									class="form-control" 
-									id="outofmarks"
-									tabindex="12" 
-									ng-model="vm.educationinformation.outOfMarks">
-						</div>
-					</div>
-				</div>
-				
-				<div class="row">
-					<div class="col-lg-6">
-						<div class="form-group">
-							<label for="gradeobtained">Grade Obtained</label>
-							<br>
-							<input type="text" 
-									class="form-control" 
-									id="gradeobtained"
-									tabindex="13" 
-									ng-model="vm.educationinformation.gradeObtained">
-						</div>
-					</div>
-					<div class="col-lg-6">
-						<div class="form-group">
-							<label for="seatno">Seat No.</label>
-							<br>
-							<input type="text" 
-									class="form-control" 
-									id="seatno"
-									tabindex="14" 
-									ng-model="vm.educationinformation.seatNo">
-						</div>
-					</div>
-				</div>
-				
-				<div class="row">
-					<div class="col-xs-12 col-md-12">
-			        	<input type="submit" 
-			        		tabindex="15"
-			        		value="SAVE &amp; CONTINUE" 
-			        		class="btn btn-success btn-block btn-lg topMargin" 
-			        		style="margin-bottom: 10px"
-			        		ng-click="vm.submit()">
-			        </div>
 				</div>
 			</div>
 		</div>
-	</div>
-	</div>
 	</div>
 </div>

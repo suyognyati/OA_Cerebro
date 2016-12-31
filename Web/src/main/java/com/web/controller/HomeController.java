@@ -49,7 +49,7 @@ public class HomeController {
 		model.addAttribute("Bearer", accessTokenValue);
 		model.addAttribute("user", session.getCurrentUser());
 		model.addAttribute("userdetail", session.getCurrentUserDetail());
-		return "user/UserPage-topnavbar";
+		return "user/UserPage-newUI";
 	}
 	
 	@RequestMapping(value = { "user/" }, method = RequestMethod.GET)
