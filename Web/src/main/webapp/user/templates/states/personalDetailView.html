@@ -15,640 +15,937 @@
 	</div>
 </div>
 
-<form name="personaldetailform" novalidate>
-		<div class="panel panel-body">	
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					<span style="font-family:Verdana">Applicant's Name</span>
-				</div>
-				<div class="panel-body">							
-					<div class="row">
-						<div class="col-sm-6">
-							<div class="form-group"
-								 ng-class="{'has-error':personaldetailform.lastname.$invalid &&
-								 						personaldetailform.lastname.$dirty}">
-								<label for="lastname">Last Name <span style="color:red"><big>*</big></span></label>
-								<br>
-								<input type="text" 
-										class="form-control" 
-										id="lastname"
-										name="lastname" 
-										tabindex="1"
-										ng-model="vm.personaldetail.lastName"
-										style="text-transform:uppercase"
-										required>
-							</div>
-							<span class="help-block has-error"
-								  ng-show="personaldetailform.lastname.$dirty && personaldetailform.lastname.$error.required">
-								Last Name is required !	  
-							</span>
-							
-						</div>
-						<div class="col-sm-6">
-							<div class="form-group"
-								 ng-class="{'has-error':personaldetailform.firstname.$invalid &&
-								 						personaldetailform.firstname.$dirty}">
-								<label for="firstname">First Name <span style="color:red"><big>*</big></span></label>
-								<br>
-								<input type="text" 
-										class="form-control" 
-										id="firstname"
-										name="firstname" 
-										tabindex="2"
-										ng-model="vm.personaldetail.firstName"
-										style="text-transform:uppercase"
-										required>
-							</div>
-							<span class="help-block has-error"
-								  ng-show="personaldetailform.firstname.$dirty && personaldetailform.firstname.$error.required">
-								First Name is required !  
-							</span>
-						</div>
+<form name="personaldetailform" novalidate class="panel panel-body">
+
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<span style="font-family:Verdana">Applicant's Details</span>
+		</div>
+		<div class="panel-body">
+			<div class="row">
+				<div class="col-sm-12 form-group">
+					<div class="col-sm-3">
+						<label for="applicantsname"
+							   class="labelclass">Applicant's Full Name</label>
 					</div>
-					
-					<div class="row">
-						<div class="col-sm-6">
-							<div class="form-group"
-								 ng-class="{'has-error':personaldetailform.middlename.$invalid &&
-								 						personaldetailform.middlename.$dirty}">
-								<label for="middlename">Middle Name <span style="color:red"><big>*</big></span></label>
-								<br>
-								<input type="text" 
-										class="form-control" 
-										id="middlename"
-										name="middlename" 
-										tabindex="3"
-										ng-model="vm.personaldetail.middleName"
-										style="text-transform:uppercase"
-										required>
-							</div>
-							<span class="help-block has-error"
-								  ng-show="personaldetailform.middlename.$dirty && personaldetailform.middlename.$error.required">
-								Middle Name is required	!  
-							</span>
-						</div>
-						<div class="col-sm-6">
-							<div class="form-group"
-								 ng-class="{'has-error':personaldetailform.mothersname.$invalid &&
-								 						personaldetailform.mothersname.$dirty}">
-								<label for="mothersname">Mother's Name <span style="color:red"><big>*</big></span></label>
-								<br>
-								<input type="text" 
-										class="form-control" 
-										id="mothersname"
-										name="mothersname" 
-										tabindex="4"
-										ng-model="vm.personaldetail.mothersName"
-										style="text-transform:uppercase"
-										required>
-							</div>
-							<span class="help-block has-error"
-								  ng-show="personaldetailform.mothersname.$dirty && personaldetailform.mothersname.$error.required">
-								Mother's Name is required !	  
-							</span>
-						</div>
+					<div class="col-sm-3">
+						<input type="text" 
+							   class="form-control"
+							   id="applicantsname"
+							   placeholder="Last Name"
+							   style="text-transform:uppercase"
+							   ng-model="vm.personaldetail.lastName">
 					</div>
-					<div class="row">
-						<div class="col-lg-12">
-							<div class="form-group">
-								<label for="regionalname">Name in Regional Language<span style="color:red"><big>*</big></span></label>
-								<br>
-								<div class="col-lg-4">
-									<input type="text" 
-										class="form-control" 
-										id="regionalname"
-										name="regionalname" 
-										style="text-transform:uppercase"
-										placeholder="Last Name"
-										required>
-								</div>
-								<div class="col-lg-4">
-									<input type="text" 
-										class="form-control" 
-										id="regionalname"
-										name="regionalname" 
-										style="text-transform:uppercase"
-										placeholder="First Name"
-										required>
-								</div>
-								<div class="col-lg-4">
-									<input type="text" 
-										class="form-control" 
-										id="regionalname"
-										name="regionalname" 
-										style="text-transform:uppercase"
-										placeholder="Middle Name"
-										required>
-								</div>
-							</div>
-						</div>
+					<div class="col-sm-3">
+						<input type="text" 
+							   class="form-control"
+							   id="applicantsname"
+							   placeholder="First Name"
+							   style="text-transform:uppercase"
+							   ng-model="vm.personaldetail.firstName">
 					</div>
-					<br>
-					<div class="row">
-						<div class="col-lg-12">
-							<input type="checkbox"
-								   id="namechange"
-								   ng-model="vm.personaldetail.isPreviousName">
-							<label for="namechange">Is your name changed after Passing Qualifying Examination?
-								<span>[Tick if Yes]</span>
-							</label>
-						</div>
-					</div>
-					<div class="row" ng-show="vm.personaldetail.isPreviousName">
-						<div class="col-lg-12">	
-							<div class="form-group">
-								<label for="previousname">Previous Full Name</label>
-								<br>
-								<div class="col-lg-4">
-									<input type="text" 
-										   class="form-control"
-										   id="previousname" 
-										   placeholder="First Name">
-								</div>
-								<div class="col-lg-4">
-									<input type="text" 
-										   class="form-control"
-										   id="previousname" 
-										   placeholder="Middle Name">
-								</div>
-								<div class="col-lg-4">
-									<input type="text" 
-										   class="form-control"
-										   id="previousname" 
-										   placeholder="Last Name">
-								</div>
-							</div>
-						</div>
-					</div>
-					<br>
-					<div class="row" ng-show="vm.personaldetail.isPreviousName">
-						<div class="col-sm-6">
-							<div class="form-group">
-								<label for="reason">Reason for Name Change</label>
-								<br>
-								<select id="reason"
-									class="form-control">
-									<option>Willingly</option>
-									<option>After Marriage</option>
-								</select>
-							</div>
-						</div>
+					<div class="col-sm-3">
+						<input type="text" 
+							   class="form-control"
+							   id="applicantsname"
+							   placeholder="Middle Name"
+							   style="text-transform:uppercase"
+							   ng-model="vm.personaldetail.middleName">
 					</div>
 				</div>
 			</div>
 			
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					<span style="font-family:Verdana">Applicant's Details</span>
+			<div class="row">
+				<div class="col-sm-12 form-group">
+					<div class="col-sm-3">
+						<label for="regionalname"
+							   class="labelclass">Name in Regional Language</label>
+					</div>
+					<div class="col-sm-3">
+						<input type="text" 
+							   class="form-control"
+							   id="regionalname"
+							   placeholder="Last Name"
+							   ng-model="vm.personaldetail.lastNameRegional">
+					</div>
+					<div class="col-sm-3">
+						<input type="text" 
+							   class="form-control"
+							   id="regionalname"
+							   placeholder="First Name"
+							   ng-model="vm.personaldetail.firstNameRegional">
+					</div>
+					<div class="col-sm-3">
+						<input type="text" 
+							   class="form-control"
+							   id="regionalname"
+							   placeholder="Middle Name"
+							   ng-model="vm.personaldetail.middleNameRegional">
+					</div>
 				</div>
-				<div class="panel-body">
-					<div class="row">
-						<div class="col-sm-6 form-inline">
-							<label>Gender <span style="color:red"><big>*</big></span></label>	
-							<br>	
-							<span class="form-control">
-								<input type="radio" 
-										name="gender" 
-										id="genderMale"
-										value="1"
-										tabindex="9"
-										ng-model="vm.personaldetail.gender"
-										required>
-								<label for="genderMale">Male</label>
-							</span>
-							<span class="form-control">
-								<input type="radio" 
-										name="gender" 
-										id="genderFemale"
-										value="2"
-										tabindex="10"
-										ng-model="vm.personaldetail.gender"
-										required>
-								<label for="genderFemale">Female</label>
-							</span>
-							<span class="form-control">
-								<input type="radio" 
-										name="gender" 
-										id="transGender"
-										value="3"
-										tabindex="10"
-										ng-model="vm.personaldetail.gender"
-										required>
-								<label for="transGender">Transgender</label>
-							</span>
+			</div>
+			
+			<div class="row">
+				<div class="col-lg-12 form-group">
+					<input type="checkbox"
+						   id="namechange"
+						   ng-model="vm.personaldetail.isPreviousName">
+					<label for="namechange">Is your name changed?
+						<span>[Tick if Yes]</span>
+					</label>
+				</div>
+			</div>
+			
+			<div ng-show="vm.personaldetail.isPreviousName">
+				<div class="row">
+					<div class="col-sm-12 form-group">
+						<div class="col-sm-3">
+							<label for="newname"
+								   class="labelclass">New Full Name</label>
 						</div>
-						<div class="col-sm-6">
-							<div class="form-group">
-								<label for="dateofbirth">D.O.B. <span style="color:red"><big>*</big></span></label>
-								<br>
-								<div class="input-group">
-									<input type="text" 
-											class="form-control" 
-											id="dateofbirth"  
-											tabindex="5"
-											ui-mask="dd/mm/yyyy"
-											datepicker-popup="{{format}}"
-											is-open="vm.opened"
-											ng-model="vm.personaldetail.birthDate"
-											datepicker-options="dateOptions"
-											date-disabled="disabled(date, mode)" 
-											ng-required="true" 
-											close-text="Close"
-											required>
-									<span class="input-group-btn">
-										<button class="btn btn-default"
-												ng-click="vm.open($event)">
-											<i class="glyphicon glyphicon-calendar"></i>
-										</button>
-									</span>
-								</div>
-							</div>
+						<div class="col-sm-3">
+							<input type="text" 
+								   class="form-control"
+								   id="newname"
+								   placeholder="Last Name"
+								   style="text-transform:uppercase"
+								   ng-model="vm.personaldetail.lastNamePrevious">
+						</div>
+						<div class="col-sm-3">
+							<input type="text" 
+								   class="form-control"
+								   id="newname"
+								   placeholder="First Name"
+								   style="text-transform:uppercase"
+								   ng-model="vm.personaldetail.firstNamePrevious">
+						</div>
+						<div class="col-sm-3">
+							<input type="text" 
+								   class="form-control"
+								   id="newname"
+								   placeholder="Middle Name"
+								   style="text-transform:uppercase"
+								   ng-model="vm.personaldetail.middleNamePrevious">
 						</div>
 					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-12 form-group">
+						<div class="col-sm-3">
+							<label for="reason"
+								   class="labelclass">Reason for Name Change</label>
+						</div>
+						<div class="col-sm-3">
+							<select id="reason"
+									class="form-control"
+									ng-model="vm.personaldetail.nameChangeReason">
+								<option>Willingly</option>
+								<option>After Marriage</option>
+							</select>
+						</div>
+					</div>
+				</div>			
+			</div>
+			
+		</div>
+	</div>
+
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<span style="font-family:Verdana">Family Details</span>
+		</div>
+		<div class="panel-body">
+			<div class="row">
+				<div class="col-sm-12 form-group">
+					<div class="col-sm-3">
+						<label for="fathersname"
+							   class="labelclass">Father's Full Name</label>
+					</div>
+					<div class="col-sm-3">
+						<input type="text" 
+							   class="form-control"
+							   id="fathersname"
+							   placeholder="Last Name"
+							   style="text-transform:uppercase"
+							   ng-model="vm.personaldetail.fathersLastName">
+					</div>
+					<div class="col-sm-3">
+						<input type="text" 
+							   class="form-control"
+							   id="fathersname"
+							   placeholder="First Name"
+							   style="text-transform:uppercase"
+							   ng-model="vm.personaldetail.fathersFirstName">
+					</div>
+					<div class="col-sm-3">
+						<input type="text" 
+							   class="form-control"
+							   id="fathersname"
+							   placeholder="Middle Name"
+							   style="text-transform:uppercase"
+							   ng-model="vm.personaldetail.fathersMiddleName">
+					</div>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-sm-12 form-group">
+					<div class="col-sm-3">
+						<label for="mothersname"
+							   class="labelclass">Mother's Full Name</label>
+					</div>
+					<div class="col-sm-3">
+						<input type="text" 
+							   class="form-control"
+							   id="mothersname"
+							   placeholder="Last Name"
+							   style="text-transform:uppercase"
+							   ng-model="vm.personaldetail.mothersLastName">
+					</div>
+					<div class="col-sm-3">
+						<input type="text" 
+							   class="form-control"
+							   id="mothersname"
+							   placeholder="First Name"
+							   style="text-transform:uppercase"
+							   ng-model="vm.personaldetail.mothersFirstName">
+					</div>
+					<div class="col-sm-3">
+						<input type="text" 
+							   class="form-control"
+							   id="mothersname"
+							   placeholder="Middle Name"
+							   style="text-transform:uppercase"
+							   ng-model="vm.personaldetail.mothersMiddleName">
+					</div>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-sm-12 form-group">
+					<div class="col-sm-3">
+						<label for="parentsemail"
+							   class="labelclass">Parent's Email Id</label>
+					</div>
+					<div class="col-sm-3">
+						<input type="text" 
+							   class="form-control" 
+							   id="parentsemail"
+							   ng-model="vm.personaldetail.parentsEmailId">
+					</div>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-sm-12 form-group">
+					<div class="col-sm-3">
+						<label for="parentscontact"
+							   class="labelclass">Parent's Contact No.</label>
+					</div>
+					<div class="col-sm-3">
+						<input type="text" 
+							   class="form-control" 
+							   id="parentscontact"
+							   ng-model="vm.personaldetail.parentsContactNo">
+					</div>
+				</div>
+			</div>
+		
+		</div>
+	</div>
+	
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<span style="font-family:Verdana">Other Details</span>
+		</div>
+		<div class="panel-body">
+			<div class="row">
+				<div class="col-sm-12 form-group">
+					<div class="col-sm-3 form-inline form-group">
+						<label for="gender"
+							   class="labelclass">Gender</label>
+					</div>
+					<div class="col-sm-3">
+						<div class="col-sm-1 form-control">
+							<input type="radio" 
+								   name="gender" 
+								   id="genderMale"
+								   value="1"
+								   ng-model="vm.personaldetail.gender">
+							<label for="genderMale">Male</label>
+						</div>
+						<div class="col-sm-1 form-control">
+							<input type="radio" 
+								   name="gender" 
+								   id="genderFemale"
+								   value="2"
+								   ng-model="vm.personaldetail.gender">
+							<label for="genderFemale">Female</label>
+						</div>
+						<div class="col-sm-1 form-control">
+							<input type="radio" 
+								   name="gender" 
+								   id="transGender"
+								   value="3"
+								   ng-model="vm.personaldetail.gender">
+							<label for="transGender">Transgender</label>
+						</div>
+					</div>
+					<div class="col-sm-3">
+						<label for="dateofbirth"
+						   class="labelclass">Date of Birth</label>
+					</div>
+					<div class="col-sm-3 input-group">
+						<input type="text" 
+							   class="form-control" 
+							   id="dateofbirth"  
+							   ui-mask="dd/mm/yyyy"
+							   datepicker-popup="{{format}}"
+							   is-open="vm.opened"
+							   ng-model="vm.personaldetail.birthDate"
+							   datepicker-options="dateOptions"
+							   date-disabled="disabled(date, mode)" 
+							   ng-required="true" 
+							   close-text="Close"
+							   required>
+						<span class="input-group-btn">
+							<button class="btn btn-default"
+									ng-click="vm.open($event)">
+								<i class="glyphicon glyphicon-calendar"></i>
+							</button>
+						</span>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-sm-12 form-group">
+					<div class="col-sm-3">
+						<label for="bloodgroup"
+							   class="labelclass">Blood Group</label>
+					</div>
+					<div class="col-sm-3">
+						<select class="form-control" 
+								id="bloodgroup" 
+								ng-model="vm.personaldetail.bloodGroup"
+								ng-options="bloodgroup.bloodGroupId as bloodgroup.bloodGroupName for bloodgroup in vm.personaldetail.bloodGroups">
+						</select>
+					</div>
+					<div class="col-sm-3">
+						<label for="maritalstatus"
+							   class="labelclass">Marital Status</label>
+					</div>
+					<div class="col-sm-3">
+						<select class="form-control" 
+								id="maritalstatus"
+								tabindex="14"
+								ng-model="vm.personaldetail.maritalStatus">
+							<option selected disabled>--Select--</option>
+							<option>Married</option>
+							<option>Unmarried</option>
+						</select>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-sm-12 form-group">
+					<div class="col-sm-3">
+						<label for="placeofbirth"
+							   class="labelclass">Place of Birth</label>
+					</div>
+					<div class="col-sm-3">
+						<input type="text" 
+							   class="form-control" 
+							   id="placeofbirth"
+							   ng-model="vm.personaldetail.placeOfBirth">
+					</div>
+					<div class="col-sm-3">
+						<label for="aadharno"
+							   class="labelclass">Aadhar No</label>
+					</div>
+					<div class="col-sm-3">
+						<input type="text" 
+							   class="form-control" 
+							   id="aadharno"
+							   ng-model="vm.personaldetail.adharNo">
+					</div>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-sm-12 form-group">
+					<div class="col-sm-3">
+						<label for="educationgap"
+							   class="labelclass">Education Gap (in yrs)</label>
+					</div>
+					<div class="col-sm-3">
+						<input type="text" 
+							   class="form-control" 
+							   id="educationgap"
+							   ng-model="vm.personaldetail.educationGap">
+					</div>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<span style="font-family:Verdana">Occupation Details</span>
+		</div>
+		<div class="panel-body">
+			<div class="row">
+				<div class="col-sm-12 form-group">
+					<input type="checkbox"
+						   id="selfemployed"
+						   ng-model="vm.personaldetail.isSelfEmployed">
+					<label for="selfemployed">Are you Employed or Self-Employed?
+						<span>[Tick if Yes]</span>
+					</label>
+				</div>
+			</div>
+			
+			<div ng-show="vm.personaldetail.isSelfEmployed">
+				<div class="row">
+					<div class="col-sm-12 form-group">
+						<div class="col-sm-3">
+							<label for="experience"
+								   class="labelclass">Experience</label>
+						</div>
+						<div class="col-sm-3">
+							<input type="text"
+								   class="form-control"
+								   id="experience">
+						</div>
+						<div class="col-sm-1">
+							<label for="experience"
+								   class="labelclass">Year(s)</label>
+						</div>
+						<div class="col-sm-3">
+							<input type="text"
+								   class="form-control"
+								   id="experience">
+						</div>
+						<div class="col-sm-1">
+							<label for="experience"
+								   class="labelclass">Months</label>
+						</div>
+					</div>
+					
+				</div>
 				
-					<div class="row">
-						<div class="col-sm-6">
-							<div class="form-group">
-								<label for="placeofbirth">Place of Birth <span style="color:red"><big>*</big></span></label>
-								<br>
-								<input type="text" 
-										class="form-control" 
-										id="placeofbirth"
-										tabindex="12"
-										ng-model="vm.personaldetail.placeOfBirth"
-										required>
-							</div>
+				<div class="row">
+					<div class="col-sm-12 form-group">
+						<div class="col-sm-3">
+							<label for="selfoccupation"
+								   class="labelclass">Occupation</label>
 						</div>
-						<div class="col-sm-6">
-							<div class="form-group">
-								<label for="bloodgroup">Blood Group</label>
-								<select class="form-control" 
-										id="bloodgroup" 
-										tabindex="11"
-										ng-model="vm.personaldetail.bloodGroup"
-										ng-options="bloodgroup.bloodGroupId as bloodgroup.bloodGroupName for bloodgroup in vm.personaldetail.bloodGroups">
-								</select>
-							</div>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-sm-6">
-							<div class="form-group">
-								<label for="maritalstatus">Marital Status</label>
-								<br>
-								<select class="form-control" 
-										id="maritalstatus"
-										tabindex="14"
-										ng-model="vm.personaldetail.maritalStatus">
-									<option selected disabled>--Select--</option>
-									<option>Married</option>
-									<option>Unmarried</option>
-								</select>
-							</div>
+						<div class="col-sm-3">
+							<select class="form-control" 
+									id="selfoccupation"
+									tabindex="14">
+								<option selected disabled>--Select--</option>
+							</select>
 						</div>
 					</div>
 				</div>
-			</div>
-			
-			
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					<span style="font-family:Verdana">Family and Occupation Details</span>
-				</div>
-				<div class="panel-body">
-					<div class="row">
-						<div class="col-lg-12">
-							<div class="form-group">
-								<label for="fathersname">Father's Full Name<span style="color:red"><big>*</big></span></label>
-								<br>
-								<div class="col-lg-4">
-									<input type="text" 
-										class="form-control" 
-										id="fathersname"
-										name="fathersname" 
-										style="text-transform:uppercase"
-										placeholder="Last Name"
-										required>
-								</div>
-								<div class="col-lg-4">
-									<input type="text" 
-										class="form-control" 
-										id="fathersname"
-										name="fathersname" 
-										style="text-transform:uppercase"
-										placeholder="First Name"
-										required>
-								</div>
-								<div class="col-lg-4">
-									<input type="text" 
-										class="form-control" 
-										id="fathersname"
-										name="fathersname" 
-										style="text-transform:uppercase"
-										placeholder="Middle Name"
-										required>
-								</div>
-							</div>
-						</div>
-					</div>
-					<br>
-					<div class="row">
-						<div class="col-lg-12">
-							<div class="form-group">
-								<label for="maidenname">Mother's Maiden Name<span style="color:red"><big>*</big></span></label>
-								<br>
-								<div class="col-lg-4">
-									<input type="text" 
-										class="form-control" 
-										id="maidenname"
-										name="maidenname" 
-										style="text-transform:uppercase"
-										placeholder="Last Name"
-										required>
-								</div>
-								<div class="col-lg-4">
-									<input type="text" 
-										class="form-control" 
-										id="maidenname"
-										name="maidenname" 
-										style="text-transform:uppercase"
-										placeholder="First Name"
-										required>
-								</div>
-								<div class="col-lg-4">
-									<input type="text" 
-										class="form-control" 
-										id="maidenname"
-										name="maidenname" 
-										style="text-transform:uppercase"
-										placeholder="Middle Name"
-										required>
-								</div>
-							</div>
-						</div>
-					</div>
-					<br>
-					<div class="row">
-						<div class="col-sm-6">
-							<div class="form-group">
-								<label for="parentsemail">Parent's Email Id <span style="color:red"><big>*</big></span></label>
-								<br>
-								<input type="text" 
-										class="form-control" 
-										id="parentsemail"
-										tabindex="12"
-										required>
-							</div>
-						</div>
-						<div class="col-sm-6">
-							<div class="form-group">
-								<label for="parentscontact">Parent's Contact No.</label>
-								<input type="text" 
-										class="form-control" 
-										id="parentscontact"
-										tabindex="12"
-										required>
-							</div>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-lg-12">
-							<input type="checkbox"
-								   id="selfemployed">
-							<label for="selfemployed">Are you Employed or Self-Employed?
-								<span>[Tick if Yes]</span>
-							</label>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-lg-4">
-							<label for="experience">Experience</label>
-						</div>
-						<div class="form-group">
-							<div class="col-lg-2">
-								<input type="text"
-									   class="form-control"
-									   id="experience">
-							</div>
-							<div class="col-lg-2">
-								<label for="experience">Year(s)</label>
-							</div>
-							<div class="col-lg-2">
-								<input type="text"
-									   class="form-control"
-									   id="experience">
-							</div>
-							<div class="col-lg-2">
-								<label for="experience">Months</label>
-							</div>
-						</div>
-					</div>
-					<br>
-					<div class="row">
-						<div class="col-sm-6">
-							<div class="form-group">
-								<label for="selfoccupation">Occupation</label>
-								<br>
-								<select class="form-control" 
-										id="selfoccupation"
-										tabindex="14">
-									<option selected disabled>--Select--</option>
-								</select>
-							</div>
-						</div>
-						<div class="col-sm-6">
-							<div class="form-group">
-								<label for="selfincome">Your Annual Income</label>
-								<br>
-								<input type="text"
-									   class="form-control"
-									   id="selfincome">
-							</div>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-lg-12">
-							<input type="checkbox"
-								   id="leavewithoutpay">
-							<label for="leavewithoutpay">Have you applied for leave without pay for the entire duration of the course?
-								<span>[Tick if Yes]</span>
-							</label>
-						</div>
-					</div>
-					<br>
-					<div class="row">
-						<div class="col-sm-6">
-							<div class="form-group">
-								<label for="parnetsoccupation">Occupation of Parent/Guardian</label>
-								<br>
-								<select class="form-control" 
-										id="parnetsoccupation"
-										tabindex="14">
-									<option selected disabled>--Select--</option>
-								</select>
-							</div>
-						</div>
-						<div class="col-sm-6">
-							<div class="form-group">
-								<label for="parentsincome">Annual Income of Parent/Guardian</label>
-								<br>
-								<input type="text"
-									   class="form-control"
-									   id="parentsincome">
-							</div>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-lg-12">
-							<input type="checkbox"
-								   id="ebc">
-							<label for="ebc">Is Parent/Guardian from EBC (Economic Backward Class)?
-								<span>[Tick if Yes]</span>
-							</label>
-						</div>
-					</div>
-					<br>
-					<div class="row">
-						<div class="col-lg-12">
-					       	<div class="well alert-danger">
-					           <span>
-					           Students whose family income is below defined limit, fall under EBC category. 
-					           The EBC certificate issued by the competent authority is mandatory.
-					           </span>
-					    	</div>
-					    </div>
-					</div>
-					
-				</div>
-			</div>
-			
-			
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					<span style="font-family:Verdana">Nationality Details</span>
-				</div>
-				<div class="panel-body">
-					<div class="row">
-						<div class="col-sm-6">
-							<div class="form-group">
-								<label for="citizenship">Country of Citizenship<span style="color:red"><big>*</big></span></label>
-								<br>
-								<select class="form-control" 
-										id="citizenship"
-										tabindex="14">
-									<option selected disabled>--Select--</option>
-								</select>
-							</div>
-						</div>
-						<div class="col-sm-6">
-							<div class="form-group">
-								<label for="domiciled">Domicile of State <span style="color:red"><big>*</big></span></label>
-								<br>
-								<select class="form-control" 
-										id="citizenship"
-										tabindex="14"
-										ng-model="vm.personaldetail.domiciledIn"
-										required>
-									<option selected disabled>--Select--</option>
-								</select>
-							</div>
-						</div>
-					</div>
-					
-				</div>
-			</div>
-			
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					<span style="font-family:Verdana">Caste Details</span>
-				</div>
-				<div class="panel-body">
-					<div class="row">
-						<div class="col-sm-6">
-							<div class="form-group">
-								<label for="category">Category</label>
-								<br>
-								<select class="form-control" 
-										id="category"
-										tabindex="14">
-									<option selected disabled>--Select--</option>
-								</select>
-							</div>
-						</div>
-						<div class="col-sm-6">
-							<div class="form-group">
-								<label for="caste">Caste <span style="color:red"><big>*</big></span></label>
-								<br>
-								<input type="text" 
-										class="form-control" 
-										id="caste"
-										tabindex="12"
-										required>
-							</div>
-						</div>
-					</div>
 				
-					<div class="row">
-						<div class="col-sm-6">
-							<div class="form-group">
-								<label for="religion">Religion</label>
-								<br>
-								<select class="form-control" 
-										id="religion"
-										tabindex="14">
-									<option selected disabled>--Select--</option>
-								</select>
-							</div>
+				<div class="row">
+					<div class="col-sm-12 form-group">
+						<div class="col-sm-3">
+							<label for="selfincome"
+								   class="labelclass">Your Annual Income</label>
 						</div>
-						<div class="col-sm-6">
-							<div class="form-group">
-								<label for="mothertongue">Mother Tongue</label>
-								<br>
-								<select class="form-control" 
-										id="mothertongue"
-										tabindex="14">
-									<option selected disabled>--Select--</option>
-								</select>
-							</div>
+						<div class="col-sm-3">
+							<input type="text"
+								   class="form-control"
+								   id="selfincome">
 						</div>
 					</div>
-					<div class="row">
-						<div class="col-sm-6">
-							<div class="form-group">
-								<label for="socialreservation">Social Reservation</label>
-								<br>
-								<select class="form-control" 
-										id="socialreservation"
-										tabindex="14">
-									<option selected disabled>--Select--</option>
-								</select>
-							</div>
+				</div>
+				
+				<div class="row">
+					<div class="col-sm-12 form-group">
+						<input type="checkbox"
+							   id="leavewithoutpay">
+						<label for="leavewithoutpay">Have you applied for leave without pay for the entire duration of the course?
+							<span>[Tick if Yes]</span>
+						</label>
+					</div>
+				</div>
+			</div>
+			
+			<div ng-show="!vm.personaldetail.isSelfEmployed">
+				<div class="row">
+					<div class="col-sm-12 form-group">
+						<div class="col-sm-3">
+							<label for="parnetsoccupation"
+								   class="labelclass">Occupation of Guardian</label>
 						</div>
-						<div class="col-sm-6">
-							<div class="form-group">
-								<label for="speciallyabled">Specially Abled</label>
-								<br>
-								<select class="form-control" 
-										id="speciallyabled"
-										tabindex="14">
-									<option selected disabled>--Select--</option>
-								</select>
-							</div>
+						<div class="col-sm-3">
+							<select class="form-control" 
+									id="parnetsoccupation"
+									tabindex="14">
+								<option selected disabled>--Select--</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col-sm-12 form-group">
+						<div class="col-sm-3">
+							<label for="parentsincome"
+								   class="labelclass">Annual Income of Guardian</label>
+						</div>
+						<div class="col-sm-3">
+							<input type="text"
+								   class="form-control"
+								   id="parentsincome">
 						</div>
 					</div>
 				</div>
 			</div>
 			
 			<div class="row">
-				<div class="col-xs-12 col-md-12">
-		        	<input type="submit" 
-		        		tabindex="21"
-		        		value="SAVE &amp; CONTINUE" 
-		        		class="btn btn-success btn-block btn-lg topMargin" 
-		        		style="margin-bottom: 10px"
-		        		ng-click="vm.submit()">
-		        </div>
+				<div class="col-sm-12 form-group">
+					<input type="checkbox"
+						   id="ebc">
+					<label for="ebc">Are you eligible for EBC (Economic Backward Class)?
+						<span>[Tick if Yes]</span>
+					</label>
+				</div>
 			</div>
+			
+			<div class="row">
+				<div class="col-lg-12">
+			       	<div class="well alert-danger">
+			           <span>
+			           Students whose family income is below defined limit, fall under EBC category. 
+			           The EBC certificate issued by the competent authority is mandatory.
+			           </span>
+			    	</div>
+			    </div>
+			</div>
+	
 		</div>
 	</div>
+	
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<span style="font-family:Verdana">Nationality Details</span>
+		</div>
+		<div class="panel-body">
+			<div class="row">
+				<div class="col-sm-12 form-group">
+					<div class="col-sm-3">
+						<label for="citizenship"
+							   class="labelclass">Country of Citizenship</label>
+					</div>
+					<div class="col-sm-3">
+						<select class="form-control" 
+								id="citizenship">
+							<option selected disabled>--Select--</option>
+						</select>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-sm-12 form-group">
+					<div class="col-sm-3">
+						<label for="domiciled"
+							   class="labelclass">Domicile of State</label>
+					</div>
+					<div class="col-sm-3">
+						<select class="form-control" 
+								id="citizenship"
+								ng-model="vm.personaldetail.domiciledIn">
+							<option selected disabled>--Select--</option>
+						</select>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-sm-12 form-group">
+					<div class="col-sm-3">
+						<label for="passportno"
+							   class="labelclass">Passport No.</label>
+					</div>
+					<div class="col-sm-3">
+						<input type="text"
+							   class="form-control"
+							   id="passportno">
+					</div>
+					<div class="col-sm-3">
+						<label for="placeofissue"
+							   class="labelclass">Place of Issue of Passport</label>
+					</div>
+					<div class="col-sm-3">
+						<input type="text"
+							   class="form-control"
+							   id="placeofissue">
+					</div>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-sm-12 form-group">
+					<div class="col-sm-3">
+						<label for="dateofissue"
+							   class="labelclass">Date of Issue of Passport</label>
+					</div>
+					<div class="col-sm-3">
+						<input type="text"
+							   class="form-control"
+							   id="dateofissue">
+					</div>
+					<div class="col-sm-3">
+						<label for="dateofexpiry"
+							   class="labelclass">Date of Expiry of Passport</label>
+					</div>
+					<div class="col-sm-3">
+						<input type="text"
+							   class="form-control"
+							   id="placeofissue">
+					</div>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-sm-12 form-group">
+					<div class="col-sm-3">
+						<label for="issuingauthority"
+							   class="labelclass">Passport Issuing Authority</label>
+					</div>
+					<div class="col-sm-3">
+						<select class="form-control" 
+								id="issuingauthority">
+							<option selected disabled>--Select--</option>
+						</select>
+					</div>
+					<div class="col-sm-3">
+						<label for="issuingcountry"
+							   class="labelclass">Passport Issuing Country</label>
+					</div>
+					<div class="col-sm-3">
+						<select class="form-control" 
+								id="issuingcountry">
+							<option selected disabled>--Select--</option>
+						</select>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-sm-12 form-group">
+					<div class="col-sm-3">
+						<label for="visatype"
+							   class="labelclass">Visa Type</label>
+					</div>
+					<div class="col-sm-3">
+						<select class="form-control" 
+								id="visatype">
+							<option selected disabled>--Select--</option>
+						</select>
+					</div>
+					<div class="col-sm-3">
+						<label for="visavalidupto"
+							   class="labelclass">Visa Valid Upto</label>
+					</div>
+					<div class="col-sm-3">
+						<input type="text"
+							   class="form-control"
+							   id="visavalidupto">
+					</div>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-sm-12 form-group">
+					<div class="col-sm-3">
+						<label for="visasponsoringagency"
+							   class="labelclass">Visa Sponsoring Agency</label>
+					</div>
+					<div class="col-sm-3">
+						<select class="form-control" 
+								id="visasponsoringagency">
+							<option selected disabled>--Select--</option>
+						</select>
+					</div>
+					<div class="col-sm-3">
+						<label for="residentialpermitno"
+							   class="labelclass">Residential Permit No.</label>
+					</div>
+					<div class="col-sm-3">
+						<input type="text"
+							   class="form-control"
+							   id="residentialpermitno">
+					</div>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+	
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<span style="font-family:Verdana">Caste Details</span>
+		</div>
+		<div class="panel-body">
+			<div class="row">
+				<div class="col-sm-12 form-group">
+					<div class="col-sm-3">
+						<label for="caste"
+							   class="labelclass">Caste</label>
+					</div>
+					<div class="col-sm-3">
+						<input type="text" 
+								class="form-control" 
+								id="caste">
+					</div>
+					<div class="col-sm-3">
+						<label for="category"
+							   class="labelclass">Category</label>
+					</div>
+					<div class="col-sm-3">
+						<select class="form-control" 
+								id="category">
+							<option selected disabled>--Select--</option>
+						</select>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-sm-12 form-group">
+					<div class="col-sm-3">
+						<label for="religion"
+							   class="labelclass">Religion</label>
+					</div>
+					<div class="col-sm-3">
+						<select class="form-control" 
+								id="religion"
+								tabindex="14">
+							<option selected disabled>--Select--</option>
+						</select>
+					</div>
+					<div class="col-sm-3">
+						<label for="mothertongue"
+							   class="labelclass">Mother Tongue</label>
+					</div>
+					<div class="col-sm-3">
+						<select class="form-control" 
+								id="mothertongue"
+								tabindex="14">
+							<option selected disabled>--Select--</option>
+						</select>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-sm-12 form-group">
+					<div class="col-sm-3">
+						<label for="speciallyabled"
+							   class="labelclass">Specially Abled</label>
+					</div>
+					<div class="col-sm-3">
+						<select class="form-control" 
+								id="speciallyabled"
+								tabindex="14">
+							<option selected disabled>--Select--</option>
+						</select>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-sm-12 form-group">
+					<div class="col-sm-3">
+						<label for="socialreservation"
+							   class="labelclass">Social Reservation</label>
+					</div>
+					<div class="col-sm-5">
+						<input type="checkbox"
+							   name="socialreservation"
+							   id="socialreservation1"
+							   value="1">
+						<label for="socialreservation1">Ex-Serviceman/Ward of Ex-Serviceman</label>
+					</div>
+					<div class="col-sm-4">
+						<input type="checkbox"
+							   name="socialreservation"
+							   id="socialreservation4"
+							   value="4">
+						<label for="socialreservation4">Ward of Primary Teacher</label>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-sm-12 form-group">
+					<div class="col-sm-3">
+					</div>
+					<div class="col-sm-5">
+						<input type="checkbox"
+							   name="socialreservation"
+							   id="socialreservation2"
+							   value="2">
+						<label for="socialreservation2">Active Serviceman/Ward of Active Serviceman</label>
+					</div>
+					<div class="col-sm-4">
+						<input type="checkbox"
+							   name="socialreservation"
+							   id="socialreservation5"
+							   value="5">
+						<label for="socialreservation5">Ward of Secondary Teacher</label>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-sm-12 form-group">
+					<div class="col-sm-3">
+					</div>
+					<div class="col-sm-5">
+						<input type="checkbox"
+							   name="socialreservation"
+							   id="socialreservation3"
+							   value="3">
+						<label for="socialreservation3">Freedom Fighter/Ward of Freedom Fighter</label>
+					</div>
+					<div class="col-sm-4">
+						<input type="checkbox"
+							   name="socialreservation"
+							   id="socialreservation6"
+							   value="6">
+						<label for="socialreservation6">Deserted/Divorced/Widowed Women</label>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-sm-12 form-group">
+					<div class="col-sm-3">
+					</div>
+					<div class="col-sm-5">
+						<input type="checkbox"
+							   name="socialreservation"
+							   id="socialreservation7"
+							   value="7">
+						<label for="socialreservation7">Member of Project Affected Family</label>
+					</div>
+					<div class="col-sm-4">
+						<input type="checkbox"
+							   name="socialreservation"
+							   id="socialreservation8"
+							   value="8">
+						<label for="socialreservation8">Member of Earthquake Affected Family</label>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-sm-12 form-group">
+					<div class="col-sm-3">
+					</div>
+					<div class="col-sm-5">
+						<input type="checkbox"
+							   name="socialreservation"
+							   id="socialreservation9"
+							   value="9">
+						<label for="socialreservation9">Member of Flood/Famine Affected Family</label>
+					</div>
+					<div class="col-sm-4">
+						<input type="checkbox"
+							   name="socialreservation"
+							   id="socialreservation10"
+							   value="10">
+						<label for="socialreservation10">Resident of Tribal Area</label>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-sm-12 form-group">
+					<div class="col-sm-3">
+					</div>
+					<div class="col-sm-5">
+						<input type="checkbox"
+							   name="socialreservation"
+							   id="socialreservation12"
+							   value="12">
+						<label for="socialreservation12">Resident of Disputed Boundary Area</label>
+					</div>
+					<div class="col-sm-4">
+						<input type="checkbox"
+							   name="socialreservation"
+							   id="socialreservation11"
+							   value="11">
+						<label for="socialreservation11">Kashmir Migrant</label>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-sm-12 form-group">
+					<div class="col-sm-3">
+					</div>
+					<div class="col-sm-5">
+						<input type="checkbox"
+							   name="socialreservation"
+							   id="socialreservation13"
+							   value="13">
+						<label for="socialreservation13">Below Poverty Line Student</label>
+					</div>
+					<div class="col-sm-4">
+						<input type="checkbox"
+							   name="socialreservation"
+							   id="socialreservation14"
+							   value="14">
+						<label for="socialreservation14">Teacher in 'Innovative School'</label>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-sm-12 form-group">
+					<div class="col-sm-3">
+					</div>
+					<div class="col-sm-5">
+						<input type="checkbox"
+							   name="socialreservation"
+							   id="socialreservation16"
+							   value="16">
+						<label for="socialreservation16">Ward of Transferred Central/State Government Employee</label>
+					</div>
+					<div class="col-sm-4">
+						<input type="checkbox"
+							   name="socialreservation"
+							   id="socialreservation15"
+							   value="15">
+						<label for="socialreservation15">University Staff Quota</label>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+			
+	<div class="row">
+		<div class="col-xs-12 col-md-12">
+        	<input type="submit" 
+        		tabindex="21"
+        		value="SAVE &amp; CONTINUE" 
+        		class="btn btn-success btn-block btn-lg topMargin" 
+        		style="margin-bottom: 10px"
+        		ng-click="vm.submit()">
+        </div>
+	</div>
+
+
 </form>

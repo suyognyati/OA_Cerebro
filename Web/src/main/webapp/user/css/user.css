@@ -57,3 +57,12 @@
 	font-size: 18pt;
 	font-weight: lighter;
 }
+
+.labelclass{
+	padding-top:7px;
+	text-align:right;
+}
+
+.input-group {
+	padding-left:10px;
+}

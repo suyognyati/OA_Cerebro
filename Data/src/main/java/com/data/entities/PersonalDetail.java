@@ -1,6 +1,5 @@
 package com.data.entities;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -245,6 +244,110 @@ public class PersonalDetail {
 		}
 
 //ENDREGION ********************
+
+//******************** REGION FAMILY DETAIL
+		
+	@Column(name="FathersLastName")
+	private String fathersLastName;
+	
+	@Column(name="FathersFirstName")
+	private String fathersFirstName;
+	
+	@Column(name="FathersMiddleName")
+	private String fathersMiddleName;
+	
+	@Column(name="MothersLastName")
+	private String mothersLastName;
+	
+	@Column(name="MothersFirstName")
+	private String mothersFirstName;
+	
+	@Column(name="MothersMiddleName")
+	private String mothersMiddleName;
+	
+	@Column(name="ParentsEmailId")
+	private String parentsEmailId;
+	
+	@Column(name="ParentsContactNo")
+	private String parentsContactNo;
+	
+	@Column(name="IsSelfEmployed")
+	private Boolean isSelfEmployed;
+		
+		
+		//FathersLastName
+		public String getFathersLastName() {
+			return fathersLastName;
+		}
+		public void setFathersLastName(String fathersLastName) {
+			this.fathersLastName = fathersLastName;
+		}
+		
+		//FathersFirstName
+		public String getFathersFirstName() {
+			return fathersFirstName;
+		}
+		public void setFathersFirstName(String fathersFirstName) {
+			this.fathersFirstName = fathersFirstName;
+		}
+		
+		//FatherdsMiddleName
+		public String getFathersMiddleName() {
+			return fathersMiddleName;
+		}
+		public void setFathersMiddleName(String fathersMiddleName) {
+			this.fathersMiddleName = fathersMiddleName;
+		}
+		
+		//MothersLastName
+		public String getMothersLastName() {
+			return mothersLastName;
+		}
+		public void setMothersLastName(String mothersLastName) {
+			this.mothersLastName = mothersLastName;
+		}
+		
+		//MotherdsFirstName
+		public String getMothersFirstName() {
+			return mothersFirstName;
+		}
+		public void setMothersFirstName(String mothersFirstName) {
+			this.mothersFirstName = mothersFirstName;
+		}
+		
+		//MothersMiddleName
+		public String getMothersMiddleName() {
+			return mothersMiddleName;
+		}
+		public void setMothersMiddleName(String mothersMiddleName) {
+			this.mothersMiddleName = mothersMiddleName;
+		}
+		
+		//ParentsEmailId
+		public String getParentsEmailId() {
+			return parentsEmailId;
+		}
+		public void setParentsEmailId(String parentsEmailId) {
+			this.parentsEmailId = parentsEmailId;
+		}
+		
+		//ParentsContactNo
+		public String getParentsContactNo() {
+			return parentsContactNo;
+		}
+		public void setParentsContactNo(String parentsContactNo) {
+			this.parentsContactNo = parentsContactNo;
+		}
+		
+		//IsSelfEmployed
+		public Boolean getIsSelfEmployed() {
+			return isSelfEmployed;
+		}
+		public void setIsSelfEmployed(Boolean isSelfEmployed) {
+			this.isSelfEmployed = isSelfEmployed;
+		}
+		
+//ENDREGION ********************		
 
 //******************** REGION NATIONALITY DETAIL
 	

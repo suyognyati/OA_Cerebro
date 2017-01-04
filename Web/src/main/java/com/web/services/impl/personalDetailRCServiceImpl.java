@@ -92,6 +92,16 @@ public class personalDetailRCServiceImpl implements PersonalDetailRCService {
 			personalDetailModel.setMaritalStatus(personalDetail.getMaritalStatus());
 			personalDetailModel.setBloodGroup(personalDetail.getBloodGroup() != null ? personalDetail.getBloodGroup().getBloodGroupId() : -1);
 			
+			personalDetailModel.setFathersLastName(personalDetail.getFathersLastName());
+			personalDetailModel.setFathersFirstName(personalDetail.getFathersFirstName());
+			personalDetailModel.setFathersMiddleName(personalDetail.getFathersMiddleName());
+			personalDetailModel.setMothersLastName(personalDetail.getMothersLastName());
+			personalDetailModel.setMothersFirstName(personalDetail.getMothersFirstName());
+			personalDetailModel.setMothersMiddleName(personalDetail.getMothersMiddleName());
+			personalDetailModel.setParentsEmailId(personalDetail.getParentsEmailId());
+			personalDetailModel.setParentsContactNo(personalDetail.getParentsContactNo());
+			personalDetailModel.setIsSelfEmployed(personalDetail.getIsSelfEmployed());
+			
 			personalDetailModel.setDomiciledIn(personalDetail.getDomicil());
 			
 			personalDetailModel.setFlatNo(personalDetail.getAddress().getFlatNo());
@@ -126,6 +136,16 @@ public class personalDetailRCServiceImpl implements PersonalDetailRCService {
 		personalDetail.setGender(Enums.GenderTypes[personalDetailModel.getGender() - 1]);
 		personalDetail.setMaritalStatus(personalDetailModel.getMaritalStatus());
 		personalDetail.setPlaceOfBirth(personalDetailModel.getPlaceOfBirth());
+		
+		personalDetail.setFathersLastName(personalDetailModel.getFathersLastName());
+		personalDetail.setFathersFirstName(personalDetailModel.getFathersFirstName());
+		personalDetail.setFathersMiddleName(personalDetailModel.getFathersMiddleName());
+		personalDetail.setMothersLastName(personalDetailModel.getMothersLastName());
+		personalDetail.setMothersFirstName(personalDetailModel.getMothersFirstName());
+		personalDetail.setMothersMiddleName(personalDetailModel.getMothersMiddleName());
+		personalDetail.setParentsEmailId(personalDetailModel.getParentsEmailId());
+		personalDetail.setParentsContactNo(personalDetailModel.getParentsContactNo());
+		personalDetail.setIsSelfEmployed(personalDetailModel.getIsSelfEmployed());
 		
 		personalDetail.setDomicil(personalDetailModel.getDomiciledIn());
 		
