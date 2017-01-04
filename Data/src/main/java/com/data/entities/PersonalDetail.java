@@ -6,12 +6,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-
-import com.data.entities.Enums.GenderType;
-import com.data.entities.Enums.MaritalStatusType;
 
 /**
  * The persistent class for the PersonalDetails database table.
@@ -197,9 +193,8 @@ public class PersonalDetail {
 	@Column(name="MaritalStatus")
 	private int maritalStatus;
 
-	@JoinColumn(name="FK_BloodGroup")
-	@ManyToOne
-	private BloodGroup bloodGroup;
+	@Column(name="BloodGroup")
+	private int bloodGroup;
 	
 		//AdharNo
 		public String getAdharNo() {
@@ -210,12 +205,11 @@ public class PersonalDetail {
 		}
 		
 		//Gender
-		public GenderType getGender() {
-			GenderType gender = Enums.GenderTypes[this.gender - 1];
+		public int getGender() {
 			return gender;
 		}
-		public void setGender(final GenderType gender) {
-			this.gender = gender.getValue();
+		public void setGender(final int gender) {
+			this.gender = gender;
 		}
 		
 		//PlaceOfBirth
@@ -227,19 +221,18 @@ public class PersonalDetail {
 		}
 		
 		//MaritalStatus
-		public MaritalStatusType getMaritalStatus() {
-			MaritalStatusType maritalStatus = Enums.MaritalStatusTypes[this.maritalStatus - 1];
+		public int getMaritalStatus() {
 			return maritalStatus;
 		}
-		public void setMaritalStatus(MaritalStatusType maritalStatus) {
-			this.maritalStatus = maritalStatus.getValue();
+		public void setMaritalStatus(int maritalStatus) {
+			this.maritalStatus = maritalStatus;
 		}
 		
 		//BloodGroup
-		public BloodGroup getBloodGroup() {
+		public int getBloodGroup() {
 			return bloodGroup;
 		}
-		public void setBloodGroup(final BloodGroup bloodGroup) {
+		public void setBloodGroup(final int bloodGroup) {
 			this.bloodGroup = bloodGroup;
 		}
 

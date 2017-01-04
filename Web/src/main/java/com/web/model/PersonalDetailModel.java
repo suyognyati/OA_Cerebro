@@ -2,9 +2,7 @@ package com.web.model;
 
 import java.util.List;
 
-import com.data.entities.BloodGroup;
 import com.data.entities.Enums;
-import com.data.entities.Enums.MaritalStatusType;
 
 public class PersonalDetailModel {
 	
@@ -22,6 +20,7 @@ public class PersonalDetailModel {
 	private String lastNamePrevious;
 	private String middleNamePrevious;
 	private int nameChangeReason;
+	private List<Enums.KeyValuePair> nameChangeReasonList;
 	
 		// LastName getter setter
 		public String getLastName() {
@@ -104,15 +103,12 @@ public class PersonalDetailModel {
 		}
 
 		// LastNamePrevious getter setter
-
 		public String getLastNamePrevious() {
 			return lastNamePrevious;
 		}
 		public void setLastNamePrevious(String lastNamePrevious) {
 			this.lastNamePrevious = lastNamePrevious;
 		}
-
-
 		
 		// MidleNamePrevious getter setter
 		public String getMiddleNamePrevious() {
@@ -131,6 +127,14 @@ public class PersonalDetailModel {
 			this.nameChangeReason = nameChangeReason;
 		}
 
+		//Marital Status List getter setter
+		public List<Enums.KeyValuePair> getNameChangeReasonList() {
+			return nameChangeReasonList;
+		}
+		public void setNameChangeReasonList(List<Enums.KeyValuePair> nameChangeReasonList) {
+			this.nameChangeReasonList = nameChangeReasonList;
+		}
+
 //END REGION ********************
 		
 //******************** REGION OTHER DETAIL
@@ -141,7 +145,8 @@ public class PersonalDetailModel {
 	private String placeOfBirth;
 	private int maritalStatus;
 	private String adharNo;
-	private List<BloodGroup> bloodGroups;
+	private List<Enums.KeyValuePair> bloodGroupList;
+	private List<Enums.KeyValuePair> maritalStatusList;
 	
 		// BirthDate getter setter
 		public String getBirthDate() {
@@ -176,13 +181,11 @@ public class PersonalDetailModel {
 		}
 		
 		//Marrital Status getter setter
-		public MaritalStatusType getMaritalStatus() {
-			int index = (this.maritalStatus > 0 && this.maritalStatus < 3) ? this.maritalStatus - 1 : 0;
-			MaritalStatusType maritalStatus = Enums.MaritalStatusTypes[index];
+		public int getMaritalStatus() {
 			return maritalStatus;
 		}
-		public void setMaritalStatus(MaritalStatusType maritalStatus) {
-			this.maritalStatus = maritalStatus.getValue();
+		public void setMaritalStatus(int maritalStatus) {
+			this.maritalStatus = maritalStatus;
 		}
 	
 		//Adhar No getter setter
@@ -193,14 +196,22 @@ public class PersonalDetailModel {
 			this.adharNo = adharNo;
 		}
 		
-		//List of Blood Group getter setter
-		public List<BloodGroup> getBloodGroups() {
-			return bloodGroups;
+		//Blood Group List getter setter
+		public List<Enums.KeyValuePair> getBloodGroupList() {
+			return bloodGroupList;
 		}
-		public void setBloodGroups(List<BloodGroup> bloodGroups) {
-			this.bloodGroups = bloodGroups;
+		public void setBloodGroupList(List<Enums.KeyValuePair> bloodGroupList) {
+			this.bloodGroupList = bloodGroupList;
 		}
-	
+		
+		//Marital Status List getter setter
+		public List<Enums.KeyValuePair> getMaritalStatusList() {
+			return maritalStatusList;
+		}
+		public void setMaritalStatusList(List<Enums.KeyValuePair> maritalStatusList) {
+			this.maritalStatusList = maritalStatusList;
+		}
+		
 //END REGION ********************	
 
 //******************** REGION FAMILY DETAIL

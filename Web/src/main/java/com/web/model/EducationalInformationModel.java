@@ -1,9 +1,5 @@
 package com.web.model;
 
-import com.data.entities.Enums;
-import com.data.entities.Enums.FirstAttemptType;
-import com.data.entities.Enums.MathsTypeType;
-
 public class EducationalInformationModel {
 	private String state;
 	private String board;
@@ -70,28 +66,26 @@ public class EducationalInformationModel {
 	/**
 	 * @return the firstAttempt
 	 */
-	public FirstAttemptType getFirstAttempt() {
-		FirstAttemptType firstAttempt = Enums.FirstAttemptTypes[this.firstAttempt - 1];
+	public int getFirstAttempt() {
 		return firstAttempt;
 	}
 	/**
 	 * @param firstAttempt the firstAttempt to set
 	 */
-	public void setFirstAttempt(FirstAttemptType firstAttempt) {
-		this.firstAttempt = firstAttempt.getValue();
+	public void setFirstAttempt(int firstAttempt) {
+		this.firstAttempt = firstAttempt;
 	}
 	/**
 	 * @return the mathsType
 	 */
-	public MathsTypeType getMathsType() {
-		MathsTypeType mathsType = Enums.MathsTypeTypes[this.mathsType - 1];
+	public int getMathsType() {
 		return mathsType;
 	}
 	/**
 	 * @param mathsType the mathsType to set
 	 */
-	public void setMathsType(MathsTypeType mathsType) {
-		this.mathsType = mathsType.getValue();
+	public void setMathsType(int mathsType) {
+		this.mathsType = mathsType;
 	}
 	/**
 	 * @return the passingYear

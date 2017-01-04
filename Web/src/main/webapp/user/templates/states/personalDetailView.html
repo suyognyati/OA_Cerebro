@@ -138,9 +138,8 @@
 						<div class="col-sm-3">
 							<select id="reason"
 									class="form-control"
-									ng-model="vm.personaldetail.nameChangeReason">
-								<option>Willingly</option>
-								<option>After Marriage</option>
+									ng-model="vm.personaldetail.nameChangeReason"
+									ng-options="nameChangeReason.key as nameChangeReason.value for nameChangeReason in vm.personaldetail.nameChangeReasonList">
 							</select>
 						</div>
 					</div>
@@ -260,13 +259,13 @@
 		</div>
 		<div class="panel-body">
 			<div class="row">
-				<div class="col-sm-12 form-group">
-					<div class="col-sm-3 form-inline form-group">
+				<div class="col-sm-12">
+					<div class="col-sm-3">
 						<label for="gender"
 							   class="labelclass">Gender</label>
 					</div>
-					<div class="col-sm-3">
-						<div class="col-sm-1 form-control">
+					<div class="col-sm-6 form-inline form-group" style="padding-top:7px">
+						<div class="col-sm-2">
 							<input type="radio" 
 								   name="gender" 
 								   id="genderMale"
@@ -274,7 +273,7 @@
 								   ng-model="vm.personaldetail.gender">
 							<label for="genderMale">Male</label>
 						</div>
-						<div class="col-sm-1 form-control">
+						<div class="col-sm-2">
 							<input type="radio" 
 								   name="gender" 
 								   id="genderFemale"
@@ -282,7 +281,7 @@
 								   ng-model="vm.personaldetail.gender">
 							<label for="genderFemale">Female</label>
 						</div>
-						<div class="col-sm-1 form-control">
+						<div class="col-sm-3">
 							<input type="radio" 
 								   name="gender" 
 								   id="transGender"
@@ -290,6 +289,22 @@
 								   ng-model="vm.personaldetail.gender">
 							<label for="transGender">Transgender</label>
 						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-sm-12 form-group">
+					<div class="col-sm-3">
+						<label for="bloodgroup"
+							   class="labelclass">Blood Group</label>
+					</div>
+					<div class="col-sm-3">
+						<select class="form-control" 
+								id="bloodgroup" 
+								ng-model="vm.personaldetail.bloodGroup"
+								ng-options="bloodgroup.key as bloodgroup.value for bloodgroup in vm.personaldetail.bloodGroupList">
+						</select>
 					</div>
 					<div class="col-sm-3">
 						<label for="dateofbirth"
@@ -321,17 +336,6 @@
 			<div class="row">
 				<div class="col-sm-12 form-group">
 					<div class="col-sm-3">
-						<label for="bloodgroup"
-							   class="labelclass">Blood Group</label>
-					</div>
-					<div class="col-sm-3">
-						<select class="form-control" 
-								id="bloodgroup" 
-								ng-model="vm.personaldetail.bloodGroup"
-								ng-options="bloodgroup.bloodGroupId as bloodgroup.bloodGroupName for bloodgroup in vm.personaldetail.bloodGroups">
-						</select>
-					</div>
-					<div class="col-sm-3">
 						<label for="maritalstatus"
 							   class="labelclass">Marital Status</label>
 					</div>
@@ -339,17 +343,10 @@
 						<select class="form-control" 
 								id="maritalstatus"
 								tabindex="14"
-								ng-model="vm.personaldetail.maritalStatus">
-							<option selected disabled>--Select--</option>
-							<option>Married</option>
-							<option>Unmarried</option>
+								ng-model="vm.personaldetail.maritalStatus"
+								ng-options="maritalStatus.key as maritalStatus.value for maritalStatus in vm.personaldetail.maritalStatusList">
 						</select>
 					</div>
-				</div>
-			</div>
-			
-			<div class="row">
-				<div class="col-sm-12 form-group">
 					<div class="col-sm-3">
 						<label for="placeofbirth"
 							   class="labelclass">Place of Birth</label>
@@ -360,6 +357,11 @@
 							   id="placeofbirth"
 							   ng-model="vm.personaldetail.placeOfBirth">
 					</div>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-sm-12 form-group">
 					<div class="col-sm-3">
 						<label for="aadharno"
 							   class="labelclass">Aadhar No</label>
@@ -370,11 +372,6 @@
 							   id="aadharno"
 							   ng-model="vm.personaldetail.adharNo">
 					</div>
-				</div>
-			</div>
-			
-			<div class="row">
-				<div class="col-sm-12 form-group">
 					<div class="col-sm-3">
 						<label for="educationgap"
 							   class="labelclass">Education Gap (in yrs)</label>

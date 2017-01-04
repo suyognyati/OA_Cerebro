@@ -1,16 +1,14 @@
 package com.web.services.impl;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.data.entities.Address;
-import com.data.entities.BloodGroup;
-import com.data.entities.Enums;
+import com.data.entities.Enums.BloodGroup;
+import com.data.entities.Enums.MaritalStatus;
+import com.data.entities.Enums.NameChangeReason;
 import com.data.entities.PersonalDetail;
 import com.data.entities.UserDetail;
-import com.data.services.BloodGroupService;
 import com.data.services.PersonalDetailService;
 import com.data.services.UserDetailService;
 import com.web.model.PersonalDetailModel;
@@ -27,17 +25,13 @@ public class personalDetailRCServiceImpl implements PersonalDetailRCService {
 	UserDetailService userDetailService; 
 	
 	@Autowired
-	BloodGroupService bloodGroupService;
-	
-	@Autowired
 	Session userSession;
 	
 	public PersonalDetailModel getPersonalDetail(){
 		PersonalDetailModel personalDetailModel = new PersonalDetailModel();
 		UserDetail userDetail = userDetailService.getByUser(userSession.getCurrentUser());
 		PersonalDetail personalDetail = personalDetailService.getByUser(userSession.getCurrentUser());
-		List<BloodGroup> bloodGroupList =  bloodGroupService.getAll();
-		personalDetailModel = setPersonalDetailModelObject(personalDetailModel, userDetail, personalDetail, bloodGroupList);
+		personalDetailModel = setPersonalDetailModelObject(personalDetailModel, userDetail, personalDetail);
 		return personalDetailModel;
 	}
 	
@@ -48,22 +42,20 @@ public class personalDetailRCServiceImpl implements PersonalDetailRCService {
 			personalDetail.setUser(userSession.getCurrentUser());
 		}
 		
-		BloodGroup bloodGroup = bloodGroupService.getByBloodGroupId(personalDetailModel.getBloodGroup());
-		
 		Address address = personalDetail.getAddress();		
 		if(address == null) {
 			address = new Address();
 			personalDetail.setAddress(address);
 		}
 		
-		personalDetail = setPersonalDetailObject(personalDetail, personalDetailModel, bloodGroup, address);
+		personalDetail = setPersonalDetailObject(personalDetail, personalDetailModel, address);
 		
 		personalDetailService.save(personalDetail);
 		
 	}
 
 	private PersonalDetailModel setPersonalDetailModelObject(PersonalDetailModel personalDetailModel, 
-			UserDetail userDetail, PersonalDetail personalDetail, List<BloodGroup> bloodGroupList) {
+			UserDetail userDetail, PersonalDetail personalDetail) {
 		
 		if(userDetail != null) {
 			personalDetailModel.setLastName(userDetail.getLastName().toUpperCase());
@@ -87,10 +79,10 @@ public class personalDetailRCServiceImpl implements PersonalDetailRCService {
 			
 			
 			personalDetailModel.setAdharNo(personalDetail.getAdharNo());
-			personalDetailModel.setGender(personalDetail.getGender().getValue());
+			personalDetailModel.setGender(personalDetail.getGender());
 			personalDetailModel.setPlaceOfBirth(personalDetail.getPlaceOfBirth());
 			personalDetailModel.setMaritalStatus(personalDetail.getMaritalStatus());
-			personalDetailModel.setBloodGroup(personalDetail.getBloodGroup() != null ? personalDetail.getBloodGroup().getBloodGroupId() : -1);
+			personalDetailModel.setBloodGroup(personalDetail.getBloodGroup());
 			
 			personalDetailModel.setFathersLastName(personalDetail.getFathersLastName());
 			personalDetailModel.setFathersFirstName(personalDetail.getFathersFirstName());
@@ -111,11 +103,13 @@ public class personalDetailRCServiceImpl implements PersonalDetailRCService {
 			personalDetailModel.setState(personalDetail.getAddress().getState());
 			personalDetailModel.setPinCode(personalDetail.getAddress().getPinCode());
 		}
-		personalDetailModel.setBloodGroups(bloodGroupList);
+		personalDetailModel.setBloodGroupList(BloodGroup.getEnumList());
+		personalDetailModel.setMaritalStatusList(MaritalStatus.getEnumList());
+		personalDetailModel.setNameChangeReasonList(NameChangeReason.getEnumList());
 		return personalDetailModel;
 	}
 
-	private PersonalDetail setPersonalDetailObject(PersonalDetail personalDetail, PersonalDetailModel personalDetailModel, BloodGroup bloodGroup, Address address) {
+	private PersonalDetail setPersonalDetailObject(PersonalDetail personalDetail, PersonalDetailModel personalDetailModel, Address address) {
 		
 		personalDetail.setLastName(personalDetailModel.getLastName().toUpperCase());
 		personalDetail.setFirstName(personalDetailModel.getFirstName().toUpperCase());
@@ -132,8 +126,8 @@ public class personalDetailRCServiceImpl implements PersonalDetailRCService {
 		personalDetail.setNameChangeReason(personalDetailModel.getNameChangeReason());
 		
 		personalDetail.setAdharNo(personalDetailModel.getAdharNo());		
-		personalDetail.setBloodGroup(bloodGroup);
-		personalDetail.setGender(Enums.GenderTypes[personalDetailModel.getGender() - 1]);
+		personalDetail.setBloodGroup(personalDetailModel.getBloodGroup());
+		personalDetail.setGender(personalDetailModel.getGender());
 		personalDetail.setMaritalStatus(personalDetailModel.getMaritalStatus());
 		personalDetail.setPlaceOfBirth(personalDetailModel.getPlaceOfBirth());
 		

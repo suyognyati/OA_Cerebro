@@ -10,9 +10,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import com.data.entities.Enums.FirstAttemptType;
-import com.data.entities.Enums.MathsTypeType;
-
 @Entity
 @Table(name="EducationalInformation")
 public class EducationalInformation {
@@ -111,21 +108,19 @@ public class EducationalInformation {
 	}
 	
 	//FirstAttempt
-	public FirstAttemptType getFirstAttempt() {
-		FirstAttemptType firstAttempt = Enums.FirstAttemptTypes[this.firstAttempt - 1];
+	public int getFirstAttempt() {
 		return firstAttempt;
 	}
-	public void setFirstAttempt(final FirstAttemptType firstAttempt) {
-		this.firstAttempt = firstAttempt.getValue();
+	public void setFirstAttempt(final int firstAttempt) {
+		this.firstAttempt = firstAttempt;
 	}
 	
 	//MathsType
-	public MathsTypeType getMathsType() {
-		MathsTypeType mathsType = Enums.MathsTypeTypes[this.mathsType - 1];
+	public int getMathsType() {
 		return mathsType;
 	}
-	public void setMathsType(final MathsTypeType mathsType) {
-		this.mathsType = mathsType.getValue();
+	public void setMathsType(final int mathsType) {
+		this.mathsType = mathsType;
 	}
 	
 	//PassingYear
