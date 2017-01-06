@@ -120,6 +120,27 @@
 							}
 					})
 					
+					.state("occupationReservation",{
+							url: "/occupationreservation",
+							views: {
+								"view":{
+									templateUrl: basePath + "templates/states/occupationReservationView.html",
+									controller:"OccupationReservationCtrl as vm",
+								}
+							},
+							resolve: {
+								basicDetail : ['$ocLazyLoad', function($ocLazyLoad){
+									return $ocLazyLoad.load({
+										name : 'admission',
+										files : [
+										     basePath + 'app/controllers/occupationReservationCtrl.js'
+										]
+								
+									})
+								}]
+							}
+					})
+					
 					.state("familyInformation",{
 							url: "/familyinformation",
 							views: {

@@ -84,6 +84,7 @@
 							<li class="active"><a ui-sref="personalDetail"><strong>Personal Details</strong></a></li>
 							<li><a ui-sref="address"><strong>Address Details</strong></a></li>
 							<li><a ui-sref="educationInformation"><strong>Educational Information</strong></a></li>
+							<li><a ui-sref="occupationReservation"><strong>Occupation & Reservation</strong></a></li>
 							<li><a href="#"><strong>Upload Photo & Signature</strong></a></li>
 							<!-- <li class="active"><a href="#">View Profile</a></li>
 							<li><a href="#">Application Status</a></li>

@@ -1,0 +1,396 @@
+<div class="heading">
+	<h1>
+       	Occupation and Reservation Details
+    </h1>
+</div>
+
+<form name="personaldetailform" novalidate class="panel panel-body">
+
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<span style="font-family:Verdana">Occupation Details</span>
+		</div>
+		<div class="panel-body">
+			<div class="row">
+				<div class="col-sm-12 form-group">
+					<input type="checkbox"
+						   id="selfemployed"
+						   ng-model="vm.ocupationreservation.isSelfEmployed">
+					<label for="selfemployed">Are you Employed or Self-Employed?
+						<span>[Tick if Yes]</span>
+					</label>
+				</div>
+			</div>
+			
+			<div ng-show="vm.ocupationreservation.isSelfEmployed">
+				<div class="row">
+					<div class="col-sm-12 form-group">
+						<div class="col-sm-3">
+							<label for="experience"
+								   class="labelclass">Experience</label>
+						</div>
+						<div class="col-sm-3">
+							<input type="text"
+								   class="form-control"
+								   id="experience">
+						</div>
+						<div class="col-sm-1">
+							<label for="experience"
+								   class="labelclass">Year(s)</label>
+						</div>
+						<div class="col-sm-3">
+							<input type="text"
+								   class="form-control"
+								   id="experience">
+						</div>
+						<div class="col-sm-1">
+							<label for="experience"
+								   class="labelclass">Months</label>
+						</div>
+					</div>
+					
+				</div>
+				
+				<div class="row">
+					<div class="col-sm-12 form-group">
+						<div class="col-sm-3">
+							<label for="selfoccupation"
+								   class="labelclass">Occupation</label>
+						</div>
+						<div class="col-sm-3">
+							<select class="form-control" 
+									id="selfoccupation"
+									tabindex="14">
+								<option selected disabled>--Select--</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col-sm-12 form-group">
+						<div class="col-sm-3">
+							<label for="selfincome"
+								   class="labelclass">Your Annual Income</label>
+						</div>
+						<div class="col-sm-3">
+							<input type="text"
+								   class="form-control"
+								   id="selfincome">
+						</div>
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col-sm-12 form-group">
+						<input type="checkbox"
+							   id="leavewithoutpay">
+						<label for="leavewithoutpay">Have you applied for leave without pay for the entire duration of the course?
+							<span>[Tick if Yes]</span>
+						</label>
+					</div>
+				</div>
+			</div>
+			
+			<div ng-show="!vm.ocupationreservation.isSelfEmployed">
+				<div class="row">
+					<div class="col-sm-12 form-group">
+						<div class="col-sm-3">
+							<label for="parnetsoccupation"
+								   class="labelclass">Occupation of Guardian</label>
+						</div>
+						<div class="col-sm-3">
+							<select class="form-control" 
+									id="parnetsoccupation"
+									tabindex="14">
+								<option selected disabled>--Select--</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col-sm-12 form-group">
+						<div class="col-sm-3">
+							<label for="parentsincome"
+								   class="labelclass">Annual Income of Guardian</label>
+						</div>
+						<div class="col-sm-3">
+							<input type="text"
+								   class="form-control"
+								   id="parentsincome">
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-sm-12 form-group">
+					<input type="checkbox"
+						   id="ebc">
+					<label for="ebc">Are you eligible for EBC (Economic Backward Class)?
+						<span>[Tick if Yes]</span>
+					</label>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-lg-12">
+			       	<div class="well alert-danger">
+			           <span>
+			           Students whose family income is below defined limit, fall under EBC category. 
+			           The EBC certificate issued by the competent authority is mandatory.
+			           </span>
+			    	</div>
+			    </div>
+			</div>
+	
+		</div>
+	</div>
+
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<span style="font-family:Verdana">Caste Details</span>
+		</div>
+		<div class="panel-body">
+			<div class="row">
+				<div class="col-sm-12 form-group">
+					<div class="col-sm-3">
+						<label for="caste"
+							   class="labelclass">Caste</label>
+					</div>
+					<div class="col-sm-3">
+						<input type="text" 
+								class="form-control" 
+								id="caste">
+					</div>
+					<div class="col-sm-3">
+						<label for="category"
+							   class="labelclass">Category</label>
+					</div>
+					<div class="col-sm-3">
+						<select class="form-control" 
+								id="category">
+							<option selected disabled>--Select--</option>
+						</select>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-sm-12 form-group">
+					<div class="col-sm-3">
+						<label for="religion"
+							   class="labelclass">Religion</label>
+					</div>
+					<div class="col-sm-3">
+						<select class="form-control" 
+								id="religion"
+								tabindex="14">
+							<option selected disabled>--Select--</option>
+						</select>
+					</div>
+					<div class="col-sm-3">
+						<label for="mothertongue"
+							   class="labelclass">Mother Tongue</label>
+					</div>
+					<div class="col-sm-3">
+						<select class="form-control" 
+								id="mothertongue"
+								tabindex="14">
+							<option selected disabled>--Select--</option>
+						</select>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-sm-12 form-group">
+					<div class="col-sm-3">
+						<label for="speciallyabled"
+							   class="labelclass">Specially Abled</label>
+					</div>
+					<div class="col-sm-3">
+						<select class="form-control" 
+								id="speciallyabled"
+								tabindex="14">
+							<option selected disabled>--Select--</option>
+						</select>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-sm-12 form-group">
+					<div class="col-sm-3">
+						<label for="socialreservation"
+							   class="labelclass">Social Reservation</label>
+					</div>
+					<div class="col-sm-5">
+						<input type="checkbox"
+							   name="socialreservation"
+							   id="socialreservation1"
+							   value="1">
+						<label for="socialreservation1">Ex-Serviceman/Ward of Ex-Serviceman</label>
+					</div>
+					<div class="col-sm-4">
+						<input type="checkbox"
+							   name="socialreservation"
+							   id="socialreservation4"
+							   value="4">
+						<label for="socialreservation4">Ward of Primary Teacher</label>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-sm-12 form-group">
+					<div class="col-sm-3">
+					</div>
+					<div class="col-sm-5">
+						<input type="checkbox"
+							   name="socialreservation"
+							   id="socialreservation2"
+							   value="2">
+						<label for="socialreservation2">Active Serviceman/Ward of Active Serviceman</label>
+					</div>
+					<div class="col-sm-4">
+						<input type="checkbox"
+							   name="socialreservation"
+							   id="socialreservation5"
+							   value="5">
+						<label for="socialreservation5">Ward of Secondary Teacher</label>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-sm-12 form-group">
+					<div class="col-sm-3">
+					</div>
+					<div class="col-sm-5">
+						<input type="checkbox"
+							   name="socialreservation"
+							   id="socialreservation3"
+							   value="3">
+						<label for="socialreservation3">Freedom Fighter/Ward of Freedom Fighter</label>
+					</div>
+					<div class="col-sm-4">
+						<input type="checkbox"
+							   name="socialreservation"
+							   id="socialreservation6"
+							   value="6">
+						<label for="socialreservation6">Deserted/Divorced/Widowed Women</label>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-sm-12 form-group">
+					<div class="col-sm-3">
+					</div>
+					<div class="col-sm-5">
+						<input type="checkbox"
+							   name="socialreservation"
+							   id="socialreservation7"
+							   value="7">
+						<label for="socialreservation7">Member of Project Affected Family</label>
+					</div>
+					<div class="col-sm-4">
+						<input type="checkbox"
+							   name="socialreservation"
+							   id="socialreservation8"
+							   value="8">
+						<label for="socialreservation8">Member of Earthquake Affected Family</label>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-sm-12 form-group">
+					<div class="col-sm-3">
+					</div>
+					<div class="col-sm-5">
+						<input type="checkbox"
+							   name="socialreservation"
+							   id="socialreservation9"
+							   value="9">
+						<label for="socialreservation9">Member of Flood/Famine Affected Family</label>
+					</div>
+					<div class="col-sm-4">
+						<input type="checkbox"
+							   name="socialreservation"
+							   id="socialreservation10"
+							   value="10">
+						<label for="socialreservation10">Resident of Tribal Area</label>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-sm-12 form-group">
+					<div class="col-sm-3">
+					</div>
+					<div class="col-sm-5">
+						<input type="checkbox"
+							   name="socialreservation"
+							   id="socialreservation12"
+							   value="12">
+						<label for="socialreservation12">Resident of Disputed Boundary Area</label>
+					</div>
+					<div class="col-sm-4">
+						<input type="checkbox"
+							   name="socialreservation"
+							   id="socialreservation11"
+							   value="11">
+						<label for="socialreservation11">Kashmir Migrant</label>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-sm-12 form-group">
+					<div class="col-sm-3">
+					</div>
+					<div class="col-sm-5">
+						<input type="checkbox"
+							   name="socialreservation"
+							   id="socialreservation13"
+							   value="13">
+						<label for="socialreservation13">Below Poverty Line Student</label>
+					</div>
+					<div class="col-sm-4">
+						<input type="checkbox"
+							   name="socialreservation"
+							   id="socialreservation14"
+							   value="14">
+						<label for="socialreservation14">Teacher in 'Innovative School'</label>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-sm-12 form-group">
+					<div class="col-sm-3">
+					</div>
+					<div class="col-sm-5">
+						<input type="checkbox"
+							   name="socialreservation"
+							   id="socialreservation16"
+							   value="16">
+						<label for="socialreservation16">Ward of Transferred Central/State Government Employee</label>
+					</div>
+					<div class="col-sm-4">
+						<input type="checkbox"
+							   name="socialreservation"
+							   id="socialreservation15"
+							   value="15">
+						<label for="socialreservation15">University Staff Quota</label>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+	
+</form>
