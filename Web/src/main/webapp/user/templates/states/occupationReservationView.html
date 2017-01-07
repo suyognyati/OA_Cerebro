@@ -15,14 +15,14 @@
 				<div class="col-sm-12 form-group">
 					<input type="checkbox"
 						   id="selfemployed"
-						   ng-model="vm.ocupationreservation.isSelfEmployed">
+						   ng-model="vm.occupationandreservation.isSelfEmployed">
 					<label for="selfemployed">Are you Employed or Self-Employed?
 						<span>[Tick if Yes]</span>
 					</label>
 				</div>
 			</div>
 			
-			<div ng-show="vm.ocupationreservation.isSelfEmployed">
+			<div ng-show="vm.occupationandreservation.isSelfEmployed">
 				<div class="row">
 					<div class="col-sm-12 form-group">
 						<div class="col-sm-3">
@@ -32,6 +32,7 @@
 						<div class="col-sm-3">
 							<input type="text"
 								   class="form-control"
+								   ng-model="vm.occupationandreservation.experienceYrs"
 								   id="experience">
 						</div>
 						<div class="col-sm-1">
@@ -41,6 +42,7 @@
 						<div class="col-sm-3">
 							<input type="text"
 								   class="form-control"
+								   ng-model="vm.occupationandreservation.experienceMonths"
 								   id="experience">
 						</div>
 						<div class="col-sm-1">
@@ -60,8 +62,9 @@
 						<div class="col-sm-3">
 							<select class="form-control" 
 									id="selfoccupation"
+									ng-model="vm.occupationandreservation.occupation"
+									ng-options="occupationList.key as occupationList.value for occupationList in vm.occupationandreservation.occupationList"
 									tabindex="14">
-								<option selected disabled>--Select--</option>
 							</select>
 						</div>
 					</div>
@@ -76,6 +79,7 @@
 						<div class="col-sm-3">
 							<input type="text"
 								   class="form-control"
+								   ng-model="vm.occupationandreservation.selfAnnualIncome"
 								   id="selfincome">
 						</div>
 					</div>
@@ -84,7 +88,8 @@
 				<div class="row">
 					<div class="col-sm-12 form-group">
 						<input type="checkbox"
-							   id="leavewithoutpay">
+							   id="leavewithoutpay"
+							   ng-model="vm.occupationandreservation.isLeaveWithoutPay">
 						<label for="leavewithoutpay">Have you applied for leave without pay for the entire duration of the course?
 							<span>[Tick if Yes]</span>
 						</label>
@@ -92,7 +97,7 @@
 				</div>
 			</div>
 			
-			<div ng-show="!vm.ocupationreservation.isSelfEmployed">
+			<div ng-show="!vm.occupationandreservation.isSelfEmployed">
 				<div class="row">
 					<div class="col-sm-12 form-group">
 						<div class="col-sm-3">
@@ -102,8 +107,9 @@
 						<div class="col-sm-3">
 							<select class="form-control" 
 									id="parnetsoccupation"
+									ng-model="vm.occupationandreservation.occupation"
+									ng-options="occupationList.key as occupationList.value for occupationList in vm.occupationandreservation.occupationList"
 									tabindex="14">
-								<option selected disabled>--Select--</option>
 							</select>
 						</div>
 					</div>
@@ -118,6 +124,7 @@
 						<div class="col-sm-3">
 							<input type="text"
 								   class="form-control"
+								   ng-model="vm.occupationandreservation.guardianAnnualIncome"
 								   id="parentsincome">
 						</div>
 					</div>
@@ -127,7 +134,8 @@
 			<div class="row">
 				<div class="col-sm-12 form-group">
 					<input type="checkbox"
-						   id="ebc">
+						   id="ebc"
+						   ng-model="vm.occupationandreservation.isEligibleForEBC">
 					<label for="ebc">Are you eligible for EBC (Economic Backward Class)?
 						<span>[Tick if Yes]</span>
 					</label>
@@ -162,6 +170,7 @@
 					<div class="col-sm-3">
 						<input type="text" 
 								class="form-control" 
+								ng-model="vm.occupationandreservation.caste"
 								id="caste">
 					</div>
 					<div class="col-sm-3">
@@ -170,8 +179,9 @@
 					</div>
 					<div class="col-sm-3">
 						<select class="form-control" 
-								id="category">
-							<option selected disabled>--Select--</option>
+								id="category"
+								ng-model="vm.occupationandreservation.category"
+								ng-options="categoryList.key as categoryList.value for categoryList in vm.occupationandreservation.categoryList">
 						</select>
 					</div>
 				</div>
@@ -186,8 +196,9 @@
 					<div class="col-sm-3">
 						<select class="form-control" 
 								id="religion"
-								tabindex="14">
-							<option selected disabled>--Select--</option>
+								tabindex="14"
+								ng-model="vm.occupationandreservation.religion"
+								ng-options="religionList.key as religionList.value for religionList in vm.occupationandreservation.religionList">
 						</select>
 					</div>
 					<div class="col-sm-3">
@@ -197,8 +208,9 @@
 					<div class="col-sm-3">
 						<select class="form-control" 
 								id="mothertongue"
-								tabindex="14">
-							<option selected disabled>--Select--</option>
+								tabindex="14"
+								ng-model="vm.occupationandreservation.motherTongue"
+								ng-options="motherTongueList.key as motherTongueList.value for motherTongueList in vm.occupationandreservation.motherTongueList">
 						</select>
 					</div>
 				</div>
@@ -213,8 +225,9 @@
 					<div class="col-sm-3">
 						<select class="form-control" 
 								id="speciallyabled"
-								tabindex="14">
-							<option selected disabled>--Select--</option>
+								tabindex="14"
+								ng-model="vm.occupationandreservation.speciallyAbled"
+								ng-options="speciallyAbledList.key as speciallyAbledList.value for speciallyAbledList in vm.occupationandreservation.speciallyAbledList">
 						</select>
 					</div>
 				</div>
@@ -393,4 +406,14 @@
 		</div>
 	</div>
 	
+	<div class="row">
+		<div class="col-xs-12 col-md-12">
+        	<input type="submit" 
+        		tabindex="22"
+        		value="SAVE &amp; CONTINUE" 
+        		class="btn btn-success btn-block btn-lg topMargin" 
+        		style="margin-bottom: 10px"
+        		ng-click="vm.submit()">
+        </div>
+	</div>
 </form>

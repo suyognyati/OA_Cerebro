@@ -21,13 +21,13 @@ public class PersonalDetail {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="PersonalDetailId")
-	private int personalDetailId;
+	private Integer personalDetailId;
 	
 		//PersonalDetailId
-		public int getPersonalDetailId() {
+		public Integer getPersonalDetailId() {
 			return personalDetailId;
 		}
-		public void setPersonalDetailId(final int personalDetailId) {
+		public void setPersonalDetailId(final Integer personalDetailId) {
 			this.personalDetailId = personalDetailId;
 		}
 		
@@ -41,7 +41,7 @@ public class PersonalDetail {
 	private String lastName;
 	
 	@Column(name="RelationType")
-	private int relationType;
+	private Integer relationType;
 	
 	@Column(name="MiddleName")
 	private String middleName;
@@ -71,7 +71,7 @@ public class PersonalDetail {
 	private String middleNamePrevious;
 	
 	@Column(name="NameChangeReason")
-	private int nameChangeReason;
+	private Integer nameChangeReason;
 	
 		//FirstName
 		public String getFirstName() {
@@ -90,10 +90,10 @@ public class PersonalDetail {
 		}
 		
 		//RelationType
-		public int getRelationType() {
-			return relationType;
+		public Integer getRelationType() {
+			return relationType == null ? 0 : relationType;
 		}
-		public void setRelationType(int relationType) {
+		public void setRelationType(Integer relationType) {
 			this.relationType = relationType;
 		}
 		
@@ -170,10 +170,10 @@ public class PersonalDetail {
 		}
 		
 		//NameChangeReason
-		public int getNameChangeReason() {
-			return nameChangeReason;
+		public Integer getNameChangeReason() {
+			return nameChangeReason == null ? 0 : nameChangeReason;
 		}
-		public void setNameChangeReason(int nameChangeReason) {
+		public void setNameChangeReason(Integer nameChangeReason) {
 			this.nameChangeReason = nameChangeReason;
 		}
 	
@@ -185,16 +185,16 @@ public class PersonalDetail {
 	private String adharNo;
 	
 	@Column(name="Gender")
-	private int gender;
+	private Integer gender;
 
 	@Column(name="PlaceOfBirth")
 	private String placeOfBirth;
 
 	@Column(name="MaritalStatus")
-	private int maritalStatus;
+	private Integer maritalStatus;
 
 	@Column(name="BloodGroup")
-	private int bloodGroup;
+	private Integer bloodGroup;
 	
 		//AdharNo
 		public String getAdharNo() {
@@ -205,10 +205,10 @@ public class PersonalDetail {
 		}
 		
 		//Gender
-		public int getGender() {
-			return gender;
+		public Integer getGender() {
+			return gender == null ? 0 : gender;
 		}
-		public void setGender(final int gender) {
+		public void setGender(final Integer gender) {
 			this.gender = gender;
 		}
 		
@@ -221,18 +221,18 @@ public class PersonalDetail {
 		}
 		
 		//MaritalStatus
-		public int getMaritalStatus() {
-			return maritalStatus;
+		public Integer getMaritalStatus() {
+			return maritalStatus == null ? 0 : maritalStatus;
 		}
-		public void setMaritalStatus(int maritalStatus) {
+		public void setMaritalStatus(Integer maritalStatus) {
 			this.maritalStatus = maritalStatus;
 		}
 		
 		//BloodGroup
-		public int getBloodGroup() {
-			return bloodGroup;
+		public Integer getBloodGroup() {
+			return bloodGroup == null ? 0 : bloodGroup;
 		}
-		public void setBloodGroup(final int bloodGroup) {
+		public void setBloodGroup(final Integer bloodGroup) {
 			this.bloodGroup = bloodGroup;
 		}
 
@@ -263,9 +263,6 @@ public class PersonalDetail {
 	
 	@Column(name="ParentsContactNo")
 	private String parentsContactNo;
-	
-	@Column(name="IsSelfEmployed")
-	private Boolean isSelfEmployed;
 		
 		
 		//FathersLastName
@@ -332,14 +329,6 @@ public class PersonalDetail {
 			this.parentsContactNo = parentsContactNo;
 		}
 		
-		//IsSelfEmployed
-		public Boolean getIsSelfEmployed() {
-			return isSelfEmployed;
-		}
-		public void setIsSelfEmployed(Boolean isSelfEmployed) {
-			this.isSelfEmployed = isSelfEmployed;
-		}
-		
 //ENDREGION ********************		
 
 //******************** REGION NATIONALITY DETAIL
@@ -361,9 +350,9 @@ public class PersonalDetail {
 	@OneToOne
 	private User user;
 	
-	@JoinColumn(name="FK_Address")
+	/*@JoinColumn(name="FK_Address")
 	@OneToOne
-	private Address address;
+	private Address address;*/
 
 		//User
 		public User getUser() {
@@ -373,13 +362,13 @@ public class PersonalDetail {
 			this.user = user;
 		}
 
-		//Address
+		/*//Address
 		public Address getAddress() {
 			return address;
 		}
 		public void setAddress(Address address) {
 			this.address = address;
-		}
+		}*/
 	
 	
 }

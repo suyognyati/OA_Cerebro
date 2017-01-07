@@ -9,7 +9,6 @@ public class PersonalDetailModel {
 //******************** REGION NAME	
 	private String lastName;
 	private String firstName;
-	private int relationType;
 	private String middleName;
 	private String mothersName;
 	private String firstNameRegional;
@@ -54,14 +53,6 @@ public class PersonalDetailModel {
 			this.mothersName = mothersName;
 		}
 	
-		// RelationType getter setter
-		public int getRelationType() {
-			return relationType;
-		}
-		public void setRelationType(int relationType) {
-			this.relationType = relationType;
-		}
-		
 		// FirstNameRegional getter setter
 		public String getFirstNameRegional() {
 			return firstNameRegional;
@@ -224,7 +215,7 @@ public class PersonalDetailModel {
 	private String mothersMiddleName;
 	private String parentsEmailId;
 	private String parentsContactNo;
-	private Boolean isSelfEmployed;
+	
 	
 		//FathersLastName
 		public String getFathersLastName() {
@@ -289,16 +280,7 @@ public class PersonalDetailModel {
 		public void setParentsContactNo(String parentsContactNo) {
 			this.parentsContactNo = parentsContactNo;
 		}
-		
-		//IsSelfEmployed
-		public Boolean getIsSelfEmployed() {
-			return isSelfEmployed;
-		}
-		public void setIsSelfEmployed(Boolean isSelfEmployed) {
-			this.isSelfEmployed = isSelfEmployed;
-		}
 			
-	
 //END REGION ********************	
 
 //******************** REGION NATIONALITY DETAIL
@@ -315,7 +297,7 @@ public class PersonalDetailModel {
 				
 //END REGION ********************
 		
-	private String flatNo;
+	/*private String flatNo;
 	private String street;
 	private String area;
 	private String pinCode;
@@ -368,5 +350,5 @@ public class PersonalDetailModel {
 		}
 		public void setState(String state) {
 			this.state = state;
-		}	
+		}	*/
 }

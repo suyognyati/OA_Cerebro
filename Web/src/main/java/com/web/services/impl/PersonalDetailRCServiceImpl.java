@@ -3,7 +3,6 @@ package com.web.services.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.data.entities.Address;
 import com.data.entities.Enums.BloodGroup;
 import com.data.entities.Enums.MaritalStatus;
 import com.data.entities.Enums.NameChangeReason;
@@ -16,7 +15,7 @@ import com.web.services.PersonalDetailRCService;
 import com.web.session.Session;
 
 @Service("personalDetailRCService")
-public class personalDetailRCServiceImpl implements PersonalDetailRCService {
+public class PersonalDetailRCServiceImpl implements PersonalDetailRCService {
 	
 	@Autowired
 	PersonalDetailService personalDetailService;
@@ -42,13 +41,13 @@ public class personalDetailRCServiceImpl implements PersonalDetailRCService {
 			personalDetail.setUser(userSession.getCurrentUser());
 		}
 		
-		Address address = personalDetail.getAddress();		
+		/*Address address = personalDetail.getAddress();		
 		if(address == null) {
 			address = new Address();
 			personalDetail.setAddress(address);
-		}
+		}*/
 		
-		personalDetail = setPersonalDetailObject(personalDetail, personalDetailModel, address);
+		personalDetail = setPersonalDetailObject(personalDetail, personalDetailModel/*, address*/);
 		
 		personalDetailService.save(personalDetail);
 		
@@ -65,7 +64,6 @@ public class personalDetailRCServiceImpl implements PersonalDetailRCService {
 		if(personalDetail != null) {
 			personalDetailModel.setLastName(personalDetail.getLastName().toUpperCase());
 			personalDetailModel.setFirstName(personalDetail.getFirstName().toUpperCase());
-			personalDetailModel.setRelationType(personalDetail.getRelationType());
 			personalDetailModel.setMiddleName(personalDetail.getMiddleName().toUpperCase());
 			personalDetailModel.setMothersName(personalDetail.getMotherName());
 			personalDetailModel.setLastNameRegional(personalDetail.getLastNameRegional());
@@ -92,16 +90,16 @@ public class personalDetailRCServiceImpl implements PersonalDetailRCService {
 			personalDetailModel.setMothersMiddleName(personalDetail.getMothersMiddleName());
 			personalDetailModel.setParentsEmailId(personalDetail.getParentsEmailId());
 			personalDetailModel.setParentsContactNo(personalDetail.getParentsContactNo());
-			personalDetailModel.setIsSelfEmployed(personalDetail.getIsSelfEmployed());
+			/*personalDetailModel.setIsSelfEmployed(personalDetail.getIsSelfEmployed());*/
 			
 			personalDetailModel.setDomiciledIn(personalDetail.getDomicil());
 			
-			personalDetailModel.setFlatNo(personalDetail.getAddress().getFlatNo());
+			/*personalDetailModel.setFlatNo(personalDetail.getAddress().getFlatNo());
 			personalDetailModel.setStreet(personalDetail.getAddress().getStreet());
 			personalDetailModel.setArea(personalDetail.getAddress().getArea());
 			personalDetailModel.setCity(personalDetail.getAddress().getCity());
 			personalDetailModel.setState(personalDetail.getAddress().getState());
-			personalDetailModel.setPinCode(personalDetail.getAddress().getPinCode());
+			personalDetailModel.setPinCode(personalDetail.getAddress().getPinCode());*/
 		}
 		personalDetailModel.setBloodGroupList(BloodGroup.getEnumList());
 		personalDetailModel.setMaritalStatusList(MaritalStatus.getEnumList());
@@ -109,11 +107,10 @@ public class personalDetailRCServiceImpl implements PersonalDetailRCService {
 		return personalDetailModel;
 	}
 
-	private PersonalDetail setPersonalDetailObject(PersonalDetail personalDetail, PersonalDetailModel personalDetailModel, Address address) {
+	private PersonalDetail setPersonalDetailObject(PersonalDetail personalDetail, PersonalDetailModel personalDetailModel/*, Address address*/) {
 		
 		personalDetail.setLastName(personalDetailModel.getLastName().toUpperCase());
 		personalDetail.setFirstName(personalDetailModel.getFirstName().toUpperCase());
-		personalDetail.setRelationType(personalDetailModel.getRelationType());
 		personalDetail.setMiddleName(personalDetailModel.getMiddleName().toUpperCase());
 		personalDetail.setMotherName(personalDetailModel.getMothersName());
 		personalDetail.setLastNameRegional(personalDetailModel.getLastNameRegional());
@@ -139,16 +136,16 @@ public class personalDetailRCServiceImpl implements PersonalDetailRCService {
 		personalDetail.setMothersMiddleName(personalDetailModel.getMothersMiddleName());
 		personalDetail.setParentsEmailId(personalDetailModel.getParentsEmailId());
 		personalDetail.setParentsContactNo(personalDetailModel.getParentsContactNo());
-		personalDetail.setIsSelfEmployed(personalDetailModel.getIsSelfEmployed());
+		/*personalDetail.setIsSelfEmployed(personalDetailModel.getIsSelfEmployed());*/
 		
 		personalDetail.setDomicil(personalDetailModel.getDomiciledIn());
 		
-		address.setFlatNo(personalDetailModel.getFlatNo());
+		/*address.setFlatNo(personalDetailModel.getFlatNo());
 		address.setStreet(personalDetailModel.getStreet());
 		address.setArea(personalDetailModel.getArea());
 		address.setCity(personalDetailModel.getCity());
 		address.setState(personalDetailModel.getState());
-		address.setPinCode(personalDetailModel.getPinCode());
+		address.setPinCode(personalDetailModel.getPinCode());*/
 		
 		return personalDetail;
 	}

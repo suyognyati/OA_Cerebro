@@ -17,13 +17,13 @@ public class Address {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="AddressId")
-	private int addressId;
+	private Integer addressId;
 	
 		//Address Id
-		public int getAddressId() {
+		public Integer getAddressId() {
 			return addressId;
 		}
-		public void setAddressId(int addressId) {
+		public void setAddressId(Integer addressId) {
 			this.addressId = addressId;
 		}
 		

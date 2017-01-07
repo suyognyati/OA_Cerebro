@@ -17,7 +17,7 @@ public class EducationalInformation {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="EducationInformationId")
-	private int educationInformationId;
+	private Integer educationInformationId;
 	
 	@OneToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="FK_UserId")
@@ -36,10 +36,10 @@ public class EducationalInformation {
 	private String schoolPlace;
 
 	@Column(name="FirstAttempt")
-	private int firstAttempt;
+	private Integer firstAttempt;
 
 	@Column(name="MathsType")
-	private int mathsType;
+	private Integer mathsType;
 
 	@Column(name="PassingYear")
 	private String passingYear;
@@ -60,10 +60,10 @@ public class EducationalInformation {
 	private String seatNo;
 	
 	//EducationInformationId
-	public int getEducationInformationId() {
+	public Integer getEducationInformationId() {
 		return educationInformationId;
 	}
-	public void setEducationInformationId(final int educationInformationId) {
+	public void setEducationInformationId(final Integer educationInformationId) {
 		this.educationInformationId = educationInformationId;
 	}
 	
@@ -108,18 +108,18 @@ public class EducationalInformation {
 	}
 	
 	//FirstAttempt
-	public int getFirstAttempt() {
-		return firstAttempt;
+	public Integer getFirstAttempt() {
+		return firstAttempt == null ? 0 : firstAttempt;
 	}
-	public void setFirstAttempt(final int firstAttempt) {
+	public void setFirstAttempt(final Integer firstAttempt) {
 		this.firstAttempt = firstAttempt;
 	}
 	
 	//MathsType
-	public int getMathsType() {
-		return mathsType;
+	public Integer getMathsType() {
+		return mathsType == null ? 0 : mathsType;
 	}
-	public void setMathsType(final int mathsType) {
+	public void setMathsType(final Integer mathsType) {
 		this.mathsType = mathsType;
 	}
 	

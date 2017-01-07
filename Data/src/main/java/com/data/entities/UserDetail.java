@@ -21,7 +21,7 @@ public class UserDetail {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="UserDetailId")
-	private int userDetailId;
+	private Integer userDetailId;
 	
 	@Column(name="FirstName")
 	private String firstName;
@@ -43,10 +43,10 @@ public class UserDetail {
 	private User user;
 	
 	//UserDetailId
-	public int getUserDetailId() {
+	public Integer getUserDetailId() {
 		return userDetailId;
 	}
-	public void setUserDetailId(int userId) {
+	public void setUserDetailId(Integer userId) {
 		this.userDetailId = userId;
 	}
 	

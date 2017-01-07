@@ -16,7 +16,7 @@ public class State {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="StateId")
-	private int stateId;
+	private Integer stateId;
 
 	@Column(name="StateName")
 	private String stateName;
@@ -27,10 +27,10 @@ public class State {
 	
 	
 	//StateId
-	public int getStateId() {
+	public Integer getStateId() {
 		return stateId;
 	}
-	public void setStateId(int stateId) {
+	public void setStateId(Integer stateId) {
 		this.stateId = stateId;
 	}
 	
