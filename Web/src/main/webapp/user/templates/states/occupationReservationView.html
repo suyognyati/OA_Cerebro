@@ -112,6 +112,19 @@
 									tabindex="14">
 							</select>
 						</div>
+						<div class="col-sm-3">
+							<label for="parnetsoccupation"
+								   class="labelclass">Occupation of Guardian</label>
+						</div>
+						<div class="col-sm-3">
+							<select class="selectpicker"
+									data-live-search="true" 
+									id="parnetsoccupation"
+									ng-model="vm.occupationandreservation.occupation"
+									ng-options="occupationList.key as occupationList.value for occupationList in vm.occupationandreservation.occupationList"
+									tabindex="14">
+							</select>
+						</div>
 					</div>
 				</div>
 				
@@ -417,3 +430,17 @@
         </div>
 	</div>
 </form>
+
+<script type="text/javascript">
+	
+	//$(".selectpicker").selectpicker("refresh");
+	var delay = 1000;
+	
+	setTimeout(function() {
+		//alert("Hi alert");
+		$(".selectpicker").selectpicker("refresh");
+	}, delay);
+	
+	
+	
+</script>

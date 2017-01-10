@@ -29,8 +29,8 @@
 									return $ocLazyLoad.load({
 										name : 'admission',
 										files : [
-										     basePath + 'app/controllers/userDetailCtrl.js',
-										     basePath + 'common/services/userDetailService.js'
+										     basePath + 'app/controllers/userDetailCtrl.js'/*,
+										     basePath + 'common/services/userDetailService.js'*/
 										]
 								
 									})
@@ -177,6 +177,28 @@
 										name : 'admission',
 										files : [
 										       basePath + 'app/controllers/otherInformationCtrl.js'
+										]
+								
+									})
+								}]
+							}
+					})
+					
+					.state("temp",{
+							url: "/temp",
+							views: {
+								"view":{
+									templateUrl: basePath + "templates/states/tempView.html",
+									controller:"TempCtrl as vm",
+								}
+							},
+							resolve: {
+								basicDetail : ['$ocLazyLoad', function($ocLazyLoad){
+									return $ocLazyLoad.load({
+										name : 'admission',
+										files : [
+										     basePath + 'app/controllers/tempCtrl.js',
+										     '/Web/static/vendors/select/js/bootstrap-select.js'
 										]
 								
 									})

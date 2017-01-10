@@ -5,9 +5,8 @@
 <title>Admission Details</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!-- Style sheets -->
-<link
-	href="<c:url value='/static/vendors/bootstrap-3.3.6-dist/css/bootstrap.css' />"
-	rel="stylesheet" />
+<link href="<c:url value='/static/vendors/bootstrap-3.3.6-dist/css/bootstrap.css' />" rel="stylesheet" />
+<link href="<c:url value='/static/vendors/select/css/bootstrap-select.css' />" rel="stylesheet" />
 <link href="<c:url value='/user/css/user.css' />" rel="stylesheet" />
 <link href="<c:url value='/user/css/user-bootstrap-modified.css' />" rel="stylesheet" />
 
@@ -18,9 +17,9 @@
 <script src="<c:url value='/static/js/angular-mocks.js' />"></script>
 <script src="<c:url value='/static/js/angular-ui-router.js' />"></script>
 <script src="<c:url value='/static/vendors/ocLazyLoad.min.js' />"></script>
-<script src="<c:url value='/static/js/bootstrap.js' />"></script>
 <script src="<c:url value='/static/js/angular-ui-bootstrap.min.js' />"></script>
 <script	src="<c:url value='/static/vendors/bootstrap-3.3.6-dist/js/bootstrap.min.js' />"></script>
+<script	src="<c:url value='/static/vendors/select/js/bootstrap-select.js' />"></script>
 
 <!-- Application Scripts -->
 <script src="<c:url value='/static/app/app.js' />"></script>
