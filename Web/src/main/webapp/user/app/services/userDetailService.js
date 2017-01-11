@@ -1,7 +1,7 @@
 (function(){
 	"use strict";
 	angular
-		.module("common.services")
+		.module("user")
 		.factory("userDetailService",
 				["$http",
 				 userDetailService]);

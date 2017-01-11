@@ -30,7 +30,7 @@
 										name : 'admission',
 										files : [
 										     basePath + 'app/controllers/userDetailCtrl.js',
-										     basePath + 'common/services/userDetailService.js'
+										     basePath + 'app/services/userDetailService.js'
 										]
 								
 									})
@@ -69,7 +69,7 @@
 										name : 'admission',
 										files : [
 										     basePath + 'app/controllers/personalDetailCtrl.js',
-										     basePath + 'common/services/personalDetailService.js'
+										     basePath + 'app/services/personalDetailService.js'
 										]
 								
 									})
