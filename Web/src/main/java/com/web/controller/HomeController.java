@@ -59,7 +59,7 @@ public class HomeController {
 		session.setCurrentUserDetail();
 		model.addAttribute("user", session.getCurrentUser());
 		model.addAttribute("userdetail", session.getCurrentUserDetail());
-		return "user/UserPage-SelectBox";
+		return "user/UserPage-topnavbar";
 	}
 
 	@RequestMapping(value = { "vendor/" }, method = RequestMethod.GET)
