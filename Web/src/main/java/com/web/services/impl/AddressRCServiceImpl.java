@@ -31,6 +31,7 @@ public class AddressRCServiceImpl implements AddressRCService {
 		Address address = addressService.getByUser(userSession.getCurrentUser());
 		if(address == null) {
 			address = new Address();
+			address.setUser(userSession.getCurrentUser());
 		}
 		address = setAddressObject(address, addressModel);
 		addressService.save(address);
