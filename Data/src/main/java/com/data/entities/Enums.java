@@ -360,4 +360,96 @@ public class Enums {
 		public static List<KeyValuePair> getEnumList() { return enumList; }
 	}
 	
+	public enum ResultStatus {
+		Passed(1, "Passed"),
+		ResultAwaited(2, "Result Awaited"),
+		Failed(3, "Failed");
+				
+		private int id;
+		private String value;
+		private static final Map<Integer, ResultStatus> lookup = new HashMap<Integer, ResultStatus>();
+		private static final List<KeyValuePair> enumList = new ArrayList<KeyValuePair>();
+		
+		private ResultStatus(int id, String value) { this.id = id; this.value = value; }
+		
+		static {
+			for (ResultStatus s : EnumSet.allOf(ResultStatus.class)) {
+				lookup.put(s.getId(), s);
+				KeyValuePair ms = new KeyValuePair();
+				ms.key = s.getId();
+				ms.value = s.getValue();
+				enumList.add(ms);
+			}
+		}
+
+		public int getId() { return id; }
+		public String getValue() { return value; }
+		public static ResultStatus get(int id) { return lookup.get(id); }
+		public static List<KeyValuePair> getEnumList() { return enumList; }
+	}
+
+	public enum CertifyingBody {
+		Board(1, "Board"),
+		University(2, "University"),
+		Other(3, "Other");
+				
+		private int id;
+		private String value;
+		private static final Map<Integer, CertifyingBody> lookup = new HashMap<Integer, CertifyingBody>();
+		private static final List<KeyValuePair> enumList = new ArrayList<KeyValuePair>();
+		
+		private CertifyingBody(int id, String value) { this.id = id; this.value = value; }
+		
+		static {
+			for (CertifyingBody s : EnumSet.allOf(CertifyingBody.class)) {
+				lookup.put(s.getId(), s);
+				KeyValuePair ms = new KeyValuePair();
+				ms.key = s.getId();
+				ms.value = s.getValue();
+				enumList.add(ms);
+			}
+		}
+
+		public int getId() { return id; }
+		public String getValue() { return value; }
+		public static CertifyingBody get(int id) { return lookup.get(id); }
+		public static List<KeyValuePair> getEnumList() { return enumList; }
+	}
+
+	public enum Month {
+		January(1, "January"),
+		February(2, "February"),
+		March(3, "March"),
+		April(4, "April"),
+		May(5, "May"),
+		June(6, "June"),
+		July(7, "July"),
+		August(8, "August"),
+		September(9, "September"),
+		October(10, "October"),
+		November(11, "November"),
+		December(12, "December");
+				
+		private int id;
+		private String value;
+		private static final Map<Integer, Month> lookup = new HashMap<Integer, Month>();
+		private static final List<KeyValuePair> enumList = new ArrayList<KeyValuePair>();
+		
+		private Month(int id, String value) { this.id = id; this.value = value; }
+		
+		static {
+			for (Month s : EnumSet.allOf(Month.class)) {
+				lookup.put(s.getId(), s);
+				KeyValuePair ms = new KeyValuePair();
+				ms.key = s.getId();
+				ms.value = s.getValue();
+				enumList.add(ms);
+			}
+		}
+
+		public int getId() { return id; }
+		public String getValue() { return value; }
+		public static Month get(int id) { return lookup.get(id); }
+		public static List<KeyValuePair> getEnumList() { return enumList; }
+	}
 }

@@ -13,5 +13,6 @@
 		<class>com.data.entities.Country</class>
 		<class>com.data.entities.City</class>
 		<class>com.data.entities.OccupationReservation</class>
+		<class>com.data.entities.QualificationLevel</class>
 	</persistence-unit>
 </persistence>

@@ -26,9 +26,6 @@
 <script src="<c:url value='/user/app/app.js' />"></script>
 <script src="<c:url value='/user/app/state.js' />"></script>
 
-<!-- Services -->
-<script src="<c:url value='/user/common/common.services.js' />"></script>
-
 </head>
 <body ng-app="user">
 	<%!String imgsrc_old = "https://lh3.googleusercontent.com/-0tBZQoBE-QI/UwD16xm0m3I/AAAAAAAAAkU/mL1WSMcKfqA9il1M_4a0zt_yLP8z_YvSwCEw/w140-h140-p/f1bafc98-5fb5-4bc4-be04-f28b1c60332c";

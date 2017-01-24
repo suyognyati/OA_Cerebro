@@ -1,9 +1,11 @@
 package com.web.services;
 
-import com.web.model.EducationalInformationModel;
+import java.util.List;
+
+import com.web.model.EducationModel;
 
 public interface EducationalInformationRCService {
 
-	EducationalInformationModel getEducationalInformation();
+	List<EducationModel.Qualification> getListofQualification();
 	
 }

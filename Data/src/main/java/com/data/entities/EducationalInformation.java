@@ -1,12 +1,12 @@
 package com.data.entities;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -16,160 +16,367 @@ public class EducationalInformation {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="EducationInformationId")
-	private Integer educationInformationId;
+	@Column(name="EducationalInformationId")
+	private Integer educationalInformationId;
 	
-	@OneToOne(cascade=CascadeType.ALL)
+	@OneToOne
 	@JoinColumn(name="FK_UserId")
-	private UserDetail userDetail;
+	private User user;
+
+	@Column(name="Country")
+	private String country;
 
 	@Column(name="State")
 	private String state;
 
-	@Column(name="Board")
-	private String board;
-
-	@Column(name="SchoolName")
-	private String schoolName;
-
-	@Column(name="SchoolPlace")
-	private String schoolPlace;
-
-	@Column(name="FirstAttempt")
-	private Integer firstAttempt;
-
-	@Column(name="MathsType")
-	private Integer mathsType;
-
-	@Column(name="PassingYear")
-	private String passingYear;
-
+	@Column(name="NameOfBoard")
+	private Integer nameOfBoard;
+	
+	@Column(name="NameOfUniversity")
+	private Integer nameOfUniversity;
+	
+	@Column(name="BoardUniversity_AreaStdCodePhone")
+	private String boardUniversity_AreaStdCodePhone;
+	
+	@Column(name="BoardUniversity_EmailId")
+	private String boardUniversity_EmailId;
+	
+	@Column(name="BoardUniversity_URL")
+	private String boardUniversity_URL;
+	
+	@Column(name="ResultStatus")
+	private Integer resultStatus;
+	
+	@Column(name="Stream")
+	private Integer stream;
+	
+	@Column(name="NoOfAttempts")
+	private Integer noOfAttempts;
+	
+	@Column(name="QualificationName")
+	private String qualificationName;
+	
+	@ManyToOne
+	@JoinColumn(name="FK_QualificationLevel")
+	private QualificationLevel qualificationLevel;
+	
+	@Column(name="SpecialSubject")
+	private String specialSubject;
+	
+	@Column(name="OtherBodyName")
+	private String otherBodyName;
+	
+	@Column(name="SchoolCollegeAddress")
+	private String schoolCollegeAddress;
+	
+	@Column(name="CertifyingBody")
+	private Integer certifyingBody;
+	
+	@Column(name="IsLocalBody")
+	private Boolean isLocalBody;
+	
+	@Column(name="SchoolCollegeName")
+	private String schoolCollegeName;
+	
 	@Column(name="PassingMonth")
-	private String passingMonth;
+	private Integer passingMonth;
+	
+	@Column(name="PassingYear")
+	private Integer passingYear;
+	
+	@Column(name="ExamSeatNo")
+	private String examSeatNo;
+	
+	@Column(name="MarksheetNo")
+	private String marksheetNo;
+	
+	@Column(name="EvaluationType")
+	private Integer evaluationType;
+	
+	@Column(name="MarksObtain")
+	private Integer marksObtain;
+	
+	@Column(name="TotalMarks")
+	private Integer totalMarks;
+	
+	@Column(name="Percentage")
+	private Integer percentage;
+	
+	@Column(name="Grade")
+	private String grade;
+	
+	@Column(name="CGPA")
+	private Integer cgpa;
 
-	@Column(name="TotalMarksObtained")
-	private String totalMarksObtained;
+		public Integer getEducationalInformationId() {
+			return educationalInformationId;
+		}
+	
+		public void setEducationalInformationId(Integer educationalInformationId) {
+			this.educationalInformationId = educationalInformationId;
+		}
+	
+		public User getUser() {
+			return user;
+		}
+	
+		/**
+		 * @param user User of whose education information is required
+		 * */
+		public void setUser(User user) {
+			this.user = user;
+		}
+	
+		public String getCountry() {
+			return country;
+		}
+	
+		public void setCountry(String country) {
+			this.country = country;
+		}
+	
+		public String getState() {
+			return state;
+		}
+	
+		public void setState(String state) {
+			this.state = state;
+		}
+	
+		/**
+		 * @return It returns board name if exam is conducted under board
+		 * */
+		public Integer getNameOfBoard() {
+			return nameOfBoard;
+		}
+	
+		public void setNameOfBoard(Integer nameOfBoard) {
+			this.nameOfBoard = nameOfBoard;
+		}
+	
+		/**
+		 * @return It returns university name if exam is conducted under university
+		 * */
+		public Integer getNameOfUniversity() {
+			return nameOfUniversity;
+		}
+	
+		public void setNameOfUniversity(Integer nameOfUniversity) {
+			this.nameOfUniversity = nameOfUniversity;
+		}
+	
+		public String getBoardUniversity_AreaStdCodePhone() {
+			return boardUniversity_AreaStdCodePhone;
+		}
+	
+		public void setBoardUniversity_AreaStdCodePhone(String boardUniversity_AreaStdCodePhone) {
+			this.boardUniversity_AreaStdCodePhone = boardUniversity_AreaStdCodePhone;
+		}
+	
+		public String getBoardUniversity_EmailId() {
+			return boardUniversity_EmailId;
+		}
+	
+		public void setBoardUniversity_EmailId(String boardUniversity_EmailId) {
+			this.boardUniversity_EmailId = boardUniversity_EmailId;
+		}
+	
+		public String getBoardUniversity_URL() {
+			return boardUniversity_URL;
+		}
+	
+		public void setBoardUniversity_URL(String boardUniversity_URL) {
+			this.boardUniversity_URL = boardUniversity_URL;
+		}
+	
+		/**
+		 * @return It returns result status which can be 1 as Passed, 2 as Result Awaited, 3 as Failed
+		 * */
+		public Integer getResultStatus() {
+			return resultStatus;
+		}
+	
+		public void setResultStatus(Integer resultStatus) {
+			this.resultStatus = resultStatus;
+		}
+	
+		public Integer getStream() {
+			return stream;
+		}
+	
+		public void setStream(Integer stream) {
+			this.stream = stream;
+		}
+	
+		public Integer getNoOfAttempts() {
+			return noOfAttempts;
+		}
+	
+		public void setNoOfAttempts(Integer noOfAttempts) {
+			this.noOfAttempts = noOfAttempts;
+		}
+	
+		public String getQualificationName() {
+			return qualificationName;
+		}
+	
+		public void setQualificationName(String qualificationName) {
+			this.qualificationName = qualificationName;
+		}
+	
+		/**
+		 * @return It returns level of qualification which starts from 10th and end to Highest qualification
+		 * */
+		public QualificationLevel getQualificationLevel() {
+			return qualificationLevel;
+		}
 
-	@Column(name="OutOfMarks")
-	private String outOfMarks;
+		public void setQualificationLevel(QualificationLevel qualificationLevel) {
+			this.qualificationLevel = qualificationLevel;
+		}
 
-	@Column(name="GradeObtained")
-	private String gradeObtained;
+		public String getSpecialSubject() {
+			return specialSubject;
+		}
+	
+		public void setSpecialSubject(String specialSubject) {
+			this.specialSubject = specialSubject;
+		}
+	
+		public String getOtherBodyName() {
+			return otherBodyName;
+		}
+	
+		public void setOtherBodyName(String otherBodyName) {
+			this.otherBodyName = otherBodyName;
+		}
+	
+		public String getSchoolCollegeAddress() {
+			return schoolCollegeAddress;
+		}
+	
+		public void setSchoolCollegeAddress(String schoolCollegeAddress) {
+			this.schoolCollegeAddress = schoolCollegeAddress;
+		}
+	
+		/**
+		 * @return It returns certifying body which can be 1 as Board, 2 as University, 3 as Other
+		 * */
+		public Integer getCertifyingBody() {
+			return certifyingBody;
+		}
+	
+		/**
+		 * @param certifyingBody It can have 3 values "Board, University, Other"
+		 * */
+		public void setCertifyingBody(Integer certifyingBody) {
+			this.certifyingBody = certifyingBody;
+		}
+	
+		/**
+		 * @return It returns True for Indian else False
+		 * */
+		public Boolean getIsLocalBody() {
+			return isLocalBody;
+		}
+	
+		/**
+		 * @param isLocalBody It can be true or false true denotes person is Indian or else Foreign
+		 * */
+		public void setIsLocalBody(Boolean isLocalBody) {
+			this.isLocalBody = isLocalBody;
+		}
+	
+		public String getSchoolCollegeName() {
+			return schoolCollegeName;
+		}
+	
+		public void setSchoolCollegeName(String schoolCollegeName) {
+			this.schoolCollegeName = schoolCollegeName;
+		}
+	
+		public Integer getPassingMonth() {
+			return passingMonth;
+		}
+	
+		public void setPassingMonth(Integer passingMonth) {
+			this.passingMonth = passingMonth;
+		}
+	
+		public Integer getPassingYear() {
+			return passingYear;
+		}
+	
+		public void setPassingYear(Integer passingYear) {
+			this.passingYear = passingYear;
+		}
+	
+		public String getExamSeatNo() {
+			return examSeatNo;
+		}
+	
+		public void setExamSeatNo(String examSeatNo) {
+			this.examSeatNo = examSeatNo;
+		}
+	
+		public String getMarksheetNo() {
+			return marksheetNo;
+		}
+	
+		public void setMarksheetNo(String marksheetNo) {
+			this.marksheetNo = marksheetNo;
+		}
+	
+		/**
+		 * @return It returns evaluation type which can be 1 for Marks and 2 for Grades
+		 * */
+		public Integer getEvaluationType() {
+			return evaluationType;
+		}
+	
+		public void setEvaluationType(Integer evaluationType) {
+			this.evaluationType = evaluationType;
+		}
+	
+		public Integer getMarksObtain() {
+			return marksObtain;
+		}
 
-	@Column(name="SeatNo")
-	private String seatNo;
+		public void setMarksObtain(Integer marksObtain) {
+			this.marksObtain = marksObtain;
+		}
+
+		public Integer getTotalMarks() {
+			return totalMarks;
+		}
 	
-	//EducationInformationId
-	public Integer getEducationInformationId() {
-		return educationInformationId;
-	}
-	public void setEducationInformationId(final Integer educationInformationId) {
-		this.educationInformationId = educationInformationId;
-	}
+		public void setTotalMarks(Integer totalMarks) {
+			this.totalMarks = totalMarks;
+		}
 	
-	//UserId
-	public UserDetail getUserId() {
-		return userDetail;
-	}
-	public void setUserId(final UserDetail userId) {
-		this.userDetail = userId;
-	}
+		public Integer getPercentage() {
+			return percentage;
+		}
 	
-	//State
-	public String getState() {
-		return state;
-	}
-	public void setState(String state) {
-		this.state = state;
-	}
+		public void setPercentage(Integer percentage) {
+			this.percentage = percentage;
+		}
 	
-	//Board
-	public String getBoard() {
-		return board;
-	}
-	public void setBoard(String board) {
-		this.board = board;
-	}
+		public String getGrade() {
+			return grade;
+		}
 	
-	//SchoolName
-	public String getSchoolName() {
-		return schoolName;
-	}
-	public void setSchoolName(String schoolName) {
-		this.schoolName = schoolName;
-	}
+		public void setGrade(String grade) {
+			this.grade = grade;
+		}
 	
-	//SchoolPlace
-	public String getSchoolPlace() {
-		return schoolPlace;
-	}
-	public void setSchoolPlace(String schoolPlace) {
-		this.schoolPlace = schoolPlace;
-	}
+		public Integer getCgpa() {
+			return cgpa;
+		}
 	
-	//FirstAttempt
-	public Integer getFirstAttempt() {
-		return firstAttempt == null ? 0 : firstAttempt;
-	}
-	public void setFirstAttempt(final Integer firstAttempt) {
-		this.firstAttempt = firstAttempt;
-	}
-	
-	//MathsType
-	public Integer getMathsType() {
-		return mathsType == null ? 0 : mathsType;
-	}
-	public void setMathsType(final Integer mathsType) {
-		this.mathsType = mathsType;
-	}
-	
-	//PassingYear
-	public String getPassingYear() {
-		return passingYear;
-	}
-	public void setPassingYear(String passingYear) {
-		this.passingYear = passingYear;
-	}
-	
-	//PassingMonth
-	public String getPassingMonth() {
-		return passingMonth;
-	}
-	public void setPassingMonth(String passingMonth) {
-		this.passingMonth = passingMonth;
-	}
-	
-	//TotalMarksObtained
-	public String getTotalMarksObtained() {
-		return totalMarksObtained;
-	}
-	public void setTotalMarksObtained(String totalMarksObtained) {
-		this.totalMarksObtained = totalMarksObtained;
-	}
-	
-	//OutOfMarks
-	public String getOutOfMarks() {
-		return outOfMarks;
-	}
-	public void setOutOfMarks(String outOfMarks) {
-		this.outOfMarks = outOfMarks;
-	}
-	
-	//GradeObtained
-	public String getGradeObtained() {
-		return gradeObtained;
-	}
-	public void setGradeObtained(String gradeObtained) {
-		this.gradeObtained = gradeObtained;
-	}
-	
-	//SeatNo
-	public String getSeatNo() {
-		return seatNo;
-	}
-	public void setSeatNo(String seatNo) {
-		this.seatNo = seatNo;
-	}
+		public void setCgpa(Integer cgpa) {
+			this.cgpa = cgpa;
+		}
 	
 	
 }

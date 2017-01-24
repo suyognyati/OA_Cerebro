@@ -4,24 +4,24 @@
 		.module("user")
 		.controller("EducationInformationCtrl",
 					["$http",
-					 "educationInformationResource",
+					 "$window",
+					 "educationInformationService",
 					 EducationInformationCtrl]);
 	
-	function EducationInformationCtrl($http, educationInformationResource) {
-		var vm = this;
+	function EducationInformationCtrl($http, $window, educationInformationService) {
 		
-		$http({
-			method: 'GET',
-			url: '/Web/educationInformation/getEducationInformation/'
+		var vm = this;		
+		
+		vm.accessToken = $window.bearer_token;
+		vm.accessTokenParam = "?access_token=" + vm.accessToken;
+
+		educationInformationService.getListofQualification(vm.accessTokenParam)
+		.success(function (data, status, headers, config) {
+			vm.listofQualification = data;
 		})
-		.success(function(data){
-			vm.educationinformation = data;
-		});
-		
-		educationInformationResource.query(function(data){
-			vm.educationinformation = data;
-		});
-		
+		.error(function (data, status, headers, config) {
+			vm.listofQualification = {};
+        });
 	};
 	
 }());

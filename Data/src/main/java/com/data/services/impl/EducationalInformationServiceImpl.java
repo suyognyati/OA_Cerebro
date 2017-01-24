@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.data.entities.EducationalInformation;
+import com.data.entities.User;
 import com.data.repository.EducationalInformationJpaRepository;
 import com.data.services.EducationalInformationService;
 
@@ -15,8 +16,8 @@ public class EducationalInformationServiceImpl implements EducationalInformation
 	@Autowired
 	EducationalInformationJpaRepository educationalInformationJpaRepository;
 	
-	public List<EducationalInformation> getAll() {
-		return educationalInformationJpaRepository.findAll();
+	public List<EducationalInformation> getByUserOrderByQualificationLevelAsc(User user) {
+		return educationalInformationJpaRepository.
+				findByUserOrderByQualificationLevelQualificationMainLevelAscQualificationLevelQualificationSubLevelAsc(user);
 	}
-
 }

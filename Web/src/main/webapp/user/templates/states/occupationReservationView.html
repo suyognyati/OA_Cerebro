@@ -100,7 +100,7 @@
 			<div ng-show="!vm.occupationandreservation.isSelfEmployed">
 				<div class="row">
 					<div class="col-sm-12 form-group">
-						<div class="col-sm-3">
+						<!-- <div class="col-sm-3">
 							<label for="parnetsoccupation"
 								   class="labelclass">Occupation of Guardian</label>
 						</div>
@@ -111,13 +111,13 @@
 									ng-options="occupationList.key as occupationList.value for occupationList in vm.occupationandreservation.occupationList"
 									tabindex="14">
 							</select>
-						</div>
+						</div> -->
 						<div class="col-sm-3">
 							<label for="parnetsoccupation"
 								   class="labelclass">Occupation of Guardian</label>
 						</div>
 						<div class="col-sm-3">
-							<select class="selectpicker"
+							<select class="selectpicker" data-width="100%"
 									data-live-search="true" 
 									id="parnetsoccupation"
 									ng-model="vm.occupationandreservation.occupation"
@@ -433,7 +433,7 @@
 
 <script type="text/javascript">
 	
-	//$(".selectpicker").selectpicker("refresh");
+	$(".selectpicker").selectpicker("refresh");
 	var delay = 1000;
 	
 	setTimeout(function() {
