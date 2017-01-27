@@ -1,6 +1,11 @@
 @charset "utf-8";
 /* CSS Document */
 
+body {
+	margin:0;
+	position:relative;
+}
+
 .customfont > li > a {
 	color : #becfe0;
 }
@@ -8,30 +13,12 @@
 .col-sm-custompadding {
 	padding-right:0px!important;
 	padding-left:0px!important;
+	border-radius:0 !important;
 }
 
 .headercontent {
-	padding: 10px 0 0 0;
-	color: #00a0d3;
-}
-
-.colcontent {
-	background-color: #3cf;
-	border: #030 1px solid;
-}
-
-.colcontent1 {
-	height: 450px;
-	background-color: #3cf;
-	border: #030 1px solid;
-}
-
-.section {
-	
-}
-
-.submenubar {
-	background-color: #495B6C;
+	padding:20px 0 0 20px;
+	color:#00a0d3;
 }
 
 .footer {
@@ -46,16 +33,19 @@
 }
 
 .heading {
-	border-bottom: #333 1px solid;
+	border-bottom: #3e556b 1px solid;
 	padding: 0 2%;
 }
 
 .heading h1 {
-	padding: 5px 0;
+	padding:18px;
 	color: #185086;
 	font-family: sans-serif;
 	font-size: 18pt;
 	font-weight: lighter;
+	background-color:#FFFFFF;
+	box-sizing:border-box;
+	margin:0;
 }
 
 .labelclass{
@@ -67,10 +57,82 @@
 	padding-left:10px;
 }
 
+.row-custom-margin {
+	margin-right:0!important;
+}
+
+nav {
+	position: relative;
+	width: 100%;
+	background: #fff;
+}
+.nav-stacked>li {
+	padding: 0 0 0 20px;
+}
+.main{
+	background-color:#495b6c;
+	width:100%;
+}
+
+.left-nav {
+	background-color:#495b6c;
+	width:25%;
+	box-sizing: border-box;
+	
+}
+.nav-text-display {
+	display:inline;
+}
+.nav-text-hide {
+	display:none;
+}
+.main-content {
+	background:#FFF;
+	width:75%;	
+}
+
+a.nav-button-col {
+	padding: 18px 15px 15px 15px;
+	margin:0 15px 0 0;
+	color:#185086;
+	font-size:20px;
+	float:left;
+	border-right: #3e556b 1px solid;
+	border-radius: 0px;
+}
+
+.footer {
+	height:50px;
+	width:100%;
+	background:#3e556b;
+	position:fixed;
+	bottom:0;
+	z-index:9999;
+}
+
+.stickToTop {
+	width:100%;
+	position: fixed;
+	top: 0;
+	z-index: 10000;
+}
+
+.affix {
+    left:0;
+	top: 50px;
+}
+
+.navbar{
+	margin-bottom:0 !important;
+}
+
 @media (min-width: 768px) {
 	.labelclass{
 		padding-top:7px;
 		text-align:right;
 		width:100%;
+	}
+	.navbar {
+		border-radius:0 !important;
 	}
 }

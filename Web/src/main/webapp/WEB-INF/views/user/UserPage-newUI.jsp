@@ -20,6 +20,7 @@
 <script src="<c:url value='/static/js/angular-ui-bootstrap.min.js' />"></script>
 <script	src="<c:url value='/static/vendors/bootstrap-3.3.6-dist/js/bootstrap.min.js' />"></script>
 <script	src="<c:url value='/static/vendors/select/js/bootstrap-select.js' />"></script>
+<script src="<c:url value='/user/js/main.js' />"></script>
 
 <!-- Application Scripts -->
 <script src="<c:url value='/static/app/app.js' />"></script>
@@ -50,47 +51,38 @@
 		</div>
 	</div>
 	<div class="section">
-		<div class="menubar">
-			<nav class="navbar navbar-inverse">
+		<nav class="mainMenu">
+			<div class="navbar navbar-inverse">
 				<div class="container-fluid">
 					<div class="navbar-header">
-						<button type="button" class="navbar-toggle"
-							data-toggle="collapse" data-target="#myNavbar">
-							<span class="icon-bar"></span> <span class="icon-bar"></span> <span
-								class="icon-bar"></span>
-						</button>
-						<a class="navbar-brand" href="#">Dashboard</a>
+						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+						<a class="navbar-brand" href="#">Dashboard</a> 
 					</div>
 					<div class="collapse navbar-collapse" id="myNavbar">
 						<ul class="nav navbar-nav">
 							<li class="active"><a href="#">Student Status</a></li>
-							<li><a href="#">User Profile</a></li>
-							<li><a href="#">Apply Online</a></li>
+							<li> <a>User Profile</a></li>
+							<li><a>Apply Online</a></li>
 						</ul>
 					</div>
 				</div>
-			</nav>
-		</div>
-		<div class="submenubar">
-			<div class="container-fluid">
-				<div class="row">
-					<div class="col-sm-2 left-nav col-sm-custompadding ">
-						<ul class="nav nav-pills nav-stacked customfont">
-							<li><a ui-sref="userDetail"><strong>User Details </strong></a></li>
-							<li class="active"><a ui-sref="personalDetail"><strong>Personal Details</strong></a></li>
-							<li><a ui-sref="address"><strong>Address Details</strong></a></li>
-							<li><a ui-sref="educationInformation"><strong>Educational Information</strong></a></li>
-							<li><a ui-sref="occupationReservation"><strong>Occupation & Reservation</strong></a></li>
-							<li><a href="#"><strong>Upload Photo & Signature</strong></a></li>
-							<!-- <li class="active"><a href="#">View Profile</a></li>
-							<li><a href="#">Application Status</a></li>
-							<li><a href="#">Receipt/Transaction Details</a></li> -->
-						</ul>
-					</div>
-					<div class="col-sm-10 col-sm-custompadding" style="background-color: #ffffff; padding-bottom: 50px">
-						<div ui-view="view"></div>
-					</div>
-					<!-- <div class="col-sm-9 main-content"></div> -->
+			</div>
+		</nav>
+				
+		<div class="main">
+			<div class="row row-custom-margin">
+			    <div class="col-sm-2 left-nav col-sm-custompadding" id="mySidenav">
+					<ul class="nav nav-pills nav-stacked submenu" data-spy="affix" data-offset-top="120">
+						<li><a ui-sref="userDetail"><i class="glyphicon glyphicon-user"></i> <span id="nav-text0" class="nav-text-display">User Details</span></a></li>
+						<li class="active"><a ui-sref="personalDetail"><i class="glyphicon glyphicon-briefcase"></i> <span id="nav-text1" class="nav-text-display">Personal Details</span></a></li>
+						<li><a ui-sref="address"><i class="glyphicon glyphicon-book"></i> <span id="nav-text2" class="nav-text-display">Address Details</span></a></li>
+						<li><a ui-sref="educationInformation"><i class="glyphicon glyphicon-education"></i> <span id="nav-text3" class="nav-text-display">Educational Information</span></a></li>
+						<li><a ui-sref="occupationReservation"><i class="glyphicon glyphicon-cog"></i> <span id="nav-text4" class="nav-text-display">Occupation & Reservation</span></a></li>
+						<li><a href="#"><i class="glyphicon glyphicon-cloud-upload"></i> <span id="nav-text5" class="nav-text-display">Upload Photo & Signature</span></a></li>
+					</ul>
+			    </div>
+				<div class="col-sm-10 main-content col-sm-custompadding" id="main-content"> <a class="btn btn-toggleleft nav-button-col" href="#" onclick="toggle()"><i class="glyphicon glyphicon-menu-hamburger"></i></a>
+					<div ui-view="view"></div>
 				</div>
 			</div>
 		</div>
@@ -98,7 +90,7 @@
 	<div class="footer fixed-bar">
 		<div class="container-fluid">
 			<div class="row">
-				<div class="col-sm-12 headercontent"></div>
+				<div class="col-sm-12 col-sm-custompadding headercontent"></div>
 			</div>
 		</div>
 	</div>
