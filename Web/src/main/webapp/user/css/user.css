@@ -118,8 +118,9 @@ a.nav-button-col {
 }
 
 .affix {
-    left:0;
-	top: 50px;
+    top: 52px;
+    left: -15px;
+    right:75%;
 }
 
 .navbar{

@@ -1,57 +1,86 @@
 
-var flag="close";
-function toggle(){
-	if(flag=="open"){
+var isLeftNavOpen = true;
+var sideNavWidth = "25%";
+var mainContentWidth = "75%";
+var navHeight = 0;
+function toggle() {
+	if (isLeftNavOpen = !isLeftNavOpen) {
+		sideNavWidth = "25%";
+		mainContentWidth = "75%";
 		openNav();
-		flag="close";
-	}else{
+	} else {
+		sideNavWidth = "5%";
+		mainContentWidth = "95%";
 		closeNav();
-		flag="open";
-	}
+	}	
 }
+
 function openNav() {
-    document.getElementById("mySidenav").style.width = "25%";
-	 document.getElementById("main-content").style.width = "75%";
-for(i=0;i<=5;i++){
-		document.getElementById("nav-text"+i).className="nav-text-display";
+	$("#mySidenav").css('width', sideNavWidth);
+	$("#main-content").css('width', mainContentWidth);
+	if($(window).scrollTop() > navHeight)
+		$(".affix").css("right", mainContentWidth);
+	for (i = 0; i <= 5; i++) {
+		$("#nav-text" + i).attr("class", "nav-text-display");
 	}
 }
 
 function closeNav() {
-    document.getElementById("mySidenav").style.width = "5%";
-	document.getElementById("main-content").style.width = "95%";
- 	for(i=0;i<=5;i++){
-		document.getElementById("nav-text"+i).className="nav-text-hide";
+	$("#mySidenav").css('width', sideNavWidth);
+	$("#main-content").css('width', mainContentWidth);
+	if($(window).scrollTop() > navHeight)
+		$(".affix").css("right", mainContentWidth);
+	for (i = 0; i <= 5; i++) {
+		$("#nav-text" + i).attr("class", "nav-text-hide");
 	}
 }
+
+function setActiveElementOnLeftNav(id) {
+	var activeelement = $("#" + id);
+	if (!activeelement.hasClass('active')) {
+		$('.left-nav .nav li').removeClass('active');
+		activeelement.addClass('active');
+	}
+}
+
+function setActiveElementOnTopNav(id) {
+	var activeelement = $("#" + id);
+	if (!activeelement.hasClass('active')) {
+		$('.navbar-nav li').removeClass('active');
+		activeelement.addClass('active');
+	}
+}
+
 $(document).ready(function(){
-    $(window).bind('scroll', function() {
-        var navHeight = $("header").height();
-        ($(window).scrollTop() > navHeight) ? $('nav').addClass('stickToTop') : $('nav').removeClass('stickToTop');
-		 
-      
-    });
+	$(window).bind('scroll', function() {
+        navHeight = $(".header").height();
+        if($(window).scrollTop() > navHeight) {
+        	mainMenuHeight = $(".mainMenu").height()
+        	$('nav').addClass('stickToTop');
+        	$(".main-content").css("margin-top", mainMenuHeight);
+        	$(".affix").css("right", mainContentWidth);
+        	$(".affix").css("top", mainMenuHeight);
+        } else {
+        	$('nav').removeClass('stickToTop');
+        	$(".main-content").css("margin-top", "");
+        	$(".affix").css("right", "");
+        	$(".affix").css("top", "");
+        }
+	});
+    
+	$('.submenu').affix({
+		offset: {
+			top: $('.header').height()
+		}
+	}); 
     
     $('.left-nav .nav li a').click(function(e) {
-
-        $('.left-nav .nav li').removeClass('active');
-
         var $parent = $(this).parent();
-        if (!$parent.hasClass('active')) {
-            $parent.addClass('active');
-        }
-       
+        setActiveElementOnLeftNav($parent.attr('id'));       
     });
     
     $('.navbar-nav li a').click(function(e) {
-
-        $('.navbar-nav li').removeClass('active');
-
         var $parent = $(this).parent();
-        if (!$parent.hasClass('active')) {
-            $parent.addClass('active');
-        }
-       
-    });
-    
+        setActiveElementOnTopNav($parent.attr('id'));
+    });    
 });
