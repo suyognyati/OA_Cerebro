@@ -2,6 +2,9 @@ package com.web.model;
 
 import java.util.List;
 
+import com.data.entities.Enums;
+import com.data.entities.Enums.KeyValuePair;
+
 public class EducationModel {
 	
 	public class Qualification {
@@ -87,164 +90,224 @@ public class EducationModel {
 			}		
 	}
 	
-	/*private String state;
-	private String board;
-	private String schoolName;
-	private String schoolPlace;
-	private int firstAttempt;
-	private int mathsType;
-	private String passingYear;
-	private String passingMonth;
-	private String totalMarksObtained;
-	private String outOfMarks;
-	private String gradeObtained;
-	private String seatNo;
-	
-	
-	*//**
-	 * @return the state
-	 *//*
-	public String getState() {
-		return state;
+	public class QualificationDetail {
+		private String country;
+		private String state;
+		private Integer nameOfBoard;
+		private Integer nameOfUniversity;
+		private String foreignBody_AreaStdCodePhone;
+		private String foreignBody_EmailId;
+		private String foreignBody_URL;
+		private Integer resultStatus;
+		private Integer stream;
+		private Integer noOfAttempts;
+		private String qualificationName;
+		private Integer qualificationLevel;
+		private String specialSubject;
+		private String otherBodyName;
+		private String schoolCollegeAddress;
+		private Integer certifyingBody;
+		private Boolean isLocalBody;
+		private String schoolCollegeName;
+		private Integer passingMonth;
+		private Integer passingYear;
+		private String examSeatNo;
+		private String marksheetNo;
+		private Integer evaluationType;
+		private Integer marksObtain;
+		private Integer totalMarks;
+		private Integer percentage;
+		private String grade;
+		private Integer cgpa;
+		private List<Enums.KeyValuePair> resultStatusList;
+		private List<Enums.KeyValuePair> certifyingBodyList;
+		private List<Enums.KeyValuePair> monthList;
+		
+			public String getCountry() {
+				return country;
+			}
+			public void setCountry(String country) {
+				this.country = country;
+			}
+			public String getState() {
+				return state;
+			}
+			public void setState(String state) {
+				this.state = state;
+			}
+			public Integer getNameOfBoard() {
+				return nameOfBoard;
+			}
+			public void setNameOfBoard(Integer nameOfBoard) {
+				this.nameOfBoard = nameOfBoard;
+			}
+			public Integer getNameOfUniversity() {
+				return nameOfUniversity;
+			}
+			public void setNameOfUniversity(Integer nameOfUniversity) {
+				this.nameOfUniversity = nameOfUniversity;
+			}
+			public String getForeignBody_AreaStdCodePhone() {
+				return foreignBody_AreaStdCodePhone;
+			}
+			public void setForeignBody_AreaStdCodePhone(String foreignBody_AreaStdCodePhone) {
+				this.foreignBody_AreaStdCodePhone = foreignBody_AreaStdCodePhone;
+			}
+			public String getForeignBody_EmailId() {
+				return foreignBody_EmailId;
+			}
+			public void setForeignBody_EmailId(String foreignBody_EmailId) {
+				this.foreignBody_EmailId = foreignBody_EmailId;
+			}
+			public String getForeignBody_URL() {
+				return foreignBody_URL;
+			}
+			public void setForeignBody_URL(String foreignBody_URL) {
+				this.foreignBody_URL = foreignBody_URL;
+			}
+			public Integer getResultStatus() {
+				return resultStatus;
+			}
+			public void setResultStatus(Integer resultStatus) {
+				this.resultStatus = resultStatus;
+			}
+			public Integer getStream() {
+				return stream;
+			}
+			public void setStream(Integer stream) {
+				this.stream = stream;
+			}
+			public Integer getNoOfAttempts() {
+				return noOfAttempts;
+			}
+			public void setNoOfAttempts(Integer noOfAttempts) {
+				this.noOfAttempts = noOfAttempts;
+			}
+			public String getQualificationName() {
+				return qualificationName;
+			}
+			public void setQualificationName(String qualificationName) {
+				this.qualificationName = qualificationName;
+			}
+			public Integer getQualificationLevel() {
+				return qualificationLevel;
+			}
+			public void setQualificationLevel(Integer qualificationLevel) {
+				this.qualificationLevel = qualificationLevel;
+			}
+			public String getSpecialSubject() {
+				return specialSubject;
+			}
+			public void setSpecialSubject(String specialSubject) {
+				this.specialSubject = specialSubject;
+			}
+			public String getOtherBodyName() {
+				return otherBodyName;
+			}
+			public void setOtherBodyName(String otherBodyName) {
+				this.otherBodyName = otherBodyName;
+			}
+			public String getSchoolCollegeAddress() {
+				return schoolCollegeAddress;
+			}
+			public void setSchoolCollegeAddress(String schoolCollegeAddress) {
+				this.schoolCollegeAddress = schoolCollegeAddress;
+			}
+			public Integer getCertifyingBody() {
+				return certifyingBody;
+			}
+			public void setCertifyingBody(Integer certifyingBody) {
+				this.certifyingBody = certifyingBody;
+			}
+			public Boolean getIsLocalBody() {
+				return isLocalBody;
+			}
+			public void setIsLocalBody(Boolean isLocalBody) {
+				this.isLocalBody = isLocalBody;
+			}
+			public String getSchoolCollegeName() {
+				return schoolCollegeName;
+			}
+			public void setSchoolCollegeName(String schoolCollegeName) {
+				this.schoolCollegeName = schoolCollegeName;
+			}
+			public Integer getPassingMonth() {
+				return passingMonth;
+			}
+			public void setPassingMonth(Integer passingMonth) {
+				this.passingMonth = passingMonth;
+			}
+			public Integer getPassingYear() {
+				return passingYear;
+			}
+			public void setPassingYear(Integer passingYear) {
+				this.passingYear = passingYear;
+			}
+			public String getExamSeatNo() {
+				return examSeatNo;
+			}
+			public void setExamSeatNo(String examSeatNo) {
+				this.examSeatNo = examSeatNo;
+			}
+			public String getMarksheetNo() {
+				return marksheetNo;
+			}
+			public void setMarksheetNo(String marksheetNo) {
+				this.marksheetNo = marksheetNo;
+			}
+			public Integer getEvaluationType() {
+				return evaluationType;
+			}
+			public void setEvaluationType(Integer evaluationType) {
+				this.evaluationType = evaluationType;
+			}
+			public Integer getMarksObtain() {
+				return marksObtain;
+			}
+			public void setMarksObtain(Integer marksObtain) {
+				this.marksObtain = marksObtain;
+			}
+			public Integer getTotalMarks() {
+				return totalMarks;
+			}
+			public void setTotalMarks(Integer totalMarks) {
+				this.totalMarks = totalMarks;
+			}
+			public Integer getPercentage() {
+				return percentage;
+			}
+			public void setPercentage(Integer percentage) {
+				this.percentage = percentage;
+			}
+			public String getGrade() {
+				return grade;
+			}
+			public void setGrade(String grade) {
+				this.grade = grade;
+			}
+			public Integer getCgpa() {
+				return cgpa;
+			}
+			public void setCgpa(Integer cgpa) {
+				this.cgpa = cgpa;
+			}
+			public List<KeyValuePair> getResultStatusList() {
+				return resultStatusList;
+			}
+			public void setResultStatusList(List<KeyValuePair> resultStatusList) {
+				this.resultStatusList = resultStatusList;
+			}
+			public List<KeyValuePair> getCertifyingBodyList() {
+				return certifyingBodyList;
+			}
+			public void setCertifyingBodyList(List<KeyValuePair> certifyingBodyList) {
+				this.certifyingBodyList = certifyingBodyList;
+			}
+			public List<KeyValuePair> getMonthList() {
+				return monthList;
+			}
+			public void setMonthList(List<KeyValuePair> monthList) {
+				this.monthList = monthList;
+			}
 	}
-	*//**
-	 * @param state the state to set
-	 *//*
-	public void setState(String state) {
-		this.state = state;
-	}
-	*//**
-	 * @return the board
-	 *//*
-	public String getBoard() {
-		return board;
-	}
-	*//**
-	 * @param board the board to set
-	 *//*
-	public void setBoard(String board) {
-		this.board = board;
-	}
-	*//**
-	 * @return the schoolName
-	 *//*
-	public String getSchoolName() {
-		return schoolName;
-	}
-	*//**
-	 * @param schoolName the schoolName to set
-	 *//*
-	public void setSchoolName(String schoolName) {
-		this.schoolName = schoolName;
-	}
-	*//**
-	 * @return the schollPlace
-	 *//*
-	public String getSchoolPlace() {
-		return schoolPlace;
-	}
-	*//**
-	 * @param schollPlace the schollPlace to set
-	 *//*
-	public void setSchoolPlace(String schoolPlace) {
-		this.schoolPlace = schoolPlace;
-	}
-	*//**
-	 * @return the firstAttempt
-	 *//*
-	public int getFirstAttempt() {
-		return firstAttempt;
-	}
-	*//**
-	 * @param firstAttempt the firstAttempt to set
-	 *//*
-	public void setFirstAttempt(int firstAttempt) {
-		this.firstAttempt = firstAttempt;
-	}
-	*//**
-	 * @return the mathsType
-	 *//*
-	public int getMathsType() {
-		return mathsType;
-	}
-	*//**
-	 * @param mathsType the mathsType to set
-	 *//*
-	public void setMathsType(int mathsType) {
-		this.mathsType = mathsType;
-	}
-	*//**
-	 * @return the passingYear
-	 *//*
-	public String getPassingYear() {
-		return passingYear;
-	}
-	*//**
-	 * @param passingYear the passingYear to set
-	 *//*
-	public void setPassingYear(String passingYear) {
-		this.passingYear = passingYear;
-	}
-	*//**
-	 * @return the passingMonth
-	 *//*
-	public String getPassingMonth() {
-		return passingMonth;
-	}
-	*//**
-	 * @param passingMonth the passingMonth to set
-	 *//*
-	public void setPassingMonth(String passingMonth) {
-		this.passingMonth = passingMonth;
-	}
-	*//**
-	 * @return the totalMarksObtained
-	 *//*
-	public String getTotalMarksObtained() {
-		return totalMarksObtained;
-	}
-	*//**
-	 * @param totalMarksObtained the totalMarksObtained to set
-	 *//*
-	public void setTotalMarksObtained(String totalMarksObtained) {
-		this.totalMarksObtained = totalMarksObtained;
-	}
-	*//**
-	 * @return the outOfMarks
-	 *//*
-	public String getOutOfMarks() {
-		return outOfMarks;
-	}
-	*//**
-	 * @param outOfMarks the outOfMarks to set
-	 *//*
-	public void setOutOfMarks(String outOfMarks) {
-		this.outOfMarks = outOfMarks;
-	}
-	*//**
-	 * @return the gradeObtained
-	 *//*
-	public String getGradeObtained() {
-		return gradeObtained;
-	}
-	*//**
-	 * @param gradeObtained the gradeObtained to set
-	 *//*
-	public void setGradeObtained(String gradeObtained) {
-		this.gradeObtained = gradeObtained;
-	}
-	*//**
-	 * @return the seatNo
-	 *//*
-	public String getSeatNo() {
-		return seatNo;
-	}
-	*//**
-	 * @param seatNo the seatNo to set
-	 *//*
-	public void setSeatNo(String seatNo) {
-		this.seatNo = seatNo;
-	}*/
-	
-	
 }

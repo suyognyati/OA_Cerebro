@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import com.data.entities.EducationalInformation;
+import com.data.entities.QualificationLevel;
 import com.data.entities.User;
 
 @Repository("educationalInformationJpaRepository")
@@ -16,4 +17,5 @@ public interface EducationalInformationJpaRepository extends JpaRepository<Educa
 	List<EducationalInformation> 
 		findByUserOrderByQualificationLevelQualificationMainLevelDescQualificationLevelQualificationSubLevelDesc
 		(User user);
+	EducationalInformation getByUserAndQualificationLevel(User user, QualificationLevel qualificationLevel);
 }

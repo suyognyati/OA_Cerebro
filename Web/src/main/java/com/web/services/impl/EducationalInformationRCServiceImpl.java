@@ -9,10 +9,12 @@ import org.springframework.stereotype.Service;
 import com.data.entities.EducationalInformation;
 import com.data.entities.Enums;
 import com.data.entities.QualificationLevel;
+import com.data.entities.User;
 import com.data.services.EducationalInformationService;
 import com.data.services.QualificationLevelService;
 import com.web.model.EducationModel;
 import com.web.model.EducationModel.Qualification;
+import com.web.model.EducationModel.QualificationDetail;
 import com.web.model.EducationModel.SubQualification;
 import com.web.services.EducationalInformationRCService;
 import com.web.session.Session;
@@ -79,4 +81,48 @@ public class EducationalInformationRCServiceImpl implements EducationalInformati
 		return listOfQualification;
 
 	}
+
+	
+	public QualificationDetail getQualificationDetail(User user, Integer qualificationLevel) {
+		QualificationLevel qualificationLevelObject = qualificationLevelService.getById(qualificationLevel);
+		EducationalInformation educationalInformation = educationalInformationService.getByUserAndQualificationLevel(user, qualificationLevelObject);
+		
+		EducationModel educationModel = new EducationModel();
+		QualificationDetail qualificationDetail = educationModel.new QualificationDetail();
+		
+		if(educationalInformation != null) {
+			qualificationDetail.setCountry(educationalInformation.getCountry());
+			qualificationDetail.setState(educationalInformation.getState());
+			qualificationDetail.setNameOfBoard(educationalInformation.getNameOfBoard());
+			qualificationDetail.setNameOfUniversity(educationalInformation.getNameOfUniversity());
+			qualificationDetail.setForeignBody_AreaStdCodePhone(educationalInformation.getBoardUniversity_AreaStdCodePhone());
+			qualificationDetail.setForeignBody_EmailId(educationalInformation.getBoardUniversity_EmailId());
+			qualificationDetail.setForeignBody_URL(educationalInformation.getBoardUniversity_URL());
+			qualificationDetail.setResultStatus(educationalInformation.getResultStatus());
+			qualificationDetail.setStream(educationalInformation.getStream());
+			qualificationDetail.setNoOfAttempts(educationalInformation.getNoOfAttempts());
+			qualificationDetail.setQualificationName(educationalInformation.getQualificationName());
+			qualificationDetail.setQualificationLevel(educationalInformation.getQualificationLevel().getQualificationLevelId());
+			qualificationDetail.setSpecialSubject(educationalInformation.getSpecialSubject());
+			qualificationDetail.setOtherBodyName(educationalInformation.getOtherBodyName());
+			qualificationDetail.setSchoolCollegeAddress(educationalInformation.getSchoolCollegeAddress());
+			qualificationDetail.setCertifyingBody(educationalInformation.getCertifyingBody());
+			qualificationDetail.setIsLocalBody(educationalInformation.getIsLocalBody());
+			qualificationDetail.setSchoolCollegeName(educationalInformation.getSchoolCollegeName());
+			qualificationDetail.setPassingMonth(educationalInformation.getPassingMonth());
+			qualificationDetail.setPassingYear(educationalInformation.getPassingYear());
+			qualificationDetail.setExamSeatNo(educationalInformation.getExamSeatNo());
+			qualificationDetail.setMarksheetNo(educationalInformation.getMarksheetNo());
+			qualificationDetail.setEvaluationType(educationalInformation.getEvaluationType());
+			qualificationDetail.setMarksObtain(educationalInformation.getMarksObtain());
+			qualificationDetail.setTotalMarks(educationalInformation.getTotalMarks());
+			qualificationDetail.setPercentage(educationalInformation.getPercentage());
+			qualificationDetail.setGrade(educationalInformation.getGrade());
+			qualificationDetail.setCgpa(educationalInformation.getCgpa());
+		}
+		qualificationDetail.setResultStatusList(Enums.ResultStatus.getEnumList());
+		qualificationDetail.setCertifyingBodyList(Enums.CertifyingBody.getEnumList());
+		qualificationDetail.setMonthList(Enums.Month.getEnumList());
+		return qualificationDetail;
+	}	
 }
