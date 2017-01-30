@@ -143,12 +143,12 @@
 							}
 					})
 					
-					.state("familyInformation",{
-							url: "/familyinformation",
+					.state("ssc",{
+							url: "/sscdetails",
 							views: {
 								"view":{
-									templateUrl: basePath + "templates/states/familyInformationView.html",
-									controller:"FamilyInformationCtrl as vm",
+									templateUrl: basePath + "templates/states/sscView.html",
+									controller:"SSCCtrl as vm",
 								}
 							},
 							resolve: {
@@ -156,7 +156,7 @@
 									return $ocLazyLoad.load({
 										name : 'admission',
 										files : [
-										       basePath + 'app/controllers/familyInformationCtrl.js'
+										       basePath + 'app/controllers/sscCtrl.js'
 										]
 								
 									})
@@ -164,12 +164,12 @@
 							}
 					})
 					
-					.state("otherInformation",{
-							url: "/otherinformation",
+					.state("hsc",{
+							url: "/hscdetails",
 							views: {
 								"view":{
-									templateUrl: basePath + "templates/states/otherInformationView.html",
-									controller:"OtherInformationCtrl as vm",
+									templateUrl: basePath + "templates/states/hscView.html",
+									controller:"HSCCtrl as vm",
 								}
 							},
 							resolve: {
@@ -177,7 +177,7 @@
 									return $ocLazyLoad.load({
 										name : 'admission',
 										files : [
-										       basePath + 'app/controllers/otherInformationCtrl.js'
+										       basePath + 'app/controllers/hscCtrl.js'
 										]
 								
 									})
