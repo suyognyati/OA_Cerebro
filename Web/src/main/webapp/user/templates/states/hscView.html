@@ -1,0 +1,383 @@
+<div class="heading">
+	<h1>
+       	HSC Details
+    </h1>
+</div>
+
+
+<form name="hscdetailform" novalidate class="panel panel-default">
+	<div class="panel-body">
+		<div class="row">
+			<div class="col-sm-12 form-group">
+				<div class="col-sm-3">
+					<label for="board"
+						   class="labelclass">Board</label>
+				</div>
+				<div class="col-sm-9 form-inline form-group" style="padding-top:7px">
+					<div class="col-sm-2">
+						<input type="radio" 
+							   name="board" 
+							   id="boardindian"
+							   value="1"
+							   ng-model="">
+						<label for="boardindian">Indian</label>
+					</div>
+					<div class="col-sm-2">
+						<input type="radio" 
+							   name="board" 
+							   id="boardforeign"
+							   value="2"
+							   ng-model="">
+						<label for="boardforeign">Foreign</label>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="col-sm-12 form-group">
+				<div class="col-sm-3">
+					<label for="state"
+						   class="labelclass">Select State</label>
+				</div>
+				<div class="col-sm-8">
+					<select id="state"
+							class="selectpicker" data-width="100%"
+							data-live-search="true"
+							ng-model=""
+							ng-options="">
+					</select>
+				</div>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="col-sm-12 form-group">
+				<div class="col-sm-3">
+					<label for="board"
+						   class="labelclass">Select Board</label>
+				</div>
+				<div class="col-sm-8">
+					<select id="board"
+							class="selectpicker" data-width="100%"
+							data-live-search="true"
+							ng-model=""
+							ng-options="">
+					</select>
+				</div>
+			</div>
+		</div>
+		
+		
+		
+		<div class="row">
+			<div class="col-sm-12 form-group">
+				<div class="col-sm-3">
+					<label for="country"
+						   class="labelclass">Select Country</label>
+				</div>
+				<div class="col-sm-8">
+					<select id="country"
+							class="selectpicker" data-width="100%"
+							data-live-search="true"
+							ng-model=""
+							ng-options="">
+					</select>
+				</div>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="col-sm-12 form-group">
+				<div class="col-sm-3">
+					<label for="nameofboard"
+						   class="labelclass">Name of Board</label>
+				</div>
+				<div class="col-sm-8">
+					<input type="text" 
+						   class="form-control"
+						   id="nameofboard"
+						   ng-model="">
+				</div>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="col-sm-12 form-group">
+				<div class="col-sm-3">
+					<label for="boaedarea"
+						   class="labelclass">Board Area STD Code - Phone</label>
+				</div>
+				<div class="col-sm-8">
+					<input type="text" 
+						   class="form-control"
+						   id="boardarea"
+						   ng-model="">
+				</div>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="col-sm-12 form-group">
+				<div class="col-sm-3">
+					<label for="boaedemailid"
+						   class="labelclass">Board Email Id</label>
+				</div>
+				<div class="col-sm-8">
+					<input type="text" 
+						   class="form-control"
+						   id="boardemailid"
+						   ng-model="">
+				</div>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="col-sm-12 form-group">
+				<div class="col-sm-3">
+					<label for="boaedurl"
+						   class="labelclass">Board URL</label>
+				</div>
+				<div class="col-sm-8">
+					<input type="text" 
+						   class="form-control"
+						   id="boardurl"
+						   ng-model="">
+				</div>
+			</div>
+		</div>
+		
+		
+		
+		<div class="row">
+			<div class="col-sm-12 form-group">
+				<div class="col-sm-3">
+					<label for="stream"
+						   class="labelclass">Stream</label>
+				</div>
+				<div class="col-sm-8">
+					<select id="stream"
+							class="selectpicker" data-width="100%"
+							data-live-search="true"
+							ng-model=""
+							ng-options="">
+					</select>
+				</div>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="col-sm-12 form-group">
+				<div class="col-sm-3">
+					<label for="schoolname"
+						   class="labelclass">School/ College Name</label>
+				</div>
+				<div class="col-sm-8">
+					<input type="text" 
+						   class="form-control"
+						   id="schoolname"
+						   ng-model="">
+				</div>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="col-sm-12 form-group">
+				<div class="col-sm-3">
+						<label for="resultstatus"
+							   class="labelclass">Result Status</label>
+				</div>
+				<div class="col-sm-9 form-inline form-group" style="padding-top:7px">
+					<div class="col-sm-2">
+						<input type="radio" 
+							   name="resultstatus" 
+							   id="passed"
+							   value="1"
+							   ng-model="">
+						<label for="passed">Passed</label>
+					</div>
+					<div class="col-sm-3">
+						<input type="radio" 
+							   name="reaultstatus" 
+							   id="awaited"
+							   value="2"
+							   ng-model="">
+						<label for="awaited">Result Awaited</label>
+					</div>
+					<div class="col-sm-2">
+						<input type="radio" 
+							   name="resultstatus" 
+							   id="failed"
+							   value="3"
+							   ng-model="">
+						<label for="failed">Failed</label>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="col-sm-12 form-group">
+				<div class="col-sm-3">
+					<label for="rollno"
+						   class="labelclass">Roll No/ Seat No</label>
+				</div>
+				<div class="col-sm-8">
+					<input type="text" 
+						   class="form-control"
+						   id="rollno"
+						   ng-model="">
+				</div>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="col-sm-12 form-group">
+				<div class="col-sm-3">
+					<label for="noofattempts"
+						   class="labelclass">No. of Attempts</label>
+				</div>
+				<div class="col-sm-8">
+					<input type="text" 
+						   class="form-control"
+						   id="noofattempts"
+						   ng-model="">
+				</div>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="col-sm-12 form-group">
+				<div class="col-sm-3">
+					<label for="dateofresult"
+						   class="labelclass">Date of Result</label>
+				</div>
+				<div class="col-sm-4">
+					<select id="dateofresult"
+							class="selectpicker" data-width="100%"
+							data-live-search="true"
+							ng-model=""
+							ng-options="">
+					</select>
+				</div>
+				<div class="col-sm-2">
+					<select id="dateofresult"
+							class="selectpicker" data-width="100%"
+							data-live-search="true"
+							ng-model=""
+							ng-options="">
+					</select>
+				</div>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="col-sm-12 form-group">
+				<div class="col-sm-3">
+					<label for="marksheetno"
+						   class="labelclass">Marksheet No</label>
+				</div>
+				<div class="col-sm-8">
+					<input type="text" 
+						   class="form-control"
+						   id="marksheetno"
+						   ng-model="">
+				</div>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="col-sm-12 form-group">
+				<div class="col-sm-3">
+						<label for="marksorgrade"
+							   class="labelclass">If your result has Marks or Grades</label>
+				</div>
+				<div class="col-sm-9 form-inline form-group" style="padding-top:7px">
+					<div class="col-sm-2">
+						<input type="radio" 
+							   name="marksorgrade" 
+							   id="marks"
+							   value="1"
+							   ng-model="">
+						<label for="marks">Marks</label>
+					</div>
+					<div class="col-sm-2">
+						<input type="radio" 
+							   name="marksorgrade" 
+							   id="grades"
+							   value="2"
+							   ng-model="">
+						<label for="grades">Grades</label>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="col-sm-12 form-group">
+				<div class="col-sm-3">
+					<label for="totalmarksobtained"
+						   class="labelclass">Total Marks Obtained</label>
+				</div>
+				<div class="col-sm-3">
+					<input type="text" 
+						   class="form-control"
+						   id="totalmarksobtained"
+						   ng-model="">
+				</div>
+				<div class="col-sm-2">
+					<label for="outof"
+						   class="labelclass">Out of</label>
+				</div>
+				<div class="col-sm-3">
+					<input type="text" 
+						   class="form-control"
+						   id="outof"
+						   ng-model="">
+				</div>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="col-sm-12 form-group">
+				<div class="col-sm-3">
+					<label for="grade"
+						   class="labelclass">Grade</label>
+				</div>
+				<div class="col-sm-3">
+					<input type="text" 
+						   class="form-control"
+						   id="grade"
+						   ng-model="">
+				</div>
+				<div class="col-sm-2">
+					<label for="cgpa"
+						   class="labelclass">CGPA</label>
+				</div>
+				<div class="col-sm-3">
+					<input type="text" 
+						   class="form-control"
+						   id="cgpa"
+						   ng-model="">
+				</div>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="col-sm-12 form-group">
+				<div class="col-sm-3">
+					<label for="percentage"
+						   class="labelclass">Percentage</label>
+				</div>
+				<div class="col-sm-3">
+					<input type="text" 
+						   class="form-control"
+						   id="percentage"
+						   ng-model="">
+				</div>
+			</div>
+		</div>
+		
+		
+	</div>
+</form>
