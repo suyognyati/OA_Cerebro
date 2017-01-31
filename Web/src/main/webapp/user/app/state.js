@@ -184,6 +184,28 @@
 								}]
 							}
 					})
+					
+					.state("diploma",{
+							url: "/diplomadetails",
+							views: {
+								"view":{
+									templateUrl: basePath + "templates/states/diplomaView.html",
+									controller:"DiplomaCtrl as vm",
+								}
+							},
+							resolve: {
+								basicDetail : ['$ocLazyLoad', function($ocLazyLoad){
+									return $ocLazyLoad.load({
+										name : 'admission',
+										files : [
+										       basePath + 'app/controllers/diplomaCtrl.js'
+										]
+								
+									})
+								}]
+							}
+					})
+					
 			}]
 		);
 	

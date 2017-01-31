@@ -1,0 +1,539 @@
+<div class="heading">
+	<h1>
+       	Diploma Details
+    </h1>
+</div>
+
+
+<form name="hscdetailform" novalidate class="panel panel-default">
+	<div class="panel-body">
+		<div class="row">
+			<div class="col-sm-12 form-group">
+				<div class="col-sm-3">
+					<label for="examboard"
+						   class="labelclass">Examination Board</label>
+				</div>
+				<div class="col-sm-9 form-inline form-group" style="padding-top:7px">
+					<div class="col-sm-2">
+						<input type="radio" 
+							   name="examboard" 
+							   id="board"
+							   value="1"
+							   ng-model="vm.qualificationdetail.certifyingBody"
+							   checked="checked">	
+						<label for="board">Board</label>
+					</div>
+					<div class="col-sm-2">
+						<input type="radio" 
+							   name="examboard" 
+							   id="university"
+							   value="2"
+							   ng-model="vm.qualificationdetail.certifyingBody">
+						<label for="university">University</label>
+					</div>
+					<div class="col-sm-2">
+						<input type="radio" 
+							   name="examboard" 
+							   id="other"
+							   value="3"
+							   ng-model="vm.qualificationdetail.certifyingBody">
+						<label for="other">Other</label>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div ng-show="vm.qualificationdetail.certifyingBody == 1 || vm.qualificationdetail.certifyingBody == 2">
+			<div class="row">
+				<div class="col-sm-12 form-group">
+					<div class="col-sm-3">
+						<label for="board"
+							   class="labelclass">Board</label>
+					</div>
+					<div class="col-sm-9 form-inline form-group" style="padding-top:7px">
+						<div class="col-sm-2">
+							<input type="radio" 
+								   name="board" 	
+								   id="boardindian"
+								   value="1"
+								   ng-model="vm.qualificationdetail.isLocalBody">	
+							<label for="boardindian">Indian</label>
+						</div>
+						<div class="col-sm-2">
+							<input type="radio" 
+								   name="board" 
+								   id="boardforeign"
+								   value="2"
+								   ng-model="vm.qualificationdetail.isLocalBody">
+							<label for="boardforeign">Foreign</label>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div ng-show="vm.qualificationdetail.certifyingBody == 1">		
+			<div ng-show="vm.qualificationdetail.isLocalBody==1">
+				<div class="row">
+					<div class="col-sm-12 form-group">
+						<div class="col-sm-3">
+							<label for="state"
+								   class="labelclass">Select State</label>
+						</div>
+						<div class="col-sm-8">
+							<select id="state"
+									class="selectpicker" data-width="100%"
+									data-live-search="true"
+									ng-model="vm.qualificationdetail.state"
+									ng-options="stateList.key as stateList.value for stateList in vm.quallificationdetail.stateList">
+							</select>
+						</div>
+					</div>
+				</div>
+			
+				<div class="row">
+					<div class="col-sm-12 form-group">
+						<div class="col-sm-3">
+							<label for="board"
+								   class="labelclass">Select Board</label>
+						</div>
+						<div class="col-sm-8">
+							<select id="board"
+									class="selectpicker" data-width="100%"
+									data-live-search="true"
+									ng-model="vm.qualificationdetail.nameOfBoard"
+									ng-options="nameOfBoardList.key as nameOfBoardList.value for nameOfBoardList in vm.quallificationdetail.nameOfBoardList">
+							</select>
+						</div>
+					</div>
+				</div>
+			</div>
+		
+			<div ng-show="vm.qualificationdetail.isLocalBody==2">
+				<div class="row">
+					<div class="col-sm-12 form-group">
+						<div class="col-sm-3">
+							<label for="country"
+								   class="labelclass">Select Country</label>
+						</div>
+						<div class="col-sm-8">
+							<select id="country"
+									class="selectpicker" data-width="100%"
+									data-live-search="true"
+									ng-model="vm.qualificationdetail.country"
+									ng-options="countryList.key as countryList.value for countryList in vm.quallificationdetail.countryList">
+							</select>
+						</div>
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col-sm-12 form-group">
+						<div class="col-sm-3">
+							<label for="nameofboard"
+								   class="labelclass">Name of Board</label>
+						</div>
+						<div class="col-sm-8">
+							<input type="text" 
+								   class="form-control"
+								   id="nameofboard"
+								   ng-model="vm.qualificationdetail.nameOfBoard">
+						</div>
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col-sm-12 form-group">
+						<div class="col-sm-3">
+							<label for="boaedarea"
+								   class="labelclass">Board Area STD Code - Phone</label>
+						</div>
+						<div class="col-sm-8">
+							<input type="text" 
+								   class="form-control"
+								   id="boardarea"
+								   ng-model="vm.qualificationdetail.foreignBody_AreaStdCodePhone">
+						</div>
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col-sm-12 form-group">
+						<div class="col-sm-3">
+							<label for="boaedemailid"
+								   class="labelclass">Board Email Id</label>
+						</div>
+						<div class="col-sm-8">
+							<input type="text" 
+								   class="form-control"
+								   id="boardemailid"
+								   ng-model="vm.qualificationdetail.foreignBody_EmailId">
+						</div>
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col-sm-12 form-group">
+						<div class="col-sm-3">
+							<label for="boaedurl"
+								   class="labelclass">Board URL</label>
+						</div>
+						<div class="col-sm-8">
+							<input type="text" 
+								   class="form-control"
+								   id="boardurl"
+								   ng-model="vm.qualificationdetail.foreignBody_URL">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div ng-show="vm.qualificationdetail.certifyingBody == 2">		
+			<div ng-show="vm.qualificationdetail.isLocalBody==1">
+				<div class="row">
+					<div class="col-sm-12 form-group">
+						<div class="col-sm-3">
+							<label for="state"
+								   class="labelclass">Select State</label>
+						</div>
+						<div class="col-sm-8">
+							<select id="state"
+									class="selectpicker" data-width="100%"
+									data-live-search="true"
+									ng-model="vm.qualificationdetail.state"
+									ng-options="stateList.key as stateList.value for stateList in vm.quallificationdetail.stateList">
+							</select>
+						</div>
+					</div>
+				</div>
+			
+				<div class="row">
+					<div class="col-sm-12 form-group">
+						<div class="col-sm-3">
+							<label for="board"
+								   class="labelclass">Select University</label>
+						</div>
+						<div class="col-sm-8">
+							<select id="board"
+									class="selectpicker" data-width="100%"
+									data-live-search="true"
+									ng-model="vm.qualificationdetail.nameOfUniversity"
+									ng-options="nameOfUniversityList.key as nameOfUniversityList.value for nameOfUniversityList in vm.quallificationdetail.nameOfUniversityList">
+							</select>
+						</div>
+					</div>
+				</div>
+			</div>
+		
+			<div ng-show="vm.qualificationdetail.isLocalBody==2">
+				<div class="row">
+					<div class="col-sm-12 form-group">
+						<div class="col-sm-3">
+							<label for="country"
+								   class="labelclass">Select Country</label>
+						</div>
+						<div class="col-sm-8">
+							<select id="country"
+									class="selectpicker" data-width="100%"
+									data-live-search="true"
+									ng-model="vm.qualificationdetail.country"
+									ng-options="countryList.key as countryList.value for countryList in vm.quallificationdetail.countryList">
+							</select>
+						</div>
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col-sm-12 form-group">
+						<div class="col-sm-3">
+							<label for="nameofboard"
+								   class="labelclass">Name of University</label>
+						</div>
+						<div class="col-sm-8">
+							<input type="text" 
+								   class="form-control"
+								   id="nameofboard"
+								   ng-model="vm.qualificationdetail.nameOfUniversity">
+						</div>
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col-sm-12 form-group">
+						<div class="col-sm-3">
+							<label for="boardarea"
+								   class="labelclass">University Area STD Code - Phone</label>
+						</div>
+						<div class="col-sm-8">
+							<input type="text" 
+								   class="form-control"
+								   id="boardarea"
+								   ng-model="vm.qualificationdetail.foreignBody_AreaStdCodePhone">
+						</div>
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col-sm-12 form-group">
+						<div class="col-sm-3">
+							<label for="boaedemailid"
+								   class="labelclass">University Email Id</label>
+						</div>
+						<div class="col-sm-8">
+							<input type="text" 
+								   class="form-control"
+								   id="boardemailid"
+								   ng-model="vm.qualificationdetail.foreignBody_EmailId">
+						</div>
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col-sm-12 form-group">
+						<div class="col-sm-3">
+							<label for="boaedurl"
+								   class="labelclass">University URL</label>
+						</div>
+						<div class="col-sm-8">
+							<input type="text" 
+								   class="form-control"
+								   id="boardurl"
+								   ng-model="vm.qualificationdetail.foreignBody_URL">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div ng-show="vm.qualificationdetail.certifyingBody == 3">
+			<div class="row">
+				<div class="col-sm-12 form-group">
+					<div class="col-sm-3">
+						<label for="schoolname"
+							   class="labelclass">Name of Other Exam / Certifying Body</label>
+					</div>
+					<div class="col-sm-8">
+						<input type="text" 
+							   class="form-control"
+							   id="schoolname"
+							   ng-model="vm.qualificationdetail.otherBodyName">
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="col-sm-12 form-group">
+				<div class="col-sm-3">
+					<label for="schoolname"
+						   class="labelclass">Name of College</label>
+				</div>
+				<div class="col-sm-8">
+					<input type="text" 
+						   class="form-control"
+						   id="schoolname"
+						   ng-model="vm.qualificationdetail.schoolCollegeName">
+				</div>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="col-sm-12 form-group">
+				<div class="col-sm-3">
+					<label for="diplomaname"
+						   class="labelclass">Name of Diploma</label>
+				</div>
+				<div class="col-sm-8">
+					<input type="text" 
+						   class="form-control"
+						   id="diplomaname"
+						   ng-model="">
+				</div>
+			</div>
+		</div>
+		
+		<div ng-show="vm.qualificationdetail.certifyingBody == 3">
+			<div class="row">
+				<div class="col-sm-12 form-group">
+					<div class="col-sm-3">
+						<label for="collegeaddress"
+							   class="labelclass">College Address</label>
+					</div>
+					<div class="col-sm-8">
+						<input type="text" 
+							   class="form-control"
+							   id="collegeaddress"
+							   ng-model="vm.qualificationdetail.schoolCollegeAddress">
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="col-sm-12 form-group">
+				<div class="col-sm-3">
+					<label for="dateofresult"
+						   class="labelclass">Date of Result</label>
+				</div>
+				<div class="col-sm-4">
+					<select id="dateofresult"
+							class="selectpicker" data-width="100%"
+							data-live-search="true"
+							ng-model="vm.qualificationdetail.passingMonth"
+							ng-options="">
+					</select>
+				</div>
+				<div class="col-sm-2">
+					<select id="dateofresult"
+							class="selectpicker" data-width="100%"
+							data-live-search="true"
+							ng-model="vm.qualificationdetail.passingYear"
+							ng-options="">
+					</select>
+				</div>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="col-sm-12 form-group">
+				<div class="col-sm-3">
+					<label for="rollno"
+						   class="labelclass">Roll No/ Seat No</label>
+				</div>
+				<div class="col-sm-8">
+					<input type="text" 
+						   class="form-control"
+						   id="rollno"
+						   ng-model="vm.qualificationdetail.examSeatNo">
+				</div>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="col-sm-12 form-group">
+				<div class="col-sm-3">
+					<label for="marksheetno"
+						   class="labelclass">Marksheet No</label>
+				</div>
+				<div class="col-sm-8">
+					<input type="text" 
+						   class="form-control"
+						   id="marksheetno"
+						   ng-model="vm.qualificationdetail.marksheetNo">
+				</div>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="col-sm-12 form-group">
+				<div class="col-sm-3">
+						<label for="marksorgrade"
+							   class="labelclass">If your result has Marks or Grades</label>
+				</div>
+				<div class="col-sm-9 form-inline form-group" style="padding-top:7px">
+					<div class="col-sm-2">
+						<input type="radio" 
+							   name="marksorgrade" 
+							   id="marks"
+							   value="1"
+							   ng-model="vm.qualificationdetail.evaluationType">
+						<label for="marks">Marks</label>
+					</div>
+					<div class="col-sm-2">
+						<input type="radio" 
+							   name="marksorgrade" 
+							   id="grades"
+							   value="2"
+							   ng-model="vm.qualificationdetail.evaluationType">
+						<label for="grades">Grades</label>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div ng-show="vm.qualificationdetail.evaluationType==1">
+			<div class="row">
+				<div class="col-sm-12 form-group">
+					<div class="col-sm-3">
+						<label for="totalmarksobtained"
+							   class="labelclass">Total Marks Obtained</label>
+					</div>
+					<div class="col-sm-3">
+						<input type="text" 
+							   class="form-control"
+							   id="totalmarksobtained"
+							   ng-model="vm.qualificationdetail.marksObtain">
+					</div>
+					<div class="col-sm-2">
+						<label for="outof"
+							   class="labelclass">Out of</label>
+					</div>
+					<div class="col-sm-3">
+						<input type="text" 
+							   class="form-control"
+							   id="outof"
+							   ng-model="vm.qualificationdetail.totalMarks">
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div ng-show="vm.qualificationdetail.evaluationType==2">
+			<div class="row">
+				<div class="col-sm-12 form-group">
+					<div class="col-sm-3">
+						<label for="grade"
+							   class="labelclass">Grade</label>
+					</div>
+					<div class="col-sm-3">
+						<input type="text" 
+							   class="form-control"
+							   id="grade"
+							   ng-model="vm.qualificationdetail.grade">
+					</div>
+					<div class="col-sm-2">
+						<label for="cgpa"
+							   class="labelclass">CGPA</label>
+					</div>
+					<div class="col-sm-3">
+						<input type="text" 
+							   class="form-control"
+							   id="cgpa"
+							   ng-model="vm.qualificationdetail.cgpa">
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="col-sm-12 form-group">
+				<div class="col-sm-3">
+					<label for="percentage"
+						   class="labelclass">Percentage</label>
+				</div>
+				<div class="col-sm-3">
+					<input type="text" 
+						   class="form-control"
+						   id="percentage"
+						   ng-model="vm.qualificationdetail.percentage">
+				</div>
+			</div>
+		</div>
+	
+	</div>
+</form>
+
+<script type="text/javascript">
+	
+	setActiveElementOnLeftNav("occupationReservation");
+
+	$(".selectpicker").selectpicker("refresh");
+	var delay = 1000;
+	
+	setTimeout(function() {
+		//alert("Hi alert");
+		$(".selectpicker").selectpicker("refresh");
+	}, delay);
+	
+</script>

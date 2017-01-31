@@ -81,6 +81,7 @@
 						<li id="uploadPhotoSign"><a><i class="glyphicon glyphicon-cloud-upload"></i> <span id="nav-text5" class="nav-text-display">Upload Photo & Signature</span></a></li>
 						<li><a ui-sref="ssc"><strong>SSC Details</strong></a></li>
 						<li><a ui-sref="hsc"><strong>HSC Details</strong></a></li>
+						<li><a ui-sref="diploma"><strong>Diploma Details</strong></a></li>
 					</ul>
 			    </div>
 				<div class="col-sm-10 main-content col-sm-custompadding" id="main-content"> <a class="btn btn-toggleleft nav-button-col" onclick="toggle()"><i class="glyphicon glyphicon-menu-hamburger"></i></a>
