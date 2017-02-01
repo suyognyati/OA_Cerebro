@@ -16,9 +16,9 @@ body {
 	border-radius:0 !important;
 }
 
-.header{
+/* .header{
 	padding:20px 0 20px 20px;
-}
+} */
 .headercontent {
 	padding:20px 0 0 0px;
 	color:#00a0d3;
@@ -124,6 +124,10 @@ a.nav-button-col {
     top: 52px;
     left: -15px;
     right:75%;
+}
+
+.glyphicon-plus-custom {
+	color: #3c763d;'
 }
 
 @media (min-width: 768px) {

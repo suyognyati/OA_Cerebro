@@ -23,6 +23,6 @@ public class EducationalInformationServiceImpl implements EducationalInformation
 	}
 
 	public EducationalInformation getByUserAndQualificationLevel(User user, QualificationLevel qualificationLevel) {
-		return getByUserAndQualificationLevel(user, qualificationLevel);
+		return educationalInformationJpaRepository.getByUserAndQualificationLevel(user, qualificationLevel);
 	}
 }

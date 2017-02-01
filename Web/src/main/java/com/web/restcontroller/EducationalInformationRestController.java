@@ -4,8 +4,9 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.web.model.EducationModel;
@@ -32,8 +33,8 @@ public class EducationalInformationRestController {
 		return educationalInformationService.getListofQualification();
 	}
 	
-	@RequestMapping(value="/getQualificationDetail/")
-	public EducationModel.QualificationDetail getQualificationDetail(@RequestBody Integer qualificationLevel){
-		return educationalInformationService.getQualificationDetail(session.getCurrentUser(), qualificationLevel);
+	@RequestMapping(value="/getQualificationDetail/{qualificationLevelId}", method=RequestMethod.GET)
+	public EducationModel.QualificationDetail getQualificationDetail(@PathVariable(value="qualificationLevelId") Integer qualificationLevelId){
+		return educationalInformationService.getQualificationDetail(session.getCurrentUser(), qualificationLevelId);
 	}
 }

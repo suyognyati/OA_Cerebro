@@ -45,6 +45,7 @@ public class EducationModel {
 		public Integer passingYear;
 		public Integer marksObtain;
 		public Integer totalMarks;
+		public Integer qualificationLevelId;
 		
 			public String getName() {
 				return name;
@@ -87,6 +88,12 @@ public class EducationModel {
 			}
 			public void setTotalMarks(Integer totalMarks) {
 				this.totalMarks = totalMarks;
+			}
+			public Integer getQualificationLevelId() {
+				return qualificationLevelId;
+			}
+			public void setQualificationLevelId(Integer qualificationLevelId) {
+				this.qualificationLevelId = qualificationLevelId;
 			}		
 	}
 	

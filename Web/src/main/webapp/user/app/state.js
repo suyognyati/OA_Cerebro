@@ -143,12 +143,23 @@
 							}
 					})
 					
-					.state("ssc",{
-							url: "/sscdetails",
+					.state("qualificationDetail",{
+							url: "/educationinformation/:qualification/:qualificationMainLevel/:qualificationLevelId",
 							views: {
 								"view":{
-									templateUrl: basePath + "templates/states/sscView.html",
-									controller:"SSCCtrl as vm",
+									templateUrl: 
+									function (stateParams){
+										/*if(stateParams.qualificationMainLevel == 1) {
+											return basePath + "templates/states/sscView.html"
+										} else if(stateParams.qualificationMainLevel == 2) {
+											return basePath + "templates/states/hscView.html"
+										} else if(stateParams.qualificationMainLevel == 3) {
+											return basePath + "templates/states/diplomaView.html"
+										}*/
+										
+										return basePath + "templates/states/" + stateParams.qualification + "View.html"
+									},
+									controller:"QualificationDetailCtrl as vm",
 								}
 							},
 							resolve: {
@@ -156,56 +167,14 @@
 									return $ocLazyLoad.load({
 										name : 'admission',
 										files : [
-										       basePath + 'app/controllers/sscCtrl.js'
+										       basePath + 'app/controllers/qualificationDetailCtrl.js',
+										       basePath + 'app/services/qualificationDetailService.js'
 										]
 								
 									})
 								}]
 							}
-					})
-					
-					.state("hsc",{
-							url: "/hscdetails",
-							views: {
-								"view":{
-									templateUrl: basePath + "templates/states/hscView.html",
-									controller:"HSCCtrl as vm",
-								}
-							},
-							resolve: {
-								basicDetail : ['$ocLazyLoad', function($ocLazyLoad){
-									return $ocLazyLoad.load({
-										name : 'admission',
-										files : [
-										       basePath + 'app/controllers/hscCtrl.js'
-										]
-								
-									})
-								}]
-							}
-					})
-					
-					.state("diploma",{
-							url: "/diplomadetails",
-							views: {
-								"view":{
-									templateUrl: basePath + "templates/states/diplomaView.html",
-									controller:"DiplomaCtrl as vm",
-								}
-							},
-							resolve: {
-								basicDetail : ['$ocLazyLoad', function($ocLazyLoad){
-									return $ocLazyLoad.load({
-										name : 'admission',
-										files : [
-										       basePath + 'app/controllers/diplomaCtrl.js'
-										]
-								
-									})
-								}]
-							}
-					})
-					
+					})					
 			}]
 		);
 	

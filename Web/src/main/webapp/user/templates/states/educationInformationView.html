@@ -20,46 +20,31 @@
             	<table class="table table-striped table-bordered">
                 <thead>
                     <tr class="table-background">
-                        <th>
-                            Qualification
-                        </th>
-                        <th>
-                            Board/University
-                        </th>
-                        <th>
-                            Faculty/College Name
-                        </th>
-                        <th>
-                            Passing Date
-                        </th>
-                        <th>
-                            Marks/Out Of
-                        </th>
-                        <th>
-                            Edit
-                        </th>
-                        <th>
-                            Delete
-                        </th>
+                        <th>Qualification</th>
+                        <th>Board/University</th>
+                        <th>Faculty/College Name</th>
+                        <th>Passing Date</th>
+                        <th>Marks/Out Of</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
                     </tr>
                 </thead>
                 <tbody>
-                     <tr>
-                        <td>Cerficate/Prepatory/Below 10th</td>
-                        <td>MAHARASHTRA STATE BOARD OF SECONDARY AND HIGHER SECONDARY EDUCATION</td>
-                        <td>SGS HIGH SCHOOL</td>
-                        <td>June 2004</td>
-                        <td>247 / 650</td>
-                        <td></td>
-                        <td></td>
-                     </tr>
-                     <tr>
-                        <td>SSC</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                     <tr ng-repeat="qualificationList in vm.qualificationList">
+                        <td>{{qualificationList.name}}</td>
+                        <td>{{qualificationList.boardOrUniversity}}</td>
+                        <td>{{qualificationList.facultyOrCollegeName}}</td>
+                        <td>{{qualificationList.passingMonth}} {{qualificationList.passingYear}}</td>
+                        <td>
+                        	{{qualificationList.marksObtain}} 
+                        	<span ng-if="!(qualificationList.marksObtain == null && qualificationList.totalMarks == null)">/</span> 
+                        	{{qualificationList.totalMarks}}
+                        </td>
+                        <td>
+                        	<i 	class="glyphicon glyphicon-plus glyphicon-plus-custom" style="cursor: pointer;" 
+                        		ng-click="vm.qualificationDetail(qualificationList.qualificationMainLevel, qualificationList.qualificationLevelId)">
+                       		</i>
+                       	</td>
                         <td></td>
                      </tr>
 				</tbody>

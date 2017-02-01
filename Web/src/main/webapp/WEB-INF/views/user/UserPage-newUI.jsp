@@ -79,9 +79,6 @@
 						<li id="educationInformation"><a ui-sref="educationInformation"><i class="glyphicon glyphicon-education"></i> <span id="nav-text3" class="nav-text-display">Educational Information</span></a></li>
 						<li id="occupationReservation"><a ui-sref="occupationReservation"><i class="glyphicon glyphicon-cog"></i> <span id="nav-text4" class="nav-text-display">Occupation & Reservation</span></a></li>
 						<li id="uploadPhotoSign"><a><i class="glyphicon glyphicon-cloud-upload"></i> <span id="nav-text5" class="nav-text-display">Upload Photo & Signature</span></a></li>
-						<li><a ui-sref="ssc"><strong>SSC Details</strong></a></li>
-						<li><a ui-sref="hsc"><strong>HSC Details</strong></a></li>
-						<li><a ui-sref="diploma"><strong>Diploma Details</strong></a></li>
 					</ul>
 			    </div>
 				<div class="col-sm-10 main-content col-sm-custompadding" id="main-content"> <a class="btn btn-toggleleft nav-button-col" onclick="toggle()"><i class="glyphicon glyphicon-menu-hamburger"></i></a>

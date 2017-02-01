@@ -75,16 +75,16 @@ public class EducationalInformationRCServiceImpl implements EducationalInformati
 			subQualification.setPassingYear(educationalInformation.getPassingYear());
 			subQualification.setMarksObtain(educationalInformation.getMarksObtain());
 			subQualification.setTotalMarks(educationalInformation.getTotalMarks());
+			subQualification.setQualificationLevelId(educationalInformation.getQualificationLevel().getQualificationLevelId());
 			qualification.getSubQualificationList().add(subQualification);			
 		}
 		
 		return listOfQualification;
 
 	}
-
 	
-	public QualificationDetail getQualificationDetail(User user, Integer qualificationLevel) {
-		QualificationLevel qualificationLevelObject = qualificationLevelService.getById(qualificationLevel);
+	public QualificationDetail getQualificationDetail(User user, Integer qualificationLevelId) {
+		QualificationLevel qualificationLevelObject = qualificationLevelService.getById(qualificationLevelId);
 		EducationalInformation educationalInformation = educationalInformationService.getByUserAndQualificationLevel(user, qualificationLevelObject);
 		
 		EducationModel educationModel = new EducationModel();
