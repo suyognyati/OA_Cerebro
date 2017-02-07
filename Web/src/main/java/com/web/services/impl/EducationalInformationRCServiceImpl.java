@@ -1,7 +1,9 @@
 package com.web.services.impl;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
+import java.util.TimeZone;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,6 +13,7 @@ import com.data.entities.Enums;
 import com.data.entities.QualificationLevel;
 import com.data.entities.User;
 import com.data.services.EducationalInformationService;
+import com.data.services.GeoLocationsService;
 import com.data.services.QualificationLevelService;
 import com.web.model.EducationModel;
 import com.web.model.EducationModel.Qualification;
@@ -31,6 +34,9 @@ public class EducationalInformationRCServiceImpl implements EducationalInformati
 	
 	@Autowired
 	QualificationLevelService qualificationLevelService;
+	
+	@Autowired
+	GeoLocationsService geoLocationService;
 	
 	public List<EducationModel.Qualification> getListofQualification(){
 		List<EducationalInformation> educationalInformationListofUserAsc = educationalInformationService.getByUserOrderByQualificationLevelAsc(session.getCurrentUser());
@@ -123,6 +129,15 @@ public class EducationalInformationRCServiceImpl implements EducationalInformati
 		qualificationDetail.setResultStatusList(Enums.ResultStatus.getEnumList());
 		qualificationDetail.setCertifyingBodyList(Enums.CertifyingBody.getEnumList());
 		qualificationDetail.setMonthList(Enums.Month.getEnumList());
+		qualificationDetail.setCountryList(geoLocationService.getCountryList());
+		qualificationDetail.setStateList(geoLocationService.getStateListByCountryName("India"));
+		
+		TimeZone timeZone = TimeZone.getTimeZone("UTC");
+		Calendar calendar = Calendar.getInstance(timeZone);
+		int year = calendar.get(Calendar.YEAR);
+		
+		qualificationDetail.setYearList(year);
+		
 		return qualificationDetail;
 	}	
 }

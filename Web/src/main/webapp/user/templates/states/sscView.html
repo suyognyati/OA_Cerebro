@@ -46,7 +46,7 @@
 								class="selectpicker" data-width="100%"
 								data-live-search="true"
 								ng-model="vm.qualificationDetail.state"
-								ng-options="stateList.key as stateList.value for stateList in vm.qualificationDetail.stateList">
+								ng-options="stateList.stateId as stateList.stateName for stateList in vm.qualificationDetail.stateList">
 						</select>
 					</div>
 				</div>
@@ -82,7 +82,7 @@
 								class="selectpicker" data-width="100%"
 								data-live-search="true"
 								ng-model="vm.qualificationDetail.country"
-								ng-options="countryList.key as countryList.value for countryList in vm.qualificationDetail.countryList">
+								ng-options="countryList.countryId as countryList.countryName for countryList in vm.qualificationDetail.countryList">
 						</select>
 					</div>
 				</div>
@@ -183,7 +183,7 @@
 							class="selectpicker" data-width="100%"
 							data-live-search="true"
 							ng-model="vm.qualificationDetail.passingYear"
-							ng-options="passingYearList.key as passingYearList.value for passingYearList in vm.qualificationDetail.passingYearList">
+							ng-options="passingYearList as passingYearList for passingYearList in vm.qualificationDetail.yearList">
 					</select>
 				</div>
 			</div>
@@ -314,7 +314,26 @@
 				</div>
 			</div>
 		</div>
-		
+		<div class="row" style="margin-bottom: 50px; margin-top: 20px;">
+			<div class="col-sm-4"></div>
+			<div class="col-sm-2">
+	        	<input type="submit" 
+	        		tabindex="21"
+	        		value="SAVE" 
+	        		class="btn btn-success btn-block topMargin" 
+	        		
+	        		ng-click="vm.submit()">
+	        </div>
+	        <div class="col-sm-2">
+	        	<input type="button" 
+	        		tabindex="22"
+	        		value="Cancel" 
+	        		class="btn btn-success btn-block topMargin" 
+	        		
+	        		ng-click="vm.cancel()">
+	        </div>
+	        <div class="col-sm-4"></div>
+		</div>
 			
 	</div>
 </form>

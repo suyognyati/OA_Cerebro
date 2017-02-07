@@ -1,9 +1,12 @@
 package com.web.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import com.data.entities.Country;
 import com.data.entities.Enums;
 import com.data.entities.Enums.KeyValuePair;
+import com.data.entities.State;
 
 public class EducationModel {
 	
@@ -129,6 +132,9 @@ public class EducationModel {
 		private List<Enums.KeyValuePair> resultStatusList;
 		private List<Enums.KeyValuePair> certifyingBodyList;
 		private List<Enums.KeyValuePair> monthList;
+		private List<Integer> yearList;
+		private List<Country> countryList;
+		private List<State> stateList;
 		
 			public String getCountry() {
 				return country;
@@ -227,7 +233,7 @@ public class EducationModel {
 				this.certifyingBody = certifyingBody;
 			}
 			public Boolean getIsLocalBody() {
-				return isLocalBody;
+				return isLocalBody != null ? isLocalBody : true;
 			}
 			public void setIsLocalBody(Boolean isLocalBody) {
 				this.isLocalBody = isLocalBody;
@@ -263,7 +269,7 @@ public class EducationModel {
 				this.marksheetNo = marksheetNo;
 			}
 			public Integer getEvaluationType() {
-				return evaluationType;
+				return evaluationType != null ? evaluationType : 1;
 			}
 			public void setEvaluationType(Integer evaluationType) {
 				this.evaluationType = evaluationType;
@@ -315,6 +321,28 @@ public class EducationModel {
 			}
 			public void setMonthList(List<KeyValuePair> monthList) {
 				this.monthList = monthList;
+			}
+			public List<Integer> getYearList() {
+				return yearList;
+			}
+			public void setYearList(Integer currentYear) {
+				List<Integer> yearList = new ArrayList<Integer>();
+				for(int i = 1965; i <= currentYear; i++) {
+					yearList.add(i);
+				}
+				this.yearList = yearList;
+			}
+			public List<Country> getCountryList() {
+				return countryList;
+			}
+			public void setCountryList(List<Country> countryList) {
+				this.countryList = countryList;
+			}
+			public List<State> getStateList() {
+				return stateList;
+			}
+			public void setStateList(List<State> stateList) {
+				this.stateList = stateList;
 			}
 	}
 }
