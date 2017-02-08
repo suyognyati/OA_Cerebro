@@ -18,9 +18,17 @@ public class QualificationLevelServiceImpl implements QualificationLevelService 
 	public QualificationLevel getById(Integer id) {
 		return qualificationLevelJpaRepository.findByQualificationLevelId(id);
 	}
-
-	public List<QualificationLevel> getByMajorLevel(Integer majorLevel) {
-		return qualificationLevelJpaRepository.findByQualificationMainLevel(majorLevel);
+	
+	public QualificationLevel getByMainAndSubLevel(Integer qualificationMainLevel, Integer qualificationSubLevel) {
+		List<QualificationLevel> qualificationLevelList = qualificationLevelJpaRepository.findByQualificationMainLevelAndQualificationSubLevel(qualificationMainLevel, qualificationSubLevel);
+		if(qualificationLevelList != null && qualificationLevelList.size() > 0)
+			return qualificationLevelList.get(0);
+		else
+			return null;
+	}
+	
+	public List<QualificationLevel> getByMainLevel(Integer mainLevel) {
+		return qualificationLevelJpaRepository.findByQualificationMainLevel(mainLevel);
 	}
 
 	public List<QualificationLevel> getAllOrderByQualificationMainLevel(Boolean ascending) {

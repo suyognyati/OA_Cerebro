@@ -16,6 +16,11 @@
 <div class="panel panel-body">	
 	<div class="row">
 		<div class="col-sm-12">
+			<div class="alert alert-success" role="alert" ng-show="vm.success">
+				SSC Qualification updated successfully!
+			</div>
+		</div>
+		<div class="col-sm-12">
 			<div class="table-responsive">
             	<table class="table table-striped table-bordered">
                 <thead>
@@ -30,19 +35,19 @@
                     </tr>
                 </thead>
                 <tbody>
-                     <tr ng-repeat="qualificationList in vm.qualificationList">
-                        <td>{{qualificationList.name}}</td>
-                        <td>{{qualificationList.boardOrUniversity}}</td>
-                        <td>{{qualificationList.facultyOrCollegeName}}</td>
-                        <td>{{qualificationList.passingMonth}} {{qualificationList.passingYear}}</td>
+                     <tr ng-repeat="qualification in vm.qualificationList">
+                        <td>{{qualification.name}}</td>
+                        <td>{{qualification.boardOrUniversity}}</td>
+                        <td>{{qualification.facultyOrCollegeName}}</td>
+                        <td>{{qualification.passingMonth}} {{qualification.passingYear}}</td>
                         <td>
-                        	{{qualificationList.marksObtain}} 
-                        	<span ng-if="!(qualificationList.marksObtain == null && qualificationList.totalMarks == null)">/</span> 
-                        	{{qualificationList.totalMarks}}
+                        	{{qualification.marksObtain}} 
+                        	<span ng-if="!(qualification.marksObtain == null && qualification.totalMarks == null)">/</span> 
+                        	{{qualification.totalMarks}}
                         </td>
                         <td>
                         	<i 	class="glyphicon glyphicon-plus glyphicon-plus-custom" style="cursor: pointer;" 
-                        		ng-click="vm.qualificationDetail(qualificationList.qualificationMainLevel, qualificationList.qualificationLevelId)">
+                        		ng-click="vm.qualificationDetail(qualification.qualificationMainLevel, qualification.qualificationSubLevel)">
                        		</i>
                        	</td>
                         <td></td>

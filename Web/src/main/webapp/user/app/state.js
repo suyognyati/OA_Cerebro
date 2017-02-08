@@ -107,6 +107,9 @@
 									controller:"EducationInformationCtrl as vm",
 								}
 							},
+							params: {
+								success: {value: null}
+							},
 							resolve: {
 								basicDetail : ['$ocLazyLoad', function($ocLazyLoad){
 									return $ocLazyLoad.load({
@@ -114,6 +117,42 @@
 										files : [
 										     basePath + 'app/controllers/educationInformationCtrl.js',
 										     basePath + 'app/services/educationInformationService.js'
+										]
+								
+									})
+								}]
+							}
+					})
+					
+					.state("qualificationDetail",{
+							url: "/educationinformation/:qualification?:qualificationMainLevel&:qualificationSubLevel",
+							views: {
+								"view":{
+									templateUrl: 
+									function (stateParams){
+										if(stateParams.qualificationMainLevel == 1 && stateParams.qualificationSubLevel == 0 && stateParams.qualification == "ssc") {
+											return basePath + "templates/states/sscView.html"
+										} else if(stateParams.qualificationMainLevel == 2 && stateParams.qualificationSubLevel == 0 && stateParams.qualification == "hsc") {
+											return basePath + "templates/states/hscView.html"
+										} else if(stateParams.qualificationMainLevel == 3 && stateParams.qualificationSubLevel >= 0 &&
+												stateParams.qualificationSubLevel <= 3 && stateParams.qualification == "diploma") {
+											return basePath + "templates/states/diplomaView.html"
+										} else {
+											return false;
+										}
+										
+										//return basePath + "templates/states/" + stateParams.qualification + "View.html"
+									},
+									controller:"QualificationDetailCtrl as vm",
+								}
+							},
+							resolve: {
+								basicDetail : ['$ocLazyLoad', function($ocLazyLoad){
+									return $ocLazyLoad.load({
+										name : 'admission',
+										files : [
+										       basePath + 'app/controllers/qualificationDetailCtrl.js',
+										       basePath + 'app/services/qualificationDetailService.js'
 										]
 								
 									})
@@ -141,40 +180,7 @@
 									})
 								}]
 							}
-					})
-					
-					.state("qualificationDetail",{
-							url: "/educationinformation/:qualification/:qualificationMainLevel/:qualificationLevelId",
-							views: {
-								"view":{
-									templateUrl: 
-									function (stateParams){
-										/*if(stateParams.qualificationMainLevel == 1) {
-											return basePath + "templates/states/sscView.html"
-										} else if(stateParams.qualificationMainLevel == 2) {
-											return basePath + "templates/states/hscView.html"
-										} else if(stateParams.qualificationMainLevel == 3) {
-											return basePath + "templates/states/diplomaView.html"
-										}*/
-										
-										return basePath + "templates/states/" + stateParams.qualification + "View.html"
-									},
-									controller:"QualificationDetailCtrl as vm",
-								}
-							},
-							resolve: {
-								basicDetail : ['$ocLazyLoad', function($ocLazyLoad){
-									return $ocLazyLoad.load({
-										name : 'admission',
-										files : [
-										       basePath + 'app/controllers/qualificationDetailCtrl.js',
-										       basePath + 'app/services/qualificationDetailService.js'
-										]
-								
-									})
-								}]
-							}
-					})					
+					})				
 			}]
 		);
 	

@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -30,11 +31,18 @@ public class EducationalInformationRestController {
 	
 	@RequestMapping(value="/getListofQualification/")
 	public List<EducationModel.Qualification> getListofQualification(Model model){
-		return educationalInformationService.getListofQualification();
+		return educationalInformationService.getListofQualification(session.getCurrentUser());
 	}
 	
-	@RequestMapping(value="/getQualificationDetail/{qualificationLevelId}", method=RequestMethod.GET)
-	public EducationModel.QualificationDetail getQualificationDetail(@PathVariable(value="qualificationLevelId") Integer qualificationLevelId){
-		return educationalInformationService.getQualificationDetail(session.getCurrentUser(), qualificationLevelId);
+	@RequestMapping(value="/getQualificationDetail/{qualificationMainLevel}/{qualificationSubLevel}", method=RequestMethod.GET)
+	public EducationModel.QualificationDetail getQualificationDetail(
+			@PathVariable(value="qualificationMainLevel") Integer qualificationMainLevel,
+			@PathVariable(value="qualificationSubLevel") Integer qualificationSubLevel){
+		return educationalInformationService.getQualificationDetail(session.getCurrentUser(), qualificationMainLevel, qualificationSubLevel);
+	}
+	
+	@RequestMapping(value="/saveQualificationDetail/", method=RequestMethod.POST)
+	public Boolean saveQualificationDetail(@RequestBody EducationModel educationalModel){
+		return educationalInformationService.saveQualificationDetail(session.getCurrentUser(), educationalModel.getQualificationDetail());
 	}
 }

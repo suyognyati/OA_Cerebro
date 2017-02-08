@@ -10,9 +10,20 @@ import com.data.entities.State;
 
 public class EducationModel {
 	
+	private QualificationDetail qualificationDetail;
+	
+	public QualificationDetail getQualificationDetail() {
+		return qualificationDetail;
+	}
+
+	public void setQualificationDetail(QualificationDetail qualificationDetail) {
+		this.qualificationDetail = qualificationDetail;
+	}
+
 	public class Qualification {
 		private String name;
 		private Integer qualificationMainLevel;
+		private Integer qualificationSubLevel;
 		private List<SubQualification> subQualificationList;
 		
 			public String getName() {
@@ -27,6 +38,11 @@ public class EducationModel {
 			}
 			public void setQualificationMainLevel(Integer qualificationMainLevel) {
 				this.qualificationMainLevel = qualificationMainLevel;
+			}
+			
+			public Integer getQualificationSubLevel() {
+				qualificationSubLevel = 0;
+				return qualificationSubLevel;
 			}
 			
 			/**
@@ -48,7 +64,8 @@ public class EducationModel {
 		public Integer passingYear;
 		public Integer marksObtain;
 		public Integer totalMarks;
-		public Integer qualificationLevelId;
+		public Integer qualificationMainLevel;
+		public Integer qualificationSubLevel;
 		
 			public String getName() {
 				return name;
@@ -92,17 +109,23 @@ public class EducationModel {
 			public void setTotalMarks(Integer totalMarks) {
 				this.totalMarks = totalMarks;
 			}
-			public Integer getQualificationLevelId() {
-				return qualificationLevelId;
+			public Integer getQualificationMainLevel() {
+				return qualificationMainLevel;
 			}
-			public void setQualificationLevelId(Integer qualificationLevelId) {
-				this.qualificationLevelId = qualificationLevelId;
-			}		
+			public void setQualificationMainLevel(Integer qualificationMainLevel) {
+				this.qualificationMainLevel = qualificationMainLevel;
+			}
+			public Integer getQualificationSubLevel() {
+				return qualificationSubLevel;
+			}
+			public void setQualificationSubLevel(Integer qualificationSubLevel) {
+				this.qualificationSubLevel = qualificationSubLevel;
+			}
 	}
 	
 	public class QualificationDetail {
 		private String country;
-		private String state;
+		private State state;
 		private Integer nameOfBoard;
 		private Integer nameOfUniversity;
 		private String foreignBody_AreaStdCodePhone;
@@ -112,7 +135,6 @@ public class EducationModel {
 		private Integer stream;
 		private Integer noOfAttempts;
 		private String qualificationName;
-		private Integer qualificationLevel;
 		private String specialSubject;
 		private String otherBodyName;
 		private String schoolCollegeAddress;
@@ -126,9 +148,11 @@ public class EducationModel {
 		private Integer evaluationType;
 		private Integer marksObtain;
 		private Integer totalMarks;
-		private Integer percentage;
+		private Float percentage;
 		private String grade;
 		private Integer cgpa;
+		private Integer qualificationMainLevel;
+		private Integer qualificationSubLevel;
 		private List<Enums.KeyValuePair> resultStatusList;
 		private List<Enums.KeyValuePair> certifyingBodyList;
 		private List<Enums.KeyValuePair> monthList;
@@ -142,10 +166,10 @@ public class EducationModel {
 			public void setCountry(String country) {
 				this.country = country;
 			}
-			public String getState() {
+			public State getState() {
 				return state;
 			}
-			public void setState(String state) {
+			public void setState(State state) {
 				this.state = state;
 			}
 			public Integer getNameOfBoard() {
@@ -201,12 +225,6 @@ public class EducationModel {
 			}
 			public void setQualificationName(String qualificationName) {
 				this.qualificationName = qualificationName;
-			}
-			public Integer getQualificationLevel() {
-				return qualificationLevel;
-			}
-			public void setQualificationLevel(Integer qualificationLevel) {
-				this.qualificationLevel = qualificationLevel;
 			}
 			public String getSpecialSubject() {
 				return specialSubject;
@@ -286,10 +304,10 @@ public class EducationModel {
 			public void setTotalMarks(Integer totalMarks) {
 				this.totalMarks = totalMarks;
 			}
-			public Integer getPercentage() {
+			public Float getPercentage() {
 				return percentage;
 			}
-			public void setPercentage(Integer percentage) {
+			public void setPercentage(Float percentage) {
 				this.percentage = percentage;
 			}
 			public String getGrade() {
@@ -303,6 +321,18 @@ public class EducationModel {
 			}
 			public void setCgpa(Integer cgpa) {
 				this.cgpa = cgpa;
+			}
+			public Integer getQualificationMainLevel() {
+				return qualificationMainLevel;
+			}
+			public void setQualificationMainLevel(Integer qualificationMainLevel) {
+				this.qualificationMainLevel = qualificationMainLevel;
+			}
+			public Integer getQualificationSubLevel() {
+				return qualificationSubLevel;
+			}
+			public void setQualificationSubLevel(Integer qualificationSubLevel) {
+				this.qualificationSubLevel = qualificationSubLevel;
 			}
 			public List<KeyValuePair> getResultStatusList() {
 				return resultStatusList;
@@ -325,7 +355,7 @@ public class EducationModel {
 			public List<Integer> getYearList() {
 				return yearList;
 			}
-			public void setYearList(Integer currentYear) {
+			public void setYearListRange(Integer currentYear) {
 				List<Integer> yearList = new ArrayList<Integer>();
 				for(int i = 1965; i <= currentYear; i++) {
 					yearList.add(i);

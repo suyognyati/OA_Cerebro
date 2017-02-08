@@ -4,10 +4,12 @@ import java.util.List;
 
 import com.data.entities.User;
 import com.web.model.EducationModel;
+import com.web.model.EducationModel.QualificationDetail;
 
 public interface EducationalInformationRCService {
 
-	List<EducationModel.Qualification> getListofQualification();
-	EducationModel.QualificationDetail getQualificationDetail(User user, Integer qualificationLevelId);
+	List<EducationModel.Qualification> getListofQualification(User user);
+	QualificationDetail getQualificationDetail(User user, Integer qualificationMainLevel, Integer qualificationSubLevel);
+	Boolean saveQualificationDetail(User user, QualificationDetail qualificationDetail);
 	
 }

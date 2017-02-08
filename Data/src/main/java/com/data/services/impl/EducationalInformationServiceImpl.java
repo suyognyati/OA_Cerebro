@@ -17,12 +17,20 @@ public class EducationalInformationServiceImpl implements EducationalInformation
 	@Autowired
 	EducationalInformationJpaRepository educationalInformationJpaRepository;
 	
+	@Override
 	public List<EducationalInformation> getByUserOrderByQualificationLevelAsc(User user) {
 		return educationalInformationJpaRepository.
 				findByUserOrderByQualificationLevelQualificationMainLevelAscQualificationLevelQualificationSubLevelAsc(user);
 	}
 
+	@Override
 	public EducationalInformation getByUserAndQualificationLevel(User user, QualificationLevel qualificationLevel) {
 		return educationalInformationJpaRepository.getByUserAndQualificationLevel(user, qualificationLevel);
+	}
+	
+	@Override
+	public Boolean saveEducationalInformation(EducationalInformation educationalInformation) {
+		educationalInformationJpaRepository.save(educationalInformation);
+		return true;
 	}
 }

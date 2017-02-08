@@ -45,8 +45,8 @@
 						<select id="state"
 								class="selectpicker" data-width="100%"
 								data-live-search="true"
-								ng-model="vm.qualificationDetail.state"
-								ng-options="stateList.key as stateList.value for stateList in vm.qualificationDetail.stateList">
+								ng-model="vm.qualificationDetail.state.stateId"
+								ng-options="state.stateId as state.stateName for state in vm.qualificationDetail.stateList">
 						</select>
 					</div>
 				</div>

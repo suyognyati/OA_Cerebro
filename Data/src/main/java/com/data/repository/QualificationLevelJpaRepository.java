@@ -10,6 +10,7 @@ import com.data.entities.QualificationLevel;
 @Repository("qualificationLevelJpaRepository")
 public interface QualificationLevelJpaRepository extends JpaRepository<QualificationLevel, Integer> {
 	QualificationLevel findByQualificationLevelId(Integer qualificationLevelId);
+	List<QualificationLevel> findByQualificationMainLevelAndQualificationSubLevel(Integer qualificationMainLevel, Integer qualificationSubLevel);
 	List<QualificationLevel> findByQualificationMainLevel(Integer qualificationMainLevel);
 	List<QualificationLevel> findByOrderByQualificationMainLevelAsc();
 	List<QualificationLevel> findByOrderByQualificationMainLevelDesc();

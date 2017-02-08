@@ -26,8 +26,9 @@ public class EducationalInformation {
 	@Column(name="Country")
 	private String country;
 
-	@Column(name="State")
-	private String state;
+	@ManyToOne
+	@JoinColumn(name="FK_State")
+	private State state;
 
 	@Column(name="NameOfBoard")
 	private Integer nameOfBoard;
@@ -100,7 +101,7 @@ public class EducationalInformation {
 	private Integer totalMarks;
 	
 	@Column(name="Percentage")
-	private Integer percentage;
+	private Float percentage;
 	
 	@Column(name="Grade")
 	private String grade;
@@ -135,11 +136,11 @@ public class EducationalInformation {
 			this.country = country;
 		}
 	
-		public String getState() {
+		public State getState() {
 			return state;
 		}
 	
-		public void setState(String state) {
+		public void setState(State state) {
 			this.state = state;
 		}
 	
@@ -354,11 +355,11 @@ public class EducationalInformation {
 			this.totalMarks = totalMarks;
 		}
 	
-		public Integer getPercentage() {
+		public Float getPercentage() {
 			return percentage;
 		}
 	
-		public void setPercentage(Integer percentage) {
+		public void setPercentage(Float percentage) {
 			this.percentage = percentage;
 		}
 	

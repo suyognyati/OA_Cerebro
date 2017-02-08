@@ -13,6 +13,8 @@
 		
 		var vm = this;	
 		vm.qualificationList = [];
+		if($state.params.success != null)
+			vm.success = $state.params.success;
 		
 		vm.accessToken = $window.bearer_token;
 		vm.accessTokenParam = "?access_token=" + vm.accessToken;
@@ -37,7 +39,7 @@
 			vm.listofQualification = {};
         });
 		
-		vm.qualificationDetail = function(qualificationMainLevel, qualificationLevelId) {
+		vm.qualificationDetail = function(qualificationMainLevel, qualificationSubLevel) {
 			var view = "";
 			if(qualificationMainLevel == 1)
 				view = "ssc";
@@ -46,7 +48,7 @@
 			else if(qualificationMainLevel == 3)
 				view = "diploma";
 			
-			$state.go("qualificationDetail", {qualification:view ,qualificationMainLevel:qualificationMainLevel, qualificationLevelId:qualificationLevelId});
+			$state.go("qualificationDetail", {qualification:view ,qualificationMainLevel:qualificationMainLevel, qualificationSubLevel:qualificationSubLevel});
 		}
 	};
 	
