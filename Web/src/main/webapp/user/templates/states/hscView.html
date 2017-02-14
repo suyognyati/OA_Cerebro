@@ -15,7 +15,8 @@
 				</div>
 				<div class="col-sm-9 form-inline form-group" style="padding-top:7px">
 					<div class="col-sm-2">
-						<input type="radio" 
+						<input type="radio"
+							   tabindex="1"
 							   name="board" 
 							   id="boardindian"
 							   value="1"
@@ -24,6 +25,7 @@
 					</div>
 					<div class="col-sm-2">
 						<input type="radio" 
+							   tabindex="1"
 							   name="board" 
 							   id="boardforeign"
 							   value="2"
@@ -43,9 +45,11 @@
 					</div>
 					<div class="col-sm-8">
 						<select id="state"
-								class="selectpicker" data-width="100%"
+								class="selectpicker" data-width="100%" title="-- Select State --" data-size="10"
 								data-live-search="true"
-								ng-model="vm.qualificationDetail.state.stateId"
+								tabindex="2"
+								ng-model="vm.qualificationDetail.stateId"
+								ng-change="vm.setSelectedState()"
 								ng-options="state.stateId as state.stateName for state in vm.qualificationDetail.stateList">
 						</select>
 					</div>
@@ -60,10 +64,12 @@
 					</div>
 					<div class="col-sm-8">
 						<select id="board"
-								class="selectpicker" data-width="100%"
+								class="selectpicker" data-width="100%" title="-- Select Board --" data-size="10"
 								data-live-search="true"
-								ng-model="vm.qualificationDetail.nameOfBoard"
-								ng-options="nameOfBoardList.key as nameOfBoardList.value for nameOfBoardList in vm.qualificationDetail.nameOfBoardList">
+								tabindex="3"
+								ng-model="vm.qualificationDetail.boardId"
+								ng-change="vm.setSelectedBoard()"
+								ng-options="board.boardId as board.boardName for board in vm.qualificationDetail.state.boardList">
 						</select>
 					</div>
 				</div>
@@ -79,10 +85,12 @@
 					</div>
 					<div class="col-sm-8">
 						<select id="country"
-								class="selectpicker" data-width="100%"
+								class="selectpicker" data-width="100%" title="-- Select Country --" data-size="10"
 								data-live-search="true"
-								ng-model="vm.qualificationDetail.country"
-								ng-options="countryList.key as countryList.value for countryList in vm.qualificationDetail.countryList">
+								tabindex="2"
+								ng-model="vm.qualificationDetail.countryId"
+								ng-change="vm.setSelectedCountry()"
+								ng-options="country.countryId as country.countryName for country in vm.qualificationDetail.countryList">
 						</select>
 					</div>
 				</div>
@@ -98,6 +106,7 @@
 						<input type="text" 
 							   class="form-control"
 							   id="nameofboard"
+							   tabindex="3"
 							   ng-model="vm.qualificationDetail.nameOfBoard">
 					</div>
 				</div>
@@ -113,6 +122,7 @@
 						<input type="text" 
 							   class="form-control"
 							   id="boardarea"
+							   tabindex="4"
 							   ng-model="vm.qualificationDetail.foreignBody_AreaStdCodePhone">
 					</div>
 				</div>
@@ -128,6 +138,7 @@
 						<input type="text" 
 							   class="form-control"
 							   id="boardemailid"
+							   tabindex="5"
 							   ng-model="vm.qualificationDetail.foreignBody_EmailId">
 					</div>
 				</div>
@@ -143,6 +154,7 @@
 						<input type="text" 
 							   class="form-control"
 							   id="boardurl"
+							   tabindex="6"
 							   ng-model="vm.qualificationDetail.foreignBody_URL">
 					</div>
 				</div>
@@ -158,10 +170,11 @@
 				</div>
 				<div class="col-sm-8">
 					<select id="stream"
-							class="selectpicker" data-width="100%"
+							class="selectpicker" data-width="100%" title="-- Select Stream --" data-size="5"
 							data-live-search="true"
+							tabindex="7"
 							ng-model="vm.qualificationDetail.stream"
-							ng-options="streamList.key as streamList.value for streamList in vm.qualificationDetail.streamList">
+							ng-options="stream.key as stream.value for stream in vm.qualificationDetail.streamList">
 					</select>
 				</div>
 			</div>
@@ -177,6 +190,7 @@
 					<input type="text" 
 						   class="form-control"
 						   id="schoolname"
+						   tabindex="8"
 						   ng-model="vm.qualificationDetail.schoolCollegeName">
 				</div>
 			</div>
@@ -188,12 +202,13 @@
 						<label for="resultstatus"
 							   class="labelclass">Result Status</label>
 				</div>
-				<div class="col-sm-9 form-inline form-group" style="padding-top:7px">
+				<div class="col-sm-9 form-inline form-group labelalignmentmargin">
 					<div class="col-sm-2">
 						<input type="radio" 
 							   name="resultstatus" 
 							   id="passed"
 							   value="1"
+							   tabindex="9"
 							   ng-model="vm.qualificationDetail.resultStatus">
 						<label for="passed">Passed</label>
 					</div>
@@ -202,6 +217,7 @@
 							   name="reaultstatus" 
 							   id="awaited"
 							   value="2"
+							   tabindex="9"
 							   ng-model="vm.qualificationDetail.resultStatus">
 						<label for="awaited">Result Awaited</label>
 					</div>
@@ -210,6 +226,7 @@
 							   name="resultstatus" 
 							   id="failed"
 							   value="3"
+							   tabindex="9"
 							   ng-model="vm.qualificationDetail.resultStatus">
 						<label for="failed">Failed</label>
 					</div>
@@ -227,6 +244,7 @@
 					<input type="text" 
 						   class="form-control"
 						   id="rollno"
+						   tabindex="10"
 						   ng-model="vm.qualificationDetail.examSeatNo">
 				</div>
 			</div>
@@ -243,6 +261,7 @@
 						<input type="text" 
 							   class="form-control"
 							   id="noofattempts"
+							   tabindex="11"
 							   ng-model="vm.qualificationDetail.noOfAttempts">
 					</div>
 				</div>
@@ -254,20 +273,22 @@
 						<label for="dateofresult"
 							   class="labelclass">Date of Result</label>
 					</div>
-					<div class="col-sm-4">
+					<div class="col-sm-3">
 						<select id="dateofresult"
-								class="selectpicker" data-width="100%"
+								class="selectpicker" data-width="100%" title="Month" data-size="6"
 								data-live-search="true"
+								tabindex="12"
 								ng-model="vm.qualificationDetail.passingMonth"
 								ng-options="passingMonthList.key as passingMonthList.value for passingMonthList in vm.qualificationDetail.monthList">
 						</select>
 					</div>
 					<div class="col-sm-2">
 						<select id="dateofresult"
-								class="selectpicker" data-width="100%"
+								class="selectpicker" data-width="100%" title="Year" data-size="6"
 								data-live-search="true"
+								tabindex="13"
 								ng-model="vm.qualificationDetail.passingYear"
-								ng-options="passingYearList.key as passingYearList.value for passingYearList in vm.qualificationDetail.passingYearList">
+								ng-options="passingYearList as passingYearList for passingYearList in vm.qualificationDetail.yearList">
 						</select>
 					</div>
 				</div>
@@ -283,6 +304,7 @@
 						<input type="text" 
 							   class="form-control"
 							   id="marksheetno"
+							   tabindex="14"
 							   ng-model="vm.qualificationDetail.marksheetNo">
 					</div>
 				</div>
@@ -300,6 +322,7 @@
 								   name="marksorgrade" 
 								   id="marks"
 								   value="1"
+								   tabindex="15"
 								   ng-model="vm.qualificationDetail.evaluationType">
 							<label for="marks">Marks</label>
 						</div>
@@ -308,6 +331,7 @@
 								   name="marksorgrade" 
 								   id="grades"
 								   value="2"
+								   tabindex="15"
 								   ng-model="vm.qualificationDetail.evaluationType">
 							<label for="grades">Grades</label>
 						</div>
@@ -326,6 +350,8 @@
 							<input type="text" 
 								   class="form-control"
 								   id="totalmarksobtained"
+								   tabindex="16"
+								   ng-blur="vm.calculatePercentage()"
 								   ng-model="vm.qualificationDetail.marksObtain">
 						</div>
 						<div class="col-sm-2">
@@ -336,6 +362,8 @@
 							<input type="text" 
 								   class="form-control"
 								   id="outof"
+								   tabindex="16"
+								   ng-blur="vm.calculatePercentage()"
 								   ng-model="vm.qualificationDetail.totalMarks">
 						</div>
 					</div>
@@ -353,6 +381,7 @@
 							<input type="text" 
 								   class="form-control"
 								   id="grade"
+								   tabindex="15"
 								   ng-model="vm.qualificationDetail.grade">
 						</div>
 						<div class="col-sm-2">
@@ -363,6 +392,7 @@
 							<input type="text" 
 								   class="form-control"
 								   id="cgpa"
+								   tabindex="16"
 								   ng-model="vm.qualificationDetail.cgpa">
 						</div>
 					</div>
@@ -375,16 +405,37 @@
 						<label for="percentage"
 							   class="labelclass">Percentage</label>
 					</div>
-					<div class="col-sm-3">
+					<div ng-show="vm.qualificationDetail.evaluationType==2" class="col-sm-3">
 						<input type="text" 
 							   class="form-control"
 							   id="percentage"
+							   tabindex="17"
 							   ng-model="vm.qualificationDetail.percentage">
+					</div>
+					<div ng-show="vm.qualificationDetail.evaluationType==1" class="col-sm-3 labelalignmentmargin">
+						{{vm.qualificationDetail.percentage}} %
 					</div>
 				</div>
 			</div>
 		</div>
-		
+		<div class="row" style="margin-bottom: 50px; margin-top: 20px;">
+			<div class="col-sm-4"></div>
+			<div class="col-sm-2">
+	        	<input type="submit" 
+	        		value="SAVE" 
+	        		class="btn btn-success btn-block topMargin" 	        		
+	        		tabindex="18"
+	        		ng-click="vm.submit()">
+	        </div>
+	        <div class="col-sm-2">
+	        	<input type="button" 
+	        		value="Cancel" 
+	        		class="btn btn-success btn-block topMargin" 	        		
+	        		tabindex="19"
+	        		ng-click="vm.cancel()">
+	        </div>
+	        <div class="col-sm-4"></div>
+		</div>
 		
 	</div>
 </form>

@@ -2,6 +2,7 @@ package com.web.restcontroller;
 
 import java.util.List;
 
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.web.model.EducationModel;
 import com.web.services.EducationalInformationRCService;
 import com.web.session.Session;
+import com.web.session.StaticMethods;
 
 @RestController
 @RequestMapping(value="/rest/educationalInformation")
@@ -42,7 +44,22 @@ public class EducationalInformationRestController {
 	}
 	
 	@RequestMapping(value="/saveQualificationDetail/", method=RequestMethod.POST)
-	public Boolean saveQualificationDetail(@RequestBody EducationModel educationalModel){
-		return educationalInformationService.saveQualificationDetail(session.getCurrentUser(), educationalModel.getQualificationDetail());
+	public String saveQualificationDetail(@RequestBody EducationModel educationalModel){
+		EducationModel.QualificationDetail qd = educationalModel.getQualificationDetail();
+		Boolean success = false;
+		String successMessage = "";
+		String errorMessage = "";
+		if(qd.getQualificationMainLevel() != null && qd.getQualificationSubLevel() != null) {
+			success = educationalInformationService.saveQualificationDetail(session.getCurrentUser(), educationalModel.getQualificationDetail());
+			if(success)
+				successMessage = "Saved successfully";
+			else
+				errorMessage = "Error while saving";
+		} else {
+			success = false;
+			errorMessage = "Invalid input parameters";
+		}		
+		JSONObject jsonObject = StaticMethods.ResponseJson(success, successMessage, errorMessage);		
+		return jsonObject.toJSONString();
 	}
 }

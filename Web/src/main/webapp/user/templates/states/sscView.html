@@ -8,6 +8,11 @@
 <form name="sscdetailform" novalidate class="panel panel-default">
 	<div class="panel-body">
 		<div class="row">
+			<div class="col-sm-12">
+				<div class="alert alert-danger" role="alert" ng-show="vm.returnstatus != null && !vm.returnstatus.success">
+					{{vm.returnstatus.errorMessage}}
+				</div>
+			</div>
 			<div class="col-sm-12 form-group">
 				<div class="col-sm-3">
 					<label for="board"
@@ -45,8 +50,9 @@
 						<select id="state"
 								class="selectpicker" data-width="100%"
 								data-live-search="true"
-								ng-model="vm.qualificationDetail.state.stateId"
-								ng-options="stateList.stateId as stateList.stateName for stateList in vm.qualificationDetail.stateList">
+								ng-model="vm.qualificationDetail.stateId"
+								ng-change="vm.setSelectedState()"
+								ng-options="state.stateId as state.stateName for state in vm.qualificationDetail.stateList">
 						</select>
 					</div>
 				</div>
@@ -62,8 +68,9 @@
 						<select id="board"
 								class="selectpicker" data-width="100%"
 								data-live-search="true"
-								ng-model="vm.qualificationDetail.nameOfBoard"
-								ng-options="nameOfBoardList.key as nameOfBoardList.value for nameOfBoardList in vm.qualificationDetail.nameOfBoardList">
+								ng-model="vm.qualificationDetail.boardId"
+								ng-change="vm.setSelectedBoard()"
+								ng-options="board.boardId as board.boardName for board in vm.qualificationDetail.state.boardList">
 						</select>
 					</div>
 				</div>
@@ -308,11 +315,14 @@
 					<label for="percentage"
 						   class="labelclass">Percentage</label>
 				</div>
-				<div class="col-sm-3">
+				<div ng-show="vm.qualificationDetail.evaluationType==2" class="col-sm-3">
 					<input type="text" 
 						   class="form-control"
 						   id="percentage"
 						   ng-model="vm.qualificationDetail.percentage">
+				</div>
+				<div ng-show="vm.qualificationDetail.evaluationType==1" class="col-sm-3 labelalignmentmargin">
+					<span>{{vm.qualificationDetail.percentage}} %</span>
 				</div>
 			</div>
 		</div>
@@ -323,7 +333,6 @@
 	        		tabindex="21"
 	        		value="SAVE" 
 	        		class="btn btn-success btn-block topMargin" 
-	        		
 	        		ng-click="vm.submit()">
 	        </div>
 	        <div class="col-sm-2">
@@ -331,7 +340,6 @@
 	        		tabindex="22"
 	        		value="Cancel" 
 	        		class="btn btn-success btn-block topMargin" 
-	        		
 	        		ng-click="vm.cancel()">
 	        </div>
 	        <div class="col-sm-4"></div>
@@ -345,11 +353,4 @@
 	setActiveElementOnLeftNav("educationInformation");
 
 	$(".selectpicker").selectpicker("refresh");
-	var delay = 1000;
-	
-	setTimeout(function() {
-		//alert("Hi alert");
-		$(".selectpicker").selectpicker("refresh");
-	}, delay);
-	
 </script>

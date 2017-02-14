@@ -51,6 +51,10 @@ body {
 	margin:0;
 }
 
+.labelalignmentmargin {
+	margin-top: 7px;
+}
+
 .labelclass{
 	padding-top:7px;
 	width:100%;

@@ -50,7 +50,7 @@
 						<label for="board"
 							   class="labelclass">Board</label>
 					</div>
-					<div class="col-sm-9 form-inline form-group" style="padding-top:7px">
+					<div class="col-sm-9 form-inline form-group labelalignmentmargin">
 						<div class="col-sm-2">
 							<input type="radio" 
 								   name="board" 	
@@ -348,7 +348,7 @@
 					<input type="text" 
 						   class="form-control"
 						   id="diplomaname"
-						   ng-model="">
+						   ng-model="vm.qualificationDetail.qualificationName">
 				</div>
 			</div>
 		</div>
@@ -381,7 +381,7 @@
 							class="selectpicker" data-width="100%"
 							data-live-search="true"
 							ng-model="vm.qualificationDetail.passingMonth"
-							ng-options="">
+							ng-options="passingMonthList.key as passingMonthList.value for passingMonthList in vm.qualificationDetail.monthList">
 					</select>
 				</div>
 				<div class="col-sm-2">
@@ -389,7 +389,7 @@
 							class="selectpicker" data-width="100%"
 							data-live-search="true"
 							ng-model="vm.qualificationDetail.passingYear"
-							ng-options="">
+							ng-options="passingYearList as passingYearList for passingYearList in vm.qualificationDetail.yearList">
 					</select>
 				</div>
 			</div>
@@ -463,6 +463,7 @@
 						<input type="text" 
 							   class="form-control"
 							   id="totalmarksobtained"
+							   ng-blur="vm.calculatePercentage()"
 							   ng-model="vm.qualificationDetail.marksObtain">
 					</div>
 					<div class="col-sm-2">
@@ -473,6 +474,7 @@
 						<input type="text" 
 							   class="form-control"
 							   id="outof"
+							   ng-blur="vm.calculatePercentage()"
 							   ng-model="vm.qualificationDetail.totalMarks">
 					</div>
 				</div>
@@ -520,7 +522,24 @@
 				</div>
 			</div>
 		</div>
-	
+		<div class="row" style="margin-bottom: 50px; margin-top: 20px;">
+			<div class="col-sm-4"></div>
+			<div class="col-sm-2">
+	        	<input type="submit" 
+	        		tabindex="21"
+	        		value="SAVE" 
+	        		class="btn btn-success btn-block topMargin" 	        		
+	        		ng-click="vm.submit()">
+	        </div>
+	        <div class="col-sm-2">
+	        	<input type="button" 
+	        		tabindex="22"
+	        		value="Cancel" 
+	        		class="btn btn-success btn-block topMargin" 	        		
+	        		ng-click="vm.cancel()">
+	        </div>
+	        <div class="col-sm-4"></div>
+		</div>
 	</div>
 </form>
 

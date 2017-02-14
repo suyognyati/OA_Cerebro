@@ -20,21 +20,24 @@ public class EducationalInformation {
 	private Integer educationalInformationId;
 	
 	@OneToOne
-	@JoinColumn(name="FK_UserId")
+	@JoinColumn(name="FK_UserId", nullable=false)
 	private User user;
 
-	@Column(name="Country")
-	private String country;
+	@ManyToOne
+	@JoinColumn(name="FK_Country")
+	private Country country;
 
 	@ManyToOne
 	@JoinColumn(name="FK_State")
 	private State state;
 
-	@Column(name="NameOfBoard")
-	private Integer nameOfBoard;
+	@ManyToOne
+	@JoinColumn(name="FK_Board")
+	private Board board;
 	
-	@Column(name="NameOfUniversity")
-	private Integer nameOfUniversity;
+	@ManyToOne
+	@JoinColumn(name="FK_University")
+	private Board university;
 	
 	@Column(name="BoardUniversity_AreaStdCodePhone")
 	private String boardUniversity_AreaStdCodePhone;
@@ -58,7 +61,7 @@ public class EducationalInformation {
 	private String qualificationName;
 	
 	@ManyToOne
-	@JoinColumn(name="FK_QualificationLevel")
+	@JoinColumn(name="FK_QualificationLevel", nullable=false)
 	private QualificationLevel qualificationLevel;
 	
 	@Column(name="SpecialSubject")
@@ -107,7 +110,7 @@ public class EducationalInformation {
 	private String grade;
 	
 	@Column(name="CGPA")
-	private Integer cgpa;
+	private Float cgpa;
 
 		public Integer getEducationalInformationId() {
 			return educationalInformationId;
@@ -128,14 +131,14 @@ public class EducationalInformation {
 			this.user = user;
 		}
 	
-		public String getCountry() {
+		public Country getCountry() {
 			return country;
 		}
-	
-		public void setCountry(String country) {
+
+		public void setCountry(Country country) {
 			this.country = country;
 		}
-	
+
 		public State getState() {
 			return state;
 		}
@@ -147,23 +150,23 @@ public class EducationalInformation {
 		/**
 		 * @return It returns board name if exam is conducted under board
 		 * */
-		public Integer getNameOfBoard() {
-			return nameOfBoard;
+		public Board getBoard() {
+			return board;
 		}
-	
-		public void setNameOfBoard(Integer nameOfBoard) {
-			this.nameOfBoard = nameOfBoard;
+
+		public void setBoard(Board board) {
+			this.board = board;
 		}
-	
+
 		/**
 		 * @return It returns university name if exam is conducted under university
 		 * */
-		public Integer getNameOfUniversity() {
-			return nameOfUniversity;
+		public Board getUniversity() {
+			return university;
 		}
-	
-		public void setNameOfUniversity(Integer nameOfUniversity) {
-			this.nameOfUniversity = nameOfUniversity;
+
+		public void setUniversity(Board university) {
+			this.university = university;
 		}
 	
 		public String getBoardUniversity_AreaStdCodePhone() {
@@ -371,11 +374,11 @@ public class EducationalInformation {
 			this.grade = grade;
 		}
 	
-		public Integer getCgpa() {
+		public Float getCgpa() {
 			return cgpa;
 		}
 	
-		public void setCgpa(Integer cgpa) {
+		public void setCgpa(Float cgpa) {
 			this.cgpa = cgpa;
 		}
 	

@@ -3,6 +3,7 @@ package com.web.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.data.entities.Board;
 import com.data.entities.Country;
 import com.data.entities.Enums;
 import com.data.entities.Enums.KeyValuePair;
@@ -124,10 +125,10 @@ public class EducationModel {
 	}
 	
 	public class QualificationDetail {
-		private String country;
+		//private Country country;
 		private State state;
-		private Integer nameOfBoard;
-		private Integer nameOfUniversity;
+		private Board board;
+		private Board university;
 		private String foreignBody_AreaStdCodePhone;
 		private String foreignBody_EmailId;
 		private String foreignBody_URL;
@@ -139,7 +140,7 @@ public class EducationModel {
 		private String otherBodyName;
 		private String schoolCollegeAddress;
 		private Integer certifyingBody;
-		private Boolean isLocalBody;
+		private Integer isLocalBody;
 		private String schoolCollegeName;
 		private Integer passingMonth;
 		private Integer passingYear;
@@ -150,39 +151,42 @@ public class EducationModel {
 		private Integer totalMarks;
 		private Float percentage;
 		private String grade;
-		private Integer cgpa;
+		private Float cgpa;
 		private Integer qualificationMainLevel;
 		private Integer qualificationSubLevel;
 		private List<Enums.KeyValuePair> resultStatusList;
 		private List<Enums.KeyValuePair> certifyingBodyList;
 		private List<Enums.KeyValuePair> monthList;
+		private List<Enums.KeyValuePair> streamList;
 		private List<Integer> yearList;
 		private List<Country> countryList;
 		private List<State> stateList;
+		private List<Board> allIndiaBoardList;
 		
-			public String getCountry() {
+			
+			/*public Country getCountry() {
 				return country;
 			}
-			public void setCountry(String country) {
+			public void setCountry(Country country) {
 				this.country = country;
-			}
+			}*/
 			public State getState() {
 				return state;
 			}
 			public void setState(State state) {
 				this.state = state;
 			}
-			public Integer getNameOfBoard() {
-				return nameOfBoard;
+			public Board getBoard() {
+				return board;
 			}
-			public void setNameOfBoard(Integer nameOfBoard) {
-				this.nameOfBoard = nameOfBoard;
+			public void setBoard(Board board) {
+				this.board = board;
 			}
-			public Integer getNameOfUniversity() {
-				return nameOfUniversity;
+			public Board getUniversity() {
+				return university;
 			}
-			public void setNameOfUniversity(Integer nameOfUniversity) {
-				this.nameOfUniversity = nameOfUniversity;
+			public void setUniversity(Board university) {
+				this.university = university;
 			}
 			public String getForeignBody_AreaStdCodePhone() {
 				return foreignBody_AreaStdCodePhone;
@@ -203,7 +207,7 @@ public class EducationModel {
 				this.foreignBody_URL = foreignBody_URL;
 			}
 			public Integer getResultStatus() {
-				return resultStatus;
+				return resultStatus != null ? resultStatus : 1;
 			}
 			public void setResultStatus(Integer resultStatus) {
 				this.resultStatus = resultStatus;
@@ -250,10 +254,10 @@ public class EducationModel {
 			public void setCertifyingBody(Integer certifyingBody) {
 				this.certifyingBody = certifyingBody;
 			}
-			public Boolean getIsLocalBody() {
-				return isLocalBody != null ? isLocalBody : true;
+			public Integer getIsLocalBody() {
+				return isLocalBody != null ? isLocalBody : 1;
 			}
-			public void setIsLocalBody(Boolean isLocalBody) {
+			public void setIsLocalBody(Integer isLocalBody) {
 				this.isLocalBody = isLocalBody;
 			}
 			public String getSchoolCollegeName() {
@@ -316,10 +320,10 @@ public class EducationModel {
 			public void setGrade(String grade) {
 				this.grade = grade;
 			}
-			public Integer getCgpa() {
+			public Float getCgpa() {
 				return cgpa;
 			}
-			public void setCgpa(Integer cgpa) {
+			public void setCgpa(Float cgpa) {
 				this.cgpa = cgpa;
 			}
 			public Integer getQualificationMainLevel() {
@@ -352,12 +356,18 @@ public class EducationModel {
 			public void setMonthList(List<KeyValuePair> monthList) {
 				this.monthList = monthList;
 			}
+			public List<Enums.KeyValuePair> getStreamList() {
+				return streamList;
+			}
+			public void setStreamList(List<Enums.KeyValuePair> streamList) {
+				this.streamList = streamList;
+			}
 			public List<Integer> getYearList() {
 				return yearList;
 			}
 			public void setYearListRange(Integer currentYear) {
 				List<Integer> yearList = new ArrayList<Integer>();
-				for(int i = 1965; i <= currentYear; i++) {
+				for(int i = currentYear; i >= 1965; i--) {
 					yearList.add(i);
 				}
 				this.yearList = yearList;
@@ -373,6 +383,12 @@ public class EducationModel {
 			}
 			public void setStateList(List<State> stateList) {
 				this.stateList = stateList;
+			}
+			public List<Board> getAllIndiaBoardList() {
+				return allIndiaBoardList;
+			}
+			public void setAllIndiaBoardList(List<Board> allIndiaBoardList) {
+				this.allIndiaBoardList = allIndiaBoardList;
 			}
 	}
 }

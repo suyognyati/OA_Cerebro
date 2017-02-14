@@ -12,6 +12,7 @@ import com.data.entities.EducationalInformation;
 import com.data.entities.Enums;
 import com.data.entities.QualificationLevel;
 import com.data.entities.User;
+import com.data.services.BoardService;
 import com.data.services.EducationalInformationService;
 import com.data.services.GeoLocationsService;
 import com.data.services.QualificationLevelService;
@@ -33,6 +34,9 @@ public class EducationalInformationRCServiceImpl implements EducationalInformati
 	
 	@Autowired
 	GeoLocationsService geoLocationService;
+	
+	@Autowired
+	BoardService boardService;
 	
 	@Override
 	public List<EducationModel.Qualification> getListofQualification(User user){
@@ -96,10 +100,10 @@ public class EducationalInformationRCServiceImpl implements EducationalInformati
 		QualificationDetail qualificationDetail = educationModel.new QualificationDetail();
 		
 		if(educationalInformation != null) {
-			qualificationDetail.setCountry(educationalInformation.getCountry());
+			//qualificationDetail.setCountry(educationalInformation.getCountry());
 			qualificationDetail.setState(educationalInformation.getState());
-			qualificationDetail.setNameOfBoard(educationalInformation.getNameOfBoard());
-			qualificationDetail.setNameOfUniversity(educationalInformation.getNameOfUniversity());
+			qualificationDetail.setBoard(educationalInformation.getBoard());
+			qualificationDetail.setUniversity(educationalInformation.getUniversity());
 			qualificationDetail.setForeignBody_AreaStdCodePhone(educationalInformation.getBoardUniversity_AreaStdCodePhone());
 			qualificationDetail.setForeignBody_EmailId(educationalInformation.getBoardUniversity_EmailId());
 			qualificationDetail.setForeignBody_URL(educationalInformation.getBoardUniversity_URL());
@@ -113,7 +117,8 @@ public class EducationalInformationRCServiceImpl implements EducationalInformati
 			qualificationDetail.setOtherBodyName(educationalInformation.getOtherBodyName());
 			qualificationDetail.setSchoolCollegeAddress(educationalInformation.getSchoolCollegeAddress());
 			qualificationDetail.setCertifyingBody(educationalInformation.getCertifyingBody());
-			qualificationDetail.setIsLocalBody(educationalInformation.getIsLocalBody());
+			Integer body = educationalInformation.getIsLocalBody() == false ? 2 : 1;
+			qualificationDetail.setIsLocalBody(body);
 			qualificationDetail.setSchoolCollegeName(educationalInformation.getSchoolCollegeName());
 			qualificationDetail.setPassingMonth(educationalInformation.getPassingMonth());
 			qualificationDetail.setPassingYear(educationalInformation.getPassingYear());
@@ -129,8 +134,10 @@ public class EducationalInformationRCServiceImpl implements EducationalInformati
 		qualificationDetail.setResultStatusList(Enums.ResultStatus.getEnumList());
 		qualificationDetail.setCertifyingBodyList(Enums.CertifyingBody.getEnumList());
 		qualificationDetail.setMonthList(Enums.Month.getEnumList());
+		qualificationDetail.setStreamList(Enums.Stream.getEnumList());
 		qualificationDetail.setCountryList(geoLocationService.getCountryList());
 		qualificationDetail.setStateList(geoLocationService.getStateListByCountryName("India"));
+		qualificationDetail.setAllIndiaBoardList(boardService.getBoardList(null));
 		
 		TimeZone timeZone = TimeZone.getTimeZone("UTC");
 		Calendar calendar = Calendar.getInstance(timeZone);
@@ -145,6 +152,8 @@ public class EducationalInformationRCServiceImpl implements EducationalInformati
 	public Boolean saveQualificationDetail(User user, QualificationDetail qualificationDetail) {
 		//Getting qualificationlevelobject to search for respected educational information
 		QualificationLevel qualificationLevelObject = qualificationLevelService.getByMainAndSubLevel(qualificationDetail.getQualificationMainLevel(), qualificationDetail.getQualificationSubLevel());
+		if(qualificationLevelObject == null)
+			return false;
 		
 		EducationalInformation educationalInformation = null;
 		//Finding educational information for qualification level of user
@@ -155,10 +164,10 @@ public class EducationalInformationRCServiceImpl implements EducationalInformati
 			educationalInformation.setUser(user);
 		}
 		
-		educationalInformation.setCountry(qualificationDetail.getCountry());
+		//educationalInformation.setCountry(qualificationDetail.getCountry());
 		educationalInformation.setState(qualificationDetail.getState());
-		educationalInformation.setNameOfBoard(qualificationDetail.getNameOfBoard());
-		educationalInformation.setNameOfUniversity(qualificationDetail.getNameOfUniversity());
+		educationalInformation.setBoard(qualificationDetail.getBoard());
+		educationalInformation.setUniversity(qualificationDetail.getUniversity());
 		educationalInformation.setBoardUniversity_AreaStdCodePhone(qualificationDetail.getForeignBody_AreaStdCodePhone());
 		educationalInformation.setBoardUniversity_EmailId(qualificationDetail.getForeignBody_EmailId());
 		educationalInformation.setBoardUniversity_URL(qualificationDetail.getForeignBody_URL());
@@ -171,7 +180,8 @@ public class EducationalInformationRCServiceImpl implements EducationalInformati
 		educationalInformation.setOtherBodyName(qualificationDetail.getOtherBodyName());
 		educationalInformation.setSchoolCollegeAddress(qualificationDetail.getSchoolCollegeAddress());
 		educationalInformation.setCertifyingBody(qualificationDetail.getCertifyingBody());
-		educationalInformation.setIsLocalBody(qualificationDetail.getIsLocalBody());
+		Boolean isLocalBody = qualificationDetail.getIsLocalBody() == 2 ? false : true;
+		educationalInformation.setIsLocalBody(isLocalBody);
 		educationalInformation.setSchoolCollegeName(qualificationDetail.getSchoolCollegeName());
 		educationalInformation.setPassingMonth(qualificationDetail.getPassingMonth());
 		educationalInformation.setPassingYear(qualificationDetail.getPassingYear());

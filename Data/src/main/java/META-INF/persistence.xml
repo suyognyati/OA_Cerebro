@@ -14,5 +14,6 @@
 		<class>com.data.entities.City</class>
 		<class>com.data.entities.OccupationReservation</class>
 		<class>com.data.entities.QualificationLevel</class>
+		<class>com.data.entities.Board</class>
 	</persistence-unit>
 </persistence>

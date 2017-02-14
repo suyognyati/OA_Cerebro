@@ -452,4 +452,34 @@ public class Enums {
 		public static Month get(int id) { return lookup.get(id); }
 		public static List<KeyValuePair> getEnumList() { return enumList; }
 	}
+
+	public enum Stream {
+		Science(1, "Science"),
+		Commerce(2, "Commerce"),
+		Arts(3, "Arts"),
+		MCVC(4, "MCVC"),
+		Other(5, "Other");
+				
+		private int id;
+		private String value;
+		private static final Map<Integer, Stream> lookup = new HashMap<Integer, Stream>();
+		private static final List<KeyValuePair> enumList = new ArrayList<KeyValuePair>();
+		
+		private Stream(int id, String value) { this.id = id; this.value = value; }
+		
+		static {
+			for (Stream s : EnumSet.allOf(Stream.class)) {
+				lookup.put(s.getId(), s);
+				KeyValuePair ms = new KeyValuePair();
+				ms.key = s.getId();
+				ms.value = s.getValue();
+				enumList.add(ms);
+			}
+		}
+
+		public int getId() { return id; }
+		public String getValue() { return value; }
+		public static Month get(int id) { return Stream.get(id); }
+		public static List<KeyValuePair> getEnumList() { return enumList; }
+	}
 }
