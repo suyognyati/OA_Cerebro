@@ -125,10 +125,11 @@ public class EducationModel {
 	}
 	
 	public class QualificationDetail {
-		//private Country country;
+		private Country country;
 		private State state;
 		private Board board;
 		private Board university;
+		private String foreignBody_BoardUniversityName;
 		private String foreignBody_AreaStdCodePhone;
 		private String foreignBody_EmailId;
 		private String foreignBody_URL;
@@ -164,12 +165,12 @@ public class EducationModel {
 		private List<Board> allIndiaBoardList;
 		
 			
-			/*public Country getCountry() {
+			public Country getCountry() {
 				return country;
 			}
 			public void setCountry(Country country) {
 				this.country = country;
-			}*/
+			}
 			public State getState() {
 				return state;
 			}
@@ -187,6 +188,12 @@ public class EducationModel {
 			}
 			public void setUniversity(Board university) {
 				this.university = university;
+			}
+			public String getForeignBody_BoardUniversityName() {
+				return foreignBody_BoardUniversityName;
+			}
+			public void setForeignBody_BoardUniversityName(String foreignBody_BoardUniversityName) {
+				this.foreignBody_BoardUniversityName = foreignBody_BoardUniversityName;
 			}
 			public String getForeignBody_AreaStdCodePhone() {
 				return foreignBody_AreaStdCodePhone;

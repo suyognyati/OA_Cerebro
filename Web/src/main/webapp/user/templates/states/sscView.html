@@ -15,13 +15,13 @@
 			</div>
 			<div class="col-sm-12 form-group">
 				<div class="col-sm-3">
-					<label for="board"
+					<label for="isLocalBody"
 						   class="labelclass">Board</label>
 				</div>
 				<div class="col-sm-9 form-inline form-group" style="padding-top:7px">
 					<div class="col-sm-2">
 						<input type="radio" 
-							   name="board" 
+							   name="isLocalBody" 
 							   id="boardindian"
 							   value="1"
 							   ng-model="vm.qualificationDetail.isLocalBody">	
@@ -29,7 +29,7 @@
 					</div>
 					<div class="col-sm-2">
 						<input type="radio" 
-							   name="board" 
+							   name="isLocalBody" 
 							   id="boardforeign"
 							   value="2"
 							   ng-model="vm.qualificationDetail.isLocalBody">
@@ -49,7 +49,7 @@
 					<div class="col-sm-8">
 						<select id="state"
 								class="selectpicker" data-width="100%"
-								data-live-search="true"
+								data-live-search="true" title="-- Select state --"
 								ng-model="vm.qualificationDetail.stateId"
 								ng-change="vm.setSelectedState()"
 								ng-options="state.stateId as state.stateName for state in vm.qualificationDetail.stateList">
@@ -67,7 +67,7 @@
 					<div class="col-sm-8">
 						<select id="board"
 								class="selectpicker" data-width="100%"
-								data-live-search="true"
+								data-live-search="true" title="-- Select board --"
 								ng-model="vm.qualificationDetail.boardId"
 								ng-change="vm.setSelectedBoard()"
 								ng-options="board.boardId as board.boardName for board in vm.qualificationDetail.state.boardList">
@@ -87,8 +87,9 @@
 					<div class="col-sm-8">
 						<select id="country"
 								class="selectpicker" data-width="100%"
-								data-live-search="true"
-								ng-model="vm.qualificationDetail.country"
+								data-live-search="true" title="-- Select country --"
+								ng-model="vm.qualificationDetail.countryId"
+								ng-change="vm.setSelectedCountry()"
 								ng-options="countryList.countryId as countryList.countryName for countryList in vm.qualificationDetail.countryList">
 						</select>
 					</div>
@@ -98,14 +99,14 @@
 			<div class="row">
 				<div class="col-sm-12 form-group">
 					<div class="col-sm-3">
-						<label for="nameofboard"
+						<label for="foreignBody_BoardUniversityName"
 							   class="labelclass">Name of Board</label>
 					</div>
 					<div class="col-sm-8">
 						<input type="text" 
 							   class="form-control"
-							   id="nameofboard"
-							   ng-model="vm.qualificationDetail.nameOfBoard">
+							   id="foreignBody_BoardUniversityName"
+							   ng-model="vm.qualificationDetail.foreignBody_BoardUniversityName">
 					</div>
 				</div>
 			</div>
@@ -113,13 +114,13 @@
 			<div class="row">
 				<div class="col-sm-12 form-group">
 					<div class="col-sm-3">
-						<label for="boaedarea"
+						<label for="foreignBody_AreaStdCodePhone"
 							   class="labelclass">Board Area STD Code - Phone</label>
 					</div>
 					<div class="col-sm-8">
 						<input type="text" 
 							   class="form-control"
-							   id="boardarea"
+							   id="foreignBody_AreaStdCodePhone"
 							   ng-model="vm.qualificationDetail.foreignBody_AreaStdCodePhone">
 					</div>
 				</div>
@@ -128,13 +129,13 @@
 			<div class="row">
 				<div class="col-sm-12 form-group">
 					<div class="col-sm-3">
-						<label for="boaedemailid"
+						<label for="foreignBody_EmailId"
 							   class="labelclass">Board Email Id</label>
 					</div>
 					<div class="col-sm-8">
 						<input type="text" 
 							   class="form-control"
-							   id="boardemailid"
+							   id="foreignBody_EmailId"
 							   ng-model="vm.qualificationDetail.foreignBody_EmailId">
 					</div>
 				</div>
@@ -143,13 +144,13 @@
 			<div class="row">
 				<div class="col-sm-12 form-group">
 					<div class="col-sm-3">
-						<label for="boaedurl"
+						<label for="foreignBody_URL"
 							   class="labelclass">Board URL</label>
 					</div>
 					<div class="col-sm-8">
 						<input type="text" 
 							   class="form-control"
-							   id="boardurl"
+							   id="foreignBody_URL"
 							   ng-model="vm.qualificationDetail.foreignBody_URL">
 					</div>
 				</div>
@@ -159,13 +160,13 @@
 		<div class="row">
 			<div class="col-sm-12 form-group">
 				<div class="col-sm-3">
-					<label for="schoolname"
+					<label for="schoolCollegeName"
 						   class="labelclass">School/ College Name</label>
 				</div>
 				<div class="col-sm-8">
 					<input type="text" 
 						   class="form-control"
-						   id="schoolname"
+						   id="schoolCollegeName"
 						   ng-model="vm.qualificationDetail.schoolCollegeName">
 				</div>
 			</div>
@@ -177,10 +178,10 @@
 					<label for="dateofresult"
 						   class="labelclass">Date of Result</label>
 				</div>
-				<div class="col-sm-4">
+				<div class="col-sm-3">
 					<select id="dateofresult"
 							class="selectpicker" data-width="100%"
-							data-live-search="true"
+							data-live-search="true" title="Month"
 							ng-model="vm.qualificationDetail.passingMonth"
 							ng-options="passingMonthList.key as passingMonthList.value for passingMonthList in vm.qualificationDetail.monthList">
 					</select>
@@ -188,7 +189,7 @@
 				<div class="col-sm-2">
 					<select id="dateofresult"
 							class="selectpicker" data-width="100%"
-							data-live-search="true"
+							data-live-search="true" title="Year"
 							ng-model="vm.qualificationDetail.passingYear"
 							ng-options="passingYearList as passingYearList for passingYearList in vm.qualificationDetail.yearList">
 					</select>
@@ -199,13 +200,13 @@
 		<div class="row">
 			<div class="col-sm-12 form-group">
 				<div class="col-sm-3">
-					<label for="rollno"
+					<label for="examSeatNo"
 						   class="labelclass">Roll No/ Seat No</label>
 				</div>
 				<div class="col-sm-8">
 					<input type="text" 
 						   class="form-control"
-						   id="rollno"
+						   id="examSeatNo"
 						   ng-model="vm.qualificationDetail.examSeatNo">
 				</div>
 			</div>
@@ -214,13 +215,13 @@
 		<div class="row">
 			<div class="col-sm-12 form-group">
 				<div class="col-sm-3">
-					<label for="marksheetno"
+					<label for="marksheetNo"
 						   class="labelclass">Marksheet No</label>
 				</div>
 				<div class="col-sm-8">
 					<input type="text" 
 						   class="form-control"
-						   id="marksheetno"
+						   id="marksheetNo"
 						   ng-model="vm.qualificationDetail.marksheetNo">
 				</div>
 			</div>
@@ -257,24 +258,24 @@
 			<div class="row">
 				<div class="col-sm-12 form-group">
 					<div class="col-sm-3">
-						<label for="totalmarksobtained"
+						<label for="marksObtain"
 							   class="labelclass">Total Marks Obtained</label>
 					</div>
 					<div class="col-sm-3">
 						<input type="text" 
 							   class="form-control"
-							   id="totalmarksobtained"
+							   id="marksObtain"
 							   ng-blur="vm.calculatePercentage()"
 							   ng-model="vm.qualificationDetail.marksObtain">
 					</div>
 					<div class="col-sm-2">
-						<label for="outof"
+						<label for="totalMarks"
 							   class="labelclass">Out of</label>
 					</div>
 					<div class="col-sm-3">
 						<input type="text" 
 							   class="form-control"
-							   id="outof"
+							   id="totalMarks"
 							   ng-blur="vm.calculatePercentage()"
 							   ng-model="vm.qualificationDetail.totalMarks">
 					</div>

@@ -39,14 +39,17 @@ public class EducationalInformation {
 	@JoinColumn(name="FK_University")
 	private Board university;
 	
-	@Column(name="BoardUniversity_AreaStdCodePhone")
-	private String boardUniversity_AreaStdCodePhone;
+	@Column(name="ForeignBody_BoardUniversityName")
+	private String foreignBody_BoardUniversityName; 
 	
-	@Column(name="BoardUniversity_EmailId")
-	private String boardUniversity_EmailId;
+	@Column(name="ForeignBody_AreaStdCodePhone")
+	private String foreignBody_AreaStdCodePhone;
 	
-	@Column(name="BoardUniversity_URL")
-	private String boardUniversity_URL;
+	@Column(name="ForeignBody_EmailId")
+	private String foreignBody_EmailId;
+	
+	@Column(name="ForeignBody_URL")
+	private String foreignBody_URL;
 	
 	@Column(name="ResultStatus")
 	private Integer resultStatus;
@@ -168,31 +171,39 @@ public class EducationalInformation {
 		public void setUniversity(Board university) {
 			this.university = university;
 		}
-	
-		public String getBoardUniversity_AreaStdCodePhone() {
-			return boardUniversity_AreaStdCodePhone;
+		
+		public String getForeignBody_BoardUniversityName() {
+			return foreignBody_BoardUniversityName;
 		}
-	
-		public void setBoardUniversity_AreaStdCodePhone(String boardUniversity_AreaStdCodePhone) {
-			this.boardUniversity_AreaStdCodePhone = boardUniversity_AreaStdCodePhone;
+
+		public void setForeignBody_BoardUniversityName(String foreignBody_BoardUniversityName) {
+			this.foreignBody_BoardUniversityName = foreignBody_BoardUniversityName;
 		}
-	
-		public String getBoardUniversity_EmailId() {
-			return boardUniversity_EmailId;
+
+		public String getForeignBody_AreaStdCodePhone() {
+			return foreignBody_AreaStdCodePhone;
 		}
-	
-		public void setBoardUniversity_EmailId(String boardUniversity_EmailId) {
-			this.boardUniversity_EmailId = boardUniversity_EmailId;
+
+		public void setForeignBody_AreaStdCodePhone(String foreignBody_AreaStdCodePhone) {
+			this.foreignBody_AreaStdCodePhone = foreignBody_AreaStdCodePhone;
 		}
-	
-		public String getBoardUniversity_URL() {
-			return boardUniversity_URL;
+
+		public String getForeignBody_EmailId() {
+			return foreignBody_EmailId;
 		}
-	
-		public void setBoardUniversity_URL(String boardUniversity_URL) {
-			this.boardUniversity_URL = boardUniversity_URL;
+
+		public void setForeignBody_EmailId(String foreignBody_EmailId) {
+			this.foreignBody_EmailId = foreignBody_EmailId;
 		}
-	
+
+		public String getForeignBody_URL() {
+			return foreignBody_URL;
+		}
+
+		public void setForeignBody_URL(String foreignBody_URL) {
+			this.foreignBody_URL = foreignBody_URL;
+		}
+
 		/**
 		 * @return It returns result status which can be 1 as Passed, 2 as Result Awaited, 3 as Failed
 		 * */

@@ -78,12 +78,16 @@ public class EducationalInformationRCServiceImpl implements EducationalInformati
 			else if(educationalInformation.getCertifyingBody() == Enums.CertifyingBody.University.getId())
 				subQualification.setBoardOrUniversity("University"/*educationalInformation.getNameOfUniversity()*/);
 			subQualification.setFacultyOrCollegeName(educationalInformation.getSchoolCollegeName());
-			subQualification.setPassingMonth(Enums.Month.get(educationalInformation.getPassingMonth()).name());
-			subQualification.setPassingYear(educationalInformation.getPassingYear());
+			if(educationalInformation.getPassingMonth() != null) {
+				subQualification.setPassingMonth(Enums.Month.get(educationalInformation.getPassingMonth()).name());
+				subQualification.setPassingYear(educationalInformation.getPassingYear());
+			}
 			subQualification.setMarksObtain(educationalInformation.getMarksObtain());
 			subQualification.setTotalMarks(educationalInformation.getTotalMarks());
-			subQualification.setQualificationMainLevel(educationalInformation.getQualificationLevel().getQualificationMainLevel());
-			subQualification.setQualificationSubLevel(educationalInformation.getQualificationLevel().getQualificationSubLevel());
+			if(educationalInformation.getQualificationLevel() != null) {
+				subQualification.setQualificationMainLevel(educationalInformation.getQualificationLevel().getQualificationMainLevel());
+				subQualification.setQualificationSubLevel(educationalInformation.getQualificationLevel().getQualificationSubLevel());
+			}
 			qualification.getSubQualificationList().add(subQualification);			
 		}
 		
@@ -100,13 +104,14 @@ public class EducationalInformationRCServiceImpl implements EducationalInformati
 		QualificationDetail qualificationDetail = educationModel.new QualificationDetail();
 		
 		if(educationalInformation != null) {
-			//qualificationDetail.setCountry(educationalInformation.getCountry());
+			qualificationDetail.setCountry(educationalInformation.getCountry());
 			qualificationDetail.setState(educationalInformation.getState());
 			qualificationDetail.setBoard(educationalInformation.getBoard());
 			qualificationDetail.setUniversity(educationalInformation.getUniversity());
-			qualificationDetail.setForeignBody_AreaStdCodePhone(educationalInformation.getBoardUniversity_AreaStdCodePhone());
-			qualificationDetail.setForeignBody_EmailId(educationalInformation.getBoardUniversity_EmailId());
-			qualificationDetail.setForeignBody_URL(educationalInformation.getBoardUniversity_URL());
+			qualificationDetail.setForeignBody_BoardUniversityName(educationalInformation.getForeignBody_BoardUniversityName());
+			qualificationDetail.setForeignBody_AreaStdCodePhone(educationalInformation.getForeignBody_AreaStdCodePhone());
+			qualificationDetail.setForeignBody_EmailId(educationalInformation.getForeignBody_EmailId());
+			qualificationDetail.setForeignBody_URL(educationalInformation.getForeignBody_URL());
 			qualificationDetail.setResultStatus(educationalInformation.getResultStatus());
 			qualificationDetail.setStream(educationalInformation.getStream());
 			qualificationDetail.setNoOfAttempts(educationalInformation.getNoOfAttempts());
@@ -164,13 +169,14 @@ public class EducationalInformationRCServiceImpl implements EducationalInformati
 			educationalInformation.setUser(user);
 		}
 		
-		//educationalInformation.setCountry(qualificationDetail.getCountry());
+		educationalInformation.setCountry(qualificationDetail.getCountry());
 		educationalInformation.setState(qualificationDetail.getState());
 		educationalInformation.setBoard(qualificationDetail.getBoard());
 		educationalInformation.setUniversity(qualificationDetail.getUniversity());
-		educationalInformation.setBoardUniversity_AreaStdCodePhone(qualificationDetail.getForeignBody_AreaStdCodePhone());
-		educationalInformation.setBoardUniversity_EmailId(qualificationDetail.getForeignBody_EmailId());
-		educationalInformation.setBoardUniversity_URL(qualificationDetail.getForeignBody_URL());
+		educationalInformation.setForeignBody_BoardUniversityName(qualificationDetail.getForeignBody_BoardUniversityName());
+		educationalInformation.setForeignBody_AreaStdCodePhone(qualificationDetail.getForeignBody_AreaStdCodePhone());
+		educationalInformation.setForeignBody_EmailId(qualificationDetail.getForeignBody_EmailId());
+		educationalInformation.setForeignBody_URL(qualificationDetail.getForeignBody_URL());
 		educationalInformation.setResultStatus(qualificationDetail.getResultStatus());
 		educationalInformation.setStream(qualificationDetail.getStream());
 		educationalInformation.setNoOfAttempts(qualificationDetail.getNoOfAttempts());

@@ -21,7 +21,8 @@
 
 		educationInformationService.getListofQualification(vm.accessTokenParam)
 		.success(function (data, status, headers, config) {
-			vm.listofQualification = data;
+			vm.qualificationList = data;
+			/*vm.listofQualification = data;
 			angular.forEach(vm.listofQualification, function(value, key) {
 				if(value.subQualificationList == null) {
 					vm.qualificationList.push(value);
@@ -33,10 +34,11 @@
 					});
 				}
 			});
-			vm.listofQualification = null;
+			vm.listofQualification = null;*/
 		})
 		.error(function (data, status, headers, config) {
-			vm.listofQualification = {};
+			vm.qualificationList = data;
+			/*vm.listofQualification = {};*/
         });
 		
 		vm.qualificationDetail = function(qualificationMainLevel, qualificationSubLevel) {

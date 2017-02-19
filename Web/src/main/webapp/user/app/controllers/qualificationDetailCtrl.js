@@ -104,21 +104,25 @@
 		}
 		
 		vm.setSelectedCountry = function() {
-			for(var i = 0; i < vm.qualificationDetail.countryList.length; i++) {
-				if(vm.qualificationDetail.countryId == vm.qualificationDetail.countryList[i].countryId) {
-					vm.qualificationDetail.country = vm.qualificationDetail.countryList[i];
+			if(vm.qualificationDetail != null && vm.qualificationDetail.countryList != null) {
+				for(var i = 0; i < vm.qualificationDetail.countryList.length; i++) {
+					if(vm.qualificationDetail.countryId == vm.qualificationDetail.countryList[i].countryId) {
+						vm.qualificationDetail.country = vm.qualificationDetail.countryList[i];
+					}
 				}
-			}
-			refreshSelectPickerWithDelay();
+				refreshSelectPickerWithDelay();
+			}			
 		}
 		
 		vm.setSelectedState = function() {
-			for(var i = 0; i < vm.qualificationDetail.stateList.length; i++) {
-				if(vm.qualificationDetail.stateId == vm.qualificationDetail.stateList[i].stateId) {
-					vm.qualificationDetail.state = vm.qualificationDetail.stateList[i];
+			if(vm.qualificationDetail != null && vm.qualificationDetail.stateList != null) {
+				for(var i = 0; i < vm.qualificationDetail.stateList.length; i++) {
+					if(vm.qualificationDetail.stateId == vm.qualificationDetail.stateList[i].stateId) {
+						vm.qualificationDetail.state = vm.qualificationDetail.stateList[i];
+					}
 				}
+				refreshSelectPickerWithDelay();
 			}
-			refreshSelectPickerWithDelay();
 		}
 		
 		vm.setSelectedBoard = function() {
