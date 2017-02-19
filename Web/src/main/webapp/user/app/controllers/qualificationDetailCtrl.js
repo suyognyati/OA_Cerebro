@@ -65,14 +65,20 @@
 			if(qualificationDetail.qualificationSubLevel == null) {
 				qualificationDetail.qualificationSubLevel = qualificationSubLevel;
 			}
-			for(var i = 0; i < qualificationDetail.stateList.length; i++) {
-				for(var j = 0; j < qualificationDetail.allIndiaBoardList.length; j++) {
-					qualificationDetail.stateList[i].boardList.push(qualificationDetail.allIndiaBoardList[j]);
+			if(qualificationDetail.stateList != null && qualificationDetail.allIndiaBoardList != null) {
+				for(var i = 0; i < qualificationDetail.stateList.length; i++) {
+					for(var j = 0; j < qualificationDetail.allIndiaBoardList.length; j++) {
+						qualificationDetail.stateList[i].sscBoardList.push(qualificationDetail.allIndiaBoardList[j]);
+						qualificationDetail.stateList[i].hscBoardList.push(qualificationDetail.allIndiaBoardList[j]);
+						qualificationDetail.stateList[i].diplomaBoardList.push(qualificationDetail.allIndiaBoardList[j]);
+					}
 				}
 			}
-			if(qualificationDetail.state != null) {
+			if(qualificationDetail.state != null && qualificationDetail.allIndiaBoardList != null) {
 				for(var j = 0; j < qualificationDetail.allIndiaBoardList.length; j++) {
-					qualificationDetail.state.boardList.push(qualificationDetail.allIndiaBoardList[j]);
+					qualificationDetail.state.sscBoardList.push(qualificationDetail.allIndiaBoardList[j]);
+					qualificationDetail.state.hscBoardList.push(qualificationDetail.allIndiaBoardList[j]);
+					qualificationDetail.state.diplomaBoardList.push(qualificationDetail.allIndiaBoardList[j]);
 				}
 			}
 		}
@@ -121,14 +127,24 @@
 						vm.qualificationDetail.state = vm.qualificationDetail.stateList[i];
 					}
 				}
-				refreshSelectPickerWithDelay();
+				refreshSelectPickerWithDelay(100);
 			}
 		}
 		
 		vm.setSelectedBoard = function() {
-			for(var i = 0; i < vm.qualificationDetail.state.boardList.length; i++) {
-				if(vm.qualificationDetail.boardId == vm.qualificationDetail.state.boardList[i].boardId) {
-					vm.qualificationDetail.board = vm.qualificationDetail.state.boardList[i];
+			var boardList = null;
+			switch(vm.qualificationDetail.qualificationMainLevel) {
+				case 1: boardList = vm.qualificationDetail.state.sscBoardList;
+						break;
+				case 2: boardList = vm.qualificationDetail.state.hscBoardList;
+						break;
+				case 3: boardList = vm.qualificationDetail.state.diplomaBoardList;
+						break;
+				default:boardList = {};
+			}
+			for(var i = 0; i < boardList.length; i++) {
+				if(vm.qualificationDetail.boardId == boardList[i].boardId) {
+					vm.qualificationDetail.board = boardList[i];
 				}
 			}
 			refreshSelectPickerWithDelay(100);

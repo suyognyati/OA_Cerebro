@@ -22,6 +22,15 @@ public class Board {
 	@Column(name="BoardCode")
 	private Integer boardCode;
 	
+	@Column(name="ForSSC")
+	Boolean forSSC;
+	
+	@Column(name="ForHSC")
+	Boolean forHSC;
+	
+	@Column(name="ForDiploma")
+	Boolean forDiploma;
+	
 	@ManyToOne
 	@JoinColumn(name="FK_State")
 	@JsonIgnore
@@ -47,7 +56,28 @@ public class Board {
 		public void setBoardCode(Integer boardCode) {
 			this.boardCode = boardCode;
 		}
-	
+		
+		public Boolean getForSSC() {
+			return forSSC;
+		}
+		public void setForSSC(Boolean forSSC) {
+			this.forSSC = forSSC;
+		}
+		
+		public Boolean getForHSC() {
+			return forHSC;
+		}
+		public void setForHSC(Boolean forHSC) {
+			this.forHSC = forHSC;
+		}
+		
+		public Boolean getForDiploma() {
+			return forDiploma;
+		}
+		public void setForDiploma(Boolean forDiploma) {
+			this.forDiploma = forDiploma;
+		}
+		
 		public State getState() {
 			return state;
 		}	

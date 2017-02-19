@@ -83,9 +83,10 @@
 						<div class="col-sm-8">
 							<select id="state"
 									class="selectpicker" data-width="100%"
-									data-live-search="true"
-									ng-model="vm.qualificationDetail.state"
-									ng-options="stateList.key as stateList.value for stateList in vm.quallificationdetail.stateList">
+									data-live-search="true" title="-- Select state --"
+									ng-model="vm.qualificationDetail.stateId"
+									ng-change="vm.setSelectedState()"
+									ng-options="state.stateId as state.stateName for state in vm.qualificationDetail.stateList">
 							</select>
 						</div>
 					</div>
@@ -100,9 +101,10 @@
 						<div class="col-sm-8">
 							<select id="board"
 									class="selectpicker" data-width="100%"
-									data-live-search="true"
-									ng-model="vm.qualificationDetail.nameOfBoard"
-									ng-options="nameOfBoardList.key as nameOfBoardList.value for nameOfBoardList in vm.quallificationdetail.nameOfBoardList">
+									data-live-search="true" title="-- Select board --"
+									ng-model="vm.qualificationDetail.boardId"
+									ng-change="vm.setSelectedBoard()"
+									ng-options="board.boardId as board.boardName for board in vm.qualificationDetail.state.diplomaBoardList">
 							</select>
 						</div>
 					</div>
@@ -119,9 +121,10 @@
 						<div class="col-sm-8">
 							<select id="country"
 									class="selectpicker" data-width="100%"
-									data-live-search="true"
-									ng-model="vm.qualificationDetail.country"
-									ng-options="countryList.key as countryList.value for countryList in vm.quallificationdetail.countryList">
+									data-live-search="true" title="-- Select country --"
+									ng-model="vm.qualificationDetail.countryId"
+									ng-change="vm.setSelectedCountry()"
+									ng-options="countryList.countryId as countryList.countryName for countryList in vm.qualificationDetail.countryList">
 							</select>
 						</div>
 					</div>
@@ -201,8 +204,9 @@
 							<select id="state"
 									class="selectpicker" data-width="100%"
 									data-live-search="true"
-									ng-model="vm.qualificationDetail.state"
-									ng-options="stateList.key as stateList.value for stateList in vm.quallificationdetail.stateList">
+									ng-model="vm.qualificationDetail.stateId"
+									ng-change="vm.setSelectedState()"
+									ng-options="state.stateId as state.stateName for state in vm.qualificationDetail.stateList">
 							</select>
 						</div>
 					</div>
@@ -236,7 +240,7 @@
 						<div class="col-sm-8">
 							<select id="country"
 									class="selectpicker" data-width="100%"
-									data-live-search="true"
+									data-live-search="true" title="-- Select country --"
 									ng-model="vm.qualificationDetail.country"
 									ng-options="countryList.key as countryList.value for countryList in vm.quallificationdetail.countryList">
 							</select>
@@ -376,10 +380,10 @@
 					<label for="dateofresult"
 						   class="labelclass">Date of Result</label>
 				</div>
-				<div class="col-sm-4">
+				<div class="col-sm-3">
 					<select id="dateofresult"
 							class="selectpicker" data-width="100%"
-							data-live-search="true"
+							data-live-search="true" title="Month"
 							ng-model="vm.qualificationDetail.passingMonth"
 							ng-options="passingMonthList.key as passingMonthList.value for passingMonthList in vm.qualificationDetail.monthList">
 					</select>
@@ -387,7 +391,7 @@
 				<div class="col-sm-2">
 					<select id="dateofresult"
 							class="selectpicker" data-width="100%"
-							data-live-search="true"
+							data-live-search="true" title="Year"
 							ng-model="vm.qualificationDetail.passingYear"
 							ng-options="passingYearList as passingYearList for passingYearList in vm.qualificationDetail.yearList">
 					</select>
@@ -514,11 +518,14 @@
 					<label for="percentage"
 						   class="labelclass">Percentage</label>
 				</div>
-				<div class="col-sm-3">
+				<div ng-show="vm.qualificationDetail.evaluationType==2" class="col-sm-3">
 					<input type="text" 
 						   class="form-control"
 						   id="percentage"
 						   ng-model="vm.qualificationDetail.percentage">
+				</div>
+				<div ng-show="vm.qualificationDetail.evaluationType==1" class="col-sm-3 labelalignmentmargin">
+					<span>{{vm.qualificationDetail.percentage}} %</span>
 				</div>
 			</div>
 		</div>

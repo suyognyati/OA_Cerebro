@@ -29,7 +29,7 @@ public class GeoLocationTest {
 		List<State> stateList = geoLocationsService.getStateListByCountryName("India");
 		
 		for(State state : stateList) {
-			List<Board> boardList = state.getBoardList();
+			List<Board> boardList = state.getSscBoardList();
 			System.out.println(state.getStateName());
 			for(Board board : boardList) {
 				System.out.println(board.getBoardName());
