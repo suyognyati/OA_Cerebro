@@ -6,10 +6,10 @@
 					["$http",
 					 "$state",
 					 "$rootScope",
-					 "registerService",
+					 "newUserService",
 					 NewUserCtrl]);
 	
-	function NewUserCtrl($http, $state, $rootScope, registerService) {
+	function NewUserCtrl($http, $state, $rootScope, newUserService) {
 		var vm = this;
 		vm.storedUserName = "";
 		vm.isUserCreated = false;
@@ -18,6 +18,7 @@
 		vm.user.lastName = "";
 		vm.user.userName = "";
 		vm.user.password = "";
+		vm.user.confirmPassword = "";
 		vm.user.mobileNo = "";
 		vm.user.email = "";
 		vm.user.birthDate = "";
@@ -34,7 +35,7 @@
 			if((vm.user.userName == undefined || vm.user.userName == "") == false) {
 				if(vm.storedUserName != vm.user.userName) {
 					vm.storedUserName = vm.user.userName;
-					registerService.checkuseravailability(vm.user.userName)
+					newUserService.checkuseravailability(vm.user.userName)
 					.success(function (data, status, headers, config) {
 			            vm.isTaken = !data.available;
 			            vm.isTakenError = false;
@@ -52,7 +53,7 @@
 		
 		vm.register = function() {
 			if(vm.storedUserName != vm.user.userName) {
-				registerService.checkuseravailability(vm.user.userName)
+				newUserService.checkuseravailability(vm.user.userName)
 				.success(function (data, status, headers, config) {
 		            vm.isTaken = !data.available;
 		            vm.isTakenError = false;
@@ -63,7 +64,7 @@
 			}
 			
 			if(vm.isTakenError == false && vm.isTaken == false) {
-				registerService.createuser(vm.user)
+				newUserService.createuser(vm.user)
 				.success(function (data, status, headers, config) {
 					vm.isUserCreated = data.isUserCreated;
 				})

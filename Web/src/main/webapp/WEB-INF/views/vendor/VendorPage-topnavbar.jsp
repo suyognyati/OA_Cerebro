@@ -95,7 +95,7 @@
 		<div class="col-md-2 col-sm-2 menubar-div">
 			<div class="sidebar-nav-fixed affix">
 				<div class="panel panel-primary menu-div">
-					<a ui-sref="newEntry">
+					<a ui-sref="newUser">
 						<img src= <%=img_new_user%> 
 							class="menu-img">
 					</a>

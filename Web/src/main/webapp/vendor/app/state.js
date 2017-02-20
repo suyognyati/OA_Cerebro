@@ -37,8 +37,8 @@
 							}
 					})
 					
-					.state("newEntry",{
-						url: "/newEntry",
+					.state("newUser",{
+						url: "/newUser",
 						views: {
 							"view":{
 			                	templateUrl: basePath + "templates/states/newUserView.html",
@@ -50,7 +50,8 @@
 								return $ocLazyLoad.load({
 									name : 'vendor',
 									files : [
-									     basePath + 'app/controllers/newUserCtrl.js'
+									     basePath + 'app/controllers/newUserCtrl.js',
+									     basePath + 'app/services/newUserService.js'
 									]
 							
 								})
