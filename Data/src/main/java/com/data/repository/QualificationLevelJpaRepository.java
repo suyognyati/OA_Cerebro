@@ -12,6 +12,8 @@ public interface QualificationLevelJpaRepository extends JpaRepository<Qualifica
 	QualificationLevel findByQualificationLevelId(Integer qualificationLevelId);
 	List<QualificationLevel> findByQualificationMainLevelAndQualificationSubLevel(Integer qualificationMainLevel, Integer qualificationSubLevel);
 	List<QualificationLevel> findByQualificationMainLevel(Integer qualificationMainLevel);
+	List<QualificationLevel> findByQualificationMainLevelAndQualificationSubLevelGreaterThanOrderByQualificationSubLevelAsc(Integer qualificationMainLevel, Integer zeroval);
+	List<QualificationLevel> findByQualificationMainLevelAndQualificationSubLevelGreaterThanOrderByQualificationSubLevelDesc(Integer qualificationMainLevel, Integer zeroval);
 	List<QualificationLevel> findByOrderByQualificationMainLevelAsc();
 	List<QualificationLevel> findByOrderByQualificationMainLevelDesc();
 	List<QualificationLevel> findDistinctByQualificationMainLevelOrderByQualificationMainLevelAsc(Integer qualificationMainLevel);

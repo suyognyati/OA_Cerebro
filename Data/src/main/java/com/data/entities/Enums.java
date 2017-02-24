@@ -26,6 +26,37 @@ public class Enums {
 		}
 	}
 	
+	public enum EducationalYear {
+		First(1, "1st Year"), 
+		Second(2, "2nd Year"),
+		Third(3, "3rd Year"),
+		Fourth(4, "4th Year"),
+		Fifth(5, "5th Year"),
+		Sixth(6, "6th Year"),
+		Seventh(7, "7th Year");
+		
+		private int id;
+		private String value;
+		private static final Map<Integer, EducationalYear> lookup = new HashMap<Integer, EducationalYear>();
+		private static final List<KeyValuePair> enumList = new ArrayList<KeyValuePair>();
+		
+		private EducationalYear(int id, String value) { this.id = id; this.value = value; }
+		
+		static {
+			for (EducationalYear s : EnumSet.allOf(EducationalYear.class)) {
+				lookup.put(s.getId(), s);
+				KeyValuePair ms = new KeyValuePair();
+				ms.key = s.getId();
+				ms.value = s.getValue();
+				enumList.add(ms);
+			}
+		}
+		
+		public int getId() { return id; }
+		public String getValue() { return value; }
+		public static EducationalYear get(int id) { return lookup.get(id); }
+		public static List<KeyValuePair> getEnumList() { return enumList; }
+	}
 	
 	public enum Gender {
 		Select(0, "-- Select Gender --"),

@@ -46,8 +46,10 @@
 			if(qualificationMainLevel == 1)
 				view = "ssc";
 			else if(qualificationMainLevel == 2)
-				view = "hsc";
+				view = "11th";
 			else if(qualificationMainLevel == 3)
+				view = "hsc";
+			else if(qualificationMainLevel == 4)
 				view = "diploma";
 			
 			$state.go("qualificationDetail", {qualification:view ,qualificationMainLevel:qualificationMainLevel, qualificationSubLevel:qualificationSubLevel});

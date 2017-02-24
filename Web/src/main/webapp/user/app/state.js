@@ -130,12 +130,17 @@
 								"view":{
 									templateUrl: 
 									function (stateParams){
-										if(stateParams.qualificationMainLevel == 1 && stateParams.qualificationSubLevel == 0 && stateParams.qualification == "ssc") {
+										if(stateParams.qualificationMainLevel == 1 
+												&& stateParams.qualificationSubLevel == 0 
+												/*&& stateParams.qualification == "ssc"*/) {
 											return basePath + "templates/states/sscView.html"
-										} else if(stateParams.qualificationMainLevel == 2 && stateParams.qualificationSubLevel == 0 && stateParams.qualification == "hsc") {
+										} else if((stateParams.qualificationMainLevel >= 2 && stateParams.qualificationMainLevel <= 3) 
+												&& stateParams.qualificationSubLevel == 0 
+												/*&& stateParams.qualification == "hsc"*/) {
 											return basePath + "templates/states/hscView.html"
-										} else if(stateParams.qualificationMainLevel == 3 && stateParams.qualificationSubLevel >= 0 &&
-												stateParams.qualificationSubLevel <= 3 && stateParams.qualification == "diploma") {
+										} else if(stateParams.qualificationMainLevel == 4 
+												&& stateParams.qualificationSubLevel >= 0 && stateParams.qualificationSubLevel <= 3 
+												/*&& stateParams.qualification == "diploma"*/) {
 											return basePath + "templates/states/diplomaView.html"
 										} else {
 											return false;

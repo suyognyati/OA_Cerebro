@@ -62,8 +62,9 @@ public class EducationalInformationRCServiceImpl implements EducationalInformati
 			int index = educationalInformation.getQualificationLevel().getQualificationMainLevel() - 1;
 			Qualification qualification = listOfQualification.get(index);
 			
-			if(qualification.getSubQualificationList() == null)
+			if(qualification.getSubQualificationList() == null) {
 				qualification.setSubQualificationList(new ArrayList<SubQualification>());
+			}
 			
 			//Creating subqualification object
 			EducationModel educationalModel = new EducationModel();
@@ -73,8 +74,9 @@ public class EducationalInformationRCServiceImpl implements EducationalInformati
 			} else {
 				subQualification.setName(educationalInformation.getQualificationName());
 			}
-			if(educationalInformation.getCertifyingBody() == Enums.CertifyingBody.Board.getId())
-				subQualification.setBoardOrUniversity("Board"/*educationalInformation.getNameOfBoard()*/);
+			if(educationalInformation.getCertifyingBody() == Enums.CertifyingBody.Board.getId()
+					&& educationalInformation.getBoard() != null)
+				subQualification.setBoardOrUniversity(educationalInformation.getBoard().getBoardName());
 			else if(educationalInformation.getCertifyingBody() == Enums.CertifyingBody.University.getId())
 				subQualification.setBoardOrUniversity("University"/*educationalInformation.getNameOfUniversity()*/);
 			subQualification.setFacultyOrCollegeName(educationalInformation.getSchoolCollegeName());

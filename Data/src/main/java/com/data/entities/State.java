@@ -15,6 +15,8 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.Where;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name="States")
 public class State {
@@ -29,6 +31,7 @@ public class State {
 	
 	@ManyToOne
 	@JoinColumn(name="FK_CountryId", nullable=false)
+	@JsonIgnore
 	private Country country;
 	
 	@OneToMany(mappedBy = "state", fetch = FetchType.EAGER)

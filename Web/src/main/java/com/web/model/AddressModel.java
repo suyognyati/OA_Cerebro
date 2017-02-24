@@ -1,7 +1,13 @@
 package com.web.model;
 
+import java.util.List;
+
+import com.data.entities.Country;
+import com.data.entities.State;
+
 public class AddressModel {
 	private int addressId;
+	private List<Country> countryList;
 	
 		//Address Id
 		public int getAddressId() {
@@ -9,6 +15,14 @@ public class AddressModel {
 		}
 		public void setAddressId(int addressId) {
 			this.addressId = addressId;
+		}
+		
+		//Country List
+		public List<Country> getCountryList() {
+			return countryList;
+		}
+		public void setCountryList(List<Country> countryList) {
+			this.countryList = countryList;
 		}
 		
 		
@@ -21,8 +35,8 @@ public class AddressModel {
 	private String pinCode;
 	private String city;
 	private String district;
-	private String state;
-	private String country;
+	private State state;
+	private Country country;
 	
 		//Flat No
 		public String getFlatNo() {
@@ -73,10 +87,10 @@ public class AddressModel {
 		}
 		
 		//State
-		public String getState() {
+		public State getState() {
 			return state;
 		}
-		public void setState(String state) {
+		public void setState(State state) {
 			this.state = state;
 		}
 		
@@ -89,10 +103,10 @@ public class AddressModel {
 		}
 		
 		//Country
-		public String getCountry() {
+		public Country getCountry() {
 			return country;
 		}
-		public void setCountry(String country) {
+		public void setCountry(Country country) {
 			this.country = country;
 		}
 		
@@ -108,8 +122,8 @@ public class AddressModel {
 	private String pinCodePermenent;
 	private String cityPermenent;
 	private String districtPermenent;
-	private String statePermenent;
-	private String countryPermenent;
+	private State statePermenent;
+	private Country countryPermenent;
 
 		//IsNotSameAsCorrespondence
 		public Boolean getIsNotSameAsCorrespondence() {
@@ -176,18 +190,18 @@ public class AddressModel {
 		}
 		
 		//StatePermenent
-		public String getStatePermenent() {
+		public State getStatePermenent() {
 			return statePermenent;
 		}
-		public void setStatePermenent(String statePermenent) {
+		public void setStatePermenent(State statePermenent) {
 			this.statePermenent = statePermenent;
 		}
 		
 		//CountryPermenent
-		public String getCountryPermenent() {
+		public Country getCountryPermenent() {
 			return countryPermenent;
 		}
-		public void setCountryPermenent(String countryPermenent) {
+		public void setCountryPermenent(Country countryPermenent) {
 			this.countryPermenent = countryPermenent;
 		}
 		

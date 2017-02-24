@@ -7,7 +7,7 @@ import com.data.entities.QualificationLevel;
 public interface QualificationLevelService {
 	QualificationLevel getById(Integer id);
 	QualificationLevel getByMainAndSubLevel(Integer qualificationMainLevel, Integer qualificationSubLevel);
-	List<QualificationLevel> getByMainLevel(Integer mainLevel);
+	List<QualificationLevel> getByMainLevel(Integer mainLevel, Boolean ascending);
 	List<QualificationLevel> getAllOrderByQualificationMainLevel(Boolean ascending);
 	List<QualificationLevel> getAllMainQualificationOrderByQualificationMainLevel(Boolean ascending);
 }

@@ -27,8 +27,11 @@ public class QualificationLevelServiceImpl implements QualificationLevelService 
 			return null;
 	}
 	
-	public List<QualificationLevel> getByMainLevel(Integer mainLevel) {
-		return qualificationLevelJpaRepository.findByQualificationMainLevel(mainLevel);
+	public List<QualificationLevel> getByMainLevel(Integer mainLevel, Boolean ascending) {
+		if(ascending)
+			return qualificationLevelJpaRepository.findByQualificationMainLevelAndQualificationSubLevelGreaterThanOrderByQualificationSubLevelAsc(mainLevel, 0);
+		else
+			return qualificationLevelJpaRepository.findByQualificationMainLevelAndQualificationSubLevelGreaterThanOrderByQualificationSubLevelDesc(mainLevel, 0);
 	}
 
 	public List<QualificationLevel> getAllOrderByQualificationMainLevel(Boolean ascending) {

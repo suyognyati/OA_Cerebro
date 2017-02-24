@@ -1,10 +1,14 @@
 package com.data.entities;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -20,6 +24,9 @@ public class Country {
 	
 	@Column(name="CountryName")
 	private String countryName;
+	
+	@OneToMany(mappedBy = "country", fetch = FetchType.EAGER)
+	private List<State> stateList;
 
 	//CountryId
 	public Integer getCountryId() {
@@ -47,4 +54,14 @@ public class Country {
 	public void setCountryName(String countryName) {
 		this.countryName = countryName;
 	}	
+	
+	//StateList
+	public List<State> getStateList() {
+		return stateList;
+	}
+
+	public void setStateList(List<State> stateList) {
+		this.stateList = stateList;
+	}
+	
 }

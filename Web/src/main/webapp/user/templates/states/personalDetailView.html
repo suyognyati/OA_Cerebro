@@ -33,6 +33,7 @@
 							   class="form-control"
 							   id="applicantsname"
 							   placeholder="Last Name"
+							   tabindex="1"
 							   style="text-transform:uppercase"
 							   ng-model="vm.personaldetail.lastName">
 					</div>
@@ -41,6 +42,7 @@
 							   class="form-control"
 							   id="applicantsname"
 							   placeholder="First Name"
+							   tabindex="2"
 							   style="text-transform:uppercase"
 							   ng-model="vm.personaldetail.firstName">
 					</div>
@@ -49,6 +51,7 @@
 							   class="form-control"
 							   id="applicantsname"
 							   placeholder="Middle Name"
+							   tabindex="3"
 							   style="text-transform:uppercase"
 							   ng-model="vm.personaldetail.middleName">
 					</div>
@@ -66,6 +69,7 @@
 							   class="form-control"
 							   id="regionalname"
 							   placeholder="Last Name"
+							   tabindex="4"
 							   ng-model="vm.personaldetail.lastNameRegional">
 					</div>
 					<div class="col-sm-3">
@@ -73,6 +77,7 @@
 							   class="form-control"
 							   id="regionalname"
 							   placeholder="First Name"
+							   tabindex="5"
 							   ng-model="vm.personaldetail.firstNameRegional">
 					</div>
 					<div class="col-sm-3">
@@ -80,6 +85,7 @@
 							   class="form-control"
 							   id="regionalname"
 							   placeholder="Middle Name"
+							   tabindex="6"
 							   ng-model="vm.personaldetail.middleNameRegional">
 					</div>
 				</div>
@@ -89,6 +95,7 @@
 				<div class="col-lg-12 form-group">
 					<input type="checkbox"
 						   id="namechange"
+						   tabindex="7"
 						   ng-model="vm.personaldetail.isPreviousName">
 					<label for="namechange">Is your name changed?
 						<span>[Tick if Yes]</span>
@@ -108,6 +115,7 @@
 								   class="form-control"
 								   id="newname"
 								   placeholder="Last Name"
+								   tabindex="8"
 								   style="text-transform:uppercase"
 								   ng-model="vm.personaldetail.lastNamePrevious">
 						</div>
@@ -116,6 +124,7 @@
 								   class="form-control"
 								   id="newname"
 								   placeholder="First Name"
+								   tabindex="9"
 								   style="text-transform:uppercase"
 								   ng-model="vm.personaldetail.firstNamePrevious">
 						</div>
@@ -124,6 +133,7 @@
 								   class="form-control"
 								   id="newname"
 								   placeholder="Middle Name"
+								   tabindex="10"
 								   style="text-transform:uppercase"
 								   ng-model="vm.personaldetail.middleNamePrevious">
 						</div>
@@ -138,6 +148,7 @@
 						<div class="col-sm-3">
 							<select id="reason"
 									class="form-control"
+									tabindex="11"
 									ng-model="vm.personaldetail.nameChangeReason"
 									ng-options="nameChangeReason.key as nameChangeReason.value for nameChangeReason in vm.personaldetail.nameChangeReasonList">
 							</select>
@@ -165,6 +176,7 @@
 							   class="form-control"
 							   id="fathersname"
 							   placeholder="Last Name"
+							   tabindex="12"
 							   style="text-transform:uppercase"
 							   ng-model="vm.personaldetail.fathersLastName">
 					</div>
@@ -173,6 +185,7 @@
 							   class="form-control"
 							   id="fathersname"
 							   placeholder="First Name"
+							   tabindex="13"
 							   style="text-transform:uppercase"
 							   ng-model="vm.personaldetail.fathersFirstName">
 					</div>
@@ -181,6 +194,7 @@
 							   class="form-control"
 							   id="fathersname"
 							   placeholder="Middle Name"
+							   tabindex="14"
 							   style="text-transform:uppercase"
 							   ng-model="vm.personaldetail.fathersMiddleName">
 					</div>
@@ -198,6 +212,7 @@
 							   class="form-control"
 							   id="mothersname"
 							   placeholder="Last Name"
+							   tabindex="15"
 							   style="text-transform:uppercase"
 							   ng-model="vm.personaldetail.mothersLastName">
 					</div>
@@ -206,6 +221,7 @@
 							   class="form-control"
 							   id="mothersname"
 							   placeholder="First Name"
+							   tabindex="16"
 							   style="text-transform:uppercase"
 							   ng-model="vm.personaldetail.mothersFirstName">
 					</div>
@@ -214,6 +230,7 @@
 							   class="form-control"
 							   id="mothersname"
 							   placeholder="Middle Name"
+							   tabindex="17"
 							   style="text-transform:uppercase"
 							   ng-model="vm.personaldetail.mothersMiddleName">
 					</div>
@@ -226,10 +243,12 @@
 						<label for="parentsemail"
 							   class="labelclass">Parent's Email Id</label>
 					</div>
-					<div class="col-sm-3">
-						<input type="text" 
+					<div class="col-sm-6">
+						<input type="email" 
 							   class="form-control" 
 							   id="parentsemail"
+							   placeholder="Parent's Email Id"
+							   tabindex="18"
 							   ng-model="vm.personaldetail.parentsEmailId">
 					</div>
 				</div>
@@ -241,10 +260,12 @@
 						<label for="parentscontact"
 							   class="labelclass">Parent's Contact No.</label>
 					</div>
-					<div class="col-sm-3">
+					<div class="col-sm-6">
 						<input type="text" 
 							   class="form-control" 
 							   id="parentscontact"
+							   placeholder="Parent's Contact No."
+							   tabindex="19"
 							   ng-model="vm.personaldetail.parentsContactNo">
 					</div>
 				</div>
@@ -264,12 +285,13 @@
 						<label for="gender"
 							   class="labelclass">Gender</label>
 					</div>
-					<div class="col-sm-6 form-inline form-group" style="padding-top:7px">
+					<div class="col-sm-9 form-inline form-group" style="padding-top:7px">
 						<div class="col-sm-2">
 							<input type="radio" 
 								   name="gender" 
 								   id="genderMale"
 								   value="1"
+								   tabindex="20"
 								   ng-model="vm.personaldetail.gender">
 							<label for="genderMale">Male</label>
 						</div>
@@ -278,6 +300,7 @@
 								   name="gender" 
 								   id="genderFemale"
 								   value="2"
+								   tabindex="21"
 								   ng-model="vm.personaldetail.gender">
 							<label for="genderFemale">Female</label>
 						</div>
@@ -286,6 +309,7 @@
 								   name="gender" 
 								   id="transGender"
 								   value="3"
+								   tabindex="22"
 								   ng-model="vm.personaldetail.gender">
 							<label for="transGender">Transgender</label>
 						</div>
@@ -302,6 +326,7 @@
 					<div class="col-sm-3">
 						<select class="form-control" 
 								id="bloodgroup" 
+								tabindex="23"
 								ng-model="vm.personaldetail.bloodGroup"
 								ng-options="bloodgroup.key as bloodgroup.value for bloodgroup in vm.personaldetail.bloodGroupList">
 						</select>
@@ -316,6 +341,7 @@
 							   id="dateofbirth"  
 							   ui-mask="dd/mm/yyyy"
 							   datepicker-popup="{{format}}"
+							   tabindex="24"
 							   is-open="vm.opened"
 							   ng-model="vm.personaldetail.birthDate"
 							   datepicker-options="dateOptions"
@@ -342,7 +368,7 @@
 					<div class="col-sm-3">
 						<select class="form-control" 
 								id="maritalstatus"
-								tabindex="14"
+								tabindex="25"
 								ng-model="vm.personaldetail.maritalStatus"
 								ng-options="maritalStatus.key as maritalStatus.value for maritalStatus in vm.personaldetail.maritalStatusList">
 						</select>
@@ -355,6 +381,7 @@
 						<input type="text" 
 							   class="form-control" 
 							   id="placeofbirth"
+							   tabindex="26"
 							   ng-model="vm.personaldetail.placeOfBirth">
 					</div>
 				</div>
@@ -370,6 +397,7 @@
 						<input type="text" 
 							   class="form-control" 
 							   id="aadharno"
+							   tabindex="27"
 							   ng-model="vm.personaldetail.adharNo">
 					</div>
 					<div class="col-sm-3">
@@ -380,6 +408,7 @@
 						<input type="text" 
 							   class="form-control" 
 							   id="educationgap"
+							   tabindex="28"
 							   ng-model="vm.personaldetail.educationGap">
 					</div>
 				</div>
@@ -388,148 +417,6 @@
 		</div>
 	</div>
 
-	<div class="panel panel-default">
-		<div class="panel-heading">
-			<span style="font-family:Verdana">Occupation Details</span>
-		</div>
-		<div class="panel-body">
-			<div class="row">
-				<div class="col-sm-12 form-group">
-					<input type="checkbox"
-						   id="selfemployed"
-						   ng-model="vm.personaldetail.isSelfEmployed">
-					<label for="selfemployed">Are you Employed or Self-Employed?
-						<span>[Tick if Yes]</span>
-					</label>
-				</div>
-			</div>
-			
-			<div ng-show="vm.personaldetail.isSelfEmployed">
-				<div class="row">
-					<div class="col-sm-12 form-group">
-						<div class="col-sm-3">
-							<label for="experience"
-								   class="labelclass">Experience</label>
-						</div>
-						<div class="col-sm-3">
-							<input type="text"
-								   class="form-control"
-								   id="experience">
-						</div>
-						<div class="col-sm-1">
-							<label for="experience"
-								   class="labelclass">Year(s)</label>
-						</div>
-						<div class="col-sm-3">
-							<input type="text"
-								   class="form-control"
-								   id="experience">
-						</div>
-						<div class="col-sm-1">
-							<label for="experience"
-								   class="labelclass">Months</label>
-						</div>
-					</div>
-					
-				</div>
-				
-				<div class="row">
-					<div class="col-sm-12 form-group">
-						<div class="col-sm-3">
-							<label for="selfoccupation"
-								   class="labelclass">Occupation</label>
-						</div>
-						<div class="col-sm-3">
-							<select class="form-control" 
-									id="selfoccupation"
-									tabindex="14">
-								<option selected disabled>--Select--</option>
-							</select>
-						</div>
-					</div>
-				</div>
-				
-				<div class="row">
-					<div class="col-sm-12 form-group">
-						<div class="col-sm-3">
-							<label for="selfincome"
-								   class="labelclass">Your Annual Income</label>
-						</div>
-						<div class="col-sm-3">
-							<input type="text"
-								   class="form-control"
-								   id="selfincome">
-						</div>
-					</div>
-				</div>
-				
-				<div class="row">
-					<div class="col-sm-12 form-group">
-						<input type="checkbox"
-							   id="leavewithoutpay">
-						<label for="leavewithoutpay">Have you applied for leave without pay for the entire duration of the course?
-							<span>[Tick if Yes]</span>
-						</label>
-					</div>
-				</div>
-			</div>
-			
-			<div ng-show="!vm.personaldetail.isSelfEmployed">
-				<div class="row">
-					<div class="col-sm-12 form-group">
-						<div class="col-sm-3">
-							<label for="parnetsoccupation"
-								   class="labelclass">Occupation of Guardian</label>
-						</div>
-						<div class="col-sm-3">
-							<select class="form-control" 
-									id="parnetsoccupation"
-									tabindex="14">
-								<option selected disabled>--Select--</option>
-							</select>
-						</div>
-					</div>
-				</div>
-				
-				<div class="row">
-					<div class="col-sm-12 form-group">
-						<div class="col-sm-3">
-							<label for="parentsincome"
-								   class="labelclass">Annual Income of Guardian</label>
-						</div>
-						<div class="col-sm-3">
-							<input type="text"
-								   class="form-control"
-								   id="parentsincome">
-						</div>
-					</div>
-				</div>
-			</div>
-			
-			<div class="row">
-				<div class="col-sm-12 form-group">
-					<input type="checkbox"
-						   id="ebc">
-					<label for="ebc">Are you eligible for EBC (Economic Backward Class)?
-						<span>[Tick if Yes]</span>
-					</label>
-				</div>
-			</div>
-			
-			<div class="row">
-				<div class="col-lg-12">
-			       	<div class="well alert-danger">
-			           <span>
-			           Students whose family income is below defined limit, fall under EBC category. 
-			           The EBC certificate issued by the competent authority is mandatory.
-			           </span>
-			    	</div>
-			    </div>
-			</div>
-	
-		</div>
-	</div>
-	
 	<div class="panel panel-default">
 		<div class="panel-heading">
 			<span style="font-family:Verdana">Nationality Details</span>
@@ -543,7 +430,8 @@
 					</div>
 					<div class="col-sm-3">
 						<select class="form-control" 
-								id="citizenship">
+								id="citizenship"
+								tabindex="29">
 							<option selected disabled>--Select--</option>
 						</select>
 					</div>
@@ -559,6 +447,7 @@
 					<div class="col-sm-3">
 						<select class="form-control" 
 								id="citizenship"
+								tabindex="30"
 								ng-model="vm.personaldetail.domiciledIn">
 							<option selected disabled>--Select--</option>
 						</select>
@@ -575,7 +464,8 @@
 					<div class="col-sm-3">
 						<input type="text"
 							   class="form-control"
-							   id="passportno">
+							   id="passportno"
+							   tabindex="31">
 					</div>
 					<div class="col-sm-3">
 						<label for="placeofissue"
@@ -584,7 +474,8 @@
 					<div class="col-sm-3">
 						<input type="text"
 							   class="form-control"
-							   id="placeofissue">
+							   id="placeofissue"
+							   tabindex="32">
 					</div>
 				</div>
 			</div>
@@ -598,7 +489,8 @@
 					<div class="col-sm-3">
 						<input type="text"
 							   class="form-control"
-							   id="dateofissue">
+							   id="dateofissue"
+							   tabindex="33">
 					</div>
 					<div class="col-sm-3">
 						<label for="dateofexpiry"
@@ -607,7 +499,8 @@
 					<div class="col-sm-3">
 						<input type="text"
 							   class="form-control"
-							   id="placeofissue">
+							   id="placeofissue"
+							   tabindex="34">
 					</div>
 				</div>
 			</div>
@@ -620,7 +513,8 @@
 					</div>
 					<div class="col-sm-3">
 						<select class="form-control" 
-								id="issuingauthority">
+								id="issuingauthority"
+								tabindex="35">
 							<option selected disabled>--Select--</option>
 						</select>
 					</div>
@@ -630,7 +524,8 @@
 					</div>
 					<div class="col-sm-3">
 						<select class="form-control" 
-								id="issuingcountry">
+								id="issuingcountry"
+								tabindex="36">
 							<option selected disabled>--Select--</option>
 						</select>
 					</div>
@@ -645,7 +540,8 @@
 					</div>
 					<div class="col-sm-3">
 						<select class="form-control" 
-								id="visatype">
+								id="visatype"
+								tabindex="37">
 							<option selected disabled>--Select--</option>
 						</select>
 					</div>
@@ -656,7 +552,8 @@
 					<div class="col-sm-3">
 						<input type="text"
 							   class="form-control"
-							   id="visavalidupto">
+							   id="visavalidupto"
+							   tabindex="38">
 					</div>
 				</div>
 			</div>
@@ -669,7 +566,8 @@
 					</div>
 					<div class="col-sm-3">
 						<select class="form-control" 
-								id="visasponsoringagency">
+								id="visasponsoringagency"
+								tabindex="39">
 							<option selected disabled>--Select--</option>
 						</select>
 					</div>
@@ -680,7 +578,8 @@
 					<div class="col-sm-3">
 						<input type="text"
 							   class="form-control"
-							   id="residentialpermitno">
+							   id="residentialpermitno"
+							   tabindex="40">
 					</div>
 				</div>
 			</div>
@@ -688,255 +587,10 @@
 		</div>
 	</div>
 	
-	<div class="panel panel-default">
-		<div class="panel-heading">
-			<span style="font-family:Verdana">Caste Details</span>
-		</div>
-		<div class="panel-body">
-			<div class="row">
-				<div class="col-sm-12 form-group">
-					<div class="col-sm-3">
-						<label for="caste"
-							   class="labelclass">Caste</label>
-					</div>
-					<div class="col-sm-3">
-						<input type="text" 
-								class="form-control" 
-								id="caste">
-					</div>
-					<div class="col-sm-3">
-						<label for="category"
-							   class="labelclass">Category</label>
-					</div>
-					<div class="col-sm-3">
-						<select class="form-control" 
-								id="category">
-							<option selected disabled>--Select--</option>
-						</select>
-					</div>
-				</div>
-			</div>
-			
-			<div class="row">
-				<div class="col-sm-12 form-group">
-					<div class="col-sm-3">
-						<label for="religion"
-							   class="labelclass">Religion</label>
-					</div>
-					<div class="col-sm-3">
-						<select class="form-control" 
-								id="religion"
-								tabindex="14">
-							<option selected disabled>--Select--</option>
-						</select>
-					</div>
-					<div class="col-sm-3">
-						<label for="mothertongue"
-							   class="labelclass">Mother Tongue</label>
-					</div>
-					<div class="col-sm-3">
-						<select class="form-control" 
-								id="mothertongue"
-								tabindex="14">
-							<option selected disabled>--Select--</option>
-						</select>
-					</div>
-				</div>
-			</div>
-			
-			<div class="row">
-				<div class="col-sm-12 form-group">
-					<div class="col-sm-3">
-						<label for="speciallyabled"
-							   class="labelclass">Specially Abled</label>
-					</div>
-					<div class="col-sm-3">
-						<select class="form-control" 
-								id="speciallyabled"
-								tabindex="14">
-							<option selected disabled>--Select--</option>
-						</select>
-					</div>
-				</div>
-			</div>
-			
-			<div class="row">
-				<div class="col-sm-12 form-group">
-					<div class="col-sm-3">
-						<label for="socialreservation"
-							   class="labelclass">Social Reservation</label>
-					</div>
-					<div class="col-sm-5">
-						<input type="checkbox"
-							   name="socialreservation"
-							   id="socialreservation1"
-							   value="1">
-						<label for="socialreservation1">Ex-Serviceman/Ward of Ex-Serviceman</label>
-					</div>
-					<div class="col-sm-4">
-						<input type="checkbox"
-							   name="socialreservation"
-							   id="socialreservation4"
-							   value="4">
-						<label for="socialreservation4">Ward of Primary Teacher</label>
-					</div>
-				</div>
-			</div>
-			
-			<div class="row">
-				<div class="col-sm-12 form-group">
-					<div class="col-sm-3">
-					</div>
-					<div class="col-sm-5">
-						<input type="checkbox"
-							   name="socialreservation"
-							   id="socialreservation2"
-							   value="2">
-						<label for="socialreservation2">Active Serviceman/Ward of Active Serviceman</label>
-					</div>
-					<div class="col-sm-4">
-						<input type="checkbox"
-							   name="socialreservation"
-							   id="socialreservation5"
-							   value="5">
-						<label for="socialreservation5">Ward of Secondary Teacher</label>
-					</div>
-				</div>
-			</div>
-			
-			<div class="row">
-				<div class="col-sm-12 form-group">
-					<div class="col-sm-3">
-					</div>
-					<div class="col-sm-5">
-						<input type="checkbox"
-							   name="socialreservation"
-							   id="socialreservation3"
-							   value="3">
-						<label for="socialreservation3">Freedom Fighter/Ward of Freedom Fighter</label>
-					</div>
-					<div class="col-sm-4">
-						<input type="checkbox"
-							   name="socialreservation"
-							   id="socialreservation6"
-							   value="6">
-						<label for="socialreservation6">Deserted/Divorced/Widowed Women</label>
-					</div>
-				</div>
-			</div>
-			
-			<div class="row">
-				<div class="col-sm-12 form-group">
-					<div class="col-sm-3">
-					</div>
-					<div class="col-sm-5">
-						<input type="checkbox"
-							   name="socialreservation"
-							   id="socialreservation7"
-							   value="7">
-						<label for="socialreservation7">Member of Project Affected Family</label>
-					</div>
-					<div class="col-sm-4">
-						<input type="checkbox"
-							   name="socialreservation"
-							   id="socialreservation8"
-							   value="8">
-						<label for="socialreservation8">Member of Earthquake Affected Family</label>
-					</div>
-				</div>
-			</div>
-			
-			<div class="row">
-				<div class="col-sm-12 form-group">
-					<div class="col-sm-3">
-					</div>
-					<div class="col-sm-5">
-						<input type="checkbox"
-							   name="socialreservation"
-							   id="socialreservation9"
-							   value="9">
-						<label for="socialreservation9">Member of Flood/Famine Affected Family</label>
-					</div>
-					<div class="col-sm-4">
-						<input type="checkbox"
-							   name="socialreservation"
-							   id="socialreservation10"
-							   value="10">
-						<label for="socialreservation10">Resident of Tribal Area</label>
-					</div>
-				</div>
-			</div>
-			
-			<div class="row">
-				<div class="col-sm-12 form-group">
-					<div class="col-sm-3">
-					</div>
-					<div class="col-sm-5">
-						<input type="checkbox"
-							   name="socialreservation"
-							   id="socialreservation12"
-							   value="12">
-						<label for="socialreservation12">Resident of Disputed Boundary Area</label>
-					</div>
-					<div class="col-sm-4">
-						<input type="checkbox"
-							   name="socialreservation"
-							   id="socialreservation11"
-							   value="11">
-						<label for="socialreservation11">Kashmir Migrant</label>
-					</div>
-				</div>
-			</div>
-			
-			<div class="row">
-				<div class="col-sm-12 form-group">
-					<div class="col-sm-3">
-					</div>
-					<div class="col-sm-5">
-						<input type="checkbox"
-							   name="socialreservation"
-							   id="socialreservation13"
-							   value="13">
-						<label for="socialreservation13">Below Poverty Line Student</label>
-					</div>
-					<div class="col-sm-4">
-						<input type="checkbox"
-							   name="socialreservation"
-							   id="socialreservation14"
-							   value="14">
-						<label for="socialreservation14">Teacher in 'Innovative School'</label>
-					</div>
-				</div>
-			</div>
-			
-			<div class="row">
-				<div class="col-sm-12 form-group">
-					<div class="col-sm-3">
-					</div>
-					<div class="col-sm-5">
-						<input type="checkbox"
-							   name="socialreservation"
-							   id="socialreservation16"
-							   value="16">
-						<label for="socialreservation16">Ward of Transferred Central/State Government Employee</label>
-					</div>
-					<div class="col-sm-4">
-						<input type="checkbox"
-							   name="socialreservation"
-							   id="socialreservation15"
-							   value="15">
-						<label for="socialreservation15">University Staff Quota</label>
-					</div>
-				</div>
-			</div>
-			
-		</div>
-	</div>
-			
 	<div class="row">
 		<div class="col-sm-12">
         	<input type="submit" 
-        		tabindex="21"
+        		tabindex="41"
         		value="SAVE &amp; CONTINUE" 
         		class="btn btn-success btn-block btn-lg topMargin" 
         		style="margin-bottom: 10px"

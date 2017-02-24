@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import com.data.entities.Address;
 import com.data.services.AddressService;
+import com.data.services.GeoLocationsService;
 import com.web.model.AddressModel;
 import com.web.services.AddressRCService;
 import com.web.session.Session;
@@ -18,12 +19,16 @@ public class AddressRCServiceImpl implements AddressRCService {
 	@Autowired
 	AddressService addressService;
 	
+	@Autowired
+	GeoLocationsService geoLocationService;
+	
 	public AddressModel getAddress() {
 		AddressModel addressModel = new AddressModel();
 		Address address = addressService.getByUser(userSession.getCurrentUser());
 		if(address != null) {
 			addressModel = setAddressModelObject(addressModel, address);
 		}
+		addressModel.setCountryList(geoLocationService.getCountryList());
 		return addressModel;
 	}
 	

@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -51,11 +52,13 @@ public class Address {
 	@Column(name="District")
 	private String district;
 	
-	@Column(name="State")
-	private String state;
+	@ManyToOne
+	@JoinColumn(name="FK_State")
+	private State state;
 	
-	@Column(name="Country")
-	private String country;
+	@ManyToOne
+	@JoinColumn(name="FK_Country")
+	private Country country;
 	
 		//Flat No
 		public String getFlatNo() {
@@ -106,10 +109,10 @@ public class Address {
 		}
 		
 		//State
-		public String getState() {
+		public State getState() {
 			return state;
 		}
-		public void setState(String state) {
+		public void setState(State state) {
 			this.state = state;
 		}
 		
@@ -122,10 +125,10 @@ public class Address {
 		}
 		
 		//Country
-		public String getCountry() {
+		public Country getCountry() {
 			return country;
 		}
-		public void setCountry(String country) {
+		public void setCountry(Country country) {
 			this.country = country;
 		}
 		
@@ -157,11 +160,13 @@ public class Address {
 	@Column(name="DistrictPermenent")
 	private String districtPermenent;
 	
-	@Column(name="StatePermenent")
-	private String statePermenent;
+	@ManyToOne
+	@JoinColumn(name="FK_StatePermenent")
+	private State statePermenent;
 	
-	@Column(name="CountryPermenent")
-	private String countryPermenent;
+	@ManyToOne
+	@JoinColumn(name="FK_CountryPermenent")
+	private Country countryPermenent;
 
 		//IsNotSameAsCorrespondence
 		public Boolean getIsNotSameAsCorrespondence() {
@@ -228,18 +233,18 @@ public class Address {
 		}
 		
 		//StatePermenent
-		public String getStatePermenent() {
+		public State getStatePermenent() {
 			return statePermenent;
 		}
-		public void setStatePermenent(String statePermenent) {
+		public void setStatePermenent(State statePermenent) {
 			this.statePermenent = statePermenent;
 		}
 		
 		//CountryPermenent
-		public String getCountryPermenent() {
+		public Country getCountryPermenent() {
 			return countryPermenent;
 		}
-		public void setCountryPermenent(String countryPermenent) {
+		public void setCountryPermenent(Country countryPermenent) {
 			this.countryPermenent = countryPermenent;
 		}
 		
