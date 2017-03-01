@@ -45,25 +45,6 @@
 			</div>
 		</div>
 		
-		<div class="row">
-			<div class="col-sm-12 form-group">
-				<div class="col-sm-3">
-					<label for="state"
-						   class="labelclass">Select State</label>
-				</div>
-				<div class="col-sm-8">
-					<select id="state"
-							class="selectpicker" data-width="100%"
-							data-live-search="true" title="-- Select State --"
-							tabindex="6"
-							ng-model="vm.qualificationDetail.qualificationSubLeve"
-							ng-change="vm.setSelectedState()"
-							ng-options="state.stateId as state.stateName for state in vm.qualificationDetail.qualificationRemainingYearList">
-					</select>
-				</div>
-			</div>
-		</div>
-		
 		<div ng-show="vm.qualificationDetail.certifyingBody == 1 || vm.qualificationDetail.certifyingBody == 2">
 			
 			<div class="row">

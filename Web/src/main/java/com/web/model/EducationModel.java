@@ -26,7 +26,7 @@ public class EducationModel {
 		private Integer qualificationMainLevel;
 		private Integer qualificationSubLevel;
 		private List<SubQualification> subQualificationList;
-		private List<Enums.KeyValuePair> qualificationRemainingYearList;
+		/*private List<Enums.KeyValuePair> qualificationRemainingYearList;*/
 		
 			public String getName() {
 				return name;
@@ -57,12 +57,12 @@ public class EducationModel {
 				this.subQualificationList = subQualificationList;
 			}
 			
-			public List<Enums.KeyValuePair> getQualificationRemainingYearList() {
+			/*public List<Enums.KeyValuePair> getQualificationRemainingYearList() {
 				return qualificationRemainingYearList;
 			}
 			public void setQualificationRemainingYearList(List<Enums.KeyValuePair> qualificationRemainingYearList) {
 				this.qualificationRemainingYearList = qualificationRemainingYearList;
-			}			
+			}*/			
 	}
 	
 	public class SubQualification {

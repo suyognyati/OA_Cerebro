@@ -54,16 +54,19 @@
 				qualificationDetail.evaluationType = 1;
 			}
 			if(qualificationDetail.certifyingBody == null) {
-				qualificationDetail.certifyingBody = 3;
+				if(qualificationDetail.qualificationMainLevel <= 3)
+					qualificationDetail.certifyingBody = 1;
+				else if(qualificationDetail.qualificationMainLevel == 4)
+					qualificationDetail.certifyingBody = 3;
 			}
 			if(qualificationDetail.resultStatus == null) {
 				qualificationDetail.resultStatus = 1;
 			}
 			if(qualificationDetail.qualificationMainLevel == null) {
-				qualificationDetail.qualificationMainLevel = qualificationMainLevel;
+				qualificationDetail.qualificationMainLevel = parseInt(qualificationMainLevel, 10);
 			}
 			if(qualificationDetail.qualificationSubLevel == null) {
-				qualificationDetail.qualificationSubLevel = qualificationSubLevel;
+				qualificationDetail.qualificationSubLevel = parseInt(qualificationSubLevel, 10);
 			}
 			if(qualificationDetail.stateList != null && qualificationDetail.allIndiaBoardList != null) {
 				for(var i = 0; i < qualificationDetail.stateList.length; i++) {
