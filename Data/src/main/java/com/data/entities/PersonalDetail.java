@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -58,17 +59,17 @@ public class PersonalDetail {
 	@Column(name="MiddleNameRegional")
 	private String middleNameRegional;
 	
-	@Column(name="IsPreviousName")
-	private Boolean isPreviousName;
+	@Column(name="IsNameChanged")
+	private Boolean isNameChanged;
 	
-	@Column(name="FirstNamePrevious")
-	private String firstNamePrevious;
+	@Column(name="NewFirstName")
+	private String newFirstName;
 	
-	@Column(name="LastNamePrevious")
-	private String lastNamePrevious;
+	@Column(name="NewLastName")
+	private String newLastName;
 	
-	@Column(name="MiddleNamePrevious")
-	private String middleNamePrevious;
+	@Column(name="NewMiddleName")
+	private String newMiddleName;
 	
 	@Column(name="NameChangeReason")
 	private Integer nameChangeReason;
@@ -91,7 +92,7 @@ public class PersonalDetail {
 		
 		//RelationType
 		public Integer getRelationType() {
-			return relationType == null ? 0 : relationType;
+			return relationType;
 		}
 		public void setRelationType(Integer relationType) {
 			this.relationType = relationType;
@@ -137,41 +138,41 @@ public class PersonalDetail {
 			this.middleNameRegional = middleNameRegional;
 		}
 		
-		//IsPreviousName
-		public Boolean getIsPreviousName() {
-			return isPreviousName;
+		//IsNameChanged
+		public Boolean getIsNameChanged() {
+			return isNameChanged;
 		}
-		public void setIsPreviousName(Boolean isPreviousName) {
-			this.isPreviousName = isPreviousName;
-		}
-		
-		//FirstNamePrevious
-		public String getFirstNamePrevious() {
-			return firstNamePrevious;
-		}
-		public void setFirstNamePrevious(String firstNamePrevious) {
-			this.firstNamePrevious = firstNamePrevious;
+		public void setIsNameChanged(Boolean isNameChanged) {
+			this.isNameChanged = isNameChanged;
 		}
 		
-		//LastNamePrevious
-		public String getLastNamePrevious() {
-			return lastNamePrevious;
+		//NewFirstName
+		public String getNewFirstName() {
+			return newFirstName;
 		}
-		public void setLastNamePrevious(String lastNamePrevious) {
-			this.lastNamePrevious = lastNamePrevious;
+		public void setNewFirstName(String newFirstName) {
+			this.newFirstName = newFirstName;
 		}
 		
-		//MiddleNamePrevious
-		public String getMiddleNamePrevious() {
-			return middleNamePrevious;
+		//NewLastName
+		public String getNewLastName() {
+			return newLastName;
 		}
-		public void setMiddleNamePrevious(String middleNamePrevious) {
-			this.middleNamePrevious = middleNamePrevious;
+		public void setNewLastName(String newLastName) {
+			this.newLastName = newLastName;
+		}
+		
+		//NewMiddleName
+		public String getNewMiddleName() {
+			return newMiddleName;
+		}
+		public void setNewMiddleName(String newMiddleName) {
+			this.newMiddleName = newMiddleName;
 		}
 		
 		//NameChangeReason
 		public Integer getNameChangeReason() {
-			return nameChangeReason == null ? 0 : nameChangeReason;
+			return nameChangeReason;
 		}
 		public void setNameChangeReason(Integer nameChangeReason) {
 			this.nameChangeReason = nameChangeReason;
@@ -206,7 +207,7 @@ public class PersonalDetail {
 		
 		//Gender
 		public Integer getGender() {
-			return gender == null ? 0 : gender;
+			return gender;
 		}
 		public void setGender(final Integer gender) {
 			this.gender = gender;
@@ -222,7 +223,7 @@ public class PersonalDetail {
 		
 		//MaritalStatus
 		public Integer getMaritalStatus() {
-			return maritalStatus == null ? 0 : maritalStatus;
+			return maritalStatus;
 		}
 		public void setMaritalStatus(Integer maritalStatus) {
 			this.maritalStatus = maritalStatus;
@@ -230,7 +231,7 @@ public class PersonalDetail {
 		
 		//BloodGroup
 		public Integer getBloodGroup() {
-			return bloodGroup == null ? 0 : bloodGroup;
+			return bloodGroup;
 		}
 		public void setBloodGroup(final Integer bloodGroup) {
 			this.bloodGroup = bloodGroup;
@@ -333,16 +334,140 @@ public class PersonalDetail {
 
 //******************** REGION NATIONALITY DETAIL
 	
-	@Column(name="Domicil")
-	private String domicil;
-	
-		//Domicil
-		public String getDomicil() {
-			return domicil;
-		}
-		public void setDomicil(String domicil) {
-			this.domicil = domicil;
-		}
+		@ManyToOne
+		@JoinColumn(name="FK_CountryOfCitizenship")
+		private Country countryOfCitizenship; 
+		
+		@ManyToOne
+		@JoinColumn(name="FK_DomiciledIn")
+		private State domiciledIn;
+
+		@Column(name="PassportNo")
+		private String passportNo;
+
+		@Column(name="PassportIssuePlace")
+		private String passportIssuePlace;
+
+		@Column(name="PassportIssueDate")
+		private String passportIssueDate;
+
+		@Column(name="PassportExpiryDate")
+		private String passportExpiryDate;
+
+		@Column(name="PassportIssuingAuthority")
+		private Integer passportIssuingAuthority;
+
+		@ManyToOne
+		@JoinColumn(name="FK_PassportIssuingCountry")
+		private Country passportIssuingCountry;
+
+		@Column(name="VisaType")
+		private Integer visaType;
+
+		@Column(name="VisaValidUpto")
+		private String visaValidUpto;
+
+		@Column(name="VisaSponsoringAgency")
+		private Integer visaSponsoringAgency;
+
+		@Column(name="ResidentialPermitNo")
+		private String residentialPermitNo;
+
+			//Citizenship country getter setter
+			public Country getCountryOfCitizenship() {
+				return countryOfCitizenship;
+			}
+			public void setCountryOfCitizenship(Country countryOfCitizenship) {
+				this.countryOfCitizenship = countryOfCitizenship;
+			}
+			
+			//Domiciled In getter setter
+			public State getDomiciledIn() {
+				return domiciledIn;
+			}
+			public void setDomiciledIn(State domiciledIn) {
+				this.domiciledIn = domiciledIn;
+			}
+			
+			//Passport no getter setter
+			public String getPassportNo() {
+				return passportNo;
+			}
+			public void setPassportNo(String passportNo) {
+				this.passportNo = passportNo;
+			}
+			
+			//Passport issue place getter setter
+			public String getPassportIssuePlace() {
+				return passportIssuePlace;
+			}
+			public void setPassportIssuePlace(String passportIssuePlace) {
+				this.passportIssuePlace = passportIssuePlace;
+			}
+			
+			//Passport issue date getter setter
+			public String getPassportIssueDate() {
+				return passportIssueDate;
+			}
+			public void setPassportIssueDate(String passportIssueDate) {
+				this.passportIssueDate = passportIssueDate;
+			}
+			
+			//Passport expiry date getter setter
+			public String getPassportExpiryDate() {
+				return passportExpiryDate;
+			}
+			public void setPassportExpiryDate(String passportExpiryDate) {
+				this.passportExpiryDate = passportExpiryDate;
+			}
+			
+			//Passport issuing authority getter setter
+			public Integer getPassportIssuingAuthority() {
+				return passportIssuingAuthority;
+			}
+			public void setPassportIssuingAuthority(Integer passportIssuingAuthority) {
+				this.passportIssuingAuthority = passportIssuingAuthority;
+			}
+			
+			//Passport issuing country getter setter
+			public Country getPassportIssuingCountry() {
+				return passportIssuingCountry;
+			}
+			public void setPassportIssuingCountry(Country passportIssuingCountry) {
+				this.passportIssuingCountry = passportIssuingCountry;
+			}
+			
+			//Visa type getter setter
+			public Integer getVisaType() {
+				return visaType;
+			}
+			public void setVisaType(Integer visaType) {
+				this.visaType = visaType;
+			}
+			
+			//Visa valid upto getter setter
+			public String getVisaValidUpto() {
+				return visaValidUpto;
+			}
+			public void setVisaValidUpto(String visaValidUpto) {
+				this.visaValidUpto = visaValidUpto;
+			}
+			
+			//Visa sponsoring agency getter setter
+			public Integer getVisaSponsoringAgency() {
+				return visaSponsoringAgency;
+			}
+			public void setVisaSponsoringAgency(Integer visaSponsoringAgency) {
+				this.visaSponsoringAgency = visaSponsoringAgency;
+			}
+			
+			//Residential permit no getter setter
+			public String getResidentialPermitNo() {
+				return residentialPermitNo;
+			}
+			public void setResidentialPermitNo(String residentialPermitNo) {
+				this.residentialPermitNo = residentialPermitNo;
+			}		
 
 //REGION END ********************
 

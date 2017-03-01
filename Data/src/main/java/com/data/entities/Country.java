@@ -25,8 +25,8 @@ public class Country {
 	@Column(name="CountryName")
 	private String countryName;
 	
-	@OneToMany(mappedBy = "country", fetch = FetchType.EAGER)
-	private List<State> stateList;
+	/*@OneToMany(mappedBy = "country", fetch = FetchType.EAGER)
+	private List<State> stateList;*/
 
 	//CountryId
 	public Integer getCountryId() {
@@ -55,13 +55,13 @@ public class Country {
 		this.countryName = countryName;
 	}	
 	
-	//StateList
+	/*//StateList
 	public List<State> getStateList() {
 		return stateList;
 	}
 
 	public void setStateList(List<State> stateList) {
 		this.stateList = stateList;
-	}
+	}*/
 	
 }

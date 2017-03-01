@@ -15,7 +15,7 @@
 	</div>
 </div>
 
-<form name="personaldetailform" novalidate class="panel panel-body">
+<form class="panel panel-body" name="personaldetailform" novalidate>
 
 	<div class="panel panel-default">
 		<div class="panel-heading">
@@ -28,32 +28,62 @@
 						<label for="applicantsname"
 							   class="labelclass">Applicant's Full Name</label>
 					</div>
-					<div class="col-sm-3">
+					<div class="col-sm-3"
+						 ng-class="{'has-error':personaldetailform.lastName.$invalid &&
+						 						personaldetailform.lastName.$dirty}">
 						<input type="text" 
 							   class="form-control"
+							   name="lastName"
 							   id="applicantsname"
 							   placeholder="Last Name"
-							   tabindex="1"
 							   style="text-transform:uppercase"
-							   ng-model="vm.personaldetail.lastName">
+							   tabindex="1"
+							   ng-model="vm.personaldetail.lastName"
+							   required>
+						
+						<span class="help-block has-error">
+							<span ng-show="personaldetailform.lastName.$error.required &&
+										   personaldetailform.lastName.$dirty">
+									Last Name is Required</span>
+						</span>
 					</div>
-					<div class="col-sm-3">
+					<div class="col-sm-3"
+						 ng-class="{'has-error':personaldetailform.firstName.$invalid &&
+						 						personaldetailform.firstName.$dirty}">
 						<input type="text" 
 							   class="form-control"
 							   id="applicantsname"
+							   name="firstName"
 							   placeholder="First Name"
 							   tabindex="2"
 							   style="text-transform:uppercase"
-							   ng-model="vm.personaldetail.firstName">
+							   ng-model="vm.personaldetail.firstName"
+							   required>
+						
+						<span class="help-block has-error">
+							<span ng-show="personaldetailform.firstName.$error.required &&
+										   personaldetailform.firstName.$dirty">
+									First Name is Required</span>
+						</span>
 					</div>
-					<div class="col-sm-3">
+					<div class="col-sm-3"
+						 ng-class="{'has-error':personaldetailform.middleName.$invalid &&
+						 						personaldetailform.middleName.$dirty}">
 						<input type="text" 
 							   class="form-control"
 							   id="applicantsname"
+							   name="middleName"
 							   placeholder="Middle Name"
-							   tabindex="3"
 							   style="text-transform:uppercase"
-							   ng-model="vm.personaldetail.middleName">
+							   tabindex="3"
+							   ng-model="vm.personaldetail.middleName"
+							   required>
+						
+						<span class="help-block has-error">
+							<span ng-show="personaldetailform.middleName.$error.required &&
+										   personaldetailform.middleName.$dirty">
+									Middle Name is Required</span>
+						</span>
 					</div>
 				</div>
 			</div>
@@ -64,29 +94,59 @@
 						<label for="regionalname"
 							   class="labelclass">Name in Regional Language</label>
 					</div>
-					<div class="col-sm-3">
+					<div class="col-sm-3"
+						 ng-class="{'has-error':personaldetailform.lastNameRegional.$invalid &&
+						 						personaldetailform.lastNameRegional.$dirty}">
 						<input type="text" 
 							   class="form-control"
 							   id="regionalname"
-							   placeholder="Last Name"
+							   name="lastNameRegional"
+							   placeholder="Regional Last Name"
 							   tabindex="4"
-							   ng-model="vm.personaldetail.lastNameRegional">
+							   ng-model="vm.personaldetail.lastNameRegional"
+							   required>
+						
+						<span class="help-block has-error">
+							<span ng-show="personaldetailform.lastNameRegional.$error.required &&
+										   personaldetailform.lastNameRegional.$dirty">
+									Regional Name is Required</span>
+						</span>
 					</div>
-					<div class="col-sm-3">
+					<div class="col-sm-3"
+						 ng-class="{'has-error':personaldetailform.firstNameRegional.$invalid &&
+						 						personaldetailform.firstNameRegional.$dirty}">
 						<input type="text" 
 							   class="form-control"
 							   id="regionalname"
-							   placeholder="First Name"
+							   name="firstNameRegional"
+							   placeholder="Regional First Name"
 							   tabindex="5"
-							   ng-model="vm.personaldetail.firstNameRegional">
+							   ng-model="vm.personaldetail.firstNameRegional"
+							   required>
+						
+						<span class="help-block has-error">
+							<span ng-show="personaldetailform.firstNameRegional.$error.required &&
+										   personaldetailform.firstNameRegional.$dirty">
+									Regional Name is Required</span>
+						</span>
 					</div>
-					<div class="col-sm-3">
+					<div class="col-sm-3"
+						 ng-class="{'has-error':personaldetailform.middleNameRegional.$invalid &&
+						 						personaldetailform.middleNameRegional.$dirty}">
 						<input type="text" 
 							   class="form-control"
 							   id="regionalname"
-							   placeholder="Middle Name"
+							   name="middleNameRegional"
+							   placeholder="Regional Middle Name"
 							   tabindex="6"
-							   ng-model="vm.personaldetail.middleNameRegional">
+							   ng-model="vm.personaldetail.middleNameRegional"
+							   required>
+						
+						<span class="help-block has-error">
+							<span ng-show="personaldetailform.middleNameRegional.$error.required &&
+										   personaldetailform.middleNameRegional.$dirty">
+									Regional Name is Required</span>
+						</span>
 					</div>
 				</div>
 			</div>
@@ -96,46 +156,76 @@
 					<input type="checkbox"
 						   id="namechange"
 						   tabindex="7"
-						   ng-model="vm.personaldetail.isPreviousName">
+						   ng-model="vm.personaldetail.isNameChanged">
 					<label for="namechange">Is your name changed?
 						<span>[Tick if Yes]</span>
 					</label>
 				</div>
 			</div>
 			
-			<div ng-show="vm.personaldetail.isPreviousName">
+			<div ng-show="vm.personaldetail.isNameChanged">
 				<div class="row">
 					<div class="col-sm-12 form-group">
 						<div class="col-sm-3">
 							<label for="newname"
 								   class="labelclass">New Full Name</label>
 						</div>
-						<div class="col-sm-3">
+						<div class="col-sm-3"
+							 ng-class="{'has-error':personaldetailform.newLastName.$invalid &&
+						 							personaldetailform.newLastName.$dirty}">
 							<input type="text" 
 								   class="form-control"
 								   id="newname"
-								   placeholder="Last Name"
+								   name="newLastName"
+								   placeholder="New Last Name"
 								   tabindex="8"
 								   style="text-transform:uppercase"
-								   ng-model="vm.personaldetail.lastNamePrevious">
+								   ng-model="vm.personaldetail.newLastName"
+								   required>
+								   
+							<span class="help-block has-error">
+								<span ng-show="personaldetailform.newLastName.$error.required &&
+											   personaldetailform.newLastName.$dirty">
+										New Last Name is Required</span>
+							</span>
 						</div>
-						<div class="col-sm-3">
+						<div class="col-sm-3"
+							 ng-class="{'has-error':personaldetailform.newFirstName.$invalid &&
+						 							personaldetailform.newFirstName.$dirty}">
 							<input type="text" 
 								   class="form-control"
 								   id="newname"
-								   placeholder="First Name"
+								   name="newFirstName"
+								   placeholder="New First Name"
 								   tabindex="9"
 								   style="text-transform:uppercase"
-								   ng-model="vm.personaldetail.firstNamePrevious">
+								   ng-model="vm.personaldetail.newFirstName"
+								   required>
+								   
+							<span class="help-block has-error">
+								<span ng-show="personaldetailform.newFirstName.$error.required &&
+											   personaldetailform.newFirstName.$dirty">
+										New First Name is Required</span>
+							</span>
 						</div>
-						<div class="col-sm-3">
+						<div class="col-sm-3"
+							 ng-class="{'has-error':personaldetailform.newMiddleName.$invalid &&
+						 							personaldetailform.newMiddleName.$dirty}">
 							<input type="text" 
 								   class="form-control"
 								   id="newname"
-								   placeholder="Middle Name"
+								   name="newMiddleName"
+								   placeholder="New Middle Name"
 								   tabindex="10"
 								   style="text-transform:uppercase"
-								   ng-model="vm.personaldetail.middleNamePrevious">
+								   ng-model="vm.personaldetail.newMiddletName"
+								   required>
+								   
+							<span class="help-block has-error">
+								<span ng-show="personaldetailform.newMiddleName.$error.required &&
+											   personaldetailform.newMiddleName.$dirty">
+										New Middle Name is Required</span>
+							</span>
 						</div>
 					</div>
 				</div>
@@ -147,11 +237,21 @@
 						</div>
 						<div class="col-sm-3">
 							<select id="reason"
-									class="form-control"
+									name="nameChangeReason"
+									class="selectpicker" data-width="100%"
+									data-live-search="true" title="-- Select Reason --"
 									tabindex="11"
 									ng-model="vm.personaldetail.nameChangeReason"
-									ng-options="nameChangeReason.key as nameChangeReason.value for nameChangeReason in vm.personaldetail.nameChangeReasonList">
+									ng-options="nameChangeReason.key as nameChangeReason.value for 
+												nameChangeReason in vm.personaldetail.nameChangeReasonList"
+									required>
 							</select>
+							
+							<span class="help-block has-error">
+								<span ng-show="personaldetailform.nameChangeReason.$error.required &&
+											   personaldetailform.nameChangeReason.$dirty">
+										Select Reason for Name Change</span>
+							</span>
 						</div>
 					</div>
 				</div>			
@@ -324,8 +424,9 @@
 							   class="labelclass">Blood Group</label>
 					</div>
 					<div class="col-sm-3">
-						<select class="form-control" 
-								id="bloodgroup" 
+						<select id="bloodgroup" 
+								class="selectpicker" data-width="100%"
+								data-live-search="true" title="-- Select --"
 								tabindex="23"
 								ng-model="vm.personaldetail.bloodGroup"
 								ng-options="bloodgroup.key as bloodgroup.value for bloodgroup in vm.personaldetail.bloodGroupList">
@@ -366,8 +467,9 @@
 							   class="labelclass">Marital Status</label>
 					</div>
 					<div class="col-sm-3">
-						<select class="form-control" 
-								id="maritalstatus"
+						<select id="maritalstatus"
+								class="selectpicker" data-width="100%"
+								data-live-search="true" title="-- Select --"
 								tabindex="25"
 								ng-model="vm.personaldetail.maritalStatus"
 								ng-options="maritalStatus.key as maritalStatus.value for maritalStatus in vm.personaldetail.maritalStatusList">
@@ -429,10 +531,10 @@
 							   class="labelclass">Country of Citizenship</label>
 					</div>
 					<div class="col-sm-3">
-						<select class="form-control" 
-								id="citizenship"
+						<select id="citizenship"
+								class="selectpicker" data-width="100%"
+								data-live-search="true" title="-- Select Country --"
 								tabindex="29">
-							<option selected disabled>--Select--</option>
 						</select>
 					</div>
 				</div>
@@ -445,11 +547,11 @@
 							   class="labelclass">Domicile of State</label>
 					</div>
 					<div class="col-sm-3">
-						<select class="form-control" 
-								id="citizenship"
+						<select id="citizenship"
+								class="selectpicker" data-width="100%"
+								data-live-search="true" title="-- Select Domiciled --"
 								tabindex="30"
 								ng-model="vm.personaldetail.domiciledIn">
-							<option selected disabled>--Select--</option>
 						</select>
 					</div>
 				</div>
@@ -512,10 +614,12 @@
 							   class="labelclass">Passport Issuing Authority</label>
 					</div>
 					<div class="col-sm-3">
-						<select class="form-control" 
-								id="issuingauthority"
-								tabindex="35">
-							<option selected disabled>--Select--</option>
+						<select id="issuingauthority"
+								class="selectpicker" data-width="100%"
+								data-live-search="true" title="-- Select Authority --"
+								tabindex="35"
+								ng-model="vm.personaldetail.passportIssuingAuthority"
+								ng-options="passportIssuingAuthority.key as passportIssuingAuthority.value for passportIssuingAuthority in vm.personaldetail.passportIssuingAuthorityList">
 						</select>
 					</div>
 					<div class="col-sm-3">
@@ -523,10 +627,10 @@
 							   class="labelclass">Passport Issuing Country</label>
 					</div>
 					<div class="col-sm-3">
-						<select class="form-control" 
-								id="issuingcountry"
+						<select id="issuingcountry"
+								class="selectpicker" data-width="100%"
+								data-live-search="true" title="-- Select Passport Issuing Country --"
 								tabindex="36">
-							<option selected disabled>--Select--</option>
 						</select>
 					</div>
 				</div>
@@ -539,10 +643,12 @@
 							   class="labelclass">Visa Type</label>
 					</div>
 					<div class="col-sm-3">
-						<select class="form-control" 
-								id="visatype"
-								tabindex="37">
-							<option selected disabled>--Select--</option>
+						<select id="visatype"
+								class="selectpicker" data-width="100%"
+								data-live-search="true" title="-- Select Visa Type --"
+								tabindex="37"
+								ng-model="vm.personaldetail.visaType"
+								ng-options="visaType.key as visaType.value for visaType in vm.personaldetail.visaTypeList">
 						</select>
 					</div>
 					<div class="col-sm-3">
@@ -565,10 +671,12 @@
 							   class="labelclass">Visa Sponsoring Agency</label>
 					</div>
 					<div class="col-sm-3">
-						<select class="form-control" 
-								id="visasponsoringagency"
-								tabindex="39">
-							<option selected disabled>--Select--</option>
+						<select id="visasponsoringagency"
+								class="selectpicker" data-width="100%"
+								data-live-search="true" title="-- Select Sponsoring Agency --"
+								tabindex="39"
+								ng-model="vm.personaldetail.visaSponsoringAgency"
+								ng-options="visaSponsoringAgency.key as visaSponsoringAgency.value for visaSponsoringAgency in vm.personaldetail.visaSponsoringAgencyList">
 						</select>
 					</div>
 					<div class="col-sm-3">
@@ -603,4 +711,6 @@
 
 <script type="text/javascript">
 	setActiveElementOnLeftNav("personalDetail");
+	//To reload selectpicker on page load
+	$(".selectpicker").selectpicker("refresh");
 </script>

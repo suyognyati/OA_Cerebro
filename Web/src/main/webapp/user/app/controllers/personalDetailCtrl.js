@@ -19,6 +19,7 @@
 		personalDetailService.get(vm.accessTokenParam)
 		.success(function (data, status, headers, config) {
 			vm.personaldetail = data;
+			refreshSelectPickerWithDelay(100);
 		})
 		.error(function (data, status, headers, config) {
 			vm.personaldetail = {};

@@ -2,7 +2,9 @@ package com.web.model;
 
 import java.util.List;
 
+import com.data.entities.Country;
 import com.data.entities.Enums;
+import com.data.entities.State;
 
 public class PersonalDetailModel {
 	
@@ -14,11 +16,11 @@ public class PersonalDetailModel {
 	private String firstNameRegional;
 	private String lastNameRegional;
 	private String middleNameRegional;
-	private Boolean isPreviousName;
-	private String firstNamePrevious;
-	private String lastNamePrevious;
-	private String middleNamePrevious;
-	private int nameChangeReason;
+	private Boolean isNameChanged;
+	private String newFirstName;
+	private String newLastName;
+	private String newMiddleName;
+	private Integer nameChangeReason;
 	private List<Enums.KeyValuePair> nameChangeReasonList;
 	
 		// LastName getter setter
@@ -77,44 +79,44 @@ public class PersonalDetailModel {
 			this.middleNameRegional = middleNameRegional;
 		}
 		
-		// IsPreviousName getter setter
-		public Boolean getIsPreviousName() {
-			return isPreviousName;
+		// IsNameChanged getter setter
+		public Boolean getIsNameChanged() {
+			return isNameChanged;
 		}
-		public void setIsPreviousName(Boolean isPreviousName) {
-			this.isPreviousName = isPreviousName;
-		}
-
-		// FirstNamePrevious getter setter
-		public String getFirstNamePrevious() {
-			return firstNamePrevious;
-		}
-		public void setFirstNamePrevious(String firstNamePrevious) {
-			this.firstNamePrevious = firstNamePrevious;
+		public void setIsNameChanged(Boolean isNameChanged) {
+			this.isNameChanged = isNameChanged;
 		}
 
-		// LastNamePrevious getter setter
-		public String getLastNamePrevious() {
-			return lastNamePrevious;
+		// NewFirstName getter setter
+		public String getNewFirstName() {
+			return newFirstName;
 		}
-		public void setLastNamePrevious(String lastNamePrevious) {
-			this.lastNamePrevious = lastNamePrevious;
+		public void setNewFirstName(String newFirstName) {
+			this.newFirstName = newFirstName;
+		}
+
+		// NewLastName getter setter
+		public String getNewLastName() {
+			return newLastName;
+		}
+		public void setNewLastName(String newLastName) {
+			this.newLastName = newLastName;
 		}
 		
-		// MidleNamePrevious getter setter
-		public String getMiddleNamePrevious() {
-			return middleNamePrevious;
+		// NewMiddleName getter setter
+		public String getNewMiddleName() {
+			return newMiddleName;
 		}
-		public void setMiddleNamePrevious(String middleNamePrevious) {
-			this.middleNamePrevious = middleNamePrevious;
+		public void setNewMiddleName(String newMiddleName) {
+			this.newMiddleName = newMiddleName;
 		}
 
 		// NameChangeReason getter setter
 
-		public int getNameChangeReason() {
+		public Integer getNameChangeReason() {
 			return nameChangeReason;
 		}
-		public void setNameChangeReason(int nameChangeReason) {
+		public void setNameChangeReason(Integer nameChangeReason) {
 			this.nameChangeReason = nameChangeReason;
 		}
 
@@ -131,10 +133,10 @@ public class PersonalDetailModel {
 //******************** REGION OTHER DETAIL
 		
 	private String birthDate;
-	private int gender;
-	private int bloodGroup;
+	private Integer gender;
+	private Integer bloodGroup;
 	private String placeOfBirth;
-	private int maritalStatus;
+	private Integer maritalStatus;
 	private String adharNo;
 	private List<Enums.KeyValuePair> bloodGroupList;
 	private List<Enums.KeyValuePair> maritalStatusList;
@@ -148,18 +150,18 @@ public class PersonalDetailModel {
 		}
 		
 		//Gender getter setter
-		public int getGender() {
+		public Integer getGender() {
 			return this.gender;
 		}
-		public void setGender(int genderval) {
+		public void setGender(Integer genderval) {
 			this.gender = genderval;
 		}
 		
 		//Blood Group getter setter
-		public int getBloodGroup() {
+		public Integer getBloodGroup() {
 			return bloodGroup;
 		}
-		public void setBloodGroup(int bloodGroup) {
+		public void setBloodGroup(Integer bloodGroup) {
 			this.bloodGroup = bloodGroup;
 		}
 		
@@ -172,10 +174,10 @@ public class PersonalDetailModel {
 		}
 		
 		//Marrital Status getter setter
-		public int getMaritalStatus() {
+		public Integer getMaritalStatus() {
 			return maritalStatus;
 		}
-		public void setMaritalStatus(int maritalStatus) {
+		public void setMaritalStatus(Integer maritalStatus) {
 			this.maritalStatus = maritalStatus;
 		}
 	
@@ -285,70 +287,160 @@ public class PersonalDetailModel {
 
 //******************** REGION NATIONALITY DETAIL
 	
-	private String domiciledIn;
+	private Country countryOfCitizenship; 
+	private State domiciledIn;
+	private String passportNo;
+	private String passportIssuePlace;
+	private String passportIssueDate;
+	private String passportExpiryDate;
+	private Integer passportIssuingAuthority;
+	private Country passportIssuingCountry;
+	private Integer visaType;
+	private String visaValidUpto;
+	private Integer visaSponsoringAgency;
+	private String residentialPermitNo;
+	private List<Enums.KeyValuePair> passportIssuingAuthorityList;
+	private List<Enums.KeyValuePair> visaTypeList;
+	private List<Enums.KeyValuePair> visaSponsoringAgencyList;
+	private List<Country> countryList;
+	private List<State> stateList;
+
+		//Citizenship country getter setter
+		public Country getCountryOfCitizenship() {
+			return countryOfCitizenship;
+		}
+		public void setCountryOfCitizenship(Country countryOfCitizenship) {
+			this.countryOfCitizenship = countryOfCitizenship;
+		}
 		
 		//Domiciled In getter setter
-		public String getDomiciledIn() {
+		public State getDomiciledIn() {
 			return domiciledIn;
 		}
-		public void setDomiciledIn(String domiciledIn) {
+		public void setDomiciledIn(State domiciledIn) {
 			this.domiciledIn = domiciledIn;
 		}
-				
+		
+		//Passport no getter setter
+		public String getPassportNo() {
+			return passportNo;
+		}
+		public void setPassportNo(String passportNo) {
+			this.passportNo = passportNo;
+		}
+		
+		//Passport issue place getter setter
+		public String getPassportIssuePlace() {
+			return passportIssuePlace;
+		}
+		public void setPassportIssuePlace(String passportIssuePlace) {
+			this.passportIssuePlace = passportIssuePlace;
+		}
+		
+		//Passport issue date getter setter
+		public String getPassportIssueDate() {
+			return passportIssueDate;
+		}
+		public void setPassportIssueDate(String passportIssueDate) {
+			this.passportIssueDate = passportIssueDate;
+		}
+		
+		//Passport expiry date getter setter
+		public String getPassportExpiryDate() {
+			return passportExpiryDate;
+		}
+		public void setPassportExpiryDate(String passportExpiryDate) {
+			this.passportExpiryDate = passportExpiryDate;
+		}
+		
+		//Passport issuing authority getter setter
+		public Integer getPassportIssuingAuthority() {
+			return passportIssuingAuthority;
+		}
+		public void setPassportIssuingAuthority(Integer passportIssuingAuthority) {
+			this.passportIssuingAuthority = passportIssuingAuthority;
+		}
+		
+		//Passport issuing country getter setter
+		public Country getPassportIssuingCountry() {
+			return passportIssuingCountry;
+		}
+		public void setPassportIssuingCountry(Country passportIssuingCountry) {
+			this.passportIssuingCountry = passportIssuingCountry;
+		}
+		
+		//Visa type getter setter
+		public Integer getVisaType() {
+			return visaType;
+		}
+		public void setVisaType(Integer visaType) {
+			this.visaType = visaType;
+		}
+		
+		//Visa valid upto getter setter
+		public String getVisaValidUpto() {
+			return visaValidUpto;
+		}
+		public void setVisaValidUpto(String visaValidUpto) {
+			this.visaValidUpto = visaValidUpto;
+		}
+		
+		//Visa sponsoring agency getter setter
+		public Integer getVisaSponsoringAgency() {
+			return visaSponsoringAgency;
+		}
+		public void setVisaSponsoringAgency(Integer visaSponsoringAgency) {
+			this.visaSponsoringAgency = visaSponsoringAgency;
+		}
+		
+		//Residential permit no getter setter
+		public String getResidentialPermitNo() {
+			return residentialPermitNo;
+		}
+		public void setResidentialPermitNo(String residentialPermitNo) {
+			this.residentialPermitNo = residentialPermitNo;
+		}
+		
+		//List of passport issuing authority getter setter
+		public List<Enums.KeyValuePair> getPassportIssuingAuthorityList() {
+			return passportIssuingAuthorityList;
+		}
+		public void setPassportIssuingAuthorityList(List<Enums.KeyValuePair> passportIssuingAuthorityList) {
+			this.passportIssuingAuthorityList = passportIssuingAuthorityList;
+		}
+		
+		//List of visa type getter setter
+		public List<Enums.KeyValuePair> getVisaTypeList() {
+			return visaTypeList;
+		}
+		public void setVisaTypeList(List<Enums.KeyValuePair> visaTypeList) {
+			this.visaTypeList = visaTypeList;
+		}
+		
+		//List of visa sponsoring agency getter setter
+		public List<Enums.KeyValuePair> getVisaSponsoringAgencyList() {
+			return visaSponsoringAgencyList;
+		}
+		public void setVisaSponsoringAgencyList(List<Enums.KeyValuePair> visaSponsoringAgencyList) {
+			this.visaSponsoringAgencyList = visaSponsoringAgencyList;
+		}
+		
+		//List of country getter setter
+		public List<Country> getCountryList() {
+			return countryList;
+		}
+		public void setCountryList(List<Country> countryList) {
+			this.countryList = countryList;
+		}
+		
+		//List of state getter setter
+		public List<State> getStateList() {
+			return stateList;
+		}
+		public void setStateList(List<State> stateList) {
+			this.stateList = stateList;
+		}
+
 //END REGION ********************
-		
-	/*private String flatNo;
-	private String street;
-	private String area;
-	private String pinCode;
-	private String city;
-	private String state;
-	
-		//Flat No getter setter
-		public String getFlatNo() {
-			return flatNo;
-		}
-		public void setFlatNo(String flatNo) {
-			this.flatNo = flatNo;
-		}
-		
-		//Street getter setter
-		public String getStreet() {
-			return street;
-		}
-		public void setStreet(String street) {
-			this.street = street;
-		}
-		
-		//Area getter setter
-		public String getArea() {
-			return area;
-		}
-		public void setArea(String area) {
-			this.area = area;
-		}
-		
-		//Pin Code getter setter
-		public String getPinCode() {
-			return pinCode;
-		}
-		public void setPinCode(String pinCode) {
-			this.pinCode = pinCode;
-		}
-		
-		//City getter setter
-		public String getCity() {
-			return city;
-		}
-		public void setCity(String city) {
-			this.city = city;
-		}
-		
-		//State getter setter
-		public String getState() {
-			return state;
-		}
-		public void setState(String state) {
-			this.state = state;
-		}	*/
+
 }

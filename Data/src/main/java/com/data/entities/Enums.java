@@ -59,7 +59,7 @@ public class Enums {
 	}
 	
 	public enum Gender {
-		Select(0, "-- Select Gender --"),
+		//Select(0, "-- Select Gender --"),
 		Male(1, "Male"), 
 		Female(2, "Female"),
 		Transgender(3, "Transgender");
@@ -88,7 +88,7 @@ public class Enums {
 	}
 	
 	public enum MaritalStatus {
-		Select(0, "-- Select Marital Status --"),
+		//Select(0, "-- Select Marital Status --"),
 		Unmarried(1, "Unmarried"),
 		Married(2, "Married"),
 		Divorced(3, "Divorced"),
@@ -120,7 +120,7 @@ public class Enums {
 	}
 	
 	public enum BloodGroup {
-		Select(0, "-- Select Blood Group --"),
+		//Select(0, "-- Select Blood Group --"),
 		A_positive(1, "A +ve"),
 		A_negative(2, "A -ve"),
 		B_positive(3, "B +ve"),
@@ -155,7 +155,7 @@ public class Enums {
 	}
 	
 	public enum NameChangeReason {
-		Select(0, "-- Select Reason --"),
+		//Select(0, "-- Select Reason --"),
 		Willingly(1, "Willingly"),
 		AfterMarriage(2, "After Marriage");
 		
@@ -183,9 +183,99 @@ public class Enums {
 		public static List<KeyValuePair> getEnumList() { return enumList; }
 	}
 	
+	public enum PassportIssuingAuthority {
+		//Select(0, "-- Select Reason --"),
+		Government(1, "Government"),
+		Private(2, "Private"),
+		Other(3, "Other");
+		
+		
+		private int id;
+		private String value;
+		private static final Map<Integer, PassportIssuingAuthority> lookup = new HashMap<Integer, PassportIssuingAuthority>();
+		private static final List<KeyValuePair> enumList = new ArrayList<KeyValuePair>();
+		
+		private PassportIssuingAuthority(int id, String value) { this.id = id; this.value = value; }
+		
+		static {
+			for (PassportIssuingAuthority s : EnumSet.allOf(PassportIssuingAuthority.class)) {
+				lookup.put(s.getId(), s);
+				KeyValuePair ms = new KeyValuePair();
+				ms.key = s.getId();
+				ms.value = s.getValue();
+				enumList.add(ms);
+			}
+		}
+
+		public int getId() { return id; }
+		public String getValue() { return value; }
+		public static PassportIssuingAuthority get(int id) { return lookup.get(id); }
+		public static List<KeyValuePair> getEnumList() { return enumList; }
+	}
+	
+	public enum VisaType {
+		//Select(0, "-- Select Reason --"),
+		Work(1, "Work"),
+		Study(2, "Study"),
+		Tourist(3, "Tourist"),
+		Dependent(3, "Dependent");		
+		
+		private int id;
+		private String value;
+		private static final Map<Integer, VisaType> lookup = new HashMap<Integer, VisaType>();
+		private static final List<KeyValuePair> enumList = new ArrayList<KeyValuePair>();
+		
+		private VisaType(int id, String value) { this.id = id; this.value = value; }
+		
+		static {
+			for (VisaType s : EnumSet.allOf(VisaType.class)) {
+				lookup.put(s.getId(), s);
+				KeyValuePair ms = new KeyValuePair();
+				ms.key = s.getId();
+				ms.value = s.getValue();
+				enumList.add(ms);
+			}
+		}
+
+		public int getId() { return id; }
+		public String getValue() { return value; }
+		public static VisaType get(int id) { return lookup.get(id); }
+		public static List<KeyValuePair> getEnumList() { return enumList; }
+	}
+	
+	public enum VisaSponsoringAgency {
+		//Select(0, "-- Select Reason --"),
+		Government(1, "Government"),
+		Private(2, "Private"),
+		Other(3, "Other");
+		
+		
+		private int id;
+		private String value;
+		private static final Map<Integer, VisaSponsoringAgency> lookup = new HashMap<Integer, VisaSponsoringAgency>();
+		private static final List<KeyValuePair> enumList = new ArrayList<KeyValuePair>();
+		
+		private VisaSponsoringAgency(int id, String value) { this.id = id; this.value = value; }
+		
+		static {
+			for (VisaSponsoringAgency s : EnumSet.allOf(VisaSponsoringAgency.class)) {
+				lookup.put(s.getId(), s);
+				KeyValuePair ms = new KeyValuePair();
+				ms.key = s.getId();
+				ms.value = s.getValue();
+				enumList.add(ms);
+			}
+		}
+
+		public int getId() { return id; }
+		public String getValue() { return value; }
+		public static VisaSponsoringAgency get(int id) { return lookup.get(id); }
+		public static List<KeyValuePair> getEnumList() { return enumList; }
+	}
+	
 	public enum Occupation
 	{
-		Select(0, "-- Select Occupation --"),
+		//Select(0, "-- Select Occupation --"),
 		Service(1, "Service"),
 		Business(2, "Business"),
 		Professional(3, "Professional"),
@@ -217,7 +307,7 @@ public class Enums {
 	}
 	
 	public enum Category {
-		Select(0, "-- Select Category --"),
+		//Select(0, "-- Select Category --"),
 		GEN(1, "GEN"),
 		SC(2, "SC"),
 		ST(3, "ST"),
@@ -255,7 +345,7 @@ public class Enums {
 	
 	public enum Religion
 	{
-		Select(0, "-- Select Religion --"),
+		//Select(0, "-- Select Religion --"),
 		Hindu(1, "Hindu"),
 		Muslim(2, "Muslim"),
 		Christian(3, "Christian"),
@@ -291,7 +381,7 @@ public class Enums {
 	
 	public enum MotherTongue
 	{
-		Select(0, "-- Select Mother Tongue --"),
+		//Select(0, "-- Select Mother Tongue --"),
 		/*Assamese(1,"Assamese"),
 		Bengali(2,"Bengali"),
 		Bodo(3,"Bodo"),
@@ -360,7 +450,7 @@ public class Enums {
 	}
 
 	public enum SpeciallyAbled {
-		Select(0, "-- Not Applicable --"),
+		//Select(0, "-- Not Applicable --"),
 		VisuallyImpaired(1, "Visually Impaired"),
 		SpeechandorHearingImpaired(2, "Speech and/or Hearing Impaired"),
 		OrthopedicDisorderorMentallyRetarded(3, "Orthopedic Disorder or Mentally Retarded"),
