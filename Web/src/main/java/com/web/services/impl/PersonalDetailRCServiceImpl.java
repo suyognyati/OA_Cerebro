@@ -11,6 +11,7 @@ import com.data.entities.Enums.VisaSponsoringAgency;
 import com.data.entities.Enums.VisaType;
 import com.data.entities.PersonalDetail;
 import com.data.entities.UserDetail;
+import com.data.services.GeoLocationsService;
 import com.data.services.PersonalDetailService;
 import com.data.services.UserDetailService;
 import com.web.model.PersonalDetailModel;
@@ -28,6 +29,9 @@ public class PersonalDetailRCServiceImpl implements PersonalDetailRCService {
 	
 	@Autowired
 	Session userSession;
+	
+	@Autowired
+	GeoLocationsService geoLocationService;
 	
 	public PersonalDetailModel getPersonalDetail(){
 		PersonalDetailModel personalDetailModel = new PersonalDetailModel();
@@ -60,14 +64,18 @@ public class PersonalDetailRCServiceImpl implements PersonalDetailRCService {
 			UserDetail userDetail, PersonalDetail personalDetail) {
 		
 		if(userDetail != null) {
-			personalDetailModel.setLastName(userDetail.getLastName().toUpperCase());
-			personalDetailModel.setFirstName(userDetail.getFirstName().toUpperCase());
+			if(userDetail.getLastName() != null) {
+				personalDetailModel.setLastName(userDetail.getLastName().toUpperCase());
+			}
+			if(userDetail.getFirstName() != null) {
+				personalDetailModel.setFirstName(userDetail.getFirstName().toUpperCase());
+			}
 			personalDetailModel.setBirthDate(userDetail.getDateOfBirth());
 		}
 		if(personalDetail != null) {
-			personalDetailModel.setLastName(personalDetail.getLastName().toUpperCase());
-			personalDetailModel.setFirstName(personalDetail.getFirstName().toUpperCase());
-			personalDetailModel.setMiddleName(personalDetail.getMiddleName().toUpperCase());
+			personalDetailModel.setLastName(personalDetail.getLastName());
+			personalDetailModel.setFirstName(personalDetail.getFirstName());
+			personalDetailModel.setMiddleName(personalDetail.getMiddleName());
 			personalDetailModel.setMothersName(personalDetail.getMotherName());
 			personalDetailModel.setLastNameRegional(personalDetail.getLastNameRegional());
 			personalDetailModel.setFirstNameRegional(personalDetail.getFirstNameRegional());
@@ -113,7 +121,8 @@ public class PersonalDetailRCServiceImpl implements PersonalDetailRCService {
 		personalDetailModel.setPassportIssuingAuthorityList(PassportIssuingAuthority.getEnumList());
 		personalDetailModel.setVisaTypeList(VisaType.getEnumList());
 		personalDetailModel.setVisaSponsoringAgencyList(VisaSponsoringAgency.getEnumList());
-		//personalDetailModel.setCountryList();
+		personalDetailModel.setCountryList(geoLocationService.getCountryList());
+		personalDetailModel.setStateList(geoLocationService.getStateListByCountryName("India"));
 		return personalDetailModel;
 	}
 

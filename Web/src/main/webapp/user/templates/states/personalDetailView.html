@@ -534,178 +534,202 @@
 						<select id="citizenship"
 								class="selectpicker" data-width="100%"
 								data-live-search="true" title="-- Select Country --"
-								tabindex="29">
+								tabindex="29"
+								ng-model="vm.personalDetailTemp.citizenshipCountryId"
+								ng-change="vm.setSelectedCitizenshipCountry()"
+								ng-options="country.countryId as country.countryName for country in vm.personaldetail.countryList">
 						</select>
 					</div>
 				</div>
 			</div>
 			
-			<div class="row">
-				<div class="col-sm-12 form-group">
-					<div class="col-sm-3">
-						<label for="domiciled"
-							   class="labelclass">Domicile of State</label>
-					</div>
-					<div class="col-sm-3">
-						<select id="citizenship"
-								class="selectpicker" data-width="100%"
-								data-live-search="true" title="-- Select Domiciled --"
-								tabindex="30"
-								ng-model="vm.personaldetail.domiciledIn">
-						</select>
-					</div>
-				</div>
-			</div>
-			
-			<div class="row">
-				<div class="col-sm-12 form-group">
-					<div class="col-sm-3">
-						<label for="passportno"
-							   class="labelclass">Passport No.</label>
-					</div>
-					<div class="col-sm-3">
-						<input type="text"
-							   class="form-control"
-							   id="passportno"
-							   tabindex="31">
-					</div>
-					<div class="col-sm-3">
-						<label for="placeofissue"
-							   class="labelclass">Place of Issue of Passport</label>
-					</div>
-					<div class="col-sm-3">
-						<input type="text"
-							   class="form-control"
-							   id="placeofissue"
-							   tabindex="32">
+			<div ng-show="vm.indianCitizenship">
+				<div class="row">
+					<div class="col-sm-12 form-group">
+						<div class="col-sm-3">
+							<label for="domiciled"
+								   class="labelclass">Domicile of State</label>
+						</div>
+						<div class="col-sm-3">
+							<select id="citizenship"
+									class="selectpicker" data-width="100%"
+									data-live-search="true" title="-- Select Domiciled --"
+									tabindex="30"
+									ng-model="vm.personalDetailTemp.domiciledInId"
+									ng-change="vm.setSelectedState()"
+									ng-options="state.stateId as state.stateName for state in vm.personaldetail.stateList">
+							</select>
+						</div>
 					</div>
 				</div>
 			</div>
 			
-			<div class="row">
-				<div class="col-sm-12 form-group">
-					<div class="col-sm-3">
-						<label for="dateofissue"
-							   class="labelclass">Date of Issue of Passport</label>
-					</div>
-					<div class="col-sm-3">
-						<input type="text"
-							   class="form-control"
-							   id="dateofissue"
-							   tabindex="33">
-					</div>
-					<div class="col-sm-3">
-						<label for="dateofexpiry"
-							   class="labelclass">Date of Expiry of Passport</label>
-					</div>
-					<div class="col-sm-3">
-						<input type="text"
-							   class="form-control"
-							   id="placeofissue"
-							   tabindex="34">
-					</div>
-				</div>
-			</div>
-			
-			<div class="row">
-				<div class="col-sm-12 form-group">
-					<div class="col-sm-3">
-						<label for="issuingauthority"
-							   class="labelclass">Passport Issuing Authority</label>
-					</div>
-					<div class="col-sm-3">
-						<select id="issuingauthority"
-								class="selectpicker" data-width="100%"
-								data-live-search="true" title="-- Select Authority --"
-								tabindex="35"
-								ng-model="vm.personaldetail.passportIssuingAuthority"
-								ng-options="passportIssuingAuthority.key as passportIssuingAuthority.value for passportIssuingAuthority in vm.personaldetail.passportIssuingAuthorityList">
-						</select>
-					</div>
-					<div class="col-sm-3">
-						<label for="issuingcountry"
-							   class="labelclass">Passport Issuing Country</label>
-					</div>
-					<div class="col-sm-3">
-						<select id="issuingcountry"
-								class="selectpicker" data-width="100%"
-								data-live-search="true" title="-- Select Passport Issuing Country --"
-								tabindex="36">
-						</select>
+			<div ng-show="!vm.indianCitizenship">
+				<div class="row">
+					<div class="col-sm-12 form-group">
+						<div class="col-sm-3">
+							<label for="passportno"
+								   class="labelclass">Passport No.</label>
+						</div>
+						<div class="col-sm-3">
+							<input type="text"
+								   class="form-control"
+								   id="passportno"
+								   tabindex="31"
+								   ng-model="vm.personaldetail.passportNo">
+						</div>
+						<div class="col-sm-3">
+							<label for="placeofissue"
+								   class="labelclass">Place of Issue of Passport</label>
+						</div>
+						<div class="col-sm-3">
+							<input type="text"
+								   class="form-control"
+								   id="placeofissue"
+								   tabindex="32"
+								   ng-model="vm.personaldetail.passportIssuePlace">
+						</div>
 					</div>
 				</div>
-			</div>
 			
-			<div class="row">
-				<div class="col-sm-12 form-group">
-					<div class="col-sm-3">
-						<label for="visatype"
-							   class="labelclass">Visa Type</label>
-					</div>
-					<div class="col-sm-3">
-						<select id="visatype"
-								class="selectpicker" data-width="100%"
-								data-live-search="true" title="-- Select Visa Type --"
-								tabindex="37"
-								ng-model="vm.personaldetail.visaType"
-								ng-options="visaType.key as visaType.value for visaType in vm.personaldetail.visaTypeList">
-						</select>
-					</div>
-					<div class="col-sm-3">
-						<label for="visavalidupto"
-							   class="labelclass">Visa Valid Upto</label>
-					</div>
-					<div class="col-sm-3">
-						<input type="text"
-							   class="form-control"
-							   id="visavalidupto"
-							   tabindex="38">
+				<div class="row">
+					<div class="col-sm-12 form-group">
+						<div class="col-sm-3">
+							<label for="dateofissue"
+								   class="labelclass">Date of Issue of Passport</label>
+						</div>
+						<div class="col-sm-3">
+							<input type="text"
+								   class="form-control"
+								   id="dateofissue"
+								   tabindex="33"
+								   ng-model="vm.personaldetail.passportIssueDate">
+						</div>
+						<div class="col-sm-3">
+							<label for="dateofexpiry"
+								   class="labelclass">Date of Expiry of Passport</label>
+						</div>
+						<div class="col-sm-3">
+							<input type="text"
+								   class="form-control"
+								   id="dateofexpiry"
+								   tabindex="34"
+								   ng-model="vm.personaldetail.passportExpiryDate">
+						</div>
 					</div>
 				</div>
-			</div>
-			
-			<div class="row">
-				<div class="col-sm-12 form-group">
-					<div class="col-sm-3">
-						<label for="visasponsoringagency"
-							   class="labelclass">Visa Sponsoring Agency</label>
-					</div>
-					<div class="col-sm-3">
-						<select id="visasponsoringagency"
-								class="selectpicker" data-width="100%"
-								data-live-search="true" title="-- Select Sponsoring Agency --"
-								tabindex="39"
-								ng-model="vm.personaldetail.visaSponsoringAgency"
-								ng-options="visaSponsoringAgency.key as visaSponsoringAgency.value for visaSponsoringAgency in vm.personaldetail.visaSponsoringAgencyList">
-						</select>
-					</div>
-					<div class="col-sm-3">
-						<label for="residentialpermitno"
-							   class="labelclass">Residential Permit No.</label>
-					</div>
-					<div class="col-sm-3">
-						<input type="text"
-							   class="form-control"
-							   id="residentialpermitno"
-							   tabindex="40">
+				
+				<div class="row">
+					<div class="col-sm-12 form-group">
+						<div class="col-sm-3">
+							<label for="issuingauthority"
+								   class="labelclass">Passport Issuing Authority</label>
+						</div>
+						<div class="col-sm-3">
+							<select id="issuingauthority"
+									class="selectpicker" data-width="100%"
+									data-live-search="true" title="-- Select Authority --"
+									tabindex="35"
+									ng-model="vm.personaldetail.passportIssuingAuthority"
+									ng-options="passportIssuingAuthority.key as passportIssuingAuthority.value for passportIssuingAuthority in vm.personaldetail.passportIssuingAuthorityList">
+							</select>
+						</div>
+						<div class="col-sm-3">
+							<label for="issuingcountry"
+								   class="labelclass">Passport Issuing Country</label>
+						</div>
+						<div class="col-sm-3">
+							<select id="issuingcountry"
+									class="selectpicker" data-width="100%"
+									data-live-search="true" title="-- Select Passport Issuing Country --"
+									tabindex="36"
+									ng-model="vm.personalDetailTemp.passportIssuingCountryId"
+									ng-change="vm.setSelectedPassportIssuingCountry()"
+									ng-options="country.countryId as country.countryName for country in vm.personaldetail.countryList">
+							</select>
+						</div>
 					</div>
 				</div>
-			</div>
-			
+				
+				<div class="row">
+					<div class="col-sm-12 form-group">
+						<div class="col-sm-3">
+							<label for="visatype"
+								   class="labelclass">Visa Type</label>
+						</div>
+						<div class="col-sm-3">
+							<select id="visatype"
+									class="selectpicker" data-width="100%"
+									data-live-search="true" title="-- Select Visa Type --"
+									tabindex="37"
+									ng-model="vm.personaldetail.visaType"
+									ng-options="visaType.key as visaType.value for visaType in vm.personaldetail.visaTypeList">
+							</select>
+						</div>
+						<div class="col-sm-3">
+							<label for="visavalidupto"
+								   class="labelclass">Visa Valid Upto</label>
+						</div>
+						<div class="col-sm-3">
+							<input type="text"
+								   class="form-control"
+								   id="visavalidupto"
+								   tabindex="38"
+								   ng-model="vm.personaldetail.visaValidUpto">
+						</div>
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col-sm-12 form-group">
+						<div class="col-sm-3">
+							<label for="visasponsoringagency"
+								   class="labelclass">Visa Sponsoring Agency</label>
+						</div>
+						<div class="col-sm-3">
+							<select id="visasponsoringagency"
+									class="selectpicker" data-width="100%"
+									data-live-search="true" title="-- Select Sponsoring Agency --"
+									tabindex="39"
+									ng-model="vm.personaldetail.visaSponsoringAgency"
+									ng-options="visaSponsoringAgency.key as visaSponsoringAgency.value for visaSponsoringAgency in vm.personaldetail.visaSponsoringAgencyList">
+							</select>
+						</div>
+						<div class="col-sm-3">
+							<label for="residentialpermitno"
+								   class="labelclass">Residential Permit No.</label>
+						</div>
+						<div class="col-sm-3">
+							<input type="text"
+								   class="form-control"
+								   id="residentialpermitno"
+								   tabindex="40"
+								   ng-model="vm.personaldetail.residentialPermitNo">
+						</div>
+					</div>
+				</div>
+			</div>			
 		</div>
 	</div>
-	
-	<div class="row">
-		<div class="col-sm-12">
+		
+	<div class="row" style="margin: 25px 0px 25px 0px;">
+		<div class="col-sm-4"></div>
+		<div class="col-sm-2">
         	<input type="submit" 
-        		tabindex="41"
-        		value="SAVE &amp; CONTINUE" 
-        		class="btn btn-success btn-block btn-lg topMargin" 
-        		style="margin-bottom: 10px"
-        		ng-click="vm.submit()">
+        		   tabindex="41"
+        		   value="SAVE" 
+        		   class="btn btn-success btn-block topMargin" 
+        		   ng-click="vm.submit()">
         </div>
+        <div class="col-sm-2">
+        	<input type="button" 
+        		   tabindex="42"
+        		   value="Save as Draft" 
+        		   class="btn btn-success btn-block topMargin" 
+        		   ng-click="vm.saveDraft()">
+        </div>
+        <div class="col-sm-4"></div>
 	</div>
-
 
 </form>
 

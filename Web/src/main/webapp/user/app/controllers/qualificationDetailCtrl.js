@@ -23,7 +23,9 @@
 		.success(function (data, status, headers, config) {
 			vm.qualificationDetail = data;
 			//Doing initial assignments for qualification detail
-			vm.initModel(vm.qualificationDetail);
+			if(qualificationDetail != null) {
+				vm.initModel(vm.qualificationDetail);
+			}
 			//Refreshing select picker with 100ms delay
 			refreshSelectPickerWithDelay(100);
 		})
@@ -32,9 +34,6 @@
         });
 		
 		vm.initModel = function(qualificationDetail) {
-			if(qualificationDetail == null)
-				return;
-			
 			if(qualificationDetail.percentage != null) {
 				qualificationDetail.percentage = qualificationDetail.percentage.toFixed(2)
 			}
