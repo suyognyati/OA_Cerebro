@@ -3,14 +3,15 @@
 	angular
 		.module("user")
 		.controller("PersonalDetailCtrl",
-					["$http",
+					["$state",
+					 "$http",
 					 "$httpParamSerializer",
 					 "personalDetailService",
 					 "$scope",
 					 "$window",
 					 PersonalDetailCtrl]);
 	
-	function PersonalDetailCtrl($http, $httpParamSerializer, personalDetailService, $scope, $window) {
+	function PersonalDetailCtrl($state, $http, $httpParamSerializer, personalDetailService, $scope, $window) {
 		var vm = this;
 		vm.personalDetailTemp = {};
 		
@@ -59,6 +60,7 @@
 			personalDetailService.save(vm.personaldetail, vm.accessTokenParam)
 			.success(function (data, status, headers, config) {
 				vm.successMessage = "Detail saved successfully";
+				$state.go("address");
 			})
 			.error(function (data, status, headers, config) {
 				vm.errorMessage = "Error while saving detail";

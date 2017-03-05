@@ -4,7 +4,7 @@
     </h1>
 </div>
 
-<form name="personaldetailform" novalidate class="panel panel-body">
+<form name="occupationreservationform" novalidate class="panel panel-body">
 
 	<div class="panel panel-default">
 		<div class="panel-heading">
@@ -15,6 +15,7 @@
 				<div class="col-sm-12 form-group">
 					<input type="checkbox"
 						   id="selfemployed"
+						   tabindex="1"
 						   ng-model="vm.occupationandreservation.isSelfEmployed">
 					<label for="selfemployed">Are you Employed or Self-Employed?
 						<span>[Tick if Yes]</span>
@@ -25,25 +26,48 @@
 			<div ng-show="vm.occupationandreservation.isSelfEmployed">
 				<div class="row">
 					<div class="col-sm-12 form-group">
-						<div class="col-sm-3">
+						<div class="col-sm-2">
 							<label for="experience"
-								   class="labelclass">Experience</label>
+								   class="labelclass">Experience
+							<span style="color:red"><big> * </big></span></label>
 						</div>
-						<div class="col-sm-3">
-							<input type="text"
+						<div class="col-sm-3"
+							 ng-class="{'has-error':occupationreservationform.experienceYrs.$invalid &&
+						 							occupationreservationform.experienceYrs.$dirty}">
+							<input type="number"
 								   class="form-control"
+								   id="experience"
+								   name="experienceYrs"
+								   tabindex="2"
 								   ng-model="vm.occupationandreservation.experienceYrs"
-								   id="experience">
+								   ng-required="vm.occupationandreservation.isSelfEmployed">
+							
+							<span class="help-block has-error">
+								<span ng-show="occupationreservationform.experienceYrs.$error.required &&
+											   occupationreservationform.experienceYrs.$dirty">
+										Required Field</span>
+							</span>
 						</div>
 						<div class="col-sm-1">
 							<label for="experience"
 								   class="labelclass">Year(s)</label>
 						</div>
-						<div class="col-sm-3">
-							<input type="text"
+						<div class="col-sm-3"
+							 ng-class="{'has-error':occupationreservationform.experienceMonths.$invalid &&
+						 							occupationreservationform.experienceMonths.$dirty}">
+							<input type="number"
 								   class="form-control"
+								   id="experience"
+								   name="experienceMonths"
+								   tabindex="3"
 								   ng-model="vm.occupationandreservation.experienceMonths"
-								   id="experience">
+								   ng-required="vm.occupationandreservation.isSelfEmployed">
+								   
+							<span class="help-block has-error">
+								<span ng-show="occupationreservationform.experienceMonths.$error.required &&
+											   occupationreservationform.experienceMonths.$dirty">
+										Required Field</span>
+							</span>
 						</div>
 						<div class="col-sm-1">
 							<label for="experience"
@@ -55,32 +79,55 @@
 				
 				<div class="row">
 					<div class="col-sm-12 form-group">
-						<div class="col-sm-3">
+						<div class="col-sm-2">
 							<label for="selfoccupation"
-								   class="labelclass">Occupation</label>
+								   class="labelclass">Occupation
+							<span style="color:red"><big> * </big></span></label>
 						</div>
-						<div class="col-sm-3">
+						<div class="col-sm-4"
+							 ng-class="{'has-error':occupationreservationform.selfOccupation.$invalid &&
+						 							occupationreservationform.selfOccupation.$dirty}">
 							<select class="form-control" 
 									id="selfoccupation"
+									name="selfOccupation"
+									tabindex="4"
 									ng-model="vm.occupationandreservation.occupation"
 									ng-options="occupationList.key as occupationList.value for occupationList in vm.occupationandreservation.occupationList"
-									tabindex="14">
+									ng-required="vm.occupationandreservation.isSelfEmployed">
 							</select>
+							
+							<span class="help-block has-error">
+								<span ng-show="occupationreservationform.selfOccupation.$error.required &&
+											   occupationreservationform.selfOccupation.$dirty">
+										Required Field</span>
+							</span>
 						</div>
 					</div>
 				</div>
 				
 				<div class="row">
 					<div class="col-sm-12 form-group">
-						<div class="col-sm-3">
+						<div class="col-sm-2">
 							<label for="selfincome"
-								   class="labelclass">Your Annual Income</label>
+								   class="labelclass">Your Annual Income
+							<span style="color:red"><big> * </big></span></label>
 						</div>
-						<div class="col-sm-3">
+						<div class="col-sm-4"
+							 ng-class="{'has-error':occupationreservationform.selfIncome.$invalid &&
+						 							occupationreservationform.selfIncome.$dirty}">
 							<input type="text"
 								   class="form-control"
+								   id="selfincome"
+								   name="selfIncome"
+								   tabindex="5"
 								   ng-model="vm.occupationandreservation.selfAnnualIncome"
-								   id="selfincome">
+								   ng-required="vm.occupationandreservation.isSelfEmployed">
+							
+							<span class="help-block has-error">
+								<span ng-show="occupationreservationform.selfIncome.$error.required &&
+											   occupationreservationform.selfIncome.$dirty">
+										Required Field</span>
+							</span>
 						</div>
 					</div>
 				</div>
@@ -89,6 +136,7 @@
 					<div class="col-sm-12 form-group">
 						<input type="checkbox"
 							   id="leavewithoutpay"
+							   tabindex="6"
 							   ng-model="vm.occupationandreservation.isLeaveWithoutPay">
 						<label for="leavewithoutpay">Have you applied for leave without pay for the entire duration of the course?
 							<span>[Tick if Yes]</span>
@@ -100,45 +148,56 @@
 			<div ng-show="!vm.occupationandreservation.isSelfEmployed">
 				<div class="row">
 					<div class="col-sm-12 form-group">
-						<!-- <div class="col-sm-3">
-							<label for="parnetsoccupation"
-								   class="labelclass">Occupation of Guardian</label>
+						<div class="col-sm-2">
+							<label for="parentsoccupation"
+								   class="labelclass">Occupation of Guardian
+							<span style="color:red"><big> * </big></span></label>
 						</div>
-						<div class="col-sm-3">
-							<select class="form-control" 
-									id="parnetsoccupation"
-									ng-model="vm.occupationandreservation.occupation"
-									ng-options="occupationList.key as occupationList.value for occupationList in vm.occupationandreservation.occupationList"
-									tabindex="14">
-							</select>
-						</div> -->
-						<div class="col-sm-3">
-							<label for="parnetsoccupation"
-								   class="labelclass">Occupation of Guardian</label>
-						</div>
-						<div class="col-sm-3">
+						<div class="col-sm-4"
+							 ng-class="{'has-error':occupationreservationform.parentsOccupation.$invalid &&
+						 							occupationreservationform.parentsOccupation.$dirty}">
 							<select class="selectpicker" data-width="100%"
 									data-live-search="true" 
-									id="parnetsoccupation"
+									id="parentsoccupation"
+									name="parentsOccupation"
+									tabindex="7"
 									ng-model="vm.occupationandreservation.occupation"
 									ng-options="occupationList.key as occupationList.value for occupationList in vm.occupationandreservation.occupationList"
-									tabindex="14">
+									ng-required="!vm.occupationandreservation.isSelfEmployed">
 							</select>
+							
+							<span class="help-block has-error">
+								<span ng-show="occupationreservationform.parentsOccupation.$error.required &&
+											   occupationreservationform.parentsOccupation.$dirty">
+										Required Field</span>
+							</span>
 						</div>
 					</div>
 				</div>
 				
 				<div class="row">
 					<div class="col-sm-12 form-group">
-						<div class="col-sm-3">
+						<div class="col-sm-2">
 							<label for="parentsincome"
-								   class="labelclass">Annual Income of Guardian</label>
+								   class="labelclass">Annual Income of Guardian
+							<span style="color:red"><big> * </big></span></label>
 						</div>
-						<div class="col-sm-3">
+						<div class="col-sm-4"
+							 ng-class="{'has-error':occupationreservationform.parentsIncome.$invalid &&
+						 							occupationreservationform.parentsIncome.$dirty}">
 							<input type="text"
 								   class="form-control"
+								   id="parentsincome"
+								   name="parentsIncome"
+								   tabindex="8"
 								   ng-model="vm.occupationandreservation.guardianAnnualIncome"
-								   id="parentsincome">
+								   ng-required="!vm.occupationandreservation.isSelfEmployed">
+							
+							<span class="help-block has-error">
+								<span ng-show="occupationreservationform.parentsIncome.$error.required &&
+											   occupationreservationform.parentsIncome.$dirty">
+										Required Field</span>
+							</span>
 						</div>
 					</div>
 				</div>
@@ -148,6 +207,7 @@
 				<div class="col-sm-12 form-group">
 					<input type="checkbox"
 						   id="ebc"
+						   tabindex="9"
 						   ng-model="vm.occupationandreservation.isEligibleForEBC">
 					<label for="ebc">Are you eligible for EBC (Economic Backward Class)?
 						<span>[Tick if Yes]</span>
@@ -176,66 +236,103 @@
 		<div class="panel-body">
 			<div class="row">
 				<div class="col-sm-12 form-group">
-					<div class="col-sm-3">
-						<label for="caste"
-							   class="labelclass">Caste</label>
-					</div>
-					<div class="col-sm-3">
-						<input type="text" 
-								class="form-control" 
-								ng-model="vm.occupationandreservation.caste"
-								id="caste">
-					</div>
-					<div class="col-sm-3">
+					<div class="col-sm-2">
 						<label for="category"
-							   class="labelclass">Category</label>
+							   class="labelclass">Category
+						<span style="color:red"><big> * </big></span></label>
 					</div>
-					<div class="col-sm-3">
+					<div class="col-sm-4"
+						 ng-class="{'has-error':occupationreservationform.category.$invalid &&
+					 							occupationreservationform.category.$dirty}">
 						<select class="form-control" 
 								id="category"
+								name="category"
+								tabindex="10"
 								ng-model="vm.occupationandreservation.category"
-								ng-options="categoryList.key as categoryList.value for categoryList in vm.occupationandreservation.categoryList">
+								ng-options="categoryList.key as categoryList.value for categoryList in vm.occupationandreservation.categoryList"
+								required>
 						</select>
+						
+						<span class="help-block has-error">
+							<span ng-show="occupationreservationform.category.$error.required &&
+										   occupationreservationform.category.$dirty">
+									Required Field</span>
+						</span>
 					</div>
-				</div>
-			</div>
-			
-			<div class="row">
-				<div class="col-sm-12 form-group">
-					<div class="col-sm-3">
+					
+					<div class="col-sm-2">
 						<label for="religion"
-							   class="labelclass">Religion</label>
+							   class="labelclass">Religion
+						<span style="color:red"><big> * </big></span></label>
 					</div>
-					<div class="col-sm-3">
+					<div class="col-sm-4"
+						 ng-class="{'has-error':occupationreservationform.religion.$invalid &&
+					 							occupationreservationform.religion.$dirty}">
 						<select class="form-control" 
 								id="religion"
-								tabindex="14"
+								name="religion"
+								tabindex="11"
+								required
 								ng-model="vm.occupationandreservation.religion"
 								ng-options="religionList.key as religionList.value for religionList in vm.occupationandreservation.religionList">
 						</select>
-					</div>
-					<div class="col-sm-3">
-						<label for="mothertongue"
-							   class="labelclass">Mother Tongue</label>
-					</div>
-					<div class="col-sm-3">
-						<select class="form-control" 
-								id="mothertongue"
-								tabindex="14"
-								ng-model="vm.occupationandreservation.motherTongue"
-								ng-options="motherTongueList.key as motherTongueList.value for motherTongueList in vm.occupationandreservation.motherTongueList">
-						</select>
+						
+						<span class="help-block has-error">
+							<span ng-show="occupationreservationform.religion.$error.required &&
+										   occupationreservationform.religion.$dirty">
+									Required Field</span>
+						</span>
 					</div>
 				</div>
 			</div>
 			
 			<div class="row">
 				<div class="col-sm-12 form-group">
-					<div class="col-sm-3">
+					<div class="col-sm-2">
+						<label for="caste"
+							   class="labelclass">Caste</label>
+					</div>
+					<div class="col-sm-4">
+						<input type="text" 
+								class="form-control" 
+								tabindex="12"
+								ng-model="vm.occupationandreservation.caste"
+								id="caste">
+					</div>
+					
+					<div class="col-sm-2">
+						<label for="mothertongue"
+							   class="labelclass">Mother Tongue
+						<span style="color:red"><big> * </big></span></label>
+					</div>
+					<div class="col-sm-4"
+						 ng-class="{'has-error':occupationreservationform.motherTongue.$invalid &&
+					 							occupationreservationform.motherTongue.$dirty}">
+						<select class="form-control" 
+								id="mothertongue"
+								name="motherTongue"
+								tabindex="13"
+								required
+								ng-model="vm.occupationandreservation.motherTongue"
+								ng-options="motherTongueList.key as motherTongueList.value for motherTongueList in vm.occupationandreservation.motherTongueList">
+						</select>
+						
+						<span class="help-block has-error">
+							<span ng-show="occupationreservationform.motherTongue.$error.required &&
+										   occupationreservationform.motherTongue.$dirty">
+									Required Field</span>
+						</span>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-sm-12 form-group">
+					<div class="col-sm-2">
 						<label for="speciallyabled"
 							   class="labelclass">Specially Abled</label>
 					</div>
-					<div class="col-sm-3">
+					<div class="col-sm-4">
 						<select class="form-control" 
 								id="speciallyabled"
 								tabindex="14"
@@ -248,22 +345,24 @@
 			
 			<div class="row">
 				<div class="col-sm-12 form-group">
-					<div class="col-sm-3">
+					<div class="col-sm-2">
 						<label for="socialreservation"
 							   class="labelclass">Social Reservation</label>
 					</div>
-					<div class="col-sm-5">
+					<div class="col-sm-6">
 						<input type="checkbox"
 							   name="socialreservation"
 							   id="socialreservation1"
-							   value="1">
+							   value="1"
+							   tabindex="15">
 						<label for="socialreservation1">Ex-Serviceman/Ward of Ex-Serviceman</label>
 					</div>
 					<div class="col-sm-4">
 						<input type="checkbox"
 							   name="socialreservation"
 							   id="socialreservation4"
-							   value="4">
+							   value="2"
+							   tabindex="16">
 						<label for="socialreservation4">Ward of Primary Teacher</label>
 					</div>
 				</div>
@@ -271,20 +370,22 @@
 			
 			<div class="row">
 				<div class="col-sm-12 form-group">
-					<div class="col-sm-3">
+					<div class="col-sm-2">
 					</div>
-					<div class="col-sm-5">
+					<div class="col-sm-6">
 						<input type="checkbox"
 							   name="socialreservation"
 							   id="socialreservation2"
-							   value="2">
+							   value="3"
+							   tabindex="17">
 						<label for="socialreservation2">Active Serviceman/Ward of Active Serviceman</label>
 					</div>
 					<div class="col-sm-4">
 						<input type="checkbox"
 							   name="socialreservation"
 							   id="socialreservation5"
-							   value="5">
+							   value="4"
+							   tabindex="18">
 						<label for="socialreservation5">Ward of Secondary Teacher</label>
 					</div>
 				</div>
@@ -292,20 +393,22 @@
 			
 			<div class="row">
 				<div class="col-sm-12 form-group">
-					<div class="col-sm-3">
+					<div class="col-sm-2">
 					</div>
-					<div class="col-sm-5">
+					<div class="col-sm-6">
 						<input type="checkbox"
 							   name="socialreservation"
 							   id="socialreservation3"
-							   value="3">
+							   value="5"
+							   tabindex="19">
 						<label for="socialreservation3">Freedom Fighter/Ward of Freedom Fighter</label>
 					</div>
 					<div class="col-sm-4">
 						<input type="checkbox"
 							   name="socialreservation"
 							   id="socialreservation6"
-							   value="6">
+							   value="6"
+							   tabindex="20">
 						<label for="socialreservation6">Deserted/Divorced/Widowed Women</label>
 					</div>
 				</div>
@@ -313,20 +416,22 @@
 			
 			<div class="row">
 				<div class="col-sm-12 form-group">
-					<div class="col-sm-3">
+					<div class="col-sm-2">
 					</div>
-					<div class="col-sm-5">
+					<div class="col-sm-6">
 						<input type="checkbox"
 							   name="socialreservation"
 							   id="socialreservation7"
-							   value="7">
+							   value="7"
+							   tabindex="21">
 						<label for="socialreservation7">Member of Project Affected Family</label>
 					</div>
 					<div class="col-sm-4">
 						<input type="checkbox"
 							   name="socialreservation"
 							   id="socialreservation8"
-							   value="8">
+							   value="8"
+							   tabindex="22">
 						<label for="socialreservation8">Member of Earthquake Affected Family</label>
 					</div>
 				</div>
@@ -334,20 +439,22 @@
 			
 			<div class="row">
 				<div class="col-sm-12 form-group">
-					<div class="col-sm-3">
+					<div class="col-sm-2">
 					</div>
-					<div class="col-sm-5">
+					<div class="col-sm-6">
 						<input type="checkbox"
 							   name="socialreservation"
 							   id="socialreservation9"
-							   value="9">
+							   value="9"
+							   tabindex="23">
 						<label for="socialreservation9">Member of Flood/Famine Affected Family</label>
 					</div>
 					<div class="col-sm-4">
 						<input type="checkbox"
 							   name="socialreservation"
 							   id="socialreservation10"
-							   value="10">
+							   value="10"
+							   tabindex="24">
 						<label for="socialreservation10">Resident of Tribal Area</label>
 					</div>
 				</div>
@@ -355,20 +462,22 @@
 			
 			<div class="row">
 				<div class="col-sm-12 form-group">
-					<div class="col-sm-3">
+					<div class="col-sm-2">
 					</div>
-					<div class="col-sm-5">
+					<div class="col-sm-6">
 						<input type="checkbox"
 							   name="socialreservation"
 							   id="socialreservation12"
-							   value="12">
+							   value="11"
+							   tabindex="25">
 						<label for="socialreservation12">Resident of Disputed Boundary Area</label>
 					</div>
 					<div class="col-sm-4">
 						<input type="checkbox"
 							   name="socialreservation"
 							   id="socialreservation11"
-							   value="11">
+							   value="12"
+							   tabindex="26">
 						<label for="socialreservation11">Kashmir Migrant</label>
 					</div>
 				</div>
@@ -376,20 +485,22 @@
 			
 			<div class="row">
 				<div class="col-sm-12 form-group">
-					<div class="col-sm-3">
+					<div class="col-sm-2">
 					</div>
-					<div class="col-sm-5">
+					<div class="col-sm-6">
 						<input type="checkbox"
 							   name="socialreservation"
 							   id="socialreservation13"
-							   value="13">
+							   value="13"
+							   tabindex="27">
 						<label for="socialreservation13">Below Poverty Line Student</label>
 					</div>
 					<div class="col-sm-4">
 						<input type="checkbox"
 							   name="socialreservation"
 							   id="socialreservation14"
-							   value="14">
+							   value="14"
+							   tabindex="28">
 						<label for="socialreservation14">Teacher in 'Innovative School'</label>
 					</div>
 				</div>
@@ -397,20 +508,22 @@
 			
 			<div class="row">
 				<div class="col-sm-12 form-group">
-					<div class="col-sm-3">
+					<div class="col-sm-2">
 					</div>
-					<div class="col-sm-5">
+					<div class="col-sm-6">
 						<input type="checkbox"
 							   name="socialreservation"
 							   id="socialreservation16"
-							   value="16">
+							   value="15"
+							   tabindex="29">
 						<label for="socialreservation16">Ward of Transferred Central/State Government Employee</label>
 					</div>
 					<div class="col-sm-4">
 						<input type="checkbox"
 							   name="socialreservation"
 							   id="socialreservation15"
-							   value="15">
+							   value="16"
+							   tabindex="30">
 						<label for="socialreservation15">University Staff Quota</label>
 					</div>
 				</div>
@@ -422,11 +535,12 @@
 	<div class="row">
 		<div class="col-xs-12 col-md-12">
         	<input type="submit" 
-        		tabindex="22"
+        		tabindex="31"
         		value="SAVE &amp; CONTINUE" 
         		class="btn btn-success btn-block btn-lg topMargin" 
         		style="margin-bottom: 10px"
-        		ng-click="vm.submit()">
+        		ng-click="vm.submit()"
+        		ng-disabled="occupationreservationform.$invalid">
         </div>
 	</div>
 </form>
