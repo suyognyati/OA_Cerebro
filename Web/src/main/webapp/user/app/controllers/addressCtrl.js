@@ -4,11 +4,12 @@
 		.module("user")
 		.controller("AddressCtrl",
 					["$http",
+					 "$state",
 					 "$window",
 					 "addressService",
 					 AddressCtrl]);
 	
-	function AddressCtrl($http, $window, addressService) {
+	function AddressCtrl($http, $state, $window, addressService) {
 		var vm = this;		
 		
 		vm.accessToken = $window.bearer_token;
@@ -39,11 +40,16 @@
 			addressService.save(vm.address, vm.accessTokenParam)
 			.success(function (data, status, headers, config) {
                 vm.successMessage = "Detail saved successfully";
+                $state.go("educationInformation");
             })
             .error(function (data, status, headers, config) {
                 vm.errorMessage = "Error while saving detail";
             });
-		}		
+		}	
+		
+		vm.saveDraft = function() {
+			refreshSelectPickerWithDelay();
+		}
 
 		vm.setSelectedCountry = function() {
 			if(vm.address != null && vm.address.countryList != null) {

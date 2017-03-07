@@ -4,11 +4,12 @@
 		.module("user")
 		.controller("OccupationReservationCtrl",
 					["$http",
+					 "$state",
 					 "$window",
 					 "OccupationReservationService",
 					 UserDetailCtrl]);
 	
-	function UserDetailCtrl($http, $window, OccupationReservationService) {
+	function UserDetailCtrl($http, $state, $window, OccupationReservationService) {
 		var vm = this;
 		vm.accessToken = $window.bearer_token;
 		vm.accessTokenParam = "?access_token=" + vm.accessToken;
@@ -25,9 +26,10 @@
 			OccupationReservationService.save(vm.occupationandreservation, vm.accessTokenParam)
 			.success(function(data, status, header, config) {
 				vm.successMessage = "Saved successfully";
+				$state.go("educationInformation");
 			})
 			.error(function(data, status, header, config) {
-				vm.successMessage = "Error while saving data";
+				vm.errorMessage = "Error while saving data";
 			});
 		}
 	};

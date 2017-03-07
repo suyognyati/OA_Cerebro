@@ -23,7 +23,7 @@
 		.success(function (data, status, headers, config) {
 			vm.qualificationDetail = data;
 			//Doing initial assignments for qualification detail
-			if(qualificationDetail != null) {
+			if(vm.qualificationDetail != null) {
 				vm.initModel(vm.qualificationDetail);
 			}
 			//Refreshing select picker with 100ms delay
