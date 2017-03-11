@@ -43,6 +43,15 @@ public class EducationalInformationRestController {
 		return educationalInformationService.getQualificationDetail(session.getCurrentUser(), qualificationMainLevel, qualificationSubLevel);
 	}
 	
+	@RequestMapping(value="/getNewQualification/{qualificationMainLevel}", method=RequestMethod.GET)
+	public EducationModel.QualificationDetail getNewQualification(
+			@PathVariable(value="qualificationMainLevel") Integer qualificationMainLevel){
+		if(session.getCurrentUser() != null)
+			return educationalInformationService.getNewQualification(session.getCurrentUser(), qualificationMainLevel);
+		else
+			return null;
+	}
+	
 	@RequestMapping(value="/saveQualificationDetail/", method=RequestMethod.POST)
 	public String saveQualificationDetail(@RequestBody EducationModel educationalModel){
 		EducationModel.QualificationDetail qd = educationalModel.getQualificationDetail();

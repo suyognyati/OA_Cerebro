@@ -11,7 +11,8 @@
 			<div class="col-sm-12 form-group">
 				<div class="col-sm-3">
 					<label for="examboard"
-						   class="labelclass">Examination Board</label>
+						   class="labelclass">Examination Board
+					<span style="color:red"><big> * </big></span></label>
 				</div>
 				<div class="col-sm-9 form-inline form-group" style="padding-top:7px">
 					<div class="col-sm-2">
@@ -20,7 +21,8 @@
 							   id="certifying_body_board"
 							   value="1"
 							   tabindex="1"
-							   ng-model="vm.qualificationDetail.certifyingBody">	
+							   ng-model="vm.qualificationDetail.certifyingBody"
+							   required>	
 						<label for="certifying_body_board">Board</label>
 					</div>
 					<div class="col-sm-2">
@@ -29,7 +31,8 @@
 							   id="certifying_body_university"
 							   value="2"
 							   tabindex="2"
-							   ng-model="vm.qualificationDetail.certifyingBody">
+							   ng-model="vm.qualificationDetail.certifyingBody"
+							   required>
 						<label for="certifying_body_university">University</label>
 					</div>
 					<div class="col-sm-2">
@@ -38,7 +41,8 @@
 							   id="certifying_body_other"
 							   value="3"
 							   tabindex="3"
-							   ng-model="vm.qualificationDetail.certifyingBody">
+							   ng-model="vm.qualificationDetail.certifyingBody"
+							   required>
 						<label for="certifying_body_other">Other</label>
 					</div>
 				</div>
@@ -51,7 +55,8 @@
 				<div class="col-sm-12 form-group">
 					<div class="col-sm-3">
 						<label for="isLocalBody"
-							   class="labelclass">Board</label>
+							   class="labelclass">Board
+						<span style="color:red"><big> * </big></span></label>
 					</div>
 					<div class="col-sm-9 form-inline form-group labelalignmentmargin">
 						<div class="col-sm-2">
@@ -60,7 +65,8 @@
 								   id="boardindian"
 								   value="1"
 								   tabindex="4"
-								   ng-model="vm.qualificationDetail.isLocalBody">	
+								   ng-model="vm.qualificationDetail.isLocalBody"
+								   required>	
 							<label for="boardindian">Indian</label>
 						</div>
 						<div class="col-sm-2">
@@ -69,7 +75,8 @@
 								   id="boardforeign"
 								   value="2"
 								   tabindex="5"
-								   ng-model="vm.qualificationDetail.isLocalBody">
+								   ng-model="vm.qualificationDetail.isLocalBody"
+								   required>
 							<label for="boardforeign">Foreign</label>
 						</div>
 					</div>
@@ -81,17 +88,29 @@
 					<div class="col-sm-12 form-group">
 						<div class="col-sm-3">
 							<label for="state"
-								   class="labelclass">Select State</label>
+								   class="labelclass">Select State
+							<span style="color:red"><big> * </big></span></label>
 						</div>
-						<div class="col-sm-8">
+						<div class="col-sm-8"
+							 ng-class="{'has-error':diplomadetailform.state.$invalid &&
+						 							diplomadetailform.state.$dirty}">
 							<select id="state"
+									name="state"
 									class="selectpicker" data-width="100%"
 									data-live-search="true" title="-- Select State --"
 									tabindex="6"
 									ng-model="vm.qualificationDetail.stateId"
 									ng-change="vm.setSelectedState()"
-									ng-options="state.stateId as state.stateName for state in vm.qualificationDetail.stateList">
+									ng-options="state.stateId as state.stateName for state in vm.qualificationDetail.stateList"
+									ng-required="(vm.qualificationDetail.certifyingBody == 1 || vm.qualificationDetail.certifyingBody == 2)
+													&& vm.qualificationDetail.isLocalBody==1">
 							</select>
+						
+							<span class="help-block has-error">
+								<span ng-show="diplomadetailform.state.$error.required &&
+											   diplomadetailform.state.$dirty">
+										Required Field</span>
+							</span>
 						</div>
 					</div>
 				</div>
@@ -102,17 +121,29 @@
 					<div class="col-sm-12 form-group">
 						<div class="col-sm-3">
 							<label for="country"
-								   class="labelclass">Select Country</label>
+								   class="labelclass">Select Country
+							<span style="color:red"><big> * </big></span></label>
 						</div>
-						<div class="col-sm-8">
+						<div class="col-sm-8"
+							 ng-class="{'has-error':diplomadetailform.country.$invalid &&
+						 							diplomadetailform.country.$dirty}">
 							<select id="country"
+									name="country"
 									class="selectpicker" data-width="100%"
 									data-live-search="true" title="-- Select Country --"
 									tabindex="7"
 									ng-model="vm.qualificationDetail.countryId"
 									ng-change="vm.setSelectedCountry()"
-									ng-options="countryList.countryId as countryList.countryName for countryList in vm.qualificationDetail.countryList">
+									ng-options="countryList.countryId as countryList.countryName for countryList in vm.qualificationDetail.countryList"
+									ng-required="(vm.qualificationDetail.certifyingBody == 1 || vm.qualificationDetail.certifyingBody == 2)
+													&& vm.qualificationDetail.isLocalBody==2">
 							</select>
+						
+							<span class="help-block has-error">
+								<span ng-show="diplomadetailform.country.$error.required &&
+											   diplomadetailform.country.$dirty">
+										Required Field</span>
+							</span>
 						</div>
 					</div>
 				</div>
@@ -126,17 +157,28 @@
 					<div class="col-sm-12 form-group">
 						<div class="col-sm-3">
 							<label for="board"
-								   class="labelclass">Select Board</label>
+								   class="labelclass">Select Board
+							<span style="color:red"><big> * </big></span></label>
 						</div>
-						<div class="col-sm-8">
+						<div class="col-sm-8"
+							 ng-class="{'has-error':diplomadetailform.board.$invalid &&
+						 							diplomadetailform.board.$dirty}">
 							<select id="board"
+									name="board"
 									class="selectpicker" data-width="100%"
 									data-live-search="true" title="-- Select Board --"
 									tabindex="8"
 									ng-model="vm.qualificationDetail.boardId"
 									ng-change="vm.setSelectedBoard()"
-									ng-options="board.boardId as board.boardName for board in vm.qualificationDetail.state.diplomaBoardList">
+									ng-options="board.boardId as board.boardName for board in vm.qualificationDetail.state.diplomaBoardList"
+									ng-required="vm.qualificationDetail.certifyingBody == 1 && vm.qualificationDetail.isLocalBody==1">
 							</select>
+						
+							<span class="help-block has-error">
+								<span ng-show="diplomadetailform.board.$error.required &&
+											   diplomadetailform.board.$dirty">
+										Required Field</span>
+							</span>
 						</div>
 					</div>
 				</div>
@@ -147,15 +189,26 @@
 					<div class="col-sm-12 form-group">
 						<div class="col-sm-3">
 							<label for="foreignBody_BoardUniversityName"
-								   class="labelclass">Name of Board</label>
+								   class="labelclass">Name of Board
+							<span style="color:red"><big> * </big></span></label>
 						</div>
-						<div class="col-sm-8">
+						<div class="col-sm-8"
+							 ng-class="{'has-error':diplomadetailform.foreignBody_BoardUniversityName.$invalid &&
+						 							diplomadetailform.foreignBody_BoardUniversityName.$dirty}">
 							<input type="text" 
 								   class="form-control"
 								   id="foreignBody_BoardUniversityName"
+								   name="foreignBody_BoardUniversityName"
 								   placeholder="Name of Board"
 								   tabindex="9"
-								   ng-model="vm.qualificationDetail.foreignBody_BoardUniversityName">
+								   ng-model="vm.qualificationDetail.foreignBody_BoardUniversityName"
+								   ng-required="vm.qualificationDetail.certifyingBody == 1 && vm.qualificationDetail.isLocalBody==2">
+						
+							<span class="help-block has-error">
+								<span ng-show="diplomadetailform.foreignBody_BoardUniversityName.$error.required &&
+											   diplomadetailform.foreignBody_BoardUniversityName.$dirty">
+										Required Field</span>
+							</span>
 						</div>
 					</div>
 				</div>
@@ -164,15 +217,26 @@
 					<div class="col-sm-12 form-group">
 						<div class="col-sm-3">
 							<label for="foreignBody_AreaStdCodePhone"
-								   class="labelclass">Board Area STD Code - Phone</label>
+								   class="labelclass">Board Area STD Code - Phone
+							<span style="color:red"><big> * </big></span></label>
 						</div>
-						<div class="col-sm-8">
+						<div class="col-sm-8"
+							 ng-class="{'has-error':diplomadetailform.foreignBody_AreaStdCodePhone.$invalid &&
+						 							diplomadetailform.foreignBody_AreaStdCodePhone.$dirty}">
 							<input type="text" 
 								   class="form-control"
 								   id="foreignBody_AreaStdCodePhone"
+								   name="foreignBody_AreaStdCodePhone"
 								   placeholder="Board Area STD Code - Phone"
 								   tabindex="10"
-								   ng-model="vm.qualificationDetail.foreignBody_AreaStdCodePhone">
+								   ng-model="vm.qualificationDetail.foreignBody_AreaStdCodePhone"
+								   ng-required="vm.qualificationDetail.certifyingBody == 1 && vm.qualificationDetail.isLocalBody==2">
+						
+							<span class="help-block has-error">
+								<span ng-show="diplomadetailform.foreignBody_AreaStdCodePhone.$error.required &&
+											   diplomadetailform.foreignBody_AreaStdCodePhone.$dirty">
+										Required Field</span>
+							</span>
 						</div>
 					</div>
 				</div>
@@ -181,15 +245,26 @@
 					<div class="col-sm-12 form-group">
 						<div class="col-sm-3">
 							<label for="foreignBody_EmailId"
-								   class="labelclass">Board Email Id</label>
+								   class="labelclass">Board Email Id
+							<span style="color:red"><big> * </big></span></label>
 						</div>
-						<div class="col-sm-8">
+						<div class="col-sm-8"
+							 ng-class="{'has-error':diplomadetailform.foreignBody_EmailId.$invalid &&
+						 							diplomadetailform.foreignBody_EmailId.$dirty}">
 							<input type="text" 
 								   class="form-control"
 								   id="foreignBody_EmailId"
+								   name="foreignBody_EmailId"
 								   placeholder="Board Email Id"
 								   tabindex="11"
-								   ng-model="vm.qualificationDetail.foreignBody_EmailId">
+								   ng-model="vm.qualificationDetail.foreignBody_EmailId"
+								   ng-required="vm.qualificationDetail.certifyingBody == 1 && vm.qualificationDetail.isLocalBody==2">
+						
+							<span class="help-block has-error">
+								<span ng-show="diplomadetailform.foreignBody_EmailId.$error.required &&
+											   diplomadetailform.foreignBody_EmailId.$dirty">
+										Required Field</span>
+							</span>
 						</div>
 					</div>
 				</div>
@@ -198,15 +273,26 @@
 					<div class="col-sm-12 form-group">
 						<div class="col-sm-3">
 							<label for="foreignBody_URL"
-								   class="labelclass">Board URL</label>
+								   class="labelclass">Board URL
+							<span style="color:red"><big> * </big></span></label>
 						</div>
-						<div class="col-sm-8">
+						<div class="col-sm-8"
+							 ng-class="{'has-error':diplomadetailform.foreignBody_URL.$invalid &&
+						 							diplomadetailform.foreignBody_URL.$dirty}">
 							<input type="text" 
 								   class="form-control"
 								   id="foreignBody_URL"
+								   name="foreignBody_URL"
 								   placeholder="Board URL"
 								   tabindex="12"
-								   ng-model="vm.qualificationDetail.foreignBody_URL">
+								   ng-model="vm.qualificationDetail.foreignBody_URL"
+								   ng-required="vm.qualificationDetail.certifyingBody == 1 && vm.qualificationDetail.isLocalBody==2">
+						
+							<span class="help-block has-error">
+								<span ng-show="diplomadetailform.foreignBody_URL.$error.required &&
+											   diplomadetailform.foreignBody_URL.$dirty">
+										Required Field</span>
+							</span>
 						</div>
 					</div>
 				</div>
@@ -219,16 +305,27 @@
 					<div class="col-sm-12 form-group">
 						<div class="col-sm-3">
 							<label for="university"
-								   class="labelclass">Select University</label>
+								   class="labelclass">Select University
+							<span style="color:red"><big> * </big></span></label>
 						</div>
-						<div class="col-sm-8">
+						<div class="col-sm-8"
+							 ng-class="{'has-error':diplomadetailform.university.$invalid &&
+						 							diplomadetailform.university.$dirty}">
 							<select id="university"
+								    name="university"
 									class="selectpicker" data-width="100%"
 									data-live-search="true" title="-- Select University --"
 									tabindex="13"
 									ng-model="vm.qualificationDetail.nameOfUniversity"
-									ng-options="nameOfUniversityList.key as nameOfUniversityList.value for nameOfUniversityList in vm.quallificationdetail.nameOfUniversityList">
+									ng-options="nameOfUniversityList.key as nameOfUniversityList.value for nameOfUniversityList in vm.quallificationdetail.nameOfUniversityList"
+								    ng-required="vm.qualificationDetail.certifyingBody == 2 && vm.qualificationDetail.isLocalBody==1">
 							</select>
+						
+							<span class="help-block has-error">
+								<span ng-show="diplomadetailform.university.$error.required &&
+											   diplomadetailform.university.$dirty">
+										Required Field</span>
+							</span>
 						</div>
 					</div>
 				</div>
@@ -239,15 +336,26 @@
 					<div class="col-sm-12 form-group">
 						<div class="col-sm-3">
 							<label for="foreignBody_BoardUniversityName"
-								   class="labelclass">Name of University</label>
+								   class="labelclass">Name of University
+							<span style="color:red"><big> * </big></span></label>
 						</div>
-						<div class="col-sm-8">
+						<div class="col-sm-8"
+							 ng-class="{'has-error':diplomadetailform.foreignBody_BoardUniversityName.$invalid &&
+						 							diplomadetailform.foreignBody_BoardUniversityName.$dirty}">
 							<input type="text" 
 								   class="form-control"
 								   id="foreignBody_BoardUniversityName"
+								   name="foreignBody_BoardUniversityName"
 								   placeholder="Name of University"
 								   tabindex="14"
-								   ng-model="vm.qualificationDetail.foreignBody_BoardUniversityName">
+								   ng-model="vm.qualificationDetail.foreignBody_BoardUniversityName"
+								   ng-required="vm.qualificationDetail.certifyingBody == 2 && vm.qualificationDetail.isLocalBody==2">
+						
+							<span class="help-block has-error">
+								<span ng-show="diplomadetailform.foreignBody_BoardUniversityName.$error.required &&
+											   diplomadetailform.foreignBody_BoardUniversityName.$dirty">
+										Required Field</span>
+							</span>
 						</div>
 					</div>
 				</div>
@@ -256,15 +364,26 @@
 					<div class="col-sm-12 form-group">
 						<div class="col-sm-3">
 							<label for="foreignBody_AreaStdCodePhone"
-								   class="labelclass">University Area STD Code - Phone</label>
+								   class="labelclass">University Area STD Code - Phone
+							<span style="color:red"><big> * </big></span></label>
 						</div>
-						<div class="col-sm-8">
+						<div class="col-sm-8"
+							 ng-class="{'has-error':diplomadetailform.foreignBody_AreaStdCodePhone.$invalid &&
+						 							diplomadetailform.foreignBody_AreaStdCodePhone.$dirty}">
 							<input type="text" 
 								   class="form-control"
 								   id=foreignBody_AreaStdCodePhone"
+								   name="foreignBody_AreaStdCodePhone"
 								   placeholder="University Area STD Code - Phone"
 								   tabindex="15"
-								   ng-model="vm.qualificationDetail.foreignBody_AreaStdCodePhone">
+								   ng-model="vm.qualificationDetail.foreignBody_AreaStdCodePhone"
+								   ng-required="vm.qualificationDetail.certifyingBody == 2 && vm.qualificationDetail.isLocalBody==2">
+						
+							<span class="help-block has-error">
+								<span ng-show="diplomadetailform.foreignBody_AreaStdCodePhone.$error.required &&
+											   diplomadetailform.foreignBody_AreaStdCodePhone.$dirty">
+										Required Field</span>
+							</span>
 						</div>
 					</div>
 				</div>
@@ -273,15 +392,26 @@
 					<div class="col-sm-12 form-group">
 						<div class="col-sm-3">
 							<label for="foreignBody_EmailId"
-								   class="labelclass">University Email Id</label>
+								   class="labelclass">University Email Id
+							<span style="color:red"><big> * </big></span></label>
 						</div>
-						<div class="col-sm-8">
+						<div class="col-sm-8"
+							 ng-class="{'has-error':diplomadetailform.foreignBody_EmailId.$invalid &&
+						 							diplomadetailform.foreignBody_EmailId.$dirty}">
 							<input type="text" 
 								   class="form-control"
 								   id="foreignBody_EmailId"
+								   name="foreignBody_EmailId"
 								   placeholder="University Email Id"
 								   tabindex="16"
-								   ng-model="vm.qualificationDetail.foreignBody_EmailId">
+								   ng-model="vm.qualificationDetail.foreignBody_EmailId"
+								   ng-required="vm.qualificationDetail.certifyingBody == 2 && vm.qualificationDetail.isLocalBody==2">
+						
+							<span class="help-block has-error">
+								<span ng-show="diplomadetailform.foreignBody_EmailId.$error.required &&
+											   diplomadetailform.foreignBody_EmailId.$dirty">
+										Required Field</span>
+							</span>
 						</div>
 					</div>
 				</div>
@@ -290,15 +420,26 @@
 					<div class="col-sm-12 form-group">
 						<div class="col-sm-3">
 							<label for="foreignBody_URL"
-								   class="labelclass">University URL</label>
+								   class="labelclass">University URL
+							<span style="color:red"><big> * </big></span></label>
 						</div>
-						<div class="col-sm-8">
+						<div class="col-sm-8"
+							 ng-class="{'has-error':diplomadetailform.foreignBody_URL.$invalid &&
+						 							diplomadetailform.foreignBody_URL.$dirty}">
 							<input type="text" 
 								   class="form-control"
 								   id="foreignBody_URL"
+								   name="foreignBody_URL"
 								   placeholder="University URL"
 								   tabindex="17"
-								   ng-model="vm.qualificationDetail.foreignBody_URL">
+								   ng-model="vm.qualificationDetail.foreignBody_URL"
+								   ng-required="vm.qualificationDetail.certifyingBody == 2 && vm.qualificationDetail.isLocalBody==2">
+						
+							<span class="help-block has-error">
+								<span ng-show="diplomadetailform.foreignBody_URL.$error.required &&
+											   diplomadetailform.foreignBody_URL.$dirty">
+										Required Field</span>
+							</span>
 						</div>
 					</div>
 				</div>
@@ -310,15 +451,26 @@
 				<div class="col-sm-12 form-group">
 					<div class="col-sm-3">
 						<label for="otherbodyname"
-							   class="labelclass">Name of Other Exam / Certifying Body</label>
+							   class="labelclass">Name of Other Exam / Certifying Body
+						<span style="color:red"><big> * </big></span></label>
 					</div>
-					<div class="col-sm-8">
+					<div class="col-sm-8"
+						 ng-class="{'has-error':diplomadetailform.otherbodyname.$invalid &&
+						 						diplomadetailform.otherbodyname.$dirty}">
 						<input type="text" 
 							   class="form-control"
 							   id="otherbodyname"
+							   name="otherbodyname"
 							   placeholder="Name of Other Exam/Certifying Body"
 							   tabindex="18"
-							   ng-model="vm.qualificationDetail.otherBodyName">
+							   ng-model="vm.qualificationDetail.otherBodyName"
+							   ng-required="vm.qualificationDetail.certifyingBody == 3">
+						
+						<span class="help-block has-error">
+							<span ng-show="diplomadetailform.otherbodyname.$error.required &&
+										   diplomadetailform.otherbodyname.$dirty">
+									Required Field</span>
+						</span>
 					</div>
 				</div>
 			</div>
@@ -328,15 +480,26 @@
 			<div class="col-sm-12 form-group">
 				<div class="col-sm-3">
 					<label for="schoolCollegeName"
-						   class="labelclass">Name of College</label>
+						   class="labelclass">Name of College
+					<span style="color:red"><big> * </big></span></label>
 				</div>
-				<div class="col-sm-8">
+				<div class="col-sm-8"
+					 ng-class="{'has-error':diplomadetailform.schoolCollegeName.$invalid &&
+					 						diplomadetailform.schoolCollegeName.$dirty}">
 					<input type="text" 
 						   class="form-control"
 						   id="schoolCollegeName"
+						   name="schoolCollegeName"
 						   placeholder="Name of College"
 						   tabindex="19"
-						   ng-model="vm.qualificationDetail.schoolCollegeName">
+						   ng-model="vm.qualificationDetail.schoolCollegeName"
+						   required>
+						
+					<span class="help-block has-error">
+						<span ng-show="diplomadetailform.schoolCollegeName.$error.required &&
+									   diplomadetailform.schoolCollegeName.$dirty">
+								Required Field</span>
+					</span>
 				</div>
 			</div>
 		</div>
@@ -345,15 +508,26 @@
 			<div class="col-sm-12 form-group">
 				<div class="col-sm-3">
 					<label for="diplomaname"
-						   class="labelclass">Name of Diploma</label>
+						   class="labelclass">Name of Diploma
+					<span style="color:red"><big> * </big></span></label>
 				</div>
-				<div class="col-sm-8">
+				<div class="col-sm-8"
+					 ng-class="{'has-error':diplomadetailform.diplomaname.$invalid &&
+					 						diplomadetailform.diplomaname.$dirty}">
 					<input type="text" 
 						   class="form-control"
 						   id="diplomaname"
-						   placeholder="MName of Diploma"
+						   name="diplomaname"
+						   placeholder="Name of Diploma"
 						   tabindex="20"
-						   ng-model="vm.qualificationDetail.qualificationName">
+						   ng-model="vm.qualificationDetail.qualificationName"
+						   required>
+						
+					<span class="help-block has-error">
+						<span ng-show="diplomadetailform.diplomaname.$error.required &&
+									   diplomadetailform.diplomaname.$dirty">
+								Required Field</span>
+					</span>
 				</div>
 			</div>
 		</div>
@@ -363,15 +537,26 @@
 				<div class="col-sm-12 form-group">
 					<div class="col-sm-3">
 						<label for="collegeaddress"
-							   class="labelclass">College Address</label>
+							   class="labelclass">College Address
+						<span style="color:red"><big> * </big></span></label>
 					</div>
-					<div class="col-sm-8">
+					<div class="col-sm-8"
+					 	 ng-class="{'has-error':diplomadetailform.collegeaddress.$invalid &&
+					 							diplomadetailform.collegeaddress.$dirty}">
 						<input type="text" 
 							   class="form-control"
 							   id="collegeaddress"
+						   	   name="collegeaddress"
 							   placeholder="College Address"
 							   tabindex="21"
-							   ng-model="vm.qualificationDetail.schoolCollegeAddress">
+							   ng-model="vm.qualificationDetail.schoolCollegeAddress"
+						   	   ng-required="vm.qualificationDetail.certifyingBody == 3">
+						
+						<span class="help-block has-error">
+							<span ng-show="diplomadetailform.collegeaddress.$error.required &&
+										   diplomadetailform.collegeaddress.$dirty">
+									Required Field</span>
+						</span>
 					</div>
 				</div>
 			</div>
@@ -381,25 +566,46 @@
 			<div class="col-sm-12 form-group">
 				<div class="col-sm-3">
 					<label for="dateofresult"
-						   class="labelclass">Date of Result</label>
+						   class="labelclass">Date of Result
+					<span style="color:red"><big> * </big></span></label>
 				</div>
-				<div class="col-sm-3">
+				<div class="col-sm-3"
+				 	 ng-class="{'has-error':diplomadetailform.monthOfResult.$invalid &&
+				 							diplomadetailform.monthOfResult.$dirty}">
 					<select id="dateofresult"
+					   	    name="monthOfResult"
 							class="selectpicker" data-width="100%"
 							data-live-search="true" title="--Month--"
 							tabindex="22"
 							ng-model="vm.qualificationDetail.passingMonth"
-							ng-options="passingMonthList.key as passingMonthList.value for passingMonthList in vm.qualificationDetail.monthList">
+							ng-options="passingMonthList.key as passingMonthList.value for passingMonthList in vm.qualificationDetail.monthList"
+							required>
 					</select>
+						
+					<span class="help-block has-error">
+						<span ng-show="diplomadetailform.monthOfResult.$error.required &&
+									   diplomadetailform.monthOfResult.$dirty">
+								Required Field</span>
+					</span>
 				</div>
-				<div class="col-sm-2">
+				<div class="col-sm-2"
+				 	 ng-class="{'has-error':diplomadetailform.yearOfResult.$invalid &&
+				 							diplomadetailform.yearOfResult.$dirty}">
 					<select id="dateofresult"
+					   	    name="yearOfResult"
 							class="selectpicker" data-width="100%"
 							data-live-search="true" title="--Year--"
 							tabindex="23"
 							ng-model="vm.qualificationDetail.passingYear"
-							ng-options="passingYearList as passingYearList for passingYearList in vm.qualificationDetail.yearList">
+							ng-options="passingYearList as passingYearList for passingYearList in vm.qualificationDetail.yearList"
+							required>
 					</select>
+						
+					<span class="help-block has-error">
+						<span ng-show="diplomadetailform.yearOfResult.$error.required &&
+									   diplomadetailform.yearOfResult.$dirty">
+								Required Field</span>
+					</span>
 				</div>
 			</div>
 		</div>
@@ -408,15 +614,26 @@
 			<div class="col-sm-12 form-group">
 				<div class="col-sm-3">
 					<label for="examSeatNo"
-						   class="labelclass">Roll No/ Seat No</label>
+						   class="labelclass">Roll No/ Seat No
+					<span style="color:red"><big> * </big></span></label>
 				</div>
-				<div class="col-sm-8">
+				<div class="col-sm-8"
+				 	 ng-class="{'has-error':diplomadetailform.examSeatNo.$invalid &&
+				 							diplomadetailform.examSeatNo.$dirty}">
 					<input type="text" 
 						   class="form-control"
 						   id="examSeatNo"
+					   	   name="examSeatNo"
 						   placeholder="Roll No./Seat No."
 						   tabindex="24"
-						   ng-model="vm.qualificationDetail.examSeatNo">
+						   ng-model="vm.qualificationDetail.examSeatNo"
+						   required>
+						
+					<span class="help-block has-error">
+						<span ng-show="diplomadetailform.examSeatNo.$error.required &&
+									   diplomadetailform.examSeatNo.$dirty">
+								Required Field</span>
+					</span>
 				</div>
 			</div>
 		</div>
@@ -425,15 +642,26 @@
 			<div class="col-sm-12 form-group">
 				<div class="col-sm-3">
 					<label for="marksheetno"
-						   class="labelclass">Marksheet No</label>
+						   class="labelclass">Marksheet No
+					<span style="color:red"><big> * </big></span></label>
 				</div>
-				<div class="col-sm-8">
+				<div class="col-sm-8"
+				 	 ng-class="{'has-error':diplomadetailform.marksheetno.$invalid &&
+				 							diplomadetailform.marksheetno.$dirty}">
 					<input type="text" 
 						   class="form-control"
 						   id="marksheetno"
+					   	   name="marksheetno"
 						   placeholder="Marksheet No."
 						   tabindex="25"
-						   ng-model="vm.qualificationDetail.marksheetNo">
+						   ng-model="vm.qualificationDetail.marksheetNo"
+						   required>
+						
+					<span class="help-block has-error">
+						<span ng-show="diplomadetailform.marksheetno.$error.required &&
+									   diplomadetailform.marksheetno.$dirty">
+								Required Field</span>
+					</span>
 				</div>
 			</div>
 		</div>
@@ -442,7 +670,8 @@
 			<div class="col-sm-12 form-group">
 				<div class="col-sm-3">
 						<label for="marksorgrade"
-							   class="labelclass">If your result has Marks or Grades</label>
+							   class="labelclass">If your result has Marks or Grades
+						<span style="color:red"><big> * </big></span></label>
 				</div>
 				<div class="col-sm-9 form-inline form-group" style="padding-top:7px">
 					<div class="col-sm-2">
@@ -451,7 +680,8 @@
 							   id="marks"
 							   value="1"
 							   tabindex="26"
-							   ng-model="vm.qualificationDetail.evaluationType">
+							   ng-model="vm.qualificationDetail.evaluationType"
+							   required>
 						<label for="marks">Marks</label>
 					</div>
 					<div class="col-sm-2">
@@ -460,7 +690,8 @@
 							   id="grades"
 							   value="2"
 							   tabindex="27"
-							   ng-model="vm.qualificationDetail.evaluationType">
+							   ng-model="vm.qualificationDetail.evaluationType"
+							   required>
 						<label for="grades">Grades</label>
 					</div>
 				</div>
@@ -472,29 +703,51 @@
 				<div class="col-sm-12 form-group">
 					<div class="col-sm-3">
 						<label for="marksObtain"
-							   class="labelclass">Total Marks Obtained</label>
+							   class="labelclass">Total Marks Obtained
+						<span style="color:red"><big> * </big></span></label>
 					</div>
-					<div class="col-sm-3">
+					<div class="col-sm-3"
+					 	 ng-class="{'has-error':diplomadetailform.marksObtain.$invalid &&
+					 							diplomadetailform.marksObtain.$dirty}">
 						<input type="text" 
 							   class="form-control"
 							   id="marksObtain"
+					   	   	   name="marksObtain"
 							   placeholder="Total Marks Obtained"
 							   tabindex="28"
 							   ng-blur="vm.calculatePercentage()"
-							   ng-model="vm.qualificationDetail.marksObtain">
+							   ng-model="vm.qualificationDetail.marksObtain"
+							   ng-required="vm.qualificationDetail.evaluationType==1">
+						
+						<span class="help-block has-error">
+							<span ng-show="diplomadetailform.marksObtain.$error.required &&
+										   diplomadetailform.marksObtain.$dirty">
+									Required Field</span>
+						</span>
 					</div>
 					<div class="col-sm-2">
 						<label for="totalMarks"
-							   class="labelclass">Out of</label>
+							   class="labelclass">Out of
+						<span style="color:red"><big> * </big></span></label>
 					</div>
-					<div class="col-sm-3">
+					<div class="col-sm-3"
+					 	 ng-class="{'has-error':diplomadetailform.totalMarks.$invalid &&
+					 							diplomadetailform.totalMarks.$dirty}">
 						<input type="text" 
 							   class="form-control"
 							   id="totalMarks"
+					   	   	   name="totalMarks"
 							   placeholder="Marks Out Of"
 							   tabindex="29"
 							   ng-blur="vm.calculatePercentage()"
-							   ng-model="vm.qualificationDetail.totalMarks">
+							   ng-model="vm.qualificationDetail.totalMarks"
+							   ng-required="vm.qualificationDetail.evaluationType==1">
+						
+						<span class="help-block has-error">
+							<span ng-show="diplomadetailform.totalMarks.$error.required &&
+										   diplomadetailform.totalMarks.$dirty">
+									Required Field</span>
+						</span>
 					</div>
 				</div>
 			</div>
@@ -505,27 +758,49 @@
 				<div class="col-sm-12 form-group">
 					<div class="col-sm-3">
 						<label for="grade"
-							   class="labelclass">Grade</label>
+							   class="labelclass">Grade
+						<span style="color:red"><big> * </big></span></label>
 					</div>
-					<div class="col-sm-3">
+					<div class="col-sm-3"
+					 	 ng-class="{'has-error':diplomadetailform.grade.$invalid &&
+					 							diplomadetailform.grade.$dirty}">
 						<input type="text" 
 							   class="form-control"
 							   id="grade"
+					   	   	   name="grade"
 							   placeholder="Grade"
 							   tabindex="30"
-							   ng-model="vm.qualificationDetail.grade">
+							   ng-model="vm.qualificationDetail.grade"
+							   ng-required="vm.qualificationDetail.evaluationType==2">
+						
+						<span class="help-block has-error">
+							<span ng-show="diplomadetailform.grade.$error.required &&
+										   diplomadetailform.grade.$dirty">
+									Required Field</span>
+						</span>
 					</div>
 					<div class="col-sm-2">
 						<label for="cgpa"
-							   class="labelclass">CGPA</label>
+							   class="labelclass">CGPA
+						<span style="color:red"><big> * </big></span></label>
 					</div>
-					<div class="col-sm-3">
+					<div class="col-sm-3"
+					 	 ng-class="{'has-error':diplomadetailform.cgpa.$invalid &&
+					 							diplomadetailform.cgpa.$dirty}">
 						<input type="text" 
 							   class="form-control"
 							   id="cgpa"
+					   	   	   name="cgpa"
 							   placeholder="CGPA"
 							   tabindex="31"
-							   ng-model="vm.qualificationDetail.cgpa">
+							   ng-model="vm.qualificationDetail.cgpa"
+							   ng-required="vm.qualificationDetail.evaluationType==2">
+						
+						<span class="help-block has-error">
+							<span ng-show="diplomadetailform.cgpa.$error.required &&
+										   diplomadetailform.cgpa.$dirty">
+									Required Field</span>
+						</span>
 					</div>
 				</div>
 			</div>
@@ -535,15 +810,26 @@
 			<div class="col-sm-12 form-group">
 				<div class="col-sm-3">
 					<label for="percentage"
-						   class="labelclass">Percentage</label>
+						   class="labelclass">Percentage
+					<span style="color:red"><big> * </big></span></label>
 				</div>
-				<div ng-show="vm.qualificationDetail.evaluationType==2" class="col-sm-3">
+				<div ng-show="vm.qualificationDetail.evaluationType==2" class="col-sm-3"
+				 	 ng-class="{'has-error':diplomadetailform.percentage.$invalid &&
+				 							diplomadetailform.percentage.$dirty}">
 					<input type="text" 
 						   class="form-control"
 						   id="percentage"
+				   	   	   name="percentage"
 						   placeholder="Percentage"
 						   tabindex="32"
-						   ng-model="vm.qualificationDetail.percentage">
+						   ng-model="vm.qualificationDetail.percentage"
+						   ng-required="vm.qualificationDetail.evaluationType==2">
+						
+					<span class="help-block has-error">
+						<span ng-show="diplomadetailform.percentage.$error.required &&
+									   diplomadetailform.percentage.$dirty">
+								Required Field</span>
+					</span>
 				</div>
 				<div ng-show="vm.qualificationDetail.evaluationType==1" class="col-sm-3 labelalignmentmargin">
 					<span>{{vm.qualificationDetail.percentage}} %</span>

@@ -14,6 +14,12 @@
 					url: "/Web/rest/educationalInformation/getQualificationDetail/" + qualificationMainLevel + "/" + qualificationSubLevel + accessTokenParam
 				})
 			},
+			getNewQualification : function(qualificationMainLevel, accessTokenParam) {
+				return $http({
+					method: "GET",
+					url: "/Web/rest/educationalInformation/getNewQualification/" + qualificationMainLevel + accessTokenParam
+				})
+			},
 			saveQualificationDetail : function(qualificationDetail, accessTokenParam) {
 				var educationalModel = {};
 				delete qualificationDetail.resultStatusList;

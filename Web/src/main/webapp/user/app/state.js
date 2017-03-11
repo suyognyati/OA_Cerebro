@@ -151,6 +151,9 @@
 									controller:"QualificationDetailCtrl as vm",
 								}
 							},
+							params: {
+							    newQualification : false
+							},
 							resolve: {
 								basicDetail : ['$ocLazyLoad', function($ocLazyLoad){
 									return $ocLazyLoad.load({

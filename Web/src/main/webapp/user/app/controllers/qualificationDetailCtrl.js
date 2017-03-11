@@ -15,23 +15,42 @@
 		var vm = this;	
 		var qualificationMainLevel = $state.params.qualificationMainLevel;
 		var qualificationSubLevel = $state.params.qualificationSubLevel;
+		var newQualification = $state.params.newQualification;
 		
 		vm.accessToken = $window.bearer_token;
 		vm.accessTokenParam = "?access_token=" + vm.accessToken;
 
-		qualificationDetailService.getQualificationDetail(qualificationMainLevel, qualificationSubLevel, vm.accessTokenParam)
-		.success(function (data, status, headers, config) {
-			vm.qualificationDetail = data;
-			//Doing initial assignments for qualification detail
-			if(vm.qualificationDetail != null) {
-				vm.initModel(vm.qualificationDetail);
-			}
-			//Refreshing select picker with 100ms delay
-			refreshSelectPickerWithDelay(100);
-		})
-		.error(function (data, status, headers, config) {
-			vm.qualificationDetail = {};
-        });
+		vm.getQualificationDetail = function() {
+			qualificationDetailService.getQualificationDetail(qualificationMainLevel, qualificationSubLevel, vm.accessTokenParam)
+			.success(function (data, status, headers, config) {
+				vm.qualificationDetail = data;
+				//Doing initial assignments for qualification detail
+				if(vm.qualificationDetail != null) {
+					vm.initModel(vm.qualificationDetail);
+				}
+				//Refreshing select picker with 100ms delay
+				refreshSelectPickerWithDelay(100);
+			})
+			.error(function (data, status, headers, config) {
+				vm.qualificationDetail = {};
+	        });
+		}
+		
+		vm.getNewQualification = function() {
+			qualificationDetailService.getNewQualification (qualificationMainLevel, vm.accessTokenParam)
+			.success(function (data, status, headers, config) {
+				vm.qualificationDetail = data;
+				//Doing initial assignments for qualification detail
+				if(vm.qualificationDetail != null) {
+					vm.initModel(vm.qualificationDetail);
+				}
+				//Refreshing select picker with 100ms delay
+				refreshSelectPickerWithDelay(100);
+			})
+			.error(function (data, status, headers, config) {
+				vm.qualificationDetail = {};
+	        });
+		}
 		
 		vm.initModel = function(qualificationDetail) {
 			if(qualificationDetail.percentage != null) {
@@ -157,6 +176,12 @@
 					&& (vm.qualificationDetail.totalMarks != null && vm.qualificationDetail.totalMarks != "")) {
 				vm.qualificationDetail.percentage = ((vm.qualificationDetail.marksObtain / vm.qualificationDetail.totalMarks) * 100).toFixed(2);
 			}
+		}
+	
+		if(newQualification) {
+			vm.getNewQualification();
+		} else {
+			vm.getQualificationDetail();
 		}
 	};
 	

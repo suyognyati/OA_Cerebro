@@ -155,6 +155,31 @@ public class EducationalInformationRCServiceImpl implements EducationalInformati
 		return qualificationDetail;
 	}
 
+	public QualificationDetail getNewQualification(User user, Integer qualificationMainLevel) {
+		EducationModel educationModel = new EducationModel();
+		QualificationDetail qualificationDetail = educationModel.new QualificationDetail();
+		
+		if(qualificationMainLevel < 4) {
+			return getQualificationDetail(user, qualificationMainLevel, 0);
+		}
+		
+		qualificationDetail.setResultStatusList(Enums.ResultStatus.getEnumList());
+		qualificationDetail.setCertifyingBodyList(Enums.CertifyingBody.getEnumList());
+		qualificationDetail.setMonthList(Enums.Month.getEnumList());
+		qualificationDetail.setStreamList(Enums.Stream.getEnumList());
+		qualificationDetail.setCountryList(geoLocationService.getCountryList());
+		qualificationDetail.setStateList(geoLocationService.getStateListByCountryName("India"));
+		qualificationDetail.setAllIndiaBoardList(boardService.getBoardList(null));
+		
+		TimeZone timeZone = TimeZone.getTimeZone("UTC");
+		Calendar calendar = Calendar.getInstance(timeZone);
+		int year = calendar.get(Calendar.YEAR);
+		
+		qualificationDetail.setYearListRange(year);
+		
+		return qualificationDetail;
+	}
+	
 	@Override
 	public Boolean saveQualificationDetail(User user, QualificationDetail qualificationDetail) {
 		//Getting qualificationlevelobject to search for respected educational information

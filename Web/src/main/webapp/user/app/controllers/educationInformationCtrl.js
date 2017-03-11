@@ -42,6 +42,17 @@
         });
 		
 		vm.qualificationDetail = function(qualificationMainLevel, qualificationSubLevel) {
+			var view = mapView(qualificationMainLevel);
+						
+			$state.go("qualificationDetail", {qualification:view ,qualificationMainLevel:qualificationMainLevel, qualificationSubLevel:qualificationSubLevel});
+		}
+		
+		vm.createNewQualification = function(qualificationMainLevel, qualificationSubLevel) {
+			var view = mapView(qualificationMainLevel);						
+			$state.go("qualificationDetail", {qualification:view ,qualificationMainLevel:qualificationMainLevel, qualificationSubLevel:qualificationSubLevel, newQualification:true});
+		}
+		
+		var mapView = function(qualificationMainLevel) {
 			var view = "";
 			if(qualificationMainLevel == 1)
 				view = "ssc";
@@ -52,8 +63,8 @@
 			else if(qualificationMainLevel == 4)
 				view = "diploma";
 			
-			$state.go("qualificationDetail", {qualification:view ,qualificationMainLevel:qualificationMainLevel, qualificationSubLevel:qualificationSubLevel});
-		}
+			return view;
+		} 
 	};
 	
 }());
