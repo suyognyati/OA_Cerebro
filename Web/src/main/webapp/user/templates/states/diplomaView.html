@@ -532,6 +532,35 @@
 			</div>
 		</div>
 		
+		<div class="row">
+			<div class="col-sm-12 form-group">
+				<div class="col-sm-3">
+					<label for="academicYear"
+						   class="labelclass">Academic Year
+					<span style="color:red"><big> * </big></span></label>
+				</div>
+				<div class="col-sm-8"
+					 ng-class="{'has-error':diplomadetailform.academicYear.$invalid &&
+						 							diplomadetailform.academicYear.$dirty}">
+					<select id="academicYear"
+							name="academicYear"
+							class="selectpicker" data-width="100%"
+							data-live-search="true" title="-- Select Academic Year --"
+							tabindex="8"
+							ng-model="vm.qualificationDetail.academicYear"
+							ng-options="academicYear.key as academicYear.value for academicYear in vm.qualificationDetail.academicYearList"
+							required>
+					</select>
+				
+					<span class="help-block has-error">
+						<span ng-show="diplomadetailform.academicYear.$error.required &&
+									   diplomadetailform.academicYear.$dirty">
+								Required Field</span>
+					</span>
+				</div>
+			</div>
+		</div>
+		
 		<div ng-show="vm.qualificationDetail.certifyingBody == 3">
 			<div class="row">
 				<div class="col-sm-12 form-group">

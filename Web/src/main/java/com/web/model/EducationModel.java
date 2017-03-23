@@ -66,6 +66,7 @@ public class EducationModel {
 	}
 	
 	public class SubQualification {
+		private Integer subQualificationId;
 		private String name;
 		private String boardOrUniversity;
 		public String facultyOrCollegeName;
@@ -76,6 +77,12 @@ public class EducationModel {
 		public Integer qualificationMainLevel;
 		public Integer qualificationSubLevel;
 		
+			public Integer getSubQualificationId() {
+				return subQualificationId;
+			}
+			public void setSubQualificationId(Integer subQualificationId) {
+				this.subQualificationId = subQualificationId;
+			}
 			public String getName() {
 				return name;
 			}
@@ -133,6 +140,7 @@ public class EducationModel {
 	}
 	
 	public class QualificationDetail {
+		private Integer qualificationId;
 		private Country country;
 		private State state;
 		private Board board;
@@ -144,6 +152,7 @@ public class EducationModel {
 		private Integer resultStatus;
 		private Integer stream;
 		private Integer noOfAttempts;
+		private Integer academicYear;
 		private String qualificationName;
 		private String specialSubject;
 		private String otherBodyName;
@@ -167,12 +176,19 @@ public class EducationModel {
 		private List<Enums.KeyValuePair> certifyingBodyList;
 		private List<Enums.KeyValuePair> monthList;
 		private List<Enums.KeyValuePair> streamList;
+		private List<Enums.KeyValuePair> academicYearList;
 		private List<Integer> yearList;
 		private List<Country> countryList;
 		private List<State> stateList;
 		private List<Board> allIndiaBoardList;
 		
 			
+			public Integer getQualificationId() {
+				return qualificationId;
+			}
+			public void setQualificationId(Integer qualificationId) {
+				this.qualificationId = qualificationId;
+			}
 			public Country getCountry() {
 				return country;
 			}
@@ -238,6 +254,12 @@ public class EducationModel {
 			}
 			public void setNoOfAttempts(Integer noOfAttempts) {
 				this.noOfAttempts = noOfAttempts;
+			}
+			public Integer getAcademicYear() {
+				return academicYear;
+			}
+			public void setAcademicYear(Integer academicYear) {
+				this.academicYear = academicYear;
 			}
 			public String getQualificationName() {
 				return qualificationName;
@@ -376,6 +398,12 @@ public class EducationModel {
 			}
 			public void setStreamList(List<Enums.KeyValuePair> streamList) {
 				this.streamList = streamList;
+			}
+			public List<Enums.KeyValuePair> getAcademicYearList() {
+				return academicYearList;
+			}
+			public void setAcademicYearList(List<Enums.KeyValuePair> academicYearList) {
+				this.academicYearList = academicYearList;
 			}
 			public List<Integer> getYearList() {
 				return yearList;

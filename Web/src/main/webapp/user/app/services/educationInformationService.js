@@ -13,6 +13,13 @@
 					method: "GET",
 					url: "/Web/rest/educationalInformation/getListofQualification/" + accessTokenParam
 				})
+			},
+			deleteQualification : function(qualificationId, accessTokenParam) {
+				return $http({
+					method: "POST",
+					url: "/Web/rest/educationalInformation/deleteQualificationDetail/" + accessTokenParam,
+					data: qualificationId
+				})
 			}
 		}
 	}

@@ -57,6 +57,9 @@ public class EducationalInformation {
 	@Column(name="Stream")
 	private Integer stream;
 	
+	@Column(name="AcademicYear")
+	private Integer academicYear;
+	
 	@Column(name="NoOfAttempts")
 	private Integer noOfAttempts;
 	
@@ -223,6 +226,14 @@ public class EducationalInformation {
 			this.stream = stream;
 		}
 	
+		public Integer getAcademicYear() {
+			return academicYear;
+		}
+
+		public void setAcademicYear(Integer academicYear) {
+			this.academicYear = academicYear;
+		}
+
 		public Integer getNoOfAttempts() {
 			return noOfAttempts;
 		}

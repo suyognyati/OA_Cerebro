@@ -27,6 +27,12 @@ public class QualificationLevel {
 	
 	@Column(name="QualificationSubLevel")
 	private Integer qualificationSubLevel;
+	
+	@Column(name="MultiReferred")
+	private Boolean multiReferred;
+	
+	@Column(name="CanUseAsQualificationLevel")
+	private Boolean canUseAsQualificationLevel;
 
 		public Integer getQualificationLevelId() {
 			return qualificationLevelId;
@@ -72,5 +78,41 @@ public class QualificationLevel {
 	
 		public void setQualificationSubLevel(Integer qualificationSubLevel) {
 			this.qualificationSubLevel = qualificationSubLevel;
+		}
+
+		/**
+		 * @return It will return true or false
+		 * <p><b>true</b> represents Qualification Level can be referred by multiple qualification of this level</p>
+		 * <p><b>false</b> represents Qualification Level can be referred by only one qualification of this level</p>
+		 * */
+		public Boolean getMultiReferred() {
+			return multiReferred;
+		}
+
+		/**
+		 * @param multiReferred can be true or false
+		 * <p>If true then Qualification Level can be referred by multiple qualification of this level for given user</p>
+		 * <p>If false then Qualification Level can be referred by only one qualification of this level for given user</p>
+		 * */
+		public void setMultiReferred(Boolean multiReferred) {
+			this.multiReferred = multiReferred;
+		}
+
+		/**
+		 * @return It will return true or false 
+		 * <p><b>true</b> represents it can be refer as qualification level</p>
+		 * <p><b>false</b> represents only main level and not to be used to refer as Qualification Level</p> 
+		 * */
+		public Boolean getCanUseAsQualificationLevel() {
+			return canUseAsQualificationLevel;
+		}
+
+		/**
+		 * @param canUseAsQualificationLevel It can be true or false 
+		 * <p>If true then it can be refer as qualification level</p> 
+		 * <p>If false then it is only main level and not to be use to refer as Qualification Level</p> 
+		 * */
+		public void setCanUseAsQualificationLevel(Boolean canUseAsQualificationLevel) {
+			this.canUseAsQualificationLevel = canUseAsQualificationLevel;
 		}
 }

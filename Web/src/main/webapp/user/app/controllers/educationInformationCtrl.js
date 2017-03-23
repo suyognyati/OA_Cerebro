@@ -41,15 +41,37 @@
 			/*vm.listofQualification = {};*/
         });
 		
-		vm.qualificationDetail = function(qualificationMainLevel, qualificationSubLevel) {
+		vm.qualificationDetail = function(qualificationMainLevel, qualificationId) {
 			var view = mapView(qualificationMainLevel);
 						
-			$state.go("qualificationDetail", {qualification:view ,qualificationMainLevel:qualificationMainLevel, qualificationSubLevel:qualificationSubLevel});
+			$state.go("qualificationDetail", {qualification:view ,qualificationMainLevel:qualificationMainLevel, qualificationId:qualificationId});
 		}
 		
 		vm.createNewQualification = function(qualificationMainLevel, qualificationSubLevel) {
 			var view = mapView(qualificationMainLevel);						
 			$state.go("qualificationDetail", {qualification:view ,qualificationMainLevel:qualificationMainLevel, qualificationSubLevel:qualificationSubLevel, newQualification:true});
+		}
+		
+		vm.deleteQualification = function(qualificationId, qualificationName) {
+			var qualificationNameTemp; 
+			if(qualificationName != null && qualificationName != "") {
+				qualificationNameTemp = "details of " + qualificationName;
+			}
+			var confirmation = confirm("Are you sure to delete " + qualificationNameTemp);
+			if(confirmation == true) {
+				educationInformationService.deleteQualification(qualificationId, vm.accessTokenParam)
+				.success(function (data, status, headers, config) {
+					vm.returnstatus = data;
+					if(vm.returnstatus != null && vm.returnstatus.success == true) {
+						$state.reload("educationInformation", {success: false});
+					} else {
+						$window.scrollTo(0, 0);
+					}
+				})
+				.error(function (data, status, headers, config) {
+					
+		        });
+			}
 		}
 		
 		var mapView = function(qualificationMainLevel) {

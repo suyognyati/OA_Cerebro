@@ -29,8 +29,26 @@ public class EducationalInformationServiceImpl implements EducationalInformation
 	}
 	
 	@Override
+	public EducationalInformation getByEducationalInformationId(User user, Integer educationalInformationId) {
+		return educationalInformationJpaRepository.getByUserAndEducationalInformationId(user, educationalInformationId);
+	}
+	
+	@Override
 	public Boolean saveEducationalInformation(EducationalInformation educationalInformation) {
 		educationalInformationJpaRepository.save(educationalInformation);
 		return true;
+	}
+	
+	@Override
+	public Boolean deleteEducationalInformation(User user, Integer educationalInformationId) {
+		Boolean success = false;
+		EducationalInformation educationalInformation = getByEducationalInformationId(user, educationalInformationId);
+		if(educationalInformation != null) {
+			educationalInformationJpaRepository.delete(educationalInformationId);
+			success = true;
+		} else {
+			success = false;
+		}
+		return success;
 	}
 }

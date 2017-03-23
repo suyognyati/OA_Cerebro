@@ -36,11 +36,10 @@ public class EducationalInformationRestController {
 		return educationalInformationService.getListofQualification(session.getCurrentUser());
 	}
 	
-	@RequestMapping(value="/getQualificationDetail/{qualificationMainLevel}/{qualificationSubLevel}", method=RequestMethod.GET)
+	@RequestMapping(value="/getQualificationDetail/{qualificationId}", method=RequestMethod.GET)
 	public EducationModel.QualificationDetail getQualificationDetail(
-			@PathVariable(value="qualificationMainLevel") Integer qualificationMainLevel,
-			@PathVariable(value="qualificationSubLevel") Integer qualificationSubLevel){
-		return educationalInformationService.getQualificationDetail(session.getCurrentUser(), qualificationMainLevel, qualificationSubLevel);
+			@PathVariable(value="qualificationId") Integer qualificationId){
+		return educationalInformationService.getQualificationDetail(session.getCurrentUser(), qualificationId);
 	}
 	
 	@RequestMapping(value="/getNewQualification/{qualificationMainLevel}", method=RequestMethod.GET)
@@ -64,6 +63,26 @@ public class EducationalInformationRestController {
 				successMessage = "Saved successfully";
 			else
 				errorMessage = "Error while saving";
+		} else {
+			success = false;
+			errorMessage = "Invalid input parameters";
+		}		
+		JSONObject jsonObject = StaticMethods.ResponseJson(success, successMessage, errorMessage);		
+		return jsonObject.toJSONString();
+	}
+	
+	@RequestMapping(value="/deleteQualificationDetail/", method=RequestMethod.POST)
+	public String deleteQualificationDetail(@RequestBody Integer qualificationId){
+		//EducationModel.QualificationDetail qd = educationalModel.getQualificationDetail();
+		Boolean success = false;
+		String successMessage = "";
+		String errorMessage = "";
+		if(qualificationId != null) {
+			success = educationalInformationService.deleteQualificationDetail(session.getCurrentUser(), qualificationId);
+			if(success)
+				successMessage = "Removed successfully";
+			else
+				errorMessage = "Error while removing";
 		} else {
 			success = false;
 			errorMessage = "Invalid input parameters";

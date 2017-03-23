@@ -14,14 +14,14 @@
 		
 		var vm = this;	
 		var qualificationMainLevel = $state.params.qualificationMainLevel;
-		var qualificationSubLevel = $state.params.qualificationSubLevel;
+		var qualificationId = $state.params.qualificationId;
 		var newQualification = $state.params.newQualification;
 		
 		vm.accessToken = $window.bearer_token;
 		vm.accessTokenParam = "?access_token=" + vm.accessToken;
 
 		vm.getQualificationDetail = function() {
-			qualificationDetailService.getQualificationDetail(qualificationMainLevel, qualificationSubLevel, vm.accessTokenParam)
+			qualificationDetailService.getQualificationDetail(qualificationId, vm.accessTokenParam)
 			.success(function (data, status, headers, config) {
 				vm.qualificationDetail = data;
 				//Doing initial assignments for qualification detail
@@ -84,7 +84,7 @@
 				qualificationDetail.qualificationMainLevel = parseInt(qualificationMainLevel, 10);
 			}
 			if(qualificationDetail.qualificationSubLevel == null) {
-				qualificationDetail.qualificationSubLevel = parseInt(qualificationSubLevel, 10);
+				qualificationDetail.qualificationSubLevel = parseInt(qualificationId, 10);
 			}
 			if(qualificationDetail.stateList != null && qualificationDetail.allIndiaBoardList != null) {
 				for(var i = 0; i < qualificationDetail.stateList.length; i++) {
@@ -157,9 +157,9 @@
 			switch(vm.qualificationDetail.qualificationMainLevel) {
 				case 1: boardList = vm.qualificationDetail.state.sscBoardList;
 						break;
-				case 2: boardList = vm.qualificationDetail.state.hscBoardList;
+				case 3: boardList = vm.qualificationDetail.state.hscBoardList;
 						break;
-				case 3: boardList = vm.qualificationDetail.state.diplomaBoardList;
+				case 4: boardList = vm.qualificationDetail.state.diplomaBoardList;
 						break;
 				default:boardList = {};
 			}

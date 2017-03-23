@@ -69,16 +69,23 @@ public class EducationalInformationRCServiceImpl implements EducationalInformati
 			//Creating subqualification object
 			EducationModel educationalModel = new EducationModel();
 			SubQualification subQualification = educationalModel.new SubQualification();
+			subQualification.setSubQualificationId(educationalInformation.getEducationalInformationId());
 			if(educationalInformation.getQualificationName() == null || educationalInformation.getQualificationName() == "") {
 				subQualification.setName(educationalInformation.getQualificationLevel().getName());
 			} else {
 				subQualification.setName(educationalInformation.getQualificationName());
 			}
-			if(educationalInformation.getCertifyingBody() == Enums.CertifyingBody.Board.getId()
-					&& educationalInformation.getBoard() != null)
-				subQualification.setBoardOrUniversity(educationalInformation.getBoard().getBoardName());
-			else if(educationalInformation.getCertifyingBody() == Enums.CertifyingBody.University.getId())
-				subQualification.setBoardOrUniversity("University"/*educationalInformation.getNameOfUniversity()*/);
+			if(educationalInformation.getIsLocalBody()) {
+				if(educationalInformation.getCertifyingBody() == Enums.CertifyingBody.Board.getId()
+						&& educationalInformation.getBoard() != null)
+					subQualification.setBoardOrUniversity(educationalInformation.getBoard().getBoardName());
+				else if(educationalInformation.getCertifyingBody() == Enums.CertifyingBody.University.getId())
+					subQualification.setBoardOrUniversity("University"/*educationalInformation.getNameOfUniversity()*/);
+				else if(educationalInformation.getCertifyingBody() == Enums.CertifyingBody.Other.getId())
+					subQualification.setBoardOrUniversity(educationalInformation.getOtherBodyName());
+			} else {
+				subQualification.setBoardOrUniversity(educationalInformation.getForeignBody_BoardUniversityName());
+			}
 			subQualification.setFacultyOrCollegeName(educationalInformation.getSchoolCollegeName());
 			if(educationalInformation.getPassingMonth() != null) {
 				subQualification.setPassingMonth(Enums.Month.get(educationalInformation.getPassingMonth()).name());
@@ -98,14 +105,98 @@ public class EducationalInformationRCServiceImpl implements EducationalInformati
 	}
 	
 	@Override
-	public QualificationDetail getQualificationDetail(User user, Integer qualificationMainLevel, Integer qualificationSubLevel) {
-		QualificationLevel qualificationLevelObject = qualificationLevelService.getByMainAndSubLevel(qualificationMainLevel, qualificationSubLevel);
-		EducationalInformation educationalInformation = educationalInformationService.getByUserAndQualificationLevel(user, qualificationLevelObject);
+	public QualificationDetail getQualificationDetail(User user, Integer qualificationId) {
+		EducationalInformation educationalInformation  = null;
+		educationalInformation = educationalInformationService.getByEducationalInformationId(user, qualificationId);
 		
+		maxAcademicYear = 3;
+		QualificationDetail qualificationDetail = createQualificationDetailObject(educationalInformation);
+				
+		return qualificationDetail;
+	}
+
+	public QualificationDetail getNewQualification(User user, Integer qualificationMainLevel) {
+		QualificationLevel qualificationLevelObject = qualificationLevelService.getByMainAndSubLevel(qualificationMainLevel, 0);
+		EducationalInformation educationalInformation = null;
+		
+		if(qualificationLevelObject.getMultiReferred() == false) {
+			educationalInformation = educationalInformationService.getByUserAndQualificationLevel(user, qualificationLevelObject);
+		}
+		
+		maxAcademicYear = 3;
+		QualificationDetail qualificationDetail = createQualificationDetailObject(educationalInformation);
+				
+		return qualificationDetail;
+	}
+	
+	@Override
+	public Boolean saveQualificationDetail(User user, QualificationDetail qualificationDetail) {
+		//Getting qualificationlevelobject to search for respected educational information
+		QualificationLevel qualificationLevelObject = qualificationLevelService.getByMainAndSubLevel(qualificationDetail.getQualificationMainLevel(), 0);
+		if(qualificationLevelObject == null)
+			return false;
+		
+		EducationalInformation educationalInformation = null;
+		//Finding educational information for qualificationId of user
+		if(qualificationLevelObject.getMultiReferred())
+			educationalInformation = educationalInformationService.getByEducationalInformationId(user, qualificationDetail.getQualificationId());
+		else
+			educationalInformation = educationalInformationService.getByUserAndQualificationLevel(user, qualificationLevelObject);
+		
+		//if educational information not found
+		if(educationalInformation == null) {
+			educationalInformation = new EducationalInformation();
+			educationalInformation.setUser(user);
+		}
+		
+		educationalInformation.setCountry(qualificationDetail.getCountry());
+		educationalInformation.setState(qualificationDetail.getState());
+		educationalInformation.setBoard(qualificationDetail.getBoard());
+		educationalInformation.setUniversity(qualificationDetail.getUniversity());
+		educationalInformation.setForeignBody_BoardUniversityName(qualificationDetail.getForeignBody_BoardUniversityName());
+		educationalInformation.setForeignBody_AreaStdCodePhone(qualificationDetail.getForeignBody_AreaStdCodePhone());
+		educationalInformation.setForeignBody_EmailId(qualificationDetail.getForeignBody_EmailId());
+		educationalInformation.setForeignBody_URL(qualificationDetail.getForeignBody_URL());
+		educationalInformation.setResultStatus(qualificationDetail.getResultStatus());
+		educationalInformation.setStream(qualificationDetail.getStream());
+		educationalInformation.setNoOfAttempts(qualificationDetail.getNoOfAttempts());
+		educationalInformation.setAcademicYear(qualificationDetail.getAcademicYear());
+		educationalInformation.setQualificationName(qualificationDetail.getQualificationName());
+		educationalInformation.setQualificationLevel(qualificationLevelObject);
+		educationalInformation.setSpecialSubject(qualificationDetail.getSpecialSubject());
+		educationalInformation.setOtherBodyName(qualificationDetail.getOtherBodyName());
+		educationalInformation.setSchoolCollegeAddress(qualificationDetail.getSchoolCollegeAddress());
+		educationalInformation.setCertifyingBody(qualificationDetail.getCertifyingBody());
+		Boolean isLocalBody = qualificationDetail.getIsLocalBody() == 2 ? false : true;
+		educationalInformation.setIsLocalBody(isLocalBody);
+		educationalInformation.setSchoolCollegeName(qualificationDetail.getSchoolCollegeName());
+		educationalInformation.setPassingMonth(qualificationDetail.getPassingMonth());
+		educationalInformation.setPassingYear(qualificationDetail.getPassingYear());
+		educationalInformation.setExamSeatNo(qualificationDetail.getExamSeatNo());
+		educationalInformation.setMarksheetNo(qualificationDetail.getMarksheetNo());
+		educationalInformation.setEvaluationType(qualificationDetail.getEvaluationType());
+		educationalInformation.setMarksObtain(qualificationDetail.getMarksObtain());
+		educationalInformation.setTotalMarks(qualificationDetail.getTotalMarks());
+		educationalInformation.setPercentage(qualificationDetail.getPercentage());
+		educationalInformation.setGrade(qualificationDetail.getGrade());
+		educationalInformation.setCgpa(qualificationDetail.getCgpa());
+		
+		return educationalInformationService.saveEducationalInformation(educationalInformation);
+	}
+	
+	public Boolean deleteQualificationDetail(User user, Integer qualificationId) {
+		return educationalInformationService.deleteEducationalInformation(user, qualificationId);
+	}
+	
+	private Integer maxAcademicYear = 3;
+	
+	private QualificationDetail createQualificationDetailObject(EducationalInformation educationalInformation)
+	{
 		EducationModel educationModel = new EducationModel();
 		QualificationDetail qualificationDetail = educationModel.new QualificationDetail();
 		
 		if(educationalInformation != null) {
+			qualificationDetail.setQualificationId(educationalInformation.getEducationalInformationId());
 			qualificationDetail.setCountry(educationalInformation.getCountry());
 			qualificationDetail.setState(educationalInformation.getState());
 			qualificationDetail.setBoard(educationalInformation.getBoard());
@@ -117,6 +208,7 @@ public class EducationalInformationRCServiceImpl implements EducationalInformati
 			qualificationDetail.setResultStatus(educationalInformation.getResultStatus());
 			qualificationDetail.setStream(educationalInformation.getStream());
 			qualificationDetail.setNoOfAttempts(educationalInformation.getNoOfAttempts());
+			qualificationDetail.setAcademicYear(educationalInformation.getAcademicYear());
 			qualificationDetail.setQualificationName(educationalInformation.getQualificationName());
 			qualificationDetail.setQualificationMainLevel(educationalInformation.getQualificationLevel().getQualificationMainLevel());
 			qualificationDetail.setQualificationSubLevel(educationalInformation.getQualificationLevel().getQualificationSubLevel());
@@ -145,88 +237,13 @@ public class EducationalInformationRCServiceImpl implements EducationalInformati
 		qualificationDetail.setCountryList(geoLocationService.getCountryList());
 		qualificationDetail.setStateList(geoLocationService.getStateListByCountryName("India"));
 		qualificationDetail.setAllIndiaBoardList(boardService.getBoardList(null));
+		qualificationDetail.setAcademicYearList(Enums.AcademicYear.getEnumList(maxAcademicYear));
 		
 		TimeZone timeZone = TimeZone.getTimeZone("UTC");
 		Calendar calendar = Calendar.getInstance(timeZone);
-		int year = calendar.get(Calendar.YEAR);
-		
+		int year = calendar.get(Calendar.YEAR);		
 		qualificationDetail.setYearListRange(year);
 		
 		return qualificationDetail;
-	}
-
-	public QualificationDetail getNewQualification(User user, Integer qualificationMainLevel) {
-		EducationModel educationModel = new EducationModel();
-		QualificationDetail qualificationDetail = educationModel.new QualificationDetail();
-		
-		if(qualificationMainLevel < 4) {
-			return getQualificationDetail(user, qualificationMainLevel, 0);
-		}
-		
-		qualificationDetail.setResultStatusList(Enums.ResultStatus.getEnumList());
-		qualificationDetail.setCertifyingBodyList(Enums.CertifyingBody.getEnumList());
-		qualificationDetail.setMonthList(Enums.Month.getEnumList());
-		qualificationDetail.setStreamList(Enums.Stream.getEnumList());
-		qualificationDetail.setCountryList(geoLocationService.getCountryList());
-		qualificationDetail.setStateList(geoLocationService.getStateListByCountryName("India"));
-		qualificationDetail.setAllIndiaBoardList(boardService.getBoardList(null));
-		
-		TimeZone timeZone = TimeZone.getTimeZone("UTC");
-		Calendar calendar = Calendar.getInstance(timeZone);
-		int year = calendar.get(Calendar.YEAR);
-		
-		qualificationDetail.setYearListRange(year);
-		
-		return qualificationDetail;
-	}
-	
-	@Override
-	public Boolean saveQualificationDetail(User user, QualificationDetail qualificationDetail) {
-		//Getting qualificationlevelobject to search for respected educational information
-		QualificationLevel qualificationLevelObject = qualificationLevelService.getByMainAndSubLevel(qualificationDetail.getQualificationMainLevel(), qualificationDetail.getQualificationSubLevel());
-		if(qualificationLevelObject == null)
-			return false;
-		
-		EducationalInformation educationalInformation = null;
-		//Finding educational information for qualification level of user
-		educationalInformation = educationalInformationService.getByUserAndQualificationLevel(user, qualificationLevelObject);
-		//if educational information not found
-		if(educationalInformation == null) {
-			educationalInformation = new EducationalInformation();
-			educationalInformation.setUser(user);
-		}
-		
-		educationalInformation.setCountry(qualificationDetail.getCountry());
-		educationalInformation.setState(qualificationDetail.getState());
-		educationalInformation.setBoard(qualificationDetail.getBoard());
-		educationalInformation.setUniversity(qualificationDetail.getUniversity());
-		educationalInformation.setForeignBody_BoardUniversityName(qualificationDetail.getForeignBody_BoardUniversityName());
-		educationalInformation.setForeignBody_AreaStdCodePhone(qualificationDetail.getForeignBody_AreaStdCodePhone());
-		educationalInformation.setForeignBody_EmailId(qualificationDetail.getForeignBody_EmailId());
-		educationalInformation.setForeignBody_URL(qualificationDetail.getForeignBody_URL());
-		educationalInformation.setResultStatus(qualificationDetail.getResultStatus());
-		educationalInformation.setStream(qualificationDetail.getStream());
-		educationalInformation.setNoOfAttempts(qualificationDetail.getNoOfAttempts());
-		educationalInformation.setQualificationName(qualificationDetail.getQualificationName());
-		educationalInformation.setQualificationLevel(qualificationLevelObject);
-		educationalInformation.setSpecialSubject(qualificationDetail.getSpecialSubject());
-		educationalInformation.setOtherBodyName(qualificationDetail.getOtherBodyName());
-		educationalInformation.setSchoolCollegeAddress(qualificationDetail.getSchoolCollegeAddress());
-		educationalInformation.setCertifyingBody(qualificationDetail.getCertifyingBody());
-		Boolean isLocalBody = qualificationDetail.getIsLocalBody() == 2 ? false : true;
-		educationalInformation.setIsLocalBody(isLocalBody);
-		educationalInformation.setSchoolCollegeName(qualificationDetail.getSchoolCollegeName());
-		educationalInformation.setPassingMonth(qualificationDetail.getPassingMonth());
-		educationalInformation.setPassingYear(qualificationDetail.getPassingYear());
-		educationalInformation.setExamSeatNo(qualificationDetail.getExamSeatNo());
-		educationalInformation.setMarksheetNo(qualificationDetail.getMarksheetNo());
-		educationalInformation.setEvaluationType(qualificationDetail.getEvaluationType());
-		educationalInformation.setMarksObtain(qualificationDetail.getMarksObtain());
-		educationalInformation.setTotalMarks(qualificationDetail.getTotalMarks());
-		educationalInformation.setPercentage(qualificationDetail.getPercentage());
-		educationalInformation.setGrade(qualificationDetail.getGrade());
-		educationalInformation.setCgpa(qualificationDetail.getCgpa());
-		
-		return educationalInformationService.saveEducationalInformation(educationalInformation);
 	}
 }

@@ -18,4 +18,5 @@ public interface EducationalInformationJpaRepository extends JpaRepository<Educa
 		findByUserOrderByQualificationLevelQualificationMainLevelDescQualificationLevelQualificationSubLevelDesc
 		(User user);
 	EducationalInformation getByUserAndQualificationLevel(User user, QualificationLevel qualificationLevel);
+	EducationalInformation getByUserAndEducationalInformationId(User user, Integer educationalInformationId);
 }

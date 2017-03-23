@@ -8,10 +8,10 @@
 	
 	function QualificationDetailService($http) {
 		return {
-			getQualificationDetail : function(qualificationMainLevel, qualificationSubLevel, accessTokenParam) {
+			getQualificationDetail : function(qualificationId, accessTokenParam) {
 				return $http({
 					method: "GET",
-					url: "/Web/rest/educationalInformation/getQualificationDetail/" + qualificationMainLevel + "/" + qualificationSubLevel + accessTokenParam
+					url: "/Web/rest/educationalInformation/getQualificationDetail/" + qualificationId + accessTokenParam
 				})
 			},
 			getNewQualification : function(qualificationMainLevel, accessTokenParam) {

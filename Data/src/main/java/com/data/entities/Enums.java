@@ -26,38 +26,6 @@ public class Enums {
 		}
 	}
 	
-	public enum EducationalYear {
-		First(1, "1st Year"), 
-		Second(2, "2nd Year"),
-		Third(3, "3rd Year"),
-		Fourth(4, "4th Year"),
-		Fifth(5, "5th Year"),
-		Sixth(6, "6th Year"),
-		Seventh(7, "7th Year");
-		
-		private int id;
-		private String value;
-		private static final Map<Integer, EducationalYear> lookup = new HashMap<Integer, EducationalYear>();
-		private static final List<KeyValuePair> enumList = new ArrayList<KeyValuePair>();
-		
-		private EducationalYear(int id, String value) { this.id = id; this.value = value; }
-		
-		static {
-			for (EducationalYear s : EnumSet.allOf(EducationalYear.class)) {
-				lookup.put(s.getId(), s);
-				KeyValuePair ms = new KeyValuePair();
-				ms.key = s.getId();
-				ms.value = s.getValue();
-				enumList.add(ms);
-			}
-		}
-		
-		public int getId() { return id; }
-		public String getValue() { return value; }
-		public static EducationalYear get(int id) { return lookup.get(id); }
-		public static List<KeyValuePair> getEnumList() { return enumList; }
-	}
-	
 	public enum Gender {
 		//Select(0, "-- Select Gender --"),
 		Male(1, "Male"), 
@@ -600,7 +568,96 @@ public class Enums {
 
 		public int getId() { return id; }
 		public String getValue() { return value; }
-		public static Month get(int id) { return Stream.get(id); }
+		public static Stream get(int id) { return lookup.get(id); }
 		public static List<KeyValuePair> getEnumList() { return enumList; }
+	}
+
+	public enum AcademicYear {
+		First(1, "1st Year"), 
+		Second(2, "2nd Year"),
+		Third(3, "3rd Year"),
+		Fourth(4, "4th Year"),
+		Fifth(5, "5th Year"),
+		Sixth(6, "6th Year"),
+		Seventh(7, "7th Year");
+		
+		private int id;
+		private String value;
+		private static final Map<Integer, AcademicYear> lookup = new HashMap<Integer, AcademicYear>();
+		private static final List<KeyValuePair> academicYearList = new ArrayList<KeyValuePair>();
+		private static final List<KeyValuePair> academicYearListUpto2 = new ArrayList<KeyValuePair>();
+		private static final List<KeyValuePair> academicYearListUpto3 = new ArrayList<KeyValuePair>();
+		private static final List<KeyValuePair> academicYearListUpto4 = new ArrayList<KeyValuePair>();
+		private static final List<KeyValuePair> academicYearListUpto5 = new ArrayList<KeyValuePair>();
+		private static final List<KeyValuePair> academicYearListUpto6 = new ArrayList<KeyValuePair>();
+		private static final List<KeyValuePair> academicYearListUpto7 = new ArrayList<KeyValuePair>();
+		
+		private AcademicYear(int id, String value) { this.id = id; this.value = value; }
+		
+		static {
+			int count = 0;
+			for (AcademicYear s : EnumSet.allOf(AcademicYear.class)) {
+				lookup.put(s.getId(), s);
+				KeyValuePair ms = new KeyValuePair();
+				ms.key = s.getId();
+				ms.value = s.getValue();
+				
+				academicYearList.add(ms);
+				if(count < 2)
+					academicYearListUpto2.add(ms);
+				if(count < 3)
+					academicYearListUpto3.add(ms);
+				if(count < 4)
+					academicYearListUpto4.add(ms);
+				if(count < 5)
+					academicYearListUpto5.add(ms);
+				if(count < 6)
+					academicYearListUpto6.add(ms);
+				if(count < 7)
+					academicYearListUpto7.add(ms);
+				count++;
+			}
+		}
+		
+		public int getId() { return id; }
+		public String getValue() { return value; }
+		public static AcademicYear get(int id) { return lookup.get(id); }
+		public static List<KeyValuePair> getEnumList() { return academicYearList; }
+		public static List<KeyValuePair> getEnumList(Integer upto) {
+			/*List<KeyValuePair> temp = null;*/
+			switch(upto)
+			{			
+				case 2:
+					return academicYearListUpto2;
+					/*temp = academicYearListUpto2;
+					break;*/
+				case 3:
+					return academicYearListUpto3;
+					/*temp = academicYearListUpto3;
+					break;*/
+				case 4:
+					return academicYearListUpto4;
+					/*temp = academicYearListUpto4;
+					break;*/
+				case 5:
+					return academicYearListUpto5;
+					/*temp = academicYearListUpto5;
+					break;*/
+				case 6:
+					return academicYearListUpto6;
+					/*temp = academicYearListUpto6;
+					break;*/
+				case 7:
+					return academicYearListUpto7;
+					/*temp = academicYearListUpto7;
+					break;*/
+				default:
+					return academicYearList;
+					/*temp = academicYearList;
+					break;*/
+			}
+			
+			//return academicYearList; 
+		}
 	}
 }
