@@ -3,9 +3,11 @@ package com.web.services.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.data.entities.StudentCredentials;
 import com.data.entities.User;
 import com.data.entities.UserDetail;
 import com.data.entities.UserRole;
+import com.data.services.StudentCredentialsService;
 import com.data.services.UserDetailService;
 import com.data.services.UserRoleService;
 import com.data.services.UserService;
@@ -23,6 +25,9 @@ public class RegisterRCServiceImpl implements RegisterRCService {
 	
 	@Autowired
 	UserDetailService userDetailService;
+	
+	@Autowired
+	StudentCredentialsService studentCredentialsService;
 	
 	public Boolean IsUserAvailable(String userName) {
 		User user = userService.getByUserName(userName);
@@ -52,6 +57,11 @@ public class RegisterRCServiceImpl implements RegisterRCService {
 		userRole.setUserName(user);
 		userRole.setRole("ROLE_USER");
 		userRole = userRoleService.save(userRole);
+		
+		StudentCredentials studentCredential = new StudentCredentials();
+		studentCredential.setClient_id(userDetailModel.getUserName());
+		studentCredential.setClient_secret(userDetailModel.getPassword());
+		studentCredentialsService.createStudent(studentCredential, 60*60, 24*60*60);
 		
 		return true;
 	}
