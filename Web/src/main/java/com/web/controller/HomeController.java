@@ -54,12 +54,55 @@ public class HomeController {
 	
 	@RequestMapping(value = { "user/" }, method = RequestMethod.GET)
 	public String userPage(ModelMap model) {
-		session.setCurrentUserName();
+		/*session.setCurrentUserName();
 		session.setCurrentUser();
 		session.setCurrentUserDetail();
 		model.addAttribute("user", session.getCurrentUser());
+		model.addAttribute("userdetail", session.getCurrentUserDetail());*/
+		String userName = session.getCurrentUserName();
+		String accessTokenValue = "";
+		Collection<OAuth2AccessToken> accessTokens = null;
+		if(userName != null && userName != "") {
+			accessTokens = tokenStore.findTokensByClientId(userName);
+	        for(OAuth2AccessToken accessToken : accessTokens) {
+	        	if(accessToken.isExpired() == false) {
+	        		accessTokenValue = accessToken.getValue();
+	        		break;	
+	        	}
+	        }
+		}
+		/*if(accessTokenValue == null || accessTokenValue == "") {
+			return "redirect:/user/";
+		}*/
+		
+		model.addAttribute("Bearer", accessTokenValue);
+		model.addAttribute("user", session.getCurrentUser());
 		model.addAttribute("userdetail", session.getCurrentUserDetail());
-		return "user/UserPage-topnavbar";
+		return "user/UserPageView";
+	}
+	
+	@RequestMapping(value = { "user/studentview/" }, method = RequestMethod.GET)
+	public String studentViewPage(ModelMap model) {
+		String userName = session.getCurrentUserName();
+		String accessTokenValue = "";
+		Collection<OAuth2AccessToken> accessTokens = null;
+		if(userName != null && userName != "") {
+			accessTokens = tokenStore.findTokensByClientId(userName);
+	        for(OAuth2AccessToken accessToken : accessTokens) {
+	        	if(accessToken.isExpired() == false) {
+	        		accessTokenValue = accessToken.getValue();
+	        		break;	
+	        	}
+	        }
+		}
+		if(accessTokenValue == null || accessTokenValue == "") {
+			return "redirect:/user/";
+		}
+		
+		model.addAttribute("Bearer", accessTokenValue);
+		model.addAttribute("user", session.getCurrentUser());
+		model.addAttribute("userdetail", session.getCurrentUserDetail());
+		return "user/UserPageView";
 	}
 
 	@RequestMapping(value = { "vendor/" }, method = RequestMethod.GET)
