@@ -15,5 +15,6 @@
 		<class>com.data.entities.OccupationReservation</class>
 		<class>com.data.entities.QualificationLevel</class>
 		<class>com.data.entities.Board</class>
+		<class>com.data.entities.University</class>
 	</persistence-unit>
 </persistence>

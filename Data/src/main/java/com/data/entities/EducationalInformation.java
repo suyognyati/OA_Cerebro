@@ -37,7 +37,7 @@ public class EducationalInformation {
 	
 	@ManyToOne
 	@JoinColumn(name="FK_University")
-	private Board university;
+	private University university;
 	
 	@Column(name="ForeignBody_BoardUniversityName")
 	private String foreignBody_BoardUniversityName; 
@@ -167,11 +167,11 @@ public class EducationalInformation {
 		/**
 		 * @return It returns university name if exam is conducted under university
 		 * */
-		public Board getUniversity() {
+		public University getUniversity() {
 			return university;
 		}
 
-		public void setUniversity(Board university) {
+		public void setUniversity(University university) {
 			this.university = university;
 		}
 		

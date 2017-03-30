@@ -46,6 +46,9 @@ public class State {
 	@Where(clause = "ForDiploma = 1")
 	private List<Board> diplomaBoardList;
 	
+	@OneToMany(mappedBy = "state", fetch = FetchType.EAGER)
+	private List<University> universityList;
+	
 		//StateId
 		public Integer getStateId() {
 			return stateId;
@@ -88,6 +91,14 @@ public class State {
 		}
 		public void setDiplomaBoardList(List<Board> diplomaBoardList) {
 			this.diplomaBoardList = diplomaBoardList;
+		}
+		
+		//Universiity List
+		public List<University> getUniversityList() {
+			return universityList;
+		}
+		public void setUniversityList(List<University> universityList) {
+			this.universityList = universityList;
 		}
 		
 		

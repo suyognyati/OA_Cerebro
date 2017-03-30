@@ -8,6 +8,7 @@ import com.data.entities.Country;
 import com.data.entities.Enums;
 import com.data.entities.Enums.KeyValuePair;
 import com.data.entities.State;
+import com.data.entities.University;
 
 public class EducationModel {
 	
@@ -144,7 +145,7 @@ public class EducationModel {
 		private Country country;
 		private State state;
 		private Board board;
-		private Board university;
+		private University university;
 		private String foreignBody_BoardUniversityName;
 		private String foreignBody_AreaStdCodePhone;
 		private String foreignBody_EmailId;
@@ -207,10 +208,10 @@ public class EducationModel {
 			public void setBoard(Board board) {
 				this.board = board;
 			}
-			public Board getUniversity() {
+			public University getUniversity() {
 				return university;
 			}
-			public void setUniversity(Board university) {
+			public void setUniversity(University university) {
 				this.university = university;
 			}
 			public String getForeignBody_BoardUniversityName() {

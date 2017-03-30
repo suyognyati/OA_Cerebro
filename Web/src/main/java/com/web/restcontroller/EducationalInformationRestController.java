@@ -57,7 +57,7 @@ public class EducationalInformationRestController {
 		Boolean success = false;
 		String successMessage = "";
 		String errorMessage = "";
-		if(qd.getQualificationMainLevel() != null && qd.getQualificationSubLevel() != null) {
+		if(qd.getQualificationMainLevel() != null) {
 			success = educationalInformationService.saveQualificationDetail(session.getCurrentUser(), educationalModel.getQualificationDetail());
 			if(success)
 				successMessage = "Saved successfully";

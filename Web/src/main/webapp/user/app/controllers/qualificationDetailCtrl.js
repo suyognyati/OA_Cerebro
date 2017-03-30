@@ -65,6 +65,9 @@
 			if(qualificationDetail.board != null) {
 				qualificationDetail.boardId = qualificationDetail.board.boardId;
 			}
+			if(qualificationDetail.university != null) {
+				qualificationDetail.universityId = qualificationDetail.university.universityId;
+			}
 			if(qualificationDetail.isLocalBody == null) {
 				qualificationDetail.isLocalBody = true;
 			}
@@ -169,6 +172,17 @@
 				}
 			}
 			refreshSelectPickerWithDelay(100);
+		}
+		
+		vm.setSelectedUniversity = function() {
+			if(vm.qualificationDetail != null && vm.qualificationDetail.state != null && vm.qualificationDetail.state.universityList != null) {
+				for(var i = 0; i < vm.qualificationDetail.state.universityList.length; i++) {
+					if(vm.qualificationDetail.universityId == vm.qualificationDetail.state.universityList[i].universityId) {
+						vm.qualificationDetail.university = vm.qualificationDetail.state.universityList[i];
+					}
+				}
+				refreshSelectPickerWithDelay(100);
+			}
 		}
 		
 		vm.calculatePercentage = function() {
