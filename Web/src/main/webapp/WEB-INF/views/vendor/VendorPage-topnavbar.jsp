@@ -10,6 +10,7 @@
 	<link href="<c:url value='/static/css/customnavbar.css' />" rel="stylesheet" />
 	<link href="<c:url value='/static/css/custombootstrap.css' />" rel="stylesheet" />
 	<link href="<c:url value='/vendor/css/vendor.css' />" rel="stylesheet" />
+	<link href="<c:url value='/vendor/css/vendor-dashboard-custom.css' />" rel="stylesheet" />
 
 	<!-- Library Scripts -->
 <script src="<c:url value='/static/js/jquery-1.10.2.js' />"></script>
@@ -20,6 +21,7 @@
 <script src="<c:url value='/static/vendors/ocLazyLoad.min.js' />"></script>
 <script src="<c:url value='/static/js/bootstrap.js' />"></script>
 <script src="<c:url value='/static/js/angular-ui-bootstrap.min.js' />"></script>
+<script src="<c:url value='/vendor/js/vendor.js' />"></script>
 
 	<!-- Application Scripts -->
 <script src="<c:url value='/static/app/app.js' />"></script>
@@ -36,120 +38,60 @@
 		String img_existing_user = "/Web/static/images/existing-user.png";
 		String img_search = "/Web/static/images/search.png";
 		String img_dashboard = "/Web/static/images/dashboard.png";
+		String logoImage = "/Web/vendor/images/c-logo.png";
 	%>
 
-	<div class="container-fluid">
-		<nav class="navbar navbar-default navbar-fixed-top">
-			<div class="container-fluid">
-			    <div class="navbar-header">
-			      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-			        <span class="sr-only">Toggle navigation</span>
-			        <span class="icon-bar"></span>
-			        <span class="icon-bar"></span>
-			        <span class="icon-bar"></span>
-			      </button>
-			      <a class="navbar-brand logo" href="#" style="color: black; font-family: 'Comic Sans MS', cursive, sans-serif; font-size: xx-large;">
-			      	<!-- <span class="glyphicon glyphicon-home"></span> --> 
-			      	Online admission system
-			      </a>
-			    </div>
-			
-			    <!-- Collect the nav links, forms, and other content for toggling -->
-			    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-			    	<ul class="nav navbar-nav navbar-right">
-				    	<li class="dropdown-open">
-				    		<a class="dropdown-toggle" href="#" data-toggle="dropdown">
-				    			<img src= <%=imgsrc %>
-				    				 class="img-circle"
-				    				 width="60px"
-				    				 height="55px">
-				    				 <!-- style="margin-right:20px"> -->
-				    		</a>
-				    		<div class="dropdown-menu" style="width:300px; height:150px; margin:10px;">
-				    			<div class="">
-				    				<div class="col-md-4 col-sm-4" style="padding-top: 15px">
-				    					<img src=<%=imgsrc %> 
-				    						 class="img-circle"
-				    						 width="100px"
-				    						 height="100px">
-				    				</div>
-				    				<div class="col-md-8 col-sm-8" style="padding-left: 50px; padding-top: 10px">
-				    					<label><span>${vendordetail.firstName}</span>&nbsp<span>${vendordetail.lastName}</span></label>
-				    					<br><br>
-				    					<input type="button" class="btn btn-primary" value="View Profile">
-				    					<br><br>
-				    					<a href="<c:url value="/logout" />" class="theme-color">
-				        					<span class="glyphicon glyphicon-log-out"></span> Logout
-				        				</a>
-				    				</div>
-				    			</div>
-				    		</div>
-				    	</li>
-			      	</ul>
-			    </div>
-		    </div>
-		</nav>
-	</div>
+	<header>
+		<div class="container-fluid no-padding">
+			<div class="row no-margin">
+				<div class="col-md-6 no-padding">
+					<img src=<%=logoImage%>>
+					Online Admission Portal
+				</div>
+				<div class="col-md-6 no-padding headernav">
+					<nav>
+						<ul>
+								<li><a ui-sref="vendorHome" class="active">Home</a></li>
+								<li><a ui-sref="existingEntry">User</a></li>
+								<li class="profileBorder">
+									<div class="collapse navbar-collapse"
+										id="bs-example-navbar-collapse-1">
+										<ul class="nav navbar-nav navbar-right">
+											<li class="dropdown-open"><a class="dropdown-toggle no-padding"
+												href="" data-toggle="dropdown"> <img src=<%=imgsrc%>
+													class="img-circle" width="40px" height="35px"> <!-- style="margin-right:20px"> -->
+											</a>
+												<div class="dropdown-menu"
+													style="width: 300px; height: 150px; margin: 10px;">
+													<div class="">
+														<div class="col-md-4 col-sm-4" style="padding-top: 15px">
+															<img src=<%=imgsrc%> class="img-circle" width="100px"
+																height="100px">
+														</div>
+														<div class="col-md-8 col-sm-8"
+															style="padding-left: 50px; padding-top: 10px; color:#333;">
+															<label><span>${vendordetail.firstName}</span>&nbsp<span>${vendordetail.lastName}</span></label>
+															<br>
+													 <input type="button" class="btn btn-primary"
+																value="View Profile"> <br>
+															<br> <a href="<c:url value="/logout" />"
+																class="theme-color logout"> <span
+																class="glyphicon glyphicon-log-out"></span> Logout
+															</a>
+														</div>
+													</div>
+												</div>
+											</li>
+										</ul>
+									</div>
+								</li>
+							</ul>
+						</nav>
+			</div>
+</header>
 
-	<div class="container-fluid" style="margin-top: 8%">
-		<div class="col-md-2 col-sm-2 menubar-div">
-			<div class="sidebar-nav-fixed affix">
-				<div class="panel panel-primary menu-div">
-					<a ui-sref="newUser">
-						<img src= <%=img_new_user%> 
-							class="menu-img">
-					</a>
-					<br/>
-					New entry
-				</div>
-				<br/>
-				<div class="panel panel-primary menu-div">
-					<a ui-sref="existingEntry">
-						<img src= <%=img_existing_user%> 
-							class="menu-img">
-					</a>
-					<br/>
-					Existing entry
-				</div>
-				<br/>
-				<div class="panel panel-primary menu-div">
-					<a ui-sref="search">
-						<img src= <%=img_search%> 
-							class="menu-img">
-					</a>
-					<br>
-					Search
-				</div>
-			</div>
-		</div>
-		
-		<div class="col-md-8 col-sm-8 jumbotron" style="border-radius: 20px;">
-			<div ui-view="view"></div>
-		</div>
-		
-		<div class="col-md-2 col-sm-2 menubar-div">
-			<div class="sidebar-nav-fixed pull-right affix">
-				<div class="">
-					<div class="panel panel-primary menu-div">
-						<a ui-sref="dashboard">
-							<img src= <%=img_dashboard%> 
-								class="menu-img">
-						</a>
-						<br/>
-						Dashboard
-					</div>
-					<br/>
-					<div class="panel panel-primary menu-div">
-						<a ui-sref="collegeList">
-							<img src= <%=img_existing_user%> 
-								class="menu-img">
-						</a>
-						<br/>
-						College List
-					</div>
-				</div>
-			</div>
-		</div>
+	<div class="col-sm-12 no-padding content">
+		<div ui-view="mainview"></div>
 	</div>
 
 </body>

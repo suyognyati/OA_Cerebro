@@ -63,5 +63,11 @@
             });
 			vm.username = "";
 		};
+		
+		vm.newUser = function() {
+			$window.isInvalidUser = false;
+			$window.isLoggedOutUser = false;
+			$state.go("newUser");
+		}
 	};
 }());

@@ -12,14 +12,14 @@
 					var basePath = "";
 					basePath = globalConstants.rootLocation + vendorConstants.vendorLocation;
 		
-				    $urlRouterProvider.otherwise("/vendorHome");
+				    $urlRouterProvider.otherwise("/vendorHome/dashboard");
 					
 					$stateProvider
 					
 					.state("vendorHome",{
 							url: "/vendorHome",
 							views: {
-								"view":{
+								"mainview":{
 				                	templateUrl: basePath + "templates/states/vendorHomeView.html",
 				                	controller:"VendorHomeCtrl as vm",
 								}
@@ -30,6 +30,7 @@
 										name : 'vendor',
 										files : [
 										     basePath + 'app/controllers/vendorHomeCtrl.js'
+										     
 										]
 								
 									})
@@ -40,7 +41,7 @@
 					.state("newUser",{
 						url: "/newUser",
 						views: {
-							"view":{
+							"mainview":{
 			                	templateUrl: basePath + "templates/states/newUserView.html",
 			                	controller:"NewUserCtrl as vm",
 							}
@@ -62,7 +63,7 @@
 					.state("existingEntry",{
 						url: "/existingEntry",
 						views: {
-							"view":{
+							"mainview":{
 			                	templateUrl: basePath + "templates/states/existingUserView.html",
 			                	controller:"ExistingUserCtrl as vm",
 							}
@@ -81,7 +82,7 @@
 						}
 					})
 					
-					.state("search",{
+					.state("vendorHome.search",{
 							url: "/search",
 							views: {
 								"view":{
@@ -102,7 +103,7 @@
 							}
 					})
 				
-					.state("dashboard",{
+					.state("vendorHome.dashboard",{
 						url: "/dashboard",
 						views: {
 							"view":{
@@ -115,7 +116,7 @@
 								return $ocLazyLoad.load({
 									name : 'vendor',
 									files : [
-									     basePath + 'app/controllers/dashboardCtrl.js'
+									     basePath + 'app/controllers/dashboardCtrl.js',
 									]
 							
 								})
@@ -123,7 +124,7 @@
 						}
 				})
 			
-				.state("collegeList",{
+				.state("vendorHome.collegeList",{
 					url: "/collegeList",
 					views: {
 						"view":{

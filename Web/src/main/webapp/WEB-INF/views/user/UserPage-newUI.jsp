@@ -36,20 +36,58 @@
 	String img_existing_user = "/Web/static/images/existing-user.png";
 	String img_search = "/Web/static/images/search.png";
 	String img_dashboard = "/Web/static/images/dashboard.png";
+	String logoImage = "/Web/vendor/images/c-logo.png";
 	String img_logo = "/Web/static/images/logo.jpg";%>
 
-	<div class="header">
-		<div class="container-fluid">
-			<div class="row">
-				<div class="col-sm-2">
-					<img src=<%=img_logo %> class="img-responsive" style="height:100px"/>
+	<header>
+		<div class="container-fluid no-padding">
+			<div class="row no-margin">
+				<div class="col-md-6 no-padding">
+					<img src=<%=logoImage%> class="logo">
+					Online Admission Portal
 				</div>
-				<div class="col-sm-10">
-					<h1 class="headercontent">Online Admission System</h1>
-				</div>
+				<div class="col-md-6 no-padding headernav">
+					<nav>
+						<ul>
+								<li><a ui-sref="vendorHome" class="active">Home</a></li>
+								<li><a ui-sref="existingEntry">User</a></li>
+								<li class="profileBorder">
+									<div class="collapse navbar-collapse"
+										id="bs-example-navbar-collapse-1">
+										<ul class="nav navbar-nav navbar-right">
+											<li class="dropdown-open"><a class="dropdown-toggle no-padding logout"
+												href="" data-toggle="dropdown"> <img src=<%=imgsrc%>
+													class="img-circle" width="40px" height="35px"> <!-- style="margin-right:20px"> -->
+											</a>
+												<div class="dropdown-menu"
+													style="width: 300px; height: 150px; margin: 10px;">
+													<div class="">
+														<div class="col-md-4 col-sm-4" style="padding-top: 15px">
+															<img src=<%=imgsrc%> class="img-circle" width="100px"
+																height="100px">
+														</div>
+														<div class="col-md-8 col-sm-8"
+															style="padding-left: 50px; padding-top: 10px; color:#333;">
+															<label><span>${vendordetail.firstName}</span>&nbsp<span>${vendordetail.lastName}</span></label>
+															<br>
+															<br> <input type="button" class="btn btn-primary"
+																value="View Profile"> <br>
+															<br> <a href="<c:url value="/logout" />"
+																class="theme-color logout"> <span
+																class="glyphicon glyphicon-log-out"></span> Logout
+															</a>
+														</div>
+													</div>
+												</div>
+											</li>
+										</ul>
+									</div>
+								</li>
+							</ul>
+						</nav>
 			</div>
-		</div>
-	</div>
+			
+</header>
 	<div class="section">
 		<nav class="mainMenu">
 			<div class="navbar navbar-inverse">
@@ -87,13 +125,13 @@
 			</div>
 		</div>
 	</div>
-	<div class="footer fixed-bar">
+	<!-- <div class="footer fixed-bar">
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-sm-12 col-sm-custompadding headercontent"></div>
 			</div>
 		</div>
-	</div>
+	</div> -->
 </body>
 
 <script type="text/javascript">
