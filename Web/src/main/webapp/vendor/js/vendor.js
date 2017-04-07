@@ -9,7 +9,7 @@ function setActiveElementOnLeftNav(id) {
 function setActiveElementOnTopNav(id) {
 	var activeelement = $("#" + id);
 	if (!activeelement.hasClass('active')) {
-		$('.navbar-nav li').removeClass('active');
+		$('.headernav nav ul li a').removeClass('active');
 		activeelement.addClass('active');
 	}
 }
@@ -20,8 +20,8 @@ $(document).ready(function(){
         setActiveElementOnLeftNav($parent.attr('id'));       
     });
     
-    $('.navbar-nav li a').click(function(e) {
-        var $parent = $(this).parent();
+    $('.headernav nav ul li a').click(function(e) {
+        var $parent = $(this);
         setActiveElementOnTopNav($parent.attr('id'));
     });    
 });

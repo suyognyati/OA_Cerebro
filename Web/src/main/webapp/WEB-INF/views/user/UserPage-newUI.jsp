@@ -49,45 +49,45 @@
 				<div class="col-md-6 no-padding headernav">
 					<nav>
 						<ul>
-								<li><a ui-sref="vendorHome" class="active">Home</a></li>
-								<li><a ui-sref="existingEntry">User</a></li>
-								<li class="profileBorder">
-									<div class="collapse navbar-collapse"
-										id="bs-example-navbar-collapse-1">
-										<ul class="nav navbar-nav navbar-right">
-											<li class="dropdown-open"><a class="dropdown-toggle no-padding logout"
-												href="" data-toggle="dropdown"> <img src=<%=imgsrc%>
-													class="img-circle" width="40px" height="35px"> <!-- style="margin-right:20px"> -->
-											</a>
-												<div class="dropdown-menu"
-													style="width: 300px; height: 150px; margin: 10px;">
-													<div class="">
-														<div class="col-md-4 col-sm-4" style="padding-top: 15px">
-															<img src=<%=imgsrc%> class="img-circle" width="100px"
-																height="100px">
-														</div>
-														<div class="col-md-8 col-sm-8"
-															style="padding-left: 50px; padding-top: 10px; color:#333;">
-															<label><span>${vendordetail.firstName}</span>&nbsp<span>${vendordetail.lastName}</span></label>
-															<br>
-															<br> <input type="button" class="btn btn-primary"
-																value="View Profile"> <br>
-															<br> <a href="<c:url value="/logout" />"
-																class="theme-color logout"> <span
-																class="glyphicon glyphicon-log-out"></span> Logout
-															</a>
-														</div>
+							<li><a ui-sref="vendorHome" class="active">Home</a></li>
+							<li><a ui-sref="existingEntry">User</a></li>
+							<li class="profileBorder">
+								<div class="collapse navbar-collapse"
+									id="bs-example-navbar-collapse-1">
+									<ul class="nav navbar-nav navbar-right">
+										<li class="dropdown-open"><a class="dropdown-toggle no-padding logout"
+											href="" data-toggle="dropdown"> <img src=<%=imgsrc%>
+												class="img-circle profileimg" width="40px" height="35px">
+										</a>
+											<div class="dropdown-menu"
+												style="width: 300px; height: 150px; margin: 10px;">
+												<div class="">
+													<div class="col-md-4 col-sm-4" style="padding-top: 15px">
+														<img src=<%=imgsrc%> class="img-circle" width="100px"
+															height="100px">
+													</div>
+													<div class="col-md-8 col-sm-8"
+														style="padding-left: 50px; padding-top: 10px; color:#333;">
+														<label><span>${vendordetail.firstName}</span>&nbsp;<span>${vendordetail.lastName}</span></label>
+														<input type="button" class="btn btn-primary"
+															value="View Profile"> <br>
+														<br> <a href="<c:url value="/logout" />"
+															class="theme-color logout"> <span
+															class="glyphicon glyphicon-log-out"></span> Logout
+														</a>
 													</div>
 												</div>
-											</li>
-										</ul>
-									</div>
-								</li>
-							</ul>
-						</nav>
+											</div>
+										</li>
+									</ul>
+								</div>
+							</li>
+						</ul>
+					</nav>
+				</div>
 			</div>
-			
-</header>
+		</div>
+	</header>
 	<div class="section">
 		<nav class="mainMenu">
 			<div class="navbar navbar-inverse">
@@ -110,7 +110,7 @@
 		<div class="main">
 			<div class="row row-custom-margin">
 			    <div class="col-sm-2 left-nav col-sm-custompadding" id="mySidenav">
-					<ul class="nav nav-pills nav-stacked submenu" data-spy="affix" data-offset-top="100">
+					<ul class="nav nav-pills nav-stacked submenu" data-spy="affix" data-offset-top="60">
 						<li id="userDetail"><a ui-sref="userDetail"><i class="glyphicon glyphicon-user"></i> <span id="nav-text0" class="nav-text-display">User Details</span></a></li>
 						<li id="personalDetail"><a ui-sref="personalDetail"><i class="glyphicon glyphicon-briefcase"></i> <span id="nav-text1" class="nav-text-display">Personal Details</span></a></li>
 						<li id="address"><a ui-sref="address"><i class="glyphicon glyphicon-book"></i> <span id="nav-text2" class="nav-text-display">Address Details</span></a></li>

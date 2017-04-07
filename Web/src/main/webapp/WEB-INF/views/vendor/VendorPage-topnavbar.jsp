@@ -51,8 +51,8 @@
 				<div class="col-md-6 no-padding headernav">
 					<nav>
 						<ul>
-								<li><a ui-sref="vendorHome" class="active">Home</a></li>
-								<li><a ui-sref="existingEntry">User</a></li>
+								<li><a ui-sref="vendorHome" class="active" id="home">Home</a></li>
+								<li><a ui-sref="existingEntry" id="user">User</a></li>
 								<li class="profileBorder">
 									<div class="collapse navbar-collapse"
 										id="bs-example-navbar-collapse-1">
