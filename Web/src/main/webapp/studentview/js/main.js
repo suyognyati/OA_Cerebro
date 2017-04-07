@@ -66,7 +66,7 @@ function refreshSelectPickerWithDelay(delay) {
 
 $(document).ready(function(){
 	$(window).bind('scroll', function() {
-        navHeight = $(".header").height();
+        navHeight = $("header").height();
         if($(window).scrollTop() > navHeight) {
         	mainMenuHeight = $(".mainMenu").height()
         	$('nav').addClass('stickToTop');
@@ -83,7 +83,7 @@ $(document).ready(function(){
     
 	$('.submenu').affix({
 		offset: {
-			top: $('.header').height()
+			top: $('header').height()
 		}
 	}); 
     
