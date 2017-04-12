@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.security.oauth2.provider.ClientDetailsService;
 import org.springframework.security.oauth2.provider.approval.ApprovalStore;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
@@ -50,5 +51,15 @@ public class WebConfig extends WebMvcConfigurerAdapter{
 		accessConfirmationController.setClientDetailsService(clientDetailsService);
 		accessConfirmationController.setApprovalStore(approvalStore);
 		return accessConfirmationController;
+	}
+	
+	@Bean
+	public CommonsMultipartResolver multipartResolver(){
+	    CommonsMultipartResolver commonsMultipartResolver = new CommonsMultipartResolver();
+	    commonsMultipartResolver.setDefaultEncoding("utf-8");
+	    long sizeInMB = 500;
+	    sizeInMB = sizeInMB * 1000 * 1000;
+	    commonsMultipartResolver.setMaxUploadSize(sizeInMB);
+	    return commonsMultipartResolver;
 	}
 }

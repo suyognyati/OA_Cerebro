@@ -20,7 +20,12 @@
 <script src="<c:url value='/static/js/angular-ui-bootstrap.min.js' />"></script>
 <script	src="<c:url value='/static/vendors/bootstrap-3.3.6-dist/js/bootstrap.min.js' />"></script>
 <script	src="<c:url value='/static/vendors/select/js/bootstrap-select.js' />"></script>
+<script	src="<c:url value='/static/js/pm-image-editor.js' />"></script>
+<link href="<c:url value='/static/css/pm-image-editor.css' />" rel="stylesheet" />
 <script src="<c:url value='/user/js/main.js' />"></script>
+
+<script src="<c:url value='/static/vendors/pm-image-crop-master/compile/unminified/ng-img-crop.js' />"></script>
+<link href="<c:url value='/static/vendors/pm-image-crop-master/compile/unminified/ng-img-crop.css' />" rel="stylesheet" />
 
 <!-- Application Scripts -->
 <script src="<c:url value='/static/app/app.js' />"></script>
@@ -57,7 +62,7 @@
 									<ul class="nav navbar-nav navbar-right">
 										<li class="dropdown-open"><a class="dropdown-toggle no-padding logout"
 											href="" data-toggle="dropdown"> <img src=<%=imgsrc%>
-												class="img-circle profileimg" width="40px" height="35px">
+												class="img-circle profileimg" width="40px" height="35px"> <!-- style="margin-right:20px"> -->
 										</a>
 											<div class="dropdown-menu"
 												style="width: 300px; height: 150px; margin: 10px;">
@@ -116,7 +121,8 @@
 						<li id="address"><a ui-sref="address"><i class="glyphicon glyphicon-book"></i> <span id="nav-text2" class="nav-text-display">Address Details</span></a></li>
 						<li id="educationInformation"><a ui-sref="educationInformation"><i class="glyphicon glyphicon-education"></i> <span id="nav-text3" class="nav-text-display">Educational Information</span></a></li>
 						<li id="occupationReservation"><a ui-sref="occupationReservation"><i class="glyphicon glyphicon-cog"></i> <span id="nav-text4" class="nav-text-display">Occupation & Reservation</span></a></li>
-						<li id="uploadPhotoSign"><a><i class="glyphicon glyphicon-cloud-upload"></i> <span id="nav-text5" class="nav-text-display">Upload Photo & Signature</span></a></li>
+						<li id="uploadPhotoSign"><a ui-sref="uploadPhotoSign"><i class="glyphicon glyphicon-cloud-upload"></i> <span id="nav-text5" class="nav-text-display">Upload Photo & Signature</span></a></li>
+						<li id="uploadDocuments"><a ui-sref="uploadDocuments"><i class="glyphicon glyphicon-cloud-upload"></i> <span id="nav-text5" class="nav-text-display">Upload Documents</span></a></li>
 					</ul>
 			    </div>
 				<div class="col-sm-10 main-content col-sm-custompadding" id="main-content"> <a class="btn btn-toggleleft nav-button-col" onclick="toggle()"><i class="glyphicon glyphicon-menu-hamburger"></i></a>

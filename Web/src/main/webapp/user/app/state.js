@@ -186,7 +186,49 @@
 									})
 								}]
 							}
-					})				
+					})
+					.state("uploadPhotoSign",{
+						url: "/uploadphotosign",
+						views: {
+							"view":{
+								templateUrl: basePath + "templates/states/uploadPhotoSignView.html",
+								controller:"UploadPhotoSignCtrl as vm",
+							}
+						},
+						resolve: {
+							basicDetail : ['$ocLazyLoad', function($ocLazyLoad){
+								return $ocLazyLoad.load({
+									name : 'admission',
+									files : [
+									     basePath + 'app/controllers/uploadPhotoSignCtrl.js',
+									     basePath + 'app/services/uploadPhotoSignService.js'
+									]
+							
+								})
+							}]
+						}
+					})
+					.state("uploadDocuments",{
+						url: "/uploadDocuments",
+						views: {
+							"view":{
+								templateUrl: basePath + "templates/states/uploadDocumentsView.html",
+								controller:"UploadDocumentsCtrl as vm",
+							}
+						},
+						resolve: {
+							basicDetail : ['$ocLazyLoad', function($ocLazyLoad){
+								return $ocLazyLoad.load({
+									name : 'admission',
+									files : [
+									     basePath + 'app/controllers/uploadDocumentsCtrl.js',
+									     basePath + 'app/services/uploadDocumentsService.js'
+									]
+							
+								})
+							}]
+						}
+					})
 			}]
 		);
 	
