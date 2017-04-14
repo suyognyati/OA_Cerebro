@@ -26,6 +26,8 @@
 		$scope.resImgQuality = 1;
 		$scope.selMinSize = 100;
 		$scope.resImgSize = 200;
+		$scope.enableCrop=true;
+		$scope.showResult=false;
 		//$scope.aspectRatio=1.2;
 		$scope.onChange = function($dataURI) {
 			console.log('onChange fired');
@@ -64,6 +66,11 @@
 			.error(function (data, status, headers, config) {
 				vm.errorMessage = "Error while saving detail";
 			});
+		}
+		
+		$scope.crop = function(showRes) {
+			//$scope.imageDataURI = $scope.resImageDataURI;
+			$scope.showResult = showRes;
 		}
 	};
 	

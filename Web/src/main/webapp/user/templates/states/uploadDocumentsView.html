@@ -1,35 +1,51 @@
 <div class="heading">
 	<h1>
-       	Upload Photo & Sign
+       	Upload Documents
     </h1>
 </div>
 <!-- <form name="userForm" ng-submit="vm.uploadFiles(userForm.$valid)" novalidate> -->
 <form name="userForm" novalidate>
-	<!-- <div class="row">
-		<div class="col-lg-12">
-			<div class="row">
-				<div class="col-lg-12">
-					<input type="file" file-model="vm.myFile" multiple/>
-				</div>
-			</div>
-		</div>
-	</div> -->
 	<div class="row">
 		<div class="col-lg-12">
-			<input type="file" id="file" name="file" 
-				onchange="angular.element(this).scope().getFileDetails(this)" /> 
-		</div>
-	</div>
-	<div class="row">
-		<div class="col-lg-12">
-			<input type="file" id="file" name="file" 
-				onchange="angular.element(this).scope().getFileDetails(this)" /> 
-		</div>
-	</div>
-	<div class="row">
-		<div class="col-lg-12">
-			<input type="file" id="file" name="file"
-				onchange="angular.element(this).scope().getFileDetails(this)" /> 
+			<table class="table table-striped marginForTable">
+				<caption>Please upload following documents</caption>
+				<tbody>
+					<tr>
+						<td><label>SSC Marksheet</label></td>
+						<td><input type="file" id="file" name="file"
+							onchange="angular.element(this).scope().getFileDetails(this)" />
+						</td>
+						<!-- <td><input type="file" file-model="vm.myFile" multiple /></td> -->
+					</tr>
+
+
+
+					<tr>
+						<td><label>School Leaving Certificate</label></td>
+						<td><input type="file" id="file" name="file"
+							onchange="angular.element(this).scope().getFileDetails(this)" />
+						</td>
+					</tr>
+					<tr>
+						<td><label>HSC Marksheet</label></td>
+						<td><input type="file" id="file" name="file"
+							onchange="angular.element(this).scope().getFileDetails(this)" />
+						</td>
+					</tr>
+					<tr>
+						<td><label>Final Year Diploma Marksheet</label></td>
+						<td><input type="file" id="file" name="file"
+							onchange="angular.element(this).scope().getFileDetails(this)" />
+						</td>
+					</tr>
+					<tr class="botttomBorderTable">
+						<td><label>Final Year Degree Marksheet</label></td>
+						<td><input type="file" id="file" name="file"
+							onchange="angular.element(this).scope().getFileDetails(this)" />
+						</td>
+					</tr>
+				</tbody>
+			</table>
 		</div>
 	</div>
 	<!-- <div class="row">
@@ -39,9 +55,10 @@
 		</div>
 	</div> -->
 	<div class="row">
-		<div class="col-lg-12">
-			<input type="button" ng-click="vm.uploadFilesOneByOne()" value="Upload" />
-
+		<div class="col-sm-12 marginForUploadBtn">
+			<input type="button" class="btn-primary" ng-click="vm.uploadFilesOneByOne()" value="Upload" />
+		</div>
+		<div class="col-sm-12 marginForUploadBtn">
 			<!--ADD A PROGRESS BAR ELEMENT.-->
 			<p>
 				<progress id="pro" value="{{vm.proval}}" max="{{vm.promax}}"></progress>

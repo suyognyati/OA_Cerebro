@@ -198,6 +198,36 @@ a.nav-button-col {
 	color: #3c763d;'
 }
 
+.paddingForuploadImg{
+	padding:10px 0 10px 5%;
+}
+.displaiInlinebloack{
+	display:inline-block;
+}
+
+.paddingLeft{
+	padding:50px
+	}
+	
+.marginForTable{
+	margin:0 5%;
+	width:90%;
+	border-right:1px solid #ddd;
+	border-left:1px solid #ddd;
+	}
+	
+.botttomBorderTable{
+	border-bottom: 1px solid #ddd;
+}
+.marginForUploadBtn{
+	margin:2% 0 0 5%;
+}
+input[type="file"].upload {
+    display: none;
+}
+.cursorForBtn{
+	cursor:pointer;
+}
 @media (min-width: 768px) {
 	.labelclass{
 		padding-top:7px;
