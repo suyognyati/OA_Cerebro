@@ -27,26 +27,47 @@
 			<button ng-click="imageDataURI='/Web/static/images/image.JPG'">Set Test Image</button> -->
 		</form>
 		</div>
+		<div style="text-align: center">
+			<p><strong>Edit Your Image Here</strong></p>
+			<div>
+		<div ng-if="!showResult" class="cropArea"
+			ng-class="{'big':size=='big', 'medium':size=='medium', 'small':size=='small'}">
+			
+			<img-crop image="imageDataURI" result-image="$parent.resImageDataURI"
+				change-on-fly="changeOnFly" area-type="{{type}}"
+				area-min-size="selMinSize" result-image-format="{{resImgFormat}}"
+				result-image-quality="resImgQuality" result-image-size="resImgSize"
+				on-change="onChange($dataURI)" on-load-begin="onLoadBegin()"
+				on-load-done="onLoadDone()" on-load-error="onLoadError()"></img-crop>
+			aspect-ratio="aspectRatio"
+		</div>
+		<div ng-if="showResult" style="text-align: center">
+			<p><strong>Result</strong></p>
+			<div>
+				<img ng-src="{{resImageDataURI}}" />
+			</div>
+		</div>
+		
 		<!-- <p class="no-margin paddingForuploadImg"><strong>OR</strong></p>
 		<div class="paddingForuploadImg">
 			<label>Copy URL: <input type="text" ng-model="edtImageURI" /></label>
 			<button ng-click="imageDataURI=edtImageURI" class="btn-primary">Crop Image</button>
 		</div> -->
-		<div class="paddingForuploadImg displaiInlinebloack">
+		<div class="displayInlineBlock">
 			<button ng-click="imageDataURI='';showResult=false;" class="btn-primary">Reset Image</button>
 		</div>
-		<div ng-show="!showResult" class="paddingForuploadImg displaiInlinebloack">
+		<div ng-show="!showResult" class="displayInlineBlock">
 			<button ng-click="crop(true)" class="btn-primary">Crop Image</button>
 		</div>
-		<div ng-show="showResult" class="paddingForuploadImg displaiInlinebloack">
+		<div ng-show="showResult" class="displayInlineBlock">
 			<button ng-click="crop(false)" class="btn-primary">Undo Crop</button>
 		</div>
-		<div ng-show="showResult" class="paddingForuploadImg displaiInlinebloack">
+		<div ng-show="showResult" class="displayInlineBlock">
 			<button ng-click="submit()" class="btn-primary">Upload Image</button>
 		</div>
 		
 		</div>
-	<div class="col-sm-6 no-padding">
+	<!-- <div class="col-sm-6 no-padding">
 	<div style="text-align: center">
 			<p><strong>Edit Your Image Here</strong></p>
 			<div>
@@ -59,7 +80,7 @@
 				result-image-quality="resImgQuality" result-image-size="resImgSize"
 				on-change="onChange($dataURI)" on-load-begin="onLoadBegin()"
 				on-load-done="onLoadDone()" on-load-error="onLoadError()"></img-crop>
-			<!--aspect-ratio="aspectRatio"-->
+			aspect-ratio="aspectRatio"
 		</div>
 
 		<div ng-if="showResult" style="text-align: center">
@@ -68,7 +89,7 @@
 				<img ng-src="{{resImageDataURI}}" />
 			</div>
 		</div>
-	</div>
+	</div> -->
 	</div>
 </form>
 

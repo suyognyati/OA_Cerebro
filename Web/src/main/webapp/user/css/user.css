@@ -199,10 +199,11 @@ a.nav-button-col {
 }
 
 .paddingForuploadImg{
-	padding:10px 0 10px 5%;
+	padding:10px 0 10px 25%;
 }
-.displaiInlinebloack{
+.displayInlineBlock{
 	display:inline-block;
+	margin: 20px 0 0 0;
 }
 
 .paddingLeft{
@@ -227,6 +228,9 @@ input[type="file"].upload {
 }
 .cursorForBtn{
 	cursor:pointer;
+}
+.cropArea {
+	 margin: 0;
 }
 @media (min-width: 768px) {
 	.labelclass{
