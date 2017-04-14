@@ -5,7 +5,7 @@
 		                 "ui.router",
 		                 "oc.lazyLoad",
 		                 "ui.bootstrap",
-		                 "pmImageEditor",
+		                 /*"pmImageEditor",*/
 		                 "ngImgCrop"]);	
 	
 	app.constant('userConstants', {

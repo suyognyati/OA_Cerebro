@@ -20,8 +20,8 @@
 <script src="<c:url value='/static/js/angular-ui-bootstrap.min.js' />"></script>
 <script	src="<c:url value='/static/vendors/bootstrap-3.3.6-dist/js/bootstrap.min.js' />"></script>
 <script	src="<c:url value='/static/vendors/select/js/bootstrap-select.js' />"></script>
-<script	src="<c:url value='/static/js/pm-image-editor.js' />"></script>
-<link href="<c:url value='/static/css/pm-image-editor.css' />" rel="stylesheet" />
+<%-- <script	src="<c:url value='/static/js/pm-image-editor.js' />"></script>
+<link href="<c:url value='/static/css/pm-image-editor.css' />" rel="stylesheet" /> --%>
 <script src="<c:url value='/user/js/main.js' />"></script>
 
 <script src="<c:url value='/static/vendors/pm-image-crop-master/compile/unminified/ng-img-crop.js' />"></script>
