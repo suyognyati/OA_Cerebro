@@ -11,7 +11,7 @@
 					<label><input type="checkbox"
 							id="forpermanentaddress"
 							tabindex="1"
-							ng-model="vm.address.isNotSameAsCorrespondence">
+							ng-model="vm.address.isSameAsCorrespondence">
 							Is permanent address same as address for correspondence?
 							<span>[Tick if Yes]</span>
 					</label>
@@ -143,7 +143,7 @@
 											tabindex="6"
 											required
 											ng-model="vm.address.countryId"
-											ng-change="vm.setSelectedCountry()"
+											ng-change="vm.setSelectedCountry(false)"
 											ng-options="countryList.countryId as countryList.countryName for countryList in vm.address.countryList">
 									</select>
 									
@@ -156,7 +156,7 @@
 							</div>
 						</div>
 						
-						<div class="row">
+						<div class="row" ng-show="vm.isCountryIndia">
 							<div class="col-sm-12 form-group">
 								<div class="col-sm-4">
 									<label for="state"
@@ -170,22 +170,12 @@
 											name="state"
 											class="selectpicker" data-width="100%"
 											data-live-search="true" title="-- Select State --"
-											tabindex="7"
-											required
+											tabindex="7"											
 											ng-model="vm.address.stateId"
-											ng-change="vm.setSelectedState()"
-											ng-options="stateList.stateId as stateList.stateName for stateList in vm.address.country.stateList">
+											ng-change="vm.setSelectedState(false)"
+											ng-options="stateList.stateId as stateList.stateName for stateList in vm.address.stateList"
+											ng-required="vm.isCountryIndia">
 									</select>
-									
-									<!-- <input type="text" 
-											class="form-control" 
-											id="state"
-											name="state"
-											placeholder="State"
-											tabindex="7"
-											required
-											ng-model="vm.address.stateId"> -->
-									
 									<span class="help-block has-error">
 										<span ng-show="addressdetailform.state.$error.required &&
 													   addressdetailform.state.$dirty">
@@ -261,7 +251,7 @@
 								<div class="col-sm-8"
 									 ng-class="{'has-error':addressdetailform.pinCode.$invalid &&
 						 									addressdetailform.pinCode.$dirty}">
-									<input type="number" 
+									<input type="text" 
 											class="form-control" 
 											id="pincode"
 											name="pinCode"
@@ -297,13 +287,15 @@
 								<div class="col-sm-8"
 									 ng-class="{'has-error':addressdetailform.locationArea.$invalid &&
 						 									addressdetailform.locationArea.$dirty}">
-									<select class="form-control" 
-											id="locationarea" 
+									<select id="locationArea"
 											name="locationArea"
+											class="selectpicker" data-width="100%"
+											data-live-search="true" title="-- Select Location --"
 											tabindex="11"
-											ng-model="vm.address.locationarea"
-											required>
-										<option>--Select--</option>		
+											required
+											ng-model="vm.address.locationArea"
+											ng-change="vm.setSelectedState()"
+											ng-options="locationArea.key as locationArea.value for locationArea in vm.address.locationAreaList">
 									</select>
 									
 									<span class="help-block has-error">
@@ -319,7 +311,7 @@
 				</div>
 			</div>
 				
-			<div class="col-sm-6" ng-show="!vm.address.isNotSameAsCorrespondence">
+			<div class="col-sm-6" ng-show="!vm.address.isSameAsCorrespondence">
 					<div class="panel panel-default">
 						<div class="panel-heading">
 							<span style="font-family: Verdana">Permanent Address</span>
@@ -328,25 +320,25 @@
 							<div class="row">
 								<div class="col-sm-12 form-group">
 									<div class="col-sm-4">
-										<label for="flatNoPermenent"
+										<label for="flatNoPermanent"
 											   class="labelclass">Flat No. / Building Name
 										<span style="color:red"><big> * </big></span></label>
 									</div>
 									<div class="col-sm-8"
-										 ng-class="{'has-error':addressdetailform.flatNoPermenent.$invalid &&
-						 										addressdetailform.flatNoPermenent.$dirty}">
+										 ng-class="{'has-error':addressdetailform.flatNoPermanent.$invalid &&
+						 										addressdetailform.flatNoPermanent.$dirty}">
 										<input type="text" 
 												class="form-control" 
-												id="flatNoPermenent"
-												named="flatNoPermenent"
+												id="flatNoPermanent"
+												named="flatNoPermanent"
 												placeholder="Flat No./Building"
-												ng-model="vm.address.flatNoPermenent"
+												ng-model="vm.address.flatNoPermanent"
 												tabindex="12"
-												ng-required="!vm.address.isNotSameAsCorrespondence">
+												ng-required="!vm.address.isSameAsCorrespondence">
 										
 										<span class="help-block has-error">
-											<span ng-show="addressdetailform.flatNoPermenent.$error.required &&
-														   addressdetailform.flatNoPermenent.$dirty">
+											<span ng-show="addressdetailform.flatNoPermanent.$error.required &&
+														   addressdetailform.flatNoPermanent.$dirty">
 													Required Field</span>
 										</span>
 									</div>
@@ -356,25 +348,25 @@
 							<div class="row">
 								<div class="col-sm-12 form-group">
 									<div class="col-sm-4">
-										<label for="areaPermenent"
+										<label for="areaPermanent"
 											   class="labelclass">Area
 										<span style="color:red"><big> * </big></span></label>
 									</div>
 									<div class="col-sm-8"
-										 ng-class="{'has-error':addressdetailform.areaPermenent.$invalid &&
-						 										addressdetailform.areaPermenent.$dirty}">
+										 ng-class="{'has-error':addressdetailform.areaPermanent.$invalid &&
+						 										addressdetailform.areaPermanent.$dirty}">
 										<input type="text" 
 												class="form-control" 
-												id="areaPermenent"
-												name="areaPermenent"
+												id="areaPermanent"
+												name="areaPermanent"
 												placeholder="Area"
-												ng-model="vm.address.areaPermenent"
+												ng-model="vm.address.areaPermanent"
 												tabindex="13"
-												ng-required="!vm.address.isNotSameAsCorrespondence">
+												ng-required="!vm.address.isSameAsCorrespondence">
 										
 										<span class="help-block has-error">
-											<span ng-show="addressdetailform.areaPermenent.$error.required &&
-														   addressdetailform.areaPermenent.$dirty">
+											<span ng-show="addressdetailform.areaPermanent.$error.required &&
+														   addressdetailform.areaPermanent.$dirty">
 													Required Field</span>
 										</span>
 									</div>
@@ -384,25 +376,25 @@
 							<div class="row">
 								<div class="col-sm-12 form-group">
 									<div class="col-sm-4">
-										<label for="streetPermenent"
+										<label for="streetPermanent"
 											   class="labelclass">Street
 										<span style="color:red"><big> * </big></span></label>
 									</div>
 									<div class="col-sm-8"
-										 ng-class="{'has-error':addressdetailform.streetPermenent.$invalid &&
-						 										addressdetailform.streetPermenent.$dirty}">
+										 ng-class="{'has-error':addressdetailform.streetPermanent.$invalid &&
+						 										addressdetailform.streetPermanent.$dirty}">
 										<input type="text" 
 												class="form-control" 
-												id="streetPermenent"
-												name="streetPermenent"
+												id="streetPermanent"
+												name="streetPermanent"
 												placeholder="Street"
-												ng-model="vm.address.streetPermenent"
+												ng-model="vm.address.streetPermanent"
 												tabindex="14"
-												ng-required="!vm.address.isNotSameAsCorrespondence">
+												ng-required="!vm.address.isSameAsCorrespondence">
 										
 										<span class="help-block has-error">
-											<span ng-show="addressdetailform.streetPermenent.$error.required &&
-														   addressdetailform.streetPermenent.$dirty">
+											<span ng-show="addressdetailform.streetPermanent.$error.required &&
+														   addressdetailform.streetPermanent.$dirty">
 													Required Field</span>
 										</span>
 									</div>
@@ -412,15 +404,15 @@
 							<div class="row">
 								<div class="col-sm-12 form-group">
 									<div class="col-sm-4">
-										<label for="landmarkPermenent"
+										<label for="landmarkPermanent"
 											   class="labelclass">Landmark</label>
 									</div>
 									<div class="col-sm-8">
 										<input type="text" 
 												class="form-control" 
-												id="landmarkPermenent"
+												id="landmarkPermanent"
 												placeholder="Landmark"
-												ng-model="vm.address.landmarkPermenent"
+												ng-model="vm.address.landmarkPermanent"
 												tabindex="15">
 									</div>
 								</div>
@@ -429,55 +421,58 @@
 							<div class="row">
 								<div class="col-sm-12 form-group">
 									<div class="col-sm-4">
-										<label for="countryPermenent"
+										<label for="countryPermanent"
 											   class="labelclass">Select Country
 										<span style="color:red"><big> * </big></span></label>
 									</div>
 									<div class="col-sm-8"
-										 ng-class="{'has-error':addressdetailform.countryPermenent.$invalid &&
-						 										addressdetailform.countryPermenent.$dirty}">
-										<select	class="form-control" 
-												id="countryPermenent"
-												name="countryPermenent" 
-												tabindex="16"
-												ng-model="vm.address.countryPermenent"
-												ng-required="!vm.address.isNotSameAsCorrespondence">
-											<option>--Select--</option>
+										 ng-class="{'has-error':addressdetailform.countryPermanent.$invalid &&
+						 										addressdetailform.countryPermanent.$dirty}">
+										
+										<select id="countryPermanent"
+											name="countryPermanent"
+											class="selectpicker" data-width="100%"
+											data-live-search="true" title="-- Select Country --"
+											tabindex="16"
+											ng-model="vm.address.countryPermanentId"
+											ng-change="vm.setSelectedCountry(true)"
+											ng-options="countryList.countryId as countryList.countryName for countryList in vm.address.countryList"
+											ng-required="!vm.address.isSameAsCorrespondence">
 										</select>
 										
 										<span class="help-block has-error">
-											<span ng-show="addressdetailform.countryPermenent.$error.required &&
-														   addressdetailform.countryPermenent.$dirty">
+											<span ng-show="addressdetailform.countryPermanent.$error.required &&
+														   addressdetailform.countryPermanent.$dirty">
 													Required Field</span>
 										</span>
 									</div>
 								</div>
 							</div>
 							
-							<div class="row">
+							<div class="row" ng-show="vm.isCountryPermanentIndia">
 								<div class="col-sm-12 form-group">
 									<div class="col-sm-4">
-										<label for="statePermenent"
+										<label for="statePermanent"
 											   class="labelclass">Select State
 										<span style="color:red"><big> * </big></span></label>
 									</div>
 									<div class="col-sm-8"
-										 ng-class="{'has-error':addressdetailform.statePermenent.$invalid &&
-						 										addressdetailform.statePermenent.$dirty}">
-										<select id="statePermenent"
-												name="statePermenent"
+										 ng-class="{'has-error':addressdetailform.statePermanent.$invalid &&
+						 										addressdetailform.statePermanent.$dirty}">
+										<select id="statePermanent"
+												name="statePermanent"
 												class="selectpicker" data-width="100%"
 												data-live-search="true" title="-- Select State --"
 												tabindex="17"
-												ng-model="vm.address.statePermenentId"
-												ng-change="vm.setSelectedState()"
-												ng-options="statePermenentList.stateId as statePermenentList.stateName for statePermenentList in vm.address.countryPermenent.stateList"
-												ng-required="!vm.address.isNotSameAsCorrespondence">
+												ng-model="vm.address.statePermanentId"
+												ng-change="vm.setSelectedState(true)"
+												ng-options="statePermanentList.stateId as statePermanentList.stateName for statePermanentList in vm.address.stateList"
+												ng-required="!vm.address.isSameAsCorrespondence && vm.isCountryPermanentIndia">
 										</select>
 										
 										<span class="help-block has-error">
-											<span ng-show="addressdetailform.statePermenent.$error.required &&
-														   addressdetailform.statePermenent.$dirty">
+											<span ng-show="addressdetailform.statePermanent.$error.required &&
+														   addressdetailform.statePermanent.$dirty">
 													Required Field</span>
 										</span>
 									</div>
@@ -487,25 +482,25 @@
 							<div class="row">
 								<div class="col-sm-12 form-group">
 									<div class="col-sm-4">
-										<label for="districtPermenent"
+										<label for="districtPermanent"
 											   class="labelclass">District
 										<span style="color:red"><big> * </big></span></label>
 									</div>
 									<div class="col-sm-8"
-										 ng-class="{'has-error':addressdetailform.districtPermenent.$invalid &&
-						 										addressdetailform.districtPermenent.$dirty}">
+										 ng-class="{'has-error':addressdetailform.districtPermanent.$invalid &&
+						 										addressdetailform.districtPermanent.$dirty}">
 										<input type="text" 
 												class="form-control" 
-												id="districtPermenent"
-												name="districtPermenent" 
+												id="districtPermanent"
+												name="districtPermanent" 
 												placeholder="District"
 												tabindex="18"
-												ng-model="vm.address.districtPermenent"
-												ng-required="!vm.address.isNotSameAsCorrespondence">
+												ng-model="vm.address.districtPermanent"
+												ng-required="!vm.address.isSameAsCorrespondence">
 										
 										<span class="help-block has-error">
-											<span ng-show="addressdetailform.districtPermenent.$error.required &&
-														   addressdetailform.districtPermenent.$dirty">
+											<span ng-show="addressdetailform.districtPermanent.$error.required &&
+														   addressdetailform.districtPermanent.$dirty">
 													Required Field</span>
 										</span>
 									</div>
@@ -515,25 +510,25 @@
 							<div class="row">
 								<div class="col-sm-12 form-group">
 									<div class="col-sm-4">
-										<label for="cityPermenent"
+										<label for="cityPermanent"
 											   class="labelclass">City
 										<span style="color:red"><big> * </big></span></label>
 									</div>
 									<div class="col-sm-8"
-										 ng-class="{'has-error':addressdetailform.cityPermenent.$invalid &&
-						 										addressdetailform.cityPermenent.$dirty}">
+										 ng-class="{'has-error':addressdetailform.cityPermanent.$invalid &&
+						 										addressdetailform.cityPermanent.$dirty}">
 										<input type="text" 
 												class="form-control" 
-												id="cityPermenent"
-												name="cityPermenent" 
+												id="cityPermanent"
+												name="cityPermanent" 
 												placeholder="City"
 												tabindex="19"
-												ng-model="vm.address.cityPermenent"
-												ng-required="!vm.address.isNotSameAsCorrespondence">
+												ng-model="vm.address.cityPermanent"
+												ng-required="!vm.address.isSameAsCorrespondence">
 										
 										<span class="help-block has-error">
-											<span ng-show="addressdetailform.cityPermenent.$error.required &&
-														   addressdetailform.cityPermenent.$dirty">
+											<span ng-show="addressdetailform.cityPermanent.$error.required &&
+														   addressdetailform.cityPermanent.$dirty">
 													Required Field</span>
 										</span>
 									</div>
@@ -543,33 +538,33 @@
 							<div class="row">
 								<div class="col-sm-12 form-group">
 									<div class="col-sm-4">
-										<label for="pincodePermenent"
+										<label for="pincodePermanent"
 											   class="labelclass">Pin Code
 										<span style="color:red"><big> * </big></span></label>
 									</div>
 									<div class="col-sm-8"
-										 ng-class="{'has-error':addressdetailform.pincodePermenent.$invalid &&
-						 										addressdetailform.pincodePermenent.$dirty}">
-										<input type="number" 
+										 ng-class="{'has-error':addressdetailform.pincodePermanent.$invalid &&
+						 										addressdetailform.pincodePermanent.$dirty}">
+										<input type="text" 
 												class="form-control" 
-												id="pincodePermenent"
-												name="pincodePermenent"
+												id="pincodePermanent"
+												name="pincodePermanent"
 												placeholder="Pin Code"
-												ng-model="vm.address.pinCodePermenent"
+												ng-model="vm.address.pinCodePermanent"
 												tabindex="20"
 												ng-minlength="6"
 												ng-maxlength="6"
-												ng-required="!vm.address.isNotSameAsCorrespondence">
+												ng-required="!vm.address.isSameAsCorrespondence">
 										
 										<span class="help-block has-error">
-											<span ng-show="addressdetailform.pincodePermenent.$error.required &&
-														   addressdetailform.pincodePermenent.$dirty">
+											<span ng-show="addressdetailform.pincodePermanent.$error.required &&
+														   addressdetailform.pincodePermanent.$dirty">
 													Required Field</span>
-											<span ng-show="addressdetailform.pincodePermenent.$error.number">
+											<span ng-show="addressdetailform.pincodePermanent.$error.number">
 													Only Numbers Allowed</span>
-											<span ng-show="(addressdetailform.pincodePermenent.$error.minlength ||
-															addressdetailform.pincodePermenent.$error.maxlength) &&
-														   addressdetailform.pincodePermenent.$dirty">
+											<span ng-show="(addressdetailform.pincodePermanent.$error.minlength ||
+															addressdetailform.pincodePermanent.$error.maxlength) &&
+														   addressdetailform.pincodePermanent.$dirty">
 													Minimum 6 Digits Required</span>
 										</span>
 									</div>
@@ -579,25 +574,27 @@
 							<div class="row">
 								<div class="col-sm-12 form-group">
 									<div class="col-sm-4">
-										<label for="locationareaPermenent"
+										<label for="locationAreaPermanent"
 											   class="labelclass">Location Area
 										<span style="color:red"><big> * </big></span></label>
 									</div>
 									<div class="col-sm-8"
-										 ng-class="{'has-error':addressdetailform.locationAreaPermenent.$invalid &&
-						 										addressdetailform.locationAreaPermenent.$dirty}">
-										<select class="form-control" 
-												id="locationareaPermenent" 
-												name="locationAreaPermenent"
-												tabindex="21"
-												ng-model="vm.address.locationareaPermenent"
-												required>
-											<option>--Select--</option>		
+										 ng-class="{'has-error':addressdetailform.locationAreaPermanent.$invalid &&
+						 										addressdetailform.locationAreaPermanent.$dirty}">
+										<select id="locationAreaPermanent"
+											name="locationAreaPermanent"
+											class="selectpicker" data-width="100%"
+											data-live-search="true" title="-- Select Location --"
+											tabindex="21"
+											ng-model="vm.address.locationAreaPermanent"
+											ng-change="vm.setSelectedState()"
+											ng-options="locationArea.key as locationArea.value for locationArea in vm.address.locationAreaList"
+											ng-required="!vm.address.isSameAsCorrespondence">
 										</select>
 										
 										<span class="help-block has-error">
-											<span ng-show="addressdetailform.locationAreaPermenent.$error.required &&
-														   addressdetailform.locationAreaPermenent.$dirty">
+											<span ng-show="addressdetailform.locationAreaPermanent.$error.required &&
+														   addressdetailform.locationAreaPermanent.$dirty">
 													Required Field</span>
 										</span>
 									</div>

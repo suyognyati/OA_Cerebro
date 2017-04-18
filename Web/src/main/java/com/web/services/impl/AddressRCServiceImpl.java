@@ -4,11 +4,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.data.entities.Address;
+import com.data.entities.Enums;
 import com.data.services.AddressService;
 import com.data.services.GeoLocationsService;
 import com.web.model.AddressModel;
 import com.web.services.AddressRCService;
 import com.web.session.Session;
+import com.web.session.StaticMethods;
 
 @Service("AddressRCService")
 public class AddressRCServiceImpl implements AddressRCService {
@@ -29,6 +31,8 @@ public class AddressRCServiceImpl implements AddressRCService {
 			addressModel = setAddressModelObject(addressModel, address);
 		}
 		addressModel.setCountryList(geoLocationService.getCountryList());
+		addressModel.setStateList(geoLocationService.getStateListByCountryName(StaticMethods.StrINDIA));
+		addressModel.setLocationAreaList(Enums.LocationArea.getEnumList());
 		return addressModel;
 	}
 	
@@ -55,18 +59,20 @@ public class AddressRCServiceImpl implements AddressRCService {
 		addressModel.setDistrict(address.getDistrict());
 		addressModel.setState(address.getState());
 		addressModel.setCountry(address.getCountry());
+		addressModel.setLocationArea(address.getLocationArea());
 
-		addressModel.setIsNotSameAsCorrespondence(address.getIsNotSameAsCorrespondence());
+		addressModel.setIsSameAsCorrespondence(address.getIsNotSameAsCorrespondence());
 		
-		addressModel.setFlatNoPermenent(address.getFlatNoPermenent());
-		addressModel.setStreetPermenent(address.getStreetPermenent());
-		addressModel.setAreaPermenent(address.getAreaPermenent());
-		addressModel.setLandmarkPermenent(address.getLandmarkPermenent());
-		addressModel.setPinCodePermenent(address.getPinCodePermenent());
-		addressModel.setCityPermenent(address.getCityPermenent());
-		addressModel.setDistrictPermenent(address.getDistrictPermenent());
-		addressModel.setStatePermenent(address.getStatePermenent());
-		addressModel.setCountryPermenent(address.getCountryPermenent());
+		addressModel.setFlatNoPermanent(address.getFlatNoPermanent());
+		addressModel.setStreetPermanent(address.getStreetPermanent());
+		addressModel.setAreaPermanent(address.getAreaPermanent());
+		addressModel.setLandmarkPermanent(address.getLandmarkPermanent());
+		addressModel.setPinCodePermanent(address.getPinCodePermanent());
+		addressModel.setCityPermanent(address.getCityPermanent());
+		addressModel.setDistrictPermanent(address.getDistrictPermanent());
+		addressModel.setStatePermanent(address.getStatePermanent());
+		addressModel.setCountryPermanent(address.getCountryPermanent());
+		addressModel.setLocationAreaPermanent(address.getLocationAreaPermanent());
 		
 		return addressModel;
 	}
@@ -82,30 +88,33 @@ public class AddressRCServiceImpl implements AddressRCService {
 		address.setDistrict(addressModel.getDistrict());
 		address.setState(addressModel.getState());
 		address.setCountry(addressModel.getCountry());
+		address.setLocationArea(addressModel.getLocationArea());
 
-		address.setIsNotSameAsCorrespondence(addressModel.getIsNotSameAsCorrespondence());
+		address.setIsNotSameAsCorrespondence(addressModel.getIsSameAsCorrespondence());
 		
-		if(addressModel.getIsNotSameAsCorrespondence()) {		
-			address.setFlatNoPermenent(addressModel.getFlatNoPermenent());
-			address.setStreetPermenent(addressModel.getStreetPermenent());
-			address.setAreaPermenent(addressModel.getAreaPermenent());
-			address.setLandmarkPermenent(addressModel.getLandmarkPermenent());
-			address.setPinCodePermenent(addressModel.getPinCodePermenent());
-			address.setCityPermenent(addressModel.getCityPermenent());
-			address.setDistrictPermenent(addressModel.getDistrictPermenent());
-			address.setStatePermenent(addressModel.getStatePermenent());
-			address.setCountryPermenent(addressModel.getCountryPermenent());
+		if(addressModel.getIsSameAsCorrespondence()) {		
+			address.setFlatNoPermanent(addressModel.getFlatNo());
+			address.setStreetPermanent(addressModel.getStreet());
+			address.setAreaPermanent(addressModel.getArea());
+			address.setLandmarkPermanent(addressModel.getLandmark());
+			address.setPinCodePermanent(addressModel.getPinCode());
+			address.setCityPermanent(addressModel.getCity());
+			address.setDistrictPermanent(addressModel.getDistrict());
+			address.setStatePermanent(addressModel.getState());
+			address.setCountryPermanent(addressModel.getCountry());
+			address.setLocationAreaPermanent(addressModel.getLocationArea());
 		}
 		else {
-			address.setFlatNoPermenent(addressModel.getFlatNo());
-			address.setStreetPermenent(addressModel.getStreet());
-			address.setAreaPermenent(addressModel.getArea());
-			address.setLandmarkPermenent(addressModel.getLandmark());
-			address.setPinCodePermenent(addressModel.getPinCode());
-			address.setCityPermenent(addressModel.getCity());
-			address.setDistrictPermenent(addressModel.getDistrict());
-			address.setStatePermenent(addressModel.getState());
-			address.setCountryPermenent(addressModel.getCountry());
+			address.setFlatNoPermanent(addressModel.getFlatNoPermanent());
+			address.setStreetPermanent(addressModel.getStreetPermanent());
+			address.setAreaPermanent(addressModel.getAreaPermanent());
+			address.setLandmarkPermanent(addressModel.getLandmarkPermanent());
+			address.setPinCodePermanent(addressModel.getPinCodePermanent());
+			address.setCityPermanent(addressModel.getCityPermanent());
+			address.setDistrictPermanent(addressModel.getDistrictPermanent());
+			address.setStatePermanent(addressModel.getStatePermanent());
+			address.setCountryPermanent(addressModel.getCountryPermanent());
+			address.setLocationAreaPermanent(addressModel.getLocationAreaPermanent());
 		}
 		
 		return address;

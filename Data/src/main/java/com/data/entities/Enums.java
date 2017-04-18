@@ -660,4 +660,34 @@ public class Enums {
 			//return academicYearList; 
 		}
 	}
+
+	public enum LocationArea {
+		Tribal(1, "Tribal"),
+		Rural(2, "Rural"),
+		Semiurban(3, "Semiurban"),
+		Urban(4, "Urban"),
+		Metropolitan(5, "Metropolitan");
+				
+		private int id;
+		private String value;
+		private static final Map<Integer, LocationArea> lookup = new HashMap<Integer, LocationArea>();
+		private static final List<KeyValuePair> enumList = new ArrayList<KeyValuePair>();
+		
+		private LocationArea(int id, String value) { this.id = id; this.value = value; }
+		
+		static {
+			for (LocationArea s : EnumSet.allOf(LocationArea.class)) {
+				lookup.put(s.getId(), s);
+				KeyValuePair ms = new KeyValuePair();
+				ms.key = s.getId();
+				ms.value = s.getValue();
+				enumList.add(ms);
+			}
+		}
+
+		public int getId() { return id; }
+		public String getValue() { return value; }
+		public static LocationArea get(int id) { return lookup.get(id); }
+		public static List<KeyValuePair> getEnumList() { return enumList; }
+	}
 }

@@ -6,6 +6,10 @@ body {
 	position:relative;
 }
 
+.min-height {
+	min-height: 530px;
+}
+
 .customfont > li > a {
 	color : #becfe0;
 }

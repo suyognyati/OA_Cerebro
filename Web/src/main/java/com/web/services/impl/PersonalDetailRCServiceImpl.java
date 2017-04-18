@@ -17,6 +17,7 @@ import com.data.services.UserDetailService;
 import com.web.model.PersonalDetailModel;
 import com.web.services.PersonalDetailRCService;
 import com.web.session.Session;
+import com.web.session.StaticMethods;
 
 @Service("personalDetailRCService")
 public class PersonalDetailRCServiceImpl implements PersonalDetailRCService {
@@ -122,7 +123,7 @@ public class PersonalDetailRCServiceImpl implements PersonalDetailRCService {
 		personalDetailModel.setVisaTypeList(VisaType.getEnumList());
 		personalDetailModel.setVisaSponsoringAgencyList(VisaSponsoringAgency.getEnumList());
 		personalDetailModel.setCountryList(geoLocationService.getCountryList());
-		personalDetailModel.setStateList(geoLocationService.getStateListByCountryName("India"));
+		personalDetailModel.setStateList(geoLocationService.getStateListByCountryName(StaticMethods.StrINDIA));
 		return personalDetailModel;
 	}
 

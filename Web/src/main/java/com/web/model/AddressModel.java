@@ -3,26 +3,54 @@ package com.web.model;
 import java.util.List;
 
 import com.data.entities.Country;
+import com.data.entities.Enums;
 import com.data.entities.State;
 
 public class AddressModel {
-	private int addressId;
+	private Integer addressId;
+	private Boolean IsSameAsCorrespondence;
 	private List<Country> countryList;
+	private List<State> stateList;
+	private List<Enums.KeyValuePair> locationAreaList;
 	
 		//Address Id
-		public int getAddressId() {
+		public Integer getAddressId() {
 			return addressId;
 		}
 		public void setAddressId(int addressId) {
 			this.addressId = addressId;
 		}
 		
+		//IsSameAsCorrespondence
+		public Boolean getIsSameAsCorrespondence() {
+			return IsSameAsCorrespondence;
+		}
+		public void setIsSameAsCorrespondence(Boolean isSameAsCorrespondence) {
+			IsSameAsCorrespondence = isSameAsCorrespondence;
+		}
+				
 		//Country List
 		public List<Country> getCountryList() {
 			return countryList;
 		}
 		public void setCountryList(List<Country> countryList) {
 			this.countryList = countryList;
+		}
+		
+		//State List
+		public List<State> getStateList() {
+			return stateList;
+		}
+		public void setStateList(List<State> stateList) {
+			this.stateList = stateList;
+		}
+		
+		//Location Area List
+		public List<Enums.KeyValuePair> getLocationAreaList() {
+			return locationAreaList;
+		}
+		public void setLocationAreaList(List<Enums.KeyValuePair> locationAreaList) {
+			this.locationAreaList = locationAreaList;
 		}
 		
 		
@@ -37,6 +65,7 @@ public class AddressModel {
 	private String district;
 	private State state;
 	private Country country;
+	private Integer locationArea;
 	
 		//Flat No
 		public String getFlatNo() {
@@ -110,99 +139,107 @@ public class AddressModel {
 			this.country = country;
 		}
 		
+		//LocationArea
+		public Integer getLocationArea() {
+			return locationArea;
+		}
+		public void setLocationArea(Integer locationArea) {
+			this.locationArea = locationArea;
+		}
+		
 //END REGION ********************
 
-//******************** REGION PERMENENT ADDRESS
+//******************** REGION PERMANENT ADDRESS
 	
-	private Boolean IsNotSameAsCorrespondence;
-	private String flatNoPermenent;
-	private String streetPermenent;
-	private String areaPermenent;
-	private String landmarkPermenent;
-	private String pinCodePermenent;
-	private String cityPermenent;
-	private String districtPermenent;
-	private State statePermenent;
-	private Country countryPermenent;
+	private String flatNoPermanent;
+	private String streetPermanent;
+	private String areaPermanent;
+	private String landmarkPermanent;
+	private String pinCodePermanent;
+	private String cityPermanent;
+	private String districtPermanent;
+	private State statePermanent;
+	private Country countryPermanent;
+	private Integer locationAreaPermanent;
 
-		//IsNotSameAsCorrespondence
-		public Boolean getIsNotSameAsCorrespondence() {
-			return IsNotSameAsCorrespondence;
+		//FlatNoPermanent
+		public String getFlatNoPermanent() {
+			return flatNoPermanent;
 		}
-		public void setIsNotSameAsCorrespondence(Boolean isNotSameAsCorrespondence) {
-			IsNotSameAsCorrespondence = isNotSameAsCorrespondence;
-		}
-		
-		//FlatNoPermenent
-		public String getFlatNoPermenent() {
-			return flatNoPermenent;
-		}
-		public void setFlatNoPermenent(String flatNoPermenent) {
-			this.flatNoPermenent = flatNoPermenent;
+		public void setFlatNoPermanent(String flatNoPermanent) {
+			this.flatNoPermanent = flatNoPermanent;
 		}
 		
-		//StreetPermenent
-		public String getStreetPermenent() {
-			return streetPermenent;
+		//StreetPermanent
+		public String getStreetPermanent() {
+			return streetPermanent;
 		}
-		public void setStreetPermenent(String streetPermenent) {
-			this.streetPermenent = streetPermenent;
-		}
-		
-		//AreaPermenent
-		public String getAreaPermenent() {
-			return areaPermenent;
-		}
-		public void setAreaPermenent(String areaPermenent) {
-			this.areaPermenent = areaPermenent;
+		public void setStreetPermanent(String streetPermanent) {
+			this.streetPermanent = streetPermanent;
 		}
 		
-		//LandmarkPermenent
-		public String getLandmarkPermenent() {
-			return landmarkPermenent;
+		//AreaPermanent
+		public String getAreaPermanent() {
+			return areaPermanent;
 		}
-		public void setLandmarkPermenent(String landmarkPermenent) {
-			this.landmarkPermenent = landmarkPermenent;
-		}
-		
-		//PinCodePermenent
-		public String getPinCodePermenent() {
-			return pinCodePermenent;
-		}
-		public void setPinCodePermenent(String pinCodePermenent) {
-			this.pinCodePermenent = pinCodePermenent;
+		public void setAreaPermanent(String areaPermanent) {
+			this.areaPermanent = areaPermanent;
 		}
 		
-		//CityPermenent
-		public String getCityPermenent() {
-			return cityPermenent;
+		//LandmarkPermanent
+		public String getLandmarkPermanent() {
+			return landmarkPermanent;
 		}
-		public void setCityPermenent(String cityPermenent) {
-			this.cityPermenent = cityPermenent;
-		}
-		
-		//DistrictPermenent
-		public String getDistrictPermenent() {
-			return districtPermenent;
-		}
-		public void setDistrictPermenent(String districtPermenent) {
-			this.districtPermenent = districtPermenent;
+		public void setLandmarkPermanent(String landmarkPermanent) {
+			this.landmarkPermanent = landmarkPermanent;
 		}
 		
-		//StatePermenent
-		public State getStatePermenent() {
-			return statePermenent;
+		//PinCodePermanent
+		public String getPinCodePermanent() {
+			return pinCodePermanent;
 		}
-		public void setStatePermenent(State statePermenent) {
-			this.statePermenent = statePermenent;
+		public void setPinCodePermanent(String pinCodePermanent) {
+			this.pinCodePermanent = pinCodePermanent;
 		}
 		
-		//CountryPermenent
-		public Country getCountryPermenent() {
-			return countryPermenent;
+		//CityPermanent
+		public String getCityPermanent() {
+			return cityPermanent;
 		}
-		public void setCountryPermenent(Country countryPermenent) {
-			this.countryPermenent = countryPermenent;
+		public void setCityPermanent(String cityPermanent) {
+			this.cityPermanent = cityPermanent;
+		}
+		
+		//DistrictPermanent
+		public String getDistrictPermanent() {
+			return districtPermanent;
+		}
+		public void setDistrictPermanent(String districtPermanent) {
+			this.districtPermanent = districtPermanent;
+		}
+		
+		//StatePermanent
+		public State getStatePermanent() {
+			return statePermanent;
+		}
+		public void setStatePermanent(State statePermanent) {
+			this.statePermanent = statePermanent;
+		}
+		
+		//CountryPermanent
+		public Country getCountryPermanent() {
+			return countryPermanent;
+		}
+		public void setCountryPermanent(Country countryPermanent) {
+			this.countryPermanent = countryPermanent;
+		}
+		
+		//LocationAreaPermanent
+		public Integer getLocationAreaPermanent() {
+			return locationAreaPermanent;
+		}
+		public void setLocationAreaPermanent(Integer locationAreaPermanent) {
+			this.locationAreaPermanent = locationAreaPermanent;
 		}
 		
 //END REGION ********************
