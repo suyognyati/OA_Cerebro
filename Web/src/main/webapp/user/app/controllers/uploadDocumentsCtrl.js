@@ -20,6 +20,22 @@
 		vm.proval=0;
 		vm.promax=0;
 		
+		vm.editMode = false;
+		vm.fileName = "";
+		
+		vm.getUserDocuments = function() {
+			uploadDocumentsService.getUserDocumentList(vm.accessTokenParam)
+			.success(function (data, status, headers, config) {
+				vm.userDocuments = data.userDocuments;
+				
+				
+				refreshSelectPickerWithDelay(100);
+			})
+			.error(function (data, status, headers, config) {
+				vm.userDocuments = {};
+	        });
+		}
+		
 		vm.files = [];
         
 		// GET THE FILE INFORMATION.
@@ -72,17 +88,50 @@
 			var uploadedFiles = 0;
 			for (var i in vm.files) {
 				var fd = new FormData();
-				fd.append('path', "\\\\DESKTOP-BIL8JRA\\UploadFiles\\");
+				//fd.append('path', "\\\\DESKTOP-BIL8JRA\\UploadFiles\\");
+				fd.append('path', "D:\\admissions");
 				fd.append('file', vm.files[i]);
             
 				uploadDocumentsService.uploadSingleFile(fd)
 				.success(function() {
 					uploadedFiles ++;
 					updateProgressManually(uploadedFiles, totalLength);
+					if(uploadedFiles == totalLength)
+						vm.editMode = false;
 				}).error(function() {
 				});
 			}
 		}
+		
+		vm.getPdf = function(documentId) {
+			$http.get('/Web/getDocument/' + documentId, {
+				responseType : 'arraybuffer'
+			}).success(function(data) {
+				var file = new Blob([ data ], {
+					type : 'application/pdf'
+				});
+				var fileURL = URL.createObjectURL(file);
+				window.open(fileURL);
+			});
+		}
+
+		$scope.getPdf = function() {
+			$http.get('/Web/showPdf', {
+				responseType : 'arraybuffer'
+			}).success(function(data) {
+				var file = new Blob([ data ], {
+					type : 'application/pdf'
+				});
+				var fileURL = URL.createObjectURL(file);
+				window.open(fileURL);
+			});
+		}
+		
+		vm.editEnableDisable = function() {
+			vm.editMode = !vm.editMode;
+		}
+		
+		vm.getUserDocuments();
 		
 		/*
 		 * vm.uploadFiles = function(isValid) {

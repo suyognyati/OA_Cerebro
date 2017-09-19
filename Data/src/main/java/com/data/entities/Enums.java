@@ -690,4 +690,66 @@ public class Enums {
 		public static LocationArea get(int id) { return lookup.get(id); }
 		public static List<KeyValuePair> getEnumList() { return enumList; }
 	}
+
+	public enum DocumentsFor {
+		All(1, "All"),
+		NameChanged(2, "Name changed certificate"),
+		EducationGap(3, "Gap certificate"),
+		Passport(4, "Passport"),
+		Address(5, "Address information"),
+		EBC(6, "EBC certificate"),
+		Caste(7, "Caste certificate"),
+		SpeciallyAbled(8, "Specially abled certificate"),
+		EducationalInformation(9, "Educational information");
+				
+		private int id;
+		private String value;
+		private static final Map<Integer, DocumentsFor> lookup = new HashMap<Integer, DocumentsFor>();
+		private static final List<KeyValuePair> enumList = new ArrayList<KeyValuePair>();
+		
+		private DocumentsFor(int id, String value) { this.id = id; this.value = value; }
+		
+		static {
+			for (DocumentsFor s : EnumSet.allOf(DocumentsFor.class)) {
+				lookup.put(s.getId(), s);
+				KeyValuePair ms = new KeyValuePair();
+				ms.key = s.getId();
+				ms.value = s.getValue();
+				enumList.add(ms);
+			}
+		}
+
+		public int getId() { return id; }
+		public String getValue() { return value; }
+		public static DocumentsFor get(int id) { return lookup.get(id); }
+		public static List<KeyValuePair> getEnumList() { return enumList; }
+	}
+	
+	public enum DocumentState {
+		Deleted(0, "Deleted"),
+		Created(1, "Created"),
+		Uploaded(2, "Uploaded");
+				
+		private int id;
+		private String value;
+		private static final Map<Integer, DocumentState> lookup = new HashMap<Integer, DocumentState>();
+		private static final List<KeyValuePair> enumList = new ArrayList<KeyValuePair>();
+		
+		private DocumentState(int id, String value) { this.id = id; this.value = value; }
+		
+		static {
+			for (DocumentState s : EnumSet.allOf(DocumentState.class)) {
+				lookup.put(s.getId(), s);
+				KeyValuePair ms = new KeyValuePair();
+				ms.key = s.getId();
+				ms.value = s.getValue();
+				enumList.add(ms);
+			}
+		}
+
+		public int getId() { return id; }
+		public String getValue() { return value; }
+		public static DocumentState get(int id) { return lookup.get(id); }
+		public static List<KeyValuePair> getEnumList() { return enumList; }
+	}
 }

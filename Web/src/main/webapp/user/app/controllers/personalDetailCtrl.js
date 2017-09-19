@@ -68,7 +68,13 @@
 		}
 		
 		vm.saveDraft = function() {
-			refreshSelectPickerWithDelay();
+			personalDetailService.save(vm.personaldetail, vm.accessTokenParam)
+			.success(function (data, status, headers, config) {
+				vm.successMessage = "Detail saved successfully";
+			})
+			.error(function (data, status, headers, config) {
+				vm.errorMessage = "Error while saving detail";
+			});
 		}
 		
 		vm.setSelectedCitizenshipCountry = function() {

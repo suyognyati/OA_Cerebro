@@ -197,6 +197,9 @@ public class PersonalDetail {
 	@Column(name="BloodGroup")
 	private Integer bloodGroup;
 	
+	@Column(name="EducationGapInYrs")
+	private Integer educationGapInYrs;
+	
 		//AdharNo
 		public String getAdharNo() {
 			return adharNo;
@@ -235,6 +238,14 @@ public class PersonalDetail {
 		}
 		public void setBloodGroup(final Integer bloodGroup) {
 			this.bloodGroup = bloodGroup;
+		}
+		
+		//EducationGapInYrs
+		public Integer getEducationGapInYrs() {
+			return educationGapInYrs;
+		}
+		public void setEducationGapInYrs(Integer educationGapInYrs) {
+			this.educationGapInYrs = educationGapInYrs;
 		}
 
 //ENDREGION ********************

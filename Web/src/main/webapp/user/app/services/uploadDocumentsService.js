@@ -27,14 +27,19 @@
 						'Content-Type' : undefined
 					}
 				})
-			}
-			/*save: function (address, accessTokenParam) {
+			},
+			getUserDocumentList: function (accessTokenParam) {
 				return $http({
-                    method: 'POST',
-                    url: '/Web/rest/address/save/' + accessTokenParam,
-                    data: address
+                    method: 'GET',
+                    url: '/Web/getDocumentList' + accessTokenParam
                 });
-            }*/
+            },
+			getDocument: function (userDocumentId, userDocumentPath) {
+				return $http({
+                    method: 'GET',
+                    url: '/Web/getDocument/' + userDocumentId
+                });
+            }
 		}
 	}
 }());

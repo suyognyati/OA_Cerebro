@@ -16,5 +16,7 @@
 		<class>com.data.entities.QualificationLevel</class>
 		<class>com.data.entities.Board</class>
 		<class>com.data.entities.University</class>
+		<class>com.data.entities.DocumentList</class>
+		<class>com.data.entities.UserDocument</class>
 	</persistence-unit>
 </persistence>

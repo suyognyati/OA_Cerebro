@@ -5,45 +5,105 @@
 </div>
 <!-- <form name="userForm" ng-submit="vm.uploadFiles(userForm.$valid)" novalidate> -->
 <form name="userForm" novalidate>
+	<a ng-click="getPdf()">Show PDF</a>
 	<div class="row">
 		<div class="col-sm-12">
 			<table class="table table-striped marginForTable">
 				<caption>Please upload following documents</caption>
+				<!-- <tr class="table-background">
+                    <th width="30%">Document</th>
+                    <th width="30%">Name</th>
+                    <th width="5%">Size</th>
+                    <th width="5%">View</th>
+                    <th width="30%">Select File</th>
+                </tr> -->
 				<tbody>
-					<tr>
-						<td><label>SSC Marksheet</label></td>
-						<td><input type="file" id="file" name="file"
+				
+					<tr ng-repeat="userDocument in vm.userDocuments">
+						<td><label>{{userDocument.document.documentName}}</label></td>
+						<td ng-show="!vm.editMode">
+							<i 	class="glyphicon glyphicon-eye-open" style="cursor: pointer;" 
+	                    		ng-click="vm.getPdf(userDocument.userDocumentId)">
+	                   		</i>
+                   		</td>
+						<td ng-show="vm.editMode">
+							<input type="file" id="file" name="file"
 							onchange="angular.element(this).scope().getFileDetails(this)" />
 						</td>
-						<!-- <td><input type="file" file-model="vm.myFile" multiple /></td> -->
 					</tr>
+				
+					<!-- <tr>
+						<td><label>SSC Marksheet</label></td>
+						<td ng-show="!vm.editMode">
+							<i 	class="glyphicon glyphicon-eye-open" style="cursor: pointer;" 
+	                    		ng-click="vm.qualificationDetail(qualification.qualificationMainLevel, qualification.subQualificationId)">
+	                   		</i>
+                   		</td>
+						<td ng-show="vm.editMode">
+							<input type="file" id="file" name="file" ng-model="vm.fileName"
+							onchange="angular.element(this).scope().getFileDetails(this)" /> -->
+							<!-- <label for="sscFile">
+								<i for="sscFile" class="glyphicon glyphicon-folder-open" style="cursor: pointer;" ></i>
+								<input type="file" class="upload" id="sscFile" name="sscFile"
+								onchange="angular.element(this).scope().getFileDetails(this)" />
+							</label>  -->
+							
+						<!-- <input type="file" id="file" name="file"
+							onchange="angular.element(this).scope().getFileDetails(this)" />
+						</td> -->
+						<!-- <td><input type="file" file-model="vm.myFile" multiple /></td> -->
+					<!-- </tr> -->
 
 
 
-					<tr>
+					<!-- <tr>
 						<td><label>School Leaving Certificate</label></td>
-						<td><input type="file" id="file" name="file"
+						<td ng-show="!vm.editMode">
+							<i 	class="glyphicon glyphicon-eye-open" style="cursor: pointer;" 
+	                    		ng-click="vm.qualificationDetail(qualification.qualificationMainLevel, qualification.subQualificationId)">
+	                   		</i>
+                   		</td>
+						<td ng-show="vm.editMode">
+							<input type="file" id="file" name="file" ng-model="vm.fileName"
 							onchange="angular.element(this).scope().getFileDetails(this)" />
 						</td>
 					</tr>
 					<tr>
 						<td><label>HSC Marksheet</label></td>
-						<td><input type="file" id="file" name="file"
+						<td ng-show="!vm.editMode">
+							<i 	class="glyphicon glyphicon-eye-open" style="cursor: pointer;" 
+	                    		ng-click="vm.qualificationDetail(qualification.qualificationMainLevel, qualification.subQualificationId)">
+	                   		</i>
+                   		</td>
+						<td ng-show="vm.editMode">
+							<input type="file" id="file" name="file"
 							onchange="angular.element(this).scope().getFileDetails(this)" />
 						</td>
 					</tr>
 					<tr>
 						<td><label>Final Year Diploma Marksheet</label></td>
-						<td><input type="file" id="file" name="file"
+						<td ng-show="!vm.editMode">
+							<i 	class="glyphicon glyphicon-eye-open" style="cursor: pointer;" 
+	                    		ng-click="vm.qualificationDetail(qualification.qualificationMainLevel, qualification.subQualificationId)">
+	                   		</i>
+                   		</td>
+						<td ng-show="vm.editMode">
+							<input type="file" id="file" name="file"
 							onchange="angular.element(this).scope().getFileDetails(this)" />
 						</td>
 					</tr>
 					<tr class="botttomBorderTable">
 						<td><label>Final Year Degree Marksheet</label></td>
-						<td><input type="file" id="file" name="file"
+						<td ng-show="!vm.editMode">
+							<i 	class="glyphicon glyphicon-eye-open" style="cursor: pointer;" 
+	                    		ng-click="vm.qualificationDetail(qualification.qualificationMainLevel, qualification.subQualificationId)">
+	                   		</i>
+                   		</td>
+						<td ng-show="vm.editMode">
+							<input type="file" id="file" name="file"
 							onchange="angular.element(this).scope().getFileDetails(this)" />
 						</td>
-					</tr>
+					</tr> -->
 				</tbody>
 			</table>
 		</div>
@@ -56,7 +116,10 @@
 	</div> -->
 	<div class="row">
 		<div class="col-sm-12 marginForUploadBtn">
-			<input type="button" class="btn-primary" ng-click="vm.uploadFilesOneByOne()" value="Upload" />
+			<input type="button" class="btn-primary" ng-show="!vm.editMode" ng-click="vm.editEnableDisable()" value="Edit" />
+			<input type="button" class="btn-primary" ng-show="vm.editMode" ng-click="vm.uploadFilesOneByOne()" value="Upload" />
+			<input type="button" class="btn-primary" ng-show="vm.editMode" ng-click="vm.editEnableDisable()" value="Cancel" />
+			
 		</div>
 		<div class="col-sm-12 marginForUploadBtn">
 			<!--ADD A PROGRESS BAR ELEMENT.-->

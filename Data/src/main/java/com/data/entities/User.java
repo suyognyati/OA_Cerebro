@@ -24,6 +24,10 @@ public class User {
 	@Column(name="Enabled")
 	private Integer enabled;
 	
+	public Integer getUserId() {
+		return userId;
+	}
+	
 	public String getUserName() {
 		return userName;
 	}

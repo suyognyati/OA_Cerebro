@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import com.data.entities.Enums;
 import com.data.entities.OccupationReservation;
 import com.data.services.OccupationReservationService;
+import com.data.services.UserDocumentService;
 import com.web.model.OccupationReservationModel;
 import com.web.services.OccupationReservationRCService;
 import com.web.session.Session;
@@ -18,6 +19,9 @@ public class OccupationReservationRCServiceImpl implements OccupationReservation
 	
 	@Autowired
 	Session session;
+	
+	@Autowired
+	UserDocumentService userDocumentService;
 	
 	public OccupationReservationModel getOccupationReservation() {
 		OccupationReservation occupationAndReservation = occupationReservationService.getByUser(session.getCurrentUser());
@@ -33,6 +37,19 @@ public class OccupationReservationRCServiceImpl implements OccupationReservation
 			occupationAndReservation.setUser(session.getCurrentUser());
 		}
 		occupationAndReservation = setOccupationAndReservationObject(occupationAndReservation, occupationAndReservationModel);
+		
+		if(occupationAndReservation.getIsEligibleForEBC()) {
+			userDocumentService.addByDocumentFor(session.getCurrentUser(), Enums.DocumentsFor.EBC.getId());
+		} else {
+			userDocumentService.deleteByDocumentFor(session.getCurrentUser(), Enums.DocumentsFor.EBC.getId());
+		}
+		
+		if(occupationAndReservation.getCategory() == Enums.Category.GEN.getId()) {
+			userDocumentService.deleteByDocumentFor(session.getCurrentUser(), Enums.DocumentsFor.Caste.getId());
+		} else {
+			userDocumentService.addByDocumentFor(session.getCurrentUser(), Enums.DocumentsFor.Caste.getId());
+		}
+		
 		occupationReservationService.save(occupationAndReservation);
 	}
 		

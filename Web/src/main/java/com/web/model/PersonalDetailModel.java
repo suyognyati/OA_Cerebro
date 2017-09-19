@@ -138,6 +138,7 @@ public class PersonalDetailModel {
 	private String placeOfBirth;
 	private Integer maritalStatus;
 	private String adharNo;
+	private Integer educationGapInYrs;
 	private List<Enums.KeyValuePair> bloodGroupList;
 	private List<Enums.KeyValuePair> maritalStatusList;
 	
@@ -187,6 +188,14 @@ public class PersonalDetailModel {
 		}
 		public void setAdharNo(String adharNo) {
 			this.adharNo = adharNo;
+		}
+		
+		//Education gap in Years
+		public Integer getEducationGapInYrs() {
+			return educationGapInYrs;
+		}
+		public void setEducationGapInYrs(Integer educationGapInYrs) {
+			this.educationGapInYrs = educationGapInYrs;
 		}
 		
 		//Blood Group List getter setter

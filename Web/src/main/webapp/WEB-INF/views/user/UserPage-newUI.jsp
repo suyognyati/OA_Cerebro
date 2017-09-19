@@ -126,7 +126,7 @@
 					</ul>
 			    </div>
 				<div class="col-sm-10 main-content col-sm-custompadding" id="main-content"> <a class="btn btn-toggleleft nav-button-col" onclick="toggle()"><i class="glyphicon glyphicon-menu-hamburger"></i></a>
-					<div ui-view="view"></div>
+					<div class="min-height" ui-view="view"></div>
 				</div>
 			</div>
 		</div>

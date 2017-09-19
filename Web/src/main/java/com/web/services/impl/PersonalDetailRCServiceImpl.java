@@ -3,6 +3,7 @@ package com.web.services.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.data.entities.Enums;
 import com.data.entities.Enums.BloodGroup;
 import com.data.entities.Enums.MaritalStatus;
 import com.data.entities.Enums.NameChangeReason;
@@ -14,6 +15,7 @@ import com.data.entities.UserDetail;
 import com.data.services.GeoLocationsService;
 import com.data.services.PersonalDetailService;
 import com.data.services.UserDetailService;
+import com.data.services.UserDocumentService;
 import com.web.model.PersonalDetailModel;
 import com.web.services.PersonalDetailRCService;
 import com.web.session.Session;
@@ -33,6 +35,9 @@ public class PersonalDetailRCServiceImpl implements PersonalDetailRCService {
 	
 	@Autowired
 	GeoLocationsService geoLocationService;
+	
+	@Autowired
+	UserDocumentService userDocumentService;
 	
 	public PersonalDetailModel getPersonalDetail(){
 		PersonalDetailModel personalDetailModel = new PersonalDetailModel();
@@ -56,6 +61,25 @@ public class PersonalDetailRCServiceImpl implements PersonalDetailRCService {
 		}*/
 		
 		personalDetail = setPersonalDetailObject(personalDetail, personalDetailModel/*, address*/);
+		
+		if(personalDetail.getIsNameChanged()) {
+			userDocumentService.addByDocumentFor(userSession.getCurrentUser(), Enums.DocumentsFor.NameChanged.getId());
+		} else {
+			userDocumentService.deleteByDocumentFor(userSession.getCurrentUser(), Enums.DocumentsFor.NameChanged.getId());
+		}
+		
+		if(personalDetail.getEducationGapInYrs() != null && personalDetail.getEducationGapInYrs() > 0) {
+			userDocumentService.addByDocumentFor(userSession.getCurrentUser(), Enums.DocumentsFor.EducationGap.getId());
+		} else {
+			userDocumentService.deleteByDocumentFor(userSession.getCurrentUser(), Enums.DocumentsFor.EducationGap.getId());
+		}
+		
+		if(personalDetail.getCountryOfCitizenship() != null 
+				&& personalDetail.getCountryOfCitizenship().getCountryName().compareToIgnoreCase(StaticMethods.StrINDIA) == 0) {
+			userDocumentService.deleteByDocumentFor(userSession.getCurrentUser(), Enums.DocumentsFor.Passport.getId());
+		} else {
+			userDocumentService.addByDocumentFor(userSession.getCurrentUser(), Enums.DocumentsFor.Passport.getId());			
+		}
 		
 		personalDetailService.save(personalDetail);
 		
@@ -93,6 +117,7 @@ public class PersonalDetailRCServiceImpl implements PersonalDetailRCService {
 			personalDetailModel.setPlaceOfBirth(personalDetail.getPlaceOfBirth());
 			personalDetailModel.setMaritalStatus(personalDetail.getMaritalStatus());
 			personalDetailModel.setBloodGroup(personalDetail.getBloodGroup());
+			personalDetailModel.setEducationGapInYrs(personalDetail.getEducationGapInYrs());
 			
 			personalDetailModel.setFathersLastName(personalDetail.getFathersLastName());
 			personalDetailModel.setFathersFirstName(personalDetail.getFathersFirstName());
@@ -174,6 +199,7 @@ public class PersonalDetailRCServiceImpl implements PersonalDetailRCService {
 		personalDetail.setGender(personalDetailModel.getGender());
 		personalDetail.setMaritalStatus(personalDetailModel.getMaritalStatus());
 		personalDetail.setPlaceOfBirth(personalDetailModel.getPlaceOfBirth());
+		personalDetail.setEducationGapInYrs(personalDetailModel.getEducationGapInYrs());
 		
 		if(personalDetailModel.getFathersLastName() != null) {
 			personalDetail.setFathersLastName(personalDetailModel.getFathersLastName().toUpperCase());
