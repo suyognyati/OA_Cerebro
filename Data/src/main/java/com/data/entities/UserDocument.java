@@ -57,6 +57,8 @@ public class UserDocument {
 		}
 	
 		public Integer getState() {
+			if(state == null)
+				state = Enums.DocumentState.Deleted.getId();
 			return state;
 		}
 		public void setState(Integer state) {
