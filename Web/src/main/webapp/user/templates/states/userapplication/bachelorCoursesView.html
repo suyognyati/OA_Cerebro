@@ -1,0 +1,32 @@
+<div class="heading">
+	<h1>
+	    Apply Courses
+	</h1>
+</div>
+<br>
+<div class="col-sm-12">
+	<div class="table-responsive">
+		<div class="col-sm-12">
+			<table class="table table-striped table-bordered">
+	               <thead>
+	                   <tr class="table-background">
+	                       <th width="10%">Program Code</th>
+	                       <th width="30%">Program Name</th>
+	                       <th width="10%">Faculty/College</th>
+	                       <th width="30%">Application Dates</th>
+	                       <th width="12%">Apply</th>
+	                   </tr>
+	               </thead>
+	               <tbody>
+	               		<tr ng-repeat="bachelorCourse in vm.bachelorcourses">
+	               			<td>{{bachelorCourse.programCode}}</th>
+	                       	<td>{{bachelorCourse.programName}}</th>
+	                       	<td>{{bachelorCourse.facultyOrCollege}}</th>
+	                       	<td>{{bachelorCourse.applicationDates}}</th>
+	                       	<td>Apply</th>
+	               		</tr>
+	               </tbody>
+	        </table>
+		</div>
+	</div>
+</div>

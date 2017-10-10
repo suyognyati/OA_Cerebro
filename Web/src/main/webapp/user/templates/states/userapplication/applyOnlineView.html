@@ -1,0 +1,35 @@
+<div class="heading">
+	<h1>
+	    Online Application
+	</h1>
+</div>
+<div class="col-sm-12">
+	<div class="well alert-danger col-sm-6" style="width:300px; height:150px; text-align:center; margin:30px; padding:20px">
+		<strong>Application for Graduation Admission </strong>
+		<br><br>
+		<span class="">
+		  	<input type="button" 
+		  		   value="Apply" 
+		  		   class="btn btn-success btn-block topMargin"
+		  		   ng-click="vm.applyForGraduation()">
+	   </span>
+	</div>
+	
+	<div class="well alert-danger col-sm-6" style="width:300px; height:150px; text-align:center; margin:30px; padding:20px">
+		<strong>Application for Post Graduation Admission </strong>
+		<br><br>
+		<span class="">
+		  	<input type="button" 
+		  		   value="Apply" 
+		  		   class="btn btn-success btn-block topMargin"
+		  		   ng-click="">
+	   </span>
+	</div>
+</div>
+
+
+<script type="text/javascript">
+	setActiveElementOnLeftNav("applyOnline");
+	//To reload selectpicker on page load
+	$(".selectpicker").selectpicker("refresh");
+</script>
