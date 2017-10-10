@@ -37,10 +37,10 @@ function closeNav() {
 
 function setActiveElementOnLeftNav(id) {
 	var activeelement = $("#" + id);
-	if (!activeelement.hasClass('active')) {
+	//if (!activeelement.hasClass('active')) {
 		$('.left-nav .nav li').removeClass('active');
 		activeelement.addClass('active');
-	}
+	//}
 }
 
 function setActiveElementOnTopNav(id) {
@@ -62,6 +62,40 @@ function refreshSelectPickerWithDelay(delay) {
 	setTimeout(function() {
 		$(".selectpicker").selectpicker("refresh");
 	}, delay);
+}
+
+function fixLeftNavOnScroll() {
+	$(window).bind('scroll', function() {
+        navHeight = $("header").height();
+        if($(window).scrollTop() >= navHeight) {
+        	mainMenuHeight = $(".mainMenu").height()
+        	$('nav').addClass('stickToTop');
+        	$(".main-content").css("margin-top", mainMenuHeight);
+        	$(".affix").css("right", mainContentWidth);
+        	$(".affix").css("top", mainMenuHeight);
+        } else {
+        	$('nav').removeClass('stickToTop');
+        	$(".main-content").css("margin-top", "");
+        	$(".affix").css("right", "");
+        	$(".affix").css("top", "");
+        }
+	});
+    
+	$('.submenu').affix({
+		offset: {
+			top: $('header').height()
+		}
+	}); 
+    
+    $('.left-nav .nav li a').click(function(e) {
+        var $parent = $(this).parent();
+        setActiveElementOnLeftNav($parent.attr('id'));       
+    });
+    
+    $('.navbar-nav li a').click(function(e) {
+        var $parent = $(this).parent();
+        setActiveElementOnTopNav($parent.attr('id'));
+    });
 }
 
 $(document).ready(function(){

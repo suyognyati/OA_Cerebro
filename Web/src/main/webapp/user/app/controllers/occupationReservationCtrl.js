@@ -7,9 +7,9 @@
 					 "$state",
 					 "$window",
 					 "OccupationReservationService",
-					 UserDetailCtrl]);
+					 OccupationReservationCtrl]);
 	
-	function UserDetailCtrl($http, $state, $window, OccupationReservationService) {
+	function OccupationReservationCtrl($http, $state, $window, OccupationReservationService) {
 		var vm = this;
 		vm.accessToken = $window.bearer_token;
 		vm.accessTokenParam = "?access_token=" + vm.accessToken;

@@ -103,17 +103,18 @@
 					</div>
 					<div class="collapse navbar-collapse" id="myNavbar">
 						<ul class="nav navbar-nav">
-							<li id="studentStatus" class="active"><a>Student Status</a></li>
+							<!-- <li id="studentStatus" class="active"><a ui-sref="studentStatus.personalDetail">Student Status</a></li> -->
+							<li id="studentStatus"><a ui-sref="studentStatus.personalDetail">Student Status</a></li>
 							<li id="userProfile"> <a>User Profile</a></li>
-							<li id="applyOnline"><a>Apply Online</a></li>
+							<li id="applyForCourses"><a ui-sref="application.applyOnline">Apply for courses</a></li>
 						</ul>
 					</div>
 				</div>
 			</div>
 		</nav>
 				
-		<div class="main">
-			<div class="row row-custom-margin">
+		<div class="main" ui-view="mainview">
+<!-- 			<div class="row row-custom-margin">
 			    <div class="col-sm-2 left-nav col-sm-custompadding" id="mySidenav">
 					<ul class="nav nav-pills nav-stacked submenu" data-spy="affix" data-offset-top="60">
 						<li id="userDetail"><a ui-sref="userDetail"><i class="glyphicon glyphicon-user"></i> <span id="nav-text0" class="nav-text-display">User Details</span></a></li>
@@ -128,7 +129,7 @@
 				<div class="col-sm-10 main-content col-sm-custompadding" id="main-content"> <a class="btn btn-toggleleft nav-button-col" onclick="toggle()"><i class="glyphicon glyphicon-menu-hamburger"></i></a>
 					<div class="min-height" ui-view="view"></div>
 				</div>
-			</div>
+			</div> -->
 		</div>
 	</div>
 	<!-- <div class="footer fixed-bar">

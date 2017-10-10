@@ -11,16 +11,126 @@
 		
 					var basePath = "";
 					basePath = globalConstants.rootLocation + userConstants.userLocation;
+					
+					var userProfileFolderPath = "templates/states/studentprofile/";
+					var userApplicationFolderPath = "templates/states/userapplication/";
 		
-				    $urlRouterProvider.otherwise("/personaldetails");
+				    //$urlRouterProvider.otherwise("/studentstatus/personaldetails");
 					
 					$stateProvider
 					
-					.state("userDetail",{
+					.state("studentStatus",{
+						url: "/studentstatus",
+						views: {
+							"mainview":{
+			                	templateUrl: basePath + userProfileFolderPath + "studentStatusView.html",
+			                	controller:"StudentStatusCtrl as vm",
+							}
+						},
+						resolve: {
+							userDetail : ['$ocLazyLoad', function($ocLazyLoad){
+								return $ocLazyLoad.load({
+									name : 'admission',
+									files : [
+									     basePath + 'app/controllers/studentStatusCtrl.js'
+									]
+							
+								})
+							}]
+						}
+					})
+					
+					.state("application",{
+						url: "/application",
+						views: {
+							"mainview":{
+			                	templateUrl: basePath + userApplicationFolderPath + "applicationView.html",
+			                	controller:"ApplicationCtrl as vm",
+							}
+						},
+						resolve: {
+							userDetail : ['$ocLazyLoad', function($ocLazyLoad){
+								return $ocLazyLoad.load({
+									name : 'admission',
+									files : [
+									     basePath + 'app/controllers/applicationCtrl.js'
+									]
+							
+								})
+							}]
+						}
+					})
+					
+					.state("application.applyOnline",{
+						url: "/applyOnline",
+						views: {
+							"view":{
+								templateUrl: basePath + userApplicationFolderPath + "applyOnlineView.html",
+								controller:"ApplyOnlineCtrl as vm",
+							}
+						},
+						resolve: {
+							basicDetail : ['$ocLazyLoad', function($ocLazyLoad){
+								return $ocLazyLoad.load({
+									name : 'admission',
+									files : [
+									     basePath + 'app/controllers/applyOnlineCtrl.js',
+									]
+							
+								})
+							}]
+						}
+					})
+					
+					.state("application.bachelorCourses",{
+						url: "/bachelorCourses",
+						views: {
+							"view":{
+								templateUrl: basePath + userApplicationFolderPath + "bachelorCoursesView.html",
+								controller:"BachelorCoursesCtrl as vm",
+							}
+						},
+						resolve: {
+							basicDetail : ['$ocLazyLoad', function($ocLazyLoad){
+								return $ocLazyLoad.load({
+									name : 'admission',
+									files : [
+									     basePath + 'app/controllers/bachelorCoursesCtrl.js',
+									     basePath + 'app/services/bachelorCoursesService.js'
+									]
+							
+								})
+							}]
+						}
+						
+					})
+					
+					.state("application.applicationStatus",{
+						url: "/applicationstatus",
+						views: {
+							"view":{
+			                	templateUrl: basePath + userApplicationFolderPath + "applyOnlineView.html",
+			                	//controller:"applicationCtrl as vm",
+							}
+						},
+						/*resolve: {
+							userDetail : ['$ocLazyLoad', function($ocLazyLoad){
+								return $ocLazyLoad.load({
+									name : 'admission',
+									files : [
+									     basePath + 'app/controllers/applicationCtrl.js'
+									]
+							
+								})
+							}]
+						}*/
+					})
+					
+					.state("studentStatus.userDetail",{
 							url: "/userdetails",
 							views: {
 								"view":{
-				                	templateUrl: basePath + "templates/states/userDetailView.html",
+				                	templateUrl: basePath + userProfileFolderPath + "userDetailView.html",
 				                	controller:"UserDetailCtrl as vm",
 								}
 							},
@@ -55,11 +165,11 @@
 							}
 					})*/
 					
-					.state("personalDetail",{
+					.state("studentStatus.personalDetail",{
 							url: "/personaldetails",
 							views: {
 								"view":{
-									templateUrl: basePath + "templates/states/personalDetailView.html",
+									templateUrl: basePath + userProfileFolderPath + "personalDetailView.html",
 									controller:"PersonalDetailCtrl as vm",
 								}
 							},
@@ -77,11 +187,11 @@
 							}
 					})
 					
-					.state("address",{
+					.state("studentStatus.address",{
 							url: "/address",
 							views: {
 								"view":{
-									templateUrl: basePath + "templates/states/addressView.html",
+									templateUrl: basePath + userProfileFolderPath + "addressView.html",
 									controller:"AddressCtrl as vm",
 								}
 							},
@@ -99,11 +209,11 @@
 							}
 					})
 					
-					.state("educationInformation",{
+					.state("studentStatus.educationInformation",{
 							url: "/educationinformation",
 							views: {
 								"view":{
-									templateUrl: basePath + "templates/states/educationInformationView.html",
+									templateUrl: basePath + userProfileFolderPath + "educationInformationView.html",
 									controller:"EducationInformationCtrl as vm",
 								}
 							},
@@ -124,7 +234,7 @@
 							}
 					})
 					
-					.state("qualificationDetail",{
+					.state("studentStatus.qualificationDetail",{
 							url: "/educationinformation/:qualification?:qualificationMainLevel",
 							views: {
 								"view":{
@@ -132,13 +242,13 @@
 									function (stateParams){
 										if(stateParams.qualificationMainLevel == 1
 												/*&& stateParams.qualification == "ssc"*/) {
-											return basePath + "templates/states/sscView.html"
+											return basePath + userProfileFolderPath + "sscView.html"
 										} else if((stateParams.qualificationMainLevel >= 2 && stateParams.qualificationMainLevel <= 3) 
 												/*&& stateParams.qualification == "hsc"*/) {
-											return basePath + "templates/states/hscView.html"
+											return basePath + userProfileFolderPath + "hscView.html"
 										} else if(stateParams.qualificationMainLevel == 4 
 												/*&& stateParams.qualification == "diploma"*/) {
-											return basePath + "templates/states/diplomaView.html"
+											return basePath + userProfileFolderPath + "diplomaView.html"
 										} else {
 											return false;
 										}
@@ -166,11 +276,11 @@
 							}
 					})
 					
-					.state("occupationReservation",{
+					.state("studentStatus.occupationReservation",{
 							url: "/occupationreservation",
 							views: {
 								"view":{
-									templateUrl: basePath + "templates/states/occupationReservationView.html",
+									templateUrl: basePath + userProfileFolderPath + "occupationReservationView.html",
 									controller:"OccupationReservationCtrl as vm",
 								}
 							},
@@ -187,11 +297,11 @@
 								}]
 							}
 					})
-					.state("uploadPhotoSign",{
+					.state("studentStatus.uploadPhotoSign",{
 						url: "/uploadphotosign",
 						views: {
 							"view":{
-								templateUrl: basePath + "templates/states/uploadPhotoSignView.html",
+								templateUrl: basePath + userProfileFolderPath + "uploadPhotoSignView.html",
 								controller:"UploadPhotoSignCtrl as vm",
 							}
 						},
@@ -208,11 +318,11 @@
 							}]
 						}
 					})
-					.state("uploadDocuments",{
+					.state("studentStatus.uploadDocuments",{
 						url: "/uploadDocuments",
 						views: {
 							"view":{
-								templateUrl: basePath + "templates/states/uploadDocumentsView.html",
+								templateUrl: basePath + userProfileFolderPath + "uploadDocumentsView.html",
 								controller:"UploadDocumentsCtrl as vm",
 							}
 						},
@@ -229,6 +339,8 @@
 							}]
 						}
 					})
+					
+					
 			}]
 		);
 	

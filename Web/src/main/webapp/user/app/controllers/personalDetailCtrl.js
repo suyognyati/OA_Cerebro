@@ -60,7 +60,7 @@
 			personalDetailService.save(vm.personaldetail, vm.accessTokenParam)
 			.success(function (data, status, headers, config) {
 				vm.successMessage = "Detail saved successfully";
-				$state.go("address");
+				$state.go("studentStatus.address");
 			})
 			.error(function (data, status, headers, config) {
 				vm.errorMessage = "Error while saving detail";
