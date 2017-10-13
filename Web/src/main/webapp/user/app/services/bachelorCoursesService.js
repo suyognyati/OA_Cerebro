@@ -11,13 +11,13 @@
 			get : function(accessTokenParam) {
 				return $http({
 					method: "GET",
-					url: "/Web/bachelorCourses/get/" + accessTokenParam
+					url: "/Web/course/bachelorCourse/get/" + accessTokenParam
 				})
 			},
 			save: function (bachelorCourses, accessTokenParam) {
 				return $http({
                     method: 'POST',
-                    url: '/Web/bachelorCourses/save/' + accessTokenParam,
+                    url: '/Web/course/bachelorCourse/save/' + accessTokenParam,
                     data: bachelorCourses
                 });
             }

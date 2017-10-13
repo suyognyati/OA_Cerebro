@@ -105,6 +105,29 @@
 						
 					})
 					
+					.state("application.subject",{
+						url: "/subject",
+						views: {
+							"view":{
+								templateUrl: basePath + userApplicationFolderPath + "subjectView.html",
+								/*controller:"SubjectCtrl as vm",*/
+							}
+						},
+						/*resolve: {
+							basicDetail : ['$ocLazyLoad', function($ocLazyLoad){
+								return $ocLazyLoad.load({
+									name : 'admission',
+									files : [
+									     basePath + 'app/controllers/subjectCtrl.js',
+									     basePath + 'app/services/subjectService.js'
+									]
+							
+								})
+							}]
+						}*/
+						
+					})
+					
 					.state("application.applicationStatus",{
 						url: "/applicationstatus",
 						views: {

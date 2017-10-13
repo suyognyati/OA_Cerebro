@@ -1,12 +1,13 @@
 package com.web.model;
 
 
-public class BachelorCoursesModel {
+public class CourseModel {
 	
 	private String programCode;
 	private String programName;
 	private String facultyOrCollege;
 	private String applicationDates;
+	private Integer id;
 	
 	
 	public String getProgramCode() {
@@ -38,6 +39,15 @@ public class BachelorCoursesModel {
 	}
 	public void setApplicationDates(String applicationDates) {
 		this.applicationDates = applicationDates;
+	}
+	
+	
+	
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
 	}
 	
 	

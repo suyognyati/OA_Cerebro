@@ -5,36 +5,38 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.web.model.BachelorCoursesModel;
-import com.web.services.BachelorCoursesRCService;
+import com.web.model.CourseModel;
+import com.web.services.CourseRCService;
 
-@Service("bachelorCoursesRCService")
-public class BachelorCoursesRCServiceImpl implements BachelorCoursesRCService {
+@Service("courseRCService")
+public class CourseRCServiceImpl implements CourseRCService {
 
 	
 	
-	public List<BachelorCoursesModel> getBachelorCourses() {
+	public List<CourseModel> getBachelorCourses() {
 	
-		List<BachelorCoursesModel> bachelorCoursesModelList = new ArrayList<BachelorCoursesModel>();
+		List<CourseModel> bachelorCoursesModelList = new ArrayList<CourseModel>();
 		
-		BachelorCoursesModel bachelorCoursesModel = new BachelorCoursesModel();
+		CourseModel bachelorCoursesModel = new CourseModel();
 		bachelorCoursesModel.setProgramCode("1");
 		bachelorCoursesModel.setProgramName("BSc IT");
 		bachelorCoursesModel.setFacultyOrCollege("Faculty of Science");
 		bachelorCoursesModel.setApplicationDates("22-02-2015");
+		bachelorCoursesModel.setId(1);
 		bachelorCoursesModelList.add(bachelorCoursesModel);
 		
-		bachelorCoursesModel = new BachelorCoursesModel();
+		bachelorCoursesModel = new CourseModel();
 		bachelorCoursesModel.setProgramCode("2");
 		bachelorCoursesModel.setProgramName("BSc Comp Sc");
 		bachelorCoursesModel.setFacultyOrCollege("Faculty of Science");
 		bachelorCoursesModel.setApplicationDates("22-02-2015");
+		bachelorCoursesModel.setId(2);
 		bachelorCoursesModelList.add(bachelorCoursesModel);
 		
 		return bachelorCoursesModelList;
 	}
 	
-	public void saveBachelorCourses(BachelorCoursesModel bachelorCoursesModel) {
+	public void saveBachelorCourses(CourseModel bachelorCoursesModel) {
 		
 	}
 		

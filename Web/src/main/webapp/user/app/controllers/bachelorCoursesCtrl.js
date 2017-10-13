@@ -23,6 +23,8 @@
 			vm.bachelorcourses = {};
 		});
 
-		
+		vm.applyCourse = function(courseId){
+			$state.go("application.subject");
+		};		
 	};
 }());
