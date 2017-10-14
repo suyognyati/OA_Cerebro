@@ -18,5 +18,8 @@
 		<class>com.data.entities.University</class>
 		<class>com.data.entities.DocumentList</class>
 		<class>com.data.entities.UserDocument</class>
+		<class>com.data.entities.BoardUniversity</class>
+		<class>com.data.entities.University_Program</class>
+		<class>com.data.entities.University_Subject</class>
 	</persistence-unit>
 </persistence>
