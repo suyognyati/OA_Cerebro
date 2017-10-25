@@ -13,8 +13,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Table(name="University_Universities")
 public class University_University {
 	@Id
-	@Column(name="BoardUniversityId")
-	private Integer boardUniversityId;
+	@Column(name="UniversityId")
+	private Integer universityId;
 	
 	@Column(name="UniversityName")
 	private String universityName;
@@ -31,11 +31,11 @@ public class University_University {
 	private State state;
 
 		public Integer getUniversityId() {
-			return boardUniversityId;
+			return universityId;
 		}
 	
-		public void setUniversityId(Integer boardUniversityId) {
-			this.boardUniversityId = boardUniversityId;
+		public void setUniversityId(Integer universityId) {
+			this.universityId = universityId;
 		}
 	
 		public String getUniversityName() {

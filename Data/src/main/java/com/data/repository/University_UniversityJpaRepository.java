@@ -7,5 +7,5 @@ import com.data.entities.University_University;
 
 @Repository("university_UniversityJpaRepository")
 public interface University_UniversityJpaRepository extends JpaRepository<University_University, Integer>{
-	University_University findByBoardUniversityId(Integer userId);
+	University_University findByUniversityId(Integer userId);
 }
