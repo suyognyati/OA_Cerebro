@@ -13,7 +13,7 @@ import com.web.model.CourseModel;
 import com.web.services.CourseRCService;
 
 @RestController
-@RequestMapping(value="/course")
+@RequestMapping(value="/rest/course")
 public class CourseRestController {
 
 	@Autowired

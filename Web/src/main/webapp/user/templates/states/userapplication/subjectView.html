@@ -16,14 +16,11 @@
 	                   </tr>
 	               </thead>
 	               <tbody>
-	               		<!-- <tr ng-repeat="bachelorCourse in vm.bachelorcourses">
-	               			<td>{{bachelorCourse.programCode}}</td>
-	                       	<td>{{bachelorCourse.programName}}</td>
-	                       	<td>{{bachelorCourse.facultyOrCollege}}</td>
-	                       	<td>{{bachelorCourse.applicationDates}}</td>
-	                       	<td><input type="button" value="Apply" class="btn btn-success btn-block topMargin" 
-        		   					   ng-click="vm.applyCourse()"></td>
-	               		</tr> -->
+	               		 <tr ng-repeat="subject in vm.subjects">
+	               			<td>{{subject.subjectCode}}</td>
+	                       	<td>{{subject.subjectName}}</td>
+	                       	<td><input type="checkbox"></td>
+	               		 </tr>
 	               </tbody>
 	        </table>
 		</div>

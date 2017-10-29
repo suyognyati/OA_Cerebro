@@ -110,10 +110,10 @@
 						views: {
 							"view":{
 								templateUrl: basePath + userApplicationFolderPath + "subjectView.html",
-								/*controller:"SubjectCtrl as vm",*/
+								controller:"SubjectCtrl as vm",
 							}
 						},
-						/*resolve: {
+						resolve: {
 							basicDetail : ['$ocLazyLoad', function($ocLazyLoad){
 								return $ocLazyLoad.load({
 									name : 'admission',
@@ -124,7 +124,7 @@
 							
 								})
 							}]
-						}*/
+						}
 						
 					})
 					
