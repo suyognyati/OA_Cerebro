@@ -80,7 +80,7 @@ public class HomeController {
 		model.addAttribute("Bearer", accessTokenValue);
 		model.addAttribute("user", session.getCurrentUser());
 		model.addAttribute("userdetail", session.getCurrentUserDetail());
-		return "user/UserPageView";
+		return "user/StudentView";
 	}
 	
 	@RequestMapping(value = { "user/studentview/" }, method = RequestMethod.GET)
@@ -104,7 +104,7 @@ public class HomeController {
 		model.addAttribute("Bearer", accessTokenValue);
 		model.addAttribute("user", session.getCurrentUser());
 		model.addAttribute("userdetail", session.getCurrentUserDetail());
-		return "user/UserPageView";
+		return "user/StudentView";
 	}
 
 	@RequestMapping(value = { "vendor/" }, method = RequestMethod.GET)
