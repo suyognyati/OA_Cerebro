@@ -119,7 +119,7 @@
 			.success(function (data, status, headers, config) {
 				vm.returnstatus = data;
 				if(vm.returnstatus != null && vm.returnstatus.success == true) {
-					$state.go("educationInformation", {success: vm.returnstatus});
+					$state.go("studentStatus.educationInformation", {success: vm.returnstatus});
 				} else {
 					$window.scrollTo(0, 0);
 				}
@@ -130,7 +130,7 @@
 		}
 		
 		vm.cancel = function() {
-			$state.go("educationInformation");
+			$state.go("studentStatus.educationInformation");
 		}
 		
 		vm.setSelectedCountry = function() {

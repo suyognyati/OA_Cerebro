@@ -44,12 +44,12 @@
 		vm.qualificationDetail = function(qualificationMainLevel, qualificationId) {
 			var view = mapView(qualificationMainLevel);
 						
-			$state.go("qualificationDetail", {qualification:view ,qualificationMainLevel:qualificationMainLevel, qualificationId:qualificationId});
+			$state.go("studentStatus.qualificationDetail", {qualification:view ,qualificationMainLevel:qualificationMainLevel, qualificationId:qualificationId});
 		}
 		
 		vm.createNewQualification = function(qualificationMainLevel, qualificationSubLevel) {
 			var view = mapView(qualificationMainLevel);						
-			$state.go("qualificationDetail", {qualification:view ,qualificationMainLevel:qualificationMainLevel, qualificationSubLevel:qualificationSubLevel, newQualification:true});
+			$state.go("studentStatus.qualificationDetail", {qualification:view ,qualificationMainLevel:qualificationMainLevel, qualificationSubLevel:qualificationSubLevel, newQualification:true});
 		}
 		
 		vm.deleteQualification = function(qualificationId, qualificationName) {
@@ -63,7 +63,7 @@
 				.success(function (data, status, headers, config) {
 					vm.returnstatus = data;
 					if(vm.returnstatus != null && vm.returnstatus.success == true) {
-						$state.reload("educationInformation", {success: false});
+						$state.reload("studentStatus.educationInformation", {success: false});
 					} else {
 						$window.scrollTo(0, 0);
 					}
