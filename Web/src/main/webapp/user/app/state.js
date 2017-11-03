@@ -75,6 +75,7 @@
 									name : 'admission',
 									files : [
 									     basePath + 'app/controllers/applyOnlineCtrl.js',
+									     basePath + 'app/services/applyOnlineService.js'
 									]
 							
 								})
