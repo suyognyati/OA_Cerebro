@@ -27,6 +27,9 @@ public class University_Program {
 	@Column(name="ProgramFaculty")
 	private String universityProgramFaculty;
 	
+	@Column(name="ProgramYear")
+	private String universityProgramYear;
+	
 	@ManyToOne
 	@JoinColumn(name="FK_UniversityId")
 	private University_University universityUniversity;
@@ -63,11 +66,20 @@ public class University_Program {
 			this.universityProgramFaculty = universityProgramFaculty;
 		}
 	
-		public University_University getUniversity() {
+		public String getUniversityProgramYear() {
+			return universityProgramYear;
+		}
+	
+		public void setUniversityProgramYear(String universityProgramYear) {
+			this.universityProgramYear = universityProgramYear;
+		}
+	
+		public University_University getUniversityUniversity() {
 			return universityUniversity;
 		}
 	
-		public void setUniversity(University_University university) {
-			this.universityUniversity = university;
+		public void setUniversityUniversity(University_University universityUniversity) {
+			this.universityUniversity = universityUniversity;
 		}
+
 }
