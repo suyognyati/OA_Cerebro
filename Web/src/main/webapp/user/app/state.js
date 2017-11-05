@@ -83,12 +83,12 @@
 						}
 					})
 					
-					.state("application.bachelorCourses",{
-						url: "/bachelorCourses",
+					.state("application.program",{
+						url: "/applyOnline/:programCategoryId",
 						views: {
 							"view":{
-								templateUrl: basePath + userApplicationFolderPath + "bachelorCoursesView.html",
-								controller:"BachelorCoursesCtrl as vm",
+								templateUrl: basePath + userApplicationFolderPath + "programView.html",
+								controller:"ProgramCtrl as vm",
 							}
 						},
 						resolve: {
@@ -96,8 +96,8 @@
 								return $ocLazyLoad.load({
 									name : 'admission',
 									files : [
-									     basePath + 'app/controllers/bachelorCoursesCtrl.js',
-									     basePath + 'app/services/bachelorCoursesService.js'
+									     basePath + 'app/controllers/programCtrl.js',
+									     basePath + 'app/services/programService.js'
 									]
 							
 								})

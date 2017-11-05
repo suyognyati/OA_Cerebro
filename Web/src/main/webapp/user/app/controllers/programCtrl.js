@@ -2,25 +2,26 @@
 	"use strict";
 	angular
 		.module("user")
-		.controller("BachelorCoursesCtrl",
+		.controller("ProgramCtrl",
 					["$http",
 					 "$state",
 					 "$window",
-					 "bachelorCoursesService",
-					 BachelorCoursesCtrl]);
+					 "programService",
+					 ProgramCtrl]);
 	
-	function BachelorCoursesCtrl($http, $state, $window, bachelorCoursesService) {
+	function ProgramCtrl($http, $state, $window, programService) {
 		var vm = this;
 		
+		vm.programCategoryId = $state.params.programCategoryId;
 		vm.accessToken = $window.bearer_token;
 		vm.accessTokenParam = "?access_token=" + vm.accessToken;
 		
-		bachelorCoursesService.get(vm.accessTokenParam)
+		programService.get(vm.programCategoryId, vm.accessTokenParam)
 		.success(function(data, status, header, config) {
-			vm.bachelorcourses = data;
+			vm.programs = data;
 		})
 		.error(function(data, status, header, config) {
-			vm.bachelorcourses = {};
+			vm.programs = {};
 		});
 
 		vm.applyCourse = function(courseId){

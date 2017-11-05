@@ -6,14 +6,14 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.web.model.CourseModel;
-import com.web.services.CourseRCService;
+import com.web.services.ProgramRCService;
 
-@Service("courseRCService")
-public class CourseRCServiceImpl implements CourseRCService {
+@Service("programRCService")
+public class ProgramRCServiceImpl implements ProgramRCService {
 
 	
 	
-	public List<CourseModel> getBachelorCourses() {
+	public List<CourseModel> getProgramsByCategory(Integer programCategoryId) {
 	
 		List<CourseModel> bachelorCoursesModelList = new ArrayList<CourseModel>();
 		

@@ -18,13 +18,13 @@
 	                   </tr>
 	               </thead>
 	               <tbody>
-	               		<tr ng-repeat="bachelorCourse in vm.bachelorcourses">
-	               			<td>{{bachelorCourse.programCode}}</td>
-	                       	<td>{{bachelorCourse.programName}}</td>
-	                       	<td>{{bachelorCourse.facultyOrCollege}}</td>
-	                       	<td>{{bachelorCourse.applicationDates}}</td>
+	               		<tr ng-repeat="program in vm.programs">
+	               			<td>{{program.programCode}}</td>
+	                       	<td>{{program.programName}}</td>
+	                       	<td>{{program.facultyOrCollege}}</td>
+	                       	<td>{{program.applicationDates}}</td>
 	                       	<td><input type="button" value="Apply" class="btn btn-success btn-block topMargin" 
-        		   					   ng-click="vm.applyCourse(bachelorCourse.id)"></td>
+        		   					   ng-click="vm.applyCourse(program.id)"></td>
 	               		</tr>
 	               </tbody>
 	        </table>

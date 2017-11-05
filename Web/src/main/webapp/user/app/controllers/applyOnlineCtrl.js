@@ -26,7 +26,7 @@
 		}
 		
 		vm.applyForGraduation = function(programCategoryId) {
-			$state.go("application.bachelorCourses");
+			$state.go("application.program", {programCategoryId:programCategoryId});
 		}
 		
 		vm.getCategories();
