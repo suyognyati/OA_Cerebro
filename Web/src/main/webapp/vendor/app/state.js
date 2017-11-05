@@ -12,7 +12,7 @@
 					var basePath = "";
 					basePath = globalConstants.rootLocation + vendorConstants.vendorLocation;
 		
-				    $urlRouterProvider.otherwise("/vendorHome/dashboard");
+				    $urlRouterProvider.otherwise("/existingEntry");
 					
 					$stateProvider
 					
