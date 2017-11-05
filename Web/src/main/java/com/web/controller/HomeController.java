@@ -112,6 +112,7 @@ public class HomeController {
 		session.setCurrentVendorName();
 		session.setCurrentVendor();
 		session.setCurrentVendorDetail();
+		session.setCollegeId();
 		model.addAttribute("vendor", session.getCurrentVendor());
 		model.addAttribute("vendordetail", session.getCurrentVendorDetail());
 		return "vendor/VendorPage-topnavbar";

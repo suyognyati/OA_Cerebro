@@ -84,7 +84,7 @@
 					})
 					
 					.state("application.program",{
-						url: "/applyOnline/:programCategoryId",
+						url: "/applyOnline/pcid/:programCategoryId",
 						views: {
 							"view":{
 								templateUrl: basePath + userApplicationFolderPath + "programView.html",
@@ -107,7 +107,7 @@
 					})
 					
 					.state("application.subject",{
-						url: "/subject",
+						url: "/applyOnline/pid/:programId",
 						views: {
 							"view":{
 								templateUrl: basePath + userApplicationFolderPath + "subjectView.html",

@@ -1,7 +1,7 @@
 package com.web.model;
 
 
-public class CourseModel {
+public class ProgramModel {
 	
 	private String programCode;
 	private String programName;

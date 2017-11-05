@@ -25,6 +25,8 @@ public class Session {
 	private User CurrentUser = null;
 	private UserDetail CurrentUserDetail = null;
 	
+	private Integer collegeId = null;
+	
 	/* Getters for user */
 	
 	public String getCurrentUserName() {
@@ -93,6 +95,16 @@ public class Session {
 		CurrentVendorDetail = sessionService.GetUserDetail(CurrentVendor);
 	}
 	
+	/* Getter setter */
+	
+	public Integer getCollegeId() {
+		return collegeId;
+	}
+
+	public void setCollegeId() {
+		this.collegeId = 1;
+	}
+
 	/**
 	 * Gives the currently logged in user name
 	 * */

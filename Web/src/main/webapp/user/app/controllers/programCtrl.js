@@ -24,8 +24,8 @@
 			vm.programs = {};
 		});
 
-		vm.applyCourse = function(courseId){
-			$state.go("application.subject");
+		vm.applyProgram = function(programId){
+			$state.go("application.subject", {programId:programId});
 		};		
 	};
 }());

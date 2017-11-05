@@ -7,19 +7,23 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.web.model.CourseModel;
+import com.web.model.ProgramModel;
 import com.web.services.ProgramRCService;
+import com.web.session.Session;
 
 @RestController
 @RequestMapping(value="/rest/program")
 public class ProgramRestController {
 
 	@Autowired
+	Session session;
+	
+	@Autowired
 	ProgramRCService programService;
 	
 	@RequestMapping(value="/get/{programCategoryId}")
-	public List<CourseModel> get(@PathVariable(value="programCategoryId") Integer programCategoryId){
-		return programService.getProgramsByCategory(programCategoryId);
+	public List<ProgramModel> get(@PathVariable(value="programCategoryId") Integer programCategoryId){
+		return programService.getProgramsByCategory(session.getCollegeId(), programCategoryId);
 	}
 		
 }
