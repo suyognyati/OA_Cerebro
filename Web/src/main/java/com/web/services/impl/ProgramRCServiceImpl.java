@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 import com.data.entities.CollegeProgramMap;
 import com.data.entities.University_Program;
 import com.data.services.CollegeProgramMapService;
-import com.data.services.ProgramService;
 import com.web.model.ProgramModel;
 import com.web.services.ProgramRCService;
 
@@ -18,9 +17,6 @@ public class ProgramRCServiceImpl implements ProgramRCService {
 
 	@Autowired
 	CollegeProgramMapService collegeProgramMapService;
-	
-	@Autowired
-	ProgramService programService;
 	
 	public List<ProgramModel> getProgramsByCategory(Integer collegeId, Integer programCategoryId) {
 	
