@@ -19,10 +19,10 @@ public class University_Subject {
 	private Integer universitySubjectId;
 	
 	@Column(name="SubjectCode")
-	private Integer universitySubjectCode;
+	private String universitySubjectCode;
 	
 	@Column(name="SubjectName")
-	private Integer universitySubjectName;
+	private String universitySubjectName;
 	
 	@Column(name="SubjectType")
 	private Integer universitySubjectType;
@@ -39,19 +39,19 @@ public class University_Subject {
 			this.universitySubjectId = universitySubjectId;
 		}
 	
-		public Integer getUniversitySubjectCode() {
+		public String getUniversitySubjectCode() {
 			return universitySubjectCode;
 		}
 	
-		public void setUniversitySubjectCode(Integer universitySubjectCode) {
+		public void setUniversitySubjectCode(String universitySubjectCode) {
 			this.universitySubjectCode = universitySubjectCode;
 		}
 	
-		public Integer getUniversitySubjectName() {
+		public String getUniversitySubjectName() {
 			return universitySubjectName;
 		}
 	
-		public void setUniversitySubjectName(Integer universitySubjectName) {
+		public void setUniversitySubjectName(String universitySubjectName) {
 			this.universitySubjectName = universitySubjectName;
 		}
 	

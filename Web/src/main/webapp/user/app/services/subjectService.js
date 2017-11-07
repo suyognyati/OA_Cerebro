@@ -8,11 +8,10 @@
 	
 	function SubjectService($http) {
 		return {
-			getBachelorCourse: function (courseId, accessTokenParam) {
+			getSubjects: function (programId, accessTokenParam) {
 				return $http({
                     method: "POST",
-                    url: "/Web/rest/subject/bachelorCourse/get/" + accessTokenParam,
-                    data: courseId
+                    url: "/Web/rest/subject/get/" + programId + accessTokenParam
                 });
             }
 		}

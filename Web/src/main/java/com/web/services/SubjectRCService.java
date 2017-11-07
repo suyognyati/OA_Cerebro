@@ -6,5 +6,5 @@ import com.web.model.SubjectModel;
 
 public interface SubjectRCService {
 
-	List<SubjectModel> getBachelorSubject(Integer courseId);
+	List<SubjectModel> getSubjectsByProgram(Integer collegeId, Integer programId);
 }

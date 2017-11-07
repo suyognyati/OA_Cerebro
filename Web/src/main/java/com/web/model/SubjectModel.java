@@ -2,8 +2,16 @@ package com.web.model;
 
 public class SubjectModel {
 
+	private Integer subjectId;
 	private String subjectCode;
 	private String subjectName;
+		
+	public Integer getSubjectId() {
+		return subjectId;
+	}
+	public void setSubjectId(Integer subjectId) {
+		this.subjectId = subjectId;
+	}
 	
 	public String getSubjectCode() {
 		return subjectCode;

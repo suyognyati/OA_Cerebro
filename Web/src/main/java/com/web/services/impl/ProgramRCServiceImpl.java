@@ -35,22 +35,6 @@ public class ProgramRCServiceImpl implements ProgramRCService {
 			programModelList.add(programModel);
 		}
 		
-		ProgramModel programModel = new ProgramModel();
-		programModel.setProgramCode("1");
-		programModel.setProgramName("BSc IT");
-		programModel.setFacultyOrCollege("Faculty of Science");
-		programModel.setApplicationDates("22-02-2015");
-		programModel.setId(1);
-		programModelList.add(programModel);
-		
-		programModel = new ProgramModel();
-		programModel.setProgramCode("2");
-		programModel.setProgramName("BSc Comp Sc");
-		programModel.setFacultyOrCollege("Faculty of Science");
-		programModel.setApplicationDates("22-02-2015");
-		programModel.setId(2);
-		programModelList.add(programModel);
-		
 		return programModelList;
 	}
 	
