@@ -13,6 +13,8 @@
 		var vm = this;
 		
 		vm.courseId = "1";
+		vm.programName = $state.params.programName;
+		vm.programCode = $state.params.programCode;
 		
 		vm.accessToken = $window.bearer_token;
 		vm.accessTokenParam = "?access_token=" + vm.accessToken;

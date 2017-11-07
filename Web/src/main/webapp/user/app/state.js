@@ -114,6 +114,10 @@
 								controller:"SubjectCtrl as vm",
 							}
 						},
+						params: {
+							programName: {value: ""},
+							programCode: {value: ""}
+						},
 						resolve: {
 							basicDetail : ['$ocLazyLoad', function($ocLazyLoad){
 								return $ocLazyLoad.load({

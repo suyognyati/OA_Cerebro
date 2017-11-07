@@ -24,8 +24,8 @@
 			vm.programs = {};
 		});
 
-		vm.applyProgram = function(programId){
-			$state.go("application.subject", {programId:programId});
+		vm.applyProgram = function(programId, programName, programCode){
+			$state.go("application.subject", {programId:programId, programName:programName, programCode:programCode});
 		};		
 	};
 }());
