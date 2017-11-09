@@ -123,8 +123,8 @@
 								return $ocLazyLoad.load({
 									name : 'admission',
 									files : [
-									     basePath + 'app/controllers/subjectCtrl.js',
-									     basePath + 'app/services/subjectService.js'
+									     basePath + 'app/controllers/course.artsCtrl.js',
+									     basePath + 'app/services/course.artsService.js'
 									]
 							
 								})
