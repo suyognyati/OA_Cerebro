@@ -5,6 +5,7 @@
 		                 "ui.router",
 		                 "oc.lazyLoad",
 		                 "ui.bootstrap",
+		                 "720kb.datepicker",
 		                 /*"pmImageEditor",*/
 		                 "ngImgCrop"]);	
 	

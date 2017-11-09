@@ -110,7 +110,7 @@
 						url: "/applyOnline/pid/:programId",
 						views: {
 							"view":{
-								templateUrl: basePath + userApplicationFolderPath + "subjectView.html",
+								templateUrl: basePath + userApplicationFolderPath + "course.artsView.html",
 								controller:"SubjectCtrl as vm",
 							}
 						},

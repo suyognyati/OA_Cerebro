@@ -96,12 +96,13 @@
 							   class="labelclass">Name in Regional Language
 						<span style="color:red"><big> * </big></span></label>
 					</div>
+					<div id='translControl'></div>
 					<div class="col-sm-3"
 						 ng-class="{'has-error':personaldetailform.lastNameRegional.$invalid &&
 						 						personaldetailform.lastNameRegional.$dirty}">
 						<input type="text" 
 							   class="form-control"
-							   id="regionalname"
+							   id="lastNameRegional"
 							   name="lastNameRegional"
 							   placeholder="Regional Last Name"
 							   tabindex="4"
@@ -119,7 +120,7 @@
 						 						personaldetailform.firstNameRegional.$dirty}">
 						<input type="text" 
 							   class="form-control"
-							   id="regionalname"
+							   id="firstNameRegional"
 							   name="firstNameRegional"
 							   placeholder="Regional First Name"
 							   tabindex="5"
@@ -137,7 +138,7 @@
 						 						personaldetailform.middleNameRegional.$dirty}">
 						<input type="text" 
 							   class="form-control"
-							   id="regionalname"
+							   id="middleNameRegional"
 							   name="middleNameRegional"
 							   placeholder="Regional Middle Name"
 							   tabindex="6"
@@ -551,25 +552,22 @@
 						 <span style="color:red"><big> * </big></span></label>
 					</div>
 					<div class="col-sm-3 input-group">
-						<input type="text" 
-							   class="form-control" 
-							   id="dateofbirth"  
-							   ui-mask="dd/mm/yyyy"
-							   datepicker-popup="{{format}}"
-							   tabindex="24"
-							   is-open="vm.opened"
-							   ng-model="vm.personaldetail.birthDate"
-							   datepicker-options="dateOptions"
-							   date-disabled="disabled(date, mode)" 
-							   ng-required="true" 
-							   close-text="Close"
-							   required>
-						<span class="input-group-btn">
-							<button class="btn btn-default"
-									ng-click="vm.open($event)">
-								<i class="glyphicon glyphicon-calendar"></i>
-							</button>
-						</span>
+						<datepicker date-format="dd-MM-yyyy">
+							<input type="text" 
+								   class="form-control" 
+								   id="dateofbirth"  
+								   ui-mask="dd/mm/yyyy"
+								   tabindex="24"
+								   ng-model="vm.personaldetail.birthDate"
+								   ng-required="true" 
+								   required>
+							<!-- <span class="input-group-btn">
+								<button class="btn btn-default"
+										ng-click="vm.open()">
+									<i class="glyphicon glyphicon-calendar"></i>
+								</button>
+							</span> -->
+						</datepicker>
 					</div>
 				</div>
 			</div>

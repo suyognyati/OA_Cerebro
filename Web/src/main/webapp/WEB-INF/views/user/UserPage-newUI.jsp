@@ -9,6 +9,7 @@
 <link href="<c:url value='/static/vendors/select/css/bootstrap-select.css' />" rel="stylesheet" />
 <link href="<c:url value='/user/css/user.css' />" rel="stylesheet" />
 <link href="<c:url value='/user/css/user-bootstrap-modified.css' />" rel="stylesheet" />
+<link href="<c:url value='/static/css/angular-datepicker.css' />" rel="stylesheet" />
 
 <!-- Library Scripts -->
 <script src="<c:url value='/static/js/jquery-1.10.2.js' />"></script>
@@ -23,6 +24,9 @@
 <%-- <script	src="<c:url value='/static/js/pm-image-editor.js' />"></script>
 <link href="<c:url value='/static/css/pm-image-editor.css' />" rel="stylesheet" /> --%>
 <script src="<c:url value='/user/js/main.js' />"></script>
+<script src="<c:url value='/static/js/angular-datepicker.js' />"></script>
+<script src="<c:url value='https://www.google.com/jsapi' />"></script>
+<script src="<c:url value='/user/js/regional-language.js' />"></script>
 
 <script src="<c:url value='/static/vendors/pm-image-crop-master/compile/unminified/ng-img-crop.js' />"></script>
 <link href="<c:url value='/static/vendors/pm-image-crop-master/compile/unminified/ng-img-crop.css' />" rel="stylesheet" />
