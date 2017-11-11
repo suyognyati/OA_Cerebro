@@ -15,6 +15,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
 import com.web.oauth2.AccessConfirmationController;
+import com.web.session.StaticMethods;
 
 import config.data.PersistenceConfig;
 
@@ -31,6 +32,9 @@ public class WebConfig extends WebMvcConfigurerAdapter{
         viewResolver.setPrefix("/WEB-INF/views/");
         viewResolver.setSuffix(".jsp");
         registry.viewResolver(viewResolver);
+        
+        StaticMethods.LOGGER.error("Suyog first loggging message");
+        StaticMethods.LOGGER.debug("This log level will not show on error debugging.");
     }
 	
 	@Override
