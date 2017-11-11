@@ -25,8 +25,6 @@
 <link href="<c:url value='/static/css/pm-image-editor.css' />" rel="stylesheet" /> --%>
 <script src="<c:url value='/user/js/main.js' />"></script>
 <script src="<c:url value='/static/js/angular-datepicker.js' />"></script>
-<script src="<c:url value='https://www.google.com/jsapi' />"></script>
-<script src="<c:url value='/user/js/regional-language.js' />"></script>
 
 <script src="<c:url value='/static/vendors/pm-image-crop-master/compile/unminified/ng-img-crop.js' />"></script>
 <link href="<c:url value='/static/vendors/pm-image-crop-master/compile/unminified/ng-img-crop.css' />" rel="stylesheet" />
