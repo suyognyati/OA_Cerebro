@@ -11,6 +11,10 @@
 		
 					var basePath = "";
 					basePath = globalConstants.rootLocation + vendorConstants.vendorLocation;
+					
+					var vendorTemplatesFolderPath = "app/templates/";
+					var vendorControllersFolderPath = "app/controllers/";
+					var vendorServicesFolderPath = "app/services/";
 		
 				    $urlRouterProvider.otherwise("/existingEntry");
 					
@@ -20,7 +24,7 @@
 							url: "/vendorHome",
 							views: {
 								"mainview":{
-				                	templateUrl: basePath + "templates/states/vendorHomeView.html",
+				                	templateUrl: basePath + vendorTemplatesFolderPath + "vendorHomeView.html",
 				                	controller:"VendorHomeCtrl as vm",
 								}
 							},
@@ -29,7 +33,7 @@
 									return $ocLazyLoad.load({
 										name : 'vendor',
 										files : [
-										     basePath + 'app/controllers/vendorHomeCtrl.js'
+										     basePath + vendorControllersFolderPath + 'vendorHomeCtrl.js'
 										     
 										]
 								
@@ -42,7 +46,7 @@
 						url: "/newUser",
 						views: {
 							"mainview":{
-			                	templateUrl: basePath + "templates/states/newUserView.html",
+			                	templateUrl: basePath + vendorTemplatesFolderPath + "newUserView.html",
 			                	controller:"NewUserCtrl as vm",
 							}
 						},
@@ -51,8 +55,8 @@
 								return $ocLazyLoad.load({
 									name : 'vendor',
 									files : [
-									     basePath + 'app/controllers/newUserCtrl.js',
-									     basePath + 'app/services/newUserService.js'
+									     basePath + vendorControllersFolderPath + 'newUserCtrl.js',
+									     basePath + vendorServicesFolderPath + 'newUserService.js'
 									]
 							
 								})
@@ -64,7 +68,7 @@
 						url: "/existingEntry",
 						views: {
 							"mainview":{
-			                	templateUrl: basePath + "templates/states/existingUserView.html",
+			                	templateUrl: basePath + vendorTemplatesFolderPath + "existingUserView.html",
 			                	controller:"ExistingUserCtrl as vm",
 							}
 						},
@@ -73,8 +77,8 @@
 								return $ocLazyLoad.load({
 									name : 'vendor',
 									files : [
-									     basePath + 'app/controllers/existingUserCtrl.js',
-									     basePath + 'app/services/existingUserService.js'
+									     basePath + vendorControllersFolderPath + 'existingUserCtrl.js',
+									     basePath + vendorServicesFolderPath + 'existingUserService.js'
 									]
 							
 								})
@@ -86,7 +90,7 @@
 							url: "/search",
 							views: {
 								"view":{
-				                	templateUrl: basePath + "templates/states/searchView.html",
+				                	templateUrl: basePath + vendorTemplatesFolderPath + "searchView.html",
 				                	controller:"SearchCtrl as vm",
 								}
 							},
@@ -95,7 +99,7 @@
 									return $ocLazyLoad.load({
 										name : 'vendor',
 										files : [
-										     basePath + 'app/controllers/searchCtrl.js'
+										     basePath + vendorControllersFolderPath + 'searchCtrl.js'
 										]
 								
 									})
@@ -107,7 +111,7 @@
 						url: "/dashboard",
 						views: {
 							"view":{
-			                	templateUrl: basePath + "templates/states/dashboardView.html",
+			                	templateUrl: basePath + vendorTemplatesFolderPath + "dashboardView.html",
 			                	controller:"DashboardCtrl as vm",
 							}
 						},
@@ -116,7 +120,7 @@
 								return $ocLazyLoad.load({
 									name : 'vendor',
 									files : [
-									     basePath + 'app/controllers/dashboardCtrl.js',
+									     basePath + vendorControllersFolderPath + 'dashboardCtrl.js',
 									]
 							
 								})
@@ -128,7 +132,7 @@
 					url: "/collegeList",
 					views: {
 						"view":{
-		                	templateUrl: basePath + "templates/states/collegeListView.html",
+		                	templateUrl: basePath + vendorTemplatesFolderPath + "collegeListView.html",
 		                	controller:"CollegeListCtrl as vm",
 						}
 					},
@@ -137,7 +141,7 @@
 							return $ocLazyLoad.load({
 								name : 'vendor',
 								files : [
-								     basePath + 'app/controllers/collegeListCtrl.js'
+								     basePath + vendorControllersFolderPath + 'collegeListCtrl.js'
 								]
 						
 							})
