@@ -1,5 +1,6 @@
 package com.web.model;
 
+import com.data.entities.ProgramFileMap;
 
 public class ProgramModel {
 	
@@ -8,6 +9,7 @@ public class ProgramModel {
 	private String facultyOrCollege;
 	private String applicationDates;
 	private Integer id;
+	private ProgramFileMap fileMap;
 	
 	
 	public String getProgramCode() {
@@ -50,5 +52,12 @@ public class ProgramModel {
 		this.id = id;
 	}
 	
+	
+	public ProgramFileMap getFileMap() {
+		return fileMap;
+	}
+	public void setFileMap(ProgramFileMap fileMap) {
+		this.fileMap = fileMap;
+	}
 	
 }

@@ -33,6 +33,10 @@ public class University_Program {
 	@ManyToOne
 	@JoinColumn(name="FK_UniversityId")
 	private University_University universityUniversity;
+	
+	@ManyToOne
+	@JoinColumn(name="FK_FileMap")
+	ProgramFileMap programFileMap;
 
 		public Integer getUniversityProgramId() {
 			return universityProgramId;
@@ -80,6 +84,14 @@ public class University_Program {
 	
 		public void setUniversityUniversity(University_University universityUniversity) {
 			this.universityUniversity = universityUniversity;
+		}
+
+		public ProgramFileMap getProgramFileMap() {
+			return programFileMap;
+		}
+
+		public void setProgramFileMap(ProgramFileMap programFileMap) {
+			this.programFileMap = programFileMap;
 		}
 
 }

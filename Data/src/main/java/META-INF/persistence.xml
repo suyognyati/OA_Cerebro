@@ -1,25 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
 	<persistence-unit name="punit">
-		<class>com.data.entities.BloodGroup</class>
-		<class>com.data.entities.PersonalDetail</class>
 		<class>com.data.entities.Address</class>
-		<class>com.data.entities.EducationalInformation</class>
-		<class>com.data.entities.UserDetail</class>
-		<class>com.data.entities.State</class>
-		<class>com.data.entities.User</class>
-		<class>com.data.entities.UserRole</class>
-		<class>com.data.entities.StudentCredentials</class>
-		<class>com.data.entities.Country</class>
-		<class>com.data.entities.City</class>
-		<class>com.data.entities.OccupationReservation</class>
-		<class>com.data.entities.QualificationLevel</class>
+		<class>com.data.entities.BloodGroup</class>
 		<class>com.data.entities.Board</class>
-		<class>com.data.entities.University</class>
+		<class>com.data.entities.City</class>
+		<class>com.data.entities.College</class>
+		<class>com.data.entities.CollegeProgramMap</class>
+		<class>com.data.entities.CollegeSubjectMap</class>
+		<class>com.data.entities.Country</class>
 		<class>com.data.entities.DocumentList</class>
-		<class>com.data.entities.UserDocument</class>
-		<class>com.data.entities.BoardUniversity</class>
+		<class>com.data.entities.EducationalInformation</class>
+		<class>com.data.entities.OccupationReservation</class>
+		<class>com.data.entities.PersonalDetail</class>
+		<class>com.data.entities.QualificationLevel</class>
+		<class>com.data.entities.ProgramCategory</class>
+		<class>com.data.entities.State</class>
+		<class>com.data.entities.StudentCredentials</class>
 		<class>com.data.entities.University_Program</class>
 		<class>com.data.entities.University_Subject</class>
+		<class>com.data.entities.University_University</class>
+		<class>com.data.entities.University</class>
+		<class>com.data.entities.User</class>
+		<class>com.data.entities.UserDetail</class>
+		<class>com.data.entities.UserDocument</class>
+		<class>com.data.entities.UserRole</class>
 	</persistence-unit>
 </persistence>

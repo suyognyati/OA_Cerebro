@@ -32,6 +32,7 @@ public class ProgramRCServiceImpl implements ProgramRCService {
 			programModel.setFacultyOrCollege(program.getUniversityProgramFaculty());
 			programModel.setApplicationDates("");
 			programModel.setId(program.getUniversityProgramId());
+			programModel.setFileMap(program.getProgramFileMap());
 			programModelList.add(programModel);
 		}
 		
