@@ -246,6 +246,7 @@ input[type="file"].upload {
 
 clt, .clt ul, .clt li {
      position: relative;
+     line-height: 40px;
 }
 
 .clt ul {
@@ -261,7 +262,7 @@ clt, .clt ul, .clt li {
 
 .clt li::before {
     border-top: 1px solid #000;
-    top: 10px;
+    top: 16px;
     width: 10px;
     height: 0;
 }
@@ -273,6 +274,6 @@ clt, .clt ul, .clt li {
     top: 2px;
 }
 
-.clt ul > li:last-child::after {
+/* .clt ul > li:last-child::after {
     height: 8px;
-}
+} */

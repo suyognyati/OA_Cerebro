@@ -9,31 +9,107 @@
 	<strong>Program Code :</strong> {{vm.programCode}}
 </div>
 
-<div class="panel panel-body">
+<form class="panel panel-body">
+	
+	<div class="col-sm-12 form-group">
+		<div class="col-sm-3">
+			<label for="mediumOfInstruction">Medium of Instruction</label>
+		</div>
+		<div class="col-sm-2">
+			<input type="radio" id="marathi" name="mediumOfInstruction">Marathi
+		</div>
+		<div class="col-sm-2">
+			<input type="radio" id="english" name="mediumOfInstruction">English
+		</div>
+	</div>
+	<hr>
+
+	<div class="col-sm-12 form-group">
+		<b>Minimum 6 Course(s) & Maximum 6 Course(s) should be Selected</b>	
+	</div>
+
+	<hr><hr>
+	
 	<div class="panel panel-default">
-		<div class="panel-body">
-			<div class="col-sm-3">
-				<b>Medium of Instruction</b>
-			</div>
-			<div class="col-sm-2">
-				<input type="radio" id="marathi" name="mediumOfInstruction">Marathi
-			</div>
-			<div class="col-sm-2">
-				<input type="radio" id="english" name="mediumOfInstruction">English
+		<div class="panel-body form-group">
+			<h3> Compulsory Group
+				<font color="red">Minimum:1</font>
+				<font color="green"> Maximum:1 [If Applicable]</font>
+			</h3>
+			<div class="clt">
+				<ul>
+					<li><input type="checkbox" name="compulsoryGroup" id="compulsoryGroup1"> [Code] Paper I_Communication Skills in English</li>
+				</ul>
 			</div>
 		</div>
 	</div>
 
 	<div class="panel panel-default">
-		<div class="panel-body">
-			<h3> Compulsory Group
-				<font color="red">Minimum:2</font>
-				<font color="green"> Maximum:2 [If Applicable]</font>
+		<div class="panel-body form-group">
+			<h3> Compulsory Language
+				<font color="red">Minimum:1</font>
+				<font color="green"> Maximum:1 [If Applicable]</font>
+			</h3>
+			<div class="clt">
+			<ul>
+				<li>
+					<span class="badge badge-default" style="font-size:14px; padding:8px">Classical Language</span>
+					<font color="red" size="3">Select Minimum:1</font>
+					<font color="green" size="3"> Maximum:1 [If Applicable]</font>
+					<ul>
+						<li><input type="checkbox" name="languageGroup" id="languageGroup1"> [Code] Sanskrit</li>
+						<li><input type="checkbox" name="languageGroup" id="languageGroup2"> [Code] Pali</li>
+						<li><input type="checkbox" name="languageGroup" id="languageGroup3"> [Code] Ardhamagadhi</li>
+						<li><input type="checkbox" name="languageGroup" id="languageGroup4"> [Code] Arabic</li>
+						<li><input type="checkbox" name="languageGroup" id="languageGroup5"> [Code] Persian</li>
+						<li><input type="checkbox" name="languageGroup" id="languageGroup6"> [Code] Avesta-Pahlavi</li>
+					</ul>
+				</li>
+				<li>
+					<span class="badge badge-default" style="font-size:14px; padding:8px">Modern Foreign Language</span>
+					<font color="red" size="3">Select Minimum:1</font>
+					<font color="green" size="3"> Maximum:1 [If Applicable]</font>
+					<ul>
+						<li><input type="checkbox" name="languageGroup" id="languageGroup7"> [Code] Russian</li>
+						<li><input type="checkbox" name="languageGroup" id="languageGroup8"> [Code] Japanese</li>
+						<li><input type="checkbox" name="languageGroup" id="languageGroup9"> [Code] Chinese</li>
+						<li><input type="checkbox" name="languageGroup" id="languageGroup10"> [Code] Portuguese</li>
+						<li><input type="checkbox" name="languageGroup" id="languageGroup11> [Code] French</li>
+						<li><input type="checkbox" name="languageGroup" id="languageGroup12"> [Code] German</li>
+					</ul>
+				</li>
+				<li>
+					<span class="badge badge-default" style="font-size:14px; padding:8px">Modern Indian Language</span>
+					<font color="red" size="3">Select Minimum:1</font>
+					<font color="green" size="3"> Maximum:1 [If Applicable]</font>
+					<ul>
+						<li><input type="checkbox" name="languageGroup" id="languageGroup13"> [Code] Marathi</li>
+						<li><input type="checkbox" name="languageGroup" id="languageGroup14"> [Code] Hindi</li>
+						<li><input type="checkbox" name="languageGroup" id="languageGroup15"> [Code] Gujrathi</li>
+						<li><input type="checkbox" name="languageGroup" id="languageGroup16"> [Code] Urdu</li>
+						<li><input type="checkbox" name="languageGroup" id="languageGroup17"> [Code] Kannada</li>
+						<li><input type="checkbox" name="languageGroup" id="languageGroup18"> [Code] Punjabi</li>
+						<li><input type="checkbox" name="languageGroup" id="languageGroup19"> [Code] Sindhi</li>
+						<li><input type="checkbox" name="languageGroup" id="languageGroup20"> [Code] Konkani</li>
+					</ul>
+				</li>
+			</ul>
+			</div>
+		</div>
+	</div>
+
+	<div class="panel panel-default">
+		<div class="panel-body form-group">
+			<h3> Foundation Course Group
+				<font color="red">Minimum:1</font>
+				<font color="green"> Maximum:1 [If Applicable]</font>
 			</h3>
 			<div class="clt">
 				<ul>
-					<li><input type="checkbox" name="compulsoryGroup" id="compulsoryGroup1"> Communication Skills in English</li>
-					<li><input type="checkbox" name="compulsoryGroup" id="compulsoryGroup2"> Foundation Course 1</li>
+					<li><input type="checkbox" name="foundationCourseGroup" id="foundationCourseGroup1"> [Code] Foundation Course in NSS-I</li>
+					<li><input type="checkbox" name="foundationCourseGroup" id="foundationCourseGroup2"> [Code] Foundation Course in Physical Education-I</li>
+					<li><input type="checkbox" name="foundationCourseGroup" id="foundationCourseGroup3"> [Code] Foundation Course - I</li>
+					<li><input type="checkbox" name="foundationCourseGroup" id="foundationCourseGroup4"> [Code] Foundation Course in NCC-I</li>
 				</ul>
 			</div>
 		</div>
@@ -41,20 +117,201 @@
 
 	<div class="panel panel-default">
 		<div class="panel-body">
-			<h3> Language Group
+			<h3> Optional Group (Select 3 Papers From Groups)
 				<font color="red">Minimum:1</font>
-				<font color="green"> Maximum:1 [If Applicable]</font>
+				<font color="green"> Maximum:2 [If Applicable]</font>
 			</h3>
 			<div class="clt">
 			<ul>
-				<li><input type="checkbox" name="languageGroup" id="languageGroup1"> Marathi</li>
-				<li><input type="checkbox" name="languageGroup" id="languageGroup2"> Urdu</li>
+				<li>
+					<span class="badge badge-default" style="font-size:14px; padding:8px">Ancillary Language Group (Select 2 or 1 Paper or No Compulsory)</span>
+					<font color="red" size="3">Select Minimum:1</font>
+					<font color="green" size="3"> Maximum:2 [If Applicable]</font>
+					<ul>
+						<li> <span class="badge badge-default" style="font-size:14px; padding:8px">Arabic</span>
+							<font color="red" size="3">Select Minimum:1</font>
+							<font color="green" size="3"> Maximum:1 [If Applicable]</font>
+							<ul>
+								<li><input type="checkbox" name="optionalGroup" id="optionalGroup1">[Code] Paper - I Arabic</li>
+							</ul>
+						</li>
+						<li> <span class="badge badge-default" style="font-size:14px; padding:8px">Ardhamagadhi</span>
+							<font color="red" size="3">Select Minimum:1</font>
+							<font color="green" size="3"> Maximum:1 [If Applicable]</font>
+							<ul>
+								<li><input type="checkbox" name="optionalGroup" id="optionalGroup2">[Code] Paper - I Ardhamagadhi</li>
+							</ul>
+						</li>
+						<li> <span class="badge badge-default" style="font-size:14px; padding:8px">Avesta-Pahlavi</span>
+							<font color="red" size="3">Select Minimum:1</font>
+							<font color="green" size="3"> Maximum:1 [If Applicable]</font>
+							<ul>
+								<li><input type="checkbox" name="optionalGroup" id="optionalGroup3">[Code] Paper - I Avesta-Pahlavi</li>
+							</ul>
+						</li>
+						<li> <span class="badge badge-default" style="font-size:14px; padding:8px">Chinese</span>
+							<font color="red" size="3">Select Minimum:1</font>
+							<font color="green" size="3"> Maximum:1 [If Applicable]</font>
+							<ul>
+								<li><input type="checkbox" name="optionalGroup" id="optionalGroup4">[Code] Paper - I Chinese</li>
+							</ul>
+						</li>
+						<li> <span class="badge badge-default" style="font-size:14px; padding:8px">French</span>
+							<font color="red" size="3">Select Minimum:1</font>
+							<font color="green" size="3"> Maximum:1 [If Applicable]</font>
+							<ul>
+								<li><input type="checkbox" name="optionalGroup" id="optionalGroup5">[Code] Paper - I French</li>
+							</ul>
+						</li>
+						<li> <span class="badge badge-default" style="font-size:14px; padding:8px">German</span>
+							<font color="red" size="3">Select Minimum:1</font>
+							<font color="green" size="3"> Maximum:1 [If Applicable]</font>
+							<ul>
+								<li><input type="checkbox" name="optionalGroup" id="optionalGroup6">[Code] Paper - I German</li>
+							</ul>
+						</li>
+						<li> <span class="badge badge-default" style="font-size:14px; padding:8px">Gujrathi</span>
+							<font color="red" size="3">Select Minimum:1</font>
+							<font color="green" size="3"> Maximum:1 [If Applicable]</font>
+							<ul>
+								<li><input type="checkbox" name="optionalGroup" id="optionalGroup7">[Code] Paper - I Gujrathi</li>
+							</ul>
+						</li>
+						<li> <span class="badge badge-default" style="font-size:14px; padding:8px">Hindi</span>
+							<font color="red" size="3">Select Minimum:1</font>
+							<font color="green" size="3"> Maximum:1 [If Applicable]</font>
+							<ul>
+								<li><input type="checkbox" name="optionalGroup" id="optionalGroup8">[Code] Paper - I Hindi</li>
+							</ul>
+						</li>
+						<li> <span class="badge badge-default" style="font-size:14px; padding:8px">Japanese</span>
+							<font color="red" size="3">Select Minimum:1</font>
+							<font color="green" size="3"> Maximum:1 [If Applicable]</font>
+							<ul>
+								<li><input type="checkbox" name="optionalGroup" id="optionalGroup9">[Code] Paper - I Japanese</li>
+							</ul>
+						</li>
+						<li> <span class="badge badge-default" style="font-size:14px; padding:8px">Kannada</span>
+							<font color="red" size="3">Select Minimum:1</font>
+							<font color="green" size="3"> Maximum:1 [If Applicable]</font>
+							<ul>
+								<li><input type="checkbox" name="optionalGroup" id="optionalGroup10">[Code] Paper - I Kannada</li>
+							</ul>
+						</li>
+						<li> <span class="badge badge-default" style="font-size:14px; padding:8px">Konkani</span>
+							<font color="red" size="3">Select Minimum:1</font>
+							<font color="green" size="3"> Maximum:1 [If Applicable]</font>
+							<ul>
+								<li><input type="checkbox" name="optionalGroup" id="optionalGroup11">[Code] Paper - I Konkani</li>
+							</ul>
+						</li>
+						<li> <span class="badge badge-default" style="font-size:14px; padding:8px">Literature</span>
+							<font color="red" size="3">Select Minimum:1</font>
+							<font color="green" size="3"> Maximum:1 [If Applicable]</font>
+							<ul>
+								<li><input type="checkbox" name="optionalGroup" id="optionalGroup12">[Code] Paper - I Introduction to Literature</li>
+							</ul>
+						</li>
+						<li> <span class="badge badge-default" style="font-size:14px; padding:8px">Marathi</span>
+							<font color="red" size="3">Select Minimum:1</font>
+							<font color="green" size="3"> Maximum:1 [If Applicable]</font>
+							<ul>
+								<li><input type="checkbox" name="optionalGroup" id="optionalGroup13">[Code] Paper - I Marathi</li>
+							</ul>
+						</li>
+						<li> <span class="badge badge-default" style="font-size:14px; padding:8px">Pali</span>
+							<font color="red" size="3">Select Minimum:1</font>
+							<font color="green" size="3"> Maximum:1 [If Applicable]</font>
+							<ul>
+								<li><input type="checkbox" name="optionalGroup" id="optionalGroup14">[Code] Paper - I Pali</li>
+							</ul>
+						</li>
+						<li> <span class="badge badge-default" style="font-size:14px; padding:8px">Punjabi</span>
+							<font color="red" size="3">Select Minimum:1</font>
+							<font color="green" size="3"> Maximum:1 [If Applicable]</font>
+							<ul>
+								<li><input type="checkbox" name="optionalGroup" id="optionalGroup15">[Code] Paper - I Punjabi</li>
+							</ul>
+						</li>
+						<li> <span class="badge badge-default" style="font-size:14px; padding:8px">Persian</span>
+							<font color="red" size="3">Select Minimum:1</font>
+							<font color="green" size="3"> Maximum:1 [If Applicable]</font>
+							<ul>
+								<li><input type="checkbox" name="optionalGroup" id="optionalGroup16">[Code] Paper - I Persian</li>
+							</ul>
+						</li>
+						<li> <span class="badge badge-default" style="font-size:14px; padding:8px">Portuguese</span>
+							<font color="red" size="3">Select Minimum:1</font>
+							<font color="green" size="3"> Maximum:1 [If Applicable]</font>
+							<ul>
+								<li><input type="checkbox" name="optionalGroup" id="optionalGroup17">[Code] Paper - I Portuguese</li>
+							</ul>
+						</li>
+						<li> <span class="badge badge-default" style="font-size:14px; padding:8px">Russian</span>
+							<font color="red" size="3">Select Minimum:1</font>
+							<font color="green" size="3"> Maximum:1 [If Applicable]</font>
+							<ul>
+								<li><input type="checkbox" name="optionalGroup" id="optionalGroup18">[Code] Paper - I Russian</li>
+							</ul>
+						</li>
+						<li> <span class="badge badge-default" style="font-size:14px; padding:8px">Sanskrit</span>
+							<font color="red" size="3">Select Minimum:1</font>
+							<font color="green" size="3"> Maximum:1 [If Applicable]</font>
+							<ul>
+								<li><input type="checkbox" name="optionalGroup" id="optionalGroup19">[Code] Paper - I Sanskrit</li>
+							</ul>
+						</li>
+						<li> <span class="badge badge-default" style="font-size:14px; padding:8px">Sindhi</span>
+							<font color="red" size="3">Select Minimum:1</font>
+							<font color="green" size="3"> Maximum:1 [If Applicable]</font>
+							<ul>
+								<li><input type="checkbox" name="optionalGroup" id="optionalGroup20">[Code] Paper - I Sindhi</li>
+							</ul>
+						</li>
+						<li> <span class="badge badge-default" style="font-size:14px; padding:8px">Urdu</span>
+							<font color="red" size="3">Select Minimum:1</font>
+							<font color="green" size="3"> Maximum:1 [If Applicable]</font>
+							<ul>
+								<li><input type="checkbox" name="optionalGroup" id="optionalGroup21">[Code] Paper - I Urdu</li>
+							</ul>
+						</li>
+						
+					</ul>
+				</li>
+				<li>
+					<span class="badge badge-default" style="font-size:14px; padding:8px">Modern Foreign Language</span>
+					<font color="red" size="3">Select Minimum:1</font>
+					<font color="green" size="3"> Maximum:1 [If Applicable]</font>
+					<ul>
+						<li><input type="checkbox" name="languageGroup" id="languageGroup7"> [Code] Russian</li>
+						<li><input type="checkbox" name="languageGroup" id="languageGroup8"> [Code] Japanese</li>
+						<li><input type="checkbox" name="languageGroup" id="languageGroup9"> [Code] Chinese</li>
+						<li><input type="checkbox" name="languageGroup" id="languageGroup10"> [Code] Portuguese</li>
+						<li><input type="checkbox" name="languageGroup" id="languageGroup11> [Code] French</li>
+						<li><input type="checkbox" name="languageGroup" id="languageGroup12"> [Code] German</li>
+					</ul>
+				</li>
+				<li>
+					<span class="badge badge-default" style="font-size:14px; padding:8px">Modern Indian Language</span>
+					<font color="red" size="3">Select Minimum:1</font>
+					<font color="green" size="3"> Maximum:1 [If Applicable]</font>
+					<ul>
+						<li><input type="checkbox" name="languageGroup" id="languageGroup13"> [Code] Marathi</li>
+						<li><input type="checkbox" name="languageGroup" id="languageGroup14"> [Code] Hindi</li>
+						<li><input type="checkbox" name="languageGroup" id="languageGroup15"> [Code] Gujrathi</li>
+						<li><input type="checkbox" name="languageGroup" id="languageGroup16"> [Code] Urdu</li>
+						<li><input type="checkbox" name="languageGroup" id="languageGroup17"> [Code] Kannada</li>
+						<li><input type="checkbox" name="languageGroup" id="languageGroup18"> [Code] Punjabi</li>
+						<li><input type="checkbox" name="languageGroup" id="languageGroup19"> [Code] Sindhi</li>
+						<li><input type="checkbox" name="languageGroup" id="languageGroup20"> [Code] Konkani</li>
+					</ul>
+				</li>
 			</ul>
 			</div>
 		</div>
 	</div>
-
-	<div class="panel panel-default">
+	
+	<!-- <div class="panel panel-default">
 		<div class="panel-body">
 			<h3> Optional Group
 				<font color="red">Minimum:3</font>
@@ -66,8 +323,9 @@
 				</ul>
 			</div>
 		</div>
-	</div>
-</div>
+	</div> -->
+
+</form>
 
 
 
