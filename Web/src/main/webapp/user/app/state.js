@@ -124,7 +124,12 @@
 				"view":{
 					templateUrl: 
 					function (stateParams){
-						var fileToAccess = "universities/" + stateParams.universityFolderName + "/" + stateParams.fileNameForProgram;
+						var fileToAccess = ""
+						if(stateParams.fileNameForProgram == "course" || stateParams.fileNameForProgram == "") {
+							fileToAccess = "course";
+						} else {
+							fileToAccess = "universities/" + stateParams.universityFolderName + "/" + stateParams.fileNameForProgram;
+						}
 						return basePath + userApplicationTemplatesFolderPath + fileToAccess + "View.html";
 					},
 					controller:"SubjectCtrl as vm",
@@ -134,14 +139,14 @@
 				programName: {value: ""},
 				programCode: {value: ""},
 				universityFolderName: {value: ""},
-				fileNameForProgram: {value: ""}
+				fileNameForProgram: {value: "course"}
 			},
 			resolve: {
 				basicDetail : ['$ocLazyLoad', function($ocLazyLoad){
 					return $ocLazyLoad.load({
 						name : 'admission',
 						files : [
-						     basePath + userControllersFolderPath + 'course.artsCtrl.js',
+						     basePath + userControllersFolderPath + 'courseCtrl.js',
 						     basePath + userServicesFolderPath + 'course.artsService.js'
 						]
 				

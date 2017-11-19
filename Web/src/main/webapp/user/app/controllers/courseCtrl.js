@@ -22,6 +22,7 @@
 		subjectService.getSubjects(vm.programId, vm.accessTokenParam)
 		.success(function(data, status, header, config) {
 			vm.subjects = data;
+			
 		})
 		.error(function(data, status, header, config) {
 			vm.subjects = {};

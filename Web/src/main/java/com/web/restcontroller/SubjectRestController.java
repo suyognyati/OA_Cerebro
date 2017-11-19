@@ -1,7 +1,5 @@
 package com.web.restcontroller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,7 +20,7 @@ public class SubjectRestController {
 	SubjectRCService subjectRCService;	
 		
 	@RequestMapping(value="/get/{programId}")
-	public List<SubjectModel> get(@PathVariable(value="programId") Integer programId){
+	public SubjectModel get(@PathVariable(value="programId") Integer programId){
 		return subjectRCService.getSubjectsByProgram(session.getCollegeId(), programId);
 	}
 }
