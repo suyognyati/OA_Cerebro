@@ -71,7 +71,11 @@
 												
 												<ul ng-if="cgLevelFive.subjectList.length > 0">
 													<li ng-repeat="subjectsLevelFive in cgLevelFive.subjectList">
-														<input type="checkbox" name="compulsoryGroup" id="{{subjectsLevelFive.subject.universitySubjectId}}"> [{{subjectsLevelFive.subject.universitySubjectCode}}] {{subjectsLevelFive.subject.universitySubjectName}}
+														<input type="checkbox" name="compulsoryGroup"
+														ng-model="subjectsLevelFive.subject.isSelected"
+														ng-click="vm.checked(subjectsLevelFive.subject, cgLevelOne, cgLevelTwo, cgLevelThree, cgLevelFour, cgLevelFive"
+														id="{{subjectsLevelFive.subject.universitySubjectId}}">
+														[{{subjectsLevelFive.subject.universitySubjectCode}}] {{subjectsLevelFive.subject.universitySubjectName}}
 													</li>
 												</ul>
 												
@@ -80,7 +84,11 @@
 										
 										<ul ng-if="cgLevelFour.subjectList.length > 0">
 											<li ng-repeat="subjectsLevelFour in cgLevelFour.subjectList">
-												<input type="checkbox" name="compulsoryGroup" id="{{subjectsLevelFour.subject.universitySubjectId}}"> [{{subjectsLevelFour.subject.universitySubjectCode}}] {{subjectsLevelFour.subject.universitySubjectName}}
+												<input type="checkbox" name="compulsoryGroup"
+												ng-model="subjectsLevelFour.subject.isSelected"
+												ng-click="vm.checked(subjectsLevelFour.subject, cgLevelOne, cgLevelTwo, cgLevelThree, cgLevelFour, null)"
+												id="{{subjectsLevelFour.subject.universitySubjectId}}">
+												[{{subjectsLevelFour.subject.universitySubjectCode}}] {{subjectsLevelFour.subject.universitySubjectName}}
 											</li>
 										</ul>
 									</li>
@@ -89,7 +97,11 @@
 								
 								<ul ng-if="cgLevelThree.subjectList.length > 0">
 									<li ng-repeat="subjectsLevelThree in cgLevelThree.subjectList">
-										<input type="checkbox" name="compulsoryGroup" id="{{subjectsLevelThree.subject.universitySubjectId}}"> [{{subjectsLevelThree.subject.universitySubjectCode}}] {{subjectsLevelThree.subject.universitySubjectName}}
+										<input type="checkbox" name="compulsoryGroup"
+										ng-model="subjectsLevelThree.subject.isSelected"
+										ng-click="vm.checked(subjectsLevelThree.subject, cgLevelOne, cgLevelTwo, cgLevelThree, null, null)"
+										id="{{subjectsLevelThree.subject.universitySubjectId}}">
+										[{{subjectsLevelThree.subject.universitySubjectCode}}] {{subjectsLevelThree.subject.universitySubjectName}}
 									</li>
 								</ul>
 							</li>
@@ -98,7 +110,11 @@
 						
 						<ul ng-if="cgLevelTwo.subjectList.length > 0">
 							<li ng-repeat="subjectsLevelTwo in cgLevelTwo.subjectList">
-								<input type="checkbox" name="compulsoryGroup" id="{{subjectsLevelTwo.subject.universitySubjectId}}"> [{{subjectsLevelTwo.subject.universitySubjectCode}}] {{subjectsLevelTwo.subject.universitySubjectName}}
+								<input type="checkbox" name="compulsoryGroup"
+								ng-model="subjectsLevelTwo.subject.isSelected"
+								ng-click="vm.checked(subjectsLevelTwo.subject, cgLevelOne, cgLevelTwo, null, null, null)"
+								id="{{subjectsLevelTwo.subject.universitySubjectId}}">
+								[{{subjectsLevelTwo.subject.universitySubjectCode}}] {{subjectsLevelTwo.subject.universitySubjectName}}
 							</li>
 						</ul>
 					</li>
@@ -107,7 +123,11 @@
 				
 				<ul ng-if="cgLevelOne.subjectList.length > 0">
 					<li ng-repeat="subjectsLevelOne in cgLevelOne.subjectList">
-						<input type="checkbox" name="compulsoryGroup" id="{{subjectsLevelOne.subject.universitySubjectId}}"> [{{subjectsLevelOne.subject.universitySubjectCode}}] {{subjectsLevelOne.subject.universitySubjectName}}
+						<input type="checkbox" name="compulsoryGroup"
+						ng-model="subjectsLevelOne.subject.isSelected"
+						ng-click="vm.checked(subjectsLevelOne.subject, cgLevelOne, null, null, null, null)"
+						id="{{subjectsLevelOne.subject.universitySubjectId}}"/>
+						[{{subjectsLevelOne.subject.universitySubjectCode}}] {{subjectsLevelOne.subject.universitySubjectName}}
 					</li>
 				</ul>
 			</div>

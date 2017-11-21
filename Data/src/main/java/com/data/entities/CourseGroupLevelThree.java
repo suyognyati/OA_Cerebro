@@ -36,6 +36,9 @@ public class CourseGroupLevelThree {
 	@Column(name="MaxSelection")
 	Integer maxSelection;
 	
+	@Column(name="MaxAllowedCourses")
+	Integer maxAllowedCourses;
+	
 	@ManyToOne
 	@JoinColumn(name="FK_CourseGroupLevelTwo")
 	@JsonIgnore
@@ -87,6 +90,14 @@ public class CourseGroupLevelThree {
 			this.maxSelection = maxSelection;
 		}
 	
+		public Integer getMaxAllowedCourses() {
+			return maxAllowedCourses;
+		}
+
+		public void setMaxAllowedCourses(Integer maxAllowedCourses) {
+			this.maxAllowedCourses = maxAllowedCourses;
+		}
+
 		public CourseGroupLevelTwo getCgLevelTwo() {
 			return cgLevelTwo;
 		}
