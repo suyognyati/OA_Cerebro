@@ -15,31 +15,44 @@
 		<div class="col-sm-6">
 			<div class="form-group">
 				<label for="lastname">Last Name</label>
-				<br>
-				<input type="text" 
-						class="uppercase form-control" 
-						id="lastname" 
-						tabindex="1"
-						ng-model="vm.basicdetail.lastName">
+				<div>{{vm.basicdetail.lastName}}</div>
 			</div>
-		</div>
-		<div class="col-sm-6">
 			<div class="form-group">
 				<label for="firstname">First Name</label>
-				<br>
-				<input type="text" 
-						class="form-control" 
-						id="firstname" 
-						tabindex="2"
-						ng-model="vm.basicdetail.firstName">
+				<div>{{vm.basicdetail.firstName}}</div>
 			</div>
-		</div>
-	</div>
-	
-	<div class="row">
-		<div class="col-sm-6">
+			<div class="form-group">
+				<label for="email">Email Address</label>
+				<div>{{vm.basicdetail.email}}</div>
+			</div>
+			<div class="form-group">
+				<label for="mobileno">Mobile No.</label>
+				<div>{{vm.basicdetail.mobileNo}}</div>
+			</div>
 			<div class="form-group">
 				<label for="dateofbirth">D.O.B.</label>
+				<div>{{vm.basicdetail.birthDate}}</div>
+			</div>
+			<div class="form-group">
+				<label for="marksheetName">Name as wanted on Marksheet</label>
+				<div>{{vm.personaldetail.lastName}} {{vm.personaldetail.firstName}}{{vm.personaldetail.middleName}}</div>
+			</div>
+		</div>
+		<div class="col-sm-6">
+		<!-- <div class="row"> -->
+			<div  class="col-sm-6 text-center"  style="background-color:#f5f5f5;">
+				<label>Photograph</label>
+				<div><img src="Web/vendor/images/image.jpg"></div>
+			</div>
+			<div  class="col-sm-6 text-center"  style="background-color:#f5f5f5;">
+					<label>Signature</label>
+			</div>
+		</div>
+		
+		</div>
+			<!-- <div class="form-group">
+				<label for="dateofbirth">D.O.B.</label>
+				<div>{{vm.basicdetail.birthDate}}</div>
 				<br>
 				<div class="input-group">
 					<input type="text" 
@@ -61,6 +74,7 @@
 		<div class="col-sm-6">
 			<div class="form-group">
 				<label for="email">Email Address</label>
+				<div>{{vm.basicdetail.email}}</div>
 				<br>
 				<input type="email" 
 						class="form-control" 
@@ -75,6 +89,7 @@
 		<div class="col-sm-6">
 			<div class="form-group">
 				<label for="mobileno">Mobile No.</label>
+				<div>{{vm.basicdetail.mobileNo}}</div>
 				<br>
 				<input type="text" 
 						class="form-control" 
@@ -83,9 +98,9 @@
 						ng-model="vm.basicdetail.mobileNo">
 			</div>
 		</div>
-	</div>
+	</div> -->
 
-	<div class="row">
+	<!-- <div class="row">
 		<div class="col-xs-12 col-md-12">
         	<input type="submit" 
         		tabindex="6"
@@ -94,7 +109,7 @@
         		style="margin-bottom: 10px"
         		ng-click="vm.submit()">
         </div>
-	</div>
+	</div> -->
 </div>
 
 <script type="text/javascript">	

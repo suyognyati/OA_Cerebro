@@ -4,17 +4,6 @@
     </h1>
 </div>
 
-<div class="well alert-danger">
-	<span>
-		<strong>NOTE:</strong> 
-		Please Enter the Name as per your SSC Marksheet / Leaving Certificate
-	</span>
-	<br>
-	<div style="margin-top:10px">
-		<span style="color:red"><big>*</big></span><span>Indicates Required Fields</span>
-	</div>
-</div>
-
 <form class="panel panel-body" name="personaldetailform" novalidate>
 
 	<div class="panel panel-default">
@@ -23,247 +12,34 @@
 		</div>
 		<div class="panel-body">
 			<div class="row">
-				<div class="col-sm-12 form-group">
-					<div class="col-sm-3">
-						<label for="applicantsname"
-							   class="labelclass">Applicant's Full Name 
-						<span style="color:red"><big> * </big></span></label>
+				<div class="col-sm-6 form-group applicantDetaailList">
+					<ul>
+						<li>
+							<label class="labelclass">Applicant's Full Name</label>
+							   {{vm.personaldetail.lastName}} {{vm.personaldetail.firstName}} {{vm.personaldetail.middleName}}
+					</li>
+					<li>
+							<label class="labelclass">Applicant's Full Name in Regional Language</label>
+							   {{vm.personaldetail.lastName}} {{vm.personaldetail.firstName}} {{vm.personaldetail.middleName}}
+					</li>
+					</ul>
+				</div>
+				<div class="col-sm-6">
+					<div class="row">
+						<div  class="col-sm-12 text-center"  style=" padding-bottom:10px;">
+							<label>Photograph</label>
+							<div style="width:100px; height:100px;background-color:#ccc; margin:0 auto"></div>
+						</div>
 					</div>
-					<div class="col-sm-3"
-						 ng-class="{'has-error':personaldetailform.lastName.$invalid &&
-						 						personaldetailform.lastName.$dirty}">
-						<input type="text" 
-							   class="form-control"
-							   name="lastName"
-							   id="applicantsname"
-							   placeholder="Last Name"
-							   style="text-transform:uppercase"
-							   tabindex="1"
-							   ng-model="vm.personaldetail.lastName"
-							   required>
-						
-						<span class="help-block has-error">
-							<span ng-show="personaldetailform.lastName.$error.required &&
-										   personaldetailform.lastName.$dirty">
-									Last Name is Required</span>
-						</span>
-					</div>
-					<div class="col-sm-3"
-						 ng-class="{'has-error':personaldetailform.firstName.$invalid &&
-						 						personaldetailform.firstName.$dirty}">
-						<input type="text" 
-							   class="form-control"
-							   id="applicantsname"
-							   name="firstName"
-							   placeholder="First Name"
-							   tabindex="2"
-							   style="text-transform:uppercase"
-							   ng-model="vm.personaldetail.firstName"
-							   required>
-						
-						<span class="help-block has-error">
-							<span ng-show="personaldetailform.firstName.$error.required &&
-										   personaldetailform.firstName.$dirty">
-									First Name is Required</span>
-						</span>
-					</div>
-					<div class="col-sm-3"
-						 ng-class="{'has-error':personaldetailform.middleName.$invalid &&
-						 						personaldetailform.middleName.$dirty}">
-						<input type="text" 
-							   class="form-control"
-							   id="applicantsname"
-							   name="middleName"
-							   placeholder="Middle Name"
-							   style="text-transform:uppercase"
-							   tabindex="3"
-							   ng-model="vm.personaldetail.middleName"
-							   required>
-						
-						<span class="help-block has-error">
-							<span ng-show="personaldetailform.middleName.$error.required &&
-										   personaldetailform.middleName.$dirty">
-									Middle Name is Required</span>
-						</span>
+					<div class="row">
+						<div class="col-sm-12 text-center"  style="padding-bottom:10px;">
+							<label>Signature</label>
+							<div style="width:100px; height:100px;background-color:#ccc; margin:0 auto"></div>
+						</div>
 					</div>
 				</div>
 			</div>
-			
-			<div class="row">
-				<div class="col-sm-12 form-group">
-					<div class="col-sm-3">
-						<label for="regionalname"
-							   class="labelclass">Name in Regional Language
-						<span style="color:red"><big> * </big></span></label>
-					</div>
-					<div class="col-sm-3"
-						 ng-class="{'has-error':personaldetailform.lastNameRegional.$invalid &&
-						 						personaldetailform.lastNameRegional.$dirty}">
-						<input type="text" 
-							   class="form-control"
-							   id="regionalname"
-							   name="lastNameRegional"
-							   placeholder="Regional Last Name"
-							   tabindex="4"
-							   ng-model="vm.personaldetail.lastNameRegional"
-							   required>
-						
-						<span class="help-block has-error">
-							<span ng-show="personaldetailform.lastNameRegional.$error.required &&
-										   personaldetailform.lastNameRegional.$dirty">
-									Regional Name is Required</span>
-						</span>
-					</div>
-					<div class="col-sm-3"
-						 ng-class="{'has-error':personaldetailform.firstNameRegional.$invalid &&
-						 						personaldetailform.firstNameRegional.$dirty}">
-						<input type="text" 
-							   class="form-control"
-							   id="regionalname"
-							   name="firstNameRegional"
-							   placeholder="Regional First Name"
-							   tabindex="5"
-							   ng-model="vm.personaldetail.firstNameRegional"
-							   required>
-						
-						<span class="help-block has-error">
-							<span ng-show="personaldetailform.firstNameRegional.$error.required &&
-										   personaldetailform.firstNameRegional.$dirty">
-									Regional Name is Required</span>
-						</span>
-					</div>
-					<div class="col-sm-3"
-						 ng-class="{'has-error':personaldetailform.middleNameRegional.$invalid &&
-						 						personaldetailform.middleNameRegional.$dirty}">
-						<input type="text" 
-							   class="form-control"
-							   id="regionalname"
-							   name="middleNameRegional"
-							   placeholder="Regional Middle Name"
-							   tabindex="6"
-							   ng-model="vm.personaldetail.middleNameRegional"
-							   required>
-						
-						<span class="help-block has-error">
-							<span ng-show="personaldetailform.middleNameRegional.$error.required &&
-										   personaldetailform.middleNameRegional.$dirty">
-									Regional Name is Required</span>
-						</span>
-					</div>
-				</div>
-			</div>
-			
-			<div class="row">
-				<div class="col-lg-12 form-group">
-					<input type="checkbox"
-						   id="namechange"
-						   tabindex="7"
-						   ng-model="vm.personaldetail.isNameChanged">
-					<label for="namechange">Is your name changed?
-						<span>[Tick if Yes]</span>
-					</label>
-				</div>
-			</div>
-			
-			<div ng-show="vm.personaldetail.isNameChanged == 1">
-				<div class="row">
-					<div class="col-sm-12 form-group">
-						<div class="col-sm-3">
-							<label for="newname"
-								   class="labelclass">New Full Name
-							<span style="color:red"><big> * </big></span></label>
-						</div>
-						<div class="col-sm-3"
-							 ng-class="{'has-error':personaldetailform.newLastName.$invalid &&
-						 							personaldetailform.newLastName.$dirty}">
-							<input type="text" 
-								   class="form-control"
-								   id="newname"
-								   name="newLastName"
-								   placeholder="New Last Name"
-								   tabindex="8"
-								   style="text-transform:uppercase"
-								   ng-model="vm.personaldetail.newLastName"
-								   ng-required="vm.personaldetail.isNameChanged == 1">
-								   
-							<span class="help-block has-error">
-								<span ng-show="personaldetailform.newLastName.$error.required &&
-											   personaldetailform.newLastName.$dirty">
-										New Last Name is Required</span>
-							</span>
-						</div>
-						<div class="col-sm-3"
-							 ng-class="{'has-error':personaldetailform.newFirstName.$invalid &&
-						 							personaldetailform.newFirstName.$dirty}">
-							<input type="text" 
-								   class="form-control"
-								   id="newname"
-								   name="newFirstName"
-								   placeholder="New First Name"
-								   tabindex="9"
-								   style="text-transform:uppercase"
-								   ng-model="vm.personaldetail.newFirstName"
-								   ng-required="vm.personaldetail.isNameChanged == 1">
-								   
-							<span class="help-block has-error">
-								<span ng-show="personaldetailform.newFirstName.$error.required &&
-											   personaldetailform.newFirstName.$dirty">
-										New First Name is Required</span>
-							</span>
-						</div>
-						<div class="col-sm-3"
-							 ng-class="{'has-error':personaldetailform.newMiddleName.$invalid &&
-						 							personaldetailform.newMiddleName.$dirty}">
-							<input type="text" 
-								   class="form-control"
-								   id="newname"
-								   name="newMiddleName"
-								   placeholder="New Middle Name"
-								   tabindex="10"
-								   style="text-transform:uppercase"
-								   ng-model="vm.personaldetail.newMiddleName"
-								   ng-required="vm.personaldetail.isNameChanged == 1">
-								   
-							<span class="help-block has-error">
-								<span ng-show="personaldetailform.newMiddleName.$error.required &&
-											   personaldetailform.newMiddleName.$dirty">
-										New Middle Name is Required</span>
-							</span>
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-sm-12 form-group">
-						<div class="col-sm-3">
-							<label for="reason"
-								   class="labelclass">Reason for Name Change
-							<span style="color:red"><big> * </big></span></label>
-						</div>
-						<div class="col-sm-3"
-							 ng-class="{'has-error':personaldetailform.nameChangeReason.$invalid &&
-						 							personaldetailform.nameChangeReason.$dirty}">
-							<select id="reason"
-									name="nameChangeReason"
-									class="selectpicker" data-width="100%"
-									data-live-search="true" title="-- Select Reason --"
-									tabindex="11"
-									ng-model="vm.personaldetail.nameChangeReason"
-									ng-options="nameChangeReason.key as nameChangeReason.value for 
-												nameChangeReason in vm.personaldetail.nameChangeReasonList"
-									ng-required="vm.personaldetail.isNameChanged == 1">
-							</select>
-							
-							<span class="help-block has-error">
-								<span ng-show="personaldetailform.nameChangeReason.$error.required &&
-											   personaldetailform.nameChangeReason.$dirty">
-										Select Reason for Name Change</span>
-							</span>
-						</div>
-					</div>
-				</div>			
-			</div>
-			
-		</div>
+	</div>
 	</div>
 
 	<div class="panel panel-default">
@@ -273,164 +49,30 @@
 		<div class="panel-body">
 			<div class="row">
 				<div class="col-sm-12 form-group">
-					<div class="col-sm-3">
+					<div class="col-sm-12">
 						<label for="fathersname"
 							   class="labelclass">Father's Full Name
-						<span style="color:red"><big> * </big></span></label>
-					</div>
-					<div class="col-sm-3"
-						 ng-class="{'has-error':personaldetailform.fathersLastName.$invalid &&
-						 						personaldetailform.fathersLastName.$dirty}">
-						<input type="text" 
-							   class="form-control"
-							   id="fathersname"
-							   name="fathersLastName"
-							   placeholder="Father's Last Name"
-							   tabindex="12"
-							   style="text-transform:uppercase"
-							   ng-model="vm.personaldetail.fathersLastName"
-							   required>
-							   
-						<span class="help-block has-error">
-							<span ng-show="personaldetailform.fathersLastName.$error.required &&
-										   personaldetailform.fathersLastName.$dirty">
-									Father's Last Name is Required</span>
-						</span>
-					</div>
-					<div class="col-sm-3"
-						 ng-class="{'has-error':personaldetailform.fathersFirstName.$invalid &&
-					 							personaldetailform.fathersFirstName.$dirty}">
-						<input type="text" 
-							   class="form-control"
-							   id="fathersname"
-							   name="fathersFirstName"
-							   placeholder="Father's First Name"
-							   tabindex="13"
-							   style="text-transform:uppercase"
-							   ng-model="vm.personaldetail.fathersFirstName"
-							   required>
-							   
-						<span class="help-block has-error">
-							<span ng-show="personaldetailform.fathersFirstName.$error.required &&
-										   personaldetailform.fathersFirstName.$dirty">
-									Father's First Name is Required</span>
-						</span>
-					</div>
-					<div class="col-sm-3"
-						 ng-class="{'has-error':personaldetailform.fathersMiddleName.$invalid &&
-					 							personaldetailform.fathersMiddleName.$dirty}">
-						<input type="text" 
-							   class="form-control"
-							   id="fathersname"
-							   name="fathersMiddleName"
-							   placeholder="Father's Middle Name"
-							   tabindex="14"
-							   style="text-transform:uppercase"
-							   ng-model="vm.personaldetail.fathersMiddleName"
-							   required>
-						
-						<span class="help-block has-error">
-							<span ng-show="personaldetailform.fathersMiddleName.$error.required &&
-										   personaldetailform.fathersMiddleName.$dirty">
-									Father's Middle Name is Required</span>
-						</span>
+						</label>{{vm.personaldetail.fathersLastName}} {{vm.personaldetail.fathersFirstName}} {{vm.personaldetail.fathersMiddleName}}
 					</div>
 				</div>
 			</div>
 			
 			<div class="row">
 				<div class="col-sm-12 form-group">
-					<div class="col-sm-3">
+					<div class="col-sm-12">
 						<label for="mothersname"
-							   class="labelclass">Mother's Full Name
-						<span style="color:red"><big> * </big></span></label>
-					</div>
-					<div class="col-sm-3"
-						 ng-class="{'has-error':personaldetailform.mothersLastName.$invalid &&
-						 						personaldetailform.mothersLastName.$dirty}">
-						<input type="text" 
-							   class="form-control"
-							   id="mothersname"
-							   name="mothersLastName"
-							   placeholder="Mother's Last Name"
-							   tabindex="15"
-							   style="text-transform:uppercase"
-							   ng-model="vm.personaldetail.mothersLastName"
-							   required>
-						
-						<span class="help-block has-error">
-							<span ng-show="personaldetailform.mothersLastName.$error.required &&
-										   personaldetailform.mothersLastName.$dirty">
-									Mother's Last Name is Required</span>
-						</span>
-					</div>
-					<div class="col-sm-3"
-						 ng-class="{'has-error':personaldetailform.mothersFirstName.$invalid &&
-						 						personaldetailform.mothersFirstName.$dirty}">
-						<input type="text" 
-							   class="form-control"
-							   id="mothersname"
-							   name="mothersFirstName"
-							   placeholder="Mother's First Name"
-							   tabindex="16"
-							   style="text-transform:uppercase"
-							   ng-model="vm.personaldetail.mothersFirstName"
-							   required>
-						
-						<span class="help-block has-error">
-							<span ng-show="personaldetailform.mothersFirstName.$error.required &&
-										   personaldetailform.mothersFirstName.$dirty">
-									Mother's First Name is Required</span>
-						</span>
-					</div>
-					<div class="col-sm-3"
-						 ng-class="{'has-error':personaldetailform.mothersMiddleName.$invalid &&
-						 						personaldetailform.mothersMiddleName.$dirty}">
-						<input type="text" 
-							   class="form-control"
-							   id="mothersname"
-							   name="mothersMiddleName"
-							   placeholder="Mother's Middle Name"
-							   tabindex="17"
-							   style="text-transform:uppercase"
-							   ng-model="vm.personaldetail.mothersMiddleName"
-							   required>
-						
-						<span class="help-block has-error">
-							<span ng-show="personaldetailform.mothersMiddleName.$error.required &&
-										   personaldetailform.mothersMiddleName.$dirty">
-									Mother's Middle Name is Required</span>
-						</span>
+							   class="labelclass">Mother's Full Name</label>
+							   {{vm.personaldetail.mothersLastName}} {{vm.personaldetail.mothersFirstName}} {{vm.personaldetail.mothersMiddleName}}
 					</div>
 				</div>
 			</div>
 			
 			<div class="row">
 				<div class="col-sm-12 form-group">
-					<div class="col-sm-3">
+					<div class="col-sm-12">
 						<label for="parentsemail"
-							   class="labelclass">Parent's Email Id
-						<span style="color:red"><big> * </big></span></label>
-					</div>
-					<div class="col-sm-6"
-						 ng-class="{'has-error':personaldetailform.parentsEmailId.$invalid &&
-						 						personaldetailform.parentsEmailId.$dirty}">
-						<input type="email" 
-							   class="form-control" 
-							   id="parentsemail"
-							   name="parentsEmailId"
-							   placeholder="Parent's Email Id"
-							   tabindex="18"
-							   ng-model="vm.personaldetail.parentsEmailId"
-							   required>
-							   
-						<span class="help-block has-error">
-							<span ng-show="personaldetailform.parentsEmailId.$error.required &&
-										   personaldetailform.parentsEmailId.$dirty">
-									Parent' s Email Id is Required</span>
-							<span ng-show="personaldetailform.parentsEmailId.$error.email">
-									Invalid Email Id</span>
-						</span>
+							   class="labelclass">Parent's Email Id</label>
+							   {{vm.personaldetail.parentsEmailId}}
 					</div>
 				</div>
 			</div>
@@ -439,36 +81,8 @@
 				<div class="col-sm-12 form-group">
 					<div class="col-sm-3">
 						<label for="parentscontact"
-							   class="labelclass">Parent's Contact No.
-						<span style="color:red"><big> * </big></span></label>
-					</div>
-					<div class="col-sm-6"
-						 ng-class="{'has-error':personaldetailform.parentsContactNo.$invalid &&
-						 						personaldetailform.parentsContactNo.$dirty}">
-						<input type="text" 
-							   class="form-control" 
-							   id="parentscontact"
-							   name="parentsContactNo"
-							   placeholder="Parent's Contact No."
-							   tabindex="19"
-							   ng-model="vm.personaldetail.parentsContactNo"
-							   ng-minlength="10"
-							   ng-maxlength="14"
-							   required>
-							   
-						<span class="help-block has-error">
-							<span ng-show="personaldetailform.parentsContactNo.$error.required &&
-										   personaldetailform.parentsContactNo.$dirty">
-									Parent' s Contact No is Required</span>
-							<span ng-show="personaldetailform.parentsContactNo.$error.number">
-									Invalid Phone Number</span>
-							<span ng-show="personaldetailform.parentsContactNo.$error.minlength &&
-										   personaldetailform.parentsContactNo.$dirty">
-									Number can not less than 10 letters</span>
-							<span ng-show="personaldetailform.parentsContactNo.$error.maxlength &&
-										   personaldetailform.parentsContactNo.$dirty">
-									Number can not greater than 14 letters</span>
-						</span>
+							   class="labelclass">Parent's Contact No.</label>
+							   {{vm.personaldetail.parentsContactNo}}
 					</div>
 				</div>
 			</div>
@@ -485,48 +99,10 @@
 				<div class="col-sm-12">
 					<div class="col-sm-3">
 						<label for="gender"
-							   class="labelclass">Gender
-						<span style="color:red"><big> * </big></span></label>
+							   class="labelclass">Gender</label>
+							   {{gender}}
 					</div>
-					<div class="col-sm-9 form-inline form-group" style="padding-top:7px"
-						 ng-class="{'has-error':personaldetailform.gender.$invalid &&
-						 						personaldetailform.gender.$dirty}">
-						<div class="col-sm-2">
-							<input type="radio" 
-								   name="gender" 
-								   id="genderMale"
-								   value="1"
-								   tabindex="20"
-								   ng-model="vm.personaldetail.gender"
-								   required>
-							<label for="genderMale">Male</label>
-						</div>
-						<div class="col-sm-2">
-							<input type="radio" 
-								   name="gender" 
-								   id="genderFemale"
-								   value="2"
-								   tabindex="21"
-								   ng-model="vm.personaldetail.gender"
-								   required>
-							<label for="genderFemale">Female</label>
-						</div>
-						<div class="col-sm-3">
-							<input type="radio" 
-								   name="gender" 
-								   id="transGender"
-								   value="3"
-								   tabindex="22"
-								   ng-model="vm.personaldetail.gender"
-								   required>
-							<label for="transGender">Transgender</label>
-						</div>
-						<span class="help-block has-error">
-							<span ng-show="personaldetailform.gender.$error.required &&
-										   personaldetailform.gender.$dirty">
-									Please Select the Gender</span>
-						</span>
-					</div>
+					
 				</div>
 			</div>
 			
@@ -535,41 +111,13 @@
 					<div class="col-sm-3">
 						<label for="bloodgroup"
 							   class="labelclass">Blood Group</label>
+							   {{bloodGroup}}
 					</div>
-					<div class="col-sm-3">
-						<select id="bloodgroup" 
-								class="selectpicker" data-width="100%"
-								data-live-search="true" title="-- Select --"
-								tabindex="23"
-								ng-model="vm.personaldetail.bloodGroup"
-								ng-options="bloodgroup.key as bloodgroup.value for bloodgroup in vm.personaldetail.bloodGroupList">
-						</select>
-					</div>
+					
 					<div class="col-sm-3">
 						<label for="dateofbirth"
-						   class="labelclass">Date of Birth
-						 <span style="color:red"><big> * </big></span></label>
-					</div>
-					<div class="col-sm-3 input-group">
-						<input type="text" 
-							   class="form-control" 
-							   id="dateofbirth"  
-							   ui-mask="dd/mm/yyyy"
-							   datepicker-popup="{{format}}"
-							   tabindex="24"
-							   is-open="vm.opened"
-							   ng-model="vm.personaldetail.birthDate"
-							   datepicker-options="dateOptions"
-							   date-disabled="disabled(date, mode)" 
-							   ng-required="true" 
-							   close-text="Close"
-							   required>
-						<span class="input-group-btn">
-							<button class="btn btn-default"
-									ng-click="vm.open($event)">
-								<i class="glyphicon glyphicon-calendar"></i>
-							</button>
-						</span>
+						   class="labelclass">Date of Birth</label>
+						   {{birthDate}}
 					</div>
 				</div>
 			</div>
@@ -579,37 +127,12 @@
 					<div class="col-sm-3">
 						<label for="maritalstatus"
 							   class="labelclass">Marital Status</label>
-					</div>
-					<div class="col-sm-3">
-						<select id="maritalstatus"
-								class="selectpicker" data-width="100%"
-								data-live-search="true" title="-- Select --"
-								tabindex="25"
-								ng-model="vm.personaldetail.maritalStatus"
-								ng-options="maritalStatus.key as maritalStatus.value for maritalStatus in vm.personaldetail.maritalStatusList">
-						</select>
+							   {{vm.maritalStatus}}
 					</div>
 					<div class="col-sm-3">
 						<label for="placeofbirth"
-							   class="labelclass">Place of Birth
-						<span style="color:red"><big> * </big></span></label>
-					</div>
-					<div class="col-sm-3"
-						 ng-class="{'has-error':personaldetailform.placeOfBirth.$invalid &&
-						 						personaldetailform.placeOfBirth.$dirty}">
-						<input type="text" 
-							   class="form-control" 
-							   id="placeofbirth"
-							   name="placeOfBirth"
-							   tabindex="26"
-							   ng-model="vm.personaldetail.placeOfBirth"
-							   required>
-						
-						<span class="help-block has-error">
-							<span ng-show="personaldetailform.placeOfBirth.$error.required &&
-										   personaldetailform.placeOfBirth.$dirty">
-									Place of Birth is Required</span>
-						</span>
+							   class="labelclass">Place of Birth</label>
+							   {{vm.personaldetail.placeOfBirth}}
 					</div>
 				</div>
 			</div>
@@ -618,39 +141,17 @@
 				<div class="col-sm-12 form-group">
 					<div class="col-sm-3">
 						<label for="aadharno"
-							   class="labelclass">Aadhar No.
-						<span style="color:red"><big> * </big></span></label>
+							   class="labelclass">Aadhar No.</label>
+							   {{vm.personaldetail.adharNo}}
 					</div>
-					<div class="col-sm-3"
-						 ng-class="{'has-error':personaldetailform.aadharNo.$invalid &&
-						 						personaldetailform.aadharNo.$dirty}">
-						<input type="text" 
-							   class="form-control" 
-							   id="aadharno"
-							   name="aadharNo"
-							   tabindex="27"
-							   ng-model="vm.personaldetail.adharNo">
-						
-						<span class="help-block has-error">
-							<span ng-show="personaldetailform.aadharNo.$error.required &&
-										   personaldetailform.aadharNo.$dirty">
-									Aadhar No. is Required</span>
-						</span>
-					</div>
+					
 					<div class="col-sm-3">
 						<label for="educationgap"
 							   class="labelclass">Education Gap (in yrs)</label>
-					</div>
-					<div class="col-sm-3">
-						<input type="text" 
-							   class="form-control" 
-							   id="educationgap"
-							   tabindex="28"
-							   ng-model="vm.personaldetail.educationGap">
+							   {{vm.personaldetail.educationGap}}
 					</div>
 				</div>
 			</div>
-			
 		</div>
 	</div>
 
@@ -664,16 +165,7 @@
 					<div class="col-sm-3">
 						<label for="citizenship"
 							   class="labelclass">Country of Citizenship</label>
-					</div>
-					<div class="col-sm-3">
-						<select id="citizenship"
-								class="selectpicker" data-width="100%"
-								data-live-search="true" title="-- Select Country --"
-								tabindex="29"
-								ng-model="vm.personalDetailTemp.citizenshipCountryId"
-								ng-change="vm.setSelectedCitizenshipCountry()"
-								ng-options="country.countryId as country.countryName for country in vm.personaldetail.countryList">
-						</select>
+							   {{vm.personaldetail.countryOfCitizenship.countryName}}
 					</div>
 				</div>
 			</div>
@@ -684,16 +176,7 @@
 						<div class="col-sm-3">
 							<label for="domiciled"
 								   class="labelclass">Domicile of State</label>
-						</div>
-						<div class="col-sm-3">
-							<select id="citizenship"
-									class="selectpicker" data-width="100%"
-									data-live-search="true" title="-- Select Domiciled --"
-									tabindex="30"
-									ng-model="vm.personalDetailTemp.domiciledInId"
-									ng-change="vm.setSelectedState()"
-									ng-options="state.stateId as state.stateName for state in vm.personaldetail.stateList">
-							</select>
+								   {{vm.personaldetail.domiciledIn.stateName}}
 						</div>
 					</div>
 				</div>
@@ -705,166 +188,15 @@
 						<div class="col-sm-3">
 							<label for="passportno"
 								   class="labelclass">Passport No.</label>
+								   {{vm.personaldetail.passportNo}}
 						</div>
-						<div class="col-sm-3">
-							<input type="text"
-								   class="form-control"
-								   id="passportno"
-								   tabindex="31"
-								   ng-model="vm.personaldetail.passportNo">
-						</div>
-						<div class="col-sm-3">
-							<label for="placeofissue"
-								   class="labelclass">Place of Issue of Passport</label>
-						</div>
-						<div class="col-sm-3">
-							<input type="text"
-								   class="form-control"
-								   id="placeofissue"
-								   tabindex="32"
-								   ng-model="vm.personaldetail.passportIssuePlace">
-						</div>
-					</div>
-				</div>
-			
-				<div class="row">
-					<div class="col-sm-12 form-group">
-						<div class="col-sm-3">
-							<label for="dateofissue"
-								   class="labelclass">Date of Issue of Passport</label>
-						</div>
-						<div class="col-sm-3">
-							<input type="text"
-								   class="form-control"
-								   id="dateofissue"
-								   tabindex="33"
-								   ng-model="vm.personaldetail.passportIssueDate">
-						</div>
-						<div class="col-sm-3">
-							<label for="dateofexpiry"
-								   class="labelclass">Date of Expiry of Passport</label>
-						</div>
-						<div class="col-sm-3">
-							<input type="text"
-								   class="form-control"
-								   id="dateofexpiry"
-								   tabindex="34"
-								   ng-model="vm.personaldetail.passportExpiryDate">
-						</div>
-					</div>
-				</div>
-				
-				<div class="row">
-					<div class="col-sm-12 form-group">
-						<div class="col-sm-3">
-							<label for="issuingauthority"
-								   class="labelclass">Passport Issuing Authority</label>
-						</div>
-						<div class="col-sm-3">
-							<select id="issuingauthority"
-									class="selectpicker" data-width="100%"
-									data-live-search="true" title="-- Select Authority --"
-									tabindex="35"
-									ng-model="vm.personaldetail.passportIssuingAuthority"
-									ng-options="passportIssuingAuthority.key as passportIssuingAuthority.value for passportIssuingAuthority in vm.personaldetail.passportIssuingAuthorityList">
-							</select>
-						</div>
-						<div class="col-sm-3">
-							<label for="issuingcountry"
-								   class="labelclass">Passport Issuing Country</label>
-						</div>
-						<div class="col-sm-3">
-							<select id="issuingcountry"
-									class="selectpicker" data-width="100%"
-									data-live-search="true" title="-- Select Passport Issuing Country --"
-									tabindex="36"
-									ng-model="vm.personalDetailTemp.passportIssuingCountryId"
-									ng-change="vm.setSelectedPassportIssuingCountry()"
-									ng-options="country.countryId as country.countryName for country in vm.personaldetail.countryList">
-							</select>
-						</div>
-					</div>
-				</div>
-				
-				<div class="row">
-					<div class="col-sm-12 form-group">
-						<div class="col-sm-3">
-							<label for="visatype"
-								   class="labelclass">Visa Type</label>
-						</div>
-						<div class="col-sm-3">
-							<select id="visatype"
-									class="selectpicker" data-width="100%"
-									data-live-search="true" title="-- Select Visa Type --"
-									tabindex="37"
-									ng-model="vm.personaldetail.visaType"
-									ng-options="visaType.key as visaType.value for visaType in vm.personaldetail.visaTypeList">
-							</select>
-						</div>
-						<div class="col-sm-3">
-							<label for="visavalidupto"
-								   class="labelclass">Visa Valid Upto</label>
-						</div>
-						<div class="col-sm-3">
-							<input type="text"
-								   class="form-control"
-								   id="visavalidupto"
-								   tabindex="38"
-								   ng-model="vm.personaldetail.visaValidUpto">
-						</div>
-					</div>
-				</div>
-				
-				<div class="row">
-					<div class="col-sm-12 form-group">
-						<div class="col-sm-3">
-							<label for="visasponsoringagency"
-								   class="labelclass">Visa Sponsoring Agency</label>
-						</div>
-						<div class="col-sm-3">
-							<select id="visasponsoringagency"
-									class="selectpicker" data-width="100%"
-									data-live-search="true" title="-- Select Sponsoring Agency --"
-									tabindex="39"
-									ng-model="vm.personaldetail.visaSponsoringAgency"
-									ng-options="visaSponsoringAgency.key as visaSponsoringAgency.value for visaSponsoringAgency in vm.personaldetail.visaSponsoringAgencyList">
-							</select>
-						</div>
-						<div class="col-sm-3">
-							<label for="residentialpermitno"
-								   class="labelclass">Residential Permit No.</label>
-						</div>
-						<div class="col-sm-3">
-							<input type="text"
-								   class="form-control"
-								   id="residentialpermitno"
-								   tabindex="40"
-								   ng-model="vm.personaldetail.residentialPermitNo">
-						</div>
-					</div>
+						
 				</div>
 			</div>			
 		</div>
 	</div>
 		
-	<div class="row" style="margin: 25px 0px 25px 0px;">
-		<div class="col-sm-3"></div>
-		<div class="col-sm-3">
-        	<input type="button" 
-        		   tabindex="41"
-        		   value="Save as Draft" 
-        		   class="btn btn-success btn-block topMargin" 
-        		   ng-click="vm.saveDraft()">
-        </div>
-		<div class="col-sm-3">
-        	<input type="submit" 
-        		   tabindex="42"
-        		   value="Save and Continue" 
-        		   class="btn btn-success btn-block topMargin" 
-        		   ng-click="vm.submit()"
-        		   ng-disabled="personaldetailform.$invalid">
-        </div>
-        <div class="col-sm-3"></div>
+
 	</div>
 
 </form>

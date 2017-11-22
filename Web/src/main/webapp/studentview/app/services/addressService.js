@@ -8,19 +8,18 @@
 	
 	function AddressService($http) {
 		return {
-			get : function(accessTokenParam) {
+			getAddress : function(accessTokenParam) {
 				return $http({
 					method: "GET",
 					url: "/Web/rest/address/get/" + accessTokenParam
 				})
 			},
-			save: function (address, accessTokenParam) {
+			getUserDetail : function() {
 				return $http({
-                    method: 'POST',
-                    url: '/Web/rest/address/save/' + accessTokenParam,
-                    data: address
-                });
-            }
+					method: 'GET',
+					url: '/Web/userDetail/get/'
+				})
+			}
 		}
 	}
 }());
