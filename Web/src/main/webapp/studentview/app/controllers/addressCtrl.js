@@ -15,26 +15,34 @@
 		vm.accessToken = $window.bearer_token;
 		vm.accessTokenParam = "?access_token=" + vm.accessToken;
 
-		addressService.get(vm.accessTokenParam)
-		.success(function (data, status, headers, config) {
-			vm.address = data;
-			if(vm.address != null && vm.address.country != null) {
-				vm.address.countryId = vm.address.country.countryId;
-			}
-			if(vm.address != null && vm.address.state != null) {
-				vm.address.stateId = vm.address.state.stateId;
-			}
-			if(vm.address != null && vm.address.countryPermenent != null) {
-				vm.address.countryPermenentId = vm.address.countryPermenent.countryId;
-			}
-			if(vm.address != null && vm.address.statePermenent != null) {
-				vm.address.statePermenentId = vm.address.statePermenent.stateId;
-			}
-			refreshSelectPickerWithDelay(100);
-		})
-		.error(function (data, status, headers, config) {
-			vm.address = {};
-        });
+		vm.initialise = function() {
+		}
+			addressService.getAddress(vm.accessTokenParam)
+			.success(function (data, status, headers, config) {
+				vm.address = data;
+				if(vm.address != null && vm.address.country != null) {
+					vm.address.countryId = vm.address.country.countryId;
+				}
+				if(vm.address != null && vm.address.state != null) {
+					vm.address.stateId = vm.address.state.stateId;
+				}
+				if(vm.address != null && vm.address.countryPermenent != null) {
+					vm.address.countryPermenentId = vm.address.countryPermenent.countryId;
+				}
+				if(vm.address != null && vm.address.statePermenent != null) {
+					vm.address.statePermenentId = vm.address.statePermenent.stateId;
+				}
+				refreshSelectPickerWithDelay(100);
+			})
+			.error(function (data, status, headers, config) {
+				vm.address = {};
+	        });
+			
+			addressService.getUserDetail()
+			.success(function(data){
+				vm.basicdetail = data;
+			});
+		
 		
 		vm.submit = function() {
 			addressService.save(vm.address, vm.accessTokenParam)
@@ -72,6 +80,8 @@
 				refreshSelectPickerWithDelay();
 			}
 		}
+		
+		vm.initialise();
 		
 	};
 	

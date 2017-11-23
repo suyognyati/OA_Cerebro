@@ -4,15 +4,6 @@
     </h1>
 </div>
 
-<div class="well alert-danger">
-	<span><strong>NOTE:</strong> 
-		It is mandatory to fill all details of educational qualification (as applicable) from class X onwards till last completed year. 
-		If the system of marking of your school is on grading pattern,
-		convert grade into marks as applicable and fill in the respective fields. 
-		In absence of complete information, form will be rejected.
-	</span>
-</div>
-
 <div class="panel panel-body">	
 	<div class="row">
 		<div class="col-sm-12">
@@ -24,8 +15,7 @@
 			<div class="table-responsive" ng-repeat="qualificationType in vm.qualificationList">
 				<div class="col-sm-12">
 					<label class="" Style="font-size: large;">{{qualificationType.name}}</label>
-					[<i class="glyphicon glyphicon-plus glyphicon-plus-custom" style="cursor: pointer;"
-                       	ng-click="vm.createNewQualification(qualificationType.qualificationMainLevel, qualificationType.qualificationSubLevel)"/>]
+					
 				</div>
 				<div class="col-sm-12" ng-if="qualificationType.subQualificationList == null">
 					<hr/>
@@ -39,9 +29,7 @@
 	                        <th width="19%">Faculty/College Name</th>
 	                        <th width="12%">Passing Date</th>
 	                        <th width="10%">Marks/Out Of</th>
-	                        <th width="5%">Edit</th>
-	                        <th width="5%">Delete</th>
-	                    </tr>
+	                        <th width="5%">View</th>
 	                </thead>
 	                <tbody>
 	                     <tr ng-repeat="qualification in qualificationType.subQualificationList">
@@ -55,15 +43,10 @@
 	                        	{{qualification.totalMarks}}
 	                        </td>
 	                        <td align="center">
-	                        	<i 	class="glyphicon glyphicon-pencil " style="cursor: pointer;" 
+	                        	<i 	class="glyphicon glyphicon-eye-open " style="cursor: pointer;" 
 	                        		ng-click="vm.qualificationDetail(qualification.qualificationMainLevel, qualification.subQualificationId)"/>
 	                       		</i>
 	                       	</td>
-	                        <td align="center">
-	                        	<i 	class="glyphicon glyphicon-trash " style="cursor: pointer;" 
-	                        		ng-click="vm.deleteQualification(qualification.subQualificationId, qualification.name)"/>
-	                       		</i>
-	                        </td>
 	                     </tr>
 					</tbody>
 				</table>

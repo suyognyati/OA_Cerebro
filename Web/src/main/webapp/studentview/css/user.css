@@ -198,10 +198,16 @@ a.nav-button-col {
 	color: #3c763d;'
 }
 
+.applicantDetaailList ul{
+	list-style:none;
+	margin:0;
+	padding:0 0 0 15px;	
+}
+
 @media (min-width: 768px) {
 	.labelclass{
 		padding-top:7px;
-		text-align:right;
+		/* text-align:right; */
 		width:100%;
 	}
 }

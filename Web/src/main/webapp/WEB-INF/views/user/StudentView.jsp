@@ -37,7 +37,8 @@
 	String img_search = "/Web/static/images/search.png";
 	String img_dashboard = "/Web/static/images/dashboard.png";
 	String img_logo = "/Web/static/images/logo.jpg";
-	String logoImage = "/Web/vendor/images/c-logo.png";%>
+	String logoImage = "/Web/vendor/images/c-logo.png";
+	String photo = "/Web/vendor/images/image.jpg";%>
 
 	<header>
 		<div class="container-fluid no-padding">
@@ -111,12 +112,10 @@
 			<div class="row row-custom-margin">
 			    <div class="col-sm-2 left-nav col-sm-custompadding" id="mySidenav">
 					<ul class="nav nav-pills nav-stacked submenu" data-spy="affix" data-offset-top="100">
-						<li id="userDetail"><a ui-sref="userDetail"><i class="glyphicon glyphicon-user"></i> <span id="nav-text0" class="nav-text-display">User Details</span></a></li>
 						<li id="personalDetail"><a ui-sref="personalDetail"><i class="glyphicon glyphicon-briefcase"></i> <span id="nav-text1" class="nav-text-display">Personal Details</span></a></li>
-						<li id="address"><a ui-sref="address"><i class="glyphicon glyphicon-book"></i> <span id="nav-text2" class="nav-text-display">Address Details</span></a></li>
-						<li id="educationInformation"><a ui-sref="educationInformation"><i class="glyphicon glyphicon-education"></i> <span id="nav-text3" class="nav-text-display">Educational Information</span></a></li>
-						<li id="occupationReservation"><a ui-sref="occupationReservation"><i class="glyphicon glyphicon-cog"></i> <span id="nav-text4" class="nav-text-display">Occupation & Reservation</span></a></li>
-						<li id="uploadPhotoSign"><a><i class="glyphicon glyphicon-cloud-upload"></i> <span id="nav-text5" class="nav-text-display">Upload Photo & Signature</span></a></li>
+						<li id="address"><a ui-sref="address"><i class="glyphicon glyphicon-book"></i> <span id="nav-text2" class="nav-text-display">Contact Details</span></a></li>
+						<li id="educationInformation"><a ui-sref="educationInformation"><i class="glyphicon glyphicon-education"></i> <span id="nav-text3" class="nav-text-display">Educational Details</span></a></li>
+						<li id="occupationReservation"><a ui-sref="occupationReservation"><i class="glyphicon glyphicon-cog"></i> <span id="nav-text4" class="nav-text-display">Occupation & Reservation Details</span></a></li>
 					</ul>
 			    </div>
 				<div class="col-sm-10 main-content col-sm-custompadding" id="main-content"> <a class="btn btn-toggleleft nav-button-col" onclick="toggle()"><i class="glyphicon glyphicon-menu-hamburger"></i></a>
