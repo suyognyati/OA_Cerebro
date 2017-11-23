@@ -56,6 +56,8 @@ public class CustomSuccessHandler extends SimpleUrlAuthenticationSuccessHandler 
 			url = "/vendor/";
 		} else if (isUser(roles)) {
 			url = "/user/";
+		} else if (isCollegeAdmin(roles)) {
+			url = "/collegeadmin/";
 		} else {
 			url = "/Access_Denied/";
 		}
@@ -86,6 +88,13 @@ public class CustomSuccessHandler extends SimpleUrlAuthenticationSuccessHandler 
 
 	private boolean isDba(List<String> roles) {
 		if (roles.contains("ROLE_DBA")) {
+			return true;
+		}
+		return false;
+	}
+	
+	private boolean isCollegeAdmin(List<String> roles) {
+		if (roles.contains("ROLE_COLLEGEADMIN")) {
 			return true;
 		}
 		return false;

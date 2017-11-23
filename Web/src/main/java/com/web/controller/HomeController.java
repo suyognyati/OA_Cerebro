@@ -18,12 +18,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.web.session.Session;
+import com.web.session.SessionService;
 
 @Controller
 @RequestMapping("/")
 public class HomeController {
 	@Autowired
 	private Session session;
+	
+	@Autowired
+	private SessionService sessionService;
 	
 	@Autowired
     private TokenStore tokenStore;
@@ -122,6 +126,14 @@ public class HomeController {
 	public String adminPage(ModelMap model) {
 		model.addAttribute("user", getPrincipal());
 		return "admin";
+	}
+	
+	@RequestMapping(value = "collegeadmin/", method = RequestMethod.GET)
+	public String collegeAdmin(ModelMap model) {
+		sessionService.setLoggedInUserDetails();
+		model.addAttribute("collegeadmin", session.getLoggedInUser());
+		model.addAttribute("collegeadmindetail", session.getLoggedInUserDetail());
+		return "collegeadmin";
 	}
 
 	@RequestMapping(value = "db/", method = RequestMethod.GET)

@@ -88,6 +88,7 @@ public class ConfigurationWebSecurity extends WebSecurityConfigurerAdapter {
 		.antMatchers("/user/").access("hasRole('USER')")
 		.antMatchers("/studentview/").access("hasRole('USER')")
 		.antMatchers("/vendor/").access("hasRole('VENDOR')")
+		.antMatchers("/collegeadmin/").access("hasRole('COLLEGEADMIN')")
 		/*.antMatchers("/basicDetail/**").access("hasRole('USER')")*/
 		.antMatchers("/db/").access("hasRole('ADMIN') and hasRole('DBA')")
 		.antMatchers("/admin/").access("hasRole('ADMIN')").anyRequest().authenticated()

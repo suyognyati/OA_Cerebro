@@ -46,6 +46,7 @@ public class WebConfig extends WebMvcConfigurerAdapter{
 		registry.addResourceHandler("/studentview/**").addResourceLocations("/studentview/");
 		registry.addResourceHandler("/login/**").addResourceLocations("/login/");
 		registry.addResourceHandler("/vendor/**").addResourceLocations("/vendor/");
+		registry.addResourceHandler("/collegeadmin/**").addResourceLocations("/collegeadmin/");
 	}
 	
 	@Bean

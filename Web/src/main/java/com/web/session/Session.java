@@ -25,6 +25,9 @@ public class Session {
 	private User CurrentUser = null;
 	private UserDetail CurrentUserDetail = null;
 	
+	private User LoggedInUser = null;
+	private UserDetail LoggedInUserDetail = null;
+	
 	private Integer collegeId = null;
 	
 	/* Getters for user */
@@ -97,6 +100,24 @@ public class Session {
 	
 	/* Getter setter */
 	
+	
+	
+	public User getLoggedInUser() {
+		return LoggedInUser;
+	}
+
+	public void setLoggedInUser(User loggedInUser) {
+		LoggedInUser = loggedInUser;
+	}
+
+	public UserDetail getLoggedInUserDetail() {
+		return LoggedInUserDetail;
+	}
+
+	public void setLoggedInUserDetail(UserDetail loggedInUserDetail) {
+		LoggedInUserDetail = loggedInUserDetail;
+	}
+
 	public Integer getCollegeId() {
 		return collegeId;
 	}
