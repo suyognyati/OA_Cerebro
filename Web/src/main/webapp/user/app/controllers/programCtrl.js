@@ -16,6 +16,8 @@
 		vm.accessToken = $window.bearer_token;
 		vm.accessTokenParam = "?access_token=" + vm.accessToken;
 		
+		vm.itemPerPage = 2;
+		
 		programService.get(vm.programCategoryId, vm.accessTokenParam)
 		.success(function(data, status, header, config) {
 			vm.programs = data;

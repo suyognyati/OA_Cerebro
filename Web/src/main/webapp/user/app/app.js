@@ -6,6 +6,7 @@
 		                 "oc.lazyLoad",
 		                 "ui.bootstrap",
 		                 "720kb.datepicker",
+		                 "angularUtils.directives.dirPagination",
 		                 /*"pmImageEditor",*/
 		                 "ngImgCrop"]);	
 	
