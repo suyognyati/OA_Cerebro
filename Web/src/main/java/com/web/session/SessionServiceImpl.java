@@ -32,6 +32,14 @@ public class SessionServiceImpl implements SessionService {
 		
 	}
 	
+	@Override
+	public void setApplicant(Integer userId) {
+		user = sessionRCService.GetUser(userId);
+		userDetail = sessionRCService.GetUserDetail(user);
+		
+		session.setApplicant(user);		
+	}
+	
 	/**
 	 * Gives the currently logged in user name
 	 * */

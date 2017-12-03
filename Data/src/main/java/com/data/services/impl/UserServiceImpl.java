@@ -13,6 +13,11 @@ public class UserServiceImpl implements UserService {
 	@Autowired
 	UserJpaRepository userJpaRepository;
 	
+	@Override
+	public User getByUserId(Integer userId) {
+		return userJpaRepository.findOne(userId);
+	}
+	
 	public User getByUserName(String userName) {
 		return userJpaRepository.findByUserName(userName);
 	}

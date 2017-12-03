@@ -3,6 +3,7 @@ package com.web.services.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.data.entities.Enums;
 import com.data.entities.PersonalDetail;
 import com.data.entities.User;
 import com.data.entities.UserDetail;
@@ -29,7 +30,7 @@ public class ApplicantsDetailRCServiceImpl implements ApplicantsRCService {
 		
 		getPersonalDetail(user);
 		
-		return null;
+		return applicantsModel;
 	}
 	
 	private void getPersonalDetail(User user) {
@@ -58,13 +59,13 @@ public class ApplicantsDetailRCServiceImpl implements ApplicantsRCService {
 			applicantsModel.setNewLastName(personalDetail.getNewLastName());
 			applicantsModel.setNewFirstName(personalDetail.getNewFirstName());
 			applicantsModel.setNewMiddleName(personalDetail.getNewMiddleName());
-			applicantsModel.setNameChangeReason(personalDetail.getNameChangeReason());			
+			applicantsModel.setNameChangeReason(Enums.NameChangeReason.get(personalDetail.getNameChangeReason()).getValue());			
 			
 			applicantsModel.setAdharNo(personalDetail.getAdharNo());
-			applicantsModel.setGender(personalDetail.getGender());
+			applicantsModel.setGender(Enums.Gender.get(personalDetail.getGender()).getValue());
 			applicantsModel.setPlaceOfBirth(personalDetail.getPlaceOfBirth());
-			applicantsModel.setMaritalStatus(personalDetail.getMaritalStatus());
-			applicantsModel.setBloodGroup(personalDetail.getBloodGroup());
+			applicantsModel.setMaritalStatus(Enums.MaritalStatus.get(personalDetail.getMaritalStatus()).getValue());
+			applicantsModel.setBloodGroup(Enums.BloodGroup.get(personalDetail.getBloodGroup()).getValue());
 			applicantsModel.setEducationGapInYrs(personalDetail.getEducationGapInYrs());
 			
 			applicantsModel.setFathersLastName(personalDetail.getFathersLastName());
@@ -82,9 +83,9 @@ public class ApplicantsDetailRCServiceImpl implements ApplicantsRCService {
 			applicantsModel.setPassportIssuePlace(personalDetail.getPassportIssuePlace());
 			applicantsModel.setPassportIssueDate(personalDetail.getPassportIssueDate());
 			applicantsModel.setPassportExpiryDate(personalDetail.getPassportExpiryDate());
-			applicantsModel.setPassportIssuingAuthority(personalDetail.getPassportIssuingAuthority());
+			applicantsModel.setPassportIssuingAuthority(Enums.PassportIssuingAuthority.get(personalDetail.getPassportIssuingAuthority()).getValue());
 			applicantsModel.setPassportIssuingCountry(personalDetail.getPassportIssuingCountry());
-			applicantsModel.setVisaType(personalDetail.getVisaType());
+			applicantsModel.setVisaType(Enums.VisaType.get(personalDetail.getVisaType()).getValue());
 			applicantsModel.setVisaValidUpto(personalDetail.getVisaValidUpto());
 			applicantsModel.setVisaSponsoringAgency(personalDetail.getVisaSponsoringAgency());
 			applicantsModel.setResidentialPermitNo(personalDetail.getResidentialPermitNo());

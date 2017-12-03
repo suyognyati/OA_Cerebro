@@ -20,7 +20,19 @@
                     url: '/Web/personalDetail/save/' + accessTokenParam,
                     data: personalDetail
                 });
-            }
+            },
+            setApplicant : function() {
+				return $http({
+					method: "GET",
+					url: "/Web/applicants/setApplicant/1"
+				})
+			},
+            getApplicant : function() {
+				return $http({
+					method: "GET",
+					url: "/Web/applicants/getDetail/"
+				})
+			}
 		}
 	}
 }());

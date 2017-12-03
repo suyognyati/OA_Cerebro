@@ -30,6 +30,8 @@ public class Session {
 	
 	private Integer collegeId = null;
 	
+	private User Applicant = null;
+	
 	/* Getters for user */
 	
 	public String getCurrentUserName() {
@@ -100,8 +102,6 @@ public class Session {
 	
 	/* Getter setter */
 	
-	
-	
 	public User getLoggedInUser() {
 		return LoggedInUser;
 	}
@@ -116,6 +116,14 @@ public class Session {
 
 	public void setLoggedInUserDetail(UserDetail loggedInUserDetail) {
 		LoggedInUserDetail = loggedInUserDetail;
+	}	
+
+	public User getApplicant() {
+		return Applicant;
+	}
+
+	public void setApplicant(User applicant) {
+		Applicant = applicant;
 	}
 
 	public Integer getCollegeId() {

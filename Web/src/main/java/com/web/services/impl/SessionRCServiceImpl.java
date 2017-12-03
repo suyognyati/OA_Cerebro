@@ -18,6 +18,10 @@ public class SessionRCServiceImpl implements SessionRCService {
 	@Autowired
 	UserDetailService userDetailService;
 	
+	public User GetUser(Integer userId) {
+		return userService.getByUserId(userId);
+	}
+	
 	public User GetUser(String userName) {
 		return userService.getByUserName(userName);
 	}

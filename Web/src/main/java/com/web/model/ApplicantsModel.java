@@ -18,15 +18,15 @@ public class ApplicantsModel {
 	private String newFirstName;
 	private String newLastName;
 	private String newMiddleName;
-	private Integer nameChangeReason;
+	private String nameChangeReason;
 	
 //******************** OTHER DETAIL
 	
 	private String birthDate;
-	private Integer gender;
-	private Integer bloodGroup;
+	private String gender;
+	private String bloodGroup;
 	private String placeOfBirth;
-	private Integer maritalStatus;
+	private String maritalStatus;
 	private String adharNo;
 	private Integer educationGapInYrs;
 
@@ -49,9 +49,9 @@ public class ApplicantsModel {
 	private String passportIssuePlace;
 	private String passportIssueDate;
 	private String passportExpiryDate;
-	private Integer passportIssuingAuthority;
+	private String passportIssuingAuthority;
 	private Country passportIssuingCountry;
-	private Integer visaType;
+	private String visaType;
 	private String visaValidUpto;
 	private Integer visaSponsoringAgency;
 	private String residentialPermitNo;
@@ -123,10 +123,10 @@ public class ApplicantsModel {
 	public void setNewMiddleName(String newMiddleName) {
 		this.newMiddleName = newMiddleName;
 	}
-	public Integer getNameChangeReason() {
+	public String getNameChangeReason() {
 		return nameChangeReason;
 	}
-	public void setNameChangeReason(Integer nameChangeReason) {
+	public void setNameChangeReason(String nameChangeReason) {
 		this.nameChangeReason = nameChangeReason;
 	}
 	public String getBirthDate() {
@@ -135,16 +135,16 @@ public class ApplicantsModel {
 	public void setBirthDate(String birthDate) {
 		this.birthDate = birthDate;
 	}
-	public Integer getGender() {
+	public String getGender() {
 		return gender;
 	}
-	public void setGender(Integer gender) {
+	public void setGender(String gender) {
 		this.gender = gender;
 	}
-	public Integer getBloodGroup() {
+	public String getBloodGroup() {
 		return bloodGroup;
 	}
-	public void setBloodGroup(Integer bloodGroup) {
+	public void setBloodGroup(String bloodGroup) {
 		this.bloodGroup = bloodGroup;
 	}
 	public String getPlaceOfBirth() {
@@ -153,10 +153,10 @@ public class ApplicantsModel {
 	public void setPlaceOfBirth(String placeOfBirth) {
 		this.placeOfBirth = placeOfBirth;
 	}
-	public Integer getMaritalStatus() {
+	public String getMaritalStatus() {
 		return maritalStatus;
 	}
-	public void setMaritalStatus(Integer maritalStatus) {
+	public void setMaritalStatus(String maritalStatus) {
 		this.maritalStatus = maritalStatus;
 	}
 	public String getAdharNo() {
@@ -255,10 +255,10 @@ public class ApplicantsModel {
 	public void setPassportExpiryDate(String passportExpiryDate) {
 		this.passportExpiryDate = passportExpiryDate;
 	}
-	public Integer getPassportIssuingAuthority() {
+	public String getPassportIssuingAuthority() {
 		return passportIssuingAuthority;
 	}
-	public void setPassportIssuingAuthority(Integer passportIssuingAuthority) {
+	public void setPassportIssuingAuthority(String passportIssuingAuthority) {
 		this.passportIssuingAuthority = passportIssuingAuthority;
 	}
 	public Country getPassportIssuingCountry() {
@@ -267,10 +267,10 @@ public class ApplicantsModel {
 	public void setPassportIssuingCountry(Country passportIssuingCountry) {
 		this.passportIssuingCountry = passportIssuingCountry;
 	}
-	public Integer getVisaType() {
+	public String getVisaType() {
 		return visaType;
 	}
-	public void setVisaType(Integer visaType) {
+	public void setVisaType(String visaType) {
 		this.visaType = visaType;
 	}
 	public String getVisaValidUpto() {
