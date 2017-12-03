@@ -34,23 +34,23 @@
 		else {
 			personalDetailService.setApplicant()
 			.success(function (data, status, headers, config) {
-				
+				personalDetailService.getApplicant()
+				.success(function (data, status, headers, config) {
+					vm.personaldetail = data;
+					if(vm.personaldetail != null) {
+						vm.initModel(vm.personaldetail);
+					}
+					refreshSelectPickerWithDelay(100);
+				})
+				.error(function (data, status, headers, config) {
+					vm.personaldetail = {};
+				});
 			})
 			.error(function (data, status, headers, config) {
 				
 			});
 			
-			personalDetailService.getApplicant()
-			.success(function (data, status, headers, config) {
-				vm.personaldetail = data;
-				if(vm.personaldetail != null) {
-					vm.initModel(vm.personaldetail);
-				}
-				refreshSelectPickerWithDelay(100);
-			})
-			.error(function (data, status, headers, config) {
-				vm.personaldetail = {};
-			});
+			
 		}
 		
 		vm.initModel = function(personaldetail) {
