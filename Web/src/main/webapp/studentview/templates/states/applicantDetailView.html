@@ -1,0 +1,215 @@
+<div class="heading">
+	<h1>
+       	Personal Details
+    </h1>
+</div>
+
+<form class="panel-body" name="personaldetailform" novalidate>
+
+	<div class="panel panel-default">
+		<div class="panel-heading pannelHeadingStyle">Applicant's Details</div>
+		<div class="panel-body">
+			<div class="row">
+				<div class="col-sm-8 form-group applicantDetaailList">
+					<div class="row">
+						<div class="col-sm-6 dataSpacing">
+						<label class="labelclass">Applicant's Full Name</label>
+							   <div class="formData">{{vm.personaldetail.lastName}} {{vm.personaldetail.firstName}} {{vm.personaldetail.middleName}}</div>
+						</div>
+						<div class="col-sm-6 dataSpacing">
+						<label class="labelclass">Applicant's Full Name in Regional Language</label>
+							   <div class="formData">{{vm.personaldetail.lastName}} {{vm.personaldetail.firstName}} {{vm.personaldetail.middleName}}</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-6 dataSpacing">
+						<label class="labelclass">Applicant's Full Name</label>
+							   <div class="formData">{{vm.personaldetail.lastName}} {{vm.personaldetail.firstName}} {{vm.personaldetail.middleName}}</div>
+						</div>
+						<div class="col-sm-6 dataSpacing">
+						<label for="mothersname"
+							   class="labelclass">Mother's Full Name</label>
+							   <div class="formData">{{vm.personaldetail.mothersLastName}} {{vm.personaldetail.mothersFirstName}} {{vm.personaldetail.mothersMiddleName}}</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-6 dataPadding">
+						<label for="parentsemail"
+							   class="labelclass">Parent's Email Id</label>
+							   <div class="formData">{{vm.personaldetail.parentsEmailId}}</div>
+						</div>
+						<div class="col-sm-6">
+						<label for="parentscontact"
+							   class="labelclass">Parent's Contact No.</label>
+							   <div class="formData">{{vm.personaldetail.parentsContactNo}}</div>
+						</div>
+					</div>
+				</div>
+			
+				<div class="col-sm-4">
+					<div class="row">
+						<div  class="col-sm-12 text-center"  style=" padding-bottom:10px;">
+							<label class="labelclass">Photograph</label>
+							<div style="width:100px; height:100px;background-color:#ccc; margin:0 auto"></div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-12 text-center"  style="padding-bottom:10px;">
+							<label class="labelclass">Signature</label>
+							<div style="width:100px; height:100px;background-color:#ccc; margin:0 auto"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="panel panel-default">
+		<div class="panel-heading pannelHeadingStyle">Other Details</div>
+		<div class="panel-body">
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="col-sm-3">
+						<label for="gender"
+							   class="labelclass">Gender</label>
+							  <div class="formData">{{vm.personaldetail.gender}}</div>
+					</div>
+					<div class="col-sm-3">
+						<label for="maritalstatus"
+							   class="labelclass">Marital Status</label>
+							   <div class="formData">{{vm.personaldetail.maritalStatus}}</div>
+					</div>
+					<div class="col-sm-3">
+						<label for="bloodgroup"
+							   class="labelclass">Blood Group</label>
+							   <div class="formData">{{vm.personaldetail.bloodGroup}}</div>
+					</div>
+					<div class="col-sm-3">
+						<label for="dateofbirth"
+						   class="labelclass">Date of Birth</label>
+						   <div class="formData">{{vm.personaldetail.birthDate}}</div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-sm-12 form-group">
+					<div class="col-sm-3">
+						<label for="placeofbirth"
+							   class="labelclass">Place of Birth</label>
+							   <div class="formData">{{vm.personaldetail.placeOfBirth}}</div>
+					</div>
+					<div class="col-sm-3">
+						<label for="educationgap"
+							   class="labelclass">Education Gap (in yrs)</label>
+							   <div class="formData">{{vm.personaldetail.educationGap}}</div>
+					</div>
+					<div class="col-sm-3">
+						<label for="aadharno"
+							   class="labelclass">Aadhar No.</label>
+							   <div class="formData">{{vm.personaldetail.adharNo}}</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="panel panel-default">
+		<div class="panel-heading pannelHeadingStyle">Nationality Details</div>
+		<div class="panel-body">
+			<div class="row">
+				<div class="col-sm-12 form-group">
+					<div class="col-sm-3">
+						<label for="citizenship"
+							   class="labelclass">Country of Citizenship</label>
+							   <div class="formData">{{vm.personaldetail.countryOfCitizenship.countryName}}</div>
+					</div>
+				</div>
+			</div>
+			
+			<div ng-show="vm.indianCitizenship">
+				<div class="row">
+					<div class="col-sm-12 form-group">
+						<div class="col-sm-3">
+							<label for="domiciled"
+								   class="labelclass">Domicile of State</label>
+								   <div class="formData">{{vm.personaldetail.domiciledIn.stateName}}</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div ng-show="!vm.indianCitizenship">
+				<div class="row">
+					<div class="col-sm-12 form-group">
+						<div class="col-sm-3">
+							<label for="passportno"
+								   class="labelclass">Passport No.</label>
+								   <div class="formData">{{vm.personaldetail.passportNo}}</div>
+						</div>
+						<div class="col-sm-3">
+							<label for="placeofissue"
+								   class="labelclass">Place of Issue of Passport</label>
+								   <div class="formData">{{vm.personaldetail.passportIssuePlace}}</div>
+						</div>
+						<div class="col-sm-3">
+							<label for="dateofissue"
+								   class="labelclass">Date of Issue of Passport</label>
+								   <div class="formData">{{vm.personaldetail.passportIssueDate}}</div>
+						</div>	
+						<div class="col-sm-3">
+							<label for="dateofexpiry"
+								   class="labelclass">Date of Expiry of Passport</label>
+								   <div class="formData">{{vm.personaldetail.passportExpiryDate}}</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-12 form-group">
+						<div class="col-sm-3">
+							<label for="issuingauthority"
+								   class="labelclass">Passport Issuing Authority</label>
+								   <div class="formData">{{vm.personaldetail.passportIssuingAuthority}}</div>
+						</div>
+						<div class="col-sm-3">
+							<label for="issuingcountry"
+								   class="labelclass">Passport Issuing Country</label>
+								   <div class="formData">{{vm.personalDetailTemp.passportIssuingCountryId}}</div>
+						</div>
+						<div class="col-sm-3">
+							<label for="visatype"
+								   class="labelclass">Visa Type</label>
+								   <div class="formData">{{vm.personaldetail.visaType}}</div>
+						</div>
+						<div class="col-sm-3">
+							<label for="visavalidupto"
+								   class="labelclass">Visa Valid Upto</label>
+									<div class="formData">{{vm.personaldetail.visaValidUpto}}</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-12 form-group">
+						<div class="col-sm-3">
+							<label for="visasponsoringagency"
+								   class="labelclass">Visa Sponsoring Agency</label>
+								   <div class="formData">{{vm.personaldetail.visaSponsoringAgency}}</div>
+						</div>
+						<div class="col-sm-3">
+							<label for="residentialpermitno"
+								   class="labelclass">Residential Permit No.</label>
+								   <div class="formData">{{vm.personaldetail.residentialPermitNo}}</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+</form>
+
+<script type="text/javascript">
+	setActiveElementOnLeftNav("applicantlDetail");
+	//To reload selectpicker on page load
+	$(".selectpicker").selectpicker("refresh");
+</script>

@@ -11,13 +11,13 @@
 			getQualificationDetail : function(qualificationId, accessTokenParam) {
 				return $http({
 					method: "GET",
-					url: "/Web/rest/educationalInformation/getQualificationDetail/" + qualificationId + accessTokenParam
+					url: "/Web/educationalInformation/getQualificationDetail/" + qualificationId + accessTokenParam
 				})
 			},
 			getNewQualification : function(qualificationMainLevel, accessTokenParam) {
 				return $http({
 					method: "GET",
-					url: "/Web/rest/educationalInformation/getNewQualification/" + qualificationMainLevel + accessTokenParam
+					url: "/Web/educationalInformation/getNewQualification/" + qualificationMainLevel + accessTokenParam
 				})
 			},
 			saveQualificationDetail : function(qualificationDetail, accessTokenParam) {
@@ -31,7 +31,7 @@
 				educationalModel.qualificationDetail = qualificationDetail;
 				return $http({
 					method: "POST",
-					url: "/Web/rest/educationalInformation/saveQualificationDetail/" + accessTokenParam,
+					url: "/Web/educationalInformation/saveQualificationDetail/" + accessTokenParam,
 					data: educationalModel
 				})
 			}

@@ -11,16 +11,22 @@
 			getListofQualification : function(accessTokenParam) {
 				return $http({
 					method: "GET",
-					url: "/Web/rest/educationalInformation/getListofQualification/" + accessTokenParam
+					url: "/Web/educationalInformation/getListofQualification/" + accessTokenParam
 				})
 			},
 			deleteQualification : function(qualificationId, accessTokenParam) {
 				return $http({
 					method: "POST",
-					url: "/Web/rest/educationalInformation/deleteQualificationDetail/" + accessTokenParam,
+					url: "/Web/educationalInformation/deleteQualificationDetail/" + accessTokenParam,
 					data: qualificationId
 				})
-			}
+			},
+			setApplicant : function(userId) {
+				return $http({
+					method: "GET",
+					url: "/Web/applicants/setApplicant/" + userId
+				})
+			},
 		}
 	}
 }());

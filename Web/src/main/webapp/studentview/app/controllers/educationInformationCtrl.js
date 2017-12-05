@@ -11,6 +11,7 @@
 	
 	function EducationInformationCtrl($http, $window, $state, educationInformationService) {
 		
+		var userId = 1;
 		var vm = this;	
 		vm.qualificationList = [];
 		if($state.params.success != null)
@@ -19,27 +20,21 @@
 		vm.accessToken = $window.bearer_token;
 		vm.accessTokenParam = "?access_token=" + vm.accessToken;
 
-		educationInformationService.getListofQualification(vm.accessTokenParam)
+		educationInformationService.setApplicant(userId)
 		.success(function (data, status, headers, config) {
-			vm.qualificationList = data;
-			/*vm.listofQualification = data;
-			angular.forEach(vm.listofQualification, function(value, key) {
-				if(value.subQualificationList == null) {
-					vm.qualificationList.push(value);
-				}
-				else {
-					angular.forEach(value.subQualificationList, function(childvalue, key) {
-						childvalue.qualificationMainLevel = value.qualificationMainLevel;
-						vm.qualificationList.push(childvalue);
-					});
-				}
-			});
-			vm.listofQualification = null;*/
+			educationInformationService.getListofQualification(vm.accessTokenParam)
+			.success(function (data, status, headers, config) {
+				vm.qualificationList = data;
+			})
+			.error(function (data, status, headers, config) {
+				vm.qualificationList = data;
+	        });
 		})
 		.error(function (data, status, headers, config) {
-			vm.qualificationList = data;
-			/*vm.listofQualification = {};*/
-        });
+			vm.qualificationList = {};
+		});
+		
+		
 		
 		vm.qualificationDetail = function(qualificationMainLevel, qualificationId) {
 			var view = mapView(qualificationMainLevel);
@@ -47,12 +42,12 @@
 			$state.go("qualificationDetail", {qualification:view ,qualificationMainLevel:qualificationMainLevel, qualificationId:qualificationId});
 		}
 		
-		vm.createNewQualification = function(qualificationMainLevel, qualificationSubLevel) {
+		/*vm.createNewQualification = function(qualificationMainLevel, qualificationSubLevel) {
 			var view = mapView(qualificationMainLevel);						
 			$state.go("qualificationDetail", {qualification:view ,qualificationMainLevel:qualificationMainLevel, qualificationSubLevel:qualificationSubLevel, newQualification:true});
-		}
+		}*/
 		
-		vm.deleteQualification = function(qualificationId, qualificationName) {
+		/*vm.deleteQualification = function(qualificationId, qualificationName) {
 			var qualificationNameTemp; 
 			if(qualificationName != null && qualificationName != "") {
 				qualificationNameTemp = "details of " + qualificationName;
@@ -72,7 +67,7 @@
 					
 		        });
 			}
-		}
+		}*/
 		
 		var mapView = function(qualificationMainLevel) {
 			var view = "";

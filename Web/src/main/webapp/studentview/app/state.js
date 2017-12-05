@@ -82,6 +82,28 @@
 							}
 					})
 					
+					.state("applicantDetail",{
+							url: "/applicantDetail",
+							views: {
+								"view":{
+									templateUrl: basePath + "templates/states/applicantDetailView.html",
+									controller:"ApplicantDetailCtrl as vm",
+								}
+							},
+							resolve: {
+								personalDetail : ['$ocLazyLoad', function($ocLazyLoad){
+									return $ocLazyLoad.load({
+										name : 'admission',
+										files : [
+										     basePath + 'app/controllers/applicantDetailCtrl.js',
+										     basePath + 'app/services/applicantDetailService.js'
+										]
+								
+									})
+								}]
+							}
+					})
+					
 					.state("address",{
 							url: "/address",
 							views: {
