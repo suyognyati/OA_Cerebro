@@ -1,49 +1,78 @@
 <div class="heading">
 	<h1>
-       	Personal Details
+       	Applicant's Details
     </h1>
 </div>
 
-<form class="panel-body" name="personaldetailform" novalidate>
+<form name="personaldetailform" novalidate>
 
-	<div class="panel panel-default">
-		<div class="panel-heading pannelHeadingStyle">Applicant's Details</div>
-		<div class="panel-body">
+	<div class="group">
+		<div class=" groupHeadingStyle"><span class="glyphicon glyphicon-user"></span> Personal Details</div>
+		<div class="group-body">
 			<div class="row">
 				<div class="col-sm-8 form-group applicantDetaailList">
 					<div class="row">
 						<div class="col-sm-6 dataSpacing">
-						<label class="labelclass">Applicant's Full Name</label>
-							   <div class="formData">{{vm.personaldetail.lastName}} {{vm.personaldetail.firstName}} {{vm.personaldetail.middleName}}</div>
+						<label class="labelclass">Full Name</label>
+							   <div class="formData">{{vm.applicantdetail.lastName}} {{vm.applicantdetail.firstName}} {{vm.applicantdetail.middleName}}</div>
 						</div>
 						<div class="col-sm-6 dataSpacing">
-						<label class="labelclass">Applicant's Full Name in Regional Language</label>
-							   <div class="formData">{{vm.personaldetail.lastName}} {{vm.personaldetail.firstName}} {{vm.personaldetail.middleName}}</div>
+						<label class="labelclass">Full Name in Regional Language</label>
+							   <div class="formData">{{vm.applicantdetail.lastName}} {{vm.applicantdetail.firstName}} {{vm.applicantdetail.middleName}}</div>
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-sm-6 dataSpacing">
-						<label class="labelclass">Applicant's Full Name</label>
-							   <div class="formData">{{vm.personaldetail.lastName}} {{vm.personaldetail.firstName}} {{vm.personaldetail.middleName}}</div>
+						<label class="labelclass">Father's Full Name</label>
+							   <div class="formData">{{vm.applicantdetail.fathersLastName}} {{vm.applicantdetail.fathersFirstName}} {{vm.applicantdetail.fathersMiddleName}}</div>
 						</div>
 						<div class="col-sm-6 dataSpacing">
 						<label for="mothersname"
 							   class="labelclass">Mother's Full Name</label>
-							   <div class="formData">{{vm.personaldetail.mothersLastName}} {{vm.personaldetail.mothersFirstName}} {{vm.personaldetail.mothersMiddleName}}</div>
+							   <div class="formData">{{vm.applicantdetail.mothersLastName}} {{vm.applicantdetail.mothersFirstName}} {{vm.applicantdetail.mothersMiddleName}}</div>
 						</div>
 					</div>
 					<div class="row">
-						<div class="col-sm-6 dataPadding">
-						<label for="parentsemail"
-							   class="labelclass">Parent's Email Id</label>
-							   <div class="formData">{{vm.personaldetail.parentsEmailId}}</div>
-						</div>
-						<div class="col-sm-6">
-						<label for="parentscontact"
-							   class="labelclass">Parent's Contact No.</label>
-							   <div class="formData">{{vm.personaldetail.parentsContactNo}}</div>
-						</div>
+							<div class="col-sm-3 dataSpacing">
+								<label for="gender"
+									   class="labelclass">Gender</label>
+									  <div class="formData">{{vm.applicantdetail.gender}}</div>
+							</div>
+							<div class="col-sm-3 dataSpacing">
+								<label for="maritalstatus"
+									   class="labelclass">Marital Status</label>
+									   <div class="formData">{{vm.applicantdetail.maritalStatus}}</div>
+							</div>
+							<div class="col-sm-3 dataSpacing">
+								<label for="bloodgroup"
+									   class="labelclass">Blood Group</label>
+									   <div class="formData">{{vm.applicantdetail.bloodGroup}}</div>
+							</div>
+							<div class="col-sm-3 dataSpacing">
+								<label for="dateofbirth"
+								   class="labelclass">Date of Birth</label>
+								   <div class="formData">{{vm.applicantdetail.birthDate}}</div>
+							</div>
 					</div>
+					<div class="row">
+							<div class="col-sm-3">
+								<label for="placeofbirth"
+									   class="labelclass">Place of Birth</label>
+									   <div class="formData">{{vm.applicantdetail.placeOfBirth}}</div>
+							</div>
+							<div class="col-sm-3">
+								<label for="aadharno"
+									   class="labelclass">Aadhar No.</label>
+									   <div class="formData">{{vm.applicantdetail.adharNo}}</div>
+							</div>
+							<div class="col-sm-3">
+								<label for="educationgap"
+									   class="labelclass">Education Gap (in yrs)</label>
+									   <div class="formData">{{vm.applicantdetail.educationGap}}</div>
+							</div>
+							
+					</div>
+					
 				</div>
 			
 				<div class="col-sm-4">
@@ -63,30 +92,87 @@
 			</div>
 		</div>
 	</div>
-	<div class="panel panel-default">
-		<div class="panel-heading pannelHeadingStyle">Other Details</div>
-		<div class="panel-body">
+	<div class='group'>
+		<div class="groupHeadingStyle"><span class="glyphicon glyphicon-envelope"></span> Contact Details</div>
+					<div class="group-body">
+						<div class="row">
+								<div class="col-sm-6">
+									<label class="labelclass">Mobile Number</label>
+									<div class="formData">{{vm.applicantdetail.mobileNo}}</div>
+								</div>
+							
+								<div class="col-sm-6">
+									<label for="email"  class="labelclass">Email Address</label>
+									<div class="formData">{{vm.applicantdetail.email}}</div>
+								</div>
+						</div>	
+						<div class="row">
+							<div class="col-sm-6 dataPadding">
+									<label for="parentsemail"
+							   class="labelclass">Parent's Email Id</label>
+							   <div class="formData">{{vm.applicantdetail.parentsEmailId}}</div>
+							</div>
+							<div class="col-sm-6">
+									<label for="parentscontact"
+							   class="labelclass">Parent's Contact No.</label>
+							   		<div class="formData">{{vm.applicantdetail.parentsContactNo}}</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-6">
+									<label class="labelclass">Correspondence Address</label>
+									<div class="formData">{{vm.applicantdetail.flatNo}}</div>
+									<div class="formData">{{vm.applicantdetail.area}}</div>
+									<div class="formData">{{vm.applicantdetail.street}}</div>
+									<div class="formData">{{vm.applicantdetail.landmark}}</div>
+									<div class="formData">{{vm.applicantdetail.city}}</div>
+									<div class="formData">{{vm.applicantdetail.country.countryName}}</div>
+									<div class="formData">{{vm.applicantdetail.state.stateName}}</div>
+									<div class="formData">{{vm.applicantdetail.district}}</div>
+									<div class="formData">{{vm.applicantdetail.pinCode}}</div>
+									<div class="formData">{{vm.applicantdetail.locationarea}}</div>
+							</div>
+							
+							<div class="col-sm-6">
+							<label for="email"  class="labelclass">Permanent Address</label>
+							<div class="formData">{{vm.applicantdetail.flatNoPermanent}}</div>
+									<div class="formData">{{vm.applicantdetail.areaPermanent}}</div>
+									<div class="formData">{{vm.applicantdetail.streetPermanent}}</div>
+									<div class="formData">{{vm.applicantdetail.landmarkPermanent}}</div>
+									<div class="formData">{{vm.applicantdetail.cityPermanent}}</div>
+									<div class="formData">{{vm.applicantdetail.countryPermanent.countryName}}</div>
+									<div class="formData">{{vm.applicantdetail.statePermanent.stateName}}</div>
+									<div class="formData">{{vm.applicantdetail.districtPermanent}}</div>
+									<div class="formData">{{vm.applicantdetail.pinCodePermanent}}</div>
+									<div class="formData">{{vm.applicantdetail.locationareaPermanent}}</div>
+							</div>
+						</div>	
+		 			</div>
+	</div>
+	<!-- <div class="group">
+		<div class="groupHeadingStyle">Other Details</div>
+		<div class="group-body">
 			<div class="row">
 				<div class="col-sm-12">
 					<div class="col-sm-3">
 						<label for="gender"
 							   class="labelclass">Gender</label>
-							  <div class="formData">{{vm.personaldetail.gender}}</div>
+							  <div class="formData">{{vm.applicantdetail.gender}}</div>
 					</div>
 					<div class="col-sm-3">
 						<label for="maritalstatus"
 							   class="labelclass">Marital Status</label>
-							   <div class="formData">{{vm.personaldetail.maritalStatus}}</div>
+							   <div class="formData">{{vm.applicantdetail.maritalStatus}}</div>
 					</div>
 					<div class="col-sm-3">
 						<label for="bloodgroup"
 							   class="labelclass">Blood Group</label>
-							   <div class="formData">{{vm.personaldetail.bloodGroup}}</div>
+							   <div class="formData">{{vm.applicantdetail.bloodGroup}}</div>
 					</div>
 					<div class="col-sm-3">
 						<label for="dateofbirth"
 						   class="labelclass">Date of Birth</label>
-						   <div class="formData">{{vm.personaldetail.birthDate}}</div>
+						   <div class="formData">{{vm.applicantdetail.birthDate}}</div>
 					</div>
 				</div>
 			</div>
@@ -96,43 +182,38 @@
 					<div class="col-sm-3">
 						<label for="placeofbirth"
 							   class="labelclass">Place of Birth</label>
-							   <div class="formData">{{vm.personaldetail.placeOfBirth}}</div>
+							   <div class="formData">{{vm.applicantdetail.placeOfBirth}}</div>
 					</div>
 					<div class="col-sm-3">
 						<label for="educationgap"
 							   class="labelclass">Education Gap (in yrs)</label>
-							   <div class="formData">{{vm.personaldetail.educationGap}}</div>
+							   <div class="formData">{{vm.applicantdetail.educationGap}}</div>
 					</div>
 					<div class="col-sm-3">
 						<label for="aadharno"
 							   class="labelclass">Aadhar No.</label>
-							   <div class="formData">{{vm.personaldetail.adharNo}}</div>
+							   <div class="formData">{{vm.applicantdetail.adharNo}}</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-
-	<div class="panel panel-default">
-		<div class="panel-heading pannelHeadingStyle">Nationality Details</div>
-		<div class="panel-body">
-			<div class="row">
-				<div class="col-sm-12 form-group">
-					<div class="col-sm-3">
-						<label for="citizenship"
-							   class="labelclass">Country of Citizenship</label>
-							   <div class="formData">{{vm.personaldetail.countryOfCitizenship.countryName}}</div>
-					</div>
-				</div>
-			</div>
-			
+ -->
+	<div class="group">
+		<div class="groupHeadingStyle"><span class="glyphicon glyphicon-globe"></span> Nationality Details</div>
+		<div class="group-body">
 			<div ng-show="vm.indianCitizenship">
 				<div class="row">
 					<div class="col-sm-12 form-group">
 						<div class="col-sm-3">
+							<label for="citizenship"
+								   class="labelclass">Country of Citizenship</label>
+								   <div class="formData">{{vm.applicantdetail.countryOfCitizenship.countryName}}</div>
+						</div>
+						<div class="col-sm-3">
 							<label for="domiciled"
 								   class="labelclass">Domicile of State</label>
-								   <div class="formData">{{vm.personaldetail.domiciledIn.stateName}}</div>
+								   <div class="formData">{{vm.applicantdetail.domiciledIn.stateName}}</div>
 						</div>
 					</div>
 				</div>
@@ -141,25 +222,32 @@
 			<div ng-show="!vm.indianCitizenship">
 				<div class="row">
 					<div class="col-sm-12 form-group">
+						<div class="col-sm-6">
+							<label for="citizenship"
+								   class="labelclass">Country of Citizenship</label>
+								   <div class="formData">{{vm.applicantdetail.countryOfCitizenship.countryName}}</div>
+						</div>
+					</div>
+					<div class="col-sm-12 form-group">
 						<div class="col-sm-3">
 							<label for="passportno"
 								   class="labelclass">Passport No.</label>
-								   <div class="formData">{{vm.personaldetail.passportNo}}</div>
+								   <div class="formData">{{vm.applicantdetail.passportNo}}</div>
 						</div>
 						<div class="col-sm-3">
 							<label for="placeofissue"
 								   class="labelclass">Place of Issue of Passport</label>
-								   <div class="formData">{{vm.personaldetail.passportIssuePlace}}</div>
+								   <div class="formData">{{vm.applicantdetail.passportIssuePlace}}</div>
 						</div>
 						<div class="col-sm-3">
 							<label for="dateofissue"
 								   class="labelclass">Date of Issue of Passport</label>
-								   <div class="formData">{{vm.personaldetail.passportIssueDate}}</div>
+								   <div class="formData">{{vm.applicantdetail.passportIssueDate}}</div>
 						</div>	
 						<div class="col-sm-3">
 							<label for="dateofexpiry"
 								   class="labelclass">Date of Expiry of Passport</label>
-								   <div class="formData">{{vm.personaldetail.passportExpiryDate}}</div>
+								   <div class="formData">{{vm.applicantdetail.passportExpiryDate}}</div>
 						</div>
 					</div>
 				</div>
@@ -168,7 +256,7 @@
 						<div class="col-sm-3">
 							<label for="issuingauthority"
 								   class="labelclass">Passport Issuing Authority</label>
-								   <div class="formData">{{vm.personaldetail.passportIssuingAuthority}}</div>
+								   <div class="formData">{{vm.applicantdetail.passportIssuingAuthority}}</div>
 						</div>
 						<div class="col-sm-3">
 							<label for="issuingcountry"
@@ -178,12 +266,12 @@
 						<div class="col-sm-3">
 							<label for="visatype"
 								   class="labelclass">Visa Type</label>
-								   <div class="formData">{{vm.personaldetail.visaType}}</div>
+								   <div class="formData">{{vm.applicantdetail.visaType}}</div>
 						</div>
 						<div class="col-sm-3">
 							<label for="visavalidupto"
 								   class="labelclass">Visa Valid Upto</label>
-									<div class="formData">{{vm.personaldetail.visaValidUpto}}</div>
+									<div class="formData">{{vm.applicantdetail.visaValidUpto}}</div>
 						</div>
 					</div>
 				</div>
@@ -192,20 +280,353 @@
 						<div class="col-sm-3">
 							<label for="visasponsoringagency"
 								   class="labelclass">Visa Sponsoring Agency</label>
-								   <div class="formData">{{vm.personaldetail.visaSponsoringAgency}}</div>
+								   <div class="formData">{{vm.applicantdetail.visaSponsoringAgency}}</div>
 						</div>
 						<div class="col-sm-3">
 							<label for="residentialpermitno"
 								   class="labelclass">Residential Permit No.</label>
-								   <div class="formData">{{vm.personaldetail.residentialPermitNo}}</div>
+								   <div class="formData">{{vm.applicantdetail.residentialPermitNo}}</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-
-
+	<div class="group">
+		<div class="groupHeadingStyle"><span class="glyphicon glyphicon-wrench"></span> Occupation Details</div>
+		<div class="group-body">
+				<div>
+					<label class="labelclass displayInline">Employed or Self-Employed :</label>
+					<div class="displayInline" ng-show="vm.applicantdetail.isSelfEmployed">Yes</div>
+					<div class="displayInline" ng-show="!vm.applicantdetail.isSelfEmployed">No</div>
+				</div>
+			
+			<div ng-show="vm.applicantdetail.isSelfEmployed">
+				<div class="row">
+					<div class="col-sm-12 form-group">
+						<div class="col-sm-2">
+							<label for="experience"
+								   class="labelclass">Experience</label>
+								   <div class="formData">{{vm.applicantdetail.experienceYrs}}</div>
+						</div>
+						<div class="col-sm-1">
+							<label for="experience"
+								   class="labelclass">Year(s)</label>
+								   {{vm.applicantdetail.experienceMonths}}
+						</div>
+						<div class="col-sm-1">
+							<label for="experience"
+								   class="labelclass">Months</label>
+						</div>
+					</div>
+					
+				</div>
+				
+				<div class="row">
+					<div class="col-sm-12 form-group">
+						<div class="col-sm-2">
+							<label for="selfoccupation"
+								   class="labelclass">Occupation</label>
+								   {{vm.applicantdetail.occupation}}
+						</div>
+						
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col-sm-12 form-group">
+						<div class="col-sm-2">
+							<label for="selfincome"
+								   class="labelclass">Your Annual Income</label>
+								   {{vm.applicantdetail.selfAnnualIncome}}
+						</div>
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col-sm-12 form-group">
+						<label for="leavewithoutpay" class="labelclass displayInline">Applied for leave without pay for the entire duration of the course : 
+							<div class="displayInline" ng-show="vm.applicantdetail.isLeaveWithoutPay">Yes</div>
+							<div class="displayInline" ng-show="!vm.applicantdetail.isLeaveWithoutPay">No</div>
+						</label>
+					</div>
+				</div>
+			</div>
+			
+			<div ng-show="!vm.applicantdetail.isSelfEmployed">
+				<div class="row">
+					<div class="col-sm-12 form-group">
+						<div class="col-sm-2">
+							<label for="parentsoccupation"
+								   class="labelclass">Occupation of Guardian</label>
+								   {{vm.applicantdetail.occupation}}
+						</div>
+						
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col-sm-12 form-group">
+						<div class="col-sm-2">
+							<label for="parentsincome"
+								   class="labelclass">Annual Income of Guardian</label>
+								   {{vm.applicantdetail.guardianAnnualIncome}}
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-sm-12 form-group">
+					<label for="ebc" class="labelclass displayInline">Eligible for EBC (Economic Backward Class) : </label>
+						<div class="displayInline" ng-show="vm.applicantdetail.isEligibleForEBC">Yes</div>
+						<div class="displayInline" ng-show="!vm.applicantdetail.isEligibleForEBC">No</div>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-lg-12">
+			       	<div class="well alert-danger">
+			           <span>
+			           Students whose family income is below defined limit, fall under EBC category. 
+			           The EBC certificate issued by the competent authority is mandatory.
+			           </span>
+			    	</div>
+			    </div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="group">
+		<div class="groupHeadingStyle"><span class="glyphicon glyphicon-lock"></span> Reservation(Caste) Details</div>
+		<div class="group-body">
+				<div class="row">
+				<div class="col-sm-12 form-group">
+					<div class="col-sm-2">
+						<label for="category"
+							   class="labelclass">Category</label>
+							   {{vm.applicantdetail.category}}
+					</div>
+					<div class="col-sm-2">
+						<label for="religion"
+							   class="labelclass">Religion</label>
+							   {{vm.applicantdetail.religion}}
+					</div>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-sm-12 form-group">
+					<div class="col-sm-2">
+						<label for="caste"
+							   class="labelclass">Caste</label>
+							   {{vm.applicantdetail.caste}}
+					</div>
+					<div class="col-sm-2">
+						<label for="mothertongue"
+							   class="labelclass">Mother Tongue</label>
+							   {{vm.applicantdetail.motherTongue}}
+					</div>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-sm-12 form-group">
+					<div class="col-sm-2">
+						<label for="speciallyabled"
+							   class="labelclass">Specially Abled</label>
+							   {{vm.applicantdetail.speciallyAbled}}
+					</div>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-sm-12 form-group">
+					<div class="col-sm-2">
+						<label for="socialreservation"
+							   class="labelclass">Social Reservation</label>
+					</div>
+					<div class="col-sm-6">
+						<input type="checkbox"
+							   name="socialreservation"
+							   id="socialreservation1"
+							   value="1"
+							   tabindex="15">
+						<label for="socialreservation1">Ex-Serviceman/Ward of Ex-Serviceman</label>
+					</div>
+					<div class="col-sm-4">
+						<input type="checkbox"
+							   name="socialreservation"
+							   id="socialreservation4"
+							   value="2"
+							   tabindex="16">
+						<label for="socialreservation4">Ward of Primary Teacher</label>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-sm-12 form-group">
+					<div class="col-sm-2">
+					</div>
+					<div class="col-sm-6">
+						<input type="checkbox"
+							   name="socialreservation"
+							   id="socialreservation2"
+							   value="3"
+							   tabindex="17">
+						<label for="socialreservation2">Active Serviceman/Ward of Active Serviceman</label>
+					</div>
+					<div class="col-sm-4">
+						<input type="checkbox"
+							   name="socialreservation"
+							   id="socialreservation5"
+							   value="4"
+							   tabindex="18">
+						<label for="socialreservation5">Ward of Secondary Teacher</label>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-sm-12 form-group">
+					<div class="col-sm-2">
+					</div>
+					<div class="col-sm-6">
+						<input type="checkbox"
+							   name="socialreservation"
+							   id="socialreservation3"
+							   value="5"
+							   tabindex="19">
+						<label for="socialreservation3">Freedom Fighter/Ward of Freedom Fighter</label>
+					</div>
+					<div class="col-sm-4">
+						<input type="checkbox"
+							   name="socialreservation"
+							   id="socialreservation6"
+							   value="6"
+							   tabindex="20">
+						<label for="socialreservation6">Deserted/Divorced/Widowed Women</label>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-sm-12 form-group">
+					<div class="col-sm-2">
+					</div>
+					<div class="col-sm-6">
+						<input type="checkbox"
+							   name="socialreservation"
+							   id="socialreservation7"
+							   value="7"
+							   tabindex="21">
+						<label for="socialreservation7">Member of Project Affected Family</label>
+					</div>
+					<div class="col-sm-4">
+						<input type="checkbox"
+							   name="socialreservation"
+							   id="socialreservation8"
+							   value="8"
+							   tabindex="22">
+						<label for="socialreservation8">Member of Earthquake Affected Family</label>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-sm-12 form-group">
+					<div class="col-sm-2">
+					</div>
+					<div class="col-sm-6">
+						<input type="checkbox"
+							   name="socialreservation"
+							   id="socialreservation9"
+							   value="9"
+							   tabindex="23">
+						<label for="socialreservation9">Member of Flood/Famine Affected Family</label>
+					</div>
+					<div class="col-sm-4">
+						<input type="checkbox"
+							   name="socialreservation"
+							   id="socialreservation10"
+							   value="10"
+							   tabindex="24">
+						<label for="socialreservation10">Resident of Tribal Area</label>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-sm-12 form-group">
+					<div class="col-sm-2">
+					</div>
+					<div class="col-sm-6">
+						<input type="checkbox"
+							   name="socialreservation"
+							   id="socialreservation12"
+							   value="11"
+							   tabindex="25">
+						<label for="socialreservation12">Resident of Disputed Boundary Area</label>
+					</div>
+					<div class="col-sm-4">
+						<input type="checkbox"
+							   name="socialreservation"
+							   id="socialreservation11"
+							   value="12"
+							   tabindex="26">
+						<label for="socialreservation11">Kashmir Migrant</label>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-sm-12 form-group">
+					<div class="col-sm-2">
+					</div>
+					<div class="col-sm-6">
+						<input type="checkbox"
+							   name="socialreservation"
+							   id="socialreservation13"
+							   value="13"
+							   tabindex="27">
+						<label for="socialreservation13">Below Poverty Line Student</label>
+					</div>
+					<div class="col-sm-4">
+						<input type="checkbox"
+							   name="socialreservation"
+							   id="socialreservation14"
+							   value="14"
+							   tabindex="28">
+						<label for="socialreservation14">Teacher in 'Innovative School'</label>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-sm-12 form-group">
+					<div class="col-sm-2">
+					</div>
+					<div class="col-sm-6">
+						<input type="checkbox"
+							   name="socialreservation"
+							   id="socialreservation16"
+							   value="15"
+							   tabindex="29">
+						<label for="socialreservation16">Ward of Transferred Central/State Government Employee</label>
+					</div>
+					<div class="col-sm-4">
+						<input type="checkbox"
+							   name="socialreservation"
+							   id="socialreservation15"
+							   value="16"
+							   tabindex="30">
+						<label for="socialreservation15">University Staff Quota</label>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </form>
 
 <script type="text/javascript">
