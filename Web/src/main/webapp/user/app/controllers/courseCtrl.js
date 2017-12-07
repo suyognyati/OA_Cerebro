@@ -22,9 +22,11 @@
 		vm.minimumSubjects = 6;
 		vm.maximumSubjects = 6;
 		vm.selectedSubjects = 0;
+		vm.selectedSubjectList = [];
 		vm.canSelect = true;
 		vm.incrementRequired = true;
 		vm.selectionNotAllowedMessage = "";
+		vm.isSubjectSelectionCompleted = false;
 		
 		subjectService.getSubjects(vm.programId, vm.accessTokenParam)
 		.success(function(data, status, header, config) {
@@ -107,7 +109,7 @@
 			if(subject.isSelected) {
 				vm.addSubject(subject, cgLevel1);
 			} else {
-				vm.removeSubject(cgLevel1)
+				vm.removeSubject(subject, cgLevel1)
 			}
 			
 			//Remove temporary variables			
@@ -126,6 +128,21 @@
 			subject.isSelected = vm.canSelect;
 			if(!vm.canSelect) {
 				alert(vm.selectionNotAllowedMessage);
+			} else {
+				var isAdded = false;
+				vm.selectedSubjectList.forEach(function (element) {
+				    if (JSON.stringify(element) === JSON.stringify(subject)) {
+				    	isAdded = true;
+				    } else {
+				    	isAdded = false;
+				    }
+				});
+				
+				if(!isAdded) {
+					subject.sequenceNo = cgLevel.sequenceNo;
+					vm.selectedSubjectList.push(subject);
+				}
+				vm.selectedSubjects ++;
 			}
 		}
 		
@@ -152,11 +169,19 @@
 			return;
 		}
 		
-		vm.removeSubject = function(cgLevel) {
+		vm.removeSubject = function(subject, cgLevel) {
+			vm.reduceCount(cgLevel);
+			var index = vm.selectedSubjectList.indexOf(subject);
+			vm.selectedSubjectList.splice(index, 1);
+			delete subject.sequenceNo;
+			vm.selectedSubjects --;
+		}
+		
+		vm.reduceCount = function(cgLevel) {
 			if(cgLevel == null)
 				return;
 			
-			vm.removeSubject(cgLevel.cgLevel);
+			vm.reduceCount(cgLevel.cgLevel);
 			
 			if(cgLevel.selectedCount > 0)
 				cgLevel.selectedCount --;
@@ -166,6 +191,15 @@
 			if(cgLevel == null)
 				return;
 			delete cgLevel.cgLevel;
+		}
+		
+		vm.showSelectedSubjects = function(showSelectedSubjects) {
+			if(showSelectedSubjects && vm.selectedSubjects < vm.minimumSubjects) {
+				alert("You have selected only " + vm.selectedSubjects + 
+						" subjects. Please select minimum " + vm.minimumSubjects + " subjects");
+				return;
+			}
+			vm.isSubjectSelectionCompleted = showSelectedSubjects;
 		}
 	};
 }());

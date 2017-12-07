@@ -9,6 +9,8 @@
 	<strong>Program Code :</strong> {{vm.programCode}}
 </div>
 
+<!-- ============== Subject selection page ==============  -->
+<div ng-show="!vm.isSubjectSelectionCompleted">
 <form class="panel panel-body">
 	
 	<div class="col-sm-12 form-group">
@@ -138,14 +140,48 @@
 		
 <!-- ===================================================================================== -->
 
+	<div class="row" style="margin: 25px 0px 25px 0px;">
+		<div class="col-sm-5"></div>
+		<div class="col-sm-2">
+        	<input type="button" 
+        		   value="Proceed" 
+        		   class="btn btn-success btn-block topMargin" 
+        		   ng-click="vm.showSelectedSubjects(true)">
+        </div>
+		<div class="col-sm-5"></div>
+	</div>
+
 </form>
+</div>
 
-
-
-
-
-
-
-
-
-
+<!-- ============== Show selected subjects ==============  -->
+<div ng-show="vm.isSubjectSelectionCompleted">
+<form class="panel panel-body">
+	<div class="panel panel-default">
+		<div class="panel-body form-group">
+			<div class="row">
+				<div class="col-sm-6" ng-repeat="subject in ((vm.selectedSubjectList | orderObjectBy:'universitySubjectCode') | orderObjectBy:'sequenceNo')">
+					{{subject.universitySubjectCode}} - {{subject.universitySubjectName}}
+				</div>
+			</div>
+		</div>	
+	</div>
+	
+	<div class="row" style="margin: 25px 0px 25px 0px;">
+		<div class="col-sm-4"></div>
+		<div class="col-sm-2">
+        	<input type="button" 
+        		   value="Back" 
+        		   class="btn btn-success btn-block topMargin" 
+        		   ng-click="vm.showSelectedSubjects(false)">
+        </div>
+		<div class="col-sm-2">
+        	<input type="button" 
+        		   value="Proceed" 
+        		   class="btn btn-success btn-block topMargin" 
+        		   ng-click="vm.showSelectedSubjects(true)">
+        </div>
+		<div class="col-sm-4"></div>
+	</div>
+</form>
+</div>

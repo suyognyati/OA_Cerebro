@@ -60,11 +60,8 @@ public class HomeController {
 	
 	@RequestMapping(value = { "user/" }, method = RequestMethod.GET)
 	public String userPage(ModelMap model) {
-		/*session.setCurrentUserName();
-		session.setCurrentUser();
-		session.setCurrentUserDetail();
-		model.addAttribute("user", session.getCurrentUser());
-		model.addAttribute("userdetail", session.getCurrentUserDetail());*/
+		sessionService.setLoggedInUserDetails();
+		
 		String userName = session.getCurrentUserName();
 		String accessTokenValue = "";
 		Collection<OAuth2AccessToken> accessTokens = null;
@@ -82,8 +79,8 @@ public class HomeController {
 		}*/
 		
 		model.addAttribute("Bearer", accessTokenValue);
-		model.addAttribute("user", session.getCurrentUser());
-		model.addAttribute("userdetail", session.getCurrentUserDetail());
+		model.addAttribute("user", session.getLoggedInUser());
+		model.addAttribute("userdetail", session.getLoggedInUserDetail());
 		return "user/StudentView";
 	}
 	
