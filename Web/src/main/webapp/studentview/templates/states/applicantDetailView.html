@@ -65,7 +65,7 @@
 									   class="labelclass">Aadhar No.</label>
 									   <div class="formData">{{vm.applicantdetail.adharNo}}</div>
 							</div>
-							<div class="col-sm-3">
+							<div class="col-sm-6">
 								<label for="educationgap"
 									   class="labelclass">Education Gap (in yrs)</label>
 									   <div class="formData">{{vm.applicantdetail.educationGap}}</div>
@@ -121,28 +121,20 @@
 						<div class="row">
 							<div class="col-sm-6">
 									<label class="labelclass">Correspondence Address</label>
-									<div class="formData">{{vm.applicantdetail.flatNo}}</div>
-									<div class="formData">{{vm.applicantdetail.area}}</div>
-									<div class="formData">{{vm.applicantdetail.street}}</div>
-									<div class="formData">{{vm.applicantdetail.landmark}}</div>
-									<div class="formData">{{vm.applicantdetail.city}}</div>
-									<div class="formData">{{vm.applicantdetail.country.countryName}}</div>
-									<div class="formData">{{vm.applicantdetail.state.stateName}}</div>
-									<div class="formData">{{vm.applicantdetail.district}}</div>
+									<div class="formData">{{vm.applicantdetail.flatNo}}, {{vm.applicantdetail.area}}</div>
+									<div class="formData">{{vm.applicantdetail.street}}, {{vm.applicantdetail.landmark}}</div>
+									<div class="formData">{{vm.applicantdetail.city}}, District :{{vm.applicantdetail.district}}</div>
+									<div class="formData">{{vm.applicantdetail.state.stateName}}, {{vm.applicantdetail.country.countryName}}</div>
 									<div class="formData">{{vm.applicantdetail.pinCode}}</div>
 									<div class="formData">{{vm.applicantdetail.locationarea}}</div>
 							</div>
 							
 							<div class="col-sm-6">
 							<label for="email"  class="labelclass">Permanent Address</label>
-							<div class="formData">{{vm.applicantdetail.flatNoPermanent}}</div>
-									<div class="formData">{{vm.applicantdetail.areaPermanent}}</div>
-									<div class="formData">{{vm.applicantdetail.streetPermanent}}</div>
-									<div class="formData">{{vm.applicantdetail.landmarkPermanent}}</div>
-									<div class="formData">{{vm.applicantdetail.cityPermanent}}</div>
-									<div class="formData">{{vm.applicantdetail.countryPermanent.countryName}}</div>
-									<div class="formData">{{vm.applicantdetail.statePermanent.stateName}}</div>
-									<div class="formData">{{vm.applicantdetail.districtPermanent}}</div>
+							<div class="formData">{{vm.applicantdetail.flatNoPermanent}}, {{vm.applicantdetail.areaPermanent}}</div>
+									<div class="formData">{{vm.applicantdetail.streetPermanent}}, {{vm.applicantdetail.landmarkPermanent}}</div>
+									<div class="formData">{{vm.applicantdetail.cityPermanent}}, District :{{vm.applicantdetail.districtPermanent}}</div>
+									<div class="formData">{{vm.applicantdetail.statePermanent.stateName}}, {{vm.applicantdetail.countryPermanent.countryName}}</div>
 									<div class="formData">{{vm.applicantdetail.pinCodePermanent}}</div>
 									<div class="formData">{{vm.applicantdetail.locationareaPermanent}}</div>
 							</div>
@@ -295,92 +287,69 @@
 	<div class="group">
 		<div class="groupHeadingStyle"><span class="glyphicon glyphicon-wrench"></span> Occupation Details</div>
 		<div class="group-body">
-				<div>
+				<div class="row">
+					<div class="col-sm-12 form-group">
 					<label class="labelclass displayInline">Employed or Self-Employed :</label>
-					<div class="displayInline" ng-show="vm.applicantdetail.isSelfEmployed">Yes</div>
-					<div class="displayInline" ng-show="!vm.applicantdetail.isSelfEmployed">No</div>
+					<div class="displayInline formData" ng-show="vm.applicantdetail.isSelfEmployed">Yes</div>
+					<div class="displayInline formData" ng-show="!vm.applicantdetail.isSelfEmployed">No</div>
+					</div>
 				</div>
 			
 			<div ng-show="vm.applicantdetail.isSelfEmployed">
 				<div class="row">
 					<div class="col-sm-12 form-group">
-						<div class="col-sm-2">
-							<label for="experience"
-								   class="labelclass">Experience</label>
-								   <div class="formData">{{vm.applicantdetail.experienceYrs}}</div>
-						</div>
-						<div class="col-sm-1">
-							<label for="experience"
-								   class="labelclass">Year(s)</label>
-								   {{vm.applicantdetail.experienceMonths}}
-						</div>
-						<div class="col-sm-1">
-							<label for="experience"
-								   class="labelclass">Months</label>
-						</div>
-					</div>
-					
-				</div>
-				
-				<div class="row">
-					<div class="col-sm-12 form-group">
-						<div class="col-sm-2">
-							<label for="selfoccupation"
-								   class="labelclass">Occupation</label>
-								   {{vm.applicantdetail.occupation}}
-						</div>
-						
+							<label for="experience" class="labelclass displayInline">Experience : </label>
+							<div class="formData displayInline">{{vm.applicantdetail.experienceYrs}}
+							<label for="experience" class="displayInline"> Year(s) </label>
+							</div>
+							<div class="formData displayInline">{{vm.applicantdetail.experienceMonths}} 
+							<label for="experience" class="displayInline"> Months </label>
+							</div>
 					</div>
 				</div>
+			</div>
 				
 				<div class="row">
-					<div class="col-sm-12 form-group">
-						<div class="col-sm-2">
+						<div class="col-sm-3 form-group">
+							<label for="selfoccupation" class="labelclass displayInline">Occupation : </label>
+							<div class="formData displayInline"> {{vm.applicantdetail.occupation}}</div>
+						</div>
+						<div class="col-sm-9 form-group">
 							<label for="selfincome"
-								   class="labelclass">Your Annual Income</label>
-								   {{vm.applicantdetail.selfAnnualIncome}}
+								   class="labelclass displayInline">Your Annual Income : </label>
+								   <div class="formData displayInline">Rs. {{vm.applicantdetail.selfAnnualIncome}}</div>
 						</div>
-					</div>
 				</div>
 				
 				<div class="row">
 					<div class="col-sm-12 form-group">
 						<label for="leavewithoutpay" class="labelclass displayInline">Applied for leave without pay for the entire duration of the course : 
-							<div class="displayInline" ng-show="vm.applicantdetail.isLeaveWithoutPay">Yes</div>
-							<div class="displayInline" ng-show="!vm.applicantdetail.isLeaveWithoutPay">No</div>
+							<div class="formData displayInline" ng-show="vm.applicantdetail.isLeaveWithoutPay">Yes</div>
+							<div class="formData displayInline" ng-show="!vm.applicantdetail.isLeaveWithoutPay">No</div>
 						</label>
 					</div>
 				</div>
-			</div>
+			
 			
 			<div ng-show="!vm.applicantdetail.isSelfEmployed">
 				<div class="row">
-					<div class="col-sm-12 form-group">
-						<div class="col-sm-2">
-							<label for="parentsoccupation"
-								   class="labelclass">Occupation of Guardian</label>
-								   {{vm.applicantdetail.occupation}}
-						</div>
-						
+					<div class="col-sm-6 form-group">
+							<label for="parentsoccupation" class="labelclass displayInline">Occupation of Guardian : </label>
+							<div class="formData displayInline">{{vm.applicantdetail.occupation}}</div>
 					</div>
-				</div>
-				
-				<div class="row">
-					<div class="col-sm-12 form-group">
-						<div class="col-sm-2">
-							<label for="parentsincome"
-								   class="labelclass">Annual Income of Guardian</label>
-								   {{vm.applicantdetail.guardianAnnualIncome}}
-						</div>
+					<div class="col-sm-2 form-group">
+							<label for="parentsincome" class="labelclass">Annual Income of Guardian</label>
+							<div class="formData displayInline">{{vm.applicantdetail.guardianAnnualIncome}}</div>
 					</div>
 				</div>
 			</div>
+				
 			
 			<div class="row">
 				<div class="col-sm-12 form-group">
 					<label for="ebc" class="labelclass displayInline">Eligible for EBC (Economic Backward Class) : </label>
-						<div class="displayInline" ng-show="vm.applicantdetail.isEligibleForEBC">Yes</div>
-						<div class="displayInline" ng-show="!vm.applicantdetail.isEligibleForEBC">No</div>
+						<div class="formData displayInline" ng-show="vm.applicantdetail.isEligibleForEBC">Yes</div>
+						<div class="formData displayInline" ng-show="!vm.applicantdetail.isEligibleForEBC">No</div>
 				</div>
 			</div>
 			
@@ -402,30 +371,25 @@
 		<div class="group-body">
 				<div class="row">
 				<div class="col-sm-12 form-group">
-					<div class="col-sm-2">
+					<div class="col-sm-3">
 						<label for="category"
 							   class="labelclass">Category</label>
-							   {{vm.applicantdetail.category}}
+							   <div class="formData">{{vm.applicantdetail.category}}</div>
 					</div>
-					<div class="col-sm-2">
+					<div class="col-sm-3">
 						<label for="religion"
 							   class="labelclass">Religion</label>
-							   {{vm.applicantdetail.religion}}
+							   <div class="formData">{{vm.applicantdetail.religion}}</div>
 					</div>
-				</div>
-			</div>
-			
-			<div class="row">
-				<div class="col-sm-12 form-group">
-					<div class="col-sm-2">
+					<div class="col-sm-3">
 						<label for="caste"
 							   class="labelclass">Caste</label>
-							   {{vm.applicantdetail.caste}}
+							   <div class="formData">{{vm.applicantdetail.caste}}</div>
 					</div>
-					<div class="col-sm-2">
+					<div class="col-sm-3">
 						<label for="mothertongue"
 							   class="labelclass">Mother Tongue</label>
-							   {{vm.applicantdetail.motherTongue}}
+							   <div class="formData">{{vm.applicantdetail.motherTongue}}</div>
 					</div>
 				</div>
 			</div>
@@ -435,7 +399,7 @@
 					<div class="col-sm-2">
 						<label for="speciallyabled"
 							   class="labelclass">Specially Abled</label>
-							   {{vm.applicantdetail.speciallyAbled}}
+							  <div class="formData">{{vm.applicantdetail.speciallyAbled}}</div>
 					</div>
 				</div>
 			</div>
