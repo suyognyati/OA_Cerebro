@@ -752,4 +752,35 @@ public class Enums {
 		public static DocumentState get(int id) { return lookup.get(id); }
 		public static List<KeyValuePair> getEnumList() { return enumList; }
 	}
+	
+	public enum ApplicationStatus {
+		Cancelled(1, "Cancelled"),
+		Partial(2, "Partial"),
+		Submitted(3, "Submitted"),
+		Accepted(4, "Accepted"),
+		Approved(5, "Approved"),
+		Completed(6, "Completed");
+				
+		private int id;
+		private String value;
+		private static final Map<Integer, ApplicationStatus> lookup = new HashMap<Integer, ApplicationStatus>();
+		private static final List<KeyValuePair> enumList = new ArrayList<KeyValuePair>();
+		
+		private ApplicationStatus(int id, String value) { this.id = id; this.value = value; }
+		
+		static {
+			for (ApplicationStatus s : EnumSet.allOf(ApplicationStatus.class)) {
+				lookup.put(s.getId(), s);
+				KeyValuePair ms = new KeyValuePair();
+				ms.key = s.getId();
+				ms.value = s.getValue();
+				enumList.add(ms);
+			}
+		}
+
+		public int getId() { return id; }
+		public String getValue() { return value; }
+		public static ApplicationStatus get(int id) { return lookup.get(id); }
+		public static List<KeyValuePair> getEnumList() { return enumList; }
+	}
 }
