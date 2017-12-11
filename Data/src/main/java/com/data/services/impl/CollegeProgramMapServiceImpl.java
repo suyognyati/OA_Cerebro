@@ -33,5 +33,10 @@ public class CollegeProgramMapServiceImpl implements CollegeProgramMapService {
 		return collegeProgramMapJPARepository.findByCollegeAndProgramCategory(college, programCategory);
 	}
 
+	@Override
+	public CollegeProgramMap getById(Integer id) {		
+		return collegeProgramMapJPARepository.getOne(id);
+	}
+
 	
 }

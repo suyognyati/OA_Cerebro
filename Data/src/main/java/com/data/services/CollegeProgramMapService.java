@@ -7,4 +7,5 @@ import com.data.entities.CollegeProgramMap;
 public interface CollegeProgramMapService {
 
 	List<CollegeProgramMap> getCollegeProgramsByCategory(Integer collegeId, Integer programCategoryId);
+	CollegeProgramMap getById(Integer id);
 }
