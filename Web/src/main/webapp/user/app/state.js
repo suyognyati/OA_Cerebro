@@ -160,7 +160,7 @@
 			url: "/applicationstatus",
 			views: {
 				"view":{
-                	templateUrl: basePath + userApplicationTemplatesFolderPath + "applyOnlineView.html",
+                	templateUrl: basePath + userApplicationTemplatesFolderPath + "applicationStatusView.html",
                 	//controller:"applicationCtrl as vm",
 				}
 			},
