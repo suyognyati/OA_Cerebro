@@ -4,70 +4,97 @@
     </h1>
 </div>
 
+
+<div class="row no-margin">
+	<div class="col-sm-3 subNav">
+	<ul>
+	<li class='current'><span class="glyphicon glyphicon-user"></span> Personal Details</li>
+	<li><span class="glyphicon glyphicon-envelope"></span> Contact Details</li>
+	<li><span class="glyphicon glyphicon-globe"></span> Nationality Details</li>
+	<li><span class="glyphicon glyphicon-wrench"></span> Occupation Details</li>
+	<li><span class="glyphicon glyphicon-lock"></span> Reservation(Caste) Details</li>
+	</ul>
+	</div>
+	<div class="col-sm-9 no-padding">
+	
+
+
 <form name="personaldetailform" novalidate>
 
 	<div class="group">
-		<div class=" groupHeadingStyle"><span class="glyphicon glyphicon-user"></span> Personal Details</div>
+		<!-- <div class=" groupHeadingStyle"><span class="glyphicon glyphicon-user"></span> Personal Details</div> -->
 		<div class="group-body">
 			<div class="row">
-				<div class="col-sm-8 form-group applicantDetaailList">
+				<div class="col-sm-9 form-group applicantDetaailList">
 					<div class="row">
-						<div class="col-sm-6 dataSpacing">
-						<label class="labelclass">Full Name</label>
-							   <div class="formData">{{vm.applicantdetail.lastName}} {{vm.applicantdetail.firstName}} {{vm.applicantdetail.middleName}}</div>
+						<div class="col-sm-4 dataSpacing">
+							<label class="group-label">Full Name</label>
 						</div>
-						<div class="col-sm-6 dataSpacing">
-						<label class="labelclass">Full Name in Regional Language</label>
-							   <div class="formData">{{vm.applicantdetail.lastName}} {{vm.applicantdetail.firstName}} {{vm.applicantdetail.middleName}}</div>
+						<div class="col-sm-8 dataSpacing">
+						 	<div class="formData">{{vm.applicantdetail.lastName}} {{vm.applicantdetail.firstName}} {{vm.applicantdetail.middleName}}</div>
 						</div>
 					</div>
 					<div class="row">
-						<div class="col-sm-6 dataSpacing">
-						<label class="labelclass">Father's Full Name</label>
+					<div class="col-sm-4 dataSpacing">
+							<label class="group-label">Full Name in Regional Language</label>
+						</div>
+						<div class="col-sm-8 dataSpacing">
+						   <div class="formData">{{vm.applicantdetail.lastName}} {{vm.applicantdetail.firstName}} {{vm.applicantdetail.middleName}}</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-4 dataSpacing">
+							<label class="group-label">Father's Full Name</label>
+						</div>
+						<div class="col-sm-8 dataSpacing">
 							   <div class="formData">{{vm.applicantdetail.fathersLastName}} {{vm.applicantdetail.fathersFirstName}} {{vm.applicantdetail.fathersMiddleName}}</div>
 						</div>
-						<div class="col-sm-6 dataSpacing">
-						<label for="mothersname"
-							   class="labelclass">Mother's Full Name</label>
+					</div>
+					<div class='row'>
+						<div class="col-sm-4 dataSpacing">
+							<label for="mothersname"
+							   class="group-label">Mother's Full Name</label>
+						</div>
+						 <div class="col-sm-8 dataSpacing">
 							   <div class="formData">{{vm.applicantdetail.mothersLastName}} {{vm.applicantdetail.mothersFirstName}} {{vm.applicantdetail.mothersMiddleName}}</div>
 						</div>
 					</div>
 					<div class="row">
 							<div class="col-sm-3 dataSpacing">
 								<label for="gender"
-									   class="labelclass">Gender</label>
+									   class="group-label">Gender</label>
 									  <div class="formData">{{vm.applicantdetail.gender}}</div>
 							</div>
 							<div class="col-sm-3 dataSpacing">
 								<label for="maritalstatus"
-									   class="labelclass">Marital Status</label>
+									   class="group-label">Marital Status</label>
 									   <div class="formData">{{vm.applicantdetail.maritalStatus}}</div>
 							</div>
 							<div class="col-sm-3 dataSpacing">
 								<label for="bloodgroup"
-									   class="labelclass">Blood Group</label>
+									   class="group-label">Blood Group</label>
 									   <div class="formData">{{vm.applicantdetail.bloodGroup}}</div>
 							</div>
 							<div class="col-sm-3 dataSpacing">
 								<label for="dateofbirth"
-								   class="labelclass">Date of Birth</label>
+								   class="group-label">Date of Birth</label>
 								   <div class="formData">{{vm.applicantdetail.birthDate}}</div>
 							</div>
 					</div>
 					<div class="row">
 							<div class="col-sm-3">
 								<label for="placeofbirth"
-									   class="labelclass">Place of Birth</label>
+									   class="group-label">Place of Birth</label>
 									   <div class="formData">{{vm.applicantdetail.placeOfBirth}}</div>
 							</div>
 							<div class="col-sm-3">
 								<label for="aadharno"
-									   class="labelclass">Aadhar No.</label>
+									   class="group-label">Aadhar No.</label>
 									   <div class="formData">{{vm.applicantdetail.adharNo}}</div>
 							</div>
 							<div class="col-sm-6">
 								<label for="educationgap"
-									   class="labelclass">Education Gap (in yrs)</label>
+									   class="group-label">Education Gap (in yrs)</label>
 									   <div class="formData">{{vm.applicantdetail.educationGap}}</div>
 							</div>
 							
@@ -75,16 +102,16 @@
 					
 				</div>
 			
-				<div class="col-sm-4">
+				<div class="col-sm-3">
 					<div class="row">
 						<div  class="col-sm-12 text-center"  style=" padding-bottom:10px;">
-							<label class="labelclass">Photograph</label>
+							<label class="group-label">Photograph</label>
 							<div style="width:100px; height:100px;background-color:#ccc; margin:0 auto"></div>
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-sm-12 text-center"  style="padding-bottom:10px;">
-							<label class="labelclass">Signature</label>
+							<label class="group-label">Signature</label>
 							<div style="width:100px; height:100px;background-color:#ccc; margin:0 auto"></div>
 						</div>
 					</div>
@@ -97,30 +124,30 @@
 					<div class="group-body">
 						<div class="row">
 								<div class="col-sm-6">
-									<label class="labelclass">Mobile Number</label>
+									<label class="group-label">Mobile Number</label>
 									<div class="formData">{{vm.applicantdetail.mobileNo}}</div>
 								</div>
 							
 								<div class="col-sm-6">
-									<label for="email"  class="labelclass">Email Address</label>
+									<label for="email"  class="group-label">Email Address</label>
 									<div class="formData">{{vm.applicantdetail.email}}</div>
 								</div>
 						</div>	
 						<div class="row">
 							<div class="col-sm-6 dataPadding">
 									<label for="parentsemail"
-							   class="labelclass">Parent's Email Id</label>
+							   class="group-label">Parent's Email Id</label>
 							   <div class="formData">{{vm.applicantdetail.parentsEmailId}}</div>
 							</div>
 							<div class="col-sm-6">
 									<label for="parentscontact"
-							   class="labelclass">Parent's Contact No.</label>
+							   class="group-label">Parent's Contact No.</label>
 							   		<div class="formData">{{vm.applicantdetail.parentsContactNo}}</div>
 							</div>
 						</div>
 						<div class="row">
 							<div class="col-sm-6">
-									<label class="labelclass">Correspondence Address</label>
+									<label class="group-label">Correspondence Address</label>
 									<div class="formData">{{vm.applicantdetail.flatNo}}, {{vm.applicantdetail.area}}</div>
 									<div class="formData">{{vm.applicantdetail.street}}, {{vm.applicantdetail.landmark}}</div>
 									<div class="formData">{{vm.applicantdetail.city}}, District :{{vm.applicantdetail.district}}</div>
@@ -130,7 +157,7 @@
 							</div>
 							
 							<div class="col-sm-6">
-							<label for="email"  class="labelclass">Permanent Address</label>
+							<label for="email"  class="group-label">Permanent Address</label>
 							<div class="formData">{{vm.applicantdetail.flatNoPermanent}}, {{vm.applicantdetail.areaPermanent}}</div>
 									<div class="formData">{{vm.applicantdetail.streetPermanent}}, {{vm.applicantdetail.landmarkPermanent}}</div>
 									<div class="formData">{{vm.applicantdetail.cityPermanent}}, District :{{vm.applicantdetail.districtPermanent}}</div>
@@ -141,56 +168,6 @@
 						</div>	
 		 			</div>
 	</div>
-	<!-- <div class="group">
-		<div class="groupHeadingStyle">Other Details</div>
-		<div class="group-body">
-			<div class="row">
-				<div class="col-sm-12">
-					<div class="col-sm-3">
-						<label for="gender"
-							   class="labelclass">Gender</label>
-							  <div class="formData">{{vm.applicantdetail.gender}}</div>
-					</div>
-					<div class="col-sm-3">
-						<label for="maritalstatus"
-							   class="labelclass">Marital Status</label>
-							   <div class="formData">{{vm.applicantdetail.maritalStatus}}</div>
-					</div>
-					<div class="col-sm-3">
-						<label for="bloodgroup"
-							   class="labelclass">Blood Group</label>
-							   <div class="formData">{{vm.applicantdetail.bloodGroup}}</div>
-					</div>
-					<div class="col-sm-3">
-						<label for="dateofbirth"
-						   class="labelclass">Date of Birth</label>
-						   <div class="formData">{{vm.applicantdetail.birthDate}}</div>
-					</div>
-				</div>
-			</div>
-			
-			<div class="row">
-				<div class="col-sm-12 form-group">
-					<div class="col-sm-3">
-						<label for="placeofbirth"
-							   class="labelclass">Place of Birth</label>
-							   <div class="formData">{{vm.applicantdetail.placeOfBirth}}</div>
-					</div>
-					<div class="col-sm-3">
-						<label for="educationgap"
-							   class="labelclass">Education Gap (in yrs)</label>
-							   <div class="formData">{{vm.applicantdetail.educationGap}}</div>
-					</div>
-					<div class="col-sm-3">
-						<label for="aadharno"
-							   class="labelclass">Aadhar No.</label>
-							   <div class="formData">{{vm.applicantdetail.adharNo}}</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
- -->
 	<div class="group">
 		<div class="groupHeadingStyle"><span class="glyphicon glyphicon-globe"></span> Nationality Details</div>
 		<div class="group-body">
@@ -199,12 +176,12 @@
 					<div class="col-sm-12 form-group">
 						<div class="col-sm-3">
 							<label for="citizenship"
-								   class="labelclass">Country of Citizenship</label>
+								   class="group-label">Country of Citizenship</label>
 								   <div class="formData">{{vm.applicantdetail.countryOfCitizenship.countryName}}</div>
 						</div>
 						<div class="col-sm-3">
 							<label for="domiciled"
-								   class="labelclass">Domicile of State</label>
+								   class="group-label">Domicile of State</label>
 								   <div class="formData">{{vm.applicantdetail.domiciledIn.stateName}}</div>
 						</div>
 					</div>
@@ -216,29 +193,29 @@
 					<div class="col-sm-12 form-group">
 						<div class="col-sm-6">
 							<label for="citizenship"
-								   class="labelclass">Country of Citizenship</label>
+								   class="group-label">Country of Citizenship</label>
 								   <div class="formData">{{vm.applicantdetail.countryOfCitizenship.countryName}}</div>
 						</div>
 					</div>
 					<div class="col-sm-12 form-group">
 						<div class="col-sm-3">
 							<label for="passportno"
-								   class="labelclass">Passport No.</label>
+								   class="group-label">Passport No.</label>
 								   <div class="formData">{{vm.applicantdetail.passportNo}}</div>
 						</div>
 						<div class="col-sm-3">
 							<label for="placeofissue"
-								   class="labelclass">Place of Issue of Passport</label>
+								   class="group-label">Place of Issue of Passport</label>
 								   <div class="formData">{{vm.applicantdetail.passportIssuePlace}}</div>
 						</div>
 						<div class="col-sm-3">
 							<label for="dateofissue"
-								   class="labelclass">Date of Issue of Passport</label>
+								   class="group-label">Date of Issue of Passport</label>
 								   <div class="formData">{{vm.applicantdetail.passportIssueDate}}</div>
 						</div>	
 						<div class="col-sm-3">
 							<label for="dateofexpiry"
-								   class="labelclass">Date of Expiry of Passport</label>
+								   class="group-label">Date of Expiry of Passport</label>
 								   <div class="formData">{{vm.applicantdetail.passportExpiryDate}}</div>
 						</div>
 					</div>
@@ -247,22 +224,22 @@
 					<div class="col-sm-12 form-group">
 						<div class="col-sm-3">
 							<label for="issuingauthority"
-								   class="labelclass">Passport Issuing Authority</label>
+								   class="group-label">Passport Issuing Authority</label>
 								   <div class="formData">{{vm.applicantdetail.passportIssuingAuthority}}</div>
 						</div>
 						<div class="col-sm-3">
 							<label for="issuingcountry"
-								   class="labelclass">Passport Issuing Country</label>
+								   class="group-label">Passport Issuing Country</label>
 								   <div class="formData">{{vm.personalDetailTemp.passportIssuingCountryId}}</div>
 						</div>
 						<div class="col-sm-3">
 							<label for="visatype"
-								   class="labelclass">Visa Type</label>
+								   class="group-label">Visa Type</label>
 								   <div class="formData">{{vm.applicantdetail.visaType}}</div>
 						</div>
 						<div class="col-sm-3">
 							<label for="visavalidupto"
-								   class="labelclass">Visa Valid Upto</label>
+								   class="group-label">Visa Valid Upto</label>
 									<div class="formData">{{vm.applicantdetail.visaValidUpto}}</div>
 						</div>
 					</div>
@@ -271,12 +248,12 @@
 					<div class="col-sm-12 form-group">
 						<div class="col-sm-3">
 							<label for="visasponsoringagency"
-								   class="labelclass">Visa Sponsoring Agency</label>
+								   class="group-label">Visa Sponsoring Agency</label>
 								   <div class="formData">{{vm.applicantdetail.visaSponsoringAgency}}</div>
 						</div>
 						<div class="col-sm-3">
 							<label for="residentialpermitno"
-								   class="labelclass">Residential Permit No.</label>
+								   class="group-label">Residential Permit No.</label>
 								   <div class="formData">{{vm.applicantdetail.residentialPermitNo}}</div>
 						</div>
 					</div>
@@ -289,7 +266,7 @@
 		<div class="group-body">
 				<div class="row">
 					<div class="col-sm-12 form-group">
-					<label class="labelclass displayInline">Employed or Self-Employed :</label>
+					<label class="group-label displayInline">Employed or Self-Employed :</label>
 					<div class="displayInline formData" ng-show="vm.applicantdetail.isSelfEmployed">Yes</div>
 					<div class="displayInline formData" ng-show="!vm.applicantdetail.isSelfEmployed">No</div>
 					</div>
@@ -298,7 +275,7 @@
 			<div ng-show="vm.applicantdetail.isSelfEmployed">
 				<div class="row">
 					<div class="col-sm-12 form-group">
-							<label for="experience" class="labelclass displayInline">Experience : </label>
+							<label for="experience" class="group-label displayInline">Experience : </label>
 							<div class="formData displayInline">{{vm.applicantdetail.experienceYrs}}
 							<label for="experience" class="displayInline"> Year(s) </label>
 							</div>
@@ -311,19 +288,19 @@
 				
 				<div class="row">
 						<div class="col-sm-3 form-group">
-							<label for="selfoccupation" class="labelclass displayInline">Occupation : </label>
+							<label for="selfoccupation" class="group-label displayInline">Occupation : </label>
 							<div class="formData displayInline"> {{vm.applicantdetail.occupation}}</div>
 						</div>
 						<div class="col-sm-9 form-group">
 							<label for="selfincome"
-								   class="labelclass displayInline">Your Annual Income : </label>
+								   class="group-label displayInline">Your Annual Income : </label>
 								   <div class="formData displayInline">Rs. {{vm.applicantdetail.selfAnnualIncome}}</div>
 						</div>
 				</div>
 				
 				<div class="row">
 					<div class="col-sm-12 form-group">
-						<label for="leavewithoutpay" class="labelclass displayInline">Applied for leave without pay for the entire duration of the course : 
+						<label for="leavewithoutpay" class="group-label displayInline">Applied for leave without pay for the entire duration of the course : 
 							<div class="formData displayInline" ng-show="vm.applicantdetail.isLeaveWithoutPay">Yes</div>
 							<div class="formData displayInline" ng-show="!vm.applicantdetail.isLeaveWithoutPay">No</div>
 						</label>
@@ -334,11 +311,11 @@
 			<div ng-show="!vm.applicantdetail.isSelfEmployed">
 				<div class="row">
 					<div class="col-sm-6 form-group">
-							<label for="parentsoccupation" class="labelclass displayInline">Occupation of Guardian : </label>
+							<label for="parentsoccupation" class="group-label displayInline">Occupation of Guardian : </label>
 							<div class="formData displayInline">{{vm.applicantdetail.occupation}}</div>
 					</div>
 					<div class="col-sm-2 form-group">
-							<label for="parentsincome" class="labelclass">Annual Income of Guardian</label>
+							<label for="parentsincome" class="group-label">Annual Income of Guardian</label>
 							<div class="formData displayInline">{{vm.applicantdetail.guardianAnnualIncome}}</div>
 					</div>
 				</div>
@@ -347,7 +324,7 @@
 			
 			<div class="row">
 				<div class="col-sm-12 form-group">
-					<label for="ebc" class="labelclass displayInline">Eligible for EBC (Economic Backward Class) : </label>
+					<label for="ebc" class="group-label displayInline">Eligible for EBC (Economic Backward Class) : </label>
 						<div class="formData displayInline" ng-show="vm.applicantdetail.isEligibleForEBC">Yes</div>
 						<div class="formData displayInline" ng-show="!vm.applicantdetail.isEligibleForEBC">No</div>
 				</div>
@@ -373,22 +350,22 @@
 				<div class="col-sm-12 form-group">
 					<div class="col-sm-3">
 						<label for="category"
-							   class="labelclass">Category</label>
+							   class="group-label">Category</label>
 							   <div class="formData">{{vm.applicantdetail.category}}</div>
 					</div>
 					<div class="col-sm-3">
 						<label for="religion"
-							   class="labelclass">Religion</label>
+							   class="group-label">Religion</label>
 							   <div class="formData">{{vm.applicantdetail.religion}}</div>
 					</div>
 					<div class="col-sm-3">
 						<label for="caste"
-							   class="labelclass">Caste</label>
+							   class="group-label">Caste</label>
 							   <div class="formData">{{vm.applicantdetail.caste}}</div>
 					</div>
 					<div class="col-sm-3">
 						<label for="mothertongue"
-							   class="labelclass">Mother Tongue</label>
+							   class="group-label">Mother Tongue</label>
 							   <div class="formData">{{vm.applicantdetail.motherTongue}}</div>
 					</div>
 				</div>
@@ -398,7 +375,7 @@
 				<div class="col-sm-12 form-group">
 					<div class="col-sm-2">
 						<label for="speciallyabled"
-							   class="labelclass">Specially Abled</label>
+							   class="group-label">Specially Abled</label>
 							  <div class="formData">{{vm.applicantdetail.speciallyAbled}}</div>
 					</div>
 				</div>
@@ -408,7 +385,7 @@
 				<div class="col-sm-12 form-group">
 					<div class="col-sm-2">
 						<label for="socialreservation"
-							   class="labelclass">Social Reservation</label>
+							   class="group-label">Social Reservation</label>
 					</div>
 					<div class="col-sm-6">
 						<input type="checkbox"
@@ -591,10 +568,15 @@
 			</div>
 		</div>
 	</div>
+	
 </form>
+</div>
+</div>
+
+
 
 <script type="text/javascript">
-	setActiveElementOnLeftNav("applicantlDetail");
+	setActiveElementOnLeftNav("personalDetail");
 	//To reload selectpicker on page load
 	$(".selectpicker").selectpicker("refresh");
 </script>

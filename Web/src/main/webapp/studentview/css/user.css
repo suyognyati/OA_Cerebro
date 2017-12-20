@@ -219,8 +219,19 @@ a.nav-button-col {
 	margin:30px 0 0 0;
 	}
 
+ .group{
+	/* border-right: #ddd 1px solid;
+	border-bottom: #ddd 1px solid;
+	border-left: #ddd 1px solid; */
+	margin:0 10px;
+}
+
 .group-body, .group{
 	padding:10px 20px;
+}
+
+.group-label{
+	font-weight:normal;
 }
 
 .dataSpacing{
@@ -229,6 +240,32 @@ a.nav-button-col {
 
 .displayInline{
 	display:inline;
+}
+
+.subNav{
+	padding:0 0 0 20px;
+}
+
+.subNav ul{
+	margin:0;
+	padding:0;
+	list-style:none;
+}
+
+.subNav ul li{
+	line-height:200%;
+	background-color:#f5f5f5;
+	padding:10px 0 10px 5px;
+	border-right: #ddd 1px solid;
+	border-bottom: #ddd 1px solid;
+	border-left: #ddd 1px solid;
+}
+
+.subNav ul li.current{
+	background-color:#ffffff;
+	font-weight:bold;
+	border-right:none;
+	font-size:15px;
 }
 
 @media (min-width: 768px) {
