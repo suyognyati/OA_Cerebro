@@ -8,17 +8,16 @@
 <div class="row no-margin">
 	<div class="col-sm-3 subNav">
 	<ul>
-	<li class='current'><span class="glyphicon glyphicon-user"></span> Personal Details</li>
-	<li><span class="glyphicon glyphicon-envelope"></span> Contact Details</li>
-	<li><span class="glyphicon glyphicon-globe"></span> Nationality Details</li>
-	<li><span class="glyphicon glyphicon-wrench"></span> Occupation Details</li>
-	<li><span class="glyphicon glyphicon-lock"></span> Reservation(Caste) Details</li>
+	<li id="personal" class='current'><a><span class="glyphicon glyphicon-user"></span> Personal Details</a></li>
+	<li id="contact"><a><span class="glyphicon glyphicon-envelope"></span> Contact Details</a></li>
+	<li id="nationality"><a><span class="glyphicon glyphicon-globe"></span> Nationality Details</a></li>
+	<li id="occupation"><a><span class="glyphicon glyphicon-wrench"></span> Occupation Details</a></li>
+	<li id="reservation"><a><span class="glyphicon glyphicon-lock"></span> Reservation(Caste) Details</a></li>
 	</ul>
 	</div>
+	
 	<div class="col-sm-9 no-padding">
 	
-
-
 <form name="personaldetailform" novalidate>
 
 	<div class="group">
@@ -579,4 +578,17 @@
 	setActiveElementOnLeftNav("personalDetail");
 	//To reload selectpicker on page load
 	$(".selectpicker").selectpicker("refresh");
+	function setActiveElementOnSubNav(id) {
+		var activeelement = $("#" + id);
+		if (!activeelement.hasClass('current')) {
+			$('.subNav ul li').removeClass('current');
+			activeelement.addClass('current');
+		}
+	}
+	$(document).ready(function(){
+	 $('.subNav ul li a').click(function(e) {
+	        var $parent = $(this).parent();
+	        setActiveElementOnSubNav($parent.attr('id'));
+	    });
+	});
 </script>
