@@ -26,12 +26,13 @@ public class ProgramRCServiceImpl implements ProgramRCService {
 		University_Program program = null;
 		for(CollegeProgramMap programOfCollege : programsOfCollege) {
 			program = programOfCollege.getProgram();
-			ProgramModel programModel = new ProgramModel();			
+			ProgramModel programModel = new ProgramModel();
+			programModel.setCollegeProgramId(programOfCollege.getCollegeProgramId());
 			programModel.setProgramCode(program.getUniversityProgramCode());
 			programModel.setProgramName(program.getUniversityProgramName());
 			programModel.setFacultyOrCollege(program.getUniversityProgramFaculty());
 			programModel.setApplicationDates("");
-			programModel.setId(program.getUniversityProgramId());
+			programModel.setProgramId(program.getUniversityProgramId());
 			programModel.setFileMap(program.getProgramFileMap());
 			programModelList.add(programModel);
 		}

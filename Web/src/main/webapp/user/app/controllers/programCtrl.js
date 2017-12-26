@@ -26,9 +26,9 @@
 			vm.programs = {};
 		});
 
-		vm.applyProgram = function(programId, programName, programCode, universityFolderName, viewFileName){
-			$state.go("application.subject", {programId:programId, programName:programName, programCode:programCode, 
-				universityFolderName: universityFolderName, fileNameForProgram: viewFileName});
+		vm.applyProgram = function(collegeProgramId, programName, programCode, universityFolderName, viewFileName){
+			$state.go("application.subject", {collegeProgramId:collegeProgramId, programName:programName, 
+				programCode:programCode, universityFolderName: universityFolderName, fileNameForProgram: viewFileName});
 		};		
 	};
 }());

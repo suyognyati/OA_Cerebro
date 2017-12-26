@@ -12,7 +12,7 @@
 	function SubjectCtrl($http, $state, $window, subjectService) {
 		var vm = this;
 		
-		vm.programId = $state.params.programId;
+		vm.collegeProgramId = $state.params.collegeProgramId;
 		vm.programName = $state.params.programName;
 		vm.programCode = $state.params.programCode;
 		
@@ -28,7 +28,7 @@
 		vm.selectionNotAllowedMessage = "";
 		vm.isSubjectSelectionCompleted = false;
 		
-		subjectService.getSubjects(vm.programId, vm.accessTokenParam)
+		subjectService.getSubjects(vm.collegeProgramId, vm.accessTokenParam)
 		.success(function(data, status, header, config) {
 			vm.subjects = data;
 			vm.initialise();
@@ -200,6 +200,15 @@
 				return;
 			}
 			vm.isSubjectSelectionCompleted = showSelectedSubjects;
+		}
+		
+		vm.applyForCourse = function() {
+			subjectService.applyForCourse(vm.collegeProgramId, vm.selectedSubjectList, vm.accessTokenParam)
+			.success(function(data, status, header, config) {
+				$state.go("application.applicationStatus")
+			})
+			.error(function(data, status, header, config) {
+			});
 		}
 	};
 }());

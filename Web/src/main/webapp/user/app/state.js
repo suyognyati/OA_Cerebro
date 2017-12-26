@@ -119,7 +119,7 @@
 		})
 		
 		.state("application.subject",{
-			url: "/applyOnline/pid/:programId",
+			url: "/applyOnline/pid/:collegeProgramId",
 			views: {
 				"view":{
 					templateUrl: 
