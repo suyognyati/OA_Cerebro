@@ -265,6 +265,7 @@ a.nav-button-col {
 	border-right:none;
 	font-size:15px;
 	border-left: #ddd 5px solid;
+	border-bottom: #ddd 5px solid;
 }
 
 .subNav ul li a{

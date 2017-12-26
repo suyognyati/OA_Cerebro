@@ -8,11 +8,11 @@
 <div class="row no-margin">
 	<div class="col-sm-3 subNav">
 	<ul>
-	<li id="personal" class='current'><a><span class="glyphicon glyphicon-user"></span> Personal Details</a></li>
-	<li id="contact"><a><span class="glyphicon glyphicon-envelope"></span> Contact Details</a></li>
-	<li id="nationality"><a><span class="glyphicon glyphicon-globe"></span> Nationality Details</a></li>
-	<li id="occupation"><a><span class="glyphicon glyphicon-wrench"></span> Occupation Details</a></li>
-	<li id="reservation"><a><span class="glyphicon glyphicon-lock"></span> Reservation(Caste) Details</a></li>
+	<li ng-click="vm.showGroupBox('personalDetail')" id="personal" class='current'><a><span class="glyphicon glyphicon-user"></span> Personal Details</a></li>
+	<li ng-click="vm.showGroupBox('contactDetail')" id="contact"><a><span class="glyphicon glyphicon-envelope"></span> Contact Details</a></li>
+	<li ng-click="vm.showGroupBox('nationalityDetail')" id="nationality"><a><span class="glyphicon glyphicon-globe"></span> Nationality Details</a></li>
+	<li ng-click="vm.showGroupBox('occupationDetail')" id="occupation"><a><span class="glyphicon glyphicon-wrench"></span> Occupation Details</a></li>
+	<li ng-click="vm.showGroupBox('reservationDetail')" id="reservation"><a><span class="glyphicon glyphicon-lock"></span> Reservation(Caste) Details</a></li>
 	</ul>
 	</div>
 	
@@ -20,8 +20,8 @@
 	
 <form name="personaldetailform" novalidate>
 
-	<div class="group">
-		<!-- <div class=" groupHeadingStyle"><span class="glyphicon glyphicon-user"></span> Personal Details</div> -->
+	<div class="group" ng-show="vm.showGroup.personalDetail">
+		<div class=" groupHeadingStyle"><span class="glyphicon glyphicon-user"></span> Personal Details</div>
 		<div class="group-body">
 			<div class="row">
 				<div class="col-sm-9 form-group applicantDetaailList">
@@ -118,7 +118,7 @@
 			</div>
 		</div>
 	</div>
-	<div class='group'>
+	<div class="group" ng-show="vm.showGroup.contactDetail">
 		<div class="groupHeadingStyle"><span class="glyphicon glyphicon-envelope"></span> Contact Details</div>
 					<div class="group-body">
 						<div class="row">
@@ -167,7 +167,7 @@
 						</div>	
 		 			</div>
 	</div>
-	<div class="group">
+	<div class="group" ng-show="vm.showGroup.nationalityDetail">
 		<div class="groupHeadingStyle"><span class="glyphicon glyphicon-globe"></span> Nationality Details</div>
 		<div class="group-body">
 			<div ng-show="vm.indianCitizenship">
@@ -260,7 +260,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="group">
+	<div class="group" ng-show="vm.showGroup.occupationDetail">
 		<div class="groupHeadingStyle"><span class="glyphicon glyphicon-wrench"></span> Occupation Details</div>
 		<div class="group-body">
 				<div class="row">
@@ -342,7 +342,7 @@
 		</div>
 	</div>
 	
-	<div class="group">
+	<div class="group" ng-show="vm.showGroup.reservationDetail">
 		<div class="groupHeadingStyle"><span class="glyphicon glyphicon-lock"></span> Reservation(Caste) Details</div>
 		<div class="group-body">
 				<div class="row">
