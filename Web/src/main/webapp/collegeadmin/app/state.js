@@ -147,8 +147,29 @@
 							})
 						}]
 					}
-			})
-		
+				})
+
+				.state("vendorHome.appliedStudentList",{
+					url: "/appliedStudentList",
+					views: {
+						"view":{
+		                	templateUrl: basePath + vendorTemplatesFolderPath + "appliedStudentListView.html",
+		                	//controller:"CollegeListCtrl as vm",
+						}
+					},
+					/*resolve: {
+						userDetail : ['$ocLazyLoad', function($ocLazyLoad){
+							return $ocLazyLoad.load({
+								name : 'vendor',
+								files : [
+								     basePath + vendorControllersFolderPath + 'collegeListCtrl.js'
+								]
+						
+							})
+						}]
+					}*/
+				})
+
 			}]
 		);
 	

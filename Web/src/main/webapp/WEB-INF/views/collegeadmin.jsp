@@ -87,7 +87,9 @@
 								</li>
 							</ul>
 						</nav>
+				</div>
 			</div>
+		</div>
 </header>
 
 	<div class="col-sm-12 no-padding content">
