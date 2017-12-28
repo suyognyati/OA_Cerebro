@@ -29,27 +29,27 @@
 		<thead>
 			<tr class="table-background">
 			    <th width="10%">Form No.</th>
-			    <th width="30%">College</th>
-			    <th width="10%">Program</th>
-			    <th width="30%">Date</th>
-			    <th width="12%">Status</th>
-			    <th width="12%">Eligibility Certificate</th>
+			    <th width="27%">College</th>
+			    <th width="27%">Program</th>
+			    <th width="10%">Date</th>
+			    <th width="10%">Status</th>
+			    <!-- <th width="12%">Eligibility Certificate</th>
 			    <th width="12%">Payment</th>
-			    <th width="12%">Admission Fee Payment</th>
-			    <th width="12%">Print Provisional Form</th>
-			    <th width="12%">Cancel</th>
+			    <th width="12%">Admission Fee Payment</th> -->
+			    <th width="10%">Print Provisional Form</th>
+			    <th width="6%">Cancel</th>
 			</tr>
 		</thead>
 		<tbody>
-			<tr class="table-background">
-			    <td>Form No.</td>
-			    <td>College</td>
-			    <td>Program</td>
-			    <td>Date</td>
-			    <td>Status</td>
-			    <td>Eligibility Certificate</td>
-			    <td>Payment</td>
-			    <td>Admission Fee Payment</td>
+			<tr class="table-background" ng-repeat="appliedCourse in vm.appliedCourses">
+			    <td>{{appliedCourse.formNo}}</td>
+			    <td>{{appliedCourse.collegeProgramMap.college.collegeName}}</td>
+			    <td>{{appliedCourse.collegeProgramMap.program.universityProgramName}}</td>
+			    <td>{{appliedCourse.date}}</td>
+			    <td>{{appliedCourse.applicationStatus}}</td>
+			    <!-- <td>{{appliedCourse.}}</td>
+			    <td>{{appliedCourse.}}</td>
+			    <td>{{appliedCourse.}}</td> -->
 			    <td>Print Provisional Form</td>
 			    <td>Cancel</td>
 			</tr>

@@ -27,7 +27,7 @@ public class ProgramRCServiceImpl implements ProgramRCService {
 		for(CollegeProgramMap programOfCollege : programsOfCollege) {
 			program = programOfCollege.getProgram();
 			ProgramModel programModel = new ProgramModel();
-			programModel.setCollegeProgramId(programOfCollege.getCollegeProgramId());
+			programModel.setCollegeProgramId(programOfCollege.getCollegeProgramMapId());
 			programModel.setProgramCode(program.getUniversityProgramCode());
 			programModel.setProgramName(program.getUniversityProgramName());
 			programModel.setFacultyOrCollege(program.getUniversityProgramFaculty());

@@ -23,7 +23,11 @@ public class SubmittedApplications {
 	
 	@ManyToOne
 	@JoinColumn(name="FK_CollegeProgramMap")
-	private CollegeProgramMap collegeAndProgramDetail;
+	private CollegeProgramMap collegeProgramMap;
+	
+	@ManyToOne
+	@JoinColumn(name="FK_User")
+	private User user;
 	
 	@Column(name="Date")
 	private String date;
@@ -50,14 +54,22 @@ public class SubmittedApplications {
 			this.formNo = formNo;
 		}
 	
-		public CollegeProgramMap getCollegeAndProgramDetail() {
-			return collegeAndProgramDetail;
+		public CollegeProgramMap getCollegeProgramMap() {
+			return collegeProgramMap;
 		}
 	
-		public void setCollegeAndProgramDetail(CollegeProgramMap collegeAndProgramDetail) {
-			this.collegeAndProgramDetail = collegeAndProgramDetail;
+		public void setCollegeProgramMap(CollegeProgramMap collegeProgramMap) {
+			this.collegeProgramMap = collegeProgramMap;
 		}
 	
+		public User getUser() {
+			return user;
+		}
+
+		public void setUser(User user) {
+			this.user = user;
+		}
+
 		public String getDate() {
 			return date;
 		}

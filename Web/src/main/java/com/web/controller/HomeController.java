@@ -110,10 +110,11 @@ public class HomeController {
 
 	@RequestMapping(value = { "vendor/" }, method = RequestMethod.GET)
 	public String vendorPage(ModelMap model) {
+		Integer collegeId = 1;
 		session.setCurrentVendorName();
 		session.setCurrentVendor();
 		session.setCurrentVendorDetail();
-		session.setCollegeId();
+		sessionService.setCollege(collegeId);
 		model.addAttribute("vendor", session.getCurrentVendor());
 		model.addAttribute("vendordetail", session.getCurrentVendorDetail());
 		return "vendor/VendorPage-topnavbar";

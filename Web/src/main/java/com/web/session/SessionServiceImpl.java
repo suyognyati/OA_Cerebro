@@ -5,8 +5,10 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
+import com.data.entities.College;
 import com.data.entities.User;
 import com.data.entities.UserDetail;
+import com.data.services.CollegeService;
 import com.web.services.SessionRCService;
 
 @Service("sessionService")
@@ -17,6 +19,9 @@ public class SessionServiceImpl implements SessionService {
 	
 	@Autowired
 	private SessionRCService sessionRCService;
+	
+	@Autowired
+	CollegeService collegeService;
 	
 	User user = null;
 	UserDetail userDetail = null;
@@ -53,6 +58,13 @@ public class SessionServiceImpl implements SessionService {
 			userName = principal.toString();
 		}
 		return userName;
+	}
+
+	@Override
+	public void setCollege(Integer collegeId) {
+		College college = collegeService.getCollege(collegeId);
+		session.setCollegeId(collegeId);
+		session.setCollege(college);		
 	}
 
 	

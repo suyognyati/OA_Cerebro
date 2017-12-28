@@ -1,5 +1,7 @@
 package com.web.restcontroller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -29,6 +31,12 @@ public class CourseRestController {
 	
 	@RequestMapping(value="/applyForCourse", method = RequestMethod.POST)
 	public void applyForCourse(@RequestBody AppliedCourseModel appliedCourseModel) {
-		courseRCService.applyForCourse(appliedCourseModel.getCollegeProgramId(), appliedCourseModel.getSelectedSubjectList());
+		courseRCService.applyForCourse(session.getCurrentUser(), appliedCourseModel.getCollegeProgramId(), appliedCourseModel.getSelectedSubjectList());
+	}
+	
+	@RequestMapping(value="/getAppliedCourses", method = RequestMethod.GET)
+	public List<AppliedCourseModel> getAppliedCourses() {
+		List<AppliedCourseModel> appliedCoursemodel = courseRCService.getAppliedCourseDetails(session.getCurrentUser(), session.getCollege());
+		return appliedCoursemodel;
 	}
 }

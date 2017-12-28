@@ -7,6 +7,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
+import com.data.entities.College;
 import com.data.entities.User;
 import com.data.entities.UserDetail;
 import com.web.services.SessionRCService;
@@ -28,9 +29,10 @@ public class Session {
 	private User LoggedInUser = null;
 	private UserDetail LoggedInUserDetail = null;
 	
-	private Integer collegeId = null;
-	
 	private User Applicant = null;
+	
+	private Integer collegeId = null;
+	private College College = null;
 	
 	/* Getters for user */
 	
@@ -105,7 +107,6 @@ public class Session {
 	public User getLoggedInUser() {
 		return LoggedInUser;
 	}
-
 	public void setLoggedInUser(User loggedInUser) {
 		LoggedInUser = loggedInUser;
 	}
@@ -113,7 +114,6 @@ public class Session {
 	public UserDetail getLoggedInUserDetail() {
 		return LoggedInUserDetail;
 	}
-
 	public void setLoggedInUserDetail(UserDetail loggedInUserDetail) {
 		LoggedInUserDetail = loggedInUserDetail;
 	}	
@@ -121,7 +121,6 @@ public class Session {
 	public User getApplicant() {
 		return Applicant;
 	}
-
 	public void setApplicant(User applicant) {
 		Applicant = applicant;
 	}
@@ -129,9 +128,15 @@ public class Session {
 	public Integer getCollegeId() {
 		return collegeId;
 	}
-
-	public void setCollegeId() {
+	public void setCollegeId(Integer collegeId) {
 		this.collegeId = 1;
+	}
+
+	public College getCollege() {
+		return College;
+	}
+	public void setCollege(College college) {
+		College = college;
 	}
 
 	/**

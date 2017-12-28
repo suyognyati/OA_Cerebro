@@ -1,5 +1,7 @@
 package com.data.services;
 
-public interface CollegeService {
+import com.data.entities.College;
 
+public interface CollegeService {
+	College getCollege(Integer collegeId);
 }

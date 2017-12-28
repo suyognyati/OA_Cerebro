@@ -25,7 +25,7 @@ public class SubmittedApplicationRCServiceImpl implements SubmittedApplicationRC
 		SubmittedApplications submittedApplication = new SubmittedApplications();
 		submittedApplication.setApplicationStatus(Enums.ApplicationStatus.Submitted.getId());
 		CollegeProgramMap clgprgMap = collegeProgramMapService.getById(1);
-		submittedApplication.setCollegeAndProgramDetail(clgprgMap);
+		submittedApplication.setCollegeProgramMap(clgprgMap);
 		submittedApplication.setFormNo("");
 		submittedApplication.setDate("");
 		

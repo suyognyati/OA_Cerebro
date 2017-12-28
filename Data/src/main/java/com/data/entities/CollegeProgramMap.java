@@ -15,8 +15,8 @@ public class CollegeProgramMap {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="CollegeProgramId")
-	Integer collegeProgramId;
+	@Column(name="CollegeProgramMapId")
+	Integer collegeProgramMapId;
 	
 	@ManyToOne
 	@JoinColumn(name="FK_College")
@@ -30,12 +30,12 @@ public class CollegeProgramMap {
 	@JoinColumn(name="FK_Program")
 	University_Program program;
 
-		public Integer getCollegeProgramId() {
-			return collegeProgramId;
+		public Integer getCollegeProgramMapId() {
+			return collegeProgramMapId;
 		}
 	
-		public void setCollegeProgramId(Integer collegeProgramId) {
-			this.collegeProgramId = collegeProgramId;
+		public void setCollegeProgramMapId(Integer collegeProgramMapId) {
+			this.collegeProgramMapId = collegeProgramMapId;
 		}
 	
 		public College getCollege() {

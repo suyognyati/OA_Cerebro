@@ -161,20 +161,21 @@
 			views: {
 				"view":{
                 	templateUrl: basePath + userApplicationTemplatesFolderPath + "applicationStatusView.html",
-                	//controller:"applicationCtrl as vm",
+                	controller:"ApplicationStatusCtrl as vm",
 				}
 			},
-			/*resolve: {
-				userDetail : ['$ocLazyLoad', function($ocLazyLoad){
+			resolve: {
+				applicationStatus : ['$ocLazyLoad', function($ocLazyLoad){
 					return $ocLazyLoad.load({
 						name : 'admission',
 						files : [
-						     basePath + userControllersFolderPath + 'applicationCtrl.js'
+							basePath + userControllersFolderPath + 'applicationStatusCtrl.js',
+							basePath + userServicesFolderPath + 'applicationStatusService.js'
 						]
 				
 					})
 				}]
-			}*/
+			}
 		})
 		
 		.state("studentStatus.userDetail",{
