@@ -55,7 +55,7 @@ public class HomeController {
 		model.addAttribute("vendordetail", session.getCurrentVendorDetail());
 		model.addAttribute("user", session.getCurrentUser());
 		model.addAttribute("userdetail", session.getCurrentUserDetail());
-		return "user/UserPage-newUI";
+		return "user/UserPageofVendor";
 	}
 	
 	@RequestMapping(value = { "user/" }, method = RequestMethod.GET)
