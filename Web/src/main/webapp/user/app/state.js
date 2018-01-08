@@ -109,7 +109,8 @@
 						name : 'admission',
 						files : [
 						     basePath + userControllersFolderPath + 'programCtrl.js',
-						     basePath + userServicesFolderPath + 'programService.js'
+						     basePath + userServicesFolderPath + 'programService.js',
+						     basePath + userServicesFolderPath + 'applicationStatusService.js'
 						]
 				
 					})

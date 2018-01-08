@@ -32,8 +32,13 @@
 					<td>{{program.facultyOrCollege}}</td>
 					<td>{{program.applicationDates}}</td>
 					<td>
-						<input type="button" value="Apply" class="btn btn-success btn-block topMargin" 
-						ng-click="vm.applyProgram(program.collegeProgramId, program.programName, program.programCode, program.fileMap.universityFolderName, program.fileMap.viewFileName)">
+						<div ng-if="!program.isAlreadyApplied">
+							<input type="button" value="Apply" class="btn btn-success btn-block topMargin" 
+							ng-click="vm.applyProgram(program.collegeProgramId, program.programName, program.programCode, program.fileMap.universityFolderName, program.fileMap.viewFileName)">
+						</div>
+						<div ng-if="program.isAlreadyApplied">
+							<input type="button" value="Apply" class="btn btn-success btn-block topMargin" disabled="disabled">
+						</div>
 					</td>
 				</tr>
 			</tbody>
