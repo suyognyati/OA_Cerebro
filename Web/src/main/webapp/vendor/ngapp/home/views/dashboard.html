@@ -1,0 +1,30 @@
+<div class="panel panel-default">
+     <div class="panel-heading">
+		<span style="font-family:Verdana">Applicant's Details</span>
+	</div>
+     <div class="panel-body">
+          <div class="row">
+               <div class="col-sm-6">
+                    <div ng-repeat="bloodGroup in vm.bloodGroupList">
+                         <ul>
+                              <li>{{bloodGroup.key}} {{bloodGroup.value}}</li>
+                         </ul>
+                    </div>
+               </div>
+               <div class="col-sm-6">
+                    <select id="bloodgroup"
+                    		class="selectpicker" data-width="100%"
+                    		data-live-search="true" title="-- Select --"
+                    		tabindex="23"
+                    		ng-model="vm.personaldetail.bloodGroup"
+                    		ng-options="bloodgroup.key as bloodgroup.value for bloodgroup in vm.bloodGroupList">
+                    </select>
+               </div>
+          </div>
+     </div>
+</div>
+
+
+<script type="text/javascript">
+	$(".selectpicker").selectpicker("refresh");
+</script>

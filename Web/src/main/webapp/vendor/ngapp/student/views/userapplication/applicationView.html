@@ -1,0 +1,15 @@
+<div class="row row-custom-margin">
+    <div class="col-sm-2 left-nav col-sm-custompadding" id="mySidenav">
+		<ul class="nav nav-pills nav-stacked submenu" data-spy="affix" data-offset-top="60">
+			<li id="applyOnline"><a ui-sref="application.applyOnline"><i class="glyphicon glyphicon-user"></i> <span id="nav-text7" class="nav-text-display">Apply Online</span></a></li>
+			<li id="applicationStatus"><a ui-sref="application.applicationStatus"><i class="glyphicon glyphicon-briefcase"></i> <span id="nav-text8" class="nav-text-display">Application Status</span></a></li>
+		</ul>
+    </div>
+	<div class="col-sm-10 main-content col-sm-custompadding" id="main-content"> <a class="btn btn-toggleleft nav-button-col" onclick="toggle()"><i class="glyphicon glyphicon-menu-hamburger"></i></a>
+		<div class="min-height" ui-view="view"></div>
+	</div>
+</div>
+
+<script type="text/javascript">
+	fixLeftNavOnScroll();
+</script>

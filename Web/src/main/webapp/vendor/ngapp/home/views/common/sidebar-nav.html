@@ -1,0 +1,92 @@
+<div class="wrapper">
+       <!-- Sidebar Holder -->
+       <nav id="sidebar" class="side-nav-scrol">
+            <ul class="list-unstyled components">
+                <li ui-sref-active="active">
+                    <a ui-sref="home.dashboard">
+                        <!-- <i class="glyphicon glyphicon-briefcase"></i> -->
+                        <i class="icon-speedometer"></i>
+                        Dashboard
+                    </a>
+                </li>
+                <li ui-sref-active="active">
+                    <a ui-sref="home.searchcolleges">
+                        <!-- <i class="glyphicon glyphicon-briefcase"></i> -->
+                        <i class="icon-pie-chart"></i>
+                        Colleges
+                    </a>
+                </li>
+                <li>
+                   <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">
+                       <!-- <i class="glyphicon glyphicon-home"></i> -->
+                       <i class="icon-puzzle"></i>
+                       Components
+                   </a>
+                   <ul class="collapse list-unstyled" id="homeSubmenu">
+                       <li><a href=""><i class="icon-puzzle"></i>Home 1</a></li>
+                       <li><a href=""><i class="icon-puzzle"></i>Home 2</a></li>
+                       <li><a href=""><i class="icon-puzzle"></i>Home 3</a></li>
+                   </ul>
+               </li>
+               <li>
+                   <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">
+                       <!-- <i class="glyphicon glyphicon-duplicate"></i> -->
+                       <i class="icon-star"></i>
+                       Icons
+                   </a>
+                   <ul class="collapse list-unstyled" id="pageSubmenu">
+                       <li><a href="#"><i class="icon-star"></i>Page 1</a></li>
+                       <li><a href="#"><i class="icon-star"></i>Page 2</a></li>
+                       <li><a href="#"><i class="icon-star"></i>Page 3</a></li>
+                   </ul>
+               </li>
+               <li ui-sref-active="active">
+                   <a ui-sref="studentsimple.login">
+                       <!-- <i class="glyphicon glyphicon-link"></i> -->
+                       <i class="icon-login"></i>
+                       Student Login
+                   </a>
+               </li>
+               <li>
+                   <a href="#">
+                       <i class="glyphicon glyphicon-paperclip"></i>
+                       FAQ
+                   </a>
+               </li>
+               <li>
+                   <a href="#">
+                       <i class="glyphicon glyphicon-send"></i>
+                       Contact
+                   </a>
+               </li>
+           </ul>
+      </nav>
+      <nav id="sidebartoggler" class="side-nav-fix">
+            <ul class="nav navbar-nav navbar-right">
+              <li class="nav-item">
+                   <a id="sidebarToggle" class="nav-link navbar-toggler aside-menu-toggler" href="">
+                        <i class="fa fa-angle-double-left fa-lg mt-4"></i>
+                        <!-- <i class="fa fa-arrow-left fa-lg mt-4"></i> -->
+                   </a>
+              </li>
+         </ul>
+      </nav>
+</div>
+
+
+<script type="text/javascript">
+   $(document).ready(function () {
+       $('#sidebarToggle').on('click', function () {
+           $('#sidebar.side-nav-scrol').toggleClass('active');
+		 $('#sidebartoggler.side-nav-fix').toggleClass('active');
+           $('#sidebarToggle > i').toggleClass('fa-angle-double-left');
+           $('#sidebarToggle > i').toggleClass('fa-angle-double-right');
+           $('.main').toggleClass('sidebar-small');
+
+           // $('#sidebarToggle > i').toggleClass('fa-arrow-left');
+           // $('#sidebarToggle > i').toggleClass('fa-arrow-right');
+
+           // $('.sidebar-fixed').toggleClass('sidebar-hidden');
+       });
+   });
+</script>

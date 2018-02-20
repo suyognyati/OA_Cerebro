@@ -1,0 +1,75 @@
+<div class="">
+	<div class="">
+		<div class="row">
+			<div class="col-sm-3"></div>
+			<div class="col-sm-6">
+				<div class="card-group">
+					<div class="col-sm-6 login">
+						<h1>Login</h1>
+						<p class="">Sign In to your account</p>
+						<form name="form" ng-submit="vm.login()" role="form">
+							<div class="form-group">
+								<div class="row">
+									<div class="col-sm-1"></div>
+									<div class="col-sm-10">
+										<div class="input-group">
+											<span class="input-group-addon">
+												<i class="icon-user" aria-hidden="true"></i>
+											</span>
+											<input type="text" class="form-control" name="username" id="username"
+												placeholder="Enter your Username" ng-model="vm.credentials.username" required />
+										</div>
+									</div>
+									<div class="col-sm-1"></div>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="row">
+									<div class="col-sm-1"></div>
+									<div class="col-sm-10">
+										<div class="input-group">
+											<span class="input-group-addon">
+												<i class="icon-lock" aria-hidden="true"></i>
+											</span> 
+											<!-- <input type="password"
+												class="form-control" name="password" id="password"
+												placeholder="Enter your Password" /> -->
+											<input type="password" name="password" id="password" class="form-control" 
+												placeholder="Enter your Password" ng-model="vm.credentials.password" required />
+										</div>
+									</div>
+									<div class="col-sm-1"></div>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="row">
+									<div class="col-sm-1"></div>
+									<div class="col-sm-4">
+										<input type="submit" ng-disabled="form.$invalid" class="btn btn-primary" value="Log in"/>
+										<!-- <button type="button" class="btn btn-primary">Login</button> -->
+									</div>
+									<div class="col-sm-1"></div>
+									<div class="col-sm-6" style="text-align: right">
+										<button type="button" class="btn btn-link">Forgot
+											password?</button>
+									</div>
+								</div>
+							</div>
+						</form>
+					</div>
+					<div class="col-sm-6 register">
+						<div>
+							<h2>Sign up</h2>
+							<p>Undergraduate and Post Graduate students to register and Login for admission and Exam form filling here.</p>
+     						<p>पदवीपूर्व आणि पदव्युत्तर विद्यार्थ्यांनी नोंदणी करून येथून प्रवेश व परीक्षा अर्ज भरावा.</p>
+							<input type="button" value="Register"
+								class="btn btn-primary btn-register">
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-sm-3"></div>
+		</div>
+	</div>
+</div>

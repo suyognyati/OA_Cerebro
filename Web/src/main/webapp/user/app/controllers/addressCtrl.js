@@ -73,7 +73,7 @@
 			addressService.save(vm.address, vm.accessTokenParam)
 			.success(function (data, status, headers, config) {
                 vm.successMessage = "Detail saved successfully";
-                $state.go("educationInformation");
+                $state.go("studentStatus.educationInformation");
             })
             .error(function (data, status, headers, config) {
                 vm.errorMessage = "Error while saving detail";

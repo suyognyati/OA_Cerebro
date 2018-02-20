@@ -117,7 +117,7 @@ public class HomeController {
 		sessionService.setCollege(collegeId);
 		model.addAttribute("vendor", session.getCurrentVendor());
 		model.addAttribute("vendordetail", session.getCurrentVendorDetail());
-		return "vendor/VendorPage-topnavbar";
+		return "vendor/vendor_newUI"; //VendorPage-topnavbar";
 	}
 	
 	@RequestMapping(value = "admin/", method = RequestMethod.GET)
