@@ -62,7 +62,7 @@
 
 		vm.submit = function() {
 			personalDetailService.save(vm.personaldetail, vm.accessTokenParam)
-			.then(function (sucess) {
+			.then(function (success) {
 				vm.successMessage = "Detail saved successfully";
 				$state.go("student.profile.address");
 			}, function (error) {

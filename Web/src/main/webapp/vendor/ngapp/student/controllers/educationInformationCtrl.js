@@ -88,6 +88,10 @@
 			return view;
 		}
 		
+		vm.submit = function() {
+			$state.go("student.profile.occupationReservation");
+		}
+		
 		setTimeout(function() {
 		    vm.loadData();
 		}, $scope.getDataDelay);

@@ -76,6 +76,11 @@
 			//$scope.imageDataURI = $scope.resImageDataURI;
 			$scope.showResult = showRes;
 		}
+		
+		vm.submit = function() {
+			$state.go("student.profile.uploadDocuments");
+		}
+		
 	};
 
 }());

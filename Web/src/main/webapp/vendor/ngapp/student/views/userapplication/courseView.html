@@ -9,10 +9,11 @@
 	<strong>Program Code :</strong> {{vm.programCode}}
 </div>
 
-<form>
+
 <!-- ============== Subject selection page ==============  -->
 
 <div ng-show="!vm.isSubjectSelectionCompleted">
+<form>
 	<div class="panel panel-default panel-body">
 		<div class="col-sm-12 form-group">
 			<div class="col-sm-3">
@@ -29,7 +30,6 @@
 	<div class="well alert-danger">
 		<b>Minimum 6 Course(s) & Maximum 6 Course(s) should be Selected</b>	
 	</div>
-</div>
 
 <!-- ============== Displaying subjects from data ==============  -->
 
@@ -155,7 +155,7 @@
 
 <!-- ============== Show selected subjects ==============  -->
 <div ng-show="vm.isSubjectSelectionCompleted">
-<form class="panel panel-body">
+<form>
 	<div class="panel panel-default">
 		<div class="panel-body form-group">
 			<div class="row">
@@ -166,21 +166,21 @@
 		</div>	
 	</div>
 	
-	<div class="row" style="margin: 25px 0px 25px 0px;">
-		<div class="col-sm-4"></div>
-		<div class="col-sm-2">
-        	<input type="button" 
-        		   value="Back" 
-        		   class="btn btn-success btn-block topMargin" 
-        		   ng-click="vm.showSelectedSubjects(false)">
-        </div>
-		<div class="col-sm-2">
-        	<input type="button" 
-        		   value="Proceed" 
-        		   class="btn btn-success btn-block topMargin" 
-        		   ng-click="vm.applyForCourse()">
-        </div>
-		<div class="col-sm-4"></div>
-	</div>
 </form>
+<div class="row" style="margin: 25px 0px 25px 0px;">
+	<div class="col-sm-4"></div>
+	<div class="col-sm-2">
+       	<input type="button" 
+       		   value="Back" 
+       		   class="btn btn-success btn-block topMargin" 
+       		   ng-click="vm.showSelectedSubjects(false)">
+       </div>
+	<div class="col-sm-2">
+       	<input type="button" 
+       		   value="Proceed" 
+       		   class="btn btn-success btn-block topMargin" 
+       		   ng-click="vm.applyForCourse()">
+       </div>
+	<div class="col-sm-4"></div>
+</div>
 </div>

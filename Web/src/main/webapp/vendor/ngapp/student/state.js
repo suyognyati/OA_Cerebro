@@ -76,6 +76,31 @@ function StudentStates($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, 
 		//page subtitle goes here
 		params: { subtitle: 'Welcome to home' },
 	})
+	/*
+	.state("student.profile.userDetail",{
+		url: "/userdetails",
+		templateUrl: 'ngapp/student/views/studentprofile/userDetailView.html',
+        controller: 'UserDetailCtrl as vm',
+		
+      //page title goes here
+		ncyBreadcrumb: {
+			label: 'User Detail',
+		},
+		//page subtitle goes here
+		params: { subtitle: 'User Details' },
+		resolve: {
+			loadMyCtrl: ['$ocLazyLoad', function($ocLazyLoad) {
+				// you can lazy load controllers
+				return $ocLazyLoad.load({
+					serie: true,
+					files: [
+					        'ngapp/student/controllers/userDetailCtrl.js',
+					        'ngapp/student/services/userDetailService.js'
+					        ]
+				});
+			}]
+		}
+	})*/
 	.state('student.profile.personalDetail', {
 		url: '/personaldetail',
 		templateUrl: 'ngapp/student/views/studentprofile/personalDetailView.html',

@@ -14,7 +14,7 @@
 					ng-click="$event.preventDefault();">
 					<!-- <i class="glyphicon glyphicon-home"></i> -->
 					<i class="icon-puzzle"></i>
-					Student Profile
+					Create Profile
 				</a>
 				<ul class="collapse list-unstyled" id="studentProfile">
 					<li ui-sref-active="active" ui-sref="student.profile.userDetail">
@@ -35,6 +35,22 @@
 						<a ng-href="#"><i class="icon-puzzle"></i>Upload Photo & Signature</a></li>
 					<li ui-sref-active="active" ui-sref="student.profile.uploadDocuments">
 						<a ng-href="#"><i class="icon-puzzle"></i>Upload Documents</a></li>
+				</ul>
+			</li>
+			<li>
+				<a ng-href="#viewProfile" data-toggle="collapse" aria-expanded="false"
+					ng-click="$event.preventDefault();">
+					<!-- <i class="glyphicon glyphicon-home"></i> -->
+					<i class="icon-puzzle"></i>
+					View Profile
+				</a>
+				<ul class="collapse list-unstyled" id="viewProfile">
+					<li ui-sref-active="active" ui-sref="student.profile.userDetail">
+						<a ng-href="#"><i class="icon-puzzle"></i>Applicant's Detail</a>
+					</li>
+					<li ui-sref-active="active" ui-sref="student.profile.personalDetail">
+						<a ng-href="#"><i class="icon-puzzle"></i>Educational Detail</a>
+					</li>
 				</ul>
 			</li>
 			<li>

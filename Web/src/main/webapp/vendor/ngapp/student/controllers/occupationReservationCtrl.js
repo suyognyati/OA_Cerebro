@@ -30,7 +30,7 @@
 			OccupationReservationService.save(vm.occupationandreservation, vm.accessTokenParam)
 			.then(function (success) {
 				vm.successMessage = "Saved successfully";
-				$state.go("educationInformation");
+				$state.go("student.profile.uploadPhotoSign");
 			}, function (error) {
 				vm.errorMessage = "Error while saving data";
 			})
