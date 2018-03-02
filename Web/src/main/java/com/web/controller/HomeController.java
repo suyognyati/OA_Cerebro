@@ -81,7 +81,7 @@ public class HomeController {
 		model.addAttribute("Bearer", accessTokenValue);
 		model.addAttribute("user", session.getLoggedInUser());
 		model.addAttribute("userdetail", session.getLoggedInUserDetail());
-		return "user/StudentView";
+		return "user/StudentView_newUI";
 	}
 	
 	@RequestMapping(value = { "user/studentview/" }, method = RequestMethod.GET)
@@ -98,9 +98,9 @@ public class HomeController {
 	        	}
 	        }
 		}
-		if(accessTokenValue == null || accessTokenValue == "") {
+		/*if(accessTokenValue == null || accessTokenValue == "") {
 			return "redirect:/user/";
-		}
+		}*/
 		
 		model.addAttribute("Bearer", accessTokenValue);
 		model.addAttribute("user", session.getCurrentUser());

@@ -1,0 +1,114 @@
+/* Default tags */
+/* .app-body .container-fluid {
+     background-color: #e4e5e6;
+} */
+
+.align-div-items-center {
+     align-items: center;
+     flex-direction: row;
+     display: flex;
+}
+
+
+/* Custom tags */
+.fix-image-to-div {
+     max-width: 100%;
+     max-height: 100%;
+}
+
+.no-padding {
+	padding: 0;
+}
+
+.no-top-bottom-padding {
+	padding-top: 0px !important;
+     padding-bottom: 0px !important;
+}
+
+.profileimg-top-bottom-padding {
+	padding-top: 8px !important;
+     padding-bottom: 7px !important;
+}
+
+.no-margin {
+	margin: 0;
+}
+
+.btn-register {
+     color: #fff;
+     background-color: #1985ac;
+     border-color: #187da0;
+     box-shadow: 0 0 0 0.2rem rgba(32, 168, 216, 0.5)
+}
+
+/* CSS for Image Crop */
+.paddingForuploadImg {
+	padding:10px 0 10px 25%;
+}
+.displayInlineBlock {
+	display:inline-block;
+	margin: 20px 0 0 0;
+}
+
+.paddingLeft {
+	padding:50px
+}
+
+.marginForUploadBtn {
+	margin:2% 0 0 5%;
+}
+input[type="file"].upload {
+    display: none;
+}
+.cursorForBtn {
+	cursor:pointer;
+}
+.cropArea {
+	 margin: 0;
+}
+
+/* List Tree view for course */
+
+clt, .clt ul, .clt li {
+     position: relative;
+     line-height: 40px;
+}
+
+.clt ul {
+    list-style: none;
+    padding-left: 25px;
+}
+
+.clt li::before, .clt li::after {
+    content: "";
+    position: absolute;
+    left: -12px;
+}
+
+.clt li::before {
+    border-top: 1px solid #000;
+    top: 16px;
+    width: 10px;
+    height: 0;
+}
+
+.clt li::after {
+    border-left: 1px solid #000;
+    height: 100%;
+    width: 0px;
+    top: 2px;
+}
+
+/* .clt ul > li:last-child::after {
+    height: 8px;
+} */
+
+/* Category style for apply online */
+
+.category {
+	/* width:300px; */ 
+	min-height:150px; 
+	text-align:center; 
+	/* margin:10px; */ 
+	padding:20px;
+}

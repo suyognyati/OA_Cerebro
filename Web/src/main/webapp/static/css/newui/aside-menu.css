@@ -1,0 +1,81 @@
+/*
+    DEMO STYLE
+*/
+@import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+
+.aside-menu.show {
+     margin-left: -250px;
+     transition: all 0.3s;
+}
+.aside-menu .nav-tabs > li > a {
+     border-radius: 0px;
+}
+.aside-menu .menu-items {
+     margin-left: 0px;
+     border-left: 1px solid #c2cfd6;
+     position: fixed;
+     z-index: 1019;
+     width: 250px;
+     height: 41px;
+     color: #29363d;
+     background: #fff;
+}
+.aside-menu .menu-content {
+     margin-top: 41px;
+     margin-left: 0px;
+     border-top: 1px solid #c2cfd6;
+     border-left: 1px solid #c2cfd6;
+     padding: 15px;
+     font-size: 1.1em;
+     position: fixed;
+     z-index: 1019;
+     width: 250px;
+     height: calc(100vh - 52px - 41px);
+     color: #29363d;
+     background: #fff;
+     -ms-overflow-style: scrollbar;
+     overflow: auto;
+}
+.nav-item.active > a > i {
+     color: #147ee4;
+}
+.aside-menu .menu-items .nav-tabs > li > a:hover {
+
+     border-left: 1px solid #ddd;
+     border-right: 1px solid #ddd;
+     background-color: inherit;
+}
+.aside-menu .menu-items .nav-tabs > li.active > a,
+.aside-menu .menu-items .nav-tabs > li.active > a:hover,
+.aside-menu .menu-items .nav-tabs > li.active > a:focus {
+     border-top: 0px;
+     border-bottom: 0px;
+     border-left: 1px solid #ddd;
+     border-right: 1px solid #ddd;
+}
+
+/* Scrollbar css for aside-menu */
+.aside-menu .menu-content::-webkit-scrollbar {
+    position: absolute;
+    width: 10px;
+    margin-left: -10px;
+    -webkit-appearance: none;
+}
+.aside-menu .menu-content::-webkit-scrollbar-thumb {
+    height: 50px;
+    background-color: #e6e6e6;
+    background-clip: content-box;
+    border-color: transparent;
+    border-style: solid;
+    border-width: 1px 2px;
+}
+.aside-menu .menu-content::-webkit-scrollbar-track {
+    background-color: #ffffff;
+    border-right: 1px solid #f2f2f2;
+    border-left: 1px solid #f2f2f2;
+}
+
+/* Removes arrows of selected navigation item */
+.aside-menu a[aria-expanded="false"]::before, a[aria-expanded="true"]::before {
+     content: '';
+}
