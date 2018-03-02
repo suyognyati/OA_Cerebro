@@ -2,6 +2,9 @@ angular
 .module('app')
 .config(['$stateProvider', '$urlRouterProvider', '$ocLazyLoadProvider', '$breadcrumbProvider', function($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, $breadcrumbProvider) {
 
+	var contextPath = "/Web";
+	var rootPath = "/static/"
+	var basePath = contextPath + rootPath;
      $urlRouterProvider.otherwise('/home/dashboard');
 
      $ocLazyLoadProvider.config({
@@ -34,11 +37,11 @@ angular
 				return $ocLazyLoad.load([{
 					serie: true,
 					name: 'Font Awesome',
-					files: ['node_modules/font-awesome/css/font-awesome.min.css']
+					files: [basePath + 'node_modules/font-awesome/css/font-awesome.min.css']
 				},{
 					serie: true,
 					name: 'Simple Line Icons',
-					files: ['node_modules/simple-line-icons/css/simple-line-icons.css']
+					files: [basePath + 'node_modules/simple-line-icons/css/simple-line-icons.css']
 				}]);
 			}]
 		}
@@ -62,11 +65,11 @@ angular
 				return $ocLazyLoad.load([{
 					serie: true,
 					name: 'Font Awesome',
-					files: ['node_modules/font-awesome/css/font-awesome.min.css']
+					files: [basePath + 'node_modules/font-awesome/css/font-awesome.min.css']
 				},{
 					serie: true,
 					name: 'Simple Line Icons',
-					files: ['node_modules/simple-line-icons/css/simple-line-icons.css']
+					files: [basePath + 'node_modules/simple-line-icons/css/simple-line-icons.css']
 				}]);
 			}]
 		}
@@ -90,11 +93,11 @@ angular
 				return $ocLazyLoad.load([{
 					serie: true,
 					name: 'Font Awesome',
-					files: ['node_modules/font-awesome/css/font-awesome.min.css']
+					files: [basePath + 'node_modules/font-awesome/css/font-awesome.min.css']
 				},{
 					serie: true,
 					name: 'Simple Line Icons',
-					files: ['node_modules/simple-line-icons/css/simple-line-icons.css']
+					files: [basePath + 'node_modules/simple-line-icons/css/simple-line-icons.css']
 				}]);
 			}]
 		}
