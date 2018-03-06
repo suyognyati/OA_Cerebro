@@ -5,7 +5,7 @@ angular
 	var contextPath = "/Web";
 	var rootPath = "/static/"
 	var basePath = contextPath + rootPath;
-     $urlRouterProvider.otherwise('/home/dashboard');
+     $urlRouterProvider.otherwise('/studentview/dashboard');
 
      $ocLazyLoadProvider.config({
           // Set to true if you want to see what and when is dynamically loaded
@@ -13,19 +13,19 @@ angular
      });
 
      $breadcrumbProvider.setOptions({
-          prefixStateName: 'home.dashboard',
+          prefixStateName: 'studentview.dashboard',
           includeAbstract: true,
           template: '<li class="breadcrumb-item" ng-repeat="step in steps" ng-class="{active: $last}" ng-switch="$last || !!step.abstract"><a ng-switch-when="false" href="{{step.ncyBreadcrumbLink}}">{{step.ncyBreadcrumbLabel}}</a><span ng-switch-when="true">{{step.ncyBreadcrumbLabel}}</span></li>'
      });
 
 	$stateProvider
 	/**
-	* States for Home
+	* States for studentview
 	* */
-	.state('home', {
-		url: '/home',
+	.state('studentview', {
+		url: '/studentview',
 		abstract: true,
-		templateUrl: 'ngapp/home/views/common/layouts/home.html',
+		templateUrl: 'ngapp/studentview/views/common/layouts/studentview.html',
 		//page title goes here
 		ncyBreadcrumb: {
 			label: 'Root',

@@ -3,21 +3,21 @@
        <nav id="sidebar" class="side-nav-scrol">
             <ul class="list-unstyled components">
                 <li ui-sref-active="active">
-                    <a ui-sref="home.dashboard">
+                    <a ui-sref="studentview.dashboard">
                         <!-- <i class="glyphicon glyphicon-briefcase"></i> -->
                         <i class="icon-speedometer"></i>
                         Dashboard
                     </a>
                 </li>
                 <li ui-sref-active="active">
-                    <a ui-sref="home.basicDetail">
+                    <a ui-sref="studentview.basicDetail">
                         <!-- <i class="glyphicon glyphicon-briefcase"></i> -->
                         <i class="glyphicon glyphicon-briefcase"></i>
                         Profile Details
                     </a>
                 </li>
-               <li ng-class="{active: ('home.educationalDetail' | includedByState) || ('home.qualificationDetail' | includedByState)}">
-                   <a ui-sref="home.educationalDetail">
+               <li ng-class="{active: ('studentview.educationalDetail' | includedByState) || ('studentview.qualificationDetail' | includedByState)}">
+                   <a ui-sref="studentview.educationalDetail">
                        <!-- <i class="glyphicon glyphicon-link"></i> -->
                        <i class="glyphicon glyphicon-education"></i>
                        Educational Details

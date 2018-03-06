@@ -12,9 +12,9 @@
 
 		$stateProvider
 
-		.state('home.dashboard', {
+		.state('studentview.dashboard', {
 			url: '/dashboard',
-			templateUrl: 'ngapp/home/views/dashboard.html',
+			templateUrl: 'ngapp/studentview/views/dashboard.html',
 	          controller:'dashboardCtrl as vm',
 
 			//page title goes here
@@ -22,19 +22,19 @@
 				label: 'Dashboard',
 			},
 			//page subtitle goes here
-			params: { subtitle: 'Welcome to home' },
+			params: { subtitle: 'Welcome to studentview' },
 			resolve: {
 				loadMyCtrl: ['$ocLazyLoad', function($ocLazyLoad) {
 					// you can lazy load controllers
 					return $ocLazyLoad.load({
-						files: ['ngapp/home/controllers/dashboard.js']
+						files: ['ngapp/studentview/controllers/dashboard.js']
 					});
 				}]
 			}
 		})
-	     .state('home.basicDetail', {
+	     .state('studentview.basicDetail', {
 			url: '/basicdetail',
-			templateUrl: 'ngapp/home/views/applicantDetailView.html',
+			templateUrl: 'ngapp/studentview/views/applicantDetailView.html',
 			controller:"ApplicantDetailCtrl as vm",
 			//page title goes here
 			ncyBreadcrumb: {
@@ -47,16 +47,16 @@
 					// you can lazy load controllers
 					return $ocLazyLoad.load({
 						files: [
-							'ngapp/home/controllers/applicantDetailCtrl.js',
-							'ngapp/home/services/applicantDetailService.js'
+							'ngapp/studentview/controllers/applicantDetailCtrl.js',
+							'ngapp/studentview/services/applicantDetailService.js'
 						]
 					});
 				}]
 			}
 		})
-		.state('home.educationalDetail', {
+		.state('studentview.educationalDetail', {
 			url: '/educationdetail',
-			templateUrl: 'ngapp/home/views/educationInformationView.html',
+			templateUrl: 'ngapp/studentview/views/educationInformationView.html',
 			controller:"EducationInformationCtrl as vm",
 			//page title goes here
 			ncyBreadcrumb: {
@@ -69,26 +69,26 @@
 					// you can lazy load controllers
 					return $ocLazyLoad.load({
 						files: [
-							'ngapp/home/controllers/educationInformationCtrl.js',
-							'ngapp/home/services/educationInformationService.js'
+							'ngapp/studentview/controllers/educationInformationCtrl.js',
+							'ngapp/studentview/services/educationInformationService.js'
 						]
 					});
 				}]
 			}
 		})
-		.state('home.qualificationDetail', {
+		.state('studentview.qualificationDetail', {
 			url: '/educationinformation/:qualification?:qualificationMainLevel',
 			templateUrl:
 			function (stateParams){
 				if(stateParams.qualificationMainLevel == 1
 						/*&& stateParams.qualification == "ssc"*/) {
-					return "ngapp/home/views/qualificationDetailView/sscView.html"
+					return "ngapp/studentview/views/qualificationDetailView/sscView.html"
 				} else if((stateParams.qualificationMainLevel >= 2 && stateParams.qualificationMainLevel <= 3)
 						/*&& stateParams.qualification == "hsc"*/) {
-					return "ngapp/home/views/qualificationDetailView/hscView.html"
+					return "ngapp/studentview/views/qualificationDetailView/hscView.html"
 				} else if(stateParams.qualificationMainLevel == 4
 						/*&& stateParams.qualification == "diploma"*/) {
-					return "ngapp/home/views/qualificationDetailView/diplomaView.html"
+					return "ngapp/studentview/views/qualificationDetailView/diplomaView.html"
 				} else {
 					return false;
 				}
@@ -111,8 +111,8 @@
 					// you can lazy load controllers
 					return $ocLazyLoad.load({
 						files: [
-							'ngapp/home/controllers/qualificationDetailCtrl.js',
-							'ngapp/home/services/qualificationDetailService.js'
+							'ngapp/studentview/controllers/qualificationDetailCtrl.js',
+							'ngapp/studentview/services/qualificationDetailService.js'
 						]
 					});
 				}]

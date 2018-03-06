@@ -36,7 +36,7 @@
 		vm.qualificationDetail = function(qualificationMainLevel, qualificationId) {
 			var view = mapView(qualificationMainLevel);
 
-			$state.go("home.qualificationDetail", {qualification:view ,qualificationMainLevel:qualificationMainLevel, qualificationId:qualificationId});
+			$state.go("studentview.qualificationDetail", {qualification:view ,qualificationMainLevel:qualificationMainLevel, qualificationId:qualificationId});
 		}
 
 		var mapView = function(qualificationMainLevel) {

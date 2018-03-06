@@ -67,7 +67,7 @@
 		<script src="<c:url value='ngapp/app.js' />"></script>
 		
 		<script src="<c:url value='ngapp/state.js' />"></script>
-		<script src="<c:url value='ngapp/home/state.js' />"></script>
+		<script src="<c:url value='ngapp/studentview/state.js' />"></script>
 		
 		<script src="<c:url value='ngapp/directives.js' />"></script>
 
