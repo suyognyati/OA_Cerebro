@@ -50,7 +50,7 @@
 			}
 		}
 
-		vm.showGroupBox = function(choice) {
+		vm.showGroupBox = function(id) {
 
 			vm.showGroup.personalDetail = false;
 			vm.showGroup.contactDetail = false;
@@ -58,23 +58,25 @@
 			vm.showGroup.occupationDetail = false;
 			vm.showGroup.reservationDetail = false;
 
-			switch(choice) {
-				case "personalDetail" :
+			switch(id) {
+				case "personal" :
 					vm.showGroup.personalDetail = true;
 					break;
-				case "contactDetail" :
+				case "contact" :
 					vm.showGroup.contactDetail = true;
 					break;
-				case "nationalityDetail" :
+				case "nationality" :
 					vm.showGroup.nationalityDetail = true;
 					break;
-				case "occupationDetail" :
+				case "occupation" :
 					vm.showGroup.occupationDetail = true;
 					break;
-				case "reservationDetail" :
+				case "reservation" :
 					vm.showGroup.reservationDetail = true;
 					break;
 			}
+			
+			setActiveOnSubMenu(id);
 		}
 	};
 

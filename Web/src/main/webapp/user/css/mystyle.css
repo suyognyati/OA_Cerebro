@@ -112,3 +112,161 @@ clt, .clt ul, .clt li {
 	/* margin:10px; */ 
 	padding:20px;
 }
+
+/* CSS for student profile  */
+
+.group{
+	/* border-right: #ddd 1px solid;
+	border-bottom: #ddd 1px solid;
+	border-left: #ddd 1px solid; */
+	margin:0 10px;
+}
+
+.group-body, .group{
+	padding:10px 20px;
+}
+
+.group-label{
+	font-weight:normal;
+}
+
+.applicantDetailList ul{
+	list-style:none;
+	margin:0;
+	padding:0 0 0 15px;	
+}
+
+.formData{
+	font-size:14px;
+	
+	font-weight:bold;
+	}
+	
+.groupHeadingStyle{
+	font-family:verdana;
+	font-weight:bold;
+	color: #185086;
+	border-bottom:#185086 1px solid;
+	padding:0 0 3px 5px;
+	margin:30px 0 0 0;
+	}
+
+#submenu,
+#submenu ul,
+#submenu ul li,
+#submenu ul li a {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  list-style: none;
+  line-height: 1;
+  display: block;
+  position: relative;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+#submenu ul li a {
+	cursor: pointer;
+}
+#submenu {
+  width: 180px;
+  z-index: 10;
+}
+#submenu ul {
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+  background: #ffffff;
+  background: -moz-linear-gradient(bottom, #f0f0f0, #ffffff);
+  background: -webkit-linear-gradient(bottom, #f0f0f0, #ffffff);
+  background: -o-linear-gradient(bottom, #f0f0f0, #ffffff);
+  background: -ms-linear-gradient(bottom, #f0f0f0, #ffffff);
+  background: linear-gradient(to top, #f0f0f0, #ffffff);
+}
+#submenu ul li {
+  display: block;
+  border-bottom: 1px solid #cccccc;
+}
+#submenu ul li.active {
+  border-bottom: 0;
+}
+#submenu ul li:last-child {
+  border-bottom: 0;
+}
+#submenu ul li a {
+  display: block;
+  padding: 14px 12px;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #444444;
+}
+#submenu ul li.active {
+  left: -8px;
+  width: 194px;
+  padding: 2px;
+  background: #185086;
+  background: -moz-linear-gradient(bottom, #185086, #20a8d8);
+  background: -webkit-linear-gradient(bottom, #185086, #20a8d8);
+  background: -o-linear-gradient(bottom, #185086, #20a8d8);
+  background: -ms-linear-gradient(bottom, #185086, #20a8d8);
+  background: linear-gradient(to top, #185086, #20a8d8);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
+}
+#submenu ul li.active > a {
+  padding: 12px 12px 12px 16px;
+  border-left: 1px dashed #ffffff;
+  border-top: 1px dashed #ffffff;
+  border-bottom: 1px dashed #ffffff;
+  color: #ffffff;
+  text-shadow: 0 1px 1px #8c2726;
+}
+#submenu ul li.active:after {
+  position: absolute;
+  right: -16px;
+  top: 7px;
+  width: 31.526911934581186px;
+  height: 31.526911934581186px;
+  background: #185086;
+  background: -moz-linear-gradient(-45deg, #185086, #20a8d8);
+  background: -webkit-linear-gradient(-45deg, #185086, #20a8d8);
+  background: -o-linear-gradient(-45deg, #185086, #20a8d8);
+  background: -ms-linear-gradient(-45deg, #185086, #20a8d8);
+  background: linear-gradient(-45deg, #185086, #20a8d8);
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+  content: "";
+}
+#submenu ul li.active:before {
+  position: absolute;
+  right: -12px;
+  top: 9px;
+  z-index: 10;
+  width: 28.526911934581186px;
+  height: 28.526911934581186px;
+  border-right: 1px dashed #ffffff;
+  border-top: 1px dashed #ffffff;
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+  content: "";
+}
+#submenu ul li.active a:after {
+  position: absolute;
+  bottom: -7px;
+  left: -11px;
+  z-index: -1;
+  width: 0;
+  height: 0;
+  border-top: 4px solid transparent;
+  border-bottom: 4px solid transparent;
+  border-left: 8px solid transparent;
+  border-right: 8px solid #185086;
+  content: "";
+}

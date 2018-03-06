@@ -10,3 +10,9 @@ function refreshSelectPickerWithDelay(delay) {
 		$(".selectpicker").selectpicker("refresh");
 	}, delay);
 }
+
+function setActiveOnSubMenu(id) {
+	var activeelement = $("#submenu #" + id);
+	$('#submenu > ul > li').removeClass('active');
+	activeelement.addClass('active');
+}
