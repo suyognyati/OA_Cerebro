@@ -2,14 +2,14 @@
 	"use strict";
 	angular
 		.module("app")
-		.controller("EducationInformationCtrl",
+		.controller("EducationalViewCtrl",
 					["$http",
 					 "$window",
 					 "$state",
-					 "educationInformationService",
-					 EducationInformationCtrl]);
+					 "educationalViewService",
+					 EducationalViewCtrl]);
 
-	function EducationInformationCtrl($http, $window, $state, educationInformationService) {
+	function EducationalViewCtrl($http, $window, $state, educationalViewService) {
 
 		var userId = 1;
 		var vm = this;
@@ -20,9 +20,9 @@
 		vm.accessToken = $window.bearer_token;
 		vm.accessTokenParam = "?access_token=" + vm.accessToken;
 
-		educationInformationService.setApplicant(userId)
+		educationalViewService.setApplicant(userId)
 		.then(function(success) {
-			educationInformationService.getListofQualification(vm.accessTokenParam)
+			educationalViewService.getListofQualification(vm.accessTokenParam)
 			.then(function(success) {
 				vm.qualificationList = success.data;
 			}, function(error) {
@@ -36,7 +36,7 @@
 		vm.qualificationDetail = function(qualificationMainLevel, qualificationId) {
 			var view = mapView(qualificationMainLevel);
 
-			$state.go("studentview.qualificationDetail", {qualification:view ,qualificationMainLevel:qualificationMainLevel, qualificationId:qualificationId});
+			$state.go($state.params.baseState + ".qualificationDetail", {qualification:view ,qualificationMainLevel:qualificationMainLevel, qualificationId:qualificationId});
 		}
 
 		var mapView = function(qualificationMainLevel) {

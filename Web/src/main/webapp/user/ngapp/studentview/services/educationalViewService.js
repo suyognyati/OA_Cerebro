@@ -2,22 +2,22 @@
 	"use strict";
 	angular
 		.module("app")
-		.factory("educationInformationService",
+		.factory("educationalViewService",
 				["$http",
-				 EducationInformationService]);
+				 educationalViewService]);
 
-	function EducationInformationService($http) {
+	function educationalViewService($http) {
 		return {
 			getListofQualification : function(accessTokenParam) {
 				return $http({
 					method: "GET",
-					url: "/Web/educationalInformation/getListofQualification/" + accessTokenParam
+					url: "/Web/educationalInformation/getListofQualification/"
 				})
 			},
 			deleteQualification : function(qualificationId, accessTokenParam) {
 				return $http({
 					method: "POST",
-					url: "/Web/educationalInformation/deleteQualificationDetail/" + accessTokenParam,
+					url: "/Web/educationalInformation/deleteQualificationDetail/",
 					data: qualificationId
 				})
 			},

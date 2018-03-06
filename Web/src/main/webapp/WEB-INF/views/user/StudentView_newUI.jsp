@@ -30,7 +30,7 @@
 		<!-- My Custom Styles -->
 		<link href="<c:url value='/static/css/newui/left-nav.css' />" rel="stylesheet" />
 		<link href="<c:url value='/static/css/newui/aside-menu.css' />" rel="stylesheet" />
-		<link href="<c:url value='css/mystyle.css' />" rel="stylesheet" />
+		<link href="<c:url value='css/userstyle.css' />" rel="stylesheet" />
      
 	<!-- LOADING SCRIPTS -->	
 		<!-- Bootstrap and necessary plugins -->
@@ -60,7 +60,7 @@
 		<script src="<c:url value='/static/vendors/pm-image-crop-master/compile/unminified/ng-img-crop.js' />"></script>
 		
 		<!-- Custom js -->
-		<script src="<c:url value='js/custom.js' />"></script>
+		<script src="<c:url value='js/user.js' />"></script>
 		
 		<!-- AngularJS CoreUI App scripts -->
 		<script src="<c:url value='/static/app/app.js' />"></script>

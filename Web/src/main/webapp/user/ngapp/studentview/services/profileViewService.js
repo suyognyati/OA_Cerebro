@@ -2,11 +2,11 @@
 	"use strict";
 	angular
 		.module("app")
-		.factory("applicantDetailService",
+		.factory("profileViewService",
 				["$http",
-				 ApplicantDetailService]);
+				 profileViewService]);
 	
-	function ApplicantDetailService($http) {
+	function profileViewService($http) {
 		return {
 			setApplicant : function(userId) {
 				return $http({

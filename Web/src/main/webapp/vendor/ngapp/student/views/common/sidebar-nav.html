@@ -45,10 +45,11 @@
 					View Profile
 				</a>
 				<ul class="collapse list-unstyled" id="viewProfile">
-					<li ui-sref-active="active" ui-sref="student.profile.userDetail">
-						<a ng-href="#"><i class="icon-puzzle"></i>Applicant's Detail</a>
+					<li ui-sref-active="active" ui-sref="student.profileview.profileDetail">
+						<a ng-href="#"><i class="icon-puzzle"></i>Profile Detail</a>
 					</li>
-					<li ui-sref-active="active" ui-sref="student.profile.personalDetail">
+					<li ng-class="{active: ('student.profileview.educationalDetail' | includedByState) || ('student.profileview.qualificationDetail' | includedByState)}" 
+						ui-sref="student.profileview.educationalDetail">
 						<a ng-href="#"><i class="icon-puzzle"></i>Educational Detail</a>
 					</li>
 				</ul>

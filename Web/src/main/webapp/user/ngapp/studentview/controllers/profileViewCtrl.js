@@ -2,16 +2,16 @@
 	"use strict";
 	angular
 		.module("app")
-		.controller("ApplicantDetailCtrl",
+		.controller("ProfileViewCtrl",
 					["$state",
 					 "$http",
 					 "$httpParamSerializer",
-					 "applicantDetailService",
+					 "profileViewService",
 					 "$scope",
 					 "$window",
-					 ApplicantDetailCtrl]);
+					 ProfileViewCtrl]);
 
-	function ApplicantDetailCtrl($state, $http, $httpParamSerializer, applicantDetailService, $scope, $window) {
+	function ProfileViewCtrl($state, $http, $httpParamSerializer, profileViewService, $scope, $window) {
 		var userId = 1;
 		var vm = this;
 		vm.indianCitizenship = true;
@@ -29,9 +29,9 @@
 					occupationDetail : false,
 					reservationDetail : false};
 
-		applicantDetailService.setApplicant(userId)
+		profileViewService.setApplicant(userId)
 		.then(function(success) {
-			applicantDetailService.getApplicant()
+			profileViewService.getApplicant()
 			.then(function(success) {
 				vm.applicantdetail = success.data;
 				vm.initModel();

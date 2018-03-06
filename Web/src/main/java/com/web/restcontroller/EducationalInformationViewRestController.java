@@ -18,7 +18,7 @@ import com.web.session.Session;
 import com.web.session.StaticMethods;
 
 @RestController
-@PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_COLLEGEADMIN')")
+//@PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_COLLEGEADMIN')")
 @RequestMapping(value="/educationalInformation")
 public class EducationalInformationViewRestController {
 	
