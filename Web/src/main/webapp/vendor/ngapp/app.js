@@ -20,7 +20,8 @@ angular
   'ngImgCrop',
   'globalapp',
   '720kb.datepicker',
-  'angularUtils.directives.dirPagination'
+  'angularUtils.directives.dirPagination',
+  'angularjs-dropdown-multiselect'
 ])
 .config(['cfpLoadingBarProvider', function(cfpLoadingBarProvider) {
   cfpLoadingBarProvider.includeSpinner = false;

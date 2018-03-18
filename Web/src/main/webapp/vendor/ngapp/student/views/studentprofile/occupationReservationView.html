@@ -398,12 +398,48 @@
 						<label for="socialreservation"
 							   class="labelclass">Social Reservation</label>
 					</div>
+					<div class="col-sm-10">
+						<div ng-dropdown-multiselect="" 
+							style="width:100%"
+							tabindex="15" 
+							options="vm.occupationandreservation.socialReservations" 
+							selected-model="vm.occupationandreservation.selectedSocialReservations" 
+							extra-settings="vm.multiSelectComboBoxSettings"
+							translation-texts="vm.multiSelectComboBoxDefaultText"
+							events="vm.multiSelectEvents">
+								<!-- <toggle-dropdown>
+									<textarea
+										class="form-control"
+										tabindex="15"
+										ng-model="vm.occupationandreservation.selectedSocialReservations"
+										ng-list
+										>
+									</textarea>
+								</toggle-dropdown> -->
+						</div>
+						Selected categories :
+						<pre class="ng-binding">{{vm.occupationandreservation.selectedSocialReservations|json}}</pre>
+						
+					</div>
+					<!-- <div class="col-sm-3">
+						Selected categories :
+						<pre class="ng-binding">{{vm.occupationandreservation.selectedSocialReservations|json}}</pre>
+					</div> -->
+				</div>
+			</div>
+			
+			<!-- <div class="row">
+				<div class="col-sm-12 form-group">
+					<div class="col-sm-2">
+						<label for="socialreservation"
+							   class="labelclass">Social Reservation</label>
+					</div>
 					<div class="col-sm-6">
 						<input type="checkbox"
 							   name="socialreservation"
 							   id="socialreservation1"
 							   value="1"
-							   tabindex="15">
+							   tabindex="16">
 						<label for="socialreservation1">Ex-Serviceman/Ward of Ex-Serviceman</label>
 					</div>
 					<div class="col-sm-4">
@@ -576,7 +612,7 @@
 						<label for="socialreservation15">University Staff Quota</label>
 					</div>
 				</div>
-			</div>
+			</div> -->
 
 		</div>
 	</div>

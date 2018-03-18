@@ -56,7 +56,11 @@
 		<!-- Datepicker plugin -->
 		<script src="<c:url value='/static/js/angular-datepicker.js' />"></script>
 		
+		<!-- Pagination plugin -->
 		<script src="<c:url value='/static/js/dirPagination.js' />"></script>
+		
+		<!-- Multiselect plugin -->
+		<script src="<c:url value='/static/node_modules/angularjs-dropdown-multiselect/dist/src/angularjs-dropdown-multiselect.js' />"></script>
 		
 		<!-- Image editor plugins -->
 		<script src="<c:url value='/static/vendors/pm-image-crop-master/compile/unminified/ng-img-crop.js' />"></script>
