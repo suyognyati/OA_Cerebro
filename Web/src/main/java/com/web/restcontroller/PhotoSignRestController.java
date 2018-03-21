@@ -49,8 +49,9 @@ public class PhotoSignRestController {
 			image = ImageIO.read(bis);
 			bis.close();
 			// write the image to a file
-			File outputfile = new File("d:\\image.jpg");
-			ImageIO.write(image, "jpg", outputfile);
+			File outputfile = new File("d:\\admissions\\1\\image.jpg");
+			if(outputfile.mkdirs())
+				ImageIO.write(image, "jpg", outputfile);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

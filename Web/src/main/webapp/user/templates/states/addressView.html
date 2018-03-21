@@ -1,0 +1,98 @@
+<div class="heading">
+	<h1>
+       	Address Details
+    </h1>
+</div>
+<form class="panel panel-body" name="addressdetailform" novalidate>
+	<div class="row no-margin">
+			<div class="col-sm-12">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<span style="font-family: Verdana">Contact Details</span>
+					</div>
+				
+			
+	
+					<div class="panel-body">
+						<div class="row">
+							<div class="col-sm-6">
+							<label for="mobileno"  class="labelclass">Mobile Number</label>
+							<div>{{vm.basicdetail.mobileNo}}</div>
+							</div>
+							
+							<div class="col-sm-6">
+							<label for="email"  class="labelclass">Email Address</label>
+							<div>{{vm.basicdetail.email}}</div>
+							</div>
+						</div>	
+		 			</div>
+		 		</div>
+			</div>
+	</div>
+	<div class="row no-margin">
+			<div class="col-sm-6">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<span style="font-family: Verdana">Correspondence Address</span>
+					</div>
+					<div class="panel-body">				
+						<div class="row">
+							<div class="col-sm-12 form-group">
+									<div>{{vm.address.flatNo}}</div>
+									<div>{{vm.address.area}}</div>
+									<div>{{vm.address.street}}</div>
+									<div>{{vm.address.landmark}}</div>
+									<div>{{vm.address.city}}</div>
+									<div>{{vm.address.country.countryName}}</div>
+									<div>{{vm.address.state.stateName}}</div>
+									<div>{{vm.address.district}}</div>
+									<div>{{vm.address.pinCode}}</div>
+									<div>{{vm.address.locationarea}}</div>
+							</div>
+						</div>
+					</div>
+				</div>	
+			</div>			
+			<div class="col-sm-6" ng-show="!vm.address.isNotSameAsCorrespondence">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<span style="font-family: Verdana">Permanent Address</span>
+						</div>
+						<div class="panel-body">
+							<div class="row">
+								<div class="col-sm-12 form-group">
+									<div>{{vm.address.flatNoPermanent}}</div>
+									<div>{{vm.address.areaPermanent}}</div>
+									<div>{{vm.address.streetPermanent}}</div>
+									<div>{{vm.address.landmarkPermanent}}</div>
+									<div>{{vm.address.cityPermanent}}</div>
+									<div>{{vm.address.countryPermanent.countryName}}</div>
+									<div>{{vm.address.statePermanent.stateName}}</div>
+									<div>{{vm.address.districtPermanent}}</div>
+									<div>{{vm.address.pinCodePermanent}}</div>
+									<div>{{vm.address.locationareaPermanent}}</div>
+								</div>
+							</div>		
+						</div>
+				</div>
+		</div>
+	</div>
+	</form>
+		
+		
+	
+	</div>		
+</form>
+
+<script type="text/javascript">
+	setActiveElementOnLeftNav("address");
+	
+	$(".selectpicker").selectpicker("refresh");
+	var delay = 1000;
+	
+	setTimeout(function() {
+		//alert("Hi alert");
+		$(".selectpicker").selectpicker("refresh");
+	}, delay);
+	
+</script>

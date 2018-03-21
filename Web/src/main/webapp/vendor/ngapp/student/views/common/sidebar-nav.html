@@ -1,0 +1,101 @@
+<div class="wrapper">
+	<!-- Sidebar Holder -->
+	<nav id="sidebar" class="side-nav-scrol">
+		<ul class="list-unstyled components">
+			<li ui-sref-active="active">
+				<a ui-sref="student.dashboard">
+				<i class="icon-speedometer"></i>
+					Dashboard
+				</a>
+			</li>
+
+			<li>
+				<a ng-href="#studentProfile" data-toggle="collapse" aria-expanded="false"
+					ng-click="$event.preventDefault();">
+					<!-- <i class="glyphicon glyphicon-home"></i> -->
+					<i class="icon-puzzle"></i>
+					Create Profile
+				</a>
+				<ul class="collapse list-unstyled" id="studentProfile">
+					<li ui-sref-active="active" ui-sref="student.profile.userDetail">
+						<a ng-href="#"><i class="icon-puzzle"></i>User Details</a>
+					</li>
+					<li ui-sref-active="active" ui-sref="student.profile.personalDetail">
+						<a ng-href="#"><i class="icon-puzzle"></i>Personal Detail</a>
+					</li>
+					<li ui-sref-active="active" ui-sref="student.profile.address">
+						<a ng-href="#"><i class="icon-puzzle"></i>Address Details</a>
+					</li>
+					<li ui-sref-active="active" ui-sref="student.profile.educationInformation">
+						<a ng-href="#"><i class="icon-puzzle"></i>Educational Details</a>
+					</li>
+					<li ui-sref-active="active" ui-sref="student.profile.occupationReservation">
+						<a ng-href="#"><i class="icon-puzzle"></i>Occupation & Reservation</a></li>
+					<li ui-sref-active="active" ui-sref="student.profile.uploadPhotoSign">
+						<a ng-href="#"><i class="icon-puzzle"></i>Upload Photo & Signature</a></li>
+					<li ui-sref-active="active" ui-sref="student.profile.uploadDocuments">
+						<a ng-href="#"><i class="icon-puzzle"></i>Upload Documents</a></li>
+				</ul>
+			</li>
+			<li>
+				<a ng-href="#viewProfile" data-toggle="collapse" aria-expanded="false"
+					ng-click="$event.preventDefault();">
+					<!-- <i class="glyphicon glyphicon-home"></i> -->
+					<i class="icon-puzzle"></i>
+					View Profile
+				</a>
+				<ul class="collapse list-unstyled" id="viewProfile">
+					<li ui-sref-active="active" ui-sref="student.profileview.profileDetail">
+						<a ng-href="#"><i class="icon-puzzle"></i>Profile Detail</a>
+					</li>
+					<li ng-class="{active: ('student.profileview.educationalDetail' | includedByState) || ('student.profileview.qualificationDetail' | includedByState)}" 
+						ui-sref="student.profileview.educationalDetail">
+						<a ng-href="#"><i class="icon-puzzle"></i>Educational Detail</a>
+					</li>
+				</ul>
+			</li>
+			<li>
+				<a ng-href="#applyOnline" data-toggle="collapse" aria-expanded="false"
+					ng-click="$event.preventDefault();">
+					<!-- <i class="glyphicon glyphicon-duplicate"></i> -->
+					<i class="icon-star"></i>
+					Apply Online
+				</a>
+				<ul class="collapse list-unstyled" id="applyOnline">
+					<li ui-sref-active="active" ui-sref="student.application.applyOnline">
+						<a ng-href="#"><i class="icon-star"></i>Apply courses</a></li>
+					<li ui-sref-active="active" ui-sref="student.application.applicationStatus">
+						<a ng-href="#"><i class="icon-star"></i>Application Status</a></li>
+				</ul>
+			</li>
+		</ul>
+	</nav>
+	<nav id="sidebartoggler" class="side-nav-fix">
+		<ul class="nav navbar-nav navbar-right">
+			<li class="nav-item">
+				<a id="sidebarToggle" class="nav-link navbar-toggler aside-menu-toggler" href="">
+					<i class="fa fa-angle-double-left fa-lg mt-4"></i>
+					<!-- <i class="fa fa-arrow-left fa-lg mt-4"></i> -->
+				</a>
+			</li>
+	   </ul>
+	</nav>
+</div>
+
+
+<script type="text/javascript">
+	$(document).ready(function () {
+		$('#sidebarToggle').on('click', function () {
+			$('#sidebar.side-nav-scrol').toggleClass('active');
+			$('#sidebartoggler.side-nav-fix').toggleClass('active');
+			$('#sidebarToggle > i').toggleClass('fa-angle-double-left');
+			$('#sidebarToggle > i').toggleClass('fa-angle-double-right');
+			$('.main').toggleClass('sidebar-small');
+
+			// $('#sidebarToggle > i').toggleClass('fa-arrow-left');
+			// $('#sidebarToggle > i').toggleClass('fa-arrow-right');
+
+			// $('.sidebar-fixed').toggleClass('sidebar-hidden');
+		});
+	});
+</script>

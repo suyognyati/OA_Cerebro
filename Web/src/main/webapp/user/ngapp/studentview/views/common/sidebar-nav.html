@@ -1,0 +1,56 @@
+<div class="wrapper">
+       <!-- Sidebar Holder -->
+       <nav id="sidebar" class="side-nav-scrol">
+            <ul class="list-unstyled components">
+                <li ui-sref-active="active">
+                    <a ui-sref="studentview.dashboard">
+                        <!-- <i class="glyphicon glyphicon-briefcase"></i> -->
+                        <i class="icon-speedometer"></i>
+                        Dashboard
+                    </a>
+                </li>
+                <li ui-sref-active="active">
+                    <a ui-sref="studentview.profileDetail">
+                        <!-- <i class="glyphicon glyphicon-briefcase"></i> -->
+                        <i class="glyphicon glyphicon-briefcase"></i>
+                        Profile Details
+                    </a>
+                </li>
+               <li ng-class="{active: ('studentview.educationalDetail' | includedByState) || ('studentview.qualificationDetail' | includedByState)}">
+                   <a ui-sref="studentview.educationalDetail">
+                       <!-- <i class="glyphicon glyphicon-link"></i> -->
+                       <i class="glyphicon glyphicon-education"></i>
+                       Educational Details
+                   </a>
+               </li>
+           </ul>
+      </nav>
+      <nav id="sidebartoggler" class="side-nav-fix">
+            <ul class="nav navbar-nav navbar-right">
+              <li class="nav-item">
+                   <a id="sidebarToggle" class="nav-link navbar-toggler aside-menu-toggler" href="">
+                        <i class="fa fa-angle-double-left fa-lg mt-4"></i>
+                        <!-- <i class="fa fa-arrow-left fa-lg mt-4"></i> -->
+                   </a>
+              </li>
+         </ul>
+      </nav>
+</div>
+
+
+<script type="text/javascript">
+   $(document).ready(function () {
+       $('#sidebarToggle').on('click', function () {
+           $('#sidebar.side-nav-scrol').toggleClass('active');
+		 $('#sidebartoggler.side-nav-fix').toggleClass('active');
+           $('#sidebarToggle > i').toggleClass('fa-angle-double-left');
+           $('#sidebarToggle > i').toggleClass('fa-angle-double-right');
+           $('.main').toggleClass('sidebar-small');
+
+           // $('#sidebarToggle > i').toggleClass('fa-arrow-left');
+           // $('#sidebarToggle > i').toggleClass('fa-arrow-right');
+
+           // $('.sidebar-fixed').toggleClass('sidebar-hidden');
+       });
+   });
+</script>

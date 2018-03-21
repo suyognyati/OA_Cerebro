@@ -1,0 +1,148 @@
+<!-- <div class="heading">
+	<h1>
+       	Upload Photo & Sign
+    </h1>
+</div> -->
+<form name="userForm" novalidate>
+	<div class="panel panel-default panel-upload-file">
+		<div class="panel-heading">
+			<span style="font-family:Verdana">UPLOAD PHOTO SIGN</span>
+		</div>
+		<div class="panel-body">
+			<div class="row">
+		<div class="col-sm-6 paddingLeft">
+			
+			
+			<!-- <label class=" paddingForuploadImg"><input type="checkbox" ng-model="enableCrop"
+				ng-init="enableCrop=true" /> Add Image Crop Area to Page</label> -->
+			<div style="text-align: center">
+				<div>
+					<label>
+						<input type="radio"  value="photo" name="StudentImg" checked="checked" />
+							Photograph
+					</label>
+					<label>
+						<input type="radio"  value="sign" name="StudentImg" />
+							Signature
+					</label>
+				</div>
+				<div>
+					<form ng-show="enableCrop">
+						<label for="fileInput" class="btn btn-primary cursorForBtn">Click Here To Select Image <input type="file" class="upload"
+							id="fileInput" /></label> 
+						<!-- <button type="reset">Clear</button>
+						<button ng-click="imageDataURI='/Web/static/images/image.JPG'">Set Test Image</button> -->
+					</form>
+				</div>
+				<p><strong>Edit Your Image Here</strong></p>
+				<div>
+					<div ng-if="!showResult" class="cropArea"
+						ng-class="{'big':size=='big', 'medium':size=='medium', 'small':size=='small'}">
+						
+						<img-crop image="imageDataURI" result-image="$parent.resImageDataURI"
+							change-on-fly="changeOnFly" area-type="{{type}}"
+							area-min-size="selMinSize" result-image-format="{{resImgFormat}}"
+							result-image-quality="resImgQuality" result-image-size="resImgSize"
+							on-change="onChange($dataURI)" on-load-begin="onLoadBegin()"
+							on-load-done="onLoadDone()" on-load-error="onLoadError()"></img-crop>
+						aspect-ratio="aspectRatio"
+					</div>
+					<div ng-if="showResult" style="text-align: center">
+						<p><strong>Result</strong></p>
+						<div>
+							<img ng-src="{{resImageDataURI}}" />
+						</div>
+					</div>
+					
+					<!-- <p class="no-margin paddingForuploadImg"><strong>OR</strong></p>
+					<div class="paddingForuploadImg">
+						<label>Copy URL: <input type="text" ng-model="edtImageURI" /></label>
+						<button ng-click="imageDataURI=edtImageURI" class="btn-primary">Crop Image</button>
+					</div> -->
+					<div class="displayInlineBlock">
+						<button ng-click="imageDataURI='';showResult=false;" class="btn-primary">Reset Image</button>
+					</div>
+					<div ng-show="!showResult" class="displayInlineBlock">
+						<button ng-click="crop(true)" class="btn-primary">Crop Image</button>
+					</div>
+					<div ng-show="showResult" class="displayInlineBlock">
+						<button ng-click="crop(false)" class="btn-primary">Undo Crop</button>
+					</div>
+					<div ng-show="showResult" class="displayInlineBlock">
+					<button ng-click="submit()" class="btn-primary">Upload Image</button>
+				</div>
+				
+				</div>
+			</div>
+		</div>
+		
+		</div>
+		</div>
+	<!-- <div class="col-sm-6 no-padding">
+	<div style="text-align: center">
+			<p><strong>Edit Your Image Here</strong></p>
+			<div>
+		<div ng-if="!showResult" class="cropArea"
+			ng-class="{'big':size=='big', 'medium':size=='medium', 'small':size=='small'}">
+			
+			<img-crop image="imageDataURI" result-image="$parent.resImageDataURI"
+				change-on-fly="changeOnFly" area-type="{{type}}"
+				area-min-size="selMinSize" result-image-format="{{resImgFormat}}"
+				result-image-quality="resImgQuality" result-image-size="resImgSize"
+				on-change="onChange($dataURI)" on-load-begin="onLoadBegin()"
+				on-load-done="onLoadDone()" on-load-error="onLoadError()"></img-crop>
+			aspect-ratio="aspectRatio"
+		</div>
+
+		<div ng-if="showResult" style="text-align: center">
+			<p><strong>Result</strong></p>
+			<div>
+				<img ng-src="{{resImageDataURI}}" />
+			</div>
+		</div>
+	</div> -->
+	</div>
+	
+	<div class="row" style="margin: 25px 0px 25px 0px;">
+		<div class="col-sm-4"></div>
+		<div class="col-sm-3">
+	       	<input type="submit"
+	       		   tabindex="42"
+	       		   value="Continue"
+	       		   class="btn btn-success btn-block topMargin"
+	       		   ng-click="vm.submit()">
+	       		   <!-- ng-disabled="personaldetailform.$invalid" -->
+		</div>
+		<div class="col-sm-4"></div>
+	</div>
+</form>
+
+<script type="text/javascript">
+	$(".selectpicker").selectpicker("refresh");
+	var delay = 1000;
+
+	setTimeout(function() {
+		//alert("Hi alert");
+		$(".selectpicker").selectpicker("refresh");
+	}, delay);
+</script>
+
+<style>
+    .cropArea {
+      background: #E4E4E4;
+      margin: auto;
+      overflow: hidden;
+    }
+    .cropArea.big {
+      width:800px;
+      height:600px;
+    }
+    .cropArea.medium {
+      width:500px;
+      height:350px;
+    }
+    .cropArea.small {
+      width:300px;
+      height:200px;
+    }
+</style>

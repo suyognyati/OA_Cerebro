@@ -1,0 +1,268 @@
+/* Base CoreUI */
+body {
+     margin: 0;
+     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !important;
+     background-color: #e4e5e6;
+}
+
+.app-header.navbar {
+     position: relative;
+     -ms-flex-direction: row;
+     flex-direction: row;
+     height: 52px;
+     padding: 0;
+     margin: 0;
+     background-color: #fff;
+     border-bottom: 1px solid #c2cfd6;
+}
+
+.app-body {
+     display: -ms-flexbox;
+     -ms-flex-direction: row;
+     -ms-flex-positive: 1;
+     display: flex;
+     flex-direction: row;
+     flex-grow: 1;
+     overflow-x: hidden;
+     margin-top: 51px;
+}
+.app-body .main {
+     -ms-flex: 1;
+     flex: 1;
+     min-width: 0;
+}
+.app-body .container-fluid {
+     min-height: calc(100vh - 52px - 42px);
+     background-color: #e4e5e6;
+}
+.app-body .sidebar {
+     -ms-flex: 0 0 200px;
+     flex: 0 0 200px;
+     -ms-flex-order: -1;
+     order: -1;
+}
+.app-body .aside-menu {
+     /* -ms-flex: 0 0 250px;
+     flex: 0 0 250px; */
+}
+
+.sidebar {
+     display: -ms-flexbox;
+     display: flex;
+     -ms-flex-direction: column;
+     flex-direction: column;
+     padding: 0;
+     color: #fff;
+     background: #29363d;
+}.sidebar-fixed .sidebar {
+     position: fixed;
+     z-index: 1019;
+     width: 200px;
+     height: calc(100vh - 52px);
+}
+/* .sidebar-fixed .main, .sidebar-fixed .app-footer {
+     margin-left: 200px;
+}
+.sidebar-fixed.sidebar-hidden .main, .sidebar-fixed.sidebar-hidden .app-footer {
+     margin-left: 100px;
+} */
+
+
+main {
+     display: block;
+}
+.main {
+     margin-left: 200px;
+     margin-right: 0px;
+     transition: all 0.3s;
+}
+.main.sidebar-small {
+     margin-left: 100px;
+}
+.main .container-fluid {
+     padding: 30px 30px;
+}
+.main.aside-show {
+     margin-right: 250px;
+}
+
+.breadcrumb {
+     display: -ms-flexbox;
+     display: flex;
+     -ms-flex-wrap: wrap;
+     flex-wrap: wrap;
+     padding: 0.75rem 1rem;
+     margin-bottom: 1.5rem;
+     list-style: none;
+     background-color: #fff;
+     border-bottom: 1px solid #c2cfd6;
+     border-radius: 0px;
+}
+.breadcrumb-menu {
+     margin-left: auto;
+}
+.breadcrumb-menu .btn  {
+     padding: 2px 12px;
+}
+.breadcrumb-item {
+     padding-top: 3px;
+}
+.breadcrumb-item + .breadcrumb-item::before {
+     display: inline-block;
+     padding-right: 0.5rem;
+     padding-left: 0.5rem;
+     color: #536c79;
+     content: "/";
+}
+.breadcrumb-item + .breadcrumb-item:hover::before {
+     text-decoration: underline;
+}
+.breadcrumb-item + .breadcrumb-item:hover::before {
+     text-decoration: none;
+}
+.breadcrumb-item.active {
+     color: #536c79;
+}
+
+ol.breadcrumb {
+     margin-bottom: 0px;
+}
+
+/* CSS for aside menu */
+/* .aside-menu {
+     z-index: 1019;
+     width: 250px;
+     color: #29363d;
+     background: #fff;
+     border-left: 1px solid #c2cfd6;
+}
+.aside-menu .nav-tabs {
+     border-color: #c2cfd6;
+}
+.aside-menu .nav-tabs .nav-link, .aside-menu .nav-tabs .navbar .dropdown-toggle, .navbar .aside-menu .nav-tabs .dropdown-toggle {
+     padding: 0.75rem 1rem;
+     color: #151b1e;
+     border-top: 0;
+}
+.aside-menu .nav-tabs .nav-link.active, .aside-menu .nav-tabs .navbar .active.dropdown-toggle, .navbar .aside-menu .nav-tabs .active.dropdown-toggle {
+     color: #20a8d8;
+     border-right-color: #c2cfd6;
+     border-left-color: #c2cfd6;
+}
+.aside-menu .nav-tabs .nav-item:first-child .nav-link, .aside-menu .nav-tabs .nav-item:first-child .navbar .dropdown-toggle, .navbar .aside-menu .nav-tabs .nav-item:first-child .dropdown-toggle {
+     border-left: 0;
+}
+.aside-menu .tab-content {
+     position: relative;
+     overflow-x: hidden;
+     overflow-y: auto;
+     border: 0;
+     border-top: 1px solid #c2cfd6;
+     -ms-overflow-style: -ms-autohiding-scrollbar;
+}
+.aside-menu .tab-content::-webkit-scrollbar {
+     width: 10px;
+     margin-left: -10px;
+     -webkit-appearance: none;
+}
+.aside-menu .tab-content::-webkit-scrollbar-track {
+     background-color: white;
+     border-right: 1px solid #f2f2f2;
+     border-left: 1px solid #f2f2f2;
+}
+.aside-menu .tab-content::-webkit-scrollbar-thumb {
+     height: 50px;
+     background-color: #e6e6e6;
+     background-clip: content-box;
+     border-color: transparent;
+     border-style: solid;
+     border-width: 1px 2px;
+}
+.aside-menu .tab-content .tab-pane {
+     padding: 0;
+} */
+
+
+
+/* CSS for loading bar */
+
+#loading-bar .bar {
+     position: fixed;
+     top: 0;
+     left: 0;
+     z-index: 20002;
+     width: 100%;
+     height: 2px;
+     background: #20a8d8;
+     border-top-right-radius: 1px;
+     border-bottom-right-radius: 1px;
+     transition: width 350ms;
+}
+
+@media (max-width: 768px) {
+
+     .sidebar-fixed .main, .sidebar-fixed .app-footer {
+          margin-left: 0px;
+     }
+
+}
+
+
+
+
+/* CSS for Student */
+
+.login {
+     background-color: #ffffff;
+     /* height: -webkit-fill-available; */
+}
+
+.register {
+     background-color: #20a8d8;
+     color: #ffffff;
+     text-align: center;
+     /* height: -webkit-fill-available; */
+}
+
+.register p {
+     color: #ffffff;
+     font-size: 1.175rem;
+}
+
+.no-bg-color {
+     background-color: transperent;
+}
+
+.card-group {
+     display: flex;
+     flex-flow: row wrap;
+}
+
+.box {
+     background:#FFF;
+	margin:40px auto;
+}
+
+.effect
+{
+    position:relative;
+    box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+}
+.effect:before, .effect:after
+{
+	content:"";
+    position:absolute;
+    z-index:-1;
+    box-shadow:0 0 20px rgba(0,0,0,0.8);
+    top:10px;
+    bottom:10px;
+    left:0;
+    right:0;
+    border-radius:100px / 10px;
+}
+.effect:after
+{
+    right:10px;
+    left:auto;
+    transform:skew(8deg) rotate(3deg);
+}

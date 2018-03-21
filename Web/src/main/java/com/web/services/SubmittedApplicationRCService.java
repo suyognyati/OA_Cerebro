@@ -1,5 +1,5 @@
 package com.web.services;
 
 public interface SubmittedApplicationRCService {
-	public void newApplication();
+	public void deleteAppliedCourse(Integer applicationId);
 }

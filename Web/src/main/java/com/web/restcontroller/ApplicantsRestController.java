@@ -13,7 +13,7 @@ import com.web.session.Session;
 import com.web.session.SessionService;
 
 @RestController
-@PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_COLLEGEADMIN')")
+//@PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_COLLEGEADMIN')")
 @RequestMapping(value={"/applicants"})
 public class ApplicantsRestController {
 

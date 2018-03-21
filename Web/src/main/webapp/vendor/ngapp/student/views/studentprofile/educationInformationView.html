@@ -1,0 +1,86 @@
+<div class="well alert-danger">
+	<span><strong>NOTE:</strong>
+		It is mandatory to fill all details of educational qualification (as applicable) from class X onwards till last completed year.
+		If the system of marking of your school is on grading pattern,
+		convert grade into marks as applicable and fill in the respective fields.
+		In absence of complete information, form will be rejected.
+	</span>
+</div>
+
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<span style="font-family:Verdana">EDUCATIONAL DETAILS</span>
+	</div>
+	<div class="panel-body">
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="alert alert-success" role="alert" ng-show="vm.success">
+					SSC Qualification updated successfully!
+				</div>
+			</div>
+			<div class="col-sm-12">
+				<div class="table-responsive" ng-repeat="qualificationType in vm.qualificationList">
+					<div class="col-sm-12">
+						<label class="" Style="font-size: large;">{{qualificationType.name}}</label>
+						[<i class="glyphicon glyphicon-plus glyphicon-plus-custom" style="cursor: pointer;"
+	                       	ng-click="vm.createNewQualification(qualificationType.qualificationMainLevel, qualificationType.qualificationSubLevel)"/>]
+					</div>
+					<div class="col-sm-12" ng-if="qualificationType.subQualificationList == null">
+						<hr/>
+					</div>
+					<div class="col-sm-12" ng-if="qualificationType.subQualificationList != null">
+					<table class="table table-striped table-bordered">
+		                <thead>
+		                    <tr class="table-background">
+		                        <th width="19%">Qualification</th>
+		                        <th width="30%">Board/University</th>
+		                        <th width="19%">Faculty/College Name</th>
+		                        <th width="12%">Passing Date</th>
+		                        <th width="10%">Marks/Out Of</th>
+		                        <th width="5%">Edit</th>
+		                        <th width="5%">Delete</th>
+		                    </tr>
+		                </thead>
+		                <tbody>
+		                     <tr ng-repeat="qualification in qualificationType.subQualificationList">
+		                        <td>{{qualification.name}}</td>
+		                        <td>{{qualification.boardOrUniversity}}</td>
+		                        <td>{{qualification.facultyOrCollegeName}}</td>
+		                        <td>{{qualification.passingMonth}} {{qualification.passingYear}}</td>
+		                        <td>
+		                        	{{qualification.marksObtain}}
+		                        	<span ng-if="!(qualification.marksObtain == null && qualification.totalMarks == null)">/</span>
+		                        	{{qualification.totalMarks}}
+		                        </td>
+		                        <td align="center">
+		                        	<i 	class="glyphicon glyphicon-pencil " style="cursor: pointer;"
+		                        		ng-click="vm.qualificationDetail(qualification.qualificationMainLevel, qualification.subQualificationId)"/>
+		                       		</i>
+		                       	</td>
+		                        <td align="center">
+		                        	<i 	class="glyphicon glyphicon-trash " style="cursor: pointer;"
+		                        		ng-click="vm.deleteQualification(qualification.subQualificationId, qualification.name)"/>
+		                       		</i>
+		                        </td>
+		                     </tr>
+						</tbody>
+					</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="row" style="margin: 25px 0px 25px 0px;">
+	<div class="col-sm-4"></div>
+	<div class="col-sm-3">
+       	<input type="submit"
+       		   tabindex="42"
+       		   value="Continue"
+       		   class="btn btn-success btn-block topMargin"
+       		   ng-click="vm.submit()">
+       		   <!-- ng-disabled="personaldetailform.$invalid" -->
+	</div>
+	<div class="col-sm-4"></div>
+</div>

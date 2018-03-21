@@ -1,10 +1,12 @@
 (function(){
 	"use strict";
 	var app = angular
-		.module("globalapp", []);	
+		.module("globalapp", ['ui.router']);	
 	
 	app.constant('globalConstants', {
-	    rootLocation : '/Web/'
+	    rootLocation : '/Web/',
+	    accessToken : "",
+		accessTokenParam : ""
 	});
 	
 }());

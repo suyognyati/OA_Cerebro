@@ -27,4 +27,8 @@ public class SubmittedApplicationServiceImpl implements SubmittedApplicationServ
 		return submittedApplicationsJpaRepository.findByUserAndCollegeProgramMapCollege(user, college);
 	}
 
+	@Override
+	public void deleteById(Integer submittedApplicationId) {
+		submittedApplicationsJpaRepository.delete(submittedApplicationId);
+	}
 }
