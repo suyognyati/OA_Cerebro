@@ -1,33 +1,33 @@
 <form class="panel panel-default panel-body" name="diplomadetailform" novalidate>
 	<div class="group">
-		<div class=" groupHeadingStyle">Applicant's Board/University/School Details</div>
+		<div class=" groupHeadingStyle">Board/University/School Details</div>
 		<div class="group-body">
 			<div class="row">
 			<div class="col-sm-12 form-group">
-					<label for="examboard" class="labelclass displayInline">Examination Board : </label>
-					<div class="formData displayInline">{{vm.qualificationDetail.certifyingBody}}</div>
+					<label for="examboard" class="group-label displayInline">Examination Board : </label>
+					<span class="formData displayInline">{{vm.qualificationDetail.certifyingBody}}</span>
 			</div>
 			</div>
 		<div ng-show="vm.qualificationDetail.certifyingBody == 1 || vm.qualificationDetail.certifyingBody == 2">
 			<div class="row">
 				<div class="col-sm-12 form-group">
-					<label for="isLocalBody" class="labelclass displayInline">Board : </label>
-					<div class="formData displayInline">{{vm.qualificationDetail.isLocalBody}}</div>
+					<label for="isLocalBody" class="group-label displayInline">Board : </label>
+					<span class="formData displayInline">{{vm.qualificationDetail.isLocalBody}}</span>
 				</div>
 			</div>
 		<div ng-show="vm.qualificationDetail.isLocalBody==1">
 			<div class="row">
 				<div class="col-sm-12 form-group">
-					<label for="state" class="labelclass displayInline">State : </label>
-					<div class="formData displayInline">{{vm.qualificationDetail.stateId}}</div>
+					<label for="state" class="group-label displayInline">State : </label>
+					<span class="formData displayInline">{{vm.qualificationDetail.stateId}}</span>
 				</div>
 			</div>
 			</div>
 		<div ng-show="vm.qualificationDetail.isLocalBody==2">
 			<div class="row">
 				<div class="col-sm-12 form-group">
-					<label for="country" class="labelclass displayInline">Country : </label>
-					<div class="formData displayInline">{{vm.qualificationDetail.countryId}}</div>
+					<label for="country" class="group-label displayInline">Country : </label>
+					<span class="formData displayInline">{{vm.qualificationDetail.countryId}}</span>
 				</div>
 			</div>
 		</div>
@@ -36,15 +36,15 @@
 		<div ng-show="vm.qualificationDetail.isLocalBody==1">
 			<div class="row">
 				<div class="col-sm-12 form-group">
-					<label for="board" class="labelclass displayInline">Board : </label>
-					<div class="formData displayInline">{{vm.qualificationDetail.boardId}}</div>
+					<label for="board" class="group-label displayInline">Board : </label>
+					<span class="formData displayInline">{{vm.qualificationDetail.boardId}}</span>
 				</div>
 			</div>
 		<div ng-show="vm.qualificationDetail.isLocalBody==2">
 			<div class="row">
 				<div class="col-sm-12 form-group">
-					<label for="foreignBody_BoardUniversityName" class="labelclass displayInline">Name of Board : </label>
-					<div class="formData displayInline">{{vm.qualificationDetail.foreignBody_BoardUniversityName}}</div>
+					<label for="foreignBody_BoardUniversityName" class="group-label displayInline">Name of Board : </label>
+					<span class="formData displayInline">{{vm.qualificationDetail.foreignBody_BoardUniversityName}}</span>
 				</div>
 			</div>
 			<div class="row">
