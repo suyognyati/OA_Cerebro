@@ -28,7 +28,7 @@
 		vm.getUserDocuments = function() {
 			uploadDocumentsService.getUserDocumentList(vm.accessTokenParam)
 			.then(function (success) {
-				vm.userDocuments = data.userDocuments;
+				vm.userDocuments = success.data.userDocuments;
 				refreshSelectPickerWithDelay(100);
 			}, function (error) {
 				vm.userDocuments = {};
@@ -109,7 +109,7 @@
 			$http.get('/Web/getDocument/' + documentId, {
 				responseType : 'arraybuffer'
 			}).then(function (success) {
-				var file = new Blob([ data ], {
+				var file = new Blob([ success.data ], {
 					type : 'application/pdf'
 				});
 				var fileURL = URL.createObjectURL(file);
