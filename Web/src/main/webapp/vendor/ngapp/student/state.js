@@ -130,7 +130,7 @@ function StudentStates($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, 
 		}
 	})
 	.state('student.profile.userDetail', {
-		url: '/personaldetail',
+		url: '/userdetail',
 		templateUrl: 'ngapp/student/views/studentprofile/userDetailView.html',
 		controller: 'UserDetailCtrl as vm',
 
