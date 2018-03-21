@@ -8,7 +8,7 @@
 					 "$window",
 					 "$scope",
 					 "$rootScope",
-					 "globalConstants"
+					 "globalConstants",
 					 "uploadDocumentsService",
 					 UploadPhotoSignCtrl]);
 
