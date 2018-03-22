@@ -49,20 +49,20 @@
 			</div>
 			<div class="row">
 				<div class="col-sm-12 form-group">
-						<label for="foreignBody_AreaStdCodePhone" class="labelclass displayInline">Board Area STD Code - Phone : </label>
-						<div class="formData displayInline">{{vm.qualificationDetail.foreignBody_AreaStdCodePhone}}</div>
+						<label for="foreignBody_AreaStdCodePhone" class="group-label displayInline">Board Area STD Code - Phone : </label>
+						<span class="formData displayInline">{{vm.qualificationDetail.foreignBody_AreaStdCodePhone}}</span>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-sm-12 form-group">
-						<label for="foreignBody_EmailId" class="labelclass displayInline">Board Email Id : </label>
-						<div class="formData displayInline">{{vm.qualificationDetail.foreignBody_EmailId}}</div>
+						<label for="foreignBody_EmailId" class="group-label displayInline">Board Email Id : </label>
+						<span class="formData displayInline">{{vm.qualificationDetail.foreignBody_EmailId}}</span>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-sm-12 form-group">
-						<label for="foreignBody_URL" class="labelclass displayInline">Board URL</label>
-						<div class="formData displayInline">{{vm.qualificationDetail.foreignBody_URL}}</div>
+						<label for="foreignBody_URL" class="group-label displayInline">Board URL</label>
+						<span class="formData displayInline">{{vm.qualificationDetail.foreignBody_URL}}</span>
 				</div>
 			</div>
 		</div>
@@ -72,34 +72,34 @@
 		<div ng-show="vm.qualificationDetail.isLocalBody==1">
 			<div class="row">
 				<div class="col-sm-12 form-group">
-						<label for="university" class="labelclass displayInline">University : </label>
-						<div class="formData displayInline">{{vm.qualificationDetail.universityId}}</div>
+						<label for="university" class="group-label displayInline">University : </label>
+						<span class="formData displayInline">{{vm.qualificationDetail.universityId}}</span>
 				</div>
 			</div>
 		</div>
 		<div ng-show="vm.qualificationDetail.isLocalBody==2">
 			<div class="row">
 				<div class="col-sm-12 form-group">
-						<label for="foreignBody_BoardUniversityName" class="labelclass displayInline">Name of University : </label>
-						<div class="formData displayInline">{{vm.qualificationDetail.foreignBody_BoardUniversityName}}</div>
+						<label for="foreignBody_BoardUniversityName" class="group-label displayInline">Name of University : </label>
+						<span class="formData displayInline">{{vm.qualificationDetail.foreignBody_BoardUniversityName}}</span>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-sm-12 form-group">
-						<label for="foreignBody_AreaStdCodePhone" class="labelclass displayInline">University Area STD Code - Phone</label>
-						<div class="formData displayInline">{{vm.qualificationDetail.foreignBody_AreaStdCodePhone}}</div>
+						<label for="foreignBody_AreaStdCodePhone" class="group-label displayInline">University Area STD Code - Phone</label>
+						<span class="formData displayInline">{{vm.qualificationDetail.foreignBody_AreaStdCodePhone}}</span>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-sm-12 form-group">
-						<label for="foreignBody_EmailId" class="labelclass displayInline">University Email Id : </label>
-						<div class="formData displayInline">{{vm.qualificationDetail.foreignBody_EmailId}}</div>
+						<label for="foreignBody_EmailId" class="group-label displayInline">University Email Id : </label>
+						<span class="formData displayInline">{{vm.qualificationDetail.foreignBody_EmailId}}</span>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-sm-12 form-group">
-						<label for="foreignBody_URL" class="labelclass displayInline">University URL></label>
-						<div class="formData displayInline">{{vm.qualificationDetail.foreignBody_URL}}</div>
+						<label for="foreignBody_URL" class="group-label displayInline">University URL></label>
+						<span class="formData displayInline">{{vm.qualificationDetail.foreignBody_URL}}</span>
 				</div>
 			</div>
 		</div>
@@ -107,54 +107,46 @@
 		<div ng-show="vm.qualificationDetail.certifyingBody == 3">
 			<div class="row">
 				<div class="col-sm-12 form-group">
-						<label for="otherbodyname" class="labelclass displayInline">Name of Other Exam / Certifying Body : </label>
-						<div class="formData displayInline">{{vm.qualificationDetail.otherBodyName}}</div>
+						<label for="otherbodyname" class="group-label displayInline">Name of Other Exam / Certifying Body : </label>
+						<span class="formData displayInline">{{vm.qualificationDetail.otherBodyName}}</span>
 				</div>
 			</div>
 		</div>
 			<div class="row">
 				<div class="col-sm-12 form-group">
-							<label for="schoolCollegeName" class="labelclass displayInline">Name of College : </label>
-							 <div class="formData displayInline">{{vm.qualificationDetail.schoolCollegeName}}</div>
+							<label for="schoolCollegeName" class="group-label displayInline">Name of College : </label>
+							 <span class="formData displayInline">{{vm.qualificationDetail.schoolCollegeName}}</span>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-sm-12 form-group">
-							<label for="diplomaname" class="labelclass displayInline">Name of Diploma : </label>
-							 <div class="formData displayInline">{{vm.qualificationDetail.qualificationName}}</div>
-				</div>
-			</div>
-		<div ng-show="vm.qualificationDetail.certifyingBody == 3">
-			<div class="row">
-				<div class="col-sm-12 form-group">
-							<label for="otherbodyname" class="labelclass displayInline">Name of Other Exam / Certifying Body : </label>
-							 <div class="formData displayInline">{{vm.qualificationDetail.otherBodyName}}</div>
-				</div>
-			</div>
-		</div>
-			<div class="row">
-				<div class="col-sm-12 form-group">
-							<label for="schoolCollegeName" class="labelclass displayInline">Name of College : </label>
-						   	<div class="formData displayInline">{{vm.qualificationDetail.schoolCollegeName}}</div>
+							<label for="diplomaname" class="group-label displayInline">Name of Diploma : </label>
+							 <span class="formData displayInline">{{vm.qualificationDetail.qualificationName}}</spam>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-sm-12 form-group">
-							<label for="diplomaname" class="labelclass displayInline">Name of Diploma : </label>
-						   	<div class="formData displayInline">{{vm.qualificationDetail.qualificationName}}</div>
+							<label for="schoolCollegeName" class="group-label displayInline">Name of College : </label>
+						   	<span class="formData displayInline">{{vm.qualificationDetail.schoolCollegeName}}</span>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-sm-12 form-group">
-							<label for="academicYear" class="labelclass displayInline">Academic Year : </label>
-						   	<div class="formData displayInline">{{vm.qualificationDetail.academicYear}}</div>
+							<label for="diplomaname" class="group-label displayInline">Name of Diploma : </label>
+						   	<span class="formData displayInline">{{vm.qualificationDetail.qualificationName}}</span>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12 form-group">
+							<label for="academicYear" class="group-label displayInline">Academic Year : </label>
+						   	<span class="formData displayInline">{{vm.qualificationDetail.academicYear}}</span>
 				</div>
 			</div>
 		<div ng-show="vm.qualificationDetail.certifyingBody == 3">
 			<div class="row">
 				<div class="col-sm-12 form-group">
-							<label for="collegeaddress" class="labelclass displayInline">College Address : </label>
-							<div class="formData displayInline">{{vm.qualificationDetail.schoolCollegeAddress}}</div>
+							<label for="collegeaddress" class="group-label displayInline">College Address : </label>
+							<span class="formData displayInline">{{vm.qualificationDetail.schoolCollegeAddress}}</span>
 				</div>
 			</div>
 		</div>
@@ -165,41 +157,41 @@
 		<div class="group-body">
 			<div class="row">
 				<div class="col-sm-4 form-group">
-							<label for="dateofresult" class="labelclass">Date of Result</label>
+							<label for="dateofresult" class="group-label">Date of Result</label>
 						   <div class="formData">{{vm.qualificationDetail.passingMonth}} / {{vm.qualificationDetail.passingYear}}</div>
 				</div>
 				<div class="col-sm-4">
-							<label for="examSeatNo" class="labelclass">Roll No/ Seat No</label>
+							<label for="examSeatNo" class="group-label">Roll No/ Seat No</label>
 						   	<div class="formData">{{vm.qualificationDetail.examSeatNo}}</div>
 				</div>
 				<div class="col-sm-4">
-							<label for="marksheetno" class="labelclass">Marksheet No</label>
+							<label for="marksheetno" class="group-label">Marksheet No</label>
 						   	<div class="formData">{{vm.qualificationDetail.marksheetNo}}</div>
 				</div>
 			</div>
 			<div class="row">
 				<div ng-show="vm.qualificationDetail.evaluationType==1">
 					<div class="col-sm-4">
-							<label for="marksObtain" class="labelclass">Total Marks Obtained</label>
+							<label for="marksObtain" class="group-label">Total Marks Obtained</label>
 							<div class="formData">{{vm.qualificationDetail.marksObtain}}</div>
 					</div>
 					<div class="col-sm-4">
-							<label for="totalMarks" class="labelclass">Out of</label>
+							<label for="totalMarks" class="group-label">Out of</label>
 							<div class="formData">{{vm.qualificationDetail.totalMarks}}</div>
 					</div>
 				</div>
 				<div ng-show="vm.qualificationDetail.evaluationType==2">
 					<div class="col-sm-4">
-							<label for="grade" class="labelclass">Grade</label>
+							<label for="grade" class="group-label">Grade</label>
 							<div class="formData">{{vm.qualificationDetail.grade}}</div>
 					</div>
 					<div class="col-sm-4">
-							<label for="cgpa" class="labelclass">CGPA</label>
+							<label for="cgpa" class="group-label">CGPA</label>
 							<div class="formData">{{vm.qualificationDetail.cgpa}}</div>
 					</div>
 				</div>
 				<div class="col-sm-4 form-group">
-					<label for="percentage" class="labelclass">Percentage</label>
+					<label for="percentage" class="group-label">Percentage</label>
 					<div class="formData">{{vm.qualificationDetail.percentage}}%</div>
 				</div>
 			</div>				
