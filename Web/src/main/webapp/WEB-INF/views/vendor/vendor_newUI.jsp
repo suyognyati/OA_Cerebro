@@ -19,7 +19,7 @@
 		<link href="<c:url value='css/bootstrap-custom.css' />" rel="stylesheet" />
 		
 		<!-- CoreUI Style -->
-		<link href="<c:url value='css/coreui-style.css' />" rel="stylesheet" />
+		<link href="<c:url value='/static/css/newui/coreui-style.css' />" rel="stylesheet" />
 		
 		<!-- Image Editor Style -->
 		<link href="<c:url value='/static/vendors/pm-image-crop-master/compile/unminified/ng-img-crop.css' />" rel="stylesheet" />
@@ -30,8 +30,8 @@
 		<!-- My Custom Styles -->
 		<link href="<c:url value='/user/css/userstyle.css' />" rel="stylesheet" />
 		
-		<link href="<c:url value='css/left-nav.css' />" rel="stylesheet" />
-		<link href="<c:url value='css/aside-menu.css' />" rel="stylesheet" />
+		<link href="<c:url value='/static/css/newui/left-nav.css' />" rel="stylesheet" />
+		<link href="<c:url value='/static/css/newui/aside-menu.css' />" rel="stylesheet" />
 		<link href="<c:url value='css/mystyle.css' />" rel="stylesheet" />
      
 	<!-- LOADING SCRIPTS -->	
