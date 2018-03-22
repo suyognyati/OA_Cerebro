@@ -131,7 +131,7 @@ public class HomeController {
 		sessionService.setLoggedInUserDetails();
 		model.addAttribute("collegeadmin", session.getLoggedInUser());
 		model.addAttribute("collegeadmindetail", session.getLoggedInUserDetail());
-		return "collegeadmin";
+		return "collegeadmin/college_admin";
 	}
 
 	@RequestMapping(value = "db/", method = RequestMethod.GET)
