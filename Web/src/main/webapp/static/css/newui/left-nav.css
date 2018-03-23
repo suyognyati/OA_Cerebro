@@ -46,7 +46,7 @@ i, span {
 #sidebartoggler.side-nav-fix {
      position: fixed;
      z-index: 1019;
-     width: 200px;
+     width: 250px;
      margin-top: calc(100vh - 52px - 45px);
      height: 45px;
      background: #29363d;
@@ -76,7 +76,7 @@ i, span {
 #sidebar.side-nav-scrol {
      position: fixed;
      z-index: 1019;
-     width: 200px;
+     width: 250px;
      height: calc(100vh - 52px - 45px);
      background: #29363d;
      color: #fff;
@@ -152,7 +152,10 @@ i, span {
 #sidebar ul li > a[aria-expanded="true"] {
     color: #fff;
     /* background: #212b31; */
-    background: #212b31;
+}
+#sidebar ul li > ul[aria-expanded="true"] {
+    line-height: 1.2;
+    /* background: #212b31; */
 }
 #sidebar  ul ul a {
     /* font-size: 0.9em !important;*/
@@ -211,7 +214,8 @@ a[data-toggle="collapse"] {
 }
 
 #sidebar a[aria-expanded="false"]::before, a[aria-expanded="true"]::before {
-     color: #3f7594;
+     /* color: #3f7594; */
+     font-weight: bolder;
      content: '\e257';
      display: block;
      position: absolute;
