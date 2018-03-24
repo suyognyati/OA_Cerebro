@@ -136,6 +136,10 @@
 		}
 
 		vm.getUserDocuments();
+		
+		vm.click = function() {
+			$state.go("student.profileview.profileDetail");
+		}
 
 		/*
 		 * vm.uploadFiles = function(isValid) {

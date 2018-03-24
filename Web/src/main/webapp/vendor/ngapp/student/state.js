@@ -47,7 +47,7 @@ function StudentStates($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, 
 	* */
 	.state('student.dashboard', {
 		url: '/dashboard',
-		templateUrl: 'ngapp/home/views/dashboard.html',
+		templateUrl: 'ngapp/student/views/dashboard.html',
 		controller:'dashboardCtrl as vm',
 
 		//page title goes here

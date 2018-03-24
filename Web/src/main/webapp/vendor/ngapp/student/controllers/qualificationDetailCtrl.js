@@ -118,7 +118,7 @@
 			}
 			qualificationDetailService.saveQualificationDetail(vm.qualificationDetail, vm.accessTokenParam)
 			.then(function (success) {
-				vm.returnstatus = data;
+				vm.returnstatus = success.data;
 				if(vm.returnstatus != null && vm.returnstatus.success == true) {
 					$state.go("student.profile.educationInformation", {success: vm.returnstatus});
 				} else {

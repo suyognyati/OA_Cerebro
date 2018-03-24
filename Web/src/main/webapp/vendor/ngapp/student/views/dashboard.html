@@ -1,29 +1,43 @@
 <div class="panel panel-default">
-     <div class="panel-heading">
-		<span style="font-family:Verdana">Applicant's Details</span>
+    <div class="panel-heading">
+    	<h4>Welcome MANALI !</h4>	
+    </div>
+</div>
+<div class="panel-default">
+    	<div class="alert alert-success"><b><i class="glyphicon glyphicon-info-sign"></i>
+    	Please check your profile details once again by clicking on each section 
+    	before you click on “Profile Confirmation and Apply Online” button on succeeding screens. You will not be 
+    	able to modify any part of profile (Profile will be locked) once you have applied.<br>
+    	<i class="glyphicon glyphicon-info-sign"></i> 
+		प्रोफाईल कन्फर्मेशन आणि अपलाय ऑनलाईन” बटनवर क्लिक करण्यापूर्वी आपले संपूर्ण प्रोफाईल (वैयक्तिक, आरक्षण, शैक्षणिक, संपर्क इ.) पुन्हा तपासून पहा. 
+		एकदा ऑनलाईन अर्ज केल्यावर प्रोफाईल मध्ये कुठलाही बदल करता येत नाही.</b></div>
+</div>
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<span style="font-family:Verdana">Online Application Instructions</span>
 	</div>
-     <div class="panel-body">
-          <div class="row">
-               <div class="col-sm-6">
-                    <div ng-repeat="bloodGroup in vm.bloodGroupList">
-                         <ul>
-                              <li>{{bloodGroup.key}} {{bloodGroup.value}}</li>
-                         </ul>
-                    </div>
-               </div>
-               <div class="col-sm-6">
-                    <select id="bloodgroup"
-                    		class="selectpicker" data-width="100%"
-                    		data-live-search="true" title="-- Select --"
-                    		tabindex="23"
-                    		ng-model="vm.personaldetail.bloodGroup"
-                    		ng-options="bloodgroup.key as bloodgroup.value for bloodgroup in vm.bloodGroupList">
-                    </select>
-               </div>
-          </div>
-     </div>
+	<div class="panel-body">
+		1. You can apply online only after the completion and confirmation of Profile.<br>
+		१. प्रोफाईल पूर्ण भरून स्वीकृत केल्यावरच ऑनलाईन अर्ज करता येईल.<br><hr>
+		2. You can apply for multiple programs in multiple colleges through single login.<br>
+		२. एका लॉगीन मधून तुम्ही अनेक अभ्यासकेंद्रात अनेक अभ्यासक्रमास अर्ज करू शकता.<br><hr>
+		3. While applying, if any qualification details are missing, then it may be filled from the Last Qualification screen, even after profile confirmation.<br>
+		३. जर एखादी शैक्षणिक माहिती भरावयाची राहिली असल्यास, प्रोफाईल निश्चित झाल्यावरदेखील तुम्ही “शेवटची पात्रता परीक्षा” निवडावयाच्या पानावर भरू शकता.<br><hr>
+		4. Please be careful while applying, once admission gets confirmed in one college then you cannot seek admission in another college in same course.<br>
+		४. अर्ज करताना काळजी घ्या. एकदा अभ्यासकेंद्राने प्रवेश निश्चित केल्यावर दुसऱ्या अभ्यासकेंद्रात त्याच अभ्यासक्रमासाठी प्रवेश घेता येत नाही.
+	</div>
 </div>
 
+<div class="row" style="margin: 25px 0px 25px 0px;">
+		<div class="col-sm-4"></div>
+		<div class="col-sm-4">
+        	<input type="submit"
+        		   value="CREATE PROFILE"
+        		   class="btn btn-success btn-block topMargin"
+        		   ng-click="vm.click()">
+        </div>
+        <div class="col-sm-4"></div>
+</div>
 
 <script type="text/javascript">
 	$(".selectpicker").selectpicker("refresh");
