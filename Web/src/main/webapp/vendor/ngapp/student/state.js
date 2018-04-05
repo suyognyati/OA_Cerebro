@@ -41,6 +41,27 @@ function StudentStates($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, 
 			}]
 		}
 	})
+	
+	.state('studentsimple.register', {
+		url: '/register',
+        templateUrl: 'ngapp/student/views/register.html',
+        controller: "RegisterCtrl as vm",
+		//page title goes here
+		ncyBreadcrumb: {
+			label: 'Register Student',
+		},
+		//page subtitle goes here
+		params: { subtitle: 'Register Student' },
+          resolve: {
+			loadMyCtrl: ['$ocLazyLoad', function($ocLazyLoad) {
+				// you can lazy load controllers
+				return $ocLazyLoad.load({
+					files: ['ngapp/student/controllers/registerCtrl.js',
+					        'ngapp/student/services/registerService.js']
+				});
+			}]
+		}
+	})
 
 	/**
 	* States for LoggedIn Students

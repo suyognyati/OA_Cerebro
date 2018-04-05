@@ -70,7 +70,7 @@
 		vm.registerStudent = function() {
 			$window.isInvalidUser = false;
 			$window.isLoggedOutUser = false;
-			$state.go("studentSimple.register");
+			$state.go("studentsimple.register");
 		}
 		
 		vm.setCookie = function(cname, cvalue, exdays) {
