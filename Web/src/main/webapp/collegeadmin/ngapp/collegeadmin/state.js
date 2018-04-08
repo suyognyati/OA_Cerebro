@@ -29,19 +29,61 @@
 				}]
 			}
 		})
-	    .state('collegeadmin.programList', {
-			url: '/programList',
-			templateUrl: 'ngapp/collegeadmin/views/programListView.html',
-			controller:"ProgramListCtrl as vm",
+		.state('collegeadmin.programLevel', {
+			url: '/programLevel',
+			templateUrl: 'ngapp/collegeadmin/views/programLevelView.html',
+			controller:"ProgramLevelCtrl as vm",
 			ncyBreadcrumb: {
-				label: 'Program List',
+				label: 'Program Level',
 			},
-			params: { subtitle: 'Search colleges' },
+			params: { subtitle: 'Program Level' },
 			resolve: {
 				loadMyCtrl: ['$ocLazyLoad', function($ocLazyLoad) {
 					return $ocLazyLoad.load({
 						files: [
-							'ngapp/collegeadmin/controllers/programListCtrl.js',
+							'ngapp/collegeadmin/controllers/programLevelCtrl.js',
+							'ngapp/collegeadmin/services/programLevelService.js'
+							
+						]
+					});
+				}]
+			}
+		})
+	    .state('collegeadmin.selectProgram', {
+			url: '/selectProgram/:programCategoryId',
+			templateUrl: 'ngapp/collegeadmin/views/programSelectView.html',
+			controller:"ProgramSelectCtrl as vm",
+			ncyBreadcrumb: {
+				label: 'Select Program',
+			},
+			params: { subtitle: 'Select Program' },
+			resolve: {
+				loadMyCtrl: ['$ocLazyLoad', function($ocLazyLoad) {
+					return $ocLazyLoad.load({
+						files: [
+							'ngapp/collegeadmin/controllers/programSelectCtrl.js',
+							'ngapp/collegeadmin/services/programSelectService.js'
+							
+						]
+					});
+				}]
+			}
+		})
+		.state('collegeadmin.meritList', {
+			url: '/meritList/:programCategoryId/:programId',
+			templateUrl: 'ngapp/collegeadmin/views/generateMeritListView.html',
+			controller:"GenerateMeritListCtrl as vm",
+			ncyBreadcrumb: {
+				label: 'Merit List',
+			},
+			params: { 
+				subtitle: 'Merit List' },
+			resolve: {
+				loadMyCtrl: ['$ocLazyLoad', function($ocLazyLoad) {
+					return $ocLazyLoad.load({
+						files: [
+							'ngapp/collegeadmin/controllers/generateMeritListCtrl.js',
+							'ngapp/collegeadmin/services/generateMeritListService.js'
 							
 						]
 					});

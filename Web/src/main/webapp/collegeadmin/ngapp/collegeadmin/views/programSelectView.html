@@ -1,0 +1,47 @@
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<span style="font-family:Verdana">SELECT PROGRAM TO GENERATE MERIT LIST</span>
+	</div>
+	<div class="panel-body">
+		<div class="col-sm-12 form-group">
+			<div class="col-sm-1">
+				<label class="labelclass">Search</label>
+			</div>
+		    <div class="col-sm-11">
+		    	<input type="text" ng-model="search" class="form-control" placeholder="Search">
+	    	</div>
+		</div>
+		
+		<div class="row">
+			<div class="col-sm-12 table-responsive">		
+				<table class="table table-striped table-bordered">
+					<thead>
+						<tr class="table-background">
+						    <th width="10%">Program Code</th>
+						    <th width="30%">Program Name</th>
+						    <th width="10%">Faculty/College</th>
+						    <th width="30%">No. of Applied Students</th>
+						    <th width="12%">Select</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr dir-paginate="program in vm.programs|filter:search|itemsPerPage:vm.itemPerPage">
+							<td>{{program.programCode}}</td>
+							<td>{{program.programName}}</td>
+							<td>{{program.facultyOrCollege}}</td>
+							<td></td>
+							<td><input type="button" value="Select" class="btn btn-success btn-block topMargin" 
+										ng-click="vm.generateMeritList(program.programId)">
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<dir-pagination-controls
+					max-size="5"
+					direction-links="true"
+					boundary-links="true">			
+				</dir-pagination-controls>  
+			</div>
+		</div>
+	</div>
+</div>

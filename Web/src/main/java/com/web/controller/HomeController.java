@@ -128,6 +128,8 @@ public class HomeController {
 	
 	@RequestMapping(value = "collegeadmin/", method = RequestMethod.GET)
 	public String collegeAdmin(ModelMap model) {
+		Integer collegeId = 1;
+		sessionService.setCollege(collegeId);
 		sessionService.setLoggedInUserDetails();
 		model.addAttribute("collegeadmin", session.getLoggedInUser());
 		model.addAttribute("collegeadmindetail", session.getLoggedInUserDetail());
