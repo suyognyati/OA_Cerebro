@@ -62,10 +62,12 @@ public class PersonalDetailRCServiceImpl implements PersonalDetailRCService {
 		
 		personalDetail = setPersonalDetailObject(personalDetail, personalDetailModel/*, address*/);
 		
-		if(personalDetail.getIsNameChanged()) {
-			userDocumentService.addByDocumentFor(userSession.getCurrentUser(), Enums.DocumentsFor.NameChanged.getId());
-		} else {
-			userDocumentService.deleteByDocumentFor(userSession.getCurrentUser(), Enums.DocumentsFor.NameChanged.getId());
+		if(personalDetail.getIsNameChanged() != null) {
+			if(personalDetail.getIsNameChanged()) {
+				userDocumentService.addByDocumentFor(userSession.getCurrentUser(), Enums.DocumentsFor.NameChanged.getId());
+			} else {
+				userDocumentService.deleteByDocumentFor(userSession.getCurrentUser(), Enums.DocumentsFor.NameChanged.getId());
+			}
 		}
 		
 		if(personalDetail.getEducationGapInYrs() != null && personalDetail.getEducationGapInYrs() > 0) {
