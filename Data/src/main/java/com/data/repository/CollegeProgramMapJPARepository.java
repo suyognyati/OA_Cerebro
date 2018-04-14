@@ -13,4 +13,5 @@ import com.data.entities.ProgramCategory;
 public interface CollegeProgramMapJPARepository extends JpaRepository<CollegeProgramMap, Integer> {
 	
 	List<CollegeProgramMap> findByCollegeAndProgramCategory(College college, ProgramCategory programCategory);
+	List<CollegeProgramMap> findByCollege(College college);
 }

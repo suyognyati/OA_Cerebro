@@ -14,6 +14,12 @@
 					url: "/Web/generateMeritList/programCategories/get/"
 				})
 			},
+			getAllPrograms : function() {
+				return $http({
+					method: "GET",
+					url: "/Web/generateMeritList/getAllPrograms/"
+				})
+			},
 			getPrograms : function(programCategoryId) {
 				return $http({
 					method: "GET",

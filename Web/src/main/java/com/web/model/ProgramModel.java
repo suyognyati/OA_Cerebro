@@ -5,6 +5,7 @@ import com.data.entities.ProgramFileMap;
 public class ProgramModel {
 	
 	private Integer collegeProgramId;
+	private Integer programLevelId;		//This is in sync with programCategoryId of database
 	private String programCode;
 	private String programName;
 	private String facultyOrCollege;
@@ -18,6 +19,14 @@ public class ProgramModel {
 		}
 		public void setCollegeProgramId(Integer collegeProgramId) {
 			this.collegeProgramId = collegeProgramId;
+		}
+		
+		
+		public Integer getProgramLevelId() {
+			return programLevelId;
+		}
+		public void setProgramLevelId(Integer programLevelId) {
+			this.programLevelId = programLevelId;
 		}
 		
 		

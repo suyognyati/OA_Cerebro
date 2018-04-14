@@ -43,6 +43,11 @@ public class GenerateMeritListRestController {
 		return programService.getProgramsByCategory(session.getCollegeId(), programCategoryId);
 	}
 	
+	@RequestMapping(value="/getAllPrograms/")
+	public List<ProgramModel> getAllProgramsOfCollege(){
+		return programService.getAllProgramsOfCollege(session.getCollegeId());
+	}
+	
 	@RequestMapping(value="/getMeritList/{programId}")
 	public GenerateMeritListModel getMeritList(@PathVariable(value="programId") Integer programId){
 		return generateMeritListRCService.getMeritList(session.getCollegeId(), programId);

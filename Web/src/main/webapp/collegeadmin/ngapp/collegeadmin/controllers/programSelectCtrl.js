@@ -11,6 +11,7 @@
 	
 	function ProgramSelectCtrl($http, $state, $scope, generateMeritListService) {
 		var vm = this;
+		vm.search = {};
 		
 		/*vm.programCategoryId = $state.params.programCategoryId;*/
 		
@@ -21,7 +22,6 @@
 			.then(function(success) {
 				vm.categories = success.data;
 				vm.selectedCategoryId = null;
-				//vm.getPrograms();
 				refreshSelectPickerWithDelay(100);
 			}, function(error) {
 				vm.categories = {};
@@ -29,11 +29,9 @@
 		}
 		
 		vm.getPrograms = function() {
-			generateMeritListService.getPrograms(vm.selectedCategoryId)
+			generateMeritListService.getAllPrograms()
 			.then(function(success) {
 				vm.programs = success.data;
-				vm.selectedProgramId = null;
-				refreshSelectPickerWithDelay(100);
 			}, function(error) {
 				vm.programs = {};
 			})
@@ -49,15 +47,18 @@
 			refreshSelectPickerWithDelay();
 		}
 		
-		vm.generateMeritList = function(programId) {
+		vm.generateMeritList = function(programId, programLevelId) {
 			var selectedProgramId = vm.selectedProgramId;
-			$state.go("collegeadmin.meritList",{programId:programId, programCategoryId:vm.programCategoryId});
+			$state.go("collegeadmin.meritList",{programId:programId, programLevelId:programLevelId});
+		}
+		
+		vm.filterByProgramLevel = function() {
+			vm.search.programLevelId = vm.selectedCategoryId;
 		}
 		
 		setTimeout(function() {
 			vm.getCategories();
-			
-			//vm.getReservations();
+			vm.getPrograms();
 		}, $scope.getDataDelay);
 	};
 }());

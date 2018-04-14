@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.data.entities.CollegeProgramMap;
+import com.data.entities.ProgramCategory;
 import com.data.entities.University_Program;
 import com.data.services.CollegeProgramMapService;
 import com.web.model.ProgramModel;
@@ -34,6 +35,32 @@ public class ProgramRCServiceImpl implements ProgramRCService {
 			programModel.setApplicationDates("");
 			programModel.setProgramId(program.getUniversityProgramId());
 			programModel.setFileMap(program.getProgramFileMap());
+			programModelList.add(programModel);
+		}
+		
+		return programModelList;
+	}
+	
+	public List<ProgramModel> getAllProgramsOfCollege(Integer collegeId) {
+		
+		List<CollegeProgramMap> programsOfCollege = collegeProgramMapService.getAllProgramsOfCollege(collegeId);
+		List<ProgramModel> programModelList = new ArrayList<ProgramModel>();
+		
+		University_Program program = null;
+		ProgramCategory programLevel = null;
+		for(CollegeProgramMap programOfCollege : programsOfCollege) {
+			program = programOfCollege.getProgram();
+			programLevel = programOfCollege.getProgramCategory();
+			
+			ProgramModel programModel = new ProgramModel();
+			programModel.setCollegeProgramId(programOfCollege.getCollegeProgramMapId());
+			programModel.setProgramCode(program.getUniversityProgramCode());
+			programModel.setProgramName(program.getUniversityProgramName());
+			programModel.setFacultyOrCollege(program.getUniversityProgramFaculty());
+			programModel.setApplicationDates("");
+			programModel.setProgramId(program.getUniversityProgramId());
+			programModel.setFileMap(program.getProgramFileMap());
+			programModel.setProgramLevelId(programLevel.getCategoryId());
 			programModelList.add(programModel);
 		}
 		

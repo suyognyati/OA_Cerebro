@@ -7,4 +7,5 @@ import com.web.model.ProgramModel;
 public interface ProgramRCService {
 
 	List<ProgramModel> getProgramsByCategory(Integer collegeId, Integer programCategoryId);
+	List<ProgramModel> getAllProgramsOfCollege(Integer collegeId);
 }

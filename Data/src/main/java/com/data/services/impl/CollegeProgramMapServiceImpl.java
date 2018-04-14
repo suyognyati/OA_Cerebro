@@ -32,11 +32,24 @@ public class CollegeProgramMapServiceImpl implements CollegeProgramMapService {
 		
 		return collegeProgramMapJPARepository.findByCollegeAndProgramCategory(college, programCategory);
 	}
+	
+	@Override
+	public List<CollegeProgramMap> getAllProgramsOfCollege(Integer collegeId) {
+		College college = collegeJpaRepository.findOne(collegeId);		
+		return collegeProgramMapJPARepository.findByCollege(college);
+	}
 
+	@Override
+	public List<CollegeProgramMap> getAllProgramsOfCollege(College college) {
+		return collegeProgramMapJPARepository.findByCollege(college);
+	}
+	
 	@Override
 	public CollegeProgramMap getById(Integer id) {		
 		return collegeProgramMapJPARepository.findOne(id);
 	}
+
+	
 
 	
 }

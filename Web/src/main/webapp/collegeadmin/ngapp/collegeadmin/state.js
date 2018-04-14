@@ -29,26 +29,6 @@
 				}]
 			}
 		})
-		/*.state('collegeadmin.programLevel', {
-			url: '/programLevel',
-			templateUrl: 'ngapp/collegeadmin/views/programLevelView.html',
-			controller:"ProgramLevelCtrl as vm",
-			ncyBreadcrumb: {
-				label: 'Program Level',
-			},
-			params: { subtitle: 'Program Level' },
-			resolve: {
-				loadMyCtrl: ['$ocLazyLoad', function($ocLazyLoad) {
-					return $ocLazyLoad.load({
-						files: [
-							'ngapp/collegeadmin/controllers/programLevelCtrl.js',
-							'ngapp/collegeadmin/services/programLevelService.js'
-							
-						]
-					});
-				}]
-			}
-		})*/
 	    .state('collegeadmin.selectProgram', {
 			url: '/selectProgram',
 			templateUrl: 'ngapp/collegeadmin/views/programSelectView.html',
@@ -70,7 +50,7 @@
 			}
 		})
 		.state('collegeadmin.meritList', {
-			url: '/meritList/:programCategoryId/:programId',
+			url: '/meritList/:programLevelId/:programId',
 			templateUrl: 'ngapp/collegeadmin/views/generateMeritListView.html',
 			controller:"GenerateMeritListCtrl as vm",
 			ncyBreadcrumb: {

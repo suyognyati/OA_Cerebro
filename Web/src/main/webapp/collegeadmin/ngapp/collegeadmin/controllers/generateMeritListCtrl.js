@@ -13,7 +13,7 @@
 		var vm = this;
 		
 		vm.programId = $state.params.programId;
-		vm.programCategoryId = $state.params.programCategoryId;
+		vm.programCategoryId = $state.params.programLevelId;
 		
 		
 		
@@ -27,7 +27,7 @@
 		}
 		
 		vm.backToPrograms = function() {
-			$state.go("collegeadmin.selectProgram", {programCategoryId:vm.programCategoryId});
+			$state.go("collegeadmin.selectProgram");
 		}
 		
 		setTimeout(function() {
