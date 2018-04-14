@@ -38,10 +38,12 @@ public class OccupationReservationRCServiceImpl implements OccupationReservation
 		}
 		occupationAndReservation = setOccupationAndReservationObject(occupationAndReservation, occupationAndReservationModel);
 		
-		if(occupationAndReservation.getIsEligibleForEBC()) {
-			userDocumentService.addByDocumentFor(session.getCurrentUser(), Enums.DocumentsFor.EBC.getId());
-		} else {
-			userDocumentService.deleteByDocumentFor(session.getCurrentUser(), Enums.DocumentsFor.EBC.getId());
+		if(occupationAndReservation.getIsEligibleForEBC() != null) {
+			if(occupationAndReservation.getIsEligibleForEBC()) {
+				userDocumentService.addByDocumentFor(session.getCurrentUser(), Enums.DocumentsFor.EBC.getId());
+			} else {
+				userDocumentService.deleteByDocumentFor(session.getCurrentUser(), Enums.DocumentsFor.EBC.getId());
+			}
 		}
 		
 		if(occupationAndReservation.getCategory() == Enums.Category.GEN.getId()) {
