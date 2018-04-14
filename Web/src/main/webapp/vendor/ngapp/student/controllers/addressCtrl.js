@@ -7,10 +7,10 @@
 					 "$http",
 					 "$state",
 					 "$window",
-					 "addressService",
+					 "profileDetailService",
 					 AddressCtrl]);
 
-	function AddressCtrl($scope, $http, $state, $window, addressService) {
+	function AddressCtrl($scope, $http, $state, $window, profileDetailService) {
 		$window.scrollTo(0, 0);
 		
 		var vm = this;
@@ -21,7 +21,7 @@
 		vm.accessTokenParam = $scope.getAccessTokenParam();
 
 		vm.loadData = function() {
-			addressService.get(vm.accessTokenParam)
+			profileDetailService.getAddressDetail(vm.accessTokenParam)
 			.then(function (success) {
 				vm.address = success.data;
 				if(vm.address != null) {
@@ -73,7 +73,7 @@
 		}
 
 		vm.submit = function() {
-			addressService.save(vm.address, vm.accessTokenParam)
+			profileDetailService.saveAddressDetail(vm.address, vm.accessTokenParam)
 			.then(function (success) {
 				vm.successMessage = "Detail saved successfully";
 				$state.go("student.profile.educationInformation");

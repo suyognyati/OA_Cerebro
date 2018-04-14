@@ -3,12 +3,21 @@
 		<span style="font-family:Verdana">SELECT PROGRAM TO GENERATE MERIT LIST</span>
 	</div>
 	<div class="panel-body">
-		<div class="col-sm-12 form-group">
-			<div class="col-sm-1">
+		<div class="row form-group">
+			<div class="col-sm-6">
+				<label class="labelclass">Select Level</label>
+				<select class="selectpicker" data-width="100%"
+					data-live-search="true"
+					id="category"
+					name="category" title="-- Select --"
+					ng-model="vm.selectedCategoryId"
+					ng-options="category.programCategoryId as category.programCategoryName for category in vm.categories"
+					required>
+			</select>
+	    	</div>
+			<div class="col-sm-6">
 				<label class="labelclass">Search</label>
-			</div>
-		    <div class="col-sm-11">
-		    	<input type="text" ng-model="search" class="form-control" placeholder="Search">
+				<input type="text" ng-model="search" class="form-control" placeholder="Search">
 	    	</div>
 		</div>
 		
@@ -45,3 +54,14 @@
 		</div>
 	</div>
 </div>
+
+<script type="text/javascript">
+
+	$(".selectpicker").selectpicker("refresh");
+	var delay = 1000;
+
+	setTimeout(function() {
+		$(".selectpicker").selectpicker("refresh");
+	}, delay);
+
+</script>

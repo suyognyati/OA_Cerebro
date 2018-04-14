@@ -8,11 +8,10 @@
 					 "$state",
 					 "$window",
 					 "$filter",
-					 "programService",
-					 "applicationStatusService",
+					 "applyOnlineService",
 					 ProgramCtrl]);
 
-	function ProgramCtrl($scope, $http, $state, $window, $filter, programService, applicationStatusService) {
+	function ProgramCtrl($scope, $http, $state, $window, $filter, applyOnlineService) {
 		var vm = this;
 
 		vm.programCategoryId = $state.params.programCategoryId;
@@ -22,12 +21,12 @@
 
 		vm.getPrograms = function() {
 			//Collect all available programs
-			programService.get(vm.programCategoryId, vm.accessTokenParam)
+			applyOnlineService.getPrograms(vm.programCategoryId, vm.accessTokenParam)
 			.then(function(success) {
 				vm.programs = success.data;
 
 				//Collect applied courses
-				applicationStatusService.get(vm.accessTokenParam)
+				applyOnlineService.getAppliedCourses(vm.accessTokenParam)
 				.then(function(success) {
 					vm.appliedCourses = success.data;
 					//Setting isAlreadyApplied as true if applied for program

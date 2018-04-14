@@ -6,6 +6,8 @@ import com.data.entities.Enums;
 
 public class GenerateMeritListModel {
 
+	private String programCode;
+	private String programName; 
 	private Integer formNo;
 	private String studentName;
 	private String category;
@@ -13,6 +15,20 @@ public class GenerateMeritListModel {
 	private Integer totalMarks;
 	private List<Enums.KeyValuePair> reservationList;
 	
+	
+	public String getProgramCode() {
+		return programCode;
+	}
+	public void setProgramCode(String programCode) {
+		this.programCode = programCode;
+	}
+	
+	public String getProgramName() {
+		return programName;
+	}
+	public void setProgramName(String programName) {
+		this.programName = programName;
+	}
 	
 	public Integer getFormNo() {
 		return formNo;

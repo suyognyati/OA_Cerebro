@@ -8,10 +8,10 @@
 					 "$state",
 					 "$window",
 					 "$rootScope",
-					 "uploadPhotoSignService",
+					 "fileUploadService",
 					 UploadPhotoSignCtrl]);
 
-	function UploadPhotoSignCtrl($scope, $http, $state, $window, $rootScope, uploadPhotoSignService) {
+	function UploadPhotoSignCtrl($scope, $http, $state, $window, $rootScope, fileUploadService) {
 		var vm = this;
 		vm.uploadPhotoSignTemp = {};
 
@@ -58,7 +58,7 @@
 
 		$scope.submit = function() {
 			var resultImage = $scope.resImageDataURI;
-			uploadPhotoSignService.uploadPhotoSign(resultImage, vm.accessTokenParam)
+			fileUploadService.uploadPhotoSign(resultImage, vm.accessTokenParam)
 			.then(function (success) {
 				vm.successMessage = "Detail saved successfully";
 			}, function (error) {

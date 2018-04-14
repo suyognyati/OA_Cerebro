@@ -4,13 +4,13 @@
 		.module("app")
 		.controller("UserDetailCtrl",
 					["$http",
-					 "userDetailService",
+					 "profileDetailService",
 					 UserDetailCtrl]);
 	
-	function UserDetailCtrl($http, userDetailService) {
+	function UserDetailCtrl($http, profileDetailService) {
 		var vm = this;
 		
-		userDetailService.get()
+		profileDetailService.getUserDetail()
 		.then(function(success) {
 			vm.basicdetail = success.data;
 		}, function(error) {
@@ -19,7 +19,7 @@
 		
 		
 		vm.submit = function() {
-			userDetailService.save(vm.basicdetail)
+			profileDetailService.saveUserDetail(vm.basicdetail)
 			.then(function(success) {
                 vm.successMessage = "Detail saved successfully";
 			}, function(error) {

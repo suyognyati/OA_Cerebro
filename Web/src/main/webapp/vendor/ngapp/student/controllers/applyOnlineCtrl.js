@@ -16,7 +16,7 @@
 		vm.accessTokenParam = $scope.getAccessTokenParam();
 		
 		vm.getCategories = function() {
-			applyOnlineService.get(vm.accessTokenParam)
+			applyOnlineService.getApplyOnline(vm.accessTokenParam)
 			.then(function(success) {
 				vm.categories = success.data;
 			}, function(error) {

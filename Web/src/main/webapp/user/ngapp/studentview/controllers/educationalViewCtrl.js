@@ -6,10 +6,10 @@
 					["$http",
 					 "$window",
 					 "$state",
-					 "educationalViewService",
+					 "profileViewService",
 					 EducationalViewCtrl]);
 
-	function EducationalViewCtrl($http, $window, $state, educationalViewService) {
+	function EducationalViewCtrl($http, $window, $state, profileViewService) {
 
 		var userId = 1;
 		var vm = this;
@@ -20,9 +20,9 @@
 		vm.accessToken = $window.bearer_token;
 		vm.accessTokenParam = "?access_token=" + vm.accessToken;
 
-		educationalViewService.setApplicant(userId)
+		profileViewService.setApplicant(userId)
 		.then(function(success) {
-			educationalViewService.getListofQualification(vm.accessTokenParam)
+			profileViewService.getListofQualification(vm.accessTokenParam)
 			.then(function(success) {
 				vm.qualificationList = success.data;
 			}, function(error) {

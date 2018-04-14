@@ -6,16 +6,16 @@
 					["$scope",
 					 "$http",
 					 "$window",
-					 "applicationStatusService",
+					 "applyOnlineService",
 					 ApplicationStatusCtrl]);
 
-	function ApplicationStatusCtrl($scope, $http, $window, applicationStatusService) {
+	function ApplicationStatusCtrl($scope, $http, $window, applyOnlineService) {
 		var vm = this;
 
 		vm.accessTokenParam = $scope.getAccessTokenParam();
 		
 		vm.getApplicationStatus = function() {
-			applicationStatusService.get(vm.accessTokenParam)
+			applyOnlineService.getAppliedCourses(vm.accessTokenParam)
 			.then(function(success) {
 				vm.appliedCourses = success.data;
 			}, function(error) {
@@ -26,7 +26,7 @@
 		vm.deleteApplication = function(applicationId) {
 			var canDelete = confirm("Are you sure to delete application");
 			if(canDelete == true) {
-				applicationStatusService.deleteApplication(applicationId, vm.accessTokenParam)
+				applyOnlineService.deleteApplication(applicationId, vm.accessTokenParam)
 				.then(function(success) {
 					var count = 0;
 					angular.forEach(vm.appliedCourses, function(value, key) {

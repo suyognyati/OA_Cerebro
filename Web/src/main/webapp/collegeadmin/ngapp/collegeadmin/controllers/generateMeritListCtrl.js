@@ -20,7 +20,7 @@
 		vm.getMeritList = function() {
 			generateMeritListService.getMeritList(vm.programId)
 			.then(function(success){
-				vm.studentMeritList = success.data; 
+				vm.studentMeritList = success.data;
 			},function(error){
 				vm.studentMeritList = {};
 			})

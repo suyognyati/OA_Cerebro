@@ -19,6 +19,46 @@
 					method: "GET",
 					url: "/Web/applicants/getDetail/"
 				})
+			},
+			getListofQualification : function(accessTokenParam) {
+				return $http({
+					method: "GET",
+					url: "/Web/educationalInformation/getListofQualification/"
+				})
+			},
+			deleteQualification : function(qualificationId, accessTokenParam) {
+				return $http({
+					method: "POST",
+					url: "/Web/educationalInformation/deleteQualificationDetail/",
+					data: qualificationId
+				})
+			},
+			getQualificationDetail : function(qualificationId, accessTokenParam) {
+				return $http({
+					method: "GET",
+					url: "/Web/educationalInformation/getQualificationDetail/" + qualificationId + accessTokenParam
+				})
+			},
+			getNewQualification : function(qualificationMainLevel, accessTokenParam) {
+				return $http({
+					method: "GET",
+					url: "/Web/educationalInformation/getNewQualification/" + qualificationMainLevel + accessTokenParam
+				})
+			},
+			saveQualificationDetail : function(qualificationDetail, accessTokenParam) {
+				var educationalModel = {};
+				delete qualificationDetail.resultStatusList;
+				delete qualificationDetail.certifyingBodyList;
+				delete qualificationDetail.monthList;
+				delete qualificationDetail.yearList;
+				delete qualificationDetail.countryList;
+				delete qualificationDetail.stateList;
+				educationalModel.qualificationDetail = qualificationDetail;
+				return $http({
+					method: "POST",
+					url: "/Web/educationalInformation/saveQualificationDetail/" + accessTokenParam,
+					data: educationalModel
+				})
 			}
 		}
 	}

@@ -15,7 +15,7 @@ public class University_ProgramServiceImpl implements University_ProgramService 
 
 	@Override
 	public University_Program getById(Integer programId) {
-		return university_ProgramJpaRepository.getOne(programId);
+		return university_ProgramJpaRepository.findOne(programId);
 	}
 	
 }

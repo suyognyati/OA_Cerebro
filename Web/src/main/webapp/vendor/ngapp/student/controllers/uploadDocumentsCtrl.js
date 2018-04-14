@@ -9,10 +9,10 @@
 					 "$scope",
 					 "$rootScope",
 					 "globalConstants",
-					 "uploadDocumentsService",
+					 "fileUploadService",
 					 UploadPhotoSignCtrl]);
 
-	function UploadPhotoSignCtrl($http, $state, $window, $scope, $rootScope, globalConstants, uploadDocumentsService) {
+	function UploadPhotoSignCtrl($http, $state, $window, $scope, $rootScope, globalConstants, fileUploadService) {
 		var vm = this;
 
 		// vm.accessToken = $window.bearer_token;
@@ -26,7 +26,7 @@
 		vm.fileName = "";
 
 		vm.getUserDocuments = function() {
-			uploadDocumentsService.getUserDocumentList(vm.accessTokenParam)
+			fileUploadService.getUserDocumentList(vm.accessTokenParam)
 			.then(function (success) {
 				vm.userDocuments = success.data.userDocuments;
 				refreshSelectPickerWithDelay(100);
@@ -92,7 +92,7 @@
 				fd.append('path', "D:\\admissions");
 				fd.append('file', vm.files[i]);
 
-				uploadDocumentsService.uploadSingleFile(fd)
+				fileUploadService.uploadSingleFile(fd)
 				.then(function (success) {
 					uploadedFiles ++;
 					updateProgressManually(uploadedFiles, totalLength);

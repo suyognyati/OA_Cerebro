@@ -4,9 +4,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.data.entities.Enums;
+import com.data.entities.University_Program;
 import com.data.services.EducationalInformationService;
 import com.data.services.OccupationReservationService;
 import com.data.services.PersonalDetailService;
+import com.data.services.University_ProgramService;
 import com.data.services.UserDetailService;
 import com.web.model.GenerateMeritListModel;
 import com.web.services.GenerateMeritListRCService;
@@ -26,6 +28,9 @@ public class GenerateMeritListRCServiceImpl implements GenerateMeritListRCServic
 	@Autowired
 	OccupationReservationService occupationReservationService;
 	
+	@Autowired
+	University_ProgramService university_ProgramService;
+	
 	GenerateMeritListModel generateMeritListModel = null;
 	
 	@Override
@@ -34,6 +39,10 @@ public class GenerateMeritListRCServiceImpl implements GenerateMeritListRCServic
 		
 		generateMeritListModel.setReservationList(Enums.Category.getEnumList());
 		
+		University_Program university_Program = university_ProgramService.getById(programId);
+		
+		generateMeritListModel.setProgramCode(university_Program.getUniversityProgramCode());
+		generateMeritListModel.setProgramName(university_Program.getUniversityProgramName());
 		
 		return generateMeritListModel;
 	}

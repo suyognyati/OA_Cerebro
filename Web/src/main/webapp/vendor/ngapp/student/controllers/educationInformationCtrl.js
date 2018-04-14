@@ -7,10 +7,10 @@
 					 "$http",
 					 "$window",
 					 "$state",
-					 "educationInformationService",
+					 "profileDetailService",
 					 EducationInformationCtrl]);
 
-	function EducationInformationCtrl($scope, $http, $window, $state, educationInformationService) {
+	function EducationInformationCtrl($scope, $http, $window, $state, profileDetailService) {
 
 		var vm = this;
 		vm.qualificationList = [];
@@ -20,7 +20,7 @@
 		vm.accessTokenParam = $scope.getAccessTokenParam();
 
 		vm.loadData = function() {
-			educationInformationService.getListofQualification(vm.accessTokenParam)
+			profileDetailService.getListofQualification(vm.accessTokenParam)
 			.then(function (success) {
 				vm.qualificationList = success.data;
 				/*vm.listofQualification = data;
@@ -60,7 +60,7 @@
 			}
 			var confirmation = confirm("Are you sure to delete " + qualificationNameTemp);
 			if(confirmation == true) {
-				educationInformationService.deleteQualification(qualificationId, vm.accessTokenParam)
+				profileDetailService.deleteQualification(qualificationId, vm.accessTokenParam)
 				.then(function (success) {
 					vm.returnstatus = success.data;
 					if(vm.returnstatus != null && vm.returnstatus.success == true) {

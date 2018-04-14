@@ -7,10 +7,10 @@
 					 "$http",
 					 "$state",
 					 "$window",
-					 "OccupationReservationService",
+					 "profileDetailService",
 					 OccupationReservationCtrl]);
 
-	function OccupationReservationCtrl($scope, $http, $state, $window, OccupationReservationService) {
+	function OccupationReservationCtrl($scope, $http, $state, $window, profileDetailService) {
 		var vm = this;
 		vm.occupationReservationTemp = {};
 
@@ -43,7 +43,7 @@
 		}
 
 		vm.loadData = function () {
-			OccupationReservationService.get(vm.accessTokenParam)
+			profileDetailService.getOccupationReservation(vm.accessTokenParam)
 			.then(function (success) {
 				vm.occupationandreservation = success.data;
 				vm.initDefaults();
@@ -54,7 +54,7 @@
 		}
 
 		vm.submit = function() {
-			OccupationReservationService.save(vm.occupationandreservation, vm.accessTokenParam)
+			profileDetailService.saveOccupationReservation(vm.occupationandreservation, vm.accessTokenParam)
 			.then(function (success) {
 				vm.successMessage = "Saved successfully";
 				$state.go("student.profile.uploadPhotoSign");

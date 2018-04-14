@@ -64,7 +64,7 @@
 					return $ocLazyLoad.load({
 						files: [
 							'ngapp/studentview/controllers/educationalViewCtrl.js',
-							'ngapp/studentview/services/educationalViewService.js'
+							'ngapp/studentview/services/profileViewService.js'
 						]
 					});
 				}]
@@ -101,7 +101,7 @@
 					return $ocLazyLoad.load({
 						files: [
 							'ngapp/studentview/controllers/qualificationDetailCtrl.js',
-							'ngapp/studentview/services/qualificationDetailService.js'
+							'ngapp/studentview/services/profileViewService.js'
 						]
 					});
 				}]

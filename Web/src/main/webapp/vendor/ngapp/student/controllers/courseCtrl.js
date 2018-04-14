@@ -7,10 +7,10 @@
 					 "$http",
 					 "$state",
 					 "$window",
-					 "subjectService",
+					 "applyOnlineService",
 					 SubjectCtrl]);
 
-	function SubjectCtrl($scope, $http, $state, $window, subjectService) {
+	function SubjectCtrl($scope, $http, $state, $window, applyOnlineService) {
 		var vm = this;
 
 		vm.collegeProgramId = $state.params.collegeProgramId;
@@ -28,7 +28,7 @@
 		vm.selectionNotAllowedMessage = "";
 		vm.isSubjectSelectionCompleted = false;
 
-		subjectService.getSubjects(vm.collegeProgramId, vm.accessTokenParam)
+		applyOnlineService.getSubjects(vm.collegeProgramId, vm.accessTokenParam)
 		.then(function(success) {
 			vm.subjects = success.data;
 			vm.initialise();
@@ -202,7 +202,7 @@
 		}
 
 		vm.applyForCourse = function() {
-			subjectService.applyForCourse(vm.collegeProgramId, vm.selectedSubjectList, vm.accessTokenParam)
+			applyOnlineService.applyForCourse(vm.collegeProgramId, vm.selectedSubjectList, vm.accessTokenParam)
 			.then(function(success) {
 				$state.go("student.application.applicationStatus")
 			}, function(error) {

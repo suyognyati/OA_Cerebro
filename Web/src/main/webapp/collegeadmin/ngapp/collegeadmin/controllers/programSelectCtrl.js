@@ -6,18 +6,30 @@
 					["$http",
 					 "$state",
 					 "$scope",
-					 "programSelectService",
+					 "generateMeritListService",
 					 ProgramSelectCtrl]);
 	
-	function ProgramSelectCtrl($http, $state, $scope, programSelectService) {
+	function ProgramSelectCtrl($http, $state, $scope, generateMeritListService) {
 		var vm = this;
 		
-		vm.programCategoryId = $state.params.programCategoryId;
+		/*vm.programCategoryId = $state.params.programCategoryId;*/
 		
 		vm.itemPerPage = 2;
 		
+		vm.getCategories = function() {
+			generateMeritListService.get()
+			.then(function(success) {
+				vm.categories = success.data;
+				vm.selectedCategoryId = null;
+				//vm.getPrograms();
+				refreshSelectPickerWithDelay(100);
+			}, function(error) {
+				vm.categories = {};
+			})
+		}
+		
 		vm.getPrograms = function() {
-			programSelectService.get(vm.programCategoryId)
+			generateMeritListService.getPrograms(vm.selectedCategoryId)
 			.then(function(success) {
 				vm.programs = success.data;
 				vm.selectedProgramId = null;
@@ -28,7 +40,7 @@
 		}
 		
 		vm.getReservations = function () {
-			programSelectService.get()
+			generateMeritListService.get()
 			.then(function (success) {
 				vm.reservations = success.data;
 			}, function (error) {
@@ -43,7 +55,8 @@
 		}
 		
 		setTimeout(function() {
-			vm.getPrograms();
+			vm.getCategories();
+			
 			//vm.getReservations();
 		}, $scope.getDataDelay);
 	};

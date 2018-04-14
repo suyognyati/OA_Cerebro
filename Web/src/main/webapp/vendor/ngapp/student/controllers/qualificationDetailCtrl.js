@@ -8,10 +8,10 @@
 					 "$window",
 					 "$state",
 					 "$stateParams",
-					 "qualificationDetailService",
+					 "profileDetailService",
 					 QualificationDetailCtrl]);
 
-	function QualificationDetailCtrl($scope, $http, $window, $state, $stateParams, qualificationDetailService) {
+	function QualificationDetailCtrl($scope, $http, $window, $state, $stateParams, profileDetailService) {
 
 		var vm = this;
 		var qualificationMainLevel = $state.params.qualificationMainLevel;
@@ -24,7 +24,7 @@
 		vm.accessTokenParam = $scope.getAccessTokenParam();
 
 		vm.getQualificationDetail = function() {
-			qualificationDetailService.getQualificationDetail(qualificationId, vm.accessTokenParam)
+			profileDetailService.getQualificationDetail(qualificationId, vm.accessTokenParam)
 			.then(function (success) {
 				vm.qualificationDetail = success.data;
 				//Doing initial assignments for qualification detail
@@ -39,7 +39,7 @@
 		}
 
 		vm.getNewQualification = function() {
-			qualificationDetailService.getNewQualification (qualificationMainLevel, vm.accessTokenParam)
+			profileDetailService.getNewQualification (qualificationMainLevel, vm.accessTokenParam)
 			.then(function (success) {
 				vm.qualificationDetail = success.data;
 				//Doing initial assignments for qualification detail
@@ -116,7 +116,7 @@
 				$window.scrollTo(0, 0);
 				return;
 			}
-			qualificationDetailService.saveQualificationDetail(vm.qualificationDetail, vm.accessTokenParam)
+			profileDetailService.saveQualificationDetail(vm.qualificationDetail, vm.accessTokenParam)
 			.then(function (success) {
 				vm.returnstatus = success.data;
 				if(vm.returnstatus != null && vm.returnstatus.success == true) {

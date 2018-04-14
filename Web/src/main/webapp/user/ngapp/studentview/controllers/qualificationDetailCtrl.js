@@ -7,10 +7,10 @@
 					 "$window",
 					 "$state",
 					 "$stateParams",
-					 "qualificationDetailService",
+					 "profileViewService",
 					 QualificationDetailCtrl]);
 
-	function QualificationDetailCtrl($http, $window, $state, $stateParams, qualificationDetailService) {
+	function QualificationDetailCtrl($http, $window, $state, $stateParams, profileViewService) {
 
 		var vm = this;
 		var qualificationMainLevel = $state.params.qualificationMainLevel;
@@ -21,7 +21,7 @@
 		vm.accessTokenParam = "?access_token=" + vm.accessToken;
 
 		vm.getQualificationDetail = function() {
-			qualificationDetailService.getQualificationDetail(qualificationId, vm.accessTokenParam)
+			profileViewService.getQualificationDetail(qualificationId, vm.accessTokenParam)
 			.then(function(success) {
 				vm.qualificationDetail = success.data;
 				//Doing initial assignments for qualification detail

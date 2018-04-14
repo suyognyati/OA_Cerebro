@@ -9,10 +9,10 @@
 					 "$timeout",
 					 "$scope",
 					 "$window",
-					 "personalDetailService",
+					 "profileDetailService",
 					 PersonalDetailCtrl]);
 
-	function PersonalDetailCtrl($state, $http, $timeout, $httpParamSerializer, $scope, $window, personalDetailService) {
+	function PersonalDetailCtrl($state, $http, $timeout, $httpParamSerializer, $scope, $window, profileDetailService) {
 		$window.scrollTo(0, 0);
 		
 		var vm = this;
@@ -22,7 +22,7 @@
 		vm.accessTokenParam = $scope.getAccessTokenParam();
 		
 		vm.loadData = function() {
-			personalDetailService.get(vm.accessTokenParam)
+			profileDetailService.getPersonalDetail(vm.accessTokenParam)
 			.then(function (success) {
 				vm.personaldetail = success.data;
 				if(vm.personaldetail != null) {
@@ -61,7 +61,7 @@
 		}
 
 		vm.submit = function() {
-			personalDetailService.save(vm.personaldetail, vm.accessTokenParam)
+			profileDetailService.savePersonalDetail(vm.personaldetail, vm.accessTokenParam)
 			.then(function (success) {
 				vm.successMessage = "Detail saved successfully";
 				$state.go("student.profile.address");
@@ -71,7 +71,7 @@
 		}
 
 		vm.saveDraft = function() {
-			personalDetailService.save(vm.personaldetail, vm.accessTokenParam)
+			profileDetailService.savePersonalDetail(vm.personaldetail, vm.accessTokenParam)
 			.then(function (success) {
 				vm.successMessage = "Detail saved successfully";
 			}, function (error) {

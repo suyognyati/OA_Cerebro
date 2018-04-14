@@ -144,7 +144,7 @@ function StudentStates($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, 
 					serie: true,
 					files: [
 					        'ngapp/student/controllers/personalDetailCtrl.js',
-					        'ngapp/student/services/personalDetailService.js'
+					        'ngapp/student/services/profileDetailService.js'
 					        ]
 				});
 			}]
@@ -165,7 +165,7 @@ function StudentStates($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, 
 					serie: true,
 					files: [
 					        'ngapp/student/controllers/userDetailCtrl.js',
-					        'ngapp/student/services/userDetailService.js'
+					        'ngapp/student/services/profileDetailService.js'
 					        ]
 				});
 			}]
@@ -186,7 +186,7 @@ function StudentStates($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, 
 					serie: true,
 					files: [
 					        'ngapp/student/controllers/addressCtrl.js',
-					        'ngapp/student/services/addressService.js'
+					        'ngapp/student/services/profileDetailService.js'
 					        ]
 				});
 			}]
@@ -207,7 +207,7 @@ function StudentStates($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, 
 					serie: true,
 					files: [
 					        'ngapp/student/controllers/educationInformationCtrl.js',
-					        'ngapp/student/services/educationInformationService.js'
+					        'ngapp/student/services/profileDetailService.js'
 					        ]
 				});
 			}]
@@ -244,7 +244,7 @@ function StudentStates($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, 
 					serie: true,
 					files: [
 					        'ngapp/student/controllers/qualificationDetailCtrl.js',
-					        'ngapp/student/services/qualificationDetailService.js'
+					        'ngapp/student/services/profileDetailService.js'
 					        ]
 				});
 			}]
@@ -266,7 +266,7 @@ function StudentStates($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, 
 						serie: true,
 						files: [
 							   'ngapp/student/controllers/occupationReservationCtrl.js',
-							   'ngapp/student/services/occupationReservationService.js'
+							   'ngapp/student/services/profileDetailService.js'
 							   ]
 					});
 				}]
@@ -288,7 +288,7 @@ function StudentStates($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, 
 					serie: true,
 					files: [
 						   'ngapp/student/controllers/uploadPhotoSignCtrl.js',
-						   'ngapp/student/services/uploadPhotoSignService.js'
+						   'ngapp/student/services/fileUploadService.js'
 						   ]
 				});
 			}]
@@ -310,7 +310,7 @@ function StudentStates($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, 
 					serie: true,
 					files: [
 						   'ngapp/student/controllers/uploadDocumentsCtrl.js',
-						   'ngapp/student/services/uploadDocumentsService.js'
+						   'ngapp/student/services/fileUploadService.js'
 						   ]
 				});
 			}]
@@ -389,8 +389,8 @@ function StudentStates($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, 
 					serie: true,
 					files: [
 						   'ngapp/student/controllers/programCtrl.js',
-						   'ngapp/student/services/programService.js',
-						   'ngapp/student/services/applicationStatusService.js'
+						   /*'ngapp/student/services/programService.js',*/
+						   'ngapp/student/services/applyOnlineService.js'
 						  ]
 				});
 			}]
@@ -429,7 +429,7 @@ function StudentStates($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, 
 					serie: true,
 					files: [
 						   'ngapp/student/controllers/courseCtrl.js',
-						   'ngapp/student/services/course.artsService.js',
+						   'ngapp/student/services/applyOnlineService.js',
 						  ]
 				});
 			}]
@@ -452,7 +452,7 @@ function StudentStates($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, 
 					serie: true,
 					files: [
 						   'ngapp/student/controllers/applicationStatusCtrl.js',
-						   'ngapp/student/services/applicationStatusService.js',
+						   'ngapp/student/services/applyOnlineService.js',
 						  ]
 				});
 			}]
@@ -504,7 +504,7 @@ function StudentStates($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, 
 				return $ocLazyLoad.load({
 					files: [
 						userBasePath + 'ngapp/studentview/controllers/educationalViewCtrl.js',
-						userBasePath + 'ngapp/studentview/services/educationalViewService.js'
+						userBasePath + 'ngapp/studentview/services/profileViewService.js'
 					]
 				});
 			}]
@@ -541,7 +541,7 @@ function StudentStates($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, 
 				return $ocLazyLoad.load({
 					files: [
 						userBasePath + 'ngapp/studentview/controllers/qualificationDetailCtrl.js',
-						userBasePath + 'ngapp/studentview/services/qualificationDetailService.js'
+						userBasePath + 'ngapp/studentview/services/profileViewService.js'
 					]
 				});
 			}]
