@@ -1,13 +1,59 @@
 package com.data.entities;
 
 import javax.persistence.Column;
+import javax.persistence.ColumnResult;
+import javax.persistence.ConstructorResult;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedNativeQueries;
+import javax.persistence.NamedNativeQuery;
+import javax.persistence.SqlResultSetMapping;
+import javax.persistence.SqlResultSetMappings;
 import javax.persistence.Table;
+
+import com.data.poco.AppliedStudentPOCO;
+
+@SqlResultSetMappings({
+	@SqlResultSetMapping(
+		    name="appliedStudentPOCOMapping",
+		    classes={
+		        @ConstructorResult(
+		            targetClass=AppliedStudentPOCO.class,
+		            columns={
+		                @ColumnResult(name="ApplicationId"),
+		                @ColumnResult(name="ApplicationStatus"),
+		                @ColumnResult(name="Date"),
+		                @ColumnResult(name="FormNo"),
+		                @ColumnResult(name="StatusComments"),
+		                @ColumnResult(name="FK_CollegeProgramMap"),
+		                @ColumnResult(name="FK_User"),
+		                @ColumnResult(name="FirstName"),
+		                @ColumnResult(name="MiddleName"),
+		                @ColumnResult(name="LastName"),
+		                @ColumnResult(name="Category"),
+		                @ColumnResult(name="Caste")
+		            }
+		        )
+		    }
+		)
+})
+
+@NamedNativeQueries({
+	@NamedNativeQuery(
+			name = "SubmittedApplications.getAllMeritStudents",
+			query = "SELECT sa.*, "
+					+ "pd.MiddleName, pd.FirstName, pd.LastName, "
+					+ "ors.Category, ors.Caste "
+					+ "FROM SubmittedApplications as sa "
+					+ "LEFT JOIN PersonalDetails as pd ON (sa.FK_User = pd.FK_User) "
+					+ "LEFT JOIN OccupationReservation as ors ON (sa.FK_User = ors.FK_User) "
+					+ "WHERE FK_CollegeProgramMap = :collegeProgramMapId",
+			resultSetMapping = "appliedStudentPOCOMapping")
+})
 
 @Entity
 @Table(name="SubmittedApplications")

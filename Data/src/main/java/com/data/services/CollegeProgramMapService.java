@@ -10,5 +10,6 @@ public interface CollegeProgramMapService {
 	List<CollegeProgramMap> getCollegeProgramsByCategory(Integer collegeId, Integer programCategoryId);
 	List<CollegeProgramMap> getAllProgramsOfCollege(Integer collegeId);
 	List<CollegeProgramMap> getAllProgramsOfCollege(College college);
+	CollegeProgramMap getCollegeProgramByCollegeAndProgram(Integer collegeId, Integer programId);
 	CollegeProgramMap getById(Integer id);
 }

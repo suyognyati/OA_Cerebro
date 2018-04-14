@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.data.entities.College;
 import com.data.entities.SubmittedApplications;
 import com.data.entities.User;
+import com.data.poco.AppliedStudentPOCO;
 import com.data.repository.SubmittedApplicationsJpaRepository;
 import com.data.services.SubmittedApplicationService;
 
@@ -30,5 +31,10 @@ public class SubmittedApplicationServiceImpl implements SubmittedApplicationServ
 	@Override
 	public void deleteById(Integer submittedApplicationId) {
 		submittedApplicationsJpaRepository.delete(submittedApplicationId);
+	}
+
+	@Override
+	public List<AppliedStudentPOCO> getAppliedStudentListOfProgram(Integer collegeProgramMapId) {
+		return submittedApplicationsJpaRepository.getMeritStudents(collegeProgramMapId);
 	}
 }

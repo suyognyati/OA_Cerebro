@@ -1,14 +1,19 @@
 package com.web.services.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.data.entities.CollegeProgramMap;
 import com.data.entities.Enums;
 import com.data.entities.University_Program;
+import com.data.poco.AppliedStudentPOCO;
+import com.data.services.CollegeProgramMapService;
 import com.data.services.EducationalInformationService;
 import com.data.services.OccupationReservationService;
 import com.data.services.PersonalDetailService;
-import com.data.services.University_ProgramService;
+import com.data.services.SubmittedApplicationService;
 import com.data.services.UserDetailService;
 import com.web.model.GenerateMeritListModel;
 import com.web.services.GenerateMeritListRCService;
@@ -29,7 +34,10 @@ public class GenerateMeritListRCServiceImpl implements GenerateMeritListRCServic
 	OccupationReservationService occupationReservationService;
 	
 	@Autowired
-	University_ProgramService university_ProgramService;
+	CollegeProgramMapService collegeProgramMapService;
+	
+	@Autowired
+	SubmittedApplicationService submittedApplicationService;
 	
 	GenerateMeritListModel generateMeritListModel = null;
 	
@@ -37,12 +45,19 @@ public class GenerateMeritListRCServiceImpl implements GenerateMeritListRCServic
 	public GenerateMeritListModel getMeritList(Integer collegeId, Integer programId) {
 		generateMeritListModel = new GenerateMeritListModel();
 		
-		generateMeritListModel.setReservationList(Enums.Category.getEnumList());
+		generateMeritListModel.setReservationList(Enums.Category.getEnumList());		
 		
-		University_Program university_Program = university_ProgramService.getById(programId);
+		CollegeProgramMap collegeProgramMap = collegeProgramMapService.getCollegeProgramByCollegeAndProgram(collegeId, programId);
 		
-		generateMeritListModel.setProgramCode(university_Program.getUniversityProgramCode());
-		generateMeritListModel.setProgramName(university_Program.getUniversityProgramName());
+		if(collegeProgramMap != null) {
+			University_Program program = collegeProgramMap.getProgram();
+			List<AppliedStudentPOCO> appliedStudentListOfProgram = submittedApplicationService.getAppliedStudentListOfProgram(collegeProgramMap.getCollegeProgramMapId());
+			
+			generateMeritListModel.setProgramCode(program.getUniversityProgramCode());
+			generateMeritListModel.setProgramName(program.getUniversityProgramName());
+			
+			generateMeritListModel.setAppliedStudentList(appliedStudentListOfProgram);
+		}
 		
 		return generateMeritListModel;
 	}
