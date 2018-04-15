@@ -13,18 +13,20 @@
 		var vm = this;
 		vm.search = {};
 		
+		vm.labelForAllProgramCategories = "All";
+		
 		/*vm.programCategoryId = $state.params.programCategoryId;*/
 		
 		vm.itemPerPage = 2;
 		
-		vm.getCategories = function() {
+		vm.getProgramCategories = function() {
 			generateMeritListService.get()
 			.then(function(success) {
-				vm.categories = success.data;
-				vm.selectedCategoryId = null;
+				vm.programCategories = success.data;
+				vm.initProgramCategories(vm.programCategories);
 				refreshSelectPickerWithDelay(100);
 			}, function(error) {
-				vm.categories = {};
+				vm.programCategories = {};
 			})
 		}
 		
@@ -37,7 +39,15 @@
 			})
 		}
 		
-		vm.getReservations = function () {
+		vm.initProgramCategories = function(programCategories) {
+			var allLevels = {};
+			allLevels.programCategoryId = 0;
+			allLevels.programCategoryName = vm.labelForAllProgramCategories;
+			programCategories.splice(0, 0, allLevels);
+			vm.selectedCategoryId = 0;
+		}
+		
+		/*vm.getReservations = function () {
 			generateMeritListService.get()
 			.then(function (success) {
 				vm.reservations = success.data;
@@ -45,7 +55,7 @@
 				vm.reservations = {};
 			})
 			refreshSelectPickerWithDelay();
-		}
+		}*/
 		
 		vm.generateMeritList = function(programId, programLevelId) {
 			var selectedProgramId = vm.selectedProgramId;
@@ -53,11 +63,14 @@
 		}
 		
 		vm.filterByProgramLevel = function() {
-			vm.search.programLevelId = vm.selectedCategoryId;
+			if(vm.selectedCategoryId == 0)
+				vm.search.programLevelId = "";
+			else
+				vm.search.programLevelId = vm.selectedCategoryId;
 		}
 		
 		setTimeout(function() {
-			vm.getCategories();
+			vm.getProgramCategories();
 			vm.getPrograms();
 		}, $scope.getDataDelay);
 	};

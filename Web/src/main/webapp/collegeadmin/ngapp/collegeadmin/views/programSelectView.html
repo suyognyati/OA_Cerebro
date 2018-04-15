@@ -7,19 +7,20 @@
 			<div class="col-sm-2">
 				<label class="labelclass">Select Level</label>
 			</div>
-			<div class="col-sm-9">
+			<div class="col-sm-8">
 				<select class="selectpicker" data-width="100%"
 					data-live-search="true"
 					id="category"
-					name="category" title="-- Select --"
+					tabindex="1"
+					name="category" title={{vm.labelForAllProgramCategories}}
 					ng-model="vm.selectedCategoryId"
-					ng-options="category.programCategoryId as category.programCategoryName for category in vm.categories"
+					ng-options="programCategory.programCategoryId as programCategory.programCategoryName for programCategory in vm.programCategories"
 					required>
 				</select>
 			</div>
-			<div class="col-sm-1">
+			<div class="col-sm-2">
 	    		<input type="button" class="btn btn-success btn-block topMargin" 
-	    			value="Filter" ng-click="vm.filterByProgramLevel()">
+	    			tabindex="2" value="Show" ng-click="vm.filterByProgramLevel()">
 	    	</div>
 		</div>
 		<hr>
@@ -28,7 +29,7 @@
 				<label class="labelclass">Search</label>
 			</div>
 			<div class="col-sm-11">
-				<input type="text" ng-model="vm.search.$" class="form-control" placeholder="Search">
+				<input type="text" tabindex="3" ng-model="vm.search.$" class="form-control" placeholder="Search">
 			</div>
 		</div>
 		<hr>
@@ -60,7 +61,9 @@
 					max-size="5"
 					direction-links="true"
 					boundary-links="true">			
-				</dir-pagination-controls>  
+				</dir-pagination-controls>
+				<br>
+				Item per page : <input type="text" ng-model="vm.itemPerPage" style="width: 40px; text-align: right;" />
 			</div>
 		</div>
 	</div>

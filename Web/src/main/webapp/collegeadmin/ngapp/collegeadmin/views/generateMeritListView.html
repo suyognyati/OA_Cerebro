@@ -2,32 +2,31 @@
 	<a href="" ng-click="vm.backToPrograms()"> << <span style="text-decoration: underline;">Back to Programs</span></a>
 </h5>
 <div class="well panel-default">
-	<strong>Program Name :</strong> {{vm.studentMeritList.programName}}<br>
-	<strong>Program Code :</strong> {{vm.studentMeritList.programCode}}
-</div>
-<div class="panel panel-default panel-body">
+	<strong>Program Name :</strong> {{vm.data.programName}}<br>
+	<strong>Program Code :</strong> {{vm.data.programCode}}<br>
+	<hr>
 	<div class="row">
-		<div class="col-sm-2"></div>
-		<div class="col-sm-4">
+		<div class="col-sm-2">
 			<label class="labelclass">Select Category</label>
+		</div>
+		<div class="col-sm-8">			
 			<select class="selectpicker" data-width="100%"
 					data-live-search="true"
 					id="category"
-					name="category" title="-- Select --"
-					tabindex="10"
-					ng-model="vm.category"
-					ng-options="category.key as category.value for category in vm.studentMeritList.reservationList"
+					name="category" title="{{vm.labelForAllCategory}}"
+					tabindex="1"
+					ng-model="vm.categoryId"
+					ng-options="category.key as category.value for category in vm.data.reservationList"
 					required>
 			</select>
 		</div>
-		<div class="col-sm-4">
-			<label></label>
+		<div class="col-sm-2">
 			<input type="submit"
-        		   value="Generate Merit List"
+        		   value="Show"
+        		   tabindex="2"
         		   class="btn btn-block topMargin"
-        		   ng-click="vm.generateMeritList()">
+        		   ng-click="vm.showByCategory()">
 		</div>
-		<div class="col-sm-2"></div>
 	</div>
 </div>
 <div class="panel panel-default panel-body">
@@ -40,23 +39,31 @@
 					    <th>Form No.</th>
 					    <th>Student Name</th>
 					    <th>Category</th>
-					    <th>Previous Examination Marke</th>
+					    <th>Previous Examination Marks</th>
 					    <th>View Profile</th>
 					</tr>
 				</thead>
 				<tbody>
-					<tr class="table-background">
-					    <td><input type="checkbox" name="appliedStudents"></td>
-					    <td>61531</td>
-					    <td>Manali Suyog Nyati</td>
-					    <td>Open</td>
-					    <td>650/750</td>
+					<tr dir-paginate="appliedStudent in vm.data.appliedStudentList|filter:vm.search|itemsPerPage:vm.itemPerPage">
+						<td>
+							<input type="checkbox" tabindex="3" name="data">
+						</td>
+						<td>{{appliedStudent.formNo}}</td>
+						<td>{{appliedStudent.fullName}}</td>
+						<td>{{appliedStudent.categoryValue}}</td>
+						<td></td>
 					    <td><a class="glyphicon glyphicon-eye-open" role="button" data-container="body" data-toggle="popover"
-					    		data-trigger="focus" title="Student Detail" 
-					    		data-content="Manali Suyog Nyati fgfhgrhjrghjr yhrthjytj yrhyryhryu5y "></a></td>
+					    		data-trigger="focus" title="Student Detail"></a></td>
 					</tr>
 				</tbody>
 			</table>
+			<dir-pagination-controls
+				max-size="5"
+				direction-links="true"
+				boundary-links="true">			
+			</dir-pagination-controls> 
+			<br>
+			Item per page : <input type="text" ng-model="vm.itemPerPage" style="width: 40px; text-align: right;" /> 
 		</div>
 	</div>
 </div>
