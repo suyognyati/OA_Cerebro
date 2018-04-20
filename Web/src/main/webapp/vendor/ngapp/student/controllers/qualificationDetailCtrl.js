@@ -158,7 +158,7 @@
 		vm.setSelectedBoard = function() {
 			var boardList = null;
 			switch(vm.qualificationDetail.qualificationMainLevel) {
-				case 1: boardList = vm.qualificationDetail.state.sscBoardList;
+				case 2: boardList = vm.qualificationDetail.state.sscBoardList;
 						break;
 				case 3: boardList = vm.qualificationDetail.state.hscBoardList;
 						break;
