@@ -40,14 +40,15 @@ public class EducationalInformationRCServiceImpl implements EducationalInformati
 	
 	@Override
 	public List<EducationModel.Qualification> getListofQualification(User user){
-		List<EducationalInformation> educationalInformationListofUserAsc = educationalInformationService.getByUserOrderByQualificationLevelAsc(user);
+		//Get data from database
+		List<EducationalInformation> educationalHistory = educationalInformationService.getEducationalHistory(user);
+		List<QualificationLevel> qualificationMainLevelList = qualificationLevelService.getAllMainQualificationLevel();
 		
-		List<QualificationLevel> qualificationLevelListAsc = qualificationLevelService.getAllMainQualificationOrderByQualificationMainLevel(true);
-		
+		//Creating model
 		List<EducationModel.Qualification> listOfQualification = new ArrayList<EducationModel.Qualification>();
 		
 		//Creating objects of main/default qualifications
-		for(QualificationLevel qualificationLevel : qualificationLevelListAsc) {
+		for(QualificationLevel qualificationLevel : qualificationMainLevelList) {
 			EducationModel educationalModel = new EducationModel();
 			Qualification qualification = educationalModel.new Qualification();
 			qualification.setName(qualificationLevel.getName());
@@ -58,7 +59,7 @@ public class EducationalInformationRCServiceImpl implements EducationalInformati
 		/* creating objects of subqualifications from educational information and adding them in to 
 		 * subqualification list which is in qualification object
 		 * */ 
-		for(EducationalInformation educationalInformation : educationalInformationListofUserAsc) {
+		for(EducationalInformation educationalInformation : educationalHistory) {
 			int index = educationalInformation.getQualificationLevel().getQualificationMainLevel() - 1;
 			Qualification qualification = listOfQualification.get(index);
 			

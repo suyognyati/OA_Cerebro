@@ -74,13 +74,13 @@
 			url: '/educationalinformation/:qualification/:qualificationMainLevel/:qualificationId',
 			templateUrl:
 			function (stateParams){
-				if(stateParams.qualificationMainLevel == 1
+				if((stateParams.qualificationMainLevel >= 1 && stateParams.qualificationMainLevel <= 2)
 						/*&& stateParams.qualification == "ssc"*/) {
 					return "ngapp/studentview/views/qualificationDetailView/sscView.html"
-				} else if((stateParams.qualificationMainLevel >= 2 && stateParams.qualificationMainLevel <= 3)
+				} else if(stateParams.qualificationMainLevel == 3
 						/*&& stateParams.qualification == "hsc"*/) {
 					return "ngapp/studentview/views/qualificationDetailView/hscView.html"
-				} else if(stateParams.qualificationMainLevel == 4
+				} else if(stateParams.qualificationMainLevel >= 4
 						/*&& stateParams.qualification == "diploma"*/) {
 					return "ngapp/studentview/views/qualificationDetailView/diplomaView.html"
 				} else {

@@ -42,13 +42,15 @@
 		var mapView = function(qualificationMainLevel) {
 			var view = "";
 			if(qualificationMainLevel == 1)
-				view = "ssc";
+				view = "elementry";
 			else if(qualificationMainLevel == 2)
-				view = "11th";
+				view = "secondary";
 			else if(qualificationMainLevel == 3)
-				view = "hsc";
+				view = "highersecondary";
 			else if(qualificationMainLevel == 4)
 				view = "diploma";
+			else if(qualificationMainLevel == 5)
+				view = "degree";
 
 			return view;
 		}

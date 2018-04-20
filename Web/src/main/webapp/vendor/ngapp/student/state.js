@@ -214,16 +214,16 @@ function StudentStates($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, 
 		}
 	})
 	.state('student.profile.qualificationDetail', {
-		url: '/educationinformation/:qualification?:qualificationMainLevel',
+		url: '/educationinformation/:qualification/:qualificationMainLevel?:qualificationId:newQualification',
 		templateUrl:
 			function (stateParams){
-				if(stateParams.qualificationMainLevel == 1
+				if((stateParams.qualificationMainLevel >= 1 && stateParams.qualificationMainLevel <= 2)
 						/*&& stateParams.qualification == "ssc"*/) {
 					return "ngapp/student/views/studentprofile/sscView.html"
-				} else if((stateParams.qualificationMainLevel >= 2 && stateParams.qualificationMainLevel <= 3)
+				} else if((stateParams.qualificationMainLevel == 3)
 						/*&& stateParams.qualification == "hsc"*/) {
 					return "ngapp/student/views/studentprofile/hscView.html"
-				} else if(stateParams.qualificationMainLevel == 4
+				} else if(stateParams.qualificationMainLevel >= 4
 						/*&& stateParams.qualification == "diploma"*/) {
 					return "ngapp/student/views/studentprofile/diplomaView.html"
 				} else {
@@ -237,7 +237,7 @@ function StudentStates($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, 
 		ncyBreadcrumb: {
 			label: 'Qualification Detail',
 		},
-		params: { subtitle: 'Qualification Details', qualificationId : null, newQualification : false },
+		params: { subtitle: 'Qualification Details' },
 		resolve: {
 			loadMyCtrl: ['$ocLazyLoad', function($ocLazyLoad) {
 				return $ocLazyLoad.load({

@@ -24,17 +24,11 @@ public class QualificationLevelTest {
 	
 	@Test
 	public void testBasicDetailJpaFind() {
-		List<QualificationLevel> qualificationLevelListAsc = qualificationLevelService.getAllMainQualificationOrderByQualificationMainLevel(true);
-		List<QualificationLevel> qualificationLevelListDesc = qualificationLevelService.getAllMainQualificationOrderByQualificationMainLevel(false);
+		List<QualificationLevel> qualificationLevelListAsc = qualificationLevelService.getAllMainQualificationLevel();
 		for (QualificationLevel qualificationLevel : qualificationLevelListAsc) {
 			System.out.println("\n Qualification Name is - " + qualificationLevel.getName() + " Main Level is - " + qualificationLevel.getQualificationMainLevel() + " Main Level is - " + qualificationLevel.getQualificationSubLevel() + "\n");
 		}
 		System.out.println("\n\n\n");
-		for (QualificationLevel qualificationLevel : qualificationLevelListDesc) {
-			System.out.println("\n Qualification Name is - " + qualificationLevel.getName() + " Main Level is - " + qualificationLevel.getQualificationMainLevel() + " Main Level is - " + qualificationLevel.getQualificationSubLevel() + "\n");
-		}
-		
 		assertNotNull(qualificationLevelListAsc);
-		assertNotNull(qualificationLevelListDesc);
 	}
 }

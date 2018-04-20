@@ -42,11 +42,8 @@ public class QualificationLevelServiceImpl implements QualificationLevelService 
 		
 	}
 	
-	public List<QualificationLevel> getAllMainQualificationOrderByQualificationMainLevel(Boolean ascending) {
-		if(ascending)
-			return qualificationLevelJpaRepository.findByQualificationSubLevelOrderByQualificationMainLevelAsc(0);
-		else
-			return qualificationLevelJpaRepository.findByQualificationSubLevelOrderByQualificationMainLevelDesc(0);
+	public List<QualificationLevel> getAllMainQualificationLevel() {
+		return qualificationLevelJpaRepository.findByQualificationSubLevelOrderByQualificationMainLevelAsc(0);
 	}
 
 }
