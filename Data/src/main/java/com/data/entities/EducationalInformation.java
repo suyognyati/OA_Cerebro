@@ -70,6 +70,10 @@ public class EducationalInformation {
 	@JoinColumn(name="FK_QualificationLevel", nullable=false)
 	private QualificationLevel qualificationLevel;
 	
+	@ManyToOne
+	@JoinColumn(name="FK_QualificationProgram")
+	private QualificationProgram qualificationProgram;
+	
 	@Column(name="SpecialSubject")
 	private String specialSubject;
 	
@@ -259,6 +263,14 @@ public class EducationalInformation {
 
 		public void setQualificationLevel(QualificationLevel qualificationLevel) {
 			this.qualificationLevel = qualificationLevel;
+		}
+
+		public QualificationProgram getQualificationProgram() {
+			return qualificationProgram;
+		}
+
+		public void setQualificationProgram(QualificationProgram qualificationProgram) {
+			this.qualificationProgram = qualificationProgram;
 		}
 
 		public String getSpecialSubject() {

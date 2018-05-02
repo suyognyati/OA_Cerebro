@@ -7,6 +7,8 @@ import com.data.entities.Board;
 import com.data.entities.Country;
 import com.data.entities.Enums;
 import com.data.entities.Enums.KeyValuePair;
+import com.data.entities.QualificationProgram;
+import com.data.entities.QualificationLevel;
 import com.data.entities.State;
 import com.data.entities.University;
 
@@ -27,7 +29,6 @@ public class EducationModel {
 		private Integer qualificationMainLevel;
 		private Integer qualificationSubLevel;
 		private List<SubQualification> subQualificationList;
-		/*private List<Enums.KeyValuePair> qualificationRemainingYearList;*/
 		
 			public String getName() {
 				return name;
@@ -57,13 +58,6 @@ public class EducationModel {
 			public void setSubQualificationList(List<SubQualification> subQualificationList) {
 				this.subQualificationList = subQualificationList;
 			}
-			
-			/*public List<Enums.KeyValuePair> getQualificationRemainingYearList() {
-				return qualificationRemainingYearList;
-			}
-			public void setQualificationRemainingYearList(List<Enums.KeyValuePair> qualificationRemainingYearList) {
-				this.qualificationRemainingYearList = qualificationRemainingYearList;
-			}*/			
 	}
 	
 	public class SubQualification {
@@ -77,6 +71,8 @@ public class EducationModel {
 		public Integer totalMarks;
 		public Integer qualificationMainLevel;
 		public Integer qualificationSubLevel;
+		public QualificationLevel qualificationLevel;
+		public QualificationProgram qualificationProgram;
 		
 			public Integer getSubQualificationId() {
 				return subQualificationId;
@@ -138,6 +134,18 @@ public class EducationModel {
 			public void setQualificationSubLevel(Integer qualificationSubLevel) {
 				this.qualificationSubLevel = qualificationSubLevel;
 			}
+			public QualificationLevel getQualificationLevel() {
+				return qualificationLevel;
+			}
+			public void setQualificationLevel(QualificationLevel qualificationLevel) {
+				this.qualificationLevel = qualificationLevel;
+			}
+			public QualificationProgram getQualificationProgram() {
+				return qualificationProgram;
+			}
+			public void setQualificationProgram(QualificationProgram qualificationProgram) {
+				this.qualificationProgram = qualificationProgram;
+			}
 	}
 	
 	public class QualificationDetail {
@@ -173,6 +181,8 @@ public class EducationModel {
 		private Float cgpa;
 		private Integer qualificationMainLevel;
 		private Integer qualificationSubLevel;
+		private QualificationLevel qualificationLevel;
+		private QualificationProgram qualificationProgram;
 		private List<Enums.KeyValuePair> resultStatusList;
 		private List<Enums.KeyValuePair> certifyingBodyList;
 		private List<Enums.KeyValuePair> monthList;
@@ -182,6 +192,8 @@ public class EducationModel {
 		private List<Country> countryList;
 		private List<State> stateList;
 		private List<Board> allIndiaBoardList;
+		private List<QualificationLevel> subQualificationLevelList;
+		private List<QualificationProgram> qualificationProgramList;
 		
 			
 			public Integer getQualificationId() {
@@ -376,6 +388,18 @@ public class EducationModel {
 			public void setQualificationSubLevel(Integer qualificationSubLevel) {
 				this.qualificationSubLevel = qualificationSubLevel;
 			}
+			public QualificationLevel getQualificationLevel() {
+				return qualificationLevel;
+			}
+			public void setQualificationLevel(QualificationLevel qualificationLevel) {
+				this.qualificationLevel = qualificationLevel;
+			}
+			public QualificationProgram getQualificationProgram() {
+				return qualificationProgram;
+			}
+			public void setQualificationProgram(QualificationProgram qualificationProgram) {
+				this.qualificationProgram = qualificationProgram;
+			}
 			public List<KeyValuePair> getResultStatusList() {
 				return resultStatusList;
 			}
@@ -433,6 +457,18 @@ public class EducationModel {
 			}
 			public void setAllIndiaBoardList(List<Board> allIndiaBoardList) {
 				this.allIndiaBoardList = allIndiaBoardList;
+			}
+			public List<QualificationLevel> getSubQualificationLevelList() {
+				return subQualificationLevelList;
+			}
+			public void setSubQualificationLevelList(List<QualificationLevel> subQualificationLevelList) {
+				this.subQualificationLevelList = subQualificationLevelList;
+			}
+			public List<QualificationProgram> getQualificationProgramList() {
+				return qualificationProgramList;
+			}
+			public void setQualificationProgramList(List<QualificationProgram> qualificationProgramList) {
+				this.qualificationProgramList = qualificationProgramList;
 			}
 	}
 }

@@ -16,4 +16,16 @@ public interface QualificationLevelService {
 	 * which also can be called as groups
 	 */
 	List<QualificationLevel> getAllMainQualificationLevel();
+	
+	/**
+	 * This function will give all <b>sub levels</b> of 
+	 * <b>main qualification level in ascending order</b>
+	 */
+	List<QualificationLevel> getSubQualificationLevels(Integer qualificationMainLevel);
+	
+	/**
+	 * This function will give 
+	 * <b>main qualification level</b>
+	 */
+	QualificationLevel getQualificationMainLevel(Integer qualificationMainLevel);
 }

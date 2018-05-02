@@ -61,54 +61,6 @@ public class ProfileViewRestController {
 	public EducationModel.QualificationDetail getQualificationDetail(
 			@PathVariable(value="qualificationId") Integer qualificationId){
 		return educationalInformationService.getQualificationDetail(session.getApplicant(), qualificationId);
-	}
+	}	
 	
-	/*@RequestMapping(value="/educationalInformation/getNewQualification/{qualificationMainLevel}", method=RequestMethod.GET)
-	public EducationModel.QualificationDetail getNewQualification(
-			@PathVariable(value="qualificationMainLevel") Integer qualificationMainLevel){
-		if(session.getApplicant() != null)
-			return educationalInformationService.getNewQualification(session.getApplicant(), qualificationMainLevel);
-		else
-			return null;
-	}
-	
-	@RequestMapping(value="/educationalInformation/saveQualificationDetail/", method=RequestMethod.POST)
-	public String saveQualificationDetail(@RequestBody EducationModel educationalModel){
-		EducationModel.QualificationDetail qd = educationalModel.getQualificationDetail();
-		Boolean success = false;
-		String successMessage = "";
-		String errorMessage = "";
-		if(qd.getQualificationMainLevel() != null) {
-			success = educationalInformationService.saveQualificationDetail(session.getApplicant(), educationalModel.getQualificationDetail());
-			if(success)
-				successMessage = "Saved successfully";
-			else
-				errorMessage = "Error while saving";
-		} else {
-			success = false;
-			errorMessage = "Invalid input parameters";
-		}		
-		JSONObject jsonObject = StaticMethods.ResponseJson(success, successMessage, errorMessage);		
-		return jsonObject.toJSONString();
-	}
-	
-	@RequestMapping(value="/educationalInformation/deleteQualificationDetail/", method=RequestMethod.POST)
-	public String deleteQualificationDetail(@RequestBody Integer qualificationId){
-		//EducationModel.QualificationDetail qd = educationalModel.getQualificationDetail();
-		Boolean success = false;
-		String successMessage = "";
-		String errorMessage = "";
-		if(qualificationId != null) {
-			success = educationalInformationService.deleteQualificationDetail(session.getApplicant(), qualificationId);
-			if(success)
-				successMessage = "Removed successfully";
-			else
-				errorMessage = "Error while removing";
-		} else {
-			success = false;
-			errorMessage = "Invalid input parameters";
-		}		
-		JSONObject jsonObject = StaticMethods.ResponseJson(success, successMessage, errorMessage);		
-		return jsonObject.toJSONString();
-	}*/
 }

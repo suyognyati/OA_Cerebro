@@ -252,7 +252,7 @@
 				<div class="col-sm-8"
 					 ng-class="{'has-error':hscdetailform.stream.$invalid &&
 				 							hscdetailform.stream.$dirty}">
-					<select id="stream"
+					<!-- <select id="stream"
 						    name="stream"
 							class="selectpicker" data-width="100%" title="-- Select Stream --" data-size="5"
 							data-live-search="true"
@@ -260,11 +260,52 @@
 							ng-model="vm.qualificationDetail.stream"
 							ng-options="stream.key as stream.value for stream in vm.qualificationDetail.streamList"
 						    required>
+					</select> -->
+					<select id="stream"
+							name="stream"
+							class="selectpicker" data-width="100%"
+							data-live-search="true" title="-- Select Stream --"
+							tabindex="10"
+							ng-change="vm.setSelectedQualificationProgram()"
+							ng-model="vm.qualificationDetail.qualificationProgramId"
+							ng-options="qualificationProgram.qualificationProgramId as qualificationProgram.name for qualificationProgram in vm.qualificationDetail.qualificationProgramList"
+							required>
 					</select>
 
 					<span class="help-block has-error">
 						<span ng-show="hscdetailform.stream.$error.required &&
 									   hscdetailform.stream.$dirty">
+								Required Field</span>
+					</span>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-sm-12 form-group">
+				<div class="col-sm-3">
+					<label for="academicYear"
+						   class="labelclass">Standard
+					<span style="color:red"><big> * </big></span></label>
+				</div>
+				<div class="col-sm-8"
+					 ng-class="{'has-error':diplomadetailform.academicYear.$invalid &&
+						 							diplomadetailform.academicYear.$dirty}">
+					<select id="academicYear"
+							name="academicYear"
+							class="selectpicker" data-width="100%"
+							data-live-search="true" title="-- Select Academic Year --"
+							tabindex="11"
+							ng-change="vm.setSelectedQualificationLevel()"
+							ng-model="vm.qualificationDetail.qualificationLevelId"
+							ng-options="academicYear.qualificationLevelId as academicYear.name for academicYear in vm.qualificationDetail.subQualificationLevelList"
+							required>
+					</select>
+					<!-- ng-options="academicYear.key as academicYear.value for academicYear in vm.qualificationDetail.academicYearList" -->
+
+					<span class="help-block has-error">
+						<span ng-show="diplomadetailform.academicYear.$error.required &&
+									   diplomadetailform.academicYear.$dirty">
 								Required Field</span>
 					</span>
 				</div>
@@ -286,7 +327,7 @@
 						   id="schoolCollegeName"
 						   name="schoolCollegeName"
 						   placeholder="School / College Name"
-						   tabindex="11"
+						   tabindex="12"
 						   ng-model="vm.qualificationDetail.schoolCollegeName"
 						   required>
 
@@ -312,7 +353,7 @@
 							   name="resultstatus"
 							   id="passed"
 							   value="1"
-							   tabindex="12"
+							   tabindex="13"
 							   ng-model="vm.qualificationDetail.resultStatus"
 							   required>
 						<label for="passed">Passed</label>
@@ -322,7 +363,7 @@
 							   name="reaultstatus"
 							   id="awaited"
 							   value="2"
-							   tabindex="13"
+							   tabindex="14"
 							   ng-model="vm.qualificationDetail.resultStatus"
 							   required>
 						<label for="awaited">Result Awaited</label>
@@ -332,7 +373,7 @@
 							   name="resultstatus"
 							   id="failed"
 							   value="3"
-							   tabindex="14"
+							   tabindex="15"
 							   ng-model="vm.qualificationDetail.resultStatus"
 							   required>
 						<label for="failed">Failed</label>
@@ -356,7 +397,7 @@
 						   id="examSeatNo"
 						   name="examSeatNo"
 						   placeholder="Roll No. / Seat No."
-						   tabindex="15"
+						   tabindex="16"
 						   ng-model="vm.qualificationDetail.examSeatNo"
 						   required>
 
@@ -385,7 +426,7 @@
 							   id="noofattempts"
 							   name="noofattempts"
 							   placeholder="No. of Attempts"
-							   tabindex="16"
+							   tabindex="17"
 							   ng-model="vm.qualificationDetail.noOfAttempts"
 							   ng-required="vm.qualificationDetail.resultStatus == 1 || vm.qualificationDetail.resultStatus == 3">
 
@@ -412,7 +453,7 @@
 								name="monthOfResult"
 								class="selectpicker" data-width="100%" title="--Month--" data-size="6"
 								data-live-search="true"
-								tabindex="17"
+								tabindex="18"
 								ng-model="vm.qualificationDetail.passingMonth"
 								ng-options="passingMonthList.key as passingMonthList.value for passingMonthList in vm.qualificationDetail.monthList"
 							    ng-required="vm.qualificationDetail.resultStatus == 1 || vm.qualificationDetail.resultStatus == 3">
@@ -431,7 +472,7 @@
 								name="yearOfResult"
 								class="selectpicker" data-width="100%" title="--Year--" data-size="6"
 								data-live-search="true"
-								tabindex="18"
+								tabindex="19"
 								ng-model="vm.qualificationDetail.passingYear"
 								ng-options="passingYearList as passingYearList for passingYearList in vm.qualificationDetail.yearList"
 							    ng-required="vm.qualificationDetail.resultStatus == 1 || vm.qualificationDetail.resultStatus == 3">
@@ -461,7 +502,7 @@
 							   id="marksheetno"
 						   	   name="marksheetNo"
 							   placeholder="Marksheet No."
-							   tabindex="19"
+							   tabindex="20"
 							   ng-model="vm.qualificationDetail.marksheetNo"
 							   ng-required="vm.qualificationDetail.resultStatus == 1 || vm.qualificationDetail.resultStatus == 3">
 
@@ -487,7 +528,7 @@
 								   name="marksorgrade"
 								   id="marks"
 								   value="1"
-								   tabindex="20"
+								   tabindex="21"
 								   ng-model="vm.qualificationDetail.evaluationType"
 								   required>
 							<label for="marks">Marks</label>
@@ -497,7 +538,7 @@
 								   name="marksorgrade"
 								   id="grades"
 								   value="2"
-								   tabindex="21"
+								   tabindex="22"
 								   ng-model="vm.qualificationDetail.evaluationType"
 								   required>
 							<label for="grades">Grades</label>
@@ -522,7 +563,7 @@
 								   id="marksObtain"
 							   	   name="marksObtain"
 								   placeholder="Total Marks Obtained"
-								   tabindex="22"
+								   tabindex="23"
 								   ng-blur="vm.calculatePercentage()"
 								   ng-model="vm.qualificationDetail.marksObtain"
 							   	   ng-required="(vm.qualificationDetail.resultStatus == 1 || vm.qualificationDetail.resultStatus == 3)
@@ -547,7 +588,7 @@
 								   id="totalMarks"
 							  	   name="totalMarks"
 								   placeholder="Marks Out Of"
-								   tabindex="23"
+								   tabindex="24"
 								   ng-blur="vm.calculatePercentage()"
 								   ng-model="vm.qualificationDetail.totalMarks"
 							   	   ng-required="(vm.qualificationDetail.resultStatus == 1 || vm.qualificationDetail.resultStatus == 3)
@@ -579,7 +620,7 @@
 								   id="grade"
 							  	   name="grade"
 								   placeholder="Grade"
-								   tabindex="24"
+								   tabindex="25"
 								   ng-model="vm.qualificationDetail.grade"
 							   	   ng-required="(vm.qualificationDetail.resultStatus == 1 || vm.qualificationDetail.resultStatus == 3)
 							   	   				 && vm.qualificationDetail.evaluationType==2">
@@ -603,7 +644,7 @@
 								   id="cgpa"
 							   	   name="cgpa"
 								   placeholder="CGPA"
-								   tabindex="25"
+								   tabindex="26"
 								   ng-model="vm.qualificationDetail.cgpa"
 							   	   ng-required="(vm.qualificationDetail.resultStatus == 1 || vm.qualificationDetail.resultStatus == 3)
 							   	   				 && vm.qualificationDetail.evaluationType==2">
@@ -632,7 +673,7 @@
 							   class="form-control"
 							   id="percentage"
 							   placeholder="Percentage"
-							   tabindex="26"
+							   tabindex="27"
 							   ng-model="vm.qualificationDetail.percentage"
 							   ng-required="(vm.qualificationDetail.resultStatus == 1 || vm.qualificationDetail.resultStatus == 3)
 							   	   				 && vm.qualificationDetail.evaluationType==2">
@@ -655,7 +696,7 @@
 	        	<input type="submit"
 	        		value="SAVE"
 	        		class="btn btn-success btn-block topMargin"
-	        		tabindex="27"
+	        		tabindex="28"
 	        		ng-click="vm.submit()"
 	        		ng-disabled="hscdetailform.$invalid">
 	        </div>
@@ -663,7 +704,7 @@
 	        	<input type="button"
 	        		value="Cancel"
 	        		class="btn btn-success btn-block topMargin"
-	        		tabindex="28"
+	        		tabindex="29"
 	        		ng-click="vm.cancel()">
 	        </div>
 	        <div class="col-sm-4"></div>

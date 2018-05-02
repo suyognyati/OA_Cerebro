@@ -11,11 +11,13 @@ import org.springframework.stereotype.Service;
 import com.data.entities.EducationalInformation;
 import com.data.entities.Enums;
 import com.data.entities.QualificationLevel;
+import com.data.entities.QualificationProgram;
 import com.data.entities.User;
 import com.data.services.BoardService;
 import com.data.services.EducationalInformationService;
 import com.data.services.GeoLocationsService;
 import com.data.services.QualificationLevelService;
+import com.data.services.QualificationProgramDao;
 import com.web.model.EducationModel;
 import com.web.model.EducationModel.Qualification;
 import com.web.model.EducationModel.QualificationDetail;
@@ -31,6 +33,9 @@ public class EducationalInformationRCServiceImpl implements EducationalInformati
 	
 	@Autowired
 	QualificationLevelService qualificationLevelService;
+	
+	@Autowired
+	QualificationProgramDao qualificationProgramDao;
 	
 	@Autowired
 	GeoLocationsService geoLocationService;
@@ -80,8 +85,9 @@ public class EducationalInformationRCServiceImpl implements EducationalInformati
 				if(educationalInformation.getCertifyingBody() == Enums.CertifyingBody.Board.getId()
 						&& educationalInformation.getBoard() != null)
 					subQualification.setBoardOrUniversity(educationalInformation.getBoard().getBoardName());
-				else if(educationalInformation.getCertifyingBody() == Enums.CertifyingBody.University.getId())
-					subQualification.setBoardOrUniversity("University"/*educationalInformation.getNameOfUniversity()*/);
+				else if(educationalInformation.getCertifyingBody() == Enums.CertifyingBody.University.getId()
+						&& educationalInformation.getUniversity() != null)
+					subQualification.setBoardOrUniversity(educationalInformation.getUniversity().getUniversityName());
 				else if(educationalInformation.getCertifyingBody() == Enums.CertifyingBody.Other.getId())
 					subQualification.setBoardOrUniversity(educationalInformation.getOtherBodyName());
 			} else {
@@ -94,10 +100,13 @@ public class EducationalInformationRCServiceImpl implements EducationalInformati
 			}
 			subQualification.setMarksObtain(educationalInformation.getMarksObtain());
 			subQualification.setTotalMarks(educationalInformation.getTotalMarks());
-			if(educationalInformation.getQualificationLevel() != null) {
+			/*if(educationalInformation.getQualificationLevel() != null) {
 				subQualification.setQualificationMainLevel(educationalInformation.getQualificationLevel().getQualificationMainLevel());
 				subQualification.setQualificationSubLevel(educationalInformation.getQualificationLevel().getQualificationSubLevel());
-			}
+			}*/
+			subQualification.setQualificationLevel(educationalInformation.getQualificationLevel());
+			subQualification.setQualificationProgram(educationalInformation.getQualificationProgram());
+			
 			qualification.getSubQualificationList().add(subQualification);			
 		}
 		
@@ -109,23 +118,26 @@ public class EducationalInformationRCServiceImpl implements EducationalInformati
 	public QualificationDetail getQualificationDetail(User user, Integer qualificationId) {
 		EducationalInformation educationalInformation  = null;
 		educationalInformation = educationalInformationService.getByEducationalInformationId(user, qualificationId);
+		Integer qualificationMainLevel = educationalInformation.getQualificationLevel().getQualificationMainLevel();
 		
 		maxAcademicYear = 3;
 		QualificationDetail qualificationDetail = createQualificationDetailObject(educationalInformation);
-				
+		setDefaultData(qualificationMainLevel, qualificationDetail);
 		return qualificationDetail;
 	}
 
 	public QualificationDetail getNewQualification(User user, Integer qualificationMainLevel) {
-		QualificationLevel qualificationLevelObject = qualificationLevelService.getByMainAndSubLevel(qualificationMainLevel, 0);
+		QualificationLevel qualificationMainLevelObject = qualificationLevelService.getQualificationMainLevel(qualificationMainLevel);
+		
 		EducationalInformation educationalInformation = null;
 		
-		if(qualificationLevelObject.getMultiReferred() == false) {
-			educationalInformation = educationalInformationService.getByUserAndQualificationLevel(user, qualificationLevelObject);
+		if(qualificationMainLevelObject != null && qualificationMainLevelObject.getMultiReferred() == false) {
+			educationalInformation = educationalInformationService.getByUserAndQualificationLevel(user, qualificationMainLevelObject);
 		}
 		
 		maxAcademicYear = 3;
 		QualificationDetail qualificationDetail = createQualificationDetailObject(educationalInformation);
+		setDefaultData(qualificationMainLevel, qualificationDetail);
 				
 		return qualificationDetail;
 	}
@@ -133,7 +145,8 @@ public class EducationalInformationRCServiceImpl implements EducationalInformati
 	@Override
 	public Boolean saveQualificationDetail(User user, QualificationDetail qualificationDetail) {
 		//Getting qualificationlevelobject to search for respected educational information
-		QualificationLevel qualificationLevelObject = qualificationLevelService.getByMainAndSubLevel(qualificationDetail.getQualificationMainLevel(), 0);
+		//QualificationLevel qualificationLevelObject = qualificationLevelService.getByMainAndSubLevel(qualificationDetail.getQualificationMainLevel(), 0);
+		QualificationLevel qualificationLevelObject = qualificationDetail.getQualificationLevel();
 		if(qualificationLevelObject == null)
 			return false;
 		
@@ -164,6 +177,7 @@ public class EducationalInformationRCServiceImpl implements EducationalInformati
 		educationalInformation.setAcademicYear(qualificationDetail.getAcademicYear());
 		educationalInformation.setQualificationName(qualificationDetail.getQualificationName());
 		educationalInformation.setQualificationLevel(qualificationLevelObject);
+		educationalInformation.setQualificationProgram(qualificationDetail.getQualificationProgram());
 		educationalInformation.setSpecialSubject(qualificationDetail.getSpecialSubject());
 		educationalInformation.setOtherBodyName(qualificationDetail.getOtherBodyName());
 		educationalInformation.setSchoolCollegeAddress(qualificationDetail.getSchoolCollegeAddress());
@@ -213,6 +227,8 @@ public class EducationalInformationRCServiceImpl implements EducationalInformati
 			qualificationDetail.setQualificationName(educationalInformation.getQualificationName());
 			qualificationDetail.setQualificationMainLevel(educationalInformation.getQualificationLevel().getQualificationMainLevel());
 			qualificationDetail.setQualificationSubLevel(educationalInformation.getQualificationLevel().getQualificationSubLevel());
+			qualificationDetail.setQualificationLevel(educationalInformation.getQualificationLevel());
+			qualificationDetail.setQualificationProgram(educationalInformation.getQualificationProgram());
 			qualificationDetail.setSpecialSubject(educationalInformation.getSpecialSubject());
 			qualificationDetail.setOtherBodyName(educationalInformation.getOtherBodyName());
 			qualificationDetail.setSchoolCollegeAddress(educationalInformation.getSchoolCollegeAddress());
@@ -231,6 +247,31 @@ public class EducationalInformationRCServiceImpl implements EducationalInformati
 			qualificationDetail.setGrade(educationalInformation.getGrade());
 			qualificationDetail.setCgpa(educationalInformation.getCgpa());
 		}
+		/*qualificationDetail.setResultStatusList(Enums.ResultStatus.getEnumList());
+		qualificationDetail.setCertifyingBodyList(Enums.CertifyingBody.getEnumList());
+		qualificationDetail.setMonthList(Enums.Month.getEnumList());
+		qualificationDetail.setStreamList(Enums.Stream.getEnumList());
+		qualificationDetail.setCountryList(geoLocationService.getCountryList());
+		qualificationDetail.setStateList(geoLocationService.getStateListByCountryName("India"));
+		qualificationDetail.setAllIndiaBoardList(boardService.getBoardList(null));
+		qualificationDetail.setAcademicYearList(Enums.AcademicYear.getEnumList(maxAcademicYear));
+		
+		TimeZone timeZone = TimeZone.getTimeZone("UTC");
+		Calendar calendar = Calendar.getInstance(timeZone);
+		int year = calendar.get(Calendar.YEAR);		
+		qualificationDetail.setYearListRange(year);*/
+		
+		return qualificationDetail;
+	}
+
+	private void setDefaultData(Integer qualificationMainLevel, QualificationDetail qualificationDetail) {
+		QualificationLevel qualificationMainLevelObject = qualificationLevelService.getQualificationMainLevel(qualificationMainLevel);
+		List<QualificationLevel> subQualificationLevelList = qualificationLevelService.getSubQualificationLevels(qualificationMainLevel);
+		List<QualificationProgram> programListOfQualification = qualificationProgramDao.getProgramListOfQualification(qualificationMainLevelObject);
+		
+		qualificationDetail.setSubQualificationLevelList(subQualificationLevelList);
+		qualificationDetail.setQualificationProgramList(programListOfQualification);
+		
 		qualificationDetail.setResultStatusList(Enums.ResultStatus.getEnumList());
 		qualificationDetail.setCertifyingBodyList(Enums.CertifyingBody.getEnumList());
 		qualificationDetail.setMonthList(Enums.Month.getEnumList());
@@ -245,6 +286,5 @@ public class EducationalInformationRCServiceImpl implements EducationalInformati
 		int year = calendar.get(Calendar.YEAR);		
 		qualificationDetail.setYearListRange(year);
 		
-		return qualificationDetail;
 	}
 }

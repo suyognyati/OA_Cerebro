@@ -64,7 +64,7 @@
 				.then(function (success) {
 					vm.returnstatus = success.data;
 					if(vm.returnstatus != null && vm.returnstatus.success == true) {
-						$state.reload("studentStatus.educationInformation", {success: false});
+						$state.reload("student.profile.educationInformation", {success: false});
 					} else {
 						$window.scrollTo(0, 0);
 					}
@@ -89,11 +89,11 @@
 
 			return view;
 		}
-		
+
 		vm.submit = function() {
 			$state.go("student.profile.occupationReservation");
 		}
-		
+
 		setTimeout(function() {
 		    vm.loadData();
 		}, $scope.getDataDelay);

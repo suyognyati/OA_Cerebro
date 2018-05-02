@@ -60,7 +60,17 @@ public class HomeController {
 	
 	@RequestMapping(value = { "user/" }, method = RequestMethod.GET)
 	public String userPage(ModelMap model) {
+		//Set current logged in user details
 		sessionService.setLoggedInUserDetails();
+		
+		//Set current logged in user details to get profile details
+		Integer userId = 0;
+		if(session.getLoggedInUser() != null && session.getLoggedInUser().getUserId() != null) {
+			userId = session.getLoggedInUser().getUserId();
+			sessionService.setApplicant(userId);
+			//Setting applicant as fixed so no body can change it
+			session.setIsApplicantFixed(true);
+		}
 		
 		String userName = session.getCurrentUserName();
 		String accessTokenValue = "";

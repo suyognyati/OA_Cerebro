@@ -106,6 +106,12 @@
 					qualificationDetail.state.diplomaBoardList.push(qualificationDetail.allIndiaBoardList[j]);
 				}
 			}
+			if(qualificationDetail.qualificationProgram != null) {
+				qualificationDetail.qualificationProgramId = qualificationDetail.qualificationProgram.qualificationProgramId;
+			}
+			if(qualificationDetail.qualificationLevel != null) {
+				qualificationDetail.qualificationLevelId = qualificationDetail.qualificationLevel.qualificationLevelId;
+			}
 		}
 
 		vm.submit = function() {
@@ -130,6 +136,7 @@
 		}
 
 		vm.cancel = function() {
+			var ay = vm.qualificationDetail.qualificationProgram;
 			$state.go("student.profile.educationInformation");
 		}
 
@@ -182,6 +189,32 @@
 					}
 				}
 				refreshSelectPickerWithDelay(100);
+			}
+		}
+
+		vm.setSelectedQualificationProgram = function () {
+			if(vm.qualificationDetail != null && vm.qualificationDetail.qualificationProgramList != null) {
+				for(var i = 0; i < vm.qualificationDetail.qualificationProgramList.length; i++) {
+					if(vm.qualificationDetail.qualificationProgramId == vm.qualificationDetail.qualificationProgramList[i].qualificationProgramId) {
+						vm.qualificationDetail.qualificationProgram = vm.qualificationDetail.qualificationProgramList[i];
+					}
+				}
+				refreshSelectPickerWithDelay(100);
+			} else {
+				vm.qualificationDetail.qualificationProgram = null;
+			}
+		}
+
+		vm.setSelectedQualificationLevel = function () {
+			if(vm.qualificationDetail != null && vm.qualificationDetail.subQualificationLevelList != null) {
+				for(var i = 0; i < vm.qualificationDetail.subQualificationLevelList.length; i++) {
+					if(vm.qualificationDetail.qualificationLevelId == vm.qualificationDetail.subQualificationLevelList[i].qualificationLevelId) {
+						vm.qualificationDetail.qualificationLevel = vm.qualificationDetail.subQualificationLevelList[i];
+					}
+				}
+				refreshSelectPickerWithDelay(100);
+			} else {
+				vm.qualificationDetail.qualificationLevel = null;
 			}
 		}
 

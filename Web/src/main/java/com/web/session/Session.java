@@ -29,10 +29,13 @@ public class Session {
 	private User LoggedInUser = null;
 	private UserDetail LoggedInUserDetail = null;
 	
+	private Boolean isApplicantFixed = false;
 	private User Applicant = null;
 	
 	private Integer collegeId = null;
 	private College College = null;
+	
+	
 	
 	/* Getters for user */
 	
@@ -118,11 +121,19 @@ public class Session {
 		LoggedInUserDetail = loggedInUserDetail;
 	}	
 
+	public Boolean getIsApplicantFixed() {
+		return isApplicantFixed;
+	}
+	public void setIsApplicantFixed(Boolean isApplicantFixed) {
+		this.isApplicantFixed = isApplicantFixed;
+	}
+
 	public User getApplicant() {
 		return Applicant;
 	}
 	public void setApplicant(User applicant) {
-		Applicant = applicant;
+		if(!isApplicantFixed)
+			Applicant = applicant;
 	}
 
 	public Integer getCollegeId() {
