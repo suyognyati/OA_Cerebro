@@ -48,9 +48,9 @@
 			$state.go("student.profile.qualificationDetail", {qualification:view ,qualificationGroup:qualificationGroup, qualificationId:qualificationId});
 		}
 
-		vm.createNewQualification = function(qualificationGroup, qualificationSubLevel) {
+		vm.createNewQualification = function(qualificationGroup, qualificationGroupLevel) {
 			var view = mapView(qualificationGroup);
-			$state.go("student.profile.qualificationDetail", {qualification:view ,qualificationGroup:qualificationGroup, qualificationSubLevel:qualificationSubLevel, newQualification:true});
+			$state.go("student.profile.qualificationDetail", {qualification:view ,qualificationGroup:qualificationGroup, qualificationGroupLevel:qualificationGroupLevel, newQualification:true});
 		}
 
 		vm.deleteQualification = function(qualificationId, qualificationName) {

@@ -12,10 +12,10 @@ import com.data.entities.User;
 @Repository("educationalInformationJpaRepository")
 public interface EducationalInformationJpaRepository extends JpaRepository<EducationalInformation, Integer> {
 	List<EducationalInformation> 
-		findByUserOrderByQualificationLevelQualificationGroupAscQualificationLevelQualificationSubLevelAsc
+		findByUserOrderByQualificationLevelQualificationGroupAscQualificationLevelQualificationGroupLevelAsc
 		(User user);
 	List<EducationalInformation> 
-		findByUserOrderByQualificationLevelQualificationGroupDescQualificationLevelQualificationSubLevelDesc
+		findByUserOrderByQualificationLevelQualificationGroupDescQualificationLevelQualificationGroupLevelDesc
 		(User user);
 	EducationalInformation getByUserAndQualificationLevel(User user, QualificationLevel qualificationLevel);
 	EducationalInformation getByUserAndEducationalInformationId(User user, Integer educationalInformationId);

@@ -19,8 +19,8 @@ public class QualificationLevelServiceImpl implements QualificationLevelService 
 		return qualificationLevelJpaRepository.findByQualificationLevelId(id);
 	}
 	
-	public QualificationLevel getByMainAndSubLevel(Integer qualificationGroup, Integer qualificationSubLevel) {
-		List<QualificationLevel> qualificationLevelList = qualificationLevelJpaRepository.findByQualificationGroupAndQualificationSubLevel(qualificationGroup, qualificationSubLevel);
+	public QualificationLevel getByMainAndSubLevel(Integer qualificationGroup, Integer qualificationGroupLevel) {
+		List<QualificationLevel> qualificationLevelList = qualificationLevelJpaRepository.findByQualificationGroupAndQualificationGroupLevel(qualificationGroup, qualificationGroupLevel);
 		if(qualificationLevelList != null && qualificationLevelList.size() > 0)
 			return qualificationLevelList.get(0);
 		else
@@ -29,9 +29,9 @@ public class QualificationLevelServiceImpl implements QualificationLevelService 
 	
 	public List<QualificationLevel> getByMainLevel(Integer mainLevel, Boolean ascending) {
 		if(ascending)
-			return qualificationLevelJpaRepository.findByQualificationGroupAndQualificationSubLevelGreaterThanOrderByQualificationSubLevelAsc(mainLevel, 0);
+			return qualificationLevelJpaRepository.findByQualificationGroupAndQualificationGroupLevelGreaterThanOrderByQualificationGroupLevelAsc(mainLevel, 0);
 		else
-			return qualificationLevelJpaRepository.findByQualificationGroupAndQualificationSubLevelGreaterThanOrderByQualificationSubLevelDesc(mainLevel, 0);
+			return qualificationLevelJpaRepository.findByQualificationGroupAndQualificationGroupLevelGreaterThanOrderByQualificationGroupLevelDesc(mainLevel, 0);
 	}
 
 	public List<QualificationLevel> getAllOrderByQualificationGroup(Boolean ascending) {
@@ -43,17 +43,17 @@ public class QualificationLevelServiceImpl implements QualificationLevelService 
 	}
 	
 	public List<QualificationLevel> getAllMainQualificationLevel() {
-		return qualificationLevelJpaRepository.findByQualificationSubLevelOrderByQualificationGroupAsc(0);
+		return qualificationLevelJpaRepository.findByQualificationGroupLevelOrderByQualificationGroupAsc(0);
 	}
 
 	@Override
 	public List<QualificationLevel> getSubQualificationLevels(Integer qualificationGroup) {
-		return qualificationLevelJpaRepository.findByQualificationGroupAndQualificationSubLevelNot(qualificationGroup, 0);
+		return qualificationLevelJpaRepository.findByQualificationGroupAndQualificationGroupLevelNot(qualificationGroup, 0);
 	}
 
 	@Override
 	public QualificationLevel getQualificationGroup(Integer qualificationGroup) {
-		List<QualificationLevel> qualificationLevelList = qualificationLevelJpaRepository.findByQualificationGroupAndQualificationSubLevel(qualificationGroup, 0);
+		List<QualificationLevel> qualificationLevelList = qualificationLevelJpaRepository.findByQualificationGroupAndQualificationGroupLevel(qualificationGroup, 0);
 		if(qualificationLevelList != null && qualificationLevelList.size() > 0)
 			return qualificationLevelList.get(0);
 		else

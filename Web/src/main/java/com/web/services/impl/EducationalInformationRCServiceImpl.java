@@ -102,7 +102,7 @@ public class EducationalInformationRCServiceImpl implements EducationalInformati
 			subQualification.setTotalMarks(educationalInformation.getTotalMarks());
 			/*if(educationalInformation.getQualificationLevel() != null) {
 				subQualification.setQualificationGroup(educationalInformation.getQualificationLevel().getQualificationGroup());
-				subQualification.setQualificationSubLevel(educationalInformation.getQualificationLevel().getQualificationSubLevel());
+				subQualification.setQualificationGroupLevel(educationalInformation.getQualificationLevel().getQualificationGroupLevel());
 			}*/
 			subQualification.setQualificationLevel(educationalInformation.getQualificationLevel());
 			subQualification.setQualificationProgram(educationalInformation.getQualificationProgram());
@@ -226,7 +226,7 @@ public class EducationalInformationRCServiceImpl implements EducationalInformati
 			qualificationDetail.setAcademicYear(educationalInformation.getAcademicYear());
 			qualificationDetail.setQualificationName(educationalInformation.getQualificationName());
 			qualificationDetail.setQualificationGroup(educationalInformation.getQualificationLevel().getQualificationGroup());
-			qualificationDetail.setQualificationSubLevel(educationalInformation.getQualificationLevel().getQualificationSubLevel());
+			qualificationDetail.setQualificationGroupLevel(educationalInformation.getQualificationLevel().getQualificationGroupLevel());
 			qualificationDetail.setQualificationLevel(educationalInformation.getQualificationLevel());
 			qualificationDetail.setQualificationProgram(educationalInformation.getQualificationProgram());
 			qualificationDetail.setSpecialSubject(educationalInformation.getSpecialSubject());

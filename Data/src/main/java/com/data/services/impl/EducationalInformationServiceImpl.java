@@ -20,7 +20,7 @@ public class EducationalInformationServiceImpl implements EducationalInformation
 	@Override
 	public List<EducationalInformation> getEducationalHistory(User user) {
 		return educationalInformationJpaRepository.
-				findByUserOrderByQualificationLevelQualificationGroupAscQualificationLevelQualificationSubLevelAsc(user);
+				findByUserOrderByQualificationLevelQualificationGroupAscQualificationLevelQualificationGroupLevelAsc(user);
 	}
 
 	@Override

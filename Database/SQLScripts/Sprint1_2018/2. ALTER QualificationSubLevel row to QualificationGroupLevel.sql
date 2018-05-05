@@ -1,0 +1,1 @@
+ALTER TABLE admission.qualificationlevel CHANGE COLUMN QualificationSubLevel QualificationGroupLevel INT(11) NULL DEFAULT NULL;

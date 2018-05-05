@@ -9,7 +9,7 @@ import com.web.model.EducationModel.QualificationDetail;
 public interface EducationalInformationRCService {
 
 	List<EducationModel.Qualification> getListofQualification(User user);
-	QualificationDetail getQualificationDetail(User user, Integer qualificationSubLevel);
+	QualificationDetail getQualificationDetail(User user, Integer qualificationGroupLevel);
 	QualificationDetail getNewQualification(User user, Integer qualificationGroup);
 	Boolean saveQualificationDetail(User user, QualificationDetail qualificationDetail);
 	Boolean deleteQualificationDetail(User user, Integer qualificationId);

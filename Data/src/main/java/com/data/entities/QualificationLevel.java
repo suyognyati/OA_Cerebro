@@ -25,8 +25,8 @@ public class QualificationLevel {
 	@Column(name="QualificationGroup")
 	private Integer qualificationGroup;
 	
-	@Column(name="QualificationSubLevel")
-	private Integer qualificationSubLevel;
+	@Column(name="QualificationGroupLevel")
+	private Integer qualificationGroupLevel;
 	
 	@Column(name="MultiReferred")
 	private Boolean multiReferred;
@@ -72,12 +72,12 @@ public class QualificationLevel {
 		/**
 		 * @return Sub (Minor) level of qualification
 		 * */
-		public Integer getQualificationSubLevel() {
-			return qualificationSubLevel;
+		public Integer getQualificationGroupLevel() {
+			return qualificationGroupLevel;
 		}
 	
-		public void setQualificationSubLevel(Integer qualificationSubLevel) {
-			this.qualificationSubLevel = qualificationSubLevel;
+		public void setQualificationGroupLevel(Integer qualificationGroupLevel) {
+			this.qualificationGroupLevel = qualificationGroupLevel;
 		}
 
 		/**

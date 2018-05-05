@@ -86,8 +86,8 @@
 			if(qualificationDetail.qualificationGroup == null) {
 				qualificationDetail.qualificationGroup = parseInt(qualificationGroup, 10);
 			}
-			if(qualificationDetail.qualificationSubLevel == null) {
-				qualificationDetail.qualificationSubLevel = parseInt(qualificationId, 10);
+			if(qualificationDetail.qualificationGroupLevel == null) {
+				qualificationDetail.qualificationGroupLevel = parseInt(qualificationId, 10);
 			}
 			if(qualificationDetail.stateList != null && qualificationDetail.allIndiaBoardList != null) {
 				for(var i = 0; i < qualificationDetail.stateList.length; i++) {
@@ -108,7 +108,7 @@
 		}
 				
 		vm.submit = function() {
-			if(vm.qualificationDetail.qualificationGroup == null || vm.qualificationDetail.qualificationSubLevel == null) {
+			if(vm.qualificationDetail.qualificationGroup == null || vm.qualificationDetail.qualificationGroupLevel == null) {
 				vm.returnstatus = {};
 				vm.returnstatus.success = false;
 				vm.returnstatus.errorMessage = "Invalid input params";

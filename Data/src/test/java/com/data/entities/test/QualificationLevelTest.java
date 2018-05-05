@@ -26,7 +26,7 @@ public class QualificationLevelTest {
 	public void testBasicDetailJpaFind() {
 		List<QualificationLevel> qualificationLevelListAsc = qualificationLevelService.getAllMainQualificationLevel();
 		for (QualificationLevel qualificationLevel : qualificationLevelListAsc) {
-			System.out.println("\n Qualification Name is - " + qualificationLevel.getName() + " Main Level is - " + qualificationLevel.getQualificationGroup() + " Main Level is - " + qualificationLevel.getQualificationSubLevel() + "\n");
+			System.out.println("\n Qualification Name is - " + qualificationLevel.getName() + " Main Level is - " + qualificationLevel.getQualificationGroup() + " Main Level is - " + qualificationLevel.getQualificationGroupLevel() + "\n");
 		}
 		System.out.println("\n\n\n");
 		assertNotNull(qualificationLevelListAsc);

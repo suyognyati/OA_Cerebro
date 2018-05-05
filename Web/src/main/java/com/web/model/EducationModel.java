@@ -27,7 +27,7 @@ public class EducationModel {
 	public class Qualification {
 		private String name;
 		private Integer qualificationGroup;
-		private Integer qualificationSubLevel;
+		private Integer qualificationGroupLevel;
 		private List<SubQualification> subQualificationList;
 		
 			public String getName() {
@@ -44,9 +44,9 @@ public class EducationModel {
 				this.qualificationGroup = qualificationGroup;
 			}
 			
-			public Integer getQualificationSubLevel() {
-				qualificationSubLevel = 0;
-				return qualificationSubLevel;
+			public Integer getQualificationGroupLevel() {
+				qualificationGroupLevel = 0;
+				return qualificationGroupLevel;
 			}
 			
 			/**
@@ -70,7 +70,7 @@ public class EducationModel {
 		public Integer marksObtain;
 		public Integer totalMarks;
 		public Integer qualificationGroup;
-		public Integer qualificationSubLevel;
+		public Integer qualificationGroupLevel;
 		public QualificationLevel qualificationLevel;
 		public QualificationProgram qualificationProgram;
 		
@@ -128,11 +128,11 @@ public class EducationModel {
 			public void setQualificationGroup(Integer qualificationGroup) {
 				this.qualificationGroup = qualificationGroup;
 			}
-			public Integer getQualificationSubLevel() {
-				return qualificationSubLevel;
+			public Integer getQualificationGroupLevel() {
+				return qualificationGroupLevel;
 			}
-			public void setQualificationSubLevel(Integer qualificationSubLevel) {
-				this.qualificationSubLevel = qualificationSubLevel;
+			public void setQualificationGroupLevel(Integer qualificationGroupLevel) {
+				this.qualificationGroupLevel = qualificationGroupLevel;
 			}
 			public QualificationLevel getQualificationLevel() {
 				return qualificationLevel;
@@ -180,7 +180,7 @@ public class EducationModel {
 		private String grade;
 		private Float cgpa;
 		private Integer qualificationGroup;
-		private Integer qualificationSubLevel;
+		private Integer qualificationGroupLevel;
 		private QualificationLevel qualificationLevel;
 		private QualificationProgram qualificationProgram;
 		private List<Enums.KeyValuePair> resultStatusList;
@@ -382,11 +382,11 @@ public class EducationModel {
 			public void setQualificationGroup(Integer qualificationGroup) {
 				this.qualificationGroup = qualificationGroup;
 			}
-			public Integer getQualificationSubLevel() {
-				return qualificationSubLevel;
+			public Integer getQualificationGroupLevel() {
+				return qualificationGroupLevel;
 			}
-			public void setQualificationSubLevel(Integer qualificationSubLevel) {
-				this.qualificationSubLevel = qualificationSubLevel;
+			public void setQualificationGroupLevel(Integer qualificationGroupLevel) {
+				this.qualificationGroupLevel = qualificationGroupLevel;
 			}
 			public QualificationLevel getQualificationLevel() {
 				return qualificationLevel;
