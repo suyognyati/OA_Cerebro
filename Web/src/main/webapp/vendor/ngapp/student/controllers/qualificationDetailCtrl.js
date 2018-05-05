@@ -18,6 +18,10 @@
 		var qualificationId = $state.params.qualificationId;
 		var newQualification = $state.params.newQualification;
 
+		//Creating temporary qualificationGroupLevelList
+		vm.qualificationDetail = [];
+		vm.qualificationDetail.qualificationGroupLevelListOfProgram = [];
+
 		// vm.accessToken = $window.bearer_token;
 		// vm.accessTokenParam = "?access_token=" + vm.accessToken;
 
@@ -112,6 +116,10 @@
 			if(qualificationDetail.qualificationLevel != null) {
 				qualificationDetail.qualificationLevelId = qualificationDetail.qualificationLevel.qualificationLevelId;
 			}
+			vm.qualificationDetail.qualificationGroupLevelListOfProgram = [];
+			if(qualificationDetail.qualificationProgram != null && qualificationDetail.qualificationProgram.duration != null) {
+				vm.createQualificationGroupLevelListOfProgram(qualificationDetail.qualificationProgram.duration);
+			}
 		}
 
 		vm.submit = function() {
@@ -198,11 +206,13 @@
 				for(var i = 0; i < vm.qualificationDetail.qualificationProgramList.length; i++) {
 					if(vm.qualificationDetail.qualificationProgramId == vm.qualificationDetail.qualificationProgramList[i].qualificationProgramId) {
 						vm.qualificationDetail.qualificationProgram = vm.qualificationDetail.qualificationProgramList[i];
+						vm.createQualificationGroupLevelListOfProgram(vm.qualificationDetail.qualificationProgram.duration);
 					}
 				}
 				refreshSelectPickerWithDelay(100);
 			} else {
 				vm.qualificationDetail.qualificationProgram = null;
+				vm.createQualificationGroupLevelListOfProgram(0);
 			}
 		}
 
@@ -217,6 +227,17 @@
 			} else {
 				vm.qualificationDetail.qualificationLevel = null;
 			}
+		}
+
+		vm.createQualificationGroupLevelListOfProgram = function (duration) {
+			var qualificationGroupLevelListOfProgram = [];
+			var qualificationGroupLevelList = vm.qualificationDetail.qualificationGroupLevelList;
+			qualificationGroupLevelListOfProgram = []
+			for(var i = 0; i < duration; i++) {
+				var qualificationGroupLevelObject = qualificationGroupLevelList[i];
+				qualificationGroupLevelListOfProgram.push(qualificationGroupLevelObject);
+			}
+			vm.qualificationDetail.qualificationGroupLevelListOfProgram = qualificationGroupLevelListOfProgram;
 		}
 
 		vm.calculatePercentage = function() {
