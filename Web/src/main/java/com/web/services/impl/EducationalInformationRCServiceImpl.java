@@ -266,10 +266,10 @@ public class EducationalInformationRCServiceImpl implements EducationalInformati
 
 	private void setDefaultData(Integer qualificationGroup, QualificationDetail qualificationDetail) {
 		QualificationLevel qualificationGroupObject = qualificationLevelService.getQualificationGroup(qualificationGroup);
-		List<QualificationLevel> subQualificationLevelList = qualificationLevelService.getSubQualificationLevels(qualificationGroup);
+		List<QualificationLevel> qualificationGroupLevelList = qualificationLevelService.getSubQualificationLevels(qualificationGroup);
 		List<QualificationProgram> programListOfQualification = qualificationProgramDao.getProgramListOfQualification(qualificationGroupObject);
 		
-		qualificationDetail.setSubQualificationLevelList(subQualificationLevelList);
+		qualificationDetail.setqualificationGroupLevelList(qualificationGroupLevelList);
 		qualificationDetail.setQualificationProgramList(programListOfQualification);
 		
 		qualificationDetail.setResultStatusList(Enums.ResultStatus.getEnumList());

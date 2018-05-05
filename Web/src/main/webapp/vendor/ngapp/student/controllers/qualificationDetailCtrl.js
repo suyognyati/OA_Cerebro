@@ -207,10 +207,10 @@
 		}
 
 		vm.setSelectedQualificationLevel = function () {
-			if(vm.qualificationDetail != null && vm.qualificationDetail.subQualificationLevelList != null) {
-				for(var i = 0; i < vm.qualificationDetail.subQualificationLevelList.length; i++) {
-					if(vm.qualificationDetail.qualificationLevelId == vm.qualificationDetail.subQualificationLevelList[i].qualificationLevelId) {
-						vm.qualificationDetail.qualificationLevel = vm.qualificationDetail.subQualificationLevelList[i];
+			if(vm.qualificationDetail != null && vm.qualificationDetail.qualificationGroupLevelList != null) {
+				for(var i = 0; i < vm.qualificationDetail.qualificationGroupLevelList.length; i++) {
+					if(vm.qualificationDetail.qualificationLevelId == vm.qualificationDetail.qualificationGroupLevelList[i].qualificationLevelId) {
+						vm.qualificationDetail.qualificationLevel = vm.qualificationDetail.qualificationGroupLevelList[i];
 					}
 				}
 				refreshSelectPickerWithDelay(100);

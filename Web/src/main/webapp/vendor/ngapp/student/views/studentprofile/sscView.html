@@ -263,7 +263,7 @@
 							tabindex="10"
 							ng-change="vm.setSelectedQualificationLevel()"
 							ng-model="vm.qualificationDetail.qualificationLevelId"
-							ng-options="academicYear.qualificationLevelId as academicYear.name for academicYear in vm.qualificationDetail.subQualificationLevelList"
+							ng-options="academicYear.qualificationLevelId as academicYear.name for academicYear in vm.qualificationDetail.qualificationGroupLevelList"
 							required>
 					</select>
 					<!-- ng-options="academicYear.key as academicYear.value for academicYear in vm.qualificationDetail.academicYearList" -->

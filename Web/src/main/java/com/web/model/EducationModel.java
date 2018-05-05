@@ -192,7 +192,7 @@ public class EducationModel {
 		private List<Country> countryList;
 		private List<State> stateList;
 		private List<Board> allIndiaBoardList;
-		private List<QualificationLevel> subQualificationLevelList;
+		private List<QualificationLevel> qualificationGroupLevelList;
 		private List<QualificationProgram> qualificationProgramList;
 		
 			
@@ -458,11 +458,11 @@ public class EducationModel {
 			public void setAllIndiaBoardList(List<Board> allIndiaBoardList) {
 				this.allIndiaBoardList = allIndiaBoardList;
 			}
-			public List<QualificationLevel> getSubQualificationLevelList() {
-				return subQualificationLevelList;
+			public List<QualificationLevel> getqualificationGroupLevelList() {
+				return qualificationGroupLevelList;
 			}
-			public void setSubQualificationLevelList(List<QualificationLevel> subQualificationLevelList) {
-				this.subQualificationLevelList = subQualificationLevelList;
+			public void setqualificationGroupLevelList(List<QualificationLevel> qualificationGroupLevelList) {
+				this.qualificationGroupLevelList = qualificationGroupLevelList;
 			}
 			public List<QualificationProgram> getQualificationProgramList() {
 				return qualificationProgramList;
