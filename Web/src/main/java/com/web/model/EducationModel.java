@@ -26,7 +26,7 @@ public class EducationModel {
 
 	public class Qualification {
 		private String name;
-		private Integer qualificationMainLevel;
+		private Integer qualificationGroup;
 		private Integer qualificationSubLevel;
 		private List<SubQualification> subQualificationList;
 		
@@ -37,11 +37,11 @@ public class EducationModel {
 				this.name = name;
 			}
 			
-			public Integer getQualificationMainLevel() {
-				return qualificationMainLevel;
+			public Integer getQualificationGroup() {
+				return qualificationGroup;
 			}
-			public void setQualificationMainLevel(Integer qualificationMainLevel) {
-				this.qualificationMainLevel = qualificationMainLevel;
+			public void setQualificationGroup(Integer qualificationGroup) {
+				this.qualificationGroup = qualificationGroup;
 			}
 			
 			public Integer getQualificationSubLevel() {
@@ -69,7 +69,7 @@ public class EducationModel {
 		public Integer passingYear;
 		public Integer marksObtain;
 		public Integer totalMarks;
-		public Integer qualificationMainLevel;
+		public Integer qualificationGroup;
 		public Integer qualificationSubLevel;
 		public QualificationLevel qualificationLevel;
 		public QualificationProgram qualificationProgram;
@@ -122,11 +122,11 @@ public class EducationModel {
 			public void setTotalMarks(Integer totalMarks) {
 				this.totalMarks = totalMarks;
 			}
-			public Integer getQualificationMainLevel() {
-				return qualificationMainLevel;
+			public Integer getQualificationGroup() {
+				return qualificationGroup;
 			}
-			public void setQualificationMainLevel(Integer qualificationMainLevel) {
-				this.qualificationMainLevel = qualificationMainLevel;
+			public void setQualificationGroup(Integer qualificationGroup) {
+				this.qualificationGroup = qualificationGroup;
 			}
 			public Integer getQualificationSubLevel() {
 				return qualificationSubLevel;
@@ -179,7 +179,7 @@ public class EducationModel {
 		private Float percentage;
 		private String grade;
 		private Float cgpa;
-		private Integer qualificationMainLevel;
+		private Integer qualificationGroup;
 		private Integer qualificationSubLevel;
 		private QualificationLevel qualificationLevel;
 		private QualificationProgram qualificationProgram;
@@ -376,11 +376,11 @@ public class EducationModel {
 			public void setCgpa(Float cgpa) {
 				this.cgpa = cgpa;
 			}
-			public Integer getQualificationMainLevel() {
-				return qualificationMainLevel;
+			public Integer getQualificationGroup() {
+				return qualificationGroup;
 			}
-			public void setQualificationMainLevel(Integer qualificationMainLevel) {
-				this.qualificationMainLevel = qualificationMainLevel;
+			public void setQualificationGroup(Integer qualificationGroup) {
+				this.qualificationGroup = qualificationGroup;
 			}
 			public Integer getQualificationSubLevel() {
 				return qualificationSubLevel;

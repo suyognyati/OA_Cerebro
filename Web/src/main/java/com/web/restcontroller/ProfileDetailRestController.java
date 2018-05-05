@@ -96,11 +96,11 @@ public class ProfileDetailRestController {
 		return educationalInformationService.getQualificationDetail(session.getCurrentUser(), qualificationId);
 	}
 	
-	@RequestMapping(value="/educationalInformation/getNewQualification/{qualificationMainLevel}", method=RequestMethod.GET)
+	@RequestMapping(value="/educationalInformation/getNewQualification/{qualificationGroup}", method=RequestMethod.GET)
 	public EducationModel.QualificationDetail getNewQualification(
-			@PathVariable(value="qualificationMainLevel") Integer qualificationMainLevel){
+			@PathVariable(value="qualificationGroup") Integer qualificationGroup){
 		if(session.getCurrentUser() != null)
-			return educationalInformationService.getNewQualification(session.getCurrentUser(), qualificationMainLevel);
+			return educationalInformationService.getNewQualification(session.getCurrentUser(), qualificationGroup);
 		else
 			return null;
 	}
@@ -111,7 +111,7 @@ public class ProfileDetailRestController {
 		Boolean success = false;
 		String successMessage = "";
 		String errorMessage = "";
-		if(qd.getQualificationMainLevel() != null) {
+		if(qd.getQualificationGroup() != null) {
 			success = educationalInformationService.saveQualificationDetail(session.getCurrentUser(), educationalModel.getQualificationDetail());
 			if(success)
 				successMessage = "Saved successfully";

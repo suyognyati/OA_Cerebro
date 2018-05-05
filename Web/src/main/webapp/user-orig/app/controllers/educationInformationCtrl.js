@@ -29,7 +29,7 @@
 				}
 				else {
 					angular.forEach(value.subQualificationList, function(childvalue, key) {
-						childvalue.qualificationMainLevel = value.qualificationMainLevel;
+						childvalue.qualificationGroup = value.qualificationGroup;
 						vm.qualificationList.push(childvalue);
 					});
 				}
@@ -41,15 +41,15 @@
 			/*vm.listofQualification = {};*/
         });
 		
-		vm.qualificationDetail = function(qualificationMainLevel, qualificationId) {
-			var view = mapView(qualificationMainLevel);
+		vm.qualificationDetail = function(qualificationGroup, qualificationId) {
+			var view = mapView(qualificationGroup);
 						
-			$state.go("studentStatus.qualificationDetail", {qualification:view ,qualificationMainLevel:qualificationMainLevel, qualificationId:qualificationId});
+			$state.go("studentStatus.qualificationDetail", {qualification:view ,qualificationGroup:qualificationGroup, qualificationId:qualificationId});
 		}
 		
-		vm.createNewQualification = function(qualificationMainLevel, qualificationSubLevel) {
-			var view = mapView(qualificationMainLevel);						
-			$state.go("studentStatus.qualificationDetail", {qualification:view ,qualificationMainLevel:qualificationMainLevel, qualificationSubLevel:qualificationSubLevel, newQualification:true});
+		vm.createNewQualification = function(qualificationGroup, qualificationSubLevel) {
+			var view = mapView(qualificationGroup);						
+			$state.go("studentStatus.qualificationDetail", {qualification:view ,qualificationGroup:qualificationGroup, qualificationSubLevel:qualificationSubLevel, newQualification:true});
 		}
 		
 		vm.deleteQualification = function(qualificationId, qualificationName) {
@@ -74,15 +74,15 @@
 			}
 		}
 		
-		var mapView = function(qualificationMainLevel) {
+		var mapView = function(qualificationGroup) {
 			var view = "";
-			if(qualificationMainLevel == 1)
+			if(qualificationGroup == 1)
 				view = "ssc";
-			else if(qualificationMainLevel == 2)
+			else if(qualificationGroup == 2)
 				view = "11th";
-			else if(qualificationMainLevel == 3)
+			else if(qualificationGroup == 3)
 				view = "hsc";
-			else if(qualificationMainLevel == 4)
+			else if(qualificationGroup == 4)
 				view = "diploma";
 			
 			return view;

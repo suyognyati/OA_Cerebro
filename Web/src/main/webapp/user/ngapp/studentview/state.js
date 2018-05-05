@@ -71,16 +71,16 @@
 			}
 		})
 		.state('studentview.qualificationDetail', {
-			url: '/educationalinformation/:qualification/:qualificationMainLevel/:qualificationId',
+			url: '/educationalinformation/:qualification/:qualificationGroup/:qualificationId',
 			templateUrl:
 			function (stateParams){
-				if((stateParams.qualificationMainLevel >= 1 && stateParams.qualificationMainLevel <= 2)
+				if((stateParams.qualificationGroup >= 1 && stateParams.qualificationGroup <= 2)
 						/*&& stateParams.qualification == "ssc"*/) {
 					return "ngapp/studentview/views/qualificationDetailView/sscView.html"
-				} else if(stateParams.qualificationMainLevel == 3
+				} else if(stateParams.qualificationGroup == 3
 						/*&& stateParams.qualification == "hsc"*/) {
 					return "ngapp/studentview/views/qualificationDetailView/hscView.html"
-				} else if(stateParams.qualificationMainLevel >= 4
+				} else if(stateParams.qualificationGroup >= 4
 						/*&& stateParams.qualification == "diploma"*/) {
 					return "ngapp/studentview/views/qualificationDetailView/diplomaView.html"
 				} else {

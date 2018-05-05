@@ -68,10 +68,10 @@
 					url: "/Web/rest/educationalInformation/getQualificationDetail/" + qualificationId + accessTokenParam
 				})
 			},
-			getNewQualification : function(qualificationMainLevel, accessTokenParam) {
+			getNewQualification : function(qualificationGroup, accessTokenParam) {
 				return $http({
 					method: "GET",
-					url: "/Web/rest/educationalInformation/getNewQualification/" + qualificationMainLevel + accessTokenParam
+					url: "/Web/rest/educationalInformation/getNewQualification/" + qualificationGroup + accessTokenParam
 				})
 			},
 			saveQualificationDetail : function(qualificationDetail, accessTokenParam) {

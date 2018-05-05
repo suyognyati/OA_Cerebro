@@ -10,7 +10,7 @@ public interface EducationalInformationRCService {
 
 	List<EducationModel.Qualification> getListofQualification(User user);
 	QualificationDetail getQualificationDetail(User user, Integer qualificationSubLevel);
-	QualificationDetail getNewQualification(User user, Integer qualificationMainLevel);
+	QualificationDetail getNewQualification(User user, Integer qualificationGroup);
 	Boolean saveQualificationDetail(User user, QualificationDetail qualificationDetail);
 	Boolean deleteQualificationDetail(User user, Integer qualificationId);
 	

@@ -13,7 +13,7 @@
 	function QualificationDetailCtrl($http, $window, $state, $stateParams, profileViewService) {
 
 		var vm = this;
-		var qualificationMainLevel = $state.params.qualificationMainLevel;
+		var qualificationGroup = $state.params.qualificationGroup;
 		var qualificationId = $state.params.qualificationId;
 		var newQualification = $state.params.newQualification;
 
@@ -56,16 +56,16 @@
 				qualificationDetail.evaluationType = 1;
 			}
 			if(qualificationDetail.certifyingBody == null) {
-				if(qualificationDetail.qualificationMainLevel <= 3)
+				if(qualificationDetail.qualificationGroup <= 3)
 					qualificationDetail.certifyingBody = 1;
-				else if(qualificationDetail.qualificationMainLevel == 4)
+				else if(qualificationDetail.qualificationGroup == 4)
 					qualificationDetail.certifyingBody = 3;
 			}
 			if(qualificationDetail.resultStatus == null) {
 				qualificationDetail.resultStatus = 1;
 			}
-			if(qualificationDetail.qualificationMainLevel == null) {
-				qualificationDetail.qualificationMainLevel = parseInt(qualificationMainLevel, 10);
+			if(qualificationDetail.qualificationGroup == null) {
+				qualificationDetail.qualificationGroup = parseInt(qualificationGroup, 10);
 			}
 			if(qualificationDetail.qualificationSubLevel == null) {
 				qualificationDetail.qualificationSubLevel = parseInt(qualificationId, 10);
@@ -89,7 +89,7 @@
 		}
 
 		/*vm.submit = function() {
-			if(vm.qualificationDetail.qualificationMainLevel == null || vm.qualificationDetail.qualificationSubLevel == null) {
+			if(vm.qualificationDetail.qualificationGroup == null || vm.qualificationDetail.qualificationSubLevel == null) {
 				vm.returnstatus = {};
 				vm.returnstatus.success = false;
 				vm.returnstatus.errorMessage = "Invalid input params";
@@ -138,7 +138,7 @@
 
 		vm.setSelectedBoard = function() {
 			var boardList = null;
-			switch(vm.qualificationDetail.qualificationMainLevel) {
+			switch(vm.qualificationDetail.qualificationGroup) {
 				case 1: boardList = vm.qualificationDetail.state.sscBoardList;
 						break;
 				case 3: boardList = vm.qualificationDetail.state.hscBoardList;

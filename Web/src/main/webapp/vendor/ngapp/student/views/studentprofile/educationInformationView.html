@@ -23,13 +23,13 @@
 					<div class="col-sm-12">
 						<label class="" Style="font-size: large;">{{qualificationType.name}}</label>
 						[<i class="glyphicon glyphicon-plus glyphicon-plus-custom" style="cursor: pointer;"
-	                       	ng-click="vm.createNewQualification(qualificationType.qualificationMainLevel, qualificationType.qualificationSubLevel)"/>]
+	                       	ng-click="vm.createNewQualification(qualificationType.qualificationGroup, qualificationType.qualificationSubLevel)"/>]
 					</div>
 					<div class="col-sm-12" ng-if="qualificationType.subQualificationList == null">
 						<hr/>
 					</div>
 					<div class="col-sm-12" ng-if="qualificationType.subQualificationList != null">
-						<span ng-if="qualificationType.qualificationMainLevel <= 2">
+						<span ng-if="qualificationType.qualificationGroup <= 2">
 							<table class="table table-striped table-bordered">
 				                <thead>
 				                    <tr class="table-background">
@@ -55,7 +55,7 @@
 				                        </td>
 				                        <td align="center">
 				                        	<i 	class="glyphicon glyphicon-pencil " style="cursor: pointer;"
-				                        		ng-click="vm.qualificationDetail(qualification.qualificationLevel.qualificationMainLevel, qualification.subQualificationId)"/>
+				                        		ng-click="vm.qualificationDetail(qualification.qualificationLevel.qualificationGroup, qualification.subQualificationId)"/>
 				                       		</i>
 				                       	</td>
 				                        <td align="center">
@@ -68,7 +68,7 @@
 							</table>
 						</span>
 
-						<span ng-if="qualificationType.qualificationMainLevel >= 3 && qualificationType.qualificationMainLevel <= 3 ">
+						<span ng-if="qualificationType.qualificationGroup >= 3 && qualificationType.qualificationGroup <= 3 ">
 							<table class="table table-striped table-bordered">
 				                <thead>
 				                    <tr class="table-background">
@@ -100,7 +100,7 @@
 				                        </td>
 				                        <td align="center">
 				                        	<i 	class="glyphicon glyphicon-pencil " style="cursor: pointer;"
-				                        		ng-click="vm.qualificationDetail(qualification.qualificationLevel.qualificationMainLevel, qualification.subQualificationId)"/>
+				                        		ng-click="vm.qualificationDetail(qualification.qualificationLevel.qualificationGroup, qualification.subQualificationId)"/>
 				                       		</i>
 				                       	</td>
 				                        <td align="center">
@@ -113,7 +113,7 @@
 							</table>
 						</span>
 
-						<span ng-if="qualificationType.qualificationMainLevel >= 4">
+						<span ng-if="qualificationType.qualificationGroup >= 4">
 							<table class="table table-striped table-bordered">
 				                <thead>
 				                    <tr class="table-background">
@@ -147,7 +147,7 @@
 				                        </td>
 				                        <td align="center">
 				                        	<i 	class="glyphicon glyphicon-pencil " style="cursor: pointer;"
-				                        		ng-click="vm.qualificationDetail(qualification.qualificationLevel.qualificationMainLevel, qualification.subQualificationId)"/>
+				                        		ng-click="vm.qualificationDetail(qualification.qualificationLevel.qualificationGroup, qualification.subQualificationId)"/>
 				                       		</i>
 				                       	</td>
 				                        <td align="center">

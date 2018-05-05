@@ -22,8 +22,8 @@ public class QualificationLevel {
 	@Column(name="Description")
 	private String description;
 	
-	@Column(name="QualificationMainLevel")
-	private Integer qualificationMainLevel;
+	@Column(name="QualificationGroup")
+	private Integer qualificationGroup;
 	
 	@Column(name="QualificationSubLevel")
 	private Integer qualificationSubLevel;
@@ -61,12 +61,12 @@ public class QualificationLevel {
 		/**
 		 * @return Main (Major) level of qualification
 		 * */
-		public Integer getQualificationMainLevel() {
-			return qualificationMainLevel;
+		public Integer getQualificationGroup() {
+			return qualificationGroup;
 		}
 	
-		public void setQualificationMainLevel(Integer qualificationMainLevel) {
-			this.qualificationMainLevel = qualificationMainLevel;
+		public void setQualificationGroup(Integer qualificationGroup) {
+			this.qualificationGroup = qualificationGroup;
 		}
 	
 		/**

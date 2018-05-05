@@ -11,31 +11,31 @@ import com.data.entities.QualificationLevel;
 public interface QualificationLevelJpaRepository extends JpaRepository<QualificationLevel, Integer> {
 	QualificationLevel findByQualificationLevelId(Integer qualificationLevelId);
 	
-	List<QualificationLevel> findByQualificationMainLevelAndQualificationSubLevel(Integer qualificationMainLevel, Integer qualificationSubLevel);
+	List<QualificationLevel> findByQualificationGroupAndQualificationSubLevel(Integer qualificationGroup, Integer qualificationSubLevel);
 	
 	/**
 	 * This function will give all sub qualification levels
-	 * @param qualificationMainLevel
+	 * @param qualificationGroup
 	 * @param qualificationSubLevel this should be zero
 	 * @return List of QualificationLevel
 	 */
-	List<QualificationLevel> findByQualificationMainLevelAndQualificationSubLevelNot(Integer qualificationMainLevel, Integer qualificationSubLevel);
+	List<QualificationLevel> findByQualificationGroupAndQualificationSubLevelNot(Integer qualificationGroup, Integer qualificationSubLevel);
 	
-	List<QualificationLevel> findByQualificationMainLevel(Integer qualificationMainLevel);
+	List<QualificationLevel> findByQualificationGroup(Integer qualificationGroup);
 	
-	List<QualificationLevel> findByQualificationMainLevelAndQualificationSubLevelGreaterThanOrderByQualificationSubLevelAsc(Integer qualificationMainLevel, Integer zeroval);
+	List<QualificationLevel> findByQualificationGroupAndQualificationSubLevelGreaterThanOrderByQualificationSubLevelAsc(Integer qualificationGroup, Integer zeroval);
 	
-	List<QualificationLevel> findByQualificationMainLevelAndQualificationSubLevelGreaterThanOrderByQualificationSubLevelDesc(Integer qualificationMainLevel, Integer zeroval);
+	List<QualificationLevel> findByQualificationGroupAndQualificationSubLevelGreaterThanOrderByQualificationSubLevelDesc(Integer qualificationGroup, Integer zeroval);
 	
-	List<QualificationLevel> findByOrderByQualificationMainLevelAsc();
+	List<QualificationLevel> findByOrderByQualificationGroupAsc();
 	
-	List<QualificationLevel> findByOrderByQualificationMainLevelDesc();
+	List<QualificationLevel> findByOrderByQualificationGroupDesc();
 	
-	List<QualificationLevel> findDistinctByQualificationMainLevelOrderByQualificationMainLevelAsc(Integer qualificationMainLevel);
+	List<QualificationLevel> findDistinctByQualificationGroupOrderByQualificationGroupAsc(Integer qualificationGroup);
 	
-	List<QualificationLevel> findDistinctByQualificationMainLevelOrderByQualificationMainLevelDesc(Integer qualificationMainLevel);
+	List<QualificationLevel> findDistinctByQualificationGroupOrderByQualificationGroupDesc(Integer qualificationGroup);
 	
-	List<QualificationLevel> findByQualificationSubLevelOrderByQualificationMainLevelAsc(Integer qualificationSubLevel);
+	List<QualificationLevel> findByQualificationSubLevelOrderByQualificationGroupAsc(Integer qualificationSubLevel);
 	
-	List<QualificationLevel> findByQualificationSubLevelOrderByQualificationMainLevelDesc(Integer qualificationSubLevel);
+	List<QualificationLevel> findByQualificationSubLevelOrderByQualificationGroupDesc(Integer qualificationSubLevel);
 }

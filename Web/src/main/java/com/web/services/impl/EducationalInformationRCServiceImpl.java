@@ -47,17 +47,17 @@ public class EducationalInformationRCServiceImpl implements EducationalInformati
 	public List<EducationModel.Qualification> getListofQualification(User user){
 		//Get data from database
 		List<EducationalInformation> educationalHistory = educationalInformationService.getEducationalHistory(user);
-		List<QualificationLevel> qualificationMainLevelList = qualificationLevelService.getAllMainQualificationLevel();
+		List<QualificationLevel> qualificationGroupList = qualificationLevelService.getAllMainQualificationLevel();
 		
 		//Creating model
 		List<EducationModel.Qualification> listOfQualification = new ArrayList<EducationModel.Qualification>();
 		
 		//Creating objects of main/default qualifications
-		for(QualificationLevel qualificationLevel : qualificationMainLevelList) {
+		for(QualificationLevel qualificationLevel : qualificationGroupList) {
 			EducationModel educationalModel = new EducationModel();
 			Qualification qualification = educationalModel.new Qualification();
 			qualification.setName(qualificationLevel.getName());
-			qualification.setQualificationMainLevel(qualificationLevel.getQualificationMainLevel());
+			qualification.setQualificationGroup(qualificationLevel.getQualificationGroup());
 			listOfQualification.add(qualification);
 		}
 		
@@ -65,7 +65,7 @@ public class EducationalInformationRCServiceImpl implements EducationalInformati
 		 * subqualification list which is in qualification object
 		 * */ 
 		for(EducationalInformation educationalInformation : educationalHistory) {
-			int index = educationalInformation.getQualificationLevel().getQualificationMainLevel() - 1;
+			int index = educationalInformation.getQualificationLevel().getQualificationGroup() - 1;
 			Qualification qualification = listOfQualification.get(index);
 			
 			if(qualification.getSubQualificationList() == null) {
@@ -101,7 +101,7 @@ public class EducationalInformationRCServiceImpl implements EducationalInformati
 			subQualification.setMarksObtain(educationalInformation.getMarksObtain());
 			subQualification.setTotalMarks(educationalInformation.getTotalMarks());
 			/*if(educationalInformation.getQualificationLevel() != null) {
-				subQualification.setQualificationMainLevel(educationalInformation.getQualificationLevel().getQualificationMainLevel());
+				subQualification.setQualificationGroup(educationalInformation.getQualificationLevel().getQualificationGroup());
 				subQualification.setQualificationSubLevel(educationalInformation.getQualificationLevel().getQualificationSubLevel());
 			}*/
 			subQualification.setQualificationLevel(educationalInformation.getQualificationLevel());
@@ -118,26 +118,26 @@ public class EducationalInformationRCServiceImpl implements EducationalInformati
 	public QualificationDetail getQualificationDetail(User user, Integer qualificationId) {
 		EducationalInformation educationalInformation  = null;
 		educationalInformation = educationalInformationService.getByEducationalInformationId(user, qualificationId);
-		Integer qualificationMainLevel = educationalInformation.getQualificationLevel().getQualificationMainLevel();
+		Integer qualificationGroup = educationalInformation.getQualificationLevel().getQualificationGroup();
 		
 		maxAcademicYear = 3;
 		QualificationDetail qualificationDetail = createQualificationDetailObject(educationalInformation);
-		setDefaultData(qualificationMainLevel, qualificationDetail);
+		setDefaultData(qualificationGroup, qualificationDetail);
 		return qualificationDetail;
 	}
 
-	public QualificationDetail getNewQualification(User user, Integer qualificationMainLevel) {
-		QualificationLevel qualificationMainLevelObject = qualificationLevelService.getQualificationMainLevel(qualificationMainLevel);
+	public QualificationDetail getNewQualification(User user, Integer qualificationGroup) {
+		QualificationLevel qualificationGroupObject = qualificationLevelService.getQualificationGroup(qualificationGroup);
 		
 		EducationalInformation educationalInformation = null;
 		
-		if(qualificationMainLevelObject != null && qualificationMainLevelObject.getMultiReferred() == false) {
-			educationalInformation = educationalInformationService.getByUserAndQualificationLevel(user, qualificationMainLevelObject);
+		if(qualificationGroupObject != null && qualificationGroupObject.getMultiReferred() == false) {
+			educationalInformation = educationalInformationService.getByUserAndQualificationLevel(user, qualificationGroupObject);
 		}
 		
 		maxAcademicYear = 3;
 		QualificationDetail qualificationDetail = createQualificationDetailObject(educationalInformation);
-		setDefaultData(qualificationMainLevel, qualificationDetail);
+		setDefaultData(qualificationGroup, qualificationDetail);
 				
 		return qualificationDetail;
 	}
@@ -145,7 +145,7 @@ public class EducationalInformationRCServiceImpl implements EducationalInformati
 	@Override
 	public Boolean saveQualificationDetail(User user, QualificationDetail qualificationDetail) {
 		//Getting qualificationlevelobject to search for respected educational information
-		//QualificationLevel qualificationLevelObject = qualificationLevelService.getByMainAndSubLevel(qualificationDetail.getQualificationMainLevel(), 0);
+		//QualificationLevel qualificationLevelObject = qualificationLevelService.getByMainAndSubLevel(qualificationDetail.getQualificationGroup(), 0);
 		QualificationLevel qualificationLevelObject = qualificationDetail.getQualificationLevel();
 		if(qualificationLevelObject == null)
 			return false;
@@ -225,7 +225,7 @@ public class EducationalInformationRCServiceImpl implements EducationalInformati
 			qualificationDetail.setNoOfAttempts(educationalInformation.getNoOfAttempts());
 			qualificationDetail.setAcademicYear(educationalInformation.getAcademicYear());
 			qualificationDetail.setQualificationName(educationalInformation.getQualificationName());
-			qualificationDetail.setQualificationMainLevel(educationalInformation.getQualificationLevel().getQualificationMainLevel());
+			qualificationDetail.setQualificationGroup(educationalInformation.getQualificationLevel().getQualificationGroup());
 			qualificationDetail.setQualificationSubLevel(educationalInformation.getQualificationLevel().getQualificationSubLevel());
 			qualificationDetail.setQualificationLevel(educationalInformation.getQualificationLevel());
 			qualificationDetail.setQualificationProgram(educationalInformation.getQualificationProgram());
@@ -264,10 +264,10 @@ public class EducationalInformationRCServiceImpl implements EducationalInformati
 		return qualificationDetail;
 	}
 
-	private void setDefaultData(Integer qualificationMainLevel, QualificationDetail qualificationDetail) {
-		QualificationLevel qualificationMainLevelObject = qualificationLevelService.getQualificationMainLevel(qualificationMainLevel);
-		List<QualificationLevel> subQualificationLevelList = qualificationLevelService.getSubQualificationLevels(qualificationMainLevel);
-		List<QualificationProgram> programListOfQualification = qualificationProgramDao.getProgramListOfQualification(qualificationMainLevelObject);
+	private void setDefaultData(Integer qualificationGroup, QualificationDetail qualificationDetail) {
+		QualificationLevel qualificationGroupObject = qualificationLevelService.getQualificationGroup(qualificationGroup);
+		List<QualificationLevel> subQualificationLevelList = qualificationLevelService.getSubQualificationLevels(qualificationGroup);
+		List<QualificationProgram> programListOfQualification = qualificationProgramDao.getProgramListOfQualification(qualificationGroupObject);
 		
 		qualificationDetail.setSubQualificationLevelList(subQualificationLevelList);
 		qualificationDetail.setQualificationProgramList(programListOfQualification);
