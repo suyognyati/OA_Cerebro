@@ -44,8 +44,9 @@
 		}
 
 		vm.applyProgram = function(collegeProgramId, programName, programCode, universityFolderName, viewFileName){
-			$state.go("student.application.subject", {collegeProgramId:collegeProgramId, programName:programName,
-				programCode:programCode, universityFolderName: universityFolderName, fileNameForProgram: viewFileName});
+			/*$state.go("student.application.subject", {collegeProgramId:collegeProgramId, programName:programName,
+				programCode:programCode, universityFolderName: universityFolderName, fileNameForProgram: viewFileName});*/
+			$state.go("student.application.allowedQualifications", {collegeProgramId:collegeProgramId});
 		};
 
 		vm.isAppliedForProgram = function(collegeProgramId, appliedCourses) {

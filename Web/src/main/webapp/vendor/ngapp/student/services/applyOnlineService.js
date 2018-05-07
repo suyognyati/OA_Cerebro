@@ -20,6 +20,12 @@
 					url: "/Web/rest/program/getPrograms/" + programCategoryId + accessTokenParam
 				})
 			},
+			getAllowedQualifications : function(collegeProgramId, accessTokenParam) {
+				return $http({
+					method: "GET",
+					url: "/Web/rest/educationalInformation/getAllowedQualifications/" + collegeProgramId + accessTokenParam
+				})
+			},
 			getSubjects: function (collegeProgramId, accessTokenParam) {
 				return $http({
                     method: "POST",

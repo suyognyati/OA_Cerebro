@@ -11,10 +11,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.web.model.AppliedCourseModel;
+import com.web.model.EducationModel;
 import com.web.model.ProgramCategoriesModel;
 import com.web.model.ProgramModel;
 import com.web.model.SubjectModel;
 import com.web.services.CourseRCService;
+import com.web.services.EducationalInformationRCService;
 import com.web.services.ProgramCategoryRCService;
 import com.web.services.ProgramRCService;
 import com.web.services.SubmittedApplicationRCService;
@@ -39,6 +41,9 @@ public class ApplyOnlineRestController {
 	@Autowired
 	SubmittedApplicationRCService submittedApplicationRCService;
 	
+	@Autowired
+	EducationalInformationRCService educationalInformationService; 
+	
 	@RequestMapping(value="/applyOnline/programCategories/getApplyOnline/")
 	public List<ProgramCategoriesModel> get(Model model){
 		return programCategoryRCService.getProgramCategories();
@@ -47,6 +52,11 @@ public class ApplyOnlineRestController {
 	@RequestMapping(value="/program/getPrograms/{programCategoryId}")
 	public List<ProgramModel> getPrograms(@PathVariable(value="programCategoryId") Integer programCategoryId){
 		return programService.getProgramsByCategory(session.getCollegeId(), programCategoryId);
+	}
+	
+	@RequestMapping(value="/educationalInformation/getAllowedQualifications/{programCategoryId}")
+	public List<EducationModel.Qualification> getAllowedQualifications(@PathVariable(value="programCategoryId") Integer programCategoryId){
+		return educationalInformationService.getListofQualification(session.getCurrentUser());
 	}
 	
 	@RequestMapping(value="/subject/getSubjects/{collegeProgramId}")

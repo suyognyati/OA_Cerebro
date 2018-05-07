@@ -396,6 +396,28 @@ function StudentStates($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, 
 			}]
 		}
 	})
+	
+	.state("student.application.allowedQualifications",{
+		url: "/allowedQualifications/:collegeProgramId",
+		templateUrl: 'ngapp/student/views/userapplication/allowedQualificationsView.html',
+		controller:"AllowedQualificationsCtrl as vm",
+
+		ncyBreadcrumb: {
+			label: 'Educational View',
+		},
+		params: { subtitle: 'Educational View' },
+		resolve: {
+			loadMyCtrl: ['$ocLazyLoad', function($ocLazyLoad) {
+				return $ocLazyLoad.load({
+					serie: true,
+					files: [
+						   'ngapp/student/controllers/allowedQualificationsCtrl.js',
+						   'ngapp/student/services/applyOnlineService.js'
+						  ]
+				});
+			}]
+		}
+	})
 
 	.state("student.application.subject",{
 		url: "/applyOnline/pid/:collegeProgramId",
