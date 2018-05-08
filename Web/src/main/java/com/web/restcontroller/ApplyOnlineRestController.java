@@ -54,9 +54,9 @@ public class ApplyOnlineRestController {
 		return programService.getProgramsByCategory(session.getCollegeId(), programCategoryId);
 	}
 	
-	@RequestMapping(value="/educationalInformation/getAllowedQualifications/{programCategoryId}")
-	public List<EducationModel.Qualification> getAllowedQualifications(@PathVariable(value="programCategoryId") Integer programCategoryId){
-		return educationalInformationService.getListofQualification(session.getCurrentUser());
+	@RequestMapping(value="/educationalInformation/getAllowedQualifications/{collegeProgramId}")
+	public List<EducationModel.Qualification> getAllowedQualifications(@PathVariable(value="collegeProgramId") Integer collegeProgramId){
+		return educationalInformationService.getAllowedQualificationsForProgram(session.getCurrentUser(), collegeProgramId);
 	}
 	
 	@RequestMapping(value="/subject/getSubjects/{collegeProgramId}")

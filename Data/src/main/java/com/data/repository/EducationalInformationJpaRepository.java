@@ -19,4 +19,14 @@ public interface EducationalInformationJpaRepository extends JpaRepository<Educa
 		(User user);
 	EducationalInformation getByUserAndQualificationLevel(User user, QualificationLevel qualificationLevel);
 	EducationalInformation getByUserAndEducationalInformationId(User user, Integer educationalInformationId);
+	
+	/**
+	 * This function will give all allowed qualification to apply for perticuler program
+	 * @param user
+	 * @param qualificationLevels
+	 * @return List of EducationalInformation
+	 */
+	List<EducationalInformation> 
+		findByUserAndQualificationLevelInOrderByQualificationLevelQualificationGroupAscQualificationLevelQualificationGroupLevelAsc
+		(User user, List<QualificationLevel> qualificationLevels);
 }

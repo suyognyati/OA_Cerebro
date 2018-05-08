@@ -19,6 +19,8 @@
 		vm.collegeProgramId = $state.params.collegeProgramId;
 
 		vm.accessTokenParam = $scope.getAccessTokenParam();
+		
+		vm.selectedAllowedQualification = 0;
 
 		vm.getAllowedQualifications = function() {
 			applyOnlineService.getAllowedQualifications(vm.collegeProgramId, vm.accessTokenParam)

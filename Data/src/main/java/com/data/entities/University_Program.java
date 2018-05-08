@@ -30,6 +30,9 @@ public class University_Program {
 	@Column(name="ProgramYear")
 	private String universityProgramYear;
 	
+	@Column(name="AllowedLastQualifications")
+	private String allowedLastQualifications;
+	
 	@ManyToOne
 	@JoinColumn(name="FK_UniversityId")
 	private University_University universityUniversity;
@@ -76,8 +79,16 @@ public class University_Program {
 	
 		public void setUniversityProgramYear(String universityProgramYear) {
 			this.universityProgramYear = universityProgramYear;
-		}
+		}		
 	
+		public String getAllowedLastQualifications() {
+			return allowedLastQualifications;
+		}
+
+		public void setAllowedLastQualifications(String allowedLastQualifications) {
+			this.allowedLastQualifications = allowedLastQualifications;
+		}
+
 		public University_University getUniversityUniversity() {
 			return universityUniversity;
 		}

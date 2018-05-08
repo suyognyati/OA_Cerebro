@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.data.entities.EducationalInformation;
 import com.data.entities.QualificationLevel;
+import com.data.entities.University_Program;
 import com.data.entities.User;
 
 public interface EducationalInformationService {
@@ -17,4 +18,11 @@ public interface EducationalInformationService {
 	EducationalInformation getByEducationalInformationId(User user, Integer educationalInformationId);
 	Boolean saveEducationalInformation(EducationalInformation educationalInformation);
 	Boolean deleteEducationalInformation(User user, Integer educationalInformationId);
+	
+	/**
+	 * This function will give all allowed qualifications to apply particular program.
+	 * The information will be in 
+	 * <b>ascending order of qualification level</b>
+	 */
+	List<EducationalInformation> getAllowedLastQualification(User user, University_Program program);
 }
