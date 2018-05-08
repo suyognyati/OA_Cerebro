@@ -11,6 +11,6 @@ import com.web.model.SubjectModel;
 public interface CourseRCService {
 
 	SubjectModel getSubjectsByCollegeProgram(Integer collegeId, Integer programId);
-	void applyForCourse(User user, Integer collegeProgramMapId, List<University_Subject> selectedSubjectList);
+	void applyForCourse(User user, Integer collegeProgramMapId, Integer selectedAllowedQualification, List<University_Subject> selectedSubjectList);
 	List<AppliedCourseModel> getAppliedCourseDetails(User user, College College);
 }

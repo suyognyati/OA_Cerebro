@@ -14,6 +14,7 @@
 		var vm = this;
 
 		vm.collegeProgramId = $state.params.collegeProgramId;
+		vm.selectedAllowedQualification = $state.params.selectedAllowedQualification;
 		vm.programName = $state.params.programName;
 		vm.programCode = $state.params.programCode;
 
@@ -28,13 +29,15 @@
 		vm.selectionNotAllowedMessage = "";
 		vm.isSubjectSelectionCompleted = false;
 
-		applyOnlineService.getSubjects(vm.collegeProgramId, vm.accessTokenParam)
-		.then(function(success) {
-			vm.subjects = success.data;
-			vm.initialise();
-		}, function(error) {
-			vm.subjects = {};
-		})
+		vm.getCourseDetail = function () {
+			applyOnlineService.getSubjects(vm.collegeProgramId, vm.accessTokenParam)
+			.then(function(success) {
+				vm.subjects = success.data;
+				vm.initialise();
+			}, function(error) {
+				vm.subjects = {};
+			})
+		}
 
 
 		vm.initialise = function() {
@@ -202,12 +205,16 @@
 		}
 
 		vm.applyForCourse = function() {
-			applyOnlineService.applyForCourse(vm.collegeProgramId, vm.selectedSubjectList, vm.accessTokenParam)
+			applyOnlineService.applyForCourse(vm.collegeProgramId, vm.selectedSubjectList, vm.selectedAllowedQualification, vm.accessTokenParam)
 			.then(function(success) {
 				$state.go("student.application.applicationStatus")
 			}, function(error) {
 			})
 			
 		}
+		
+		setTimeout(function() {
+			vm.getCourseDetail();
+		}, $scope.getDataDelay);
 	};
 }());

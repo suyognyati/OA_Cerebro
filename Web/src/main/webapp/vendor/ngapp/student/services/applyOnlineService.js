@@ -33,10 +33,11 @@
                 });
             },
 
-            applyForCourse: function (collegeProgramId, selectedSubjectList, accessTokenParam) {
+            applyForCourse: function (collegeProgramId, selectedSubjectList, selectedAllowedQualification, accessTokenParam) {
             	var appliedCourseModel = {};
             	appliedCourseModel.collegeProgramId = collegeProgramId;
             	appliedCourseModel.selectedSubjectList = selectedSubjectList;
+            	appliedCourseModel.selectedAllowedQualification = selectedAllowedQualification;
 				return $http({
                     method: "POST",
                     url: "/Web/rest/subject/applyForCourse" + accessTokenParam,

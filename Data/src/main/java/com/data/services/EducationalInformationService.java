@@ -25,4 +25,13 @@ public interface EducationalInformationService {
 	 * <b>ascending order of qualification level</b>
 	 */
 	List<EducationalInformation> getAllowedLastQualification(User user, University_Program program);
+	
+	/**
+	 * This function will give Educational information by id.
+	 * The information will be in 
+	 * <b>ascending order of qualification level</b>
+	 * @param educationalInformationId
+	 * @return EducationalInformation
+	 */
+	EducationalInformation getById(Integer educationalInformationId);
 }

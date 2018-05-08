@@ -32,7 +32,8 @@
 		}
 		
 		vm.submit = function() {
-			$state.go("student.application.subject", {collegeProgramId:vm.collegeProgramId});
+			$state.go("student.application.subject", 
+					{collegeProgramId:vm.collegeProgramId, selectedAllowedQualification:vm.selectedAllowedQualification});
 		}
 
 		setTimeout(function() {

@@ -11,6 +11,7 @@ public class AppliedCourseModel {
 	/* Apply for course */
 	Integer collegeProgramId;
 	List<University_Subject> selectedSubjectList;
+	Integer selectedAllowedQualification;
 	/* Get applied courses */
 	private Integer applicationId;
 	private String formNo;
@@ -35,12 +36,18 @@ public class AppliedCourseModel {
 		public void setSelectedSubjectList(List<University_Subject> selectedSubjectList) {
 			this.selectedSubjectList = selectedSubjectList;
 		}
-		
-		/* Get applied courses */
-		
+		public Integer getSelectedAllowedQualification() {
+			return selectedAllowedQualification;
+		}
+		public void setSelectedAllowedQualification(Integer selectedAllowedQualification) {
+			this.selectedAllowedQualification = selectedAllowedQualification;
+		}
 		public Integer getApplicationId() {
 			return applicationId;
 		}
+		
+		/* Get applied courses */
+		
 		public void setApplicationId(Integer applicationId) {
 			this.applicationId = applicationId;
 		}

@@ -82,5 +82,10 @@ public class EducationalInformationServiceImpl implements EducationalInformation
 		
 		return allowedEducationalInformation;
 	}
+
+	@Override
+	public EducationalInformation getById(Integer educationalInformationId) {
+		return educationalInformationJpaRepository.findOne(educationalInformationId);
+	}
 	
 }

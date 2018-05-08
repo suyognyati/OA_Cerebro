@@ -66,7 +66,8 @@ public class ApplyOnlineRestController {
 	
 	@RequestMapping(value="/subject/applyForCourse", method = RequestMethod.POST)
 	public void applyForCourse(@RequestBody AppliedCourseModel appliedCourseModel) {
-		courseRCService.applyForCourse(session.getCurrentUser(), appliedCourseModel.getCollegeProgramId(), appliedCourseModel.getSelectedSubjectList());
+		courseRCService.applyForCourse(session.getCurrentUser(), appliedCourseModel.getCollegeProgramId(), 
+				appliedCourseModel.getSelectedAllowedQualification(), appliedCourseModel.getSelectedSubjectList());
 	}
 	
 	@RequestMapping(value="/subject/getAppliedCourses", method = RequestMethod.GET)

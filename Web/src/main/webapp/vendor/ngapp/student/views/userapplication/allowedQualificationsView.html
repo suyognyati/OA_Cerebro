@@ -1,11 +1,6 @@
 <div class="panel panel-default panel-body">
 	<div class="row">
 		<div class="col-sm-12">
-			<div class="alert alert-success" role="alert" ng-show="vm.success">
-				SSC Qualification updated successfully!
-			</div>
-		</div>
-		<div class="col-sm-12">
 			<div class="table-responsive" ng-repeat="qualificationType in vm.qualificationList">
 				<div class="col-sm-12" ng-if="qualificationType.subQualificationList != null">
 					<label class="" Style="font-size: large;">{{qualificationType.name}}</label>

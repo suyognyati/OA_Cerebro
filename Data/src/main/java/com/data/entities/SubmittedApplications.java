@@ -31,11 +31,15 @@ import com.data.poco.AppliedStudentPOCO;
 		                @ColumnResult(name="StatusComments"),
 		                @ColumnResult(name="FK_CollegeProgramMap"),
 		                @ColumnResult(name="FK_User"),
+		                @ColumnResult(name="FK_EducationalInformation"),
 		                @ColumnResult(name="FirstName"),
 		                @ColumnResult(name="MiddleName"),
 		                @ColumnResult(name="LastName"),
 		                @ColumnResult(name="Category"),
-		                @ColumnResult(name="Caste")
+		                @ColumnResult(name="Caste"),
+		                @ColumnResult(name="EvaluationType"),
+		                @ColumnResult(name="MarksObtain"),
+		                @ColumnResult(name="TotalMarks")
 		            }
 		        )
 		    }
@@ -47,10 +51,12 @@ import com.data.poco.AppliedStudentPOCO;
 			name = "SubmittedApplications.getAllMeritStudents",
 			query = "SELECT sa.*, "
 					+ "pd.MiddleName, pd.FirstName, pd.LastName, "
-					+ "ors.Category, ors.Caste "
+					+ "ors.Category, ors.Caste, "
+					+ "ei.EvaluationType, ei.MarksObtain, ei.TotalMarks "
 					+ "FROM SubmittedApplications as sa "
 					+ "LEFT JOIN PersonalDetails as pd ON (sa.FK_User = pd.FK_User) "
 					+ "LEFT JOIN OccupationReservation as ors ON (sa.FK_User = ors.FK_User) "
+					+ "LEFT JOIN EducationalInformation as ei ON (sa.FK_EducationalInformation = ei.EducationalInformationId) "
 					+ "WHERE FK_CollegeProgramMap = :collegeProgramMapId",
 			resultSetMapping = "appliedStudentPOCOMapping")
 })
@@ -74,6 +80,10 @@ public class SubmittedApplications {
 	@ManyToOne
 	@JoinColumn(name="FK_User")
 	private User user;
+	
+	@ManyToOne
+	@JoinColumn(name="FK_EducationalInformation")
+	private EducationalInformation educationalInformation;
 	
 	@Column(name="Date")
 	private String date;
@@ -114,6 +124,14 @@ public class SubmittedApplications {
 
 		public void setUser(User user) {
 			this.user = user;
+		}
+
+		public EducationalInformation getEducationalInformation() {
+			return educationalInformation;
+		}
+
+		public void setEducationalInformation(EducationalInformation educationalInformation) {
+			this.educationalInformation = educationalInformation;
 		}
 
 		public String getDate() {

@@ -420,7 +420,7 @@ function StudentStates($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, 
 	})
 
 	.state("student.application.subject",{
-		url: "/applyOnline/pid/:collegeProgramId",
+		url: "/applyOnline/pid/:collegeProgramId/:selectedAllowedQualification",
 		templateUrl:
 				function (stateParams){
 					var fileToAccess = ""

@@ -9,12 +9,14 @@ import org.springframework.stereotype.Service;
 import com.data.entities.College;
 import com.data.entities.CollegeProgramMap;
 import com.data.entities.CourseGroupLevelOne;
+import com.data.entities.EducationalInformation;
 import com.data.entities.Enums;
 import com.data.entities.SubmittedApplications;
 import com.data.entities.University_Subject;
 import com.data.entities.User;
 import com.data.services.CollegeProgramMapService;
 import com.data.services.CourseGroupLevelOneService;
+import com.data.services.EducationalInformationService;
 import com.data.services.SubmittedApplicationService;
 import com.web.model.AppliedCourseModel;
 import com.web.model.SubjectModel;
@@ -33,25 +35,32 @@ public class CourseRCServiceImpl implements CourseRCService{
 	@Autowired
 	CourseGroupLevelOneService courseGroupLevelOneService;
 	
+	@Autowired
+	EducationalInformationService educationalInformationService; 
+	
 	public SubjectModel getSubjectsByCollegeProgram(Integer collegeId, Integer collegeProgramId){
 		
 		SubjectModel subjectModel = new SubjectModel();
+		CollegeProgramMap collegeProgramMap = collegeProgramMapService.getById(collegeProgramId);
 		List<CourseGroupLevelOne> courseGroupLevelOneList = courseGroupLevelOneService.getCourseGroupLevelOneByProgram(collegeProgramId);
+		subjectModel.setProgram(collegeProgramMap.getProgram());
 		subjectModel.setCourseGroupLevelOneList(courseGroupLevelOneList);
 		return subjectModel;
 	}
 
 	@Override
-	public void applyForCourse(User user, Integer collegeProgramMapId, List<University_Subject> selectedSubjectList) {
+	public void applyForCourse(User user, Integer collegeProgramMapId, Integer selectedAllowedQualification, List<University_Subject> selectedSubjectList) {
 		SubmittedApplications submittedApplication = new SubmittedApplications();
 		submittedApplication.setApplicationStatus(Enums.ApplicationStatus.Submitted.getId());
 		CollegeProgramMap clgPrgMap = collegeProgramMapService.getById(collegeProgramMapId);
+		EducationalInformation educationalInformation = educationalInformationService.getById(selectedAllowedQualification);
 		if(clgPrgMap != null) {
 			submittedApplication.setCollegeProgramMap(clgPrgMap);
 			String frmNo = generateFormNo(clgPrgMap);
 			submittedApplication.setFormNo(frmNo);
 			submittedApplication.setUser(user);
 			submittedApplication.setDate(StaticMethods.GetCurrentDateString("dd-MM-yyyy"));
+			submittedApplication.setEducationalInformation(educationalInformation);
 		}
 		submittedApplicationService.save(submittedApplication);
 	}

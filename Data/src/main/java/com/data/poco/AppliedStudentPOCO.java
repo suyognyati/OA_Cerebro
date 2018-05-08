@@ -23,6 +23,8 @@ public class AppliedStudentPOCO {
 	
 	private Integer user;
 	
+	private Integer educationalInformationId;
+	
 	private String firstName;
 	
 	private String middleName;
@@ -33,9 +35,16 @@ public class AppliedStudentPOCO {
 	
 	private String caste;
 	
+	private Integer evaluationType;
+	
+	private Integer marksObtain;
+	
+	private Integer totalMarks;
+	
 	public AppliedStudentPOCO(
 			Integer applicationId, Integer applicationStatus, String date, String formNo, String statusComments, Integer collegeProgramMap, Integer user,
-			String firstName, String middleName, String lastName, Integer category, String caste) {
+			Integer educationalInformationId, String firstName, String middleName, String lastName, Integer category, String caste,
+			Integer evaluationType, Integer marksObtain, Integer totalMarks) {
 		this.applicationId = applicationId;
 		this.applicationStatus = applicationStatus;
 		this.date = date;
@@ -43,15 +52,16 @@ public class AppliedStudentPOCO {
 		this.statusComments = statusComments;
 		this.collegeProgramMap = collegeProgramMap;
 		this.user = user;
+		this.educationalInformationId = educationalInformationId;
 		this.firstName = firstName;
 		this.middleName = middleName;
 		this.lastName = lastName;
 		this.category = category;
 		this.caste = caste;
-		
+		this.evaluationType = evaluationType;
+		this.marksObtain = marksObtain;
+		this.totalMarks = totalMarks;
 	}
-
-
 
 	public Integer getApplicationId() {
 		return applicationId;
@@ -109,6 +119,14 @@ public class AppliedStudentPOCO {
 		this.user = user;
 	}
 
+	public Integer getEducationalInformationId() {
+		return educationalInformationId;
+	}
+
+	public void setEducationalInformationId(Integer educationalInformationId) {
+		this.educationalInformationId = educationalInformationId;
+	}
+
 	public String getFirstName() {
 		return firstName;
 	}
@@ -147,6 +165,30 @@ public class AppliedStudentPOCO {
 
 	public void setCaste(String caste) {
 		this.caste = caste;
+	}
+
+	public Integer getEvaluationType() {
+		return evaluationType;
+	}
+
+	public void setEvaluationType(Integer evaluationType) {
+		this.evaluationType = evaluationType;
+	}
+
+	public Integer getMarksObtain() {
+		return marksObtain;
+	}
+
+	public void setMarksObtain(Integer marksObtain) {
+		this.marksObtain = marksObtain;
+	}
+
+	public Integer getTotalMarks() {
+		return totalMarks;
+	}
+
+	public void setTotalMarks(Integer totalMarks) {
+		this.totalMarks = totalMarks;
 	}
 	
 }
