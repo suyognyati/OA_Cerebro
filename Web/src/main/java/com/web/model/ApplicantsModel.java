@@ -29,6 +29,8 @@ public class ApplicantsModel {
 	private String maritalStatus;
 	private String adharNo;
 	private Integer educationGapInYrs;
+	private String email;
+	private String mobileNo;
 
 //******************** FAMILY DETAIL
 
@@ -210,6 +212,18 @@ public class ApplicantsModel {
 		}
 		public void setEducationGapInYrs(Integer educationGapInYrs) {
 			this.educationGapInYrs = educationGapInYrs;
+		}
+		public String getEmail() {
+			return email;
+		}
+		public void setEmail(String email) {
+			this.email = email;
+		}
+		public String getMobileNo() {
+			return mobileNo;
+		}
+		public void setMobileNo(String mobileNo) {
+			this.mobileNo = mobileNo;
 		}
 		public String getFathersLastName() {
 			return fathersLastName;
