@@ -15,6 +15,7 @@ import com.data.entities.SubmittedApplications;
 import com.data.entities.University_Subject;
 import com.data.entities.User;
 import com.data.services.CollegeProgramMapService;
+import com.data.services.CollegeSubjectMapService;
 import com.data.services.CourseGroupLevelOneService;
 import com.data.services.EducationalInformationService;
 import com.data.services.SubmittedApplicationService;
@@ -29,6 +30,9 @@ public class CourseRCServiceImpl implements CourseRCService{
 	@Autowired
 	CollegeProgramMapService collegeProgramMapService;
 	
+	@Autowired
+	CollegeSubjectMapService collegeSubjectMapService;
+	
 	@Autowired 
 	SubmittedApplicationService submittedApplicationService;
 	
@@ -42,9 +46,13 @@ public class CourseRCServiceImpl implements CourseRCService{
 		
 		SubjectModel subjectModel = new SubjectModel();
 		CollegeProgramMap collegeProgramMap = collegeProgramMapService.getById(collegeProgramId);
-		List<CourseGroupLevelOne> courseGroupLevelOneList = courseGroupLevelOneService.getCourseGroupLevelOneByProgram(collegeProgramId);
-		subjectModel.setProgram(collegeProgramMap.getProgram());
-		subjectModel.setCourseGroupLevelOneList(courseGroupLevelOneList);
+		if(collegeProgramMap != null) {
+			List<University_Subject> subjectListOfCollege = collegeSubjectMapService.getAvailableSubjectsForCollege(collegeProgramMap.getCollege(), collegeProgramMap.getProgram());
+			List<CourseGroupLevelOne> courseGroupLevelOneList = courseGroupLevelOneService.getCourseGroupLevelOneByProgram(collegeProgramId);
+			subjectModel.setProgram(collegeProgramMap.getProgram());
+			subjectModel.setSubjectListOfCollege(subjectListOfCollege);
+			subjectModel.setCourseGroupLevelOneList(courseGroupLevelOneList);
+		}
 		return subjectModel;
 	}
 

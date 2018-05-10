@@ -45,90 +45,108 @@
 				<!-- Level Two -->
 				<ul ng-if="cgLevelOne.cgLevelTwoList.length > 0">
 					<li ng-repeat="cgLevelTwo in cgLevelOne.cgLevelTwoList">
-						<span class="badge badge-default" style="font-size:14px; padding:8px">{{cgLevelTwo.name}}</span>
-						<font color="red" size="3">Select Minimum:{{cgLevelTwo.minSelection}}</font>
-						<font color="green" size="3"> Maximum:{{cgLevelTwo.maxSelection}} [If Applicable]</font>
-						
-						<!-- Level Three -->
-						<ul ng-if="cgLevelTwo.cgLevelThreeList.length > 0">
-							<li ng-repeat="cgLevelThree in cgLevelTwo.cgLevelThreeList">
-								<span class="badge badge-default" style="font-size:14px; padding:8px">{{cgLevelThree.name}}</span>
-								<font color="red" size="3">Select Minimum:{{cgLevelThree.minSelection}}</font>
-								<font color="green" size="3"> Maximum:{{cgLevelThree.maxSelection}} [If Applicable]</font>
-								
-								<!-- Level Four -->
-								<ul ng-if="cgLevelThree.cgLevelFourList.length > 0">
-									<li ng-repeat="cgLevelFour in cgLevelThree.cgLevelFourList">
-										<span class="badge badge-default" style="font-size:14px; padding:8px">{{cgLevelFour.name}}</span>
-										<font color="red" size="3">Select Minimum:{{cgLevelFour.minSelection}}</font>
-										<font color="green" size="3"> Maximum:{{cgLevelFour.maxSelection}} [If Applicable]</font>
+						<span ng-if="cgLevelTwo.availableSubjectCountUnderLevel > 0">
+							<span class="badge badge-default" style="font-size:14px; padding:8px">{{cgLevelTwo.name}}</span>
+							<font color="red" size="3">Select Minimum:{{cgLevelTwo.minSelection}}</font>
+							<font color="green" size="3"> Maximum:{{cgLevelTwo.maxSelection}} [If Applicable]</font>
+							
+							<!-- Level Three -->
+							<ul ng-if="cgLevelTwo.cgLevelThreeList.length > 0">
+								<li ng-repeat="cgLevelThree in cgLevelTwo.cgLevelThreeList">
+									<span ng-if="cgLevelThree.availableSubjectCountUnderLevel > 0">
+										<span class="badge badge-default" style="font-size:14px; padding:8px">{{cgLevelThree.name}}</span>
+										<font color="red" size="3">Select Minimum:{{cgLevelThree.minSelection}}</font>
+										<font color="green" size="3"> Maximum:{{cgLevelThree.maxSelection}} [If Applicable]</font>
 										
-										<!-- Level Five -->
-										<ul ng-if="cgLevelFour.cgLevelFiveList.length > 0">
-											<li ng-repeat="cgLevelFive in cgLevelFour.cgLevelFiveList">
-												<span class="badge badge-default" style="font-size:14px; padding:8px">{{cgLevelFive.name}}</span>
-												<font color="red" size="3">Select Minimum:{{cgLevelFive.minSelection}}</font>
-												<font color="green" size="3"> Maximum:{{cgLevelFive.maxSelection}} [If Applicable]</font>
-												
-												<ul ng-if="cgLevelFive.subjectList.length > 0">
-													<li ng-repeat="subjectsLevelFive in cgLevelFive.subjectList">
-														<input type="checkbox" name="compulsoryGroup"
-														ng-model="subjectsLevelFive.subject.isSelected"
-														ng-click="vm.checked(subjectsLevelFive.subject, cgLevelOne, cgLevelTwo, cgLevelThree, cgLevelFour, cgLevelFive"
-														id="{{subjectsLevelFive.subject.universitySubjectId}}">
-														[{{subjectsLevelFive.subject.universitySubjectCode}}] {{subjectsLevelFive.subject.universitySubjectName}}
-													</li>
-												</ul>
-												
+										<!-- Level Four -->
+										<ul ng-if="cgLevelThree.cgLevelFourList.length > 0">
+											<li ng-repeat="cgLevelFour in cgLevelThree.cgLevelFourList">
+												<span ng-if="cgLevelFour.availableSubjectCountUnderLevel > 0">
+													<span class="badge badge-default" style="font-size:14px; padding:8px">{{cgLevelFour.name}}</span>
+													<font color="red" size="3">Select Minimum:{{cgLevelFour.minSelection}}</font>
+													<font color="green" size="3"> Maximum:{{cgLevelFour.maxSelection}} [If Applicable]</font>
+													
+													<!-- Level Five -->
+													<ul ng-if="cgLevelFour.cgLevelFiveList.length > 0">
+														<li ng-repeat="cgLevelFive in cgLevelFour.cgLevelFiveList">
+															<span ng-if="cgLevelFive.availableSubjectCountUnderLevel > 0">
+																<span class="badge badge-default" style="font-size:14px; padding:8px">{{cgLevelFive.name}}</span>
+																<font color="red" size="3">Select Minimum:{{cgLevelFive.minSelection}}</font>
+																<font color="green" size="3"> Maximum:{{cgLevelFive.maxSelection}} [If Applicable]</font>
+																
+																<ul ng-if="cgLevelFive.subjectList.length > 0">
+																	<li ng-repeat="subjectsLevelFive in cgLevelFive.subjectList">
+																		<span ng-if="vm.isSubjectAvailableInCollege(subjectsLevelFive.subject)">
+																			<input type="checkbox" name="compulsoryGroup"
+																			ng-model="subjectsLevelFive.subject.isSelected"
+																			ng-click="vm.checked(subjectsLevelFive.subject, cgLevelOne, cgLevelTwo, cgLevelThree, cgLevelFour, cgLevelFive"
+																			id="{{subjectsLevelFive.subject.universitySubjectId}}">
+																			[{{subjectsLevelFive.subject.universitySubjectCode}}] {{subjectsLevelFive.subject.universitySubjectName}}
+																		</span>
+																	</li>
+																</ul>
+															</span>
+															
+														</li>
+													</ul>
+													
+													<ul ng-if="cgLevelFour.subjectList.length > 0">
+														<li ng-repeat="subjectsLevelFour in cgLevelFour.subjectList">
+															<span ng-if="vm.isSubjectAvailableInCollege(subjectsLevelFour.subject)">
+																<input type="checkbox" name="compulsoryGroup"
+																ng-model="subjectsLevelFour.subject.isSelected"
+																ng-click="vm.checked(subjectsLevelFour.subject, cgLevelOne, cgLevelTwo, cgLevelThree, cgLevelFour, null)"
+																id="{{subjectsLevelFour.subject.universitySubjectId}}">
+																[{{subjectsLevelFour.subject.universitySubjectCode}}] {{subjectsLevelFour.subject.universitySubjectName}}
+															</span>
+														</li>
+													</ul>
+												</span>
 											</li>
 										</ul>
+										<!-- Level Four End -->
 										
-										<ul ng-if="cgLevelFour.subjectList.length > 0">
-											<li ng-repeat="subjectsLevelFour in cgLevelFour.subjectList">
-												<input type="checkbox" name="compulsoryGroup"
-												ng-model="subjectsLevelFour.subject.isSelected"
-												ng-click="vm.checked(subjectsLevelFour.subject, cgLevelOne, cgLevelTwo, cgLevelThree, cgLevelFour, null)"
-												id="{{subjectsLevelFour.subject.universitySubjectId}}">
-												[{{subjectsLevelFour.subject.universitySubjectCode}}] {{subjectsLevelFour.subject.universitySubjectName}}
+										<ul ng-if="cgLevelThree.subjectList.length > 0">
+											<li ng-repeat="subjectsLevelThree in cgLevelThree.subjectList">
+												<span ng-if="vm.isSubjectAvailableInCollege(subjectsLevelThree.subject)">
+													<input type="checkbox" name="compulsoryGroup"
+													ng-model="subjectsLevelThree.subject.isSelected"
+													ng-click="vm.checked(subjectsLevelThree.subject, cgLevelOne, cgLevelTwo, cgLevelThree, null, null)"
+													id="{{subjectsLevelThree.subject.universitySubjectId}}">
+													[{{subjectsLevelThree.subject.universitySubjectCode}}] {{subjectsLevelThree.subject.universitySubjectName}}
+												</span>
 											</li>
 										</ul>
-									</li>
-								</ul>
-								<!-- Level Four End -->
-								
-								<ul ng-if="cgLevelThree.subjectList.length > 0">
-									<li ng-repeat="subjectsLevelThree in cgLevelThree.subjectList">
+									</span>
+								</li>
+							</ul>						
+							<!-- Level Three End -->
+							
+							<ul ng-if="cgLevelTwo.subjectList.length > 0">
+								<li ng-repeat="subjectsLevelTwo in cgLevelTwo.subjectList">
+									<span ng-if="vm.isSubjectAvailableInCollege(subjectsLevelTwo.subject)">
 										<input type="checkbox" name="compulsoryGroup"
-										ng-model="subjectsLevelThree.subject.isSelected"
-										ng-click="vm.checked(subjectsLevelThree.subject, cgLevelOne, cgLevelTwo, cgLevelThree, null, null)"
-										id="{{subjectsLevelThree.subject.universitySubjectId}}">
-										[{{subjectsLevelThree.subject.universitySubjectCode}}] {{subjectsLevelThree.subject.universitySubjectName}}
-									</li>
-								</ul>
-							</li>
-						</ul>						
-						<!-- Level Three End -->
-						
-						<ul ng-if="cgLevelTwo.subjectList.length > 0">
-							<li ng-repeat="subjectsLevelTwo in cgLevelTwo.subjectList">
-								<input type="checkbox" name="compulsoryGroup"
-								ng-model="subjectsLevelTwo.subject.isSelected"
-								ng-click="vm.checked(subjectsLevelTwo.subject, cgLevelOne, cgLevelTwo, null, null, null)"
-								id="{{subjectsLevelTwo.subject.universitySubjectId}}">
-								[{{subjectsLevelTwo.subject.universitySubjectCode}}] {{subjectsLevelTwo.subject.universitySubjectName}}
-							</li>
-						</ul>
+										ng-model="subjectsLevelTwo.subject.isSelected"
+										ng-click="vm.checked(subjectsLevelTwo.subject, cgLevelOne, cgLevelTwo, null, null, null)"
+										id="{{subjectsLevelTwo.subject.universitySubjectId}}">
+										[{{subjectsLevelTwo.subject.universitySubjectCode}}] {{subjectsLevelTwo.subject.universitySubjectName}}
+									</span>
+								</li>
+							</ul>
+						</span>
 					</li>
 				</ul>
 				<!-- Level Two End -->
 				
 				<ul ng-if="cgLevelOne.subjectList.length > 0">
 					<li ng-repeat="subjectsLevelOne in cgLevelOne.subjectList">
-						<input type="checkbox" name="compulsoryGroup"
-						ng-model="subjectsLevelOne.subject.isSelected"
-						ng-click="vm.checked(subjectsLevelOne.subject, cgLevelOne, null, null, null, null)"
-						id="{{subjectsLevelOne.subject.universitySubjectId}}"/>
-						[{{subjectsLevelOne.subject.universitySubjectCode}}] {{subjectsLevelOne.subject.universitySubjectName}}
+						<span ng-if="vm.isSubjectAvailableInCollege(subjectsLevelOne.subject)">
+							<input type="checkbox" name="compulsoryGroup"
+							ng-model="subjectsLevelOne.subject.isSelected"
+							ng-click="vm.checked(subjectsLevelOne.subject, cgLevelOne, null, null, null, null)"
+							id="{{subjectsLevelOne.subject.universitySubjectId}}"/>
+							[{{subjectsLevelOne.subject.universitySubjectCode}}] {{subjectsLevelOne.subject.universitySubjectName}}
+						</span>
 					</li>
 				</ul>
 			</div>

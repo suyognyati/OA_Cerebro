@@ -7,12 +7,20 @@
 					 "$http",
 					 "$state",
 					 "$window",
+					 "$filter",
 					 "applyOnlineService",
 					 SubjectCtrl]);
 
-	function SubjectCtrl($scope, $http, $state, $window, applyOnlineService) {
+	function SubjectCtrl($scope, $http, $state, $window, $filter, applyOnlineService) {
 		var vm = this;
-
+		
+		var cgLevel = {};
+		cgLevel.subjectCountUnderLevelOne = 0;
+		cgLevel.subjectCountUnderLevelTwo = 0;
+		cgLevel.subjectCountUnderLevelThree = 0;
+		cgLevel.subjectCountUnderLevelFour = 0;
+		cgLevel.subjectCountUnderLevelFive = 0;
+		
 		vm.collegeProgramId = $state.params.collegeProgramId;
 		vm.selectedAllowedQualification = $state.params.selectedAllowedQualification;
 		vm.programName = $state.params.programName;
@@ -43,53 +51,72 @@
 		vm.initialise = function() {
 			var cgLevelOneList = vm.subjects.courseGroupLevelOneList;
 			angular.forEach(cgLevelOneList, function(itemLevelOne) {
+				cgLevel.subjectCountUnderLevelOne = 0;
 				itemLevelOne.selectedCount = 0;
 				itemLevelOne.isSelected = false;
+				vm.calculateAvailableSubjectCount(itemLevelOne);
 
 				angular.forEach(itemLevelOne.cgLevelTwoList, function(itemLevelTwo) {
+					cgLevel.subjectCountUnderLevelTwo = 0;
 					itemLevelTwo.selectedCount = 0;
 					itemLevelTwo.isSelected = false;
+					vm.calculateAvailableSubjectCount(itemLevelTwo);
 
 					angular.forEach(itemLevelTwo.cgLevelThreeList, function(itemLevelThree) {
+						cgLevel.subjectCountUnderLevelThree = 0;
 						itemLevelThree.selectedCount = 0;
 						itemLevelThree.isSelected = false;
+						vm.calculateAvailableSubjectCount(itemLevelThree);
 
 						angular.forEach(itemLevelThree.cgLevelFourList, function(itemLevelFour) {
+							cgLevel.subjectCountUnderLevelFour = 0;
 							itemLevelFour.selectedCount = 0;
 							itemLevelFour.isSelected = false;
+							vm.calculateAvailableSubjectCount(itemLevelFour);
 
 							angular.forEach(itemLevelFour.cgLevelFiveList, function(itemLevelFive) {
+								cgLevel.subjectCountUnderLevelFive = 0;
 								itemLevelFive.selectedCount = 0;
 								itemLevelFive.isSelected = false;
+								vm.calculateAvailableSubjectCount(itemLevelFive);
 
 								angular.forEach(itemLevelFive.subjectList, function(subjectLevelFive) {
 									subjectLevelFive.subject.selectedCount = 0;
 									subjectLevelFive.subject.isSelected = false;
-								});
+								});								
+								cgLevel.subjectCountUnderLevelFour += 
+									vm.calculateAvailableSubjectCountUnderLevel(itemLevelFive, cgLevel.subjectCountUnderLevelFive);
 							});
 
 							angular.forEach(itemLevelFour.subjectList, function(subjectLevelFour) {
 								subjectLevelFour.subject.selectedCount = 0;
 								subjectLevelFour.subject.isSelected = false;
 							});
+							cgLevel.subjectCountUnderLevelThree += 
+								vm.calculateAvailableSubjectCountUnderLevel(itemLevelFour, cgLevel.subjectCountUnderLevelFour);
 						});
 
 						angular.forEach(itemLevelThree.subjectList, function(subjectLevelThree) {
 							subjectLevelThree.subject.selectedCount = 0;
 							subjectLevelThree.subject.isSelected = false;
 						});
+						cgLevel.subjectCountUnderLevelTwo += 
+							vm.calculateAvailableSubjectCountUnderLevel(itemLevelThree, cgLevel.subjectCountUnderLevelThree);
 					});
 
 					angular.forEach(itemLevelTwo.subjectList, function(subjectLevelTwo) {
 						subjectLevelTwo.subject.selectedCount = 0;
 						subjectLevelTwo.subject.isSelected = false;
 					});
+					cgLevel.subjectCountUnderLevelOne += 
+						vm.calculateAvailableSubjectCountUnderLevel(itemLevelTwo, cgLevel.subjectCountUnderLevelTwo);
 				});
 
 				angular.forEach(itemLevelOne.subjectList, function(subjectLevelOne) {
 					subjectLevelOne.subject.selectedCount = 0;
 					subjectLevelOne.subject.isSelected = false;
 				});
+				vm.calculateAvailableSubjectCountUnderLevel(itemLevelOne, cgLevel.subjectCountUnderLevelOne);
 
 			});
 		}
@@ -202,6 +229,32 @@
 				return;
 			}
 			vm.isSubjectSelectionCompleted = showSelectedSubjects;
+		}
+		
+		vm.calculateAvailableSubjectCountUnderLevel = function (cgLevel, countUnderThisLevel) {
+			cgLevel.availableSubjectCountUnderLevel = countUnderThisLevel + cgLevel.availableSubjectCountOfLevel;
+			return cgLevel.availableSubjectCountUnderLevel;
+		}
+		
+		vm.calculateAvailableSubjectCount = function(item) {
+			item.availableSubjectCountOfLevel = item.subjectList.length;
+			var len = item.subjectList.length;
+			for(var i = 0; i < len; i++) {
+				if(!vm.isSubjectAvailableInCollege(item.subjectList[i].subject)) {
+					item.availableSubjectCountOfLevel --;
+				}
+			}
+		}
+		
+		vm.isSubjectAvailableInCollege = function (subject) {
+			var subjectList = vm.subjects.subjectListOfCollege;
+			var currentSubjectId = subject.universitySubjectId;
+			var tempSubject = $filter("filter")(subjectList, {universitySubjectId:currentSubjectId});
+			if(tempSubject != null && tempSubject.length > 0)
+				return true;
+			else {
+				return false;
+			}
 		}
 
 		vm.applyForCourse = function() {
