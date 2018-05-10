@@ -52,6 +52,8 @@ public class ApplicantsDetailRCServiceImpl implements ApplicantsRCService {
 		
 		if(userDetail != null) {
 			applicantsModel.setBirthDate(userDetail.getDateOfBirth());
+			applicantsModel.setMobileNo(userDetail.getMobileNo());
+			applicantsModel.setEmail(userDetail.getEmail());
 		}
 		if(personalDetail != null) {
 			if(personalDetail.getLastName() != null) {
