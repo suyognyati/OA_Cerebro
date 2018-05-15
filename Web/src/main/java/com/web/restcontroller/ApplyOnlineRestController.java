@@ -56,7 +56,7 @@ public class ApplyOnlineRestController {
 	
 	@RequestMapping(value="/educationalInformation/getAllowedQualifications/{collegeProgramId}")
 	public List<EducationModel.Qualification> getAllowedQualifications(@PathVariable(value="collegeProgramId") Integer collegeProgramId){
-		return educationalInformationService.getAllowedQualificationsForProgram(session.getCurrentUser(), collegeProgramId);
+		return educationalInformationService.getAllowedQualificationsForProgram(session.getStudent(), collegeProgramId);
 	}
 	
 	@RequestMapping(value="/subject/getSubjects/{collegeProgramId}")
@@ -66,13 +66,13 @@ public class ApplyOnlineRestController {
 	
 	@RequestMapping(value="/subject/applyForCourse", method = RequestMethod.POST)
 	public void applyForCourse(@RequestBody AppliedCourseModel appliedCourseModel) {
-		courseRCService.applyForCourse(session.getCurrentUser(), appliedCourseModel.getCollegeProgramId(), 
+		courseRCService.applyForCourse(session.getStudent(), appliedCourseModel.getCollegeProgramId(), 
 				appliedCourseModel.getSelectedAllowedQualification(), appliedCourseModel.getSelectedSubjectList());
 	}
 	
 	@RequestMapping(value="/subject/getAppliedCourses", method = RequestMethod.GET)
 	public List<AppliedCourseModel> getAppliedCourses() {
-		List<AppliedCourseModel> appliedCoursemodel = courseRCService.getAppliedCourseDetails(session.getCurrentUser(), session.getCollege());
+		List<AppliedCourseModel> appliedCoursemodel = courseRCService.getAppliedCourseDetails(session.getStudent(), session.getCollege());
 		return appliedCoursemodel;
 	}
 	

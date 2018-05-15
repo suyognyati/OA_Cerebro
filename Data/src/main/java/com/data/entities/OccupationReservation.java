@@ -57,9 +57,9 @@ public class OccupationReservation {
 	@Column(name="SpeciallyAbled")
 	private Integer speciallyAbled;
 	
-	@JoinColumn(name="FK_User")
 	@OneToOne
-	User user;
+	@JoinColumn(name="FK_UserDetail", nullable = false)
+	UserDetail userDetail;
 	
 		//Occupation and Reservation Id
 		public Integer getOccupationReservationId() {
@@ -174,11 +174,11 @@ public class OccupationReservation {
 		}
 
 		//For which User
-		public User getUser() {
-			return user;
+		public UserDetail getUserDetail() {
+			return userDetail;
 		}
-		public void setUser(User user) {
-			this.user = user;
+		public void setUserDetail(UserDetail userDetail) {
+			this.userDetail = userDetail;
 		}	
 	
 }

@@ -9,12 +9,12 @@ import org.springframework.stereotype.Repository;
 
 import com.data.entities.College;
 import com.data.entities.SubmittedApplications;
-import com.data.entities.User;
+import com.data.entities.UserDetail;
 import com.data.poco.AppliedStudentPOCO;
 
 @Repository("submittedApplicationsJpaRepository")
 public interface SubmittedApplicationsJpaRepository extends JpaRepository<SubmittedApplications, Integer> {
-	List<SubmittedApplications> findByUserAndCollegeProgramMapCollege(User user, College college);
+	List<SubmittedApplications> findByUserDetailAndCollegeProgramMapCollege(UserDetail userDetail, College college);
 	
 	@Query(name="SubmittedApplications.getAllMeritStudents")
 	List<AppliedStudentPOCO> getMeritStudents(@Param("collegeProgramMapId") Integer collegeProgramMapId);

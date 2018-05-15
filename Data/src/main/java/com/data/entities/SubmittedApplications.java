@@ -30,7 +30,7 @@ import com.data.poco.AppliedStudentPOCO;
 		                @ColumnResult(name="FormNo"),
 		                @ColumnResult(name="StatusComments"),
 		                @ColumnResult(name="FK_CollegeProgramMap"),
-		                @ColumnResult(name="FK_User"),
+		                @ColumnResult(name="FK_UserDetail"),
 		                @ColumnResult(name="FK_EducationalInformation"),
 		                @ColumnResult(name="FirstName"),
 		                @ColumnResult(name="MiddleName"),
@@ -54,8 +54,8 @@ import com.data.poco.AppliedStudentPOCO;
 					+ "ors.Category, ors.Caste, "
 					+ "ei.EvaluationType, ei.MarksObtain, ei.TotalMarks "
 					+ "FROM SubmittedApplications as sa "
-					+ "LEFT JOIN PersonalDetails as pd ON (sa.FK_User = pd.FK_User) "
-					+ "LEFT JOIN OccupationReservation as ors ON (sa.FK_User = ors.FK_User) "
+					+ "LEFT JOIN PersonalDetails as pd ON (sa.FK_UserDetail = pd.FK_UserDetail) "
+					+ "LEFT JOIN OccupationReservation as ors ON (sa.FK_UserDetail = ors.FK_UserDetail) "
 					+ "LEFT JOIN EducationalInformation as ei ON (sa.FK_EducationalInformation = ei.EducationalInformationId) "
 					+ "WHERE FK_CollegeProgramMap = :collegeProgramMapId",
 			resultSetMapping = "appliedStudentPOCOMapping")
@@ -78,8 +78,8 @@ public class SubmittedApplications {
 	private CollegeProgramMap collegeProgramMap;
 	
 	@ManyToOne
-	@JoinColumn(name="FK_User")
-	private User user;
+	@JoinColumn(name="FK_UserDetail")
+	private UserDetail userDetail;
 	
 	@ManyToOne
 	@JoinColumn(name="FK_EducationalInformation")
@@ -118,12 +118,12 @@ public class SubmittedApplications {
 			this.collegeProgramMap = collegeProgramMap;
 		}
 	
-		public User getUser() {
-			return user;
+		public UserDetail getUserDetail() {
+			return userDetail;
 		}
 
-		public void setUser(User user) {
-			this.user = user;
+		public void setUserDetail(UserDetail userDetail) {
+			this.userDetail = userDetail;
 		}
 
 		public EducationalInformation getEducationalInformation() {

@@ -11,5 +11,4 @@ import com.data.entities.User;
 @Repository("userDetailJpaRepository")
 public interface UserDetailJpaRepository extends JpaRepository<UserDetail, Integer> {
 	List<UserDetail> findByFirstName(String firstName);
-	UserDetail findByUser(User user);
 }

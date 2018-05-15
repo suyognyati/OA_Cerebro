@@ -20,8 +20,8 @@ public class EducationalInformation {
 	private Integer educationalInformationId;
 	
 	@OneToOne
-	@JoinColumn(name="FK_UserId", nullable=false)
-	private User user;
+	@JoinColumn(name="FK_UserDetail", nullable = false)
+	private UserDetail userDetail;
 
 	@ManyToOne
 	@JoinColumn(name="FK_Country")
@@ -130,15 +130,15 @@ public class EducationalInformation {
 			this.educationalInformationId = educationalInformationId;
 		}
 	
-		public User getUser() {
-			return user;
+		public UserDetail getUser() {
+			return userDetail;
 		}
 	
 		/**
-		 * @param user User of whose education information is required
+		 * @param userDetail User of whose education information is required
 		 * */
-		public void setUser(User user) {
-			this.user = user;
+		public void setUser(UserDetail userDetail) {
+			this.userDetail = userDetail;
 		}
 	
 		public Country getCountry() {

@@ -18,16 +18,10 @@ public class Session {
 	@Autowired
 	SessionRCService sessionService;
 	
-	private String CurrentVendorName = null;
-	private User CurrentVendor = null;
-	private UserDetail CurrentVendorDetail = null;
-	
-	private String CurrentUserName = null;
-	private User CurrentUser = null;
-	private UserDetail CurrentUserDetail = null;
+	private String StudentName = null;
+	private User Student = null;
 	
 	private User LoggedInUser = null;
-	private UserDetail LoggedInUserDetail = null;
 	
 	private Boolean isApplicantFixed = false;
 	private User Applicant = null;
@@ -37,72 +31,24 @@ public class Session {
 	
 	
 	
-	/* Getters for user */
+	/* Getter Setter of Student */
 	
-	public String getCurrentUserName() {
-		return CurrentUserName;
+	public String getStudentName() {
+		return StudentName;
 	}
 
-	public User getCurrentUser() {
-		return CurrentUser;
+	public void setStudentName()	{
+		StudentName = getPrincipal();
+	}
+	
+	public User getStudent() {
+		return Student;
 	}
 
-	public UserDetail getCurrentUserDetail() {
-		return CurrentUserDetail;
-	}
-
-	/* Setters for user */
-	
-	public void setCurrentUserName()	{
-		CurrentUserName = getPrincipal();
-	}
-	
-	public void setCurrentUser() {
-		if(CurrentUserName == null)
-			setCurrentUserName();
-		CurrentUser = sessionService.GetUser(CurrentUserName);
-	}
-	
-	public void setCurrentUserDetail() {
-		if(CurrentUserName == null)
-			setCurrentUserName();
-		if(CurrentUser == null)
-			setCurrentUser();
-		CurrentUserDetail = sessionService.GetUserDetail(CurrentUser);
-	}
-	
-	/* Getters for vendor */
-	
-	public String getCurrentVendorName() {
-		return CurrentVendorName;
-	}
-
-	public User getCurrentVendor() {
-		return CurrentVendor;
-	}
-
-	public UserDetail getCurrentVendorDetail() {
-		return CurrentVendorDetail;
-	}
-
-	/* Setters for vendor */
-	
-	public void setCurrentVendorName()	{
-		CurrentVendorName = getPrincipal();
-	}
-	
-	public void setCurrentVendor() {
-		if(CurrentVendorName == null)
-			setCurrentVendorName();
-		CurrentVendor = sessionService.GetUser(CurrentVendorName);
-	}
-	
-	public void setCurrentVendorDetail() {
-		if(CurrentVendorName == null)
-			setCurrentVendorName();
-		if(CurrentVendor == null)
-			setCurrentVendor();
-		CurrentVendorDetail = sessionService.GetUserDetail(CurrentVendor);
+	public void setStudent() {
+		if(StudentName == null)
+			setStudentName();
+		Student = sessionService.GetUser(StudentName);
 	}
 	
 	/* Getter setter */
@@ -113,13 +59,6 @@ public class Session {
 	public void setLoggedInUser(User loggedInUser) {
 		LoggedInUser = loggedInUser;
 	}
-
-	public UserDetail getLoggedInUserDetail() {
-		return LoggedInUserDetail;
-	}
-	public void setLoggedInUserDetail(UserDetail loggedInUserDetail) {
-		LoggedInUserDetail = loggedInUserDetail;
-	}	
 
 	public Boolean getIsApplicantFixed() {
 		return isApplicantFixed;

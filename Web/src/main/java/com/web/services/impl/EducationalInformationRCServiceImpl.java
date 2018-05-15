@@ -50,7 +50,7 @@ public class EducationalInformationRCServiceImpl implements EducationalInformati
 	
 	@Override
 	public List<EducationModel.Qualification> getListofQualification(User user){
-		List<EducationalInformation> educationalHistory = educationalInformationService.getEducationalHistory(user);
+		List<EducationalInformation> educationalHistory = educationalInformationService.getEducationalHistory(user.getUserDetail());
 		return generateQualificationHistory(educationalHistory);
 	}
 	
@@ -58,7 +58,7 @@ public class EducationalInformationRCServiceImpl implements EducationalInformati
 	public List<Qualification> getAllowedQualificationsForProgram(User user, Integer collegeProgramMapId) {
 		CollegeProgramMap clgPrgMap = collegeProgramMapService.getById(collegeProgramMapId);
 		if(clgPrgMap != null && clgPrgMap.getProgram() != null) {
-			List<EducationalInformation> educationalHistory = educationalInformationService.getAllowedLastQualification(user, clgPrgMap.getProgram());
+			List<EducationalInformation> educationalHistory = educationalInformationService.getAllowedLastQualification(user.getUserDetail(), clgPrgMap.getProgram());
 			return generateQualificationHistory(educationalHistory);
 		} else {
 			return null;
@@ -68,7 +68,7 @@ public class EducationalInformationRCServiceImpl implements EducationalInformati
 	@Override
 	public QualificationDetail getQualificationDetail(User user, Integer qualificationId) {
 		EducationalInformation educationalInformation  = null;
-		educationalInformation = educationalInformationService.getByEducationalInformationId(user, qualificationId);
+		educationalInformation = educationalInformationService.getByEducationalInformationId(user.getUserDetail(), qualificationId);
 		Integer qualificationGroup = educationalInformation.getQualificationLevel().getQualificationGroup();
 		
 		maxAcademicYear = 3;
@@ -83,7 +83,7 @@ public class EducationalInformationRCServiceImpl implements EducationalInformati
 		EducationalInformation educationalInformation = null;
 		
 		if(qualificationGroupObject != null && qualificationGroupObject.getMultiReferred() == false) {
-			educationalInformation = educationalInformationService.getByUserAndQualificationLevel(user, qualificationGroupObject);
+			educationalInformation = educationalInformationService.getByUserDetailAndQualificationLevel(user.getUserDetail(), qualificationGroupObject);
 		}
 		
 		maxAcademicYear = 3;
@@ -104,14 +104,14 @@ public class EducationalInformationRCServiceImpl implements EducationalInformati
 		EducationalInformation educationalInformation = null;
 		//Finding educational information for qualificationId of user
 		if(qualificationLevelObject.getMultiReferred())
-			educationalInformation = educationalInformationService.getByEducationalInformationId(user, qualificationDetail.getQualificationId());
+			educationalInformation = educationalInformationService.getByEducationalInformationId(user.getUserDetail(), qualificationDetail.getQualificationId());
 		else
-			educationalInformation = educationalInformationService.getByUserAndQualificationLevel(user, qualificationLevelObject);
+			educationalInformation = educationalInformationService.getByUserDetailAndQualificationLevel(user.getUserDetail(), qualificationLevelObject);
 		
 		//if educational information not found
 		if(educationalInformation == null) {
 			educationalInformation = new EducationalInformation();
-			educationalInformation.setUser(user);
+			educationalInformation.setUser(user.getUserDetail());
 		}
 		
 		educationalInformation.setCountry(qualificationDetail.getCountry());
@@ -151,7 +151,7 @@ public class EducationalInformationRCServiceImpl implements EducationalInformati
 	}
 	
 	public Boolean deleteQualificationDetail(User user, Integer qualificationId) {
-		return educationalInformationService.deleteEducationalInformation(user, qualificationId);
+		return educationalInformationService.deleteEducationalInformation(user.getUserDetail(), qualificationId);
 	}
 	
 	private Integer maxAcademicYear = 3;

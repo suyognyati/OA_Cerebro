@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import com.data.entities.EducationalInformation;
 import com.data.entities.QualificationLevel;
 import com.data.entities.University_Program;
-import com.data.entities.User;
+import com.data.entities.UserDetail;
 import com.data.repository.EducationalInformationJpaRepository;
 import com.data.repository.QualificationLevelJpaRepository;
 import com.data.services.EducationalInformationService;
@@ -24,19 +24,19 @@ public class EducationalInformationServiceImpl implements EducationalInformation
 	QualificationLevelJpaRepository qualificationLevelJpaRepository;
 	
 	@Override
-	public List<EducationalInformation> getEducationalHistory(User user) {
+	public List<EducationalInformation> getEducationalHistory(UserDetail userDetail) {
 		return educationalInformationJpaRepository.
-				findByUserOrderByQualificationLevelQualificationGroupAscQualificationLevelQualificationGroupLevelAsc(user);
+				findByUserDetailOrderByQualificationLevelQualificationGroupAscQualificationLevelQualificationGroupLevelAsc(userDetail);
 	}
 
 	@Override
-	public EducationalInformation getByUserAndQualificationLevel(User user, QualificationLevel qualificationLevel) {
-		return educationalInformationJpaRepository.getByUserAndQualificationLevel(user, qualificationLevel);
+	public EducationalInformation getByUserDetailAndQualificationLevel(UserDetail userDetail, QualificationLevel qualificationLevel) {
+		return educationalInformationJpaRepository.getByUserDetailAndQualificationLevel(userDetail, qualificationLevel);
 	}
 	
 	@Override
-	public EducationalInformation getByEducationalInformationId(User user, Integer educationalInformationId) {
-		return educationalInformationJpaRepository.getByUserAndEducationalInformationId(user, educationalInformationId);
+	public EducationalInformation getByEducationalInformationId(UserDetail userDetail, Integer educationalInformationId) {
+		return educationalInformationJpaRepository.getByUserDetailAndEducationalInformationId(userDetail, educationalInformationId);
 	}
 	
 	@Override
@@ -46,9 +46,9 @@ public class EducationalInformationServiceImpl implements EducationalInformation
 	}
 	
 	@Override
-	public Boolean deleteEducationalInformation(User user, Integer educationalInformationId) {
+	public Boolean deleteEducationalInformation(UserDetail userDetail, Integer educationalInformationId) {
 		Boolean success = false;
-		EducationalInformation educationalInformation = getByEducationalInformationId(user, educationalInformationId);
+		EducationalInformation educationalInformation = getByEducationalInformationId(userDetail, educationalInformationId);
 		if(educationalInformation != null) {
 			educationalInformationJpaRepository.delete(educationalInformationId);
 			success = true;
@@ -59,7 +59,7 @@ public class EducationalInformationServiceImpl implements EducationalInformation
 	}
 
 	@Override
-	public List<EducationalInformation> getAllowedLastQualification(User user, University_Program program) {
+	public List<EducationalInformation> getAllowedLastQualification(UserDetail userDetail, University_Program program) {
 		/*Getting all allowed qualifications from program*/
 		String strAllowedQualifications = program.getAllowedLastQualifications();
 		String[] tokens = strAllowedQualifications.split(",");
@@ -77,8 +77,8 @@ public class EducationalInformationServiceImpl implements EducationalInformation
 		
 		/*Getting educational history for allowed qualification*/
 		List<EducationalInformation> allowedEducationalInformation =
-				educationalInformationJpaRepository.findByUserAndQualificationLevelInOrderByQualificationLevelQualificationGroupAscQualificationLevelQualificationGroupLevelAsc
-				(user, qualificationLevels);		
+				educationalInformationJpaRepository.findByUserDetailAndQualificationLevelInOrderByQualificationLevelQualificationGroupAscQualificationLevelQualificationGroupLevelAsc
+				(userDetail, qualificationLevels);		
 		
 		return allowedEducationalInformation;
 	}

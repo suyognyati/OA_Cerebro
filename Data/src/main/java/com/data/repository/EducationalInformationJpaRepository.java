@@ -7,26 +7,26 @@ import org.springframework.stereotype.Repository;
 
 import com.data.entities.EducationalInformation;
 import com.data.entities.QualificationLevel;
-import com.data.entities.User;
+import com.data.entities.UserDetail;
 
 @Repository("educationalInformationJpaRepository")
 public interface EducationalInformationJpaRepository extends JpaRepository<EducationalInformation, Integer> {
 	List<EducationalInformation> 
-		findByUserOrderByQualificationLevelQualificationGroupAscQualificationLevelQualificationGroupLevelAsc
-		(User user);
+		findByUserDetailOrderByQualificationLevelQualificationGroupAscQualificationLevelQualificationGroupLevelAsc
+		(UserDetail userDetail);
 	List<EducationalInformation> 
-		findByUserOrderByQualificationLevelQualificationGroupDescQualificationLevelQualificationGroupLevelDesc
-		(User user);
-	EducationalInformation getByUserAndQualificationLevel(User user, QualificationLevel qualificationLevel);
-	EducationalInformation getByUserAndEducationalInformationId(User user, Integer educationalInformationId);
+		findByUserDetailOrderByQualificationLevelQualificationGroupDescQualificationLevelQualificationGroupLevelDesc
+		(UserDetail userDetail);
+	EducationalInformation getByUserDetailAndQualificationLevel(UserDetail userDetail, QualificationLevel qualificationLevel);
+	EducationalInformation getByUserDetailAndEducationalInformationId(UserDetail userDetail, Integer educationalInformationId);
 	
 	/**
 	 * This function will give all allowed qualification to apply for perticuler program
-	 * @param user
+	 * @param userDetail
 	 * @param qualificationLevels
 	 * @return List of EducationalInformation
 	 */
 	List<EducationalInformation> 
-		findByUserAndQualificationLevelInOrderByQualificationLevelQualificationGroupAscQualificationLevelQualificationGroupLevelAsc
-		(User user, List<QualificationLevel> qualificationLevels);
+		findByUserDetailAndQualificationLevelInOrderByQualificationLevelQualificationGroupAscQualificationLevelQualificationGroupLevelAsc
+		(UserDetail userDetail, List<QualificationLevel> qualificationLevels);
 }

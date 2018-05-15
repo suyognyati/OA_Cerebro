@@ -34,7 +34,7 @@ public class HomeController {
 	
 	@RequestMapping(value = { "vendor/user/" }, method = RequestMethod.GET)
 	public String userPageForVendor(ModelMap model) {
-		String userName = session.getCurrentUserName();
+		String userName = session.getStudentName();
 		String accessTokenValue = "";
 		Collection<OAuth2AccessToken> accessTokens = null;
 		if(userName != null && userName != "") {
@@ -51,10 +51,10 @@ public class HomeController {
 		}
 		
 		model.addAttribute("Bearer", accessTokenValue);
-		model.addAttribute("vendor", session.getCurrentVendor());
-		model.addAttribute("vendordetail", session.getCurrentVendorDetail());
-		model.addAttribute("user", session.getCurrentUser());
-		model.addAttribute("userdetail", session.getCurrentUserDetail());
+		model.addAttribute("vendor", session.getLoggedInUser());
+		model.addAttribute("vendordetail", session.getLoggedInUser().getUserDetail());
+		model.addAttribute("user", session.getStudent());
+		model.addAttribute("userdetail", session.getStudent().getUserDetail());
 		return "user/UserPageofVendor";
 	}
 	
@@ -72,31 +72,15 @@ public class HomeController {
 			session.setIsApplicantFixed(true);
 		}
 		
-		String userName = session.getCurrentUserName();
-		String accessTokenValue = "";
-		Collection<OAuth2AccessToken> accessTokens = null;
-		if(userName != null && userName != "") {
-			accessTokens = tokenStore.findTokensByClientId(userName);
-	        for(OAuth2AccessToken accessToken : accessTokens) {
-	        	if(accessToken.isExpired() == false) {
-	        		accessTokenValue = accessToken.getValue();
-	        		break;	
-	        	}
-	        }
-		}
-		/*if(accessTokenValue == null || accessTokenValue == "") {
-			return "redirect:/user/";
-		}*/
 		
-		model.addAttribute("Bearer", accessTokenValue);
 		model.addAttribute("user", session.getLoggedInUser());
-		model.addAttribute("userdetail", session.getLoggedInUserDetail());
+		model.addAttribute("userdetail", session.getLoggedInUser().getUserDetail());
 		return "user/StudentView_newUI";
 	}
 	
 	@RequestMapping(value = { "user/studentview/" }, method = RequestMethod.GET)
 	public String studentViewPage(ModelMap model) {
-		String userName = session.getCurrentUserName();
+		String userName = session.getStudentName();
 		String accessTokenValue = "";
 		Collection<OAuth2AccessToken> accessTokens = null;
 		if(userName != null && userName != "") {
@@ -108,25 +92,20 @@ public class HomeController {
 	        	}
 	        }
 		}
-		/*if(accessTokenValue == null || accessTokenValue == "") {
-			return "redirect:/user/";
-		}*/
 		
 		model.addAttribute("Bearer", accessTokenValue);
-		model.addAttribute("user", session.getCurrentUser());
-		model.addAttribute("userdetail", session.getCurrentUserDetail());
+		model.addAttribute("user", session.getStudent());
+		model.addAttribute("userdetail", session.getStudent().getUserDetail());
 		return "user/StudentView";
 	}
 
 	@RequestMapping(value = { "vendor/" }, method = RequestMethod.GET)
 	public String vendorPage(ModelMap model) {
 		Integer collegeId = 1;
-		session.setCurrentVendorName();
-		session.setCurrentVendor();
-		session.setCurrentVendorDetail();
+		sessionService.setLoggedInUserDetails();
 		sessionService.setCollege(collegeId);
-		model.addAttribute("vendor", session.getCurrentVendor());
-		model.addAttribute("vendordetail", session.getCurrentVendorDetail());
+		model.addAttribute("vendor", session.getLoggedInUser());
+		model.addAttribute("vendordetail", session.getLoggedInUser().getUserDetail());
 		return "vendor/vendor_newUI"; //VendorPage-topnavbar";
 	}
 	
@@ -142,7 +121,7 @@ public class HomeController {
 		sessionService.setCollege(collegeId);
 		sessionService.setLoggedInUserDetails();
 		model.addAttribute("collegeadmin", session.getLoggedInUser());
-		model.addAttribute("collegeadmindetail", session.getLoggedInUserDetail());
+		model.addAttribute("collegeadmindetail", session.getLoggedInUser().getUserDetail());
 		return "collegeadmin/college_admin";
 	}
 

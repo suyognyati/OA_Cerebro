@@ -47,8 +47,8 @@ public class ApplicantsDetailRCServiceImpl implements ApplicantsRCService {
 	
 	private void getPersonalDetail(User user) {
 		
-		UserDetail userDetail = userDetailService.getByUser(user);
-		PersonalDetail personalDetail = personalDetailService.getByUser(user);
+		UserDetail userDetail = user.getUserDetail();
+		PersonalDetail personalDetail = personalDetailService.getByUserDetail(user.getUserDetail());
 		
 		if(userDetail != null) {
 			applicantsModel.setBirthDate(userDetail.getDateOfBirth());
@@ -125,7 +125,7 @@ public class ApplicantsDetailRCServiceImpl implements ApplicantsRCService {
 	}
 
 	private void getAddress(User user) {
-		Address address = addressService.getByUser(user);
+		Address address = addressService.getByUserDetail(user.getUserDetail());
 		
 		if(address != null) {
 			applicantsModel.setFlatNo(address.getFlatNo());
@@ -162,7 +162,7 @@ public class ApplicantsDetailRCServiceImpl implements ApplicantsRCService {
 	}
 	
 	private void getOccupation(User user) {
-		OccupationReservation occupationAndReservation = occupationReservationService.getByUser(user);
+		OccupationReservation occupationAndReservation = occupationReservationService.getByUserDetail(user.getUserDetail());
 				
 		if(occupationAndReservation != null) {
 			applicantsModel.setIsSelfEmployed(occupationAndReservation.getIsSelfEmployed());

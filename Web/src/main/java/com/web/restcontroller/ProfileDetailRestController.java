@@ -62,12 +62,12 @@ public class ProfileDetailRestController {
 	
 	@RequestMapping(value="/personalDetail/getPersonalDetail/")
 	public PersonalDetailModel getPersonalDetail(Model model){
-		return personalDetailService.getPersonalDetail();
+		return personalDetailService.getPersonalDetail(session.getStudent());
 	}
 	
 	@RequestMapping(value="/personalDetail/savePersonalDetail/", method=RequestMethod.POST)
 	public void savePersonalDetail(@RequestBody PersonalDetailModel personalDetailModel) {
-		personalDetailService.savePersonalDetail(personalDetailModel);
+		personalDetailService.savePersonalDetail(personalDetailModel, session.getStudent());
 	}
 	
 	@RequestMapping(value="/address/getAddressDetail/")
@@ -87,20 +87,20 @@ public class ProfileDetailRestController {
 	
 	@RequestMapping(value="/educationalInformation/getListofQualification/")
 	public List<EducationModel.Qualification> getListofQualification(Model model){
-		return educationalInformationService.getListofQualification(session.getCurrentUser());
+		return educationalInformationService.getListofQualification(session.getStudent());
 	}
 	
 	@RequestMapping(value="/educationalInformation/getQualificationDetail/{qualificationId}", method=RequestMethod.GET)
 	public EducationModel.QualificationDetail getQualificationDetail(
 			@PathVariable(value="qualificationId") Integer qualificationId){
-		return educationalInformationService.getQualificationDetail(session.getCurrentUser(), qualificationId);
+		return educationalInformationService.getQualificationDetail(session.getStudent(), qualificationId);
 	}
 	
 	@RequestMapping(value="/educationalInformation/getNewQualification/{qualificationGroup}", method=RequestMethod.GET)
 	public EducationModel.QualificationDetail getNewQualification(
 			@PathVariable(value="qualificationGroup") Integer qualificationGroup){
-		if(session.getCurrentUser() != null)
-			return educationalInformationService.getNewQualification(session.getCurrentUser(), qualificationGroup);
+		if(session.getStudent() != null)
+			return educationalInformationService.getNewQualification(session.getStudent(), qualificationGroup);
 		else
 			return null;
 	}
@@ -112,7 +112,7 @@ public class ProfileDetailRestController {
 		String successMessage = "";
 		String errorMessage = "";
 		if(qd.getQualificationGroup() != null) {
-			success = educationalInformationService.saveQualificationDetail(session.getCurrentUser(), educationalModel.getQualificationDetail());
+			success = educationalInformationService.saveQualificationDetail(session.getStudent(), educationalModel.getQualificationDetail());
 			if(success)
 				successMessage = "Saved successfully";
 			else
@@ -132,7 +132,7 @@ public class ProfileDetailRestController {
 		String successMessage = "";
 		String errorMessage = "";
 		if(qualificationId != null) {
-			success = educationalInformationService.deleteQualificationDetail(session.getCurrentUser(), qualificationId);
+			success = educationalInformationService.deleteQualificationDetail(session.getStudent(), qualificationId);
 			if(success)
 				successMessage = "Removed successfully";
 			else
@@ -147,12 +147,12 @@ public class ProfileDetailRestController {
 	
 	@RequestMapping(value="/occupationreservation/getOccupationReservation/")
 	public OccupationReservationModel getOccupationReservation(Model model){
-		return occupationReservationRCService.getOccupationReservation();
+		return occupationReservationRCService.getOccupationReservation(session.getStudent());
 	}
 	
 	@RequestMapping(value="/occupationreservation/saveOccupationReservation/", method=RequestMethod.POST)
 	public void saveOccupationReservation(@RequestBody OccupationReservationModel occupationReservationModel) {
-		occupationReservationRCService.saveOccupationReservation(occupationReservationModel);
+		occupationReservationRCService.saveOccupationReservation(occupationReservationModel, session.getStudent());
 	}
 	
 	

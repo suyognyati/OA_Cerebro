@@ -5,11 +5,11 @@ import org.springframework.stereotype.Service;
 
 import com.data.entities.Enums;
 import com.data.entities.OccupationReservation;
+import com.data.entities.User;
 import com.data.services.OccupationReservationService;
 import com.data.services.UserDocumentService;
 import com.web.model.OccupationReservationModel;
 import com.web.services.OccupationReservationRCService;
-import com.web.session.Session;
 
 @Service("occupationReservationRCService")
 public class OccupationReservationRCServiceImpl implements OccupationReservationRCService {
@@ -18,38 +18,35 @@ public class OccupationReservationRCServiceImpl implements OccupationReservation
 	OccupationReservationService occupationReservationService;
 	
 	@Autowired
-	Session session;
-	
-	@Autowired
 	UserDocumentService userDocumentService;
 	
-	public OccupationReservationModel getOccupationReservation() {
-		OccupationReservation occupationAndReservation = occupationReservationService.getByUser(session.getCurrentUser());
+	public OccupationReservationModel getOccupationReservation(User user) {
+		OccupationReservation occupationAndReservation = occupationReservationService.getByUserDetail(user.getUserDetail());
 		OccupationReservationModel occupationAndReservationModel = new OccupationReservationModel();
 		occupationAndReservationModel = setOccupationAndReservationModelObject(occupationAndReservationModel, occupationAndReservation);
 		return occupationAndReservationModel;
 	}
 
-	public void saveOccupationReservation(OccupationReservationModel occupationAndReservationModel) {
-		OccupationReservation occupationAndReservation = occupationReservationService.getByUser(session.getCurrentUser());
+	public void saveOccupationReservation(OccupationReservationModel occupationAndReservationModel, User user) {
+		OccupationReservation occupationAndReservation = occupationReservationService.getByUserDetail(user.getUserDetail());
 		if(occupationAndReservation == null) {
 			occupationAndReservation = new OccupationReservation();
-			occupationAndReservation.setUser(session.getCurrentUser());
+			occupationAndReservation.setUserDetail(user.getUserDetail());
 		}
 		occupationAndReservation = setOccupationAndReservationObject(occupationAndReservation, occupationAndReservationModel);
 		
 		if(occupationAndReservation.getIsEligibleForEBC() != null) {
 			if(occupationAndReservation.getIsEligibleForEBC()) {
-				userDocumentService.addByDocumentFor(session.getCurrentUser(), Enums.DocumentsFor.EBC.getId());
+				userDocumentService.addByDocumentFor(user.getUserDetail(), Enums.DocumentsFor.EBC.getId());
 			} else {
-				userDocumentService.deleteByDocumentFor(session.getCurrentUser(), Enums.DocumentsFor.EBC.getId());
+				userDocumentService.deleteByDocumentFor(user.getUserDetail(), Enums.DocumentsFor.EBC.getId());
 			}
 		}
 		
 		if(occupationAndReservation.getCategory() == Enums.Category.GEN.getId()) {
-			userDocumentService.deleteByDocumentFor(session.getCurrentUser(), Enums.DocumentsFor.Caste.getId());
+			userDocumentService.deleteByDocumentFor(user.getUserDetail(), Enums.DocumentsFor.Caste.getId());
 		} else {
-			userDocumentService.addByDocumentFor(session.getCurrentUser(), Enums.DocumentsFor.Caste.getId());
+			userDocumentService.addByDocumentFor(user.getUserDetail(), Enums.DocumentsFor.Caste.getId());
 		}
 		
 		occupationReservationService.save(occupationAndReservation);

@@ -29,19 +29,13 @@ public class SessionServiceImpl implements SessionService {
 	@Override
 	public void setLoggedInUserDetails() {
 		String username = getPrincipal();
-		user = sessionRCService.GetUser(username);
-		userDetail = sessionRCService.GetUserDetail(user);
-		
-		session.setLoggedInUser(user);
-		session.setLoggedInUserDetail(userDetail);
-		
+		user = sessionRCService.GetUser(username);		
+		session.setLoggedInUser(user);		
 	}
 	
 	@Override
 	public void setApplicant(Integer userId) {
-		user = sessionRCService.GetUser(userId);
-		userDetail = sessionRCService.GetUserDetail(user);
-		
+		user = sessionRCService.GetUser(userId);		
 		session.setApplicant(user);		
 	}
 	

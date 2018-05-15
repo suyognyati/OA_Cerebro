@@ -5,7 +5,7 @@ import java.util.List;
 import com.data.entities.EducationalInformation;
 import com.data.entities.QualificationLevel;
 import com.data.entities.University_Program;
-import com.data.entities.User;
+import com.data.entities.UserDetail;
 
 public interface EducationalInformationService {
 	/**
@@ -13,18 +13,18 @@ public interface EducationalInformationService {
 	 * The information will be in 
 	 * <b>ascending order of qualification level</b>
 	 */
-	List<EducationalInformation> getEducationalHistory(User user);
-	EducationalInformation getByUserAndQualificationLevel(User user, QualificationLevel qualificationLevel);
-	EducationalInformation getByEducationalInformationId(User user, Integer educationalInformationId);
+	List<EducationalInformation> getEducationalHistory(UserDetail userDetail);
+	EducationalInformation getByUserDetailAndQualificationLevel(UserDetail userDetail, QualificationLevel qualificationLevel);
+	EducationalInformation getByEducationalInformationId(UserDetail userDetail, Integer educationalInformationId);
 	Boolean saveEducationalInformation(EducationalInformation educationalInformation);
-	Boolean deleteEducationalInformation(User user, Integer educationalInformationId);
+	Boolean deleteEducationalInformation(UserDetail userDetail, Integer educationalInformationId);
 	
 	/**
 	 * This function will give all allowed qualifications to apply particular program.
 	 * The information will be in 
 	 * <b>ascending order of qualification level</b>
 	 */
-	List<EducationalInformation> getAllowedLastQualification(User user, University_Program program);
+	List<EducationalInformation> getAllowedLastQualification(UserDetail userDetail, University_Program program);
 	
 	/**
 	 * This function will give Educational information by id.

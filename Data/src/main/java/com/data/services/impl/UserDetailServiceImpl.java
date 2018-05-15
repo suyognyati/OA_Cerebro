@@ -14,10 +14,6 @@ public class UserDetailServiceImpl implements UserDetailService {
 	@Autowired
 	UserDetailJpaRepository userDetailJpaRepository;
 	
-	public UserDetail getByUser(User user) {
-		return userDetailJpaRepository.findByUser(user);
-	}
-
 	public UserDetail save(UserDetail userDetail) {
 		return userDetailJpaRepository.save(userDetail);
 	}

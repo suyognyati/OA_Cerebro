@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.data.entities.User;
-import com.data.entities.UserDetail;
 import com.data.services.UserDetailService;
 import com.data.services.UserService;
 import com.web.services.SessionRCService;
@@ -25,9 +24,5 @@ public class SessionRCServiceImpl implements SessionRCService {
 	public User GetUser(String userName) {
 		return userService.getByUserName(userName);
 	}
-
-	public UserDetail GetUserDetail(User user) {
-		return userDetailService.getByUser(user);
-	}
-
+	
 }

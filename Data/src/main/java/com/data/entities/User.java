@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -23,6 +25,10 @@ public class User {
 
 	@Column(name="Enabled")
 	private Integer enabled;
+	
+	@ManyToOne
+	@JoinColumn(name="FK_UserDetail")
+	UserDetail userDetail;
 	
 	public Integer getUserId() {
 		return userId;
@@ -47,5 +53,13 @@ public class User {
 	}
 	public void setEnabled(Integer enabled) {
 		this.enabled = enabled;
+	}
+
+	public UserDetail getUserDetail() {
+		return userDetail;
+	}
+
+	public void setUserDetail(UserDetail userDetail) {
+		this.userDetail = userDetail;
 	}
 }

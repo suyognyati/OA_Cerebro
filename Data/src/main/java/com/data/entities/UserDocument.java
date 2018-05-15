@@ -31,9 +31,9 @@ public class UserDocument {
 	@ManyToOne
 	private DocumentList document;
 	
-	@JoinColumn(name="FK_User", nullable = false)
 	@OneToOne
-	private User user;
+	@JoinColumn(name="FK_UserDetail", nullable = false)
+	private UserDetail userDetail;
 
 		public Integer getUserDocumentId() {
 			return userDocumentId;
@@ -72,10 +72,10 @@ public class UserDocument {
 			this.document = document;
 		}
 	
-		public User getUser() {
-			return user;
+		public UserDetail getUserDetail() {
+			return userDetail;
 		}	
-		public void setUser(User user) {
-			this.user = user;
+		public void setUserDetail(UserDetail userDetail) {
+			this.userDetail = userDetail;
 		}		
 }

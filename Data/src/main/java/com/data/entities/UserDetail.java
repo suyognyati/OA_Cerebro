@@ -5,8 +5,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -37,10 +35,6 @@ public class UserDetail {
 	
 	@Column(name="MobileNo")
 	private String mobileNo;
-	
-	@OneToOne
-	@JoinColumn(name="FK_User", nullable = false)
-	private User user;
 	
 	//UserDetailId
 	public Integer getUserDetailId() {
@@ -88,14 +82,6 @@ public class UserDetail {
 	}
 	public void setMobileNo(String mobileNo) {
 		this.mobileNo = mobileNo;
-	}
-	
-	//User
-	public User getUser() {
-		return user;
-	}
-	public void setUser(final User user) {
-		this.user = user;
 	}
 	
 }

@@ -38,20 +38,21 @@ public class RegisterRCServiceImpl implements RegisterRCService {
 		if(!IsUserAvailable(userDetailModel.getUserName())) {
 			return false;
 		}
-		User user = new User();
-		user.setUserName(userDetailModel.getUserName());
-		user.setPassword(userDetailModel.getPassword());
-		user.setEnabled(1);
-		user = userService.save(user);
-		
+				
 		UserDetail userDetail = new UserDetail();
 		userDetail.setFirstName(userDetailModel.getFirstName());
 		userDetail.setLastName(userDetailModel.getLastName());
 		userDetail.setEmail(userDetailModel.getEmail());
 		userDetail.setMobileNo(userDetailModel.getMobileNo());
 		userDetail.setDateOfBirth(userDetailModel.getBirthDate());
-		userDetail.setUser(user);
 		userDetail = userDetailService.save(userDetail);
+		
+		User user = new User();
+		user.setUserName(userDetailModel.getUserName());
+		user.setPassword(userDetailModel.getPassword());
+		user.setEnabled(1);
+		user.setUserDetail(userDetail);
+		user = userService.save(user);
 		
 		UserRole userRole = new UserRole();
 		userRole.setUserName(user);

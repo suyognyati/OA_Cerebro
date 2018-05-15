@@ -272,15 +272,15 @@ public class Address {
 		
 //END REGION ********************
 	
-	@JoinColumn(name="FK_User")
+	@JoinColumn(name="FK_UserDetail", nullable = false)
 	@OneToOne
-	User user;
+	UserDetail userDetail;
 
 		//User
-		public User getUser() {
-			return user;
+		public UserDetail getUser() {
+			return userDetail;
 		}
-		public void setUser(User user) {
-			this.user = user;
+		public void setUser(UserDetail user) {
+			this.userDetail = user;
 		}		
 }

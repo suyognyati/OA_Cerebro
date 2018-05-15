@@ -4,9 +4,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import com.data.entities.Address;
-import com.data.entities.User;
+import com.data.entities.UserDetail;
 
 @Repository("addressJpaRepository")
 public interface AddressJpaRepository extends JpaRepository<Address, Integer> {
-	Address findByUser(User user);
+	Address findByUserDetail(UserDetail userDetail);
 }

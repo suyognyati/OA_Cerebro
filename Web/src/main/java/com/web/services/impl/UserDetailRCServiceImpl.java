@@ -20,7 +20,7 @@ public class UserDetailRCServiceImpl implements UserDetailRCService{
 	
 	public UserDetailModel getUserDetail(){
 		
-		UserDetail userDetail = userDetailService.getByUser(userSession.getCurrentUser());
+		UserDetail userDetail = userSession.getStudent().getUserDetail();
 		UserDetailModel userDetailModel = new UserDetailModel();
 		
 		if(userDetail != null) {
@@ -34,11 +34,10 @@ public class UserDetailRCServiceImpl implements UserDetailRCService{
 	}
 	
 	public void saveUserDetail(UserDetailModel userDetailModel) {
-		UserDetail userDetail = userDetailService.getByUser(userSession.getCurrentUser());
+		UserDetail userDetail = userSession.getStudent().getUserDetail();
 		
 		if(userDetail == null) {
 			userDetail = new UserDetail();
-			userDetail.setUser(userSession.getCurrentUser());
 		}
 		
 		userDetail.setLastName(userDetailModel.getLastName());

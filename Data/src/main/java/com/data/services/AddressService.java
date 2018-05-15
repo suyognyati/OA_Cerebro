@@ -1,9 +1,9 @@
 package com.data.services;
 
 import com.data.entities.Address;
-import com.data.entities.User;
+import com.data.entities.UserDetail;
 
 public interface AddressService {
-	Address getByUser(User user);
+	Address getByUserDetail(UserDetail userDetail);
 	Boolean save(Address address);
 }

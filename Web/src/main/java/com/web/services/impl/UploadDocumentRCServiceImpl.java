@@ -27,7 +27,7 @@ public class UploadDocumentRCServiceImpl implements UploadDocumentRCService{
 	
 	@Override
 	public UploadDocumentModel getUserDocuments(User user) {
-		List<UserDocument> userDocuments = userDocumentService.getByUser(user);
+		List<UserDocument> userDocuments = userDocumentService.getByUserDetail(user.getUserDetail());
 		UploadDocumentModel uploadDocumentModel = new UploadDocumentModel();
 		uploadDocumentModel.setUserDocuments(userDocuments);
 		return uploadDocumentModel;

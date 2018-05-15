@@ -482,20 +482,20 @@ public class PersonalDetail {
 
 //REGION END ********************
 
-	@JoinColumn(name="FK_User", nullable = false)
+	@JoinColumn(name="FK_UserDetail", nullable = false)
 	@OneToOne
-	private User user;
+	private UserDetail userDetail;
 	
 	/*@JoinColumn(name="FK_Address")
 	@OneToOne
 	private Address address;*/
 
 		//User
-		public User getUser() {
-			return user;
+		public UserDetail getUserDetail() {
+			return userDetail;
 		}
-		public void setUser(final User user) {
-			this.user = user;
+		public void setUserDetail(final UserDetail userDetail) {
+			this.userDetail = userDetail;
 		}
 
 		/*//Address

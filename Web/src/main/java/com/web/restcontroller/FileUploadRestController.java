@@ -47,7 +47,7 @@ public class FileUploadRestController {
 	@Autowired
 	UploadDocumentRCService uploadDocumentRCService;
 	
-	@RequestMapping(value="/uploadPhotoSign/uploadPhoto/", method=RequestMethod.POST)
+	@RequestMapping(value="/rest/uploadPhotoSign/uploadPhoto/", method=RequestMethod.POST)
 	public void save(@RequestBody String photo) {
 		String sourceData = photo;
 		System.out.println(sourceData);
@@ -90,10 +90,10 @@ public class FileUploadRestController {
 	@ResponseBody
 	public UploadDocumentModel getDocumentList() {
 		
-		if(session.getCurrentUser() == null)
+		if(session.getStudent() == null)
 			return null;
 		
-		return uploadDocumentRCService.getUserDocuments(session.getCurrentUser());
+		return uploadDocumentRCService.getUserDocuments(session.getStudent());
 	}
 	
 	@RequestMapping(value = "/getDocument/{userDocumentId}", method = RequestMethod.GET)
@@ -101,10 +101,10 @@ public class FileUploadRestController {
 	public @ResponseBody byte[] getDocument(
 			@PathVariable(value="userDocumentId") Integer userDocumentId) {
 		
-		if(session.getCurrentUser() == null)
+		if(session.getStudent() == null)
 			return null;
 		
-	    return uploadDocumentRCService.getDocument(session.getCurrentUser(), userDocumentId);
+	    return uploadDocumentRCService.getDocument(session.getStudent(), userDocumentId);
 	}
 	
 	@RequestMapping(value = "/saveSingleFile", method = RequestMethod.POST)
@@ -112,12 +112,12 @@ public class FileUploadRestController {
 	public Object saveSingleFile( @RequestParam(value = "path") String strpath, 
 			@RequestParam(value = "file") MultipartFile mFile) {
 		
-		if(session.getCurrentUser() == null)
+		if(session.getStudent() == null)
 			return null;
 		
 		StaticMethods.UploadDocumentPath = strpath;
 		
-		return fileRCService.saveFile(session.getCurrentUser(), mFile);
+		return fileRCService.saveFile(session.getStudent(), mFile);
 	}
 	
 	@RequestMapping(value = "/saveMultipleFile", method = RequestMethod.POST)
@@ -154,7 +154,7 @@ public class FileUploadRestController {
 	@ResponseBody
 	public Object savePDFFile( @RequestParam(value = "path") String strpath, 
 			@RequestParam(value = "file") byte[] pdfData) {
-		String rootDirectory = StaticMethods.UploadDocumentPath + File.separator + session.getCurrentUser().getUserId()+ File.separator;
+		String rootDirectory = StaticMethods.UploadDocumentPath + File.separator + session.getStudent().getUserId()+ File.separator;
 		Path pdfSavePath = Paths.get(rootDirectory + "abc.pdf");
 		OpenOption[] options = new OpenOption[] { WRITE, CREATE_NEW };
 		try {

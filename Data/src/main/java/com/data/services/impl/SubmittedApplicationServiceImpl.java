@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.data.entities.College;
 import com.data.entities.SubmittedApplications;
-import com.data.entities.User;
+import com.data.entities.UserDetail;
 import com.data.poco.AppliedStudentPOCO;
 import com.data.repository.SubmittedApplicationsJpaRepository;
 import com.data.services.SubmittedApplicationService;
@@ -24,8 +24,8 @@ public class SubmittedApplicationServiceImpl implements SubmittedApplicationServ
 	}
 
 	@Override
-	public List<SubmittedApplications> getByUserandCollege(User user, College college) {
-		return submittedApplicationsJpaRepository.findByUserAndCollegeProgramMapCollege(user, college);
+	public List<SubmittedApplications> getByUserDetailandCollege(UserDetail userDetail, College college) {
+		return submittedApplicationsJpaRepository.findByUserDetailAndCollegeProgramMapCollege(userDetail, college);
 	}
 
 	@Override

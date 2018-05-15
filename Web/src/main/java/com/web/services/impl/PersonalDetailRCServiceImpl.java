@@ -11,6 +11,7 @@ import com.data.entities.Enums.PassportIssuingAuthority;
 import com.data.entities.Enums.VisaSponsoringAgency;
 import com.data.entities.Enums.VisaType;
 import com.data.entities.PersonalDetail;
+import com.data.entities.User;
 import com.data.entities.UserDetail;
 import com.data.services.GeoLocationsService;
 import com.data.services.PersonalDetailService;
@@ -18,7 +19,6 @@ import com.data.services.UserDetailService;
 import com.data.services.UserDocumentService;
 import com.web.model.PersonalDetailModel;
 import com.web.services.PersonalDetailRCService;
-import com.web.session.Session;
 import com.web.session.StaticMethods;
 
 @Service("personalDetailRCService")
@@ -31,27 +31,23 @@ public class PersonalDetailRCServiceImpl implements PersonalDetailRCService {
 	UserDetailService userDetailService; 
 	
 	@Autowired
-	Session userSession;
-	
-	@Autowired
 	GeoLocationsService geoLocationService;
 	
 	@Autowired
 	UserDocumentService userDocumentService;
 	
-	public PersonalDetailModel getPersonalDetail(){
+	public PersonalDetailModel getPersonalDetail(User user){
 		PersonalDetailModel personalDetailModel = new PersonalDetailModel();
-		UserDetail userDetail = userDetailService.getByUser(userSession.getCurrentUser());
-		PersonalDetail personalDetail = personalDetailService.getByUser(userSession.getCurrentUser());
-		personalDetailModel = setPersonalDetailModelObject(personalDetailModel, userDetail, personalDetail);
+		PersonalDetail personalDetail = personalDetailService.getByUserDetail(user.getUserDetail());
+		personalDetailModel = setPersonalDetailModelObject(personalDetailModel, user.getUserDetail(), personalDetail);
 		return personalDetailModel;
 	}
 	
-	public void savePersonalDetail(PersonalDetailModel personalDetailModel){
-		PersonalDetail personalDetail = personalDetailService.getByUser(userSession.getCurrentUser());
+	public void savePersonalDetail(PersonalDetailModel personalDetailModel, User user){
+		PersonalDetail personalDetail = personalDetailService.getByUserDetail(user.getUserDetail());
 		if(personalDetail == null) {
 			personalDetail = new PersonalDetail();
-			personalDetail.setUser(userSession.getCurrentUser());
+			personalDetail.setUserDetail(user.getUserDetail());
 		}
 		
 		/*Address address = personalDetail.getAddress();		
@@ -64,23 +60,23 @@ public class PersonalDetailRCServiceImpl implements PersonalDetailRCService {
 		
 		if(personalDetail.getIsNameChanged() != null) {
 			if(personalDetail.getIsNameChanged()) {
-				userDocumentService.addByDocumentFor(userSession.getCurrentUser(), Enums.DocumentsFor.NameChanged.getId());
+				userDocumentService.addByDocumentFor(user.getUserDetail(), Enums.DocumentsFor.NameChanged.getId());
 			} else {
-				userDocumentService.deleteByDocumentFor(userSession.getCurrentUser(), Enums.DocumentsFor.NameChanged.getId());
+				userDocumentService.deleteByDocumentFor(user.getUserDetail(), Enums.DocumentsFor.NameChanged.getId());
 			}
 		}
 		
 		if(personalDetail.getEducationGapInYrs() != null && personalDetail.getEducationGapInYrs() > 0) {
-			userDocumentService.addByDocumentFor(userSession.getCurrentUser(), Enums.DocumentsFor.EducationGap.getId());
+			userDocumentService.addByDocumentFor(user.getUserDetail(), Enums.DocumentsFor.EducationGap.getId());
 		} else {
-			userDocumentService.deleteByDocumentFor(userSession.getCurrentUser(), Enums.DocumentsFor.EducationGap.getId());
+			userDocumentService.deleteByDocumentFor(user.getUserDetail(), Enums.DocumentsFor.EducationGap.getId());
 		}
 		
 		if(personalDetail.getCountryOfCitizenship() != null 
 				&& personalDetail.getCountryOfCitizenship().getCountryName().compareToIgnoreCase(StaticMethods.StrINDIA) == 0) {
-			userDocumentService.deleteByDocumentFor(userSession.getCurrentUser(), Enums.DocumentsFor.Passport.getId());
+			userDocumentService.deleteByDocumentFor(user.getUserDetail(), Enums.DocumentsFor.Passport.getId());
 		} else {
-			userDocumentService.addByDocumentFor(userSession.getCurrentUser(), Enums.DocumentsFor.Passport.getId());			
+			userDocumentService.addByDocumentFor(user.getUserDetail(), Enums.DocumentsFor.Passport.getId());			
 		}
 		
 		personalDetailService.save(personalDetail);

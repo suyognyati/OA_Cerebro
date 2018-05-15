@@ -21,7 +21,7 @@ public class AppliedStudentPOCO {
 	
 	private Integer collegeProgramMap;	
 	
-	private Integer user;
+	private Integer userDetailId;
 	
 	private Integer educationalInformationId;
 	
@@ -42,7 +42,7 @@ public class AppliedStudentPOCO {
 	private Integer totalMarks;
 	
 	public AppliedStudentPOCO(
-			Integer applicationId, Integer applicationStatus, String date, String formNo, String statusComments, Integer collegeProgramMap, Integer user,
+			Integer applicationId, Integer applicationStatus, String date, String formNo, String statusComments, Integer collegeProgramMap, Integer userDetailId,
 			Integer educationalInformationId, String firstName, String middleName, String lastName, Integer category, String caste,
 			Integer evaluationType, Integer marksObtain, Integer totalMarks) {
 		this.applicationId = applicationId;
@@ -51,7 +51,7 @@ public class AppliedStudentPOCO {
 		this.formNo = formNo;		
 		this.statusComments = statusComments;
 		this.collegeProgramMap = collegeProgramMap;
-		this.user = user;
+		this.userDetailId = userDetailId;
 		this.educationalInformationId = educationalInformationId;
 		this.firstName = firstName;
 		this.middleName = middleName;
@@ -111,12 +111,12 @@ public class AppliedStudentPOCO {
 		this.collegeProgramMap = collegeProgramMap;
 	}
 
-	public Integer getUser() {
-		return user;
+	public Integer getUserDetailId() {
+		return userDetailId;
 	}
 
-	public void setUser(Integer user) {
-		this.user = user;
+	public void setUserDetailId(Integer userDetailId) {
+		this.userDetailId = userDetailId;
 	}
 
 	public Integer getEducationalInformationId() {

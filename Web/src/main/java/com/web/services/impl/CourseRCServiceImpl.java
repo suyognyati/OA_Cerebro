@@ -66,7 +66,7 @@ public class CourseRCServiceImpl implements CourseRCService{
 			submittedApplication.setCollegeProgramMap(clgPrgMap);
 			String frmNo = generateFormNo(clgPrgMap);
 			submittedApplication.setFormNo(frmNo);
-			submittedApplication.setUser(user);
+			submittedApplication.setUserDetail(user.getUserDetail());
 			submittedApplication.setDate(StaticMethods.GetCurrentDateString("dd-MM-yyyy"));
 			submittedApplication.setEducationalInformation(educationalInformation);
 		}
@@ -83,7 +83,7 @@ public class CourseRCServiceImpl implements CourseRCService{
 
 	@Override
 	public List<AppliedCourseModel> getAppliedCourseDetails(User user, College college) {
-		List<SubmittedApplications> submittedApplicationList = submittedApplicationService.getByUserandCollege(user, college);
+		List<SubmittedApplications> submittedApplicationList = submittedApplicationService.getByUserDetailandCollege(user.getUserDetail(), college);
 		List<AppliedCourseModel> appliedCourses = new ArrayList<>();
 		
 		for(SubmittedApplications submittedApplication : submittedApplicationList) {

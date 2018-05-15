@@ -24,14 +24,13 @@ public class InitRestController {
 	
 	@RequestMapping(value="/setuser/", method=RequestMethod.GET)
 	public void setUser(Model model){
-		session.setCurrentUserName();
-		session.setCurrentUser();
-		session.setCurrentUserDetail();
+		session.setStudentName();
+		session.setStudent();
 	}
 	
 	@RequestMapping(value = "/oauth/revoketoken", method = RequestMethod.POST)
     public void revokeToken(@RequestBody String tokenValue) {
-		Collection<OAuth2AccessToken> accessTokens = tokenStore.findTokensByClientId(session.getCurrentUserName());
+		Collection<OAuth2AccessToken> accessTokens = tokenStore.findTokensByClientId(session.getStudentName());
         //OAuth2AccessToken accessToken = tokenStore.readAccessToken(tokenValue);
         for(OAuth2AccessToken accessToken : accessTokens)
         	tokenStore.removeAccessToken(accessToken);
