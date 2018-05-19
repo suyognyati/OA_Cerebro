@@ -266,3 +266,74 @@ ol.breadcrumb {
     left:auto;
     transform:skew(8deg) rotate(3deg);
 }
+
+/* CSS for Vendor Dashboard */
+.card {
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid #c2cfd6;
+    margin-bottom: 1.5rem;
+    box-sizing: border-box;
+}
+
+.card.bg-primary {
+    border-color: #187da0;
+}
+.bg-primary, .bg-success, .bg-info, .bg-warning, .bg-danger, .bg-inverse {
+    color: #fff;
+}
+.text-white {
+    color: #fff !important;
+    text-align : center;
+    padding: 10px;
+}
+.bg-primary {
+    background-color: #20a8d8 !important;
+}
+.card.bg-danger {
+    border-color: #f5302e;
+}
+.bg-danger {
+    background-color: #f86c6b !important;
+}
+.card.bg-warning {
+    border-color: #c69500;
+}
+.bg-warning {
+    background-color: #ffc107 !important;
+}
+
+/* CSS for loader */
+.loader {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    z-index: 1;
+    width: 150px;
+    height: 150px;
+    margin: -75px 0 0 -75px;
+    border: 16px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 16px solid #3498db;
+    width: 120px;
+    height: 120px;
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+}
+
+@-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

@@ -353,7 +353,7 @@ function StudentStates($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, 
 	})*/
 
 	.state("student.application.applyOnline",{
-		url: "/applyOnline",
+		url: "/applyonline",
 		templateUrl: 'ngapp/student/views/userapplication/applyOnlineView.html',
 		controller:"ApplyOnlineCtrl as vm",
 
@@ -375,7 +375,7 @@ function StudentStates($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, 
 	})
 
 	.state("student.application.program",{
-		url: "/applyOnline/pcid/:programCategoryId",
+		url: "/applyonline/pcid/:programCategoryId",
 		templateUrl: 'ngapp/student/views/userapplication/programView.html',
 		controller:"ProgramCtrl as vm",
 
@@ -398,7 +398,7 @@ function StudentStates($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, 
 	})
 	
 	.state("student.application.allowedQualifications",{
-		url: "/allowedQualifications/:collegeProgramId",
+		url: "/allowedqualifications/:collegeProgramId",
 		templateUrl: 'ngapp/student/views/userapplication/allowedQualificationsView.html',
 		controller:"AllowedQualificationsCtrl as vm",
 
@@ -420,7 +420,7 @@ function StudentStates($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, 
 	})
 
 	.state("student.application.subject",{
-		url: "/applyOnline/pid/:collegeProgramId/:selectedAllowedQualification",
+		url: "/applyonline/pid/:collegeProgramId/:selectedAllowedQualification",
 		templateUrl:
 				function (stateParams){
 					var fileToAccess = ""
@@ -475,6 +475,28 @@ function StudentStates($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, 
 					files: [
 						   'ngapp/student/controllers/applicationStatusCtrl.js',
 						   'ngapp/student/services/applyOnlineService.js',
+						  ]
+				});
+			}]
+		}
+	})
+	
+	.state("student.application.printApplication",{
+		url: "/printapplication",
+		templateUrl: 'ngapp/student/views/userapplication/printApplicationView.html',
+		controller:"PrintApplicationCtrl as vm",
+
+		ncyBreadcrumb: {
+			label: 'Print Application',
+		},
+		params: { subtitle: 'Print Application' },
+		resolve: {
+			loadMyCtrl: ['$ocLazyLoad', function($ocLazyLoad) {
+				return $ocLazyLoad.load({
+					serie: true,
+					files: [
+						   'ngapp/student/controllers/printApplicationCtrl.js',
+						   'ngapp/student/services/printApplicationService.js',
 						  ]
 				});
 			}]

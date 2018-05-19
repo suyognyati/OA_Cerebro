@@ -1,0 +1,164 @@
+<div id="section-to-print" class="panel panel-default panel-body">
+	<div id="print-margin">
+	<div class="row">
+		<div class="col-sm-12 table-responsive">
+			<table class="table table-bordered">
+				<tbody>
+					<tr>
+						<td width="10%" rowspan="2">For Office Use Only</td>
+						<td width="20%"><strong>Batch : </strong></td>
+						<td width="20%" rowspan="2">Scrutiny </td>
+						<td width="20%"> Payment : Online / DD </td>
+						<td width="20%"> PI </td>
+					</tr>
+					<tr>
+						<td><strong>Serial : </strong></td>
+						<td></td>
+						<td></td>
+					</tr>
+				</tbody>
+			</table>
+			<table class="table table-bordered no-margin">
+				<tbody>
+					<tr>
+						<td width="10%" rowspan="2">College Icon</td>
+						<td width="60%" rowspan="2">College Name</td>
+						<td width="30%" colspan="2"><strong>Application No.:</strong></td>
+					</tr>
+					<tr>
+						<td colspan="2">BarCode</td>
+					</tr>
+				</tbody>
+			</table>
+			<table class="table table-bordered no-margin">
+				<tbody>
+					<tr>
+						<td colspan="4"><strong>Course Applied for :</strong></td>
+						<td width=""><strong>PRN :</strong></td>
+					</tr>
+					<tr>
+						<td width="26%"><strong>Application Date :</strong></td>
+						<td colspan="3"></td>
+						<td width="15%" rowspan="5">
+							<div style="width:100px; height:100px;background-color:#ccc; margin:0 auto"></div>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="4"><strong>1. Personal Information</strong></td>
+					</tr>
+					<tr>
+						<td width=""><strong>Candidate's Name as printed on School Leaving / Passing Certificate :</strong></td>
+						<td colspan="3">{{vm.printDetail.firstName}} {{vm.printDetail.middleName}} {{vm.printDetail.lastName}}
+										<br>[*This name will appear on all University records/documents]</td>
+					</tr>
+					<tr>
+						<td width=""><strong>Father's / Husband's Name :</strong></td>
+						<td width="20%">{{vm.printDetail.fathersFirstName}} {{vm.printDetail.fathersMiddleName}} {{vm.printDetail.fathersLastName}}</td>
+						<td width="20%"><strong>Mother's Name : </strong></td>
+						<td width="20%">{{vm.printDetail.mothersFirstName}}</td>
+					</tr>
+					<tr>
+						<td width=""><strong>Marital Status :</strong></td>
+						<td width="">{{vm.printDetail.maritalStatus}}</td>
+						<td><strong>Mother Tongue : </strong></td>
+						<td width="">{{vm.printDetail.motherTongue}}</td>
+					</tr>
+					<tr>
+						<td width=""><strong>Place of Birth : </strong>{{vm.printDetail.placeOfBirth}}</td>
+						<td width=""><strong>Gender : </strong>{{vm.printDetail.gender}}</td>
+						<td colspan="3"><strong>Date of Birth (DD/MM/YYYY) : </strong>{{vm.printDetail.birthDate}}</td>
+					</tr>
+					<tr>
+						<td width=""><strong>Blood Group : </strong>{{vm.printDetail.bloodGroup}}</td>
+						<td width=""><strong>Religion : </strong>{{vm.printDetail.religion}}</td>
+						<td colspan="3"><strong>Country of Citizenship : </strong>{{vm.printDetail.countryOfCitizenship.countryName}}</td>
+					</tr>
+				</tbody>
+			</table>
+			<table class="table table-bordered no-margin">
+				<tbody>
+					<tr>
+						<td colspan="4"><strong>Address For Correspondence</strong></td>
+					</tr>
+					<tr>
+						<td width="20%"><strong>State : </strong>  {{vm.printDetail.state.stateName}}</td>
+						<td width="20%"><strong>District : </strong>  {{vm.printDetail.district}}</td>
+						<td width="20%"><strong>Tehsil :</strong>  {{vm.printDetail.district}}</td>
+						<td width="20%"><strong>City/Town/Village :</strong>  {{vm.printDetail.city}}</td>
+					</tr>
+					<tr>
+						<td width="20%"><strong>Address (House No,Street/Area/Suburb etc.) :</strong></td>
+						<td width="20%" colspan="2"> {{vm.printDetail.flatNo}}, {{vm.printDetail.area}}, {{vm.printDetail.street}}</td>
+						<td width="20%"><strong>Pin Code :</strong>  {{vm.printDetail.pinCode}}</td>
+					</tr>
+					<tr>
+						<td colspan="4"><strong>Permanent Address</strong></td>
+					</tr>
+					<tr>
+						<td width="20%"><strong>State :</strong>  {{vm.printDetail.statePermanent.stateName}}</td>
+						<td width="20%"><strong>District :</strong>  {{vm.printDetail.districtPermanent}}</td>
+						<td width="20%"><strong>Tehsil :</strong> {{vm.printDetail.districtPermanent}}</td>
+						<td width="20%"><strong>City/Town/Village :</strong>  {{vm.printDetail.cityPermanent}}</td>
+					</tr>
+					<tr>
+						<td width="20%"><strong>Address (House No,Street/Area/Suburb etc.) :</strong></td>
+						<td width="20%" colspan="2">{{vm.printDetail.flatNoPermanent}}, {{vm.printDetail.areaPermanent}}, {{vm.printDetail.streetPermanent}}</td>
+						<td width="20%"><strong>Pin Code :</strong>  {{vm.printDetail.pinCodePermanent}}</td>
+					</tr>
+					<tr>
+						<td colspan="4"><strong>Contact Details</strong></td>
+					</tr>
+					<tr>
+						<td colspan="2"><strong>Mobile Number : </strong>{{vm.printDetail.mobileNo}}</td>
+						<td colspan="2"><strong>Email ID : </strong>{{vm.printDetail.email}}</td>
+					</tr>
+				</tbody>
+			</table>
+			<table class="table table-bordered no-margin">
+				<tbody>
+					<tr>
+						<td colspan="3"><strong>2. Legal Reservation Information</strong></td>
+					</tr>
+					<tr>
+						<td width="30%"><strong>Category : </strong>{{vm.printDetail.category}}</td>
+						<td width="30%"><strong>Caste : </strong>{{vm.printDetail.caste}}</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td colspan="3"><strong>Is Specially Abled ?</strong>
+							<span ng-if="vm.printDetail.speciallyAbled == null">No</span>
+								{{vm.printDetail.speciallyAbled}}
+						</td>
+					</tr>
+					<tr>
+						<td colspan="3"><strong>3. Social Information (Additional Information)</strong></td>
+					</tr>
+				</tbody>
+			</table>
+			<table class="table table-bordered no-margin">
+				<tbody>
+					<tr>
+						<td colspan="2"><strong>4. Guardian Information</strong></td>
+					</tr>
+					<tr>
+						<td><strong>Occupation of Guardian : </strong></td>
+						<td><strong>Annual Income of Guardian : </strong></td>
+					</tr>
+				
+				</tbody>
+			</table>
+		</div>
+	</div>
+	</div>
+</div>
+
+<div class="row noprint" style="margin: 25px 0px 25px 0px;">
+	<div class="col-sm-3"></div>
+	<div class="col-sm-4">
+		<a href="javascript:window.print()">
+       	<input type="submit"
+       		   value="Print Application"
+       		   class="btn btn-success btn-block topMargin"></a>
+     </div>
+      <div class="col-sm-3"></div>
+</div>

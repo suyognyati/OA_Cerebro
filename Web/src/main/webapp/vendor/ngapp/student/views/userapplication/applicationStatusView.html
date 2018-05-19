@@ -53,9 +53,11 @@
 					    <td>{{appliedCourse.}}</td>
 					    <td>{{appliedCourse.}}</td> -->
 					    <td>
-							<a href="#" style="font-size: 25px;">
-					          <span class="glyphicon glyphicon-print"></span>
-					        </a>
+					    	<div ng-click="vm.printApplication()">
+								<a href="#" style="font-size: 25px;">
+						          <span class="glyphicon glyphicon-print"></span>
+						        </a>
+					        </div>
 						</td>
 					    <td>
 					    	<div ng-click="vm.deleteApplication(appliedCourse.applicationId)"> 

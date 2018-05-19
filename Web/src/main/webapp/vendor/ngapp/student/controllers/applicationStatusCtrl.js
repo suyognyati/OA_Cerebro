@@ -6,10 +6,11 @@
 					["$scope",
 					 "$http",
 					 "$window",
+					 "$state",
 					 "applyOnlineService",
 					 ApplicationStatusCtrl]);
 
-	function ApplicationStatusCtrl($scope, $http, $window, applyOnlineService) {
+	function ApplicationStatusCtrl($scope, $http, $window, $state, applyOnlineService) {
 		var vm = this;
 
 		vm.accessTokenParam = $scope.getAccessTokenParam();
@@ -38,6 +39,10 @@
 				}, function(error) {
 				})
 			}
+		}
+		
+		vm.printApplication = function() {
+			$state.go("student.application.printApplication");
 		}
 
 		setTimeout(function() {

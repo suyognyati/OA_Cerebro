@@ -1,30 +1,78 @@
-<div class="panel panel-default">
-     <div class="panel-heading">
-		<span style="font-family:Verdana">Applicant's Details</span>
+<div class="row">
+	<div class="col-sm-4">
+		<div class="card text-white bg-primary">
+			<h4>Total No. of Submitted Applications</h4>
+			50
+		</div>
 	</div>
-     <div class="panel-body">
-          <div class="row">
-               <div class="col-sm-6">
-                    <div ng-repeat="bloodGroup in vm.bloodGroupList">
-                         <ul>
-                              <li>{{bloodGroup.key}} {{bloodGroup.value}}</li>
-                         </ul>
-                    </div>
-               </div>
-               <div class="col-sm-6">
-                    <select id="bloodgroup"
-                    		class="selectpicker" data-width="100%"
-                    		data-live-search="true" title="-- Select --"
-                    		tabindex="23"
-                    		ng-model="vm.personaldetail.bloodGroup"
-                    		ng-options="bloodgroup.key as bloodgroup.value for bloodgroup in vm.bloodGroupList">
-                    </select>
-               </div>
-          </div>
-     </div>
+	<div class="col-sm-4">
+		<div class="card text-white bg-warning">
+			<h4>No. of Partially Filled Applications</h4>
+			50
+		</div>
+	</div>
+	<div class="col-sm-4">
+		<div class="card text-white bg-danger">
+			<h4>Available Application Credit</h4>
+			30
+		</div>
+	</div>
 </div>
 
 
-<script type="text/javascript">
-	$(".selectpicker").selectpicker("refresh");
-</script>
+
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<span style="font-family:Verdana">Detail of Partially Filled Applications</span>
+	</div>
+	<div class="panel-body">
+		<div class="col-sm-12 table-responsive">
+			<table class="table table-striped table-bordered">
+				<thead>
+					<tr class="table-background">
+					    <th width="15%">Application No.</th>
+					    <th width="25%">Name of Student</th>
+					    <th width="15%">Date of Birth</th>
+					    <th width="20%">Mobile No.</th>
+					    <th width="25%">Username</th>
+					    
+					</tr>
+				</thead>
+				<tbody>
+					<tr class="table-background">
+					    <td width="15%">74674</td>
+					    <td width="25%">Rahul Arun Salunkhe </td>
+					    <td width="15%">08-06-1989</td>
+					    <td width="20%">7588464423</td>
+					    <td width="25%">rahulsalunkhe</td>
+					    
+					</tr>
+					<tr class="table-background">
+					    <td width="15%">74768</td>
+					    <td width="25%">Suresh Ramchandra Singh</td>
+					    <td width="15%">11-10-1988</td>
+					    <td width="20%">7588193457</td>
+					    <td width="25%">sureshsingh</td>
+					    
+					</tr>
+					<tr class="table-background">
+					    <td width="15%">74579</td>
+					    <td width="25%">Om Mangesh Patil</td>
+					    <td width="15%">11-12-1988</td>
+					    <td width="20%">9028435644</td>
+					    <td width="25%">ompatil</td>
+					    
+					</tr>
+					<tr class="table-background">
+					    <td width="15%">74897</td>
+					    <td width="25%">Sayali Vikas Narkhede</td>
+					    <td width="15%">17-03-1990</td>
+					    <td width="20%">9422565432</td>
+					    <td width="25%">sayalinarkhede</td>
+					    
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>

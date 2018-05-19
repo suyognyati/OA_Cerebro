@@ -8,7 +8,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	
-	<title>CoreUI - Open Source Bootstrap Admin Template</title>
+	<title>Online Admission</title>
 
 	<!-- LOADING STYLE SHEET -->
 		<!-- Styles from vendor -->
@@ -26,6 +26,9 @@
 		
 		<!-- Date Picker Style -->
 		<link href="<c:url value='/static/css/angular-datepicker.css' />" rel="stylesheet" />
+		
+		<!-- Print Style -->
+		<link href="<c:url value='/static/css/print/print.css' />" rel="stylesheet" />
 		
 		<!-- My Custom Styles -->
 		<link href="<c:url value='/user/css/userstyle.css' />" rel="stylesheet" />

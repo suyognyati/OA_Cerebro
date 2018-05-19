@@ -370,18 +370,19 @@
 								<div class="col-sm-12 form-group">
 									<label for="speciallyabled"
 										   class="col-sm-3 group-label">Specially Abled</label>
-								  	<div class="col-sm-6 formData" ng-if="vm.applicantdetail.speciallyAbled == null">No</div>
-								  	<div class="col-sm-6 formData">{{vm.applicantdetail.speciallyAbled}}</div>
+								  	<div class="col-sm-6 formData" ng-if="vm.applicantdetail.speciallyAbled == null">Not Applicable</div>
+								  	<div class="col-sm-6 formData" ng-if="vm.applicantdetail.speciallyAbled != null">{{vm.applicantdetail.speciallyAbled}}</div>
 								</div>
 							</div>
 							<div class="row"><hr></div>
 							<div class="row">
 								<div class="col-sm-12 form-group">
-									<div class="col-sm-2">
+									<div class="col-sm-3">
 										<label for="socialreservation"
 											   class="group-label">Social Reservation</label>
 									</div>
-									<div class="col-sm-8">
+									
+									<div class="col-sm-9 formData">
 										<pre class="ng-binding">{{vm.occupationandreservation.selectedSocialReservations|json}}</pre>
 									</div>
 								</div>
