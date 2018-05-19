@@ -3,6 +3,7 @@ package com.data.services;
 import java.util.List;
 
 import com.data.entities.QualificationLevel;
+import com.data.entities.UserDetail;
 
 public interface QualificationLevelService {
 	QualificationLevel getById(Integer id);
@@ -24,8 +25,39 @@ public interface QualificationLevelService {
 	List<QualificationLevel> getSubQualificationLevels(Integer qualificationGroup);
 	
 	/**
+	 * This will give those qualification levels where multirefered is false and 
+	 * educational information is not filled for current user. 
+	 * @param qualificationGroup
+	 * @param qualificationLevelIds
+	 * @return
+	 */
+	List<QualificationLevel> getSubQualificationLevelsWithNoEducationalInfoAvailableWithMultireferedFalse
+		(Integer qualificationGroup, List<Integer> qualificationLevelIds);
+	
+	/**
 	 * This function will give 
 	 * <b>main qualification level</b>
 	 */
 	QualificationLevel getQualificationGroup(Integer qualificationGroup);
+	
+	/**
+	 * This will give QualificationLevelIdList of filled Educational Information where multirefered will be false.
+	 * @param userDetail
+	 * @return List<Integer>
+	 */
+	List<Integer> getQualificationLevelIdListWithNoMultireferedForFilledEducationalInformation(UserDetail userDetail, Integer qualificationGroup);
+	
+	/**
+	 * This will give count of qualificationGroupLevel under qualificationGroup
+	 * @param qualificationGroupId
+	 * @return Integer
+	 */
+	Integer getQualificationGroupLevelCount(Integer qualificationGroup);
+	
+	/**
+	 * This function will return true if multirefered exist in qualificationGroup else false
+	 * @param qualificationGroup
+	 * @return Boolean
+	 */
+	Boolean isMultireferedUnderQualificationGroupExist(Integer qualificationGroup);
 }

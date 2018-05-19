@@ -92,7 +92,7 @@ public class AddressRCServiceImpl implements AddressRCService {
 
 		address.setIsNotSameAsCorrespondence(addressModel.getIsSameAsCorrespondence());
 		
-		if(addressModel.getIsSameAsCorrespondence()) {		
+		if(addressModel.getIsSameAsCorrespondence() != null && addressModel.getIsSameAsCorrespondence()) {		
 			address.setFlatNoPermanent(addressModel.getFlatNo());
 			address.setStreetPermanent(addressModel.getStreet());
 			address.setAreaPermanent(addressModel.getArea());

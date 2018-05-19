@@ -29,4 +29,12 @@ public interface EducationalInformationJpaRepository extends JpaRepository<Educa
 	List<EducationalInformation> 
 		findByUserDetailAndQualificationLevelInOrderByQualificationLevelQualificationGroupAscQualificationLevelQualificationGroupLevelAsc
 		(UserDetail userDetail, List<QualificationLevel> qualificationLevels);
+	
+	/**
+	 * This will give educational detail where QualificationLevel does not support MultiRefered
+	 * @param userDetail
+	 * @param multiRefered
+	 * @return List of EducationalInformation
+	 */
+	List<EducationalInformation> findByUserDetailAndQualificationLevelQualificationGroupAndQualificationLevelMultiReferred(UserDetail userDetail, Integer qualificationGroup, Boolean multiRefered);
 }

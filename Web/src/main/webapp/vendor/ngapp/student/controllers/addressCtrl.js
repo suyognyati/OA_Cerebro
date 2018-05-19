@@ -83,7 +83,12 @@
 		}
 
 		vm.saveDraft = function() {
-			refreshSelectPickerWithDelay();
+			profileDetailService.saveAddressDetail(vm.address, vm.accessTokenParam)
+			.then(function (success) {
+				vm.successMessage = "Detail saved successfully";
+			}, function (error) {
+				vm.errorMessage = "Error while saving detail";
+			});
 		}
 
 		vm.setSelectedCountry = function(isPermanent) {

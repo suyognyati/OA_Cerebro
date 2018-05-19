@@ -73,7 +73,7 @@ public class EducationalInformationRCServiceImpl implements EducationalInformati
 		
 		maxAcademicYear = 3;
 		QualificationDetail qualificationDetail = createQualificationDetailObject(educationalInformation);
-		setDefaultData(qualificationGroup, qualificationDetail);
+		setDefaultData(qualificationGroup, qualificationDetail, null);
 		return qualificationDetail;
 	}
 
@@ -87,8 +87,11 @@ public class EducationalInformationRCServiceImpl implements EducationalInformati
 		}
 		
 		maxAcademicYear = 3;
+		List<Integer> qualificationLevelIdListofEducationalInformation = 
+				qualificationLevelService.getQualificationLevelIdListWithNoMultireferedForFilledEducationalInformation(user.getUserDetail(), qualificationGroup);
+		
 		QualificationDetail qualificationDetail = createQualificationDetailObject(educationalInformation);
-		setDefaultData(qualificationGroup, qualificationDetail);
+		setDefaultData(qualificationGroup, qualificationDetail, qualificationLevelIdListofEducationalInformation);
 				
 		return qualificationDetail;
 	}
@@ -103,7 +106,7 @@ public class EducationalInformationRCServiceImpl implements EducationalInformati
 		
 		EducationalInformation educationalInformation = null;
 		//Finding educational information for qualificationId of user
-		if(qualificationLevelObject.getMultiReferred())
+		if(qualificationDetail.getQualificationId() != null || qualificationLevelObject.getMultiReferred())
 			educationalInformation = educationalInformationService.getByEducationalInformationId(user.getUserDetail(), qualificationDetail.getQualificationId());
 		else
 			educationalInformation = educationalInformationService.getByUserDetailAndQualificationLevel(user.getUserDetail(), qualificationLevelObject);
@@ -215,9 +218,18 @@ public class EducationalInformationRCServiceImpl implements EducationalInformati
 		return qualificationDetail;
 	}
 
-	private void setDefaultData(Integer qualificationGroup, QualificationDetail qualificationDetail) {
+	private void setDefaultData(Integer qualificationGroup, QualificationDetail qualificationDetail, List<Integer> qualificationLevelIdsofEducationalInformation) {
 		QualificationLevel qualificationGroupObject = qualificationLevelService.getQualificationGroup(qualificationGroup);
-		List<QualificationLevel> qualificationGroupLevelList = qualificationLevelService.getSubQualificationLevels(qualificationGroup);
+		
+		List<QualificationLevel> qualificationGroupLevelList = null;
+		
+		if(qualificationLevelIdsofEducationalInformation != null && qualificationLevelIdsofEducationalInformation.size() > 0) {
+			qualificationGroupLevelList = qualificationLevelService.getSubQualificationLevelsWithNoEducationalInfoAvailableWithMultireferedFalse
+					(qualificationGroup, qualificationLevelIdsofEducationalInformation);
+		} else {
+			qualificationGroupLevelList = qualificationLevelService.getSubQualificationLevels(qualificationGroup);
+		}
+		
 		List<QualificationProgram> programListOfQualification = qualificationProgramDao.getProgramListOfQualification(qualificationGroupObject);
 		
 		qualificationDetail.setqualificationGroupLevelList(qualificationGroupLevelList);
@@ -251,7 +263,11 @@ public class EducationalInformationRCServiceImpl implements EducationalInformati
 			Qualification qualification = educationalModel.new Qualification();
 			qualification.setName(qualificationLevel.getName());
 			qualification.setQualificationGroup(qualificationLevel.getQualificationGroup());
-			listOfQualification.add(qualification);
+			Integer qualificationGroupLevelCount = qualificationLevelService.getQualificationGroupLevelCount(qualificationLevel.getQualificationGroup());
+			qualification.setQualificationGroupLevelCount(qualificationGroupLevelCount);
+			Boolean isMultiReferedAvailableUnderQualificationGroup = qualificationLevelService.isMultireferedUnderQualificationGroupExist(qualification.getQualificationGroup());
+			qualification.setIsMultireferedAvailableUnderQualificationGroup(isMultiReferedAvailableUnderQualificationGroup);
+			listOfQualification.add(qualification);			
 		}
 		
 		/* creating objects of subqualifications from educational information and adding them in to 

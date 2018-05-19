@@ -28,7 +28,10 @@ public class EducationModel {
 		private String name;
 		private Integer qualificationGroup;
 		private Integer qualificationGroupLevel;
+		private Integer qualificationGroupLevelCount;
+		private Boolean isMultireferedAvailableUnderQualificationGroup;
 		private List<SubQualification> subQualificationList;
+		private Boolean areAllQualificationAdded;
 		
 			public String getName() {
 				return name;
@@ -48,6 +51,20 @@ public class EducationModel {
 				qualificationGroupLevel = 0;
 				return qualificationGroupLevel;
 			}
+
+			public Integer getQualificationGroupLevelCount() {
+				return qualificationGroupLevelCount;
+			}
+			public void setQualificationGroupLevelCount(Integer qualificationGroupLevelCount) {
+				this.qualificationGroupLevelCount = qualificationGroupLevelCount;
+			}			
+
+			public Boolean getIsMultireferedAvailableUnderQualificationGroup() {
+				return isMultireferedAvailableUnderQualificationGroup;
+			}
+			public void setIsMultireferedAvailableUnderQualificationGroup(Boolean isMultireferedAvailableUnderQualificationGroup) {
+				this.isMultireferedAvailableUnderQualificationGroup = isMultireferedAvailableUnderQualificationGroup;
+			}
 			
 			/**
 			 * @return Sub list of main qualification
@@ -58,6 +75,14 @@ public class EducationModel {
 			public void setSubQualificationList(List<SubQualification> subQualificationList) {
 				this.subQualificationList = subQualificationList;
 			}
+			
+			public Boolean getAreAllQualificationAdded() {
+				return areAllQualificationAdded;
+			}
+			public void setAreAllQualificationAdded(Boolean areAllQualificationAdded) {
+				this.areAllQualificationAdded = areAllQualificationAdded;
+			}
+			
 	}
 	
 	public class SubQualification {
