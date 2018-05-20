@@ -11,7 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.data.entities.User;
 import com.web.services.FileRCService;
-import com.web.session.StaticMethods;
+import com.web.staticandconstants.StaticMembers;
 
 @Service("fileRCService")
 public class FileRCServiceImpl implements FileRCService{
@@ -44,7 +44,7 @@ public class FileRCServiceImpl implements FileRCService{
 	}
 
 	private String getPath(User user) {
-		String rootDirectory = StaticMethods.UploadDocumentPath + File.separator + user.getUserId()+ File.separator;
+		String rootDirectory = StaticMembers.UploadDocumentPath + File.separator + user.getUserId()+ File.separator;
 		return rootDirectory;
 	}
 	

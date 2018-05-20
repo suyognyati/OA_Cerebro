@@ -25,8 +25,8 @@ public class ConfigurationResourceServer extends ResourceServerConfigurerAdapter
 		.requestMatchers().antMatchers("/personalDetail/**")
 		.requestMatchers().antMatchers("/rest/**")
 		.and().authorizeRequests()
-		.antMatchers("/personalDetail/**").access("hasRole('USER')")
-		.antMatchers("/rest/**").access("hasRole('USER')")
+		.antMatchers("/personalDetail/**").access("hasRole('STUDENT')")
+		.antMatchers("/rest/**").access("hasRole('STUDENT')")
 		.and().exceptionHandling().accessDeniedHandler(new OAuth2AccessDeniedHandler());
 	}
 

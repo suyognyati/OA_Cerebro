@@ -17,7 +17,7 @@ import com.data.entities.UserDocument;
 import com.data.services.UserDocumentService;
 import com.web.model.UploadDocumentModel;
 import com.web.services.UploadDocumentRCService;
-import com.web.session.StaticMethods;
+import com.web.staticandconstants.StaticMembers;
 
 @Service("uploadDocumentRCService")
 public class UploadDocumentRCServiceImpl implements UploadDocumentRCService{
@@ -35,7 +35,7 @@ public class UploadDocumentRCServiceImpl implements UploadDocumentRCService{
 
 	@Override
 	public byte[] getDocument(User user, Integer userDocumentId) {
-		String rootDirectory = StaticMethods.UploadDocumentPath + File.separator + user.getUserId();
+		String rootDirectory = StaticMembers.UploadDocumentPath + File.separator + user.getUserId();
 	    UserDocument userDocument = userDocumentService.getById(userDocumentId);
 		Path pdfPath = Paths.get(rootDirectory + userDocument.getLocalPath());
 	    byte[] pdfFile = null;
@@ -74,7 +74,7 @@ public class UploadDocumentRCServiceImpl implements UploadDocumentRCService{
 	}
 	
 	private String getPath(User user) {
-		String rootDirectory = StaticMethods.UploadDocumentPath + File.separator + user.getUserId()+ File.separator;
+		String rootDirectory = StaticMembers.UploadDocumentPath + File.separator + user.getUserId()+ File.separator;
 		return rootDirectory;
 	}
 	

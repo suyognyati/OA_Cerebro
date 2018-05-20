@@ -15,7 +15,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
 import com.web.oauth2.AccessConfirmationController;
-import com.web.session.StaticMethods;
+import com.web.staticandconstants.StaticConstants;
 
 import config.data.PersistenceConfig;
 
@@ -33,8 +33,8 @@ public class WebConfig extends WebMvcConfigurerAdapter{
         viewResolver.setSuffix(".jsp");
         registry.viewResolver(viewResolver);
         
-        StaticMethods.LOGGER.error("Suyog first loggging message");
-        StaticMethods.LOGGER.debug("This log level will not show on error debugging.");
+        StaticConstants.LOGGER.error("Suyog first loggging message");
+        StaticConstants.LOGGER.debug("This log level will not show on error debugging.");
     }
 	
 	@Override
@@ -42,7 +42,7 @@ public class WebConfig extends WebMvcConfigurerAdapter{
 		//registry.addResourceHandler("/pdfs/**").addResourceLocations("/WEB-INF/pdf/");
 		//registry.addResourceHandler("/css/**").addResourceLocations("/WEB-INF/css/");
 		registry.addResourceHandler("/static/**").addResourceLocations("/static/");
-		registry.addResourceHandler("/user/**").addResourceLocations("/user/");
+		registry.addResourceHandler("/student/**").addResourceLocations("/student/");
 		registry.addResourceHandler("/studentview/**").addResourceLocations("/studentview/");
 		registry.addResourceHandler("/login/**").addResourceLocations("/login/");
 		registry.addResourceHandler("/vendor/**").addResourceLocations("/vendor/");

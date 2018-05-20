@@ -36,6 +36,9 @@ public class UserDetail {
 	@Column(name="MobileNo")
 	private String mobileNo;
 	
+	@Column(name="Role")
+	private String role;
+	
 	//UserDetailId
 	public Integer getUserDetailId() {
 		return userDetailId;
@@ -82,6 +85,16 @@ public class UserDetail {
 	}
 	public void setMobileNo(String mobileNo) {
 		this.mobileNo = mobileNo;
+	}
+	
+	//Role - for information purpose only hence no getter
+	public void setRole(String role) {
+		this.role = role;
+	}
+	public void addRole(String role) {
+		if(this.role != null && this.role != "")
+			this.role += ",";
+		this.role = role;
 	}
 	
 }

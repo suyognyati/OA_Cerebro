@@ -19,7 +19,7 @@ import com.data.services.UserDetailService;
 import com.data.services.UserDocumentService;
 import com.web.model.PersonalDetailModel;
 import com.web.services.PersonalDetailRCService;
-import com.web.session.StaticMethods;
+import com.web.staticandconstants.StaticConstants;
 
 @Service("personalDetailRCService")
 public class PersonalDetailRCServiceImpl implements PersonalDetailRCService {
@@ -73,7 +73,7 @@ public class PersonalDetailRCServiceImpl implements PersonalDetailRCService {
 		}
 		
 		if(personalDetail.getCountryOfCitizenship() != null 
-				&& personalDetail.getCountryOfCitizenship().getCountryName().compareToIgnoreCase(StaticMethods.StrINDIA) == 0) {
+				&& personalDetail.getCountryOfCitizenship().getCountryName().compareToIgnoreCase(StaticConstants.StrINDIA) == 0) {
 			userDocumentService.deleteByDocumentFor(user.getUserDetail(), Enums.DocumentsFor.Passport.getId());
 		} else {
 			userDocumentService.addByDocumentFor(user.getUserDetail(), Enums.DocumentsFor.Passport.getId());			
@@ -146,7 +146,7 @@ public class PersonalDetailRCServiceImpl implements PersonalDetailRCService {
 		personalDetailModel.setVisaTypeList(VisaType.getEnumList());
 		personalDetailModel.setVisaSponsoringAgencyList(VisaSponsoringAgency.getEnumList());
 		personalDetailModel.setCountryList(geoLocationService.getCountryList());
-		personalDetailModel.setStateList(geoLocationService.getStateListByCountryName(StaticMethods.StrINDIA));
+		personalDetailModel.setStateList(geoLocationService.getStateListByCountryName(StaticConstants.StrINDIA));
 		return personalDetailModel;
 	}
 

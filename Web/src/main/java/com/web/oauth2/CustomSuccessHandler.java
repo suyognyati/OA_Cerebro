@@ -15,6 +15,8 @@ import org.springframework.security.web.RedirectStrategy;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler;
 import org.springframework.stereotype.Component;
 
+import com.web.staticandconstants.StaticConstants;
+
 @Component
 public class CustomSuccessHandler extends SimpleUrlAuthenticationSuccessHandler {
 
@@ -54,11 +56,11 @@ public class CustomSuccessHandler extends SimpleUrlAuthenticationSuccessHandler 
 			url = "/admin/";
 		} else if (isVendor(roles)) {
 			url = "/vendor/";
-		} else if (isUser(roles)) {
-			url = "/user/";
 		} else if (isCollegeAdmin(roles)) {
 			url = "/collegeadmin/";
-		} else {
+		} else if (isUser(roles)) {
+			url = "/student/";
+		}  else {
 			url = "/Access_Denied/";
 		}
 
@@ -66,35 +68,40 @@ public class CustomSuccessHandler extends SimpleUrlAuthenticationSuccessHandler 
 	}
 
 	private boolean isUser(List<String> roles) {
-		if (roles.contains("ROLE_USER")) {
+		String role = StaticConstants.ROLE.ROLE_STUDENT;
+		if (roles.contains(role)) {
 			return true;
 		}
 		return false;
 	}
 
 	private boolean isVendor(List<String> roles) {
-		if (roles.contains("ROLE_VENDOR")) {
+		String role = StaticConstants.ROLE.ROLE_VENDOR;
+		if (roles.contains(role)) {
 			return true;
 		}
 		return false;
 	}
 	
 	private boolean isAdmin(List<String> roles) {
-		if (roles.contains("ROLE_ADMIN")) {
+		String role = StaticConstants.ROLE.ROLE_ADMIN;
+		if (roles.contains(role)) {
 			return true;
 		}
 		return false;
 	}
 
 	private boolean isDba(List<String> roles) {
-		if (roles.contains("ROLE_DBA")) {
+		String role = "ROLE_DBA";
+		if (roles.contains(role)) {
 			return true;
 		}
 		return false;
 	}
 	
 	private boolean isCollegeAdmin(List<String> roles) {
-		if (roles.contains("ROLE_COLLEGEADMIN")) {
+		String role = StaticConstants.ROLE.ROLE_COLLEGEADMIN;
+		if (roles.contains(role)) {
 			return true;
 		}
 		return false;

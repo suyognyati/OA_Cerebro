@@ -23,10 +23,11 @@ import com.web.services.OccupationReservationRCService;
 import com.web.services.PersonalDetailRCService;
 import com.web.services.UserDetailRCService;
 import com.web.session.Session;
-import com.web.session.StaticMethods;
+import com.web.staticandconstants.StaticConstants;
+import com.web.staticandconstants.StaticMethods;
 
 @RestController
-@PreAuthorize("hasRole('ROLE_USER')")
+@PreAuthorize("hasRole('" + StaticConstants.ROLE.ROLE_STUDENT + "')")
 @RequestMapping(value="/rest")
 public class ProfileDetailRestController {
 	

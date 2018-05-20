@@ -31,7 +31,7 @@ import com.web.model.UploadDocumentModel;
 import com.web.services.FileRCService;
 import com.web.services.UploadDocumentRCService;
 import com.web.session.Session;
-import com.web.session.StaticMethods;
+import com.web.staticandconstants.StaticMembers;
 
 import sun.misc.BASE64Decoder;
 
@@ -115,7 +115,7 @@ public class FileUploadRestController {
 		if(session.getStudent() == null)
 			return null;
 		
-		StaticMethods.UploadDocumentPath = strpath;
+		StaticMembers.UploadDocumentPath = strpath;
 		
 		return fileRCService.saveFile(session.getStudent(), mFile);
 	}
@@ -154,7 +154,7 @@ public class FileUploadRestController {
 	@ResponseBody
 	public Object savePDFFile( @RequestParam(value = "path") String strpath, 
 			@RequestParam(value = "file") byte[] pdfData) {
-		String rootDirectory = StaticMethods.UploadDocumentPath + File.separator + session.getStudent().getUserId()+ File.separator;
+		String rootDirectory = StaticMembers.UploadDocumentPath + File.separator + session.getStudent().getUserId()+ File.separator;
 		Path pdfSavePath = Paths.get(rootDirectory + "abc.pdf");
 		OpenOption[] options = new OpenOption[] { WRITE, CREATE_NEW };
 		try {

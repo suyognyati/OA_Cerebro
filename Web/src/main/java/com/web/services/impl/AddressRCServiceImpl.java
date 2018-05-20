@@ -10,7 +10,7 @@ import com.data.services.GeoLocationsService;
 import com.web.model.AddressModel;
 import com.web.services.AddressRCService;
 import com.web.session.Session;
-import com.web.session.StaticMethods;
+import com.web.staticandconstants.StaticConstants;
 
 @Service("AddressRCService")
 public class AddressRCServiceImpl implements AddressRCService {
@@ -31,7 +31,7 @@ public class AddressRCServiceImpl implements AddressRCService {
 			addressModel = setAddressModelObject(addressModel, address);
 		}
 		addressModel.setCountryList(geoLocationService.getCountryList());
-		addressModel.setStateList(geoLocationService.getStateListByCountryName(StaticMethods.StrINDIA));
+		addressModel.setStateList(geoLocationService.getStateListByCountryName(StaticConstants.StrINDIA));
 		addressModel.setLocationAreaList(Enums.LocationArea.getEnumList());
 		return addressModel;
 	}

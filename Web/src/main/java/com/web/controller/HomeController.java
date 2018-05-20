@@ -58,7 +58,7 @@ public class HomeController {
 		return "user/UserPageofVendor";
 	}
 	
-	@RequestMapping(value = { "user/" }, method = RequestMethod.GET)
+	@RequestMapping(value = { "student/" }, method = RequestMethod.GET)
 	public String userPage(ModelMap model) {
 		//Set current logged in user details
 		sessionService.setLoggedInUserDetails();

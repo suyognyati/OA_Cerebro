@@ -31,11 +31,11 @@ public class UserRole {
 		this.userRoleId = userRoleId;
 	}
 	
-	public User getUserName() {
+	public User getUser() {
 		return user;
 	}
-	public void setUserName(User userName) {
-		this.user = userName;
+	public void setUser(User user) {
+		this.user = user;
 	}
 	
 	public String getRole() {

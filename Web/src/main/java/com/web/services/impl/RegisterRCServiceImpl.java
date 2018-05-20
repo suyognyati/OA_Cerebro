@@ -13,6 +13,7 @@ import com.data.services.UserRoleService;
 import com.data.services.UserService;
 import com.web.model.UserDetailModel;
 import com.web.services.RegisterRCService;
+import com.web.staticandconstants.StaticConstants;
 
 @Service("registerRCService")
 public class RegisterRCServiceImpl implements RegisterRCService {
@@ -38,15 +39,18 @@ public class RegisterRCServiceImpl implements RegisterRCService {
 		if(!IsUserAvailable(userDetailModel.getUserName())) {
 			return false;
 		}
-				
+		
+		//First creating user detail 
 		UserDetail userDetail = new UserDetail();
 		userDetail.setFirstName(userDetailModel.getFirstName());
 		userDetail.setLastName(userDetailModel.getLastName());
 		userDetail.setEmail(userDetailModel.getEmail());
 		userDetail.setMobileNo(userDetailModel.getMobileNo());
 		userDetail.setDateOfBirth(userDetailModel.getBirthDate());
+		userDetail.setRole("" + StaticConstants.ROLE.ROLE_STUDENT);
 		userDetail = userDetailService.save(userDetail);
 		
+		//Creating user
 		User user = new User();
 		user.setUserName(userDetailModel.getUserName());
 		user.setPassword(userDetailModel.getPassword());
@@ -54,11 +58,13 @@ public class RegisterRCServiceImpl implements RegisterRCService {
 		user.setUserDetail(userDetail);
 		user = userService.save(user);
 		
+		//Assigning role to user as ROLE_STUDENT
 		UserRole userRole = new UserRole();
-		userRole.setUserName(user);
-		userRole.setRole("ROLE_USER");
+		userRole.setUser(user);
+		userRole.setRole(StaticConstants.ROLE.ROLE_STUDENT);
 		userRole = userRoleService.save(userRole);
 		
+		//Creating new credential for rest apis
 		StudentCredentials studentCredential = new StudentCredentials();
 		studentCredential.setClient_id(userDetailModel.getUserName());
 		studentCredential.setClient_secret(userDetailModel.getPassword());

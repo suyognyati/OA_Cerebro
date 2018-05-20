@@ -13,7 +13,7 @@
 function StudentStates($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, $breadcrumbProvider) {
 
 	var contextPath = "/Web";
-	var userPath = "/user/"
+	var userPath = "/student/"
 	var userBasePath = contextPath + userPath;
 	
 	$stateProvider

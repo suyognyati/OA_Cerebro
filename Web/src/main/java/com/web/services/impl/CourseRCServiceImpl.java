@@ -22,7 +22,7 @@ import com.data.services.SubmittedApplicationService;
 import com.web.model.AppliedCourseModel;
 import com.web.model.SubjectModel;
 import com.web.services.CourseRCService;
-import com.web.session.StaticMethods;
+import com.web.staticandconstants.StaticMethods;
 
 @Service("subjectRCService")
 public class CourseRCServiceImpl implements CourseRCService{
