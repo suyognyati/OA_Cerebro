@@ -6,6 +6,8 @@
 	
 	body * {
 		visibility: hidden;
+		font-size: 12px;
+		font-family: serif !important;
 	}
 	#section-to-print, #section-to-print * {
 		visibility: visible;
@@ -19,7 +21,12 @@
 	}
 	
 	#print-margin {
-		margin: 10mm;
+		margin: 5mm;
+	}
+	
+	Line spacing adjustment
+	.table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
+	    line-height: 1;
 	}
 }
 
