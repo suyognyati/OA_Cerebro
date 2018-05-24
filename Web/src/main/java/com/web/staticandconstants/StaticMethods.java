@@ -2,6 +2,7 @@ package com.web.staticandconstants;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 import org.json.simple.JSONObject;
@@ -23,5 +24,10 @@ public class StaticMethods {
 		Date today = new Date();
 		DateFormat dateFormat = new SimpleDateFormat(format);
 		return dateFormat.format(today);
+	}
+	
+	public static Integer GetCourseStartYear() {
+		Calendar today = Calendar.getInstance();
+		return today.get(Calendar.YEAR);
 	}
 }

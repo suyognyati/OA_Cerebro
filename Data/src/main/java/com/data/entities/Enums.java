@@ -782,5 +782,12 @@ public class Enums {
 		public String getValue() { return value; }
 		public static ApplicationStatus get(int id) { return lookup.get(id); }
 		public static List<KeyValuePair> getEnumList() { return enumList; }
+		public static KeyValuePair getKeyValuePair(int id) {
+			KeyValuePair kvp = new KeyValuePair();
+			ApplicationStatus as = get(id);
+			kvp.key = as.id;
+			kvp.value = as.value;
+			return kvp;
+		}
 	}
 }

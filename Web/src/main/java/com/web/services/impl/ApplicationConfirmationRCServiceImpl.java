@@ -1,23 +1,35 @@
 package com.web.services.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.data.entities.Address;
+import com.data.entities.CollegeFeeMap;
+import com.data.entities.CollegeProgramFeeMap;
+import com.data.entities.CollegeProgramMap;
 import com.data.entities.Enums;
 import com.data.entities.OccupationReservation;
 import com.data.entities.PersonalDetail;
 import com.data.entities.User;
 import com.data.entities.UserDetail;
 import com.data.services.AddressService;
+import com.data.services.CollegeFeeMapDao;
+import com.data.services.CollegeProgramFeeMapDao;
+import com.data.services.CollegeProgramMapService;
 import com.data.services.OccupationReservationService;
 import com.data.services.PersonalDetailService;
 import com.data.services.UserDetailService;
+import com.web.model.ApplicationFeeModel;
+import com.web.model.ApplicationFeeModel.FeeDetail;
 import com.web.model.PrintApplicationModel;
-import com.web.services.PrintApplicationRCService;
+import com.web.services.ApplicationConfirmationRCService;
+import com.web.staticandconstants.StaticMethods;
 
 @Service("PrintApplicationRCService")
-public class PrintApplicationRCServiceImpl implements PrintApplicationRCService {
+public class ApplicationConfirmationRCServiceImpl implements ApplicationConfirmationRCService {
 	
 	@Autowired
 	UserDetailService userDetailService; 
@@ -30,6 +42,15 @@ public class PrintApplicationRCServiceImpl implements PrintApplicationRCService 
 	
 	@Autowired
 	OccupationReservationService occupationReservationService;
+	
+	@Autowired
+	CollegeProgramMapService collegeProgramMapService;
+	
+	@Autowired
+	CollegeProgramFeeMapDao collegeProgramFeeMapDao;
+	
+	@Autowired
+	CollegeFeeMapDao collegeFeeMapDao;
 	
 	PrintApplicationModel printApplicationModel = null;
 	
@@ -45,6 +66,27 @@ public class PrintApplicationRCServiceImpl implements PrintApplicationRCService 
 		return printApplicationModel;
 	}
 	
+	@Override
+	public ApplicationFeeModel getFeeStructure(Integer collegeProgramMapId) {
+		CollegeProgramMap collegeProgramMap = collegeProgramMapService.getById(collegeProgramMapId);
+		ApplicationFeeModel applicationFeeModel = null;
+		Integer year = StaticMethods.GetCourseStartYear();
+		//Getting fee details of particular program 
+		List<CollegeProgramFeeMap> collegeProgramFeeMapList = collegeProgramFeeMapDao.getByCollegeProgramAndYear(collegeProgramMap.getCollege(), collegeProgramMap.getProgram(), year);
+		//If fee details for particular program not available then getting it for entire college
+		if(collegeProgramFeeMapList != null && collegeProgramFeeMapList.size() > 0) {
+			applicationFeeModel = setApplicationFeeModel(collegeProgramFeeMapList, null);
+		} else {
+			List<CollegeFeeMap> collegeFeeMapList = collegeFeeMapDao.getByCollegeAndYear(collegeProgramMap.getCollege(), year);
+			applicationFeeModel = setApplicationFeeModel(null, collegeFeeMapList);			
+		}
+		
+		applicationFeeModel.setCollege(collegeProgramMap.getCollege());
+		applicationFeeModel.setProgram(collegeProgramMap.getProgram());
+		return applicationFeeModel;
+	}
+	
+	//Private functions for getPrintApplicationDetail
 	private void getPersonalDetail(User user) {
 		UserDetail userDetail = user.getUserDetail();
 		PersonalDetail personalDetail = personalDetailService.getByUserDetail(user.getUserDetail());
@@ -150,5 +192,52 @@ public class PrintApplicationRCServiceImpl implements PrintApplicationRCService 
 			}
 		}
 	
+	}
+	
+	//Private function for getFeeStructure
+	private ApplicationFeeModel setApplicationFeeModel(List<CollegeProgramFeeMap> collegeProgramFeeMapList, List<CollegeFeeMap> collegeFeeMapList) {
+		ApplicationFeeModel applicationFeeModel = new ApplicationFeeModel();
+		List<FeeDetail> feeDetailList = new ArrayList<FeeDetail>();
+		
+		Integer vendorAmount = 0;
+		Integer totalAmount = 0;
+		
+		if(collegeProgramFeeMapList != null) {
+			for(CollegeProgramFeeMap collegeProgramFeeMap : collegeProgramFeeMapList) {
+				FeeDetail feeDetail = applicationFeeModel.new FeeDetail();
+				feeDetail.setProgramFeeId(collegeProgramFeeMap.getId());
+				feeDetail.setDisplayTitle(collegeProgramFeeMap.getFeeType().getDisplayTitle());
+				feeDetail.setFeeHead(collegeProgramFeeMap.getFeeType().getFeeHead());
+				Integer amount = collegeProgramFeeMap.getAmount();
+				feeDetail.setAmount(amount);
+				Boolean displayPurpose = collegeProgramFeeMap.getOnlyForDisplayPurpose();
+				feeDetail.setOnlyForDisplayPurpose(displayPurpose);
+				feeDetailList.add(feeDetail);
+				if(!displayPurpose)
+					vendorAmount += amount;
+				totalAmount += amount;
+			}
+		} else {
+			for(CollegeFeeMap collegeFeeMap : collegeFeeMapList) {
+				FeeDetail feeDetail = applicationFeeModel.new FeeDetail();
+				feeDetail.setFeeId(collegeFeeMap.getId());
+				feeDetail.setDisplayTitle(collegeFeeMap.getFeeType().getDisplayTitle());
+				feeDetail.setFeeHead(collegeFeeMap.getFeeType().getFeeHead());
+				Integer amount = collegeFeeMap.getAmount();
+				feeDetail.setAmount(amount);
+				Boolean displayPurpose = collegeFeeMap.getOnlyForDisplayPurpose();
+				feeDetail.setOnlyForDisplayPurpose(displayPurpose);
+				feeDetailList.add(feeDetail);
+				if(!displayPurpose)
+					vendorAmount += amount;
+				totalAmount += amount;
+			}
+		}
+		
+		applicationFeeModel.setVendorAmount(vendorAmount);
+		applicationFeeModel.setTotalAmount(totalAmount);		
+		applicationFeeModel.setFeeDetailList(feeDetailList);
+		
+		return applicationFeeModel; 
 	}
 }

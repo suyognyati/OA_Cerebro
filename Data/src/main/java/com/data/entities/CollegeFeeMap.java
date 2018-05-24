@@ -10,8 +10,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="CollegeProgramFeeMap")
-public class CollegeProgramFeeMap {
+@Table(name="CollegeFeeMap")
+public class CollegeFeeMap {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -35,16 +35,12 @@ public class CollegeProgramFeeMap {
 	@JoinColumn(name="FK_FeeType")
 	private FeeType feeType;
 	
-	@ManyToOne
-	@JoinColumn(name="FK_Program")
-	private University_Program program;
-
 		public Integer getId() {
 			return id;
 		}
 	
-		public void setId(Integer feeId) {
-			this.id = feeId;
+		public void setId(Integer id) {
+			this.id = id;
 		}
 	
 		public Integer getAmount() {
@@ -66,32 +62,25 @@ public class CollegeProgramFeeMap {
 		public Integer getYear() {
 			return year;
 		}
-
+	
 		public void setYear(Integer year) {
 			this.year = year;
 		}
-
+	
 		public College getCollege() {
 			return college;
 		}
-
+	
 		public void setCollege(College college) {
 			this.college = college;
 		}
-
+	
 		public FeeType getFeeType() {
 			return feeType;
 		}
-		
+	
 		public void setFeeType(FeeType feeType) {
 			this.feeType = feeType;
 		}
 		
-		public University_Program getProgram() {
-			return program;
-		}
-	
-		public void setProgram(University_Program program) {
-			this.program = program;
-		}
 }

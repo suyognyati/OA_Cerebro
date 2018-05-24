@@ -3,6 +3,7 @@ package com.web.model;
 import java.util.List;
 
 import com.data.entities.CollegeProgramMap;
+import com.data.entities.Enums;
 import com.data.entities.University_Subject;
 import com.data.entities.User;
 
@@ -17,8 +18,8 @@ public class AppliedCourseModel {
 	private String formNo;
 	private CollegeProgramMap collegeProgramMap;
 	private User user;	
-	private String date;	
-	private String applicationStatus;	
+	private String date;
+	private Enums.KeyValuePair applicationStatus;
 	private String statusComments;
 	
 		/* Apply for course */
@@ -80,13 +81,12 @@ public class AppliedCourseModel {
 			this.date = date;
 		}
 		
-		public String getApplicationStatus() {
+		public Enums.KeyValuePair getApplicationStatus() {
 			return applicationStatus;
 		}
-		public void setApplicationStatus(String applicationStatus) {
+		public void setApplicationStatus(Enums.KeyValuePair applicationStatus) {
 			this.applicationStatus = applicationStatus;
 		}
-		
 		public String getStatusComments() {
 			return statusComments;
 		}

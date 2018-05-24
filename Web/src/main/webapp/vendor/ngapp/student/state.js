@@ -481,6 +481,28 @@ function StudentStates($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, 
 		}
 	})
 	
+	.state("student.application.payApplicationFee",{
+		url: "/payapplicationfee/:collegeProgramMapId",
+		templateUrl: 'ngapp/student/views/userapplication/applicationFee.html',
+		controller:"ApplicationFeeCtrl as vm",
+
+		ncyBreadcrumb: {
+			label: 'Application Fee Payment',
+		},
+		params: { subtitle: 'Application Fee' },
+		resolve: {
+			loadMyCtrl: ['$ocLazyLoad', function($ocLazyLoad) {
+				return $ocLazyLoad.load({
+					serie: true,
+					files: [
+						   'ngapp/student/controllers/applicationFeeCtrl.js',
+						   'ngapp/student/services/applicationConfirmationService.js',
+						  ]
+				});
+			}]
+		}
+	})
+	
 	.state("student.application.printApplication",{
 		url: "/printapplication",
 		templateUrl: 'ngapp/student/views/userapplication/printApplicationView.html',
@@ -496,7 +518,7 @@ function StudentStates($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, 
 					serie: true,
 					files: [
 						   'ngapp/student/controllers/printApplicationCtrl.js',
-						   'ngapp/student/services/printApplicationService.js',
+						   'ngapp/student/services/applicationConfirmationService.js',
 						  ]
 				});
 			}]

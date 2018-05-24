@@ -7,14 +7,14 @@
 					 "$http",
 					 "$window",
 					 "$state",
-					 "printApplicationService",
+					 "applicationConfirmationService",
 					 PrintApplicationCtrl]);
 
-	function PrintApplicationCtrl($scope, $http, $window, $state, printApplicationService) {
+	function PrintApplicationCtrl($scope, $http, $window, $state, applicationConfirmationService) {
 		var vm = this;
 
 		vm.getPrintDetail = function() {
-			printApplicationService.getPrintApplicationDetail()
+			applicationConfirmationService.getPrintApplicationDetail()
 			.then(function(success) {
 				vm.printDetail = success.data;
 			}, function(error) {

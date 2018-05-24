@@ -31,13 +31,13 @@
 				<thead>
 					<tr class="table-background">
 					    <th width="10%">Form No.</th>
-					    <th width="27%">College</th>
-					    <th width="27%">Program</th>
+					    <th width="21%">College</th>
+					    <th width="21%">Program</th>
 					    <th width="10%">Date</th>
 					    <th width="10%">Status</th>
 					    <!-- <th width="12%">Eligibility Certificate</th>
-					    <th width="12%">Payment</th>
-					    <th width="12%">Admission Fee Payment</th> -->
+					    <th width="12%">Payment</th>  -->
+					    <th width="12%">Admission Fee Payment</th>
 					    <th width="10%">Print Provisional Form</th>
 					    <th width="6%">Cancel</th>
 					</tr>
@@ -48,12 +48,18 @@
 					    <td>{{appliedCourse.collegeProgramMap.college.collegeName}}</td>
 					    <td>{{appliedCourse.collegeProgramMap.program.universityProgramName}}</td>
 					    <td>{{appliedCourse.date}}</td>
-					    <td>{{appliedCourse.applicationStatus}}</td>
+					    <td>{{appliedCourse.applicationStatus.value}}</td>
 					    <!-- <td>{{appliedCourse.}}</td>
-					    <td>{{appliedCourse.}}</td>
 					    <td>{{appliedCourse.}}</td> -->
 					    <td>
-					    	<div ng-click="vm.printApplication()">
+					    	<div ng-click="vm.payAdmissionFee(appliedCourse.collegeProgramMap)">
+								<a href="#" style="font-size: 25px;">
+						          <span class="fa fa-money"></span>
+						        </a>
+					        </div>
+					    </td> 
+					    <td>
+				    		<div ng-click="vm.printApplication()">
 								<a href="#" style="font-size: 25px;">
 						          <span class="glyphicon glyphicon-print"></span>
 						        </a>
@@ -72,8 +78,3 @@
 		</div>
 	</div>
 </div>
-
-<script type="text/javascript">
-	//To reload selectpicker on page load
-	$(".selectpicker").selectpicker("refresh");
-</script>

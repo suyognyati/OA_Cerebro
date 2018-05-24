@@ -13,25 +13,37 @@ public class FeeType {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="FeeTypeId")
-	private Integer feeTypeId;
+	@Column(name="Id")
+	private Integer id;
 	
-	@Column(name="FeeTypeName")
-	private String feeTypeName;
+	@Column(name="FeeHead")
+	private String feeHead;
+	
+	@Column(name="DisplayTitle")
+	private String displayTitle;
 
-		public Integer getFeeTypeId() {
-			return feeTypeId;
+		public Integer getId() {
+			return id;
 		}
 	
-		public void setFeeTypeId(Integer feeTypeId) {
-			this.feeTypeId = feeTypeId;
+		public void setId(Integer feeTypeId) {
+			this.id = feeTypeId;
 		}
 	
-		public String getFeeTypeName() {
-			return feeTypeName;
+		public String getFeeHead() {
+			return feeHead;
 		}
 	
-		public void setFeeTypeName(String feeTypeName) {
-			this.feeTypeName = feeTypeName;
+		public void setFeeHead(String feeTypeName) {
+			this.feeHead = feeTypeName;
 		}
+
+		public String getDisplayTitle() {
+			return displayTitle;
+		}
+
+		public void setDisplayTitle(String displayTitle) {
+			this.displayTitle = displayTitle;
+		}		
+		
 }
