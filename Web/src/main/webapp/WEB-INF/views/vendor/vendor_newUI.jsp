@@ -30,6 +30,12 @@
 		<!-- Print Style -->
 		<link href="<c:url value='/static/css/print/print.css' />" rel="stylesheet" />
 		
+		<!-- Loader Style -->
+		<link href="<c:url value='/static/css/loader/lds-ellipsis.css' />" rel="stylesheet" />
+		<link href="<c:url value='/static/css/loader/lds-ring.css' />" rel="stylesheet" />
+		<link href="<c:url value='/static/css/loader/lds-spinner.css' />" rel="stylesheet" />
+		<link href="<c:url value='/static/css/loader/loader.css' />" rel="stylesheet" />
+		
 		<!-- My Custom Styles -->
 		<link href="<c:url value='/student/css/userstyle.css' />" rel="stylesheet" />
 		

@@ -27,6 +27,55 @@ var app = angular.module('app');
 	    };
 	}]);
 	
+	app.directive('loading',   ['$http' ,function ($http)  
+		 {  
+	     return {  
+	         restrict: 'A',  
+	         //template: '<div class="loader-overlay"></div><div class="loader"></div>',
+	         //template: '<div class="loader-overlay"></div><div class="lds-ring"><div></div><div></div><div></div><div></div></div>',
+	         template: '<div class="loader-overlay"></div><div class="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>',
+	         //template: '<div class="loader-overlay"></div><div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>',
+	         link: function (scope, elm, attrs)  
+	         {  
+	             scope.isLoading = function () {  
+	                 return $http.pendingRequests.length > 0;  
+	             };  
+	  
+	             scope.$watch(scope.isLoading, function (v)  
+	             {  
+	                 if(v){  
+	                     elm.show();  
+	                 }else{  
+	                     elm.hide();  
+	                 }  
+	             });  
+	         }  
+	     };  
+	 }]);
+	
+	app.directive('loaded',   ['$http' ,function ($http)  
+		 {  
+	     return {  
+	         restrict: 'A',  
+	         //template: '<div class="loading-spiner"><img src="http://www.nasa.gov/multimedia/videogallery/ajax-loader.gif" /> </div>',  
+	         link: function (scope, elm, attrs)  
+	         {  
+	             scope.isLoading = function () {  
+	                 return $http.pendingRequests.length > 0;  
+	             };  
+	  
+	             scope.$watch(scope.isLoading, function (v)  
+	             {  
+	                 if(v){  
+	                	 elm.hide();  
+	                 }else{  
+	                     elm.show();  
+	                 }  
+	             });  
+	         }  
+	     };  
+	 }]);
+	
 
 	app.filter('orderObjectBy', function() {
 		return function(input, attribute) {

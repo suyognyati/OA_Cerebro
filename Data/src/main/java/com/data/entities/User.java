@@ -30,6 +30,14 @@ public class User {
 	@JoinColumn(name="FK_UserDetail")
 	UserDetail userDetail;
 	
+	@ManyToOne
+	@JoinColumn(name="FK_Vendor")
+	Vendor vendor;
+	
+	@ManyToOne
+	@JoinColumn(name="FK_CollegeStaff")
+	CollegeStaff collegeStaff;
+	
 	public Integer getUserId() {
 		return userId;
 	}
@@ -58,8 +66,21 @@ public class User {
 	public UserDetail getUserDetail() {
 		return userDetail;
 	}
-
 	public void setUserDetail(UserDetail userDetail) {
 		this.userDetail = userDetail;
+	}
+
+	public Vendor getVendor() {
+		return vendor;
+	}
+	public void setVendor(Vendor vendor) {
+		this.vendor = vendor;
+	}
+
+	public CollegeStaff getCollegeStaff() {
+		return collegeStaff;
+	}
+	public void setCollegeStaff(CollegeStaff collegeStaff) {
+		this.collegeStaff = collegeStaff;
 	}
 }

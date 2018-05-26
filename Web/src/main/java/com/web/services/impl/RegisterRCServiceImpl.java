@@ -47,7 +47,6 @@ public class RegisterRCServiceImpl implements RegisterRCService {
 		userDetail.setEmail(userDetailModel.getEmail());
 		userDetail.setMobileNo(userDetailModel.getMobileNo());
 		userDetail.setDateOfBirth(userDetailModel.getBirthDate());
-		userDetail.setRole("" + StaticConstants.ROLE.ROLE_STUDENT);
 		userDetail = userDetailService.save(userDetail);
 		
 		//Creating user
