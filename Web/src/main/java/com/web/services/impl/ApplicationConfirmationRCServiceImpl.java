@@ -172,7 +172,12 @@ public class ApplicationConfirmationRCServiceImpl implements ApplicationConfirma
 	private void getOccupation(User user) {
 		OccupationReservation occupationAndReservation = occupationReservationService.getByUserDetail(user.getUserDetail());
 	
-		if(occupationAndReservation != null) {			
+		if(occupationAndReservation != null) {	
+			if(occupationAndReservation.getOccupation() != null
+					&& Enums.Occupation.get(occupationAndReservation.getOccupation()) != null) {
+				printApplicationModel.setOccupation(Enums.Occupation.get(occupationAndReservation.getOccupation()).getValue());
+			}
+			printApplicationModel.setGuardianAnnualIncome(occupationAndReservation.getGuardianAnnualIncome());
 			printApplicationModel.setCaste(occupationAndReservation.getCaste());
 			if(occupationAndReservation.getCategory() != null
 					&& Enums.Category.get(occupationAndReservation.getCategory()) != null) {

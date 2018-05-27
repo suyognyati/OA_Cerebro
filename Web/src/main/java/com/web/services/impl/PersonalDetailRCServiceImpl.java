@@ -44,20 +44,19 @@ public class PersonalDetailRCServiceImpl implements PersonalDetailRCService {
 	}
 	
 	public void savePersonalDetail(PersonalDetailModel personalDetailModel, User user){
+		//Updating data in UserDetail Table
+		user.getUserDetail().setDateOfBirth(personalDetailModel.getBirthDate());
+		
+		//Updating data in PersonalDetail Table
 		PersonalDetail personalDetail = personalDetailService.getByUserDetail(user.getUserDetail());
 		if(personalDetail == null) {
 			personalDetail = new PersonalDetail();
 			personalDetail.setUserDetail(user.getUserDetail());
 		}
 		
-		/*Address address = personalDetail.getAddress();		
-		if(address == null) {
-			address = new Address();
-			personalDetail.setAddress(address);
-		}*/
-		
 		personalDetail = setPersonalDetailObject(personalDetail, personalDetailModel/*, address*/);
 		
+		//Updating required document list as per filled data
 		if(personalDetail.getIsNameChanged() != null) {
 			if(personalDetail.getIsNameChanged()) {
 				userDocumentService.addByDocumentFor(user.getUserDetail(), Enums.DocumentsFor.NameChanged.getId());

@@ -20,7 +20,21 @@
 					method: "GET",
 					url: "/Web/application/paymentdetail/" + collegeProgramMapId
 				})
-			}
+			},
+			
+			setApplicant : function(userId) {
+				return $http({
+					method: "GET",
+					url: "/Web/applicants/setApplicant/" + userId
+				})
+			},
+			
+			getListofQualification : function(accessTokenParam) {
+				return $http({
+					method: "GET",
+					url: "/Web/educationalInformation/getListofQualification/"
+				})
+			},
 		}
 	}
 }());

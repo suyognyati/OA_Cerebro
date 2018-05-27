@@ -48,6 +48,8 @@ public class PrintApplicationModel {
 	private String religion;
 	private String motherTongue;
 	private String speciallyAbled;
+	private String occupation;
+	private String guardianAnnualIncome;
 	
 	
 	public String getLastName() {
@@ -301,6 +303,18 @@ public class PrintApplicationModel {
 	}
 	public void setSpeciallyAbled(String speciallyAbled) {
 		this.speciallyAbled = speciallyAbled;
+	}
+	public String getOccupation() {
+		return occupation;
+	}
+	public void setOccupation(String occupation) {
+		this.occupation = occupation;
+	}
+	public String getGuardianAnnualIncome() {
+		return guardianAnnualIncome;
+	}
+	public void setGuardianAnnualIncome(String guardianAnnualIncome) {
+		this.guardianAnnualIncome = guardianAnnualIncome;
 	}
 
 }

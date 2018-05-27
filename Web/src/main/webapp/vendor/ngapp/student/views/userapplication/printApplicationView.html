@@ -143,10 +143,69 @@
 						<td colspan="2"><strong>4. Guardian Information</strong></td>
 					</tr>
 					<tr>
-						<td><strong>Occupation of Guardian : </strong></td>
-						<td><strong>Annual Income of Guardian : </strong></td>
+						<td><strong>Occupation of Guardian : </strong>{{vm.printDetail.occupation}}</td>
+						<td><strong>Annual Income of Guardian : </strong>{{vm.printDetail.guardianAnnualIncome}}</td>
 					</tr>
 				
+				</tbody>
+			</table>
+			<table class="table table-bordered no-margin">
+				<tbody>
+					<tr>
+						<td colspan="9"><strong>5. Educational Details</strong></td>
+					</tr>
+					<tr>
+						<td width="10%"><strong>Name of Examination</strong></td>
+						<td width="30%"><strong>Name of Board / University </strong></td>
+						<td width="20%"><strong>Name of School / College </strong></td>
+						<td width="10%"><strong>Month and Year of Passing </strong></td>
+						<td width="10%"><strong>Exam Seat No. </strong></td>
+						<td width="5%"><strong>Certificate No.</strong></td>
+						<td width="5%"><strong>Marks Obtained</strong></td>
+						<td width="5%"><strong>Out of</strong></td>
+						<td width="5%"><strong>% or CGPA</strong></td>
+					</tr>
+					<tbody class="table-responsive" ng-repeat="qualificationType in vm.qualificationList">
+					<tr ng-repeat="qualification in qualificationType.subQualificationList">
+						<td width="10%">{{qualification.name}}</td>
+						<td width="30%">{{qualification.boardOrUniversity}} </td>
+						<td width="20%">{{qualification.facultyOrCollegeName}}</td>
+						<td width="10%">{{qualification.passingMonth}} {{qualification.passingYear}} </td>
+						<td width="10%">Exam Seat No. </td>
+						<td width="5%">Certificate No.</td>
+						<td width="5%">{{qualification.marksObtain}}</td>
+						<td width="5%">{{qualification.totalMarks}}</td>
+						<td width="5%">% or CGPA</td>
+					</tr>
+					</tbody>
+					<tr>
+						<td colspan="9"><strong>Your Last Qualifyong Exam : </strong></td>
+					</tr>
+					<tr>
+						<td colspan="9"><strong>7. Other Information </strong></td>
+					</tr>
+					<tr>
+						<td colspan="7">Would you like to apply for Hostel Accomodation? </td>
+						<td colspan="2"></td>
+					</tr>
+				</tbody>
+			</table>
+			<table class="table table-bordered no-margin">
+				<tbody>
+					<tr>
+						<td colspan="3"><strong>DECLARATION</strong><br>I hereby declare that all the information furnished by me in 
+						this application form is true, complete and correct to the best of my knowledge and belief. I do
+						understand that I need to obtain and produce all the required documents. I {{vm.printDetail.firstName}} 
+						{{vm.printDetail.middleName}} {{vm.printDetail.lastName}}, Application No : () admit to having understood
+						what constitutes ragging and sexual harassment. I have read the guidelines related to the same. 
+						I hereby affirm that if found guilty of ragging or sexual harassment I am liable for punishment according to the university regulations.
+					</td>
+					</tr>
+					<tr>
+						<td width="30%"><strong>Place : </strong></td>
+						<td width="30%"><strong>Date : </strong></td>
+						<td width="40%" style="text-align : center"><strong><br> (Signature of the Candidate)</strong></td>
+					</tr>
 				</tbody>
 			</table>
 		</div>
