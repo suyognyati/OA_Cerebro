@@ -8,10 +8,10 @@
 	
 	function ApplicationConfirmationService($http) {
 		return{
-			getPrintApplicationDetail : function(){
+			getPrintApplicationDetail : function(collegeProgramMapId){
 				return $http({
 					method: "GET",
-					url: "/Web/printApplication/getPrintDetail/"
+					url: "/Web/printApplication/getPrintDetail/" + collegeProgramMapId
 				})
 			},
 			

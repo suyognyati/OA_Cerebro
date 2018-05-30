@@ -65,9 +65,12 @@ public class ApplicationConfirmationRCServiceImpl implements ApplicationConfirma
 	PrintApplicationModel printApplicationModel = null;
 	
 	@Override
-	public PrintApplicationModel getPrintApplicationDetail(User user) {
+	public PrintApplicationModel getPrintApplicationDetail(Integer collegeProgramMapId, User user) {
 		if(printApplicationModel == null)
 			printApplicationModel = new PrintApplicationModel();
+		
+		CollegeProgramMap collegeProgramMap = collegeProgramMapService.getById(collegeProgramMapId);
+		printApplicationModel.setCollegeProgramMap(collegeProgramMap);
 		
 		getPersonalDetail(user);
 		getAddress(user);

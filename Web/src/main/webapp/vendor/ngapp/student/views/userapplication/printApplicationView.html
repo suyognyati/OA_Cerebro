@@ -24,7 +24,12 @@
 				<tbody>
 					<tr>
 						<td width="10%" rowspan="2">College Icon</td>
-						<td width="60%" rowspan="2">College Name</td>
+						<td width="60%" rowspan="2" style="text-align : center">
+							<span style="font-size: 16px; font-weight:bold">{{vm.printDetail.collegeProgramMap.college.collegeName}}</span>
+							<br><span style="font-size: 14px">{{vm.printDetail.collegeProgramMap.college.address}}</span>
+							<br><span style="font-size: 16px; font-weight:bold">{{vm.printDetail.collegeProgramMap.college.university.universityName}}</span>
+							<br><span style="font-size: 14px">{{vm.printDetail.collegeProgramMap.college.university.address}}</span>	
+						</td>
 						<td width="30%" colspan="2"><strong>Application No.:</strong></td>
 					</tr>
 					<tr>
@@ -35,7 +40,7 @@
 			<table class="table table-bordered no-margin">
 				<tbody>
 					<tr>
-						<td colspan="4"><strong>Course Applied for :</strong></td>
+						<td colspan="4"><strong>Course Applied for : </strong>{{vm.printDetail.collegeProgramMap.program.universityProgramName}}</td>
 						<td width=""><strong>PRN :</strong></td>
 					</tr>
 					<tr>

@@ -1,5 +1,6 @@
 package com.web.model;
 
+import com.data.entities.CollegeProgramMap;
 import com.data.entities.Country;
 import com.data.entities.State;
 
@@ -50,8 +51,8 @@ public class PrintApplicationModel {
 	private String speciallyAbled;
 	private String occupation;
 	private String guardianAnnualIncome;
-	
-	
+	CollegeProgramMap collegeProgramMap;
+		
 	public String getLastName() {
 		return lastName;
 	}
@@ -316,5 +317,10 @@ public class PrintApplicationModel {
 	public void setGuardianAnnualIncome(String guardianAnnualIncome) {
 		this.guardianAnnualIncome = guardianAnnualIncome;
 	}
-
+	public CollegeProgramMap getCollegeProgramMap() {
+		return collegeProgramMap;
+	}
+	public void setCollegeProgramMap(CollegeProgramMap collegeProgramMap) {
+		this.collegeProgramMap = collegeProgramMap;
+	}
 }

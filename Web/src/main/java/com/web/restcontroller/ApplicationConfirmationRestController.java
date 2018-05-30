@@ -1,7 +1,6 @@
 package com.web.restcontroller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -21,9 +20,9 @@ public class ApplicationConfirmationRestController {
 	@Autowired
 	Session session;
 	
-	@RequestMapping(value="/printApplication/getPrintDetail/")
-	public PrintApplicationModel getPrintApplicationDetail(Model model) {
-		return applicationConfirmationRCService.getPrintApplicationDetail(session.getStudent());
+	@RequestMapping(value="/printApplication/getPrintDetail/{collegeProgramMapId}")
+	public PrintApplicationModel getPrintApplicationDetail(@PathVariable(value="collegeProgramMapId") Integer collegeProgramMapId) {
+		return applicationConfirmationRCService.getPrintApplicationDetail(collegeProgramMapId, session.getStudent());
 	}
 	
 	@RequestMapping(value="/application/paymentdetail/{collegeProgramMapId}/{applicationId}")
