@@ -7,23 +7,25 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.data.entities.Address;
+import com.data.entities.Application;
 import com.data.entities.CollegeFeeMap;
 import com.data.entities.CollegeProgramFeeMap;
 import com.data.entities.CollegeProgramMap;
 import com.data.entities.Enums;
 import com.data.entities.OccupationReservation;
 import com.data.entities.PersonalDetail;
-import com.data.entities.Application;
+import com.data.entities.StudentSelectedSubject;
 import com.data.entities.User;
 import com.data.entities.UserDetail;
 import com.data.entities.VendorTransaction;
 import com.data.services.AddressService;
+import com.data.services.ApplicationService;
 import com.data.services.CollegeFeeMapDao;
 import com.data.services.CollegeProgramFeeMapDao;
 import com.data.services.CollegeProgramMapService;
 import com.data.services.OccupationReservationService;
 import com.data.services.PersonalDetailService;
-import com.data.services.ApplicationService;
+import com.data.services.StudentSelectedSubjectsDao;
 import com.data.services.UserDetailService;
 import com.web.model.ApplicationFeeModel;
 import com.web.model.ApplicationFeeModel.FeeDetail;
@@ -62,15 +64,23 @@ public class ApplicationConfirmationRCServiceImpl implements ApplicationConfirma
 	@Autowired
 	VendorTransactionsRCService vendorTransactionsRCService; 
 	
+	@Autowired
+	StudentSelectedSubjectsDao studentSelectedSubjectsDao; 
+	
 	PrintApplicationModel printApplicationModel = null;
 	
 	@Override
-	public PrintApplicationModel getPrintApplicationDetail(Integer collegeProgramMapId, User user) {
+	public PrintApplicationModel getPrintApplicationDetail(Integer collegeProgramMapId, Integer applicationId, User user) {
 		if(printApplicationModel == null)
 			printApplicationModel = new PrintApplicationModel();
 		
 		CollegeProgramMap collegeProgramMap = collegeProgramMapService.getById(collegeProgramMapId);
 		printApplicationModel.setCollegeProgramMap(collegeProgramMap);
+		
+		Application application = applicationService.getById(applicationId);
+		
+		List<StudentSelectedSubject> studentSelectedSubject = studentSelectedSubjectsDao.getSelectedSubjectOfApplication(application, collegeProgramMap, user.getUserDetail());
+		printApplicationModel.setStudentSelectedSubjectList(studentSelectedSubject);
 		
 		getPersonalDetail(user);
 		getAddress(user);

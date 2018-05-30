@@ -47,8 +47,10 @@
 			);
 		}
 		
-		vm.printApplication = function(collegeProgramMap) {
-			$state.go("student.application.printApplication", {collegeProgramMapId: collegeProgramMap.collegeProgramMapId});
+		vm.printApplication = function(collegeProgramMap, applicationId) {
+			$state.go("student.application.printApplication", 
+					{collegeProgramMapId: collegeProgramMap.collegeProgramMapId, applicationId: applicationId}
+			);
 		}
 
 		setTimeout(function() {

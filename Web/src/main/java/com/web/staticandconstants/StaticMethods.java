@@ -37,6 +37,11 @@ public class StaticMethods {
 		return dateFormat.format(today);
 	}
 	
+	public static Date GetCurrentDate() {
+		Date today = new Date();
+		return today;
+	}
+	
 	public static Integer GetCourseStartYear() {
 		Calendar today = Calendar.getInstance();
 		return today.get(Calendar.YEAR);

@@ -32,9 +32,6 @@
 						</td>
 						<td width="30%" colspan="2"><strong>Application No.:</strong></td>
 					</tr>
-					<tr>
-						<td colspan="2">BarCode</td>
-					</tr>
 				</tbody>
 			</table>
 			<table class="table table-bordered no-margin">
@@ -139,6 +136,24 @@
 					</tr>
 					<tr>
 						<td colspan="3"><strong>3. Social Information (Additional Information)</strong></td>
+					</tr>
+				</tbody>
+			</table>
+			<table class="table table-bordered no-margin">
+				<tbody>
+					<tr>
+						<td><strong>Paper Selected for Course : </strong></td>
+					</tr>
+					<tr>
+						<td><strong>Medium of Instruction : </strong></td>
+					</tr>
+					<tr>
+						<td class="row">
+							<div class="col-sm-6" 
+								 ng-repeat="studentSelectedSubject in ((vm.printDetail.studentSelectedSubjectList | orderObjectBy:'subject.universitySubjectCode'))">
+								{{studentSelectedSubject.subject.universitySubjectCode}} - {{studentSelectedSubject.subject.universitySubjectName}}
+							</div>
+						</td>
 					</tr>
 				</tbody>
 			</table>

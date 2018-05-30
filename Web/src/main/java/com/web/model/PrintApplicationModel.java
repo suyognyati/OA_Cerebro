@@ -1,8 +1,10 @@
 package com.web.model;
 
+import java.util.List;
 import com.data.entities.CollegeProgramMap;
 import com.data.entities.Country;
 import com.data.entities.State;
+import com.data.entities.StudentSelectedSubject;
 
 public class PrintApplicationModel {
 
@@ -51,7 +53,8 @@ public class PrintApplicationModel {
 	private String speciallyAbled;
 	private String occupation;
 	private String guardianAnnualIncome;
-	CollegeProgramMap collegeProgramMap;
+	private CollegeProgramMap collegeProgramMap;
+	private List<StudentSelectedSubject> studentSelectedSubjectList;
 		
 	public String getLastName() {
 		return lastName;
@@ -323,4 +326,11 @@ public class PrintApplicationModel {
 	public void setCollegeProgramMap(CollegeProgramMap collegeProgramMap) {
 		this.collegeProgramMap = collegeProgramMap;
 	}
+	public List<StudentSelectedSubject> getStudentSelectedSubjectList() {
+		return studentSelectedSubjectList;
+	}
+	public void setStudentSelectedSubjectList(List<StudentSelectedSubject> studentSelectedSubjectList) {
+		this.studentSelectedSubjectList = studentSelectedSubjectList;
+	}
+	
 }

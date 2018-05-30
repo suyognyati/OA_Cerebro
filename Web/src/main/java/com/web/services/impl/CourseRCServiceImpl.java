@@ -6,19 +6,21 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.data.entities.Application;
 import com.data.entities.College;
 import com.data.entities.CollegeProgramMap;
 import com.data.entities.CourseGroupLevelOne;
 import com.data.entities.EducationalInformation;
 import com.data.entities.Enums;
-import com.data.entities.Application;
+import com.data.entities.StudentSelectedSubject;
 import com.data.entities.University_Subject;
 import com.data.entities.User;
+import com.data.services.ApplicationService;
 import com.data.services.CollegeProgramMapService;
 import com.data.services.CollegeSubjectMapService;
 import com.data.services.CourseGroupLevelOneService;
 import com.data.services.EducationalInformationService;
-import com.data.services.ApplicationService;
+import com.data.services.StudentSelectedSubjectsDao;
 import com.web.model.AppliedCourseModel;
 import com.web.model.SubjectModel;
 import com.web.services.CourseRCService;
@@ -41,6 +43,9 @@ public class CourseRCServiceImpl implements CourseRCService{
 	
 	@Autowired
 	EducationalInformationService educationalInformationService; 
+	
+	@Autowired
+	StudentSelectedSubjectsDao studentSelectedSubjectsDao;
 	
 	public SubjectModel getSubjectsByCollegeProgram(Integer collegeId, Integer collegeProgramId){
 		
@@ -67,11 +72,22 @@ public class CourseRCServiceImpl implements CourseRCService{
 			String frmNo = generateFormNo(clgPrgMap);
 			application.setFormNo(frmNo);
 			application.setUserDetail(student.getUserDetail());
-			application.setDate(StaticMethods.GetCurrentDateString("dd-MM-yyyy"));
+			application.setDate(StaticMethods.GetCurrentDate());
 			application.setEducationalInformation(educationalInformation);
 			application.setVendor(vendor.getVendor());
 		}
-		applicationService.save(application);
+		application = applicationService.save(application);
+		
+		List<StudentSelectedSubject> studentSelectedSubjectList = new ArrayList<StudentSelectedSubject>();
+		for(University_Subject subject : selectedSubjectList) {
+			StudentSelectedSubject studentselectedSubject = new StudentSelectedSubject();
+			studentselectedSubject.setSubject(subject);
+			studentselectedSubject.setStudent(application.getUserDetail());
+			studentselectedSubject.setCollegeProgramMap(application.getCollegeProgramMap());
+			studentselectedSubject.setApplication(application);
+			studentSelectedSubjectList.add(studentselectedSubject);
+		}
+		studentSelectedSubjectsDao.save(studentSelectedSubjectList);
 	}
 	
 	private String generateFormNo(CollegeProgramMap collegeProgramMap) {

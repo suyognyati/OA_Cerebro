@@ -1,5 +1,7 @@
 package com.data.entities;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.ColumnResult;
 import javax.persistence.ConstructorResult;
@@ -94,7 +96,7 @@ public class Application {
 	private VendorTransaction vendorTransaction;
 	
 	@Column(name="Date")
-	private String date;
+	private Date date;
 	
 	@Column(name="ApplicationStatus")
 	private Integer applicationStatus;
@@ -158,11 +160,11 @@ public class Application {
 			this.vendorTransaction = vendorTransaction;
 		}
 
-		public String getDate() {
+		public Date getDate() {
 			return date;
 		}
-	
-		public void setDate(String date) {
+
+		public void setDate(Date date) {
 			this.date = date;
 		}
 	

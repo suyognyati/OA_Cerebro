@@ -1,5 +1,6 @@
 package com.data.entities;
 
+import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -32,6 +33,12 @@ public class University_Program {
 	
 	@Column(name="AllowedLastQualifications")
 	private String allowedLastQualifications;
+	
+	@Column(name="FromDate")
+	private Date fromDate;
+
+	@Column(name="ToDate")
+	private Date toDate;	
 	
 	@ManyToOne
 	@JoinColumn(name="FK_UniversityId")
@@ -103,6 +110,22 @@ public class University_Program {
 
 		public void setProgramFileMap(ProgramFileMap programFileMap) {
 			this.programFileMap = programFileMap;
+		}
+
+		public Date getFromDate() {
+			return fromDate;
+		}
+
+		public void setFromDate(Date fromDate) {
+			this.fromDate = fromDate;
+		}
+
+		public Date getToDate() {
+			return toDate;
+		}
+
+		public void setToDate(Date toDate) {
+			this.toDate = toDate;
 		}
 
 }

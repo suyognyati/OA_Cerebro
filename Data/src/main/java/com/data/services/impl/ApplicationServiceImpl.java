@@ -19,10 +19,10 @@ public class ApplicationServiceImpl implements ApplicationService {
 	ApplicationJpaRepository applicationJpaRepository;
 	
 	@Override
-	public void save(Application application) {
-		applicationJpaRepository.save(application);
+	public Application save(Application application) {
+		return applicationJpaRepository.save(application);
 	}
-
+	
 	@Override
 	public List<Application> getByUserDetailandCollege(UserDetail userDetail, College college) {
 		return applicationJpaRepository.findByUserDetailAndCollegeProgramMapCollege(userDetail, college);

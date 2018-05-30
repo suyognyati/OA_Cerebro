@@ -20,9 +20,11 @@ public class ApplicationConfirmationRestController {
 	@Autowired
 	Session session;
 	
-	@RequestMapping(value="/printApplication/getPrintDetail/{collegeProgramMapId}")
-	public PrintApplicationModel getPrintApplicationDetail(@PathVariable(value="collegeProgramMapId") Integer collegeProgramMapId) {
-		return applicationConfirmationRCService.getPrintApplicationDetail(collegeProgramMapId, session.getStudent());
+	@RequestMapping(value="/printApplication/getPrintDetail/{collegeProgramMapId}/{applicationId}")
+	public PrintApplicationModel getPrintApplicationDetail(
+			@PathVariable(value="collegeProgramMapId") Integer collegeProgramMapId, 
+			@PathVariable(value="applicationId") Integer applicationId) {
+		return applicationConfirmationRCService.getPrintApplicationDetail(collegeProgramMapId, applicationId, session.getStudent());
 	}
 	
 	@RequestMapping(value="/application/paymentdetail/{collegeProgramMapId}/{applicationId}")

@@ -1,5 +1,6 @@
 package com.web.model;
 
+import java.util.Date;
 import java.util.List;
 
 import com.data.entities.CollegeProgramMap;
@@ -18,7 +19,7 @@ public class AppliedCourseModel {
 	private String formNo;
 	private CollegeProgramMap collegeProgramMap;
 	private User user;	
-	private String date;
+	private Date date;
 	private Enums.KeyValuePair applicationStatus;
 	private String statusComments;
 	
@@ -74,10 +75,10 @@ public class AppliedCourseModel {
 			this.user = user;
 		}
 		
-		public String getDate() {
+		public Date getDate() {
 			return date;
 		}
-		public void setDate(String date) {
+		public void setDate(Date date) {
 			this.date = date;
 		}
 		

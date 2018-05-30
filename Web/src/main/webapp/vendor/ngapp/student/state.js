@@ -504,7 +504,7 @@ function StudentStates($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, 
 	})
 	
 	.state("student.application.printApplication",{
-		url: "/printapplication/:collegeProgramMapId",
+		url: "/printapplication/:collegeProgramMapId/:applicationId",
 		templateUrl: 'ngapp/student/views/userapplication/printApplicationView.html',
 		controller:"PrintApplicationCtrl as vm",
 

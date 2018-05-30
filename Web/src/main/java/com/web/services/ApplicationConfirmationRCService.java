@@ -11,7 +11,7 @@ public interface ApplicationConfirmationRCService {
 	 * @param user
 	 * @return PrintApplicationModel
 	 */
-	PrintApplicationModel getPrintApplicationDetail(Integer collegeProgramMapId, User user);
+	PrintApplicationModel getPrintApplicationDetail(Integer collegeProgramMapId, Integer applicationId, User user);
 	
 	/**
 	 * This function collects complete breakdown of fee.

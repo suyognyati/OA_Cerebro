@@ -19,9 +19,10 @@
 		vm.accessTokenParam = "?access_token=" + vm.accessToken;
 		
 		vm.collegeProgramMapId = $state.params.collegeProgramMapId;
+		vm.applicationId = $state.params.applicationId;
 		
 		vm.getPrintDetail = function() {
-			applicationConfirmationService.getPrintApplicationDetail(vm.collegeProgramMapId)
+			applicationConfirmationService.getPrintApplicationDetail(vm.collegeProgramMapId, vm.applicationId)
 			.then(function(success) {
 				vm.printDetail = success.data;
 			}, function(error) {
