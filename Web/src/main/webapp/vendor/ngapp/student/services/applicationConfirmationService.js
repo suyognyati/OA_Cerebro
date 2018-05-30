@@ -15,10 +15,17 @@
 				})
 			},
 			
-			getFeeDetail : function(collegeProgramMapId, accessTokenParam) {
+			getFeeDetail : function(collegeProgramMapId, applicationId, accessTokenParam) {
 				return $http({
 					method: "GET",
-					url: "/Web/application/paymentdetail/" + collegeProgramMapId
+					url: "/Web/application/paymentdetail/" + collegeProgramMapId + "/" + applicationId
+				})
+			},
+			
+			payAndSubmit : function(collegeProgramMapId, applicationId, accessTokenParam) {
+				return $http({
+					method: "GET",
+					url: "/Web/application/payAndSubmit/" + collegeProgramMapId + "/" + applicationId
 				})
 			},
 			

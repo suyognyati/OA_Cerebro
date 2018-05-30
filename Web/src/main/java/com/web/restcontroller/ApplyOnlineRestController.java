@@ -66,7 +66,7 @@ public class ApplyOnlineRestController {
 	
 	@RequestMapping(value="/subject/applyForCourse", method = RequestMethod.POST)
 	public void applyForCourse(@RequestBody AppliedCourseModel appliedCourseModel) {
-		courseRCService.applyForCourse(session.getStudent(), appliedCourseModel.getCollegeProgramId(), 
+		courseRCService.applyForCourse(session.getLoggedInUser(), session.getStudent(), appliedCourseModel.getCollegeProgramId(), 
 				appliedCourseModel.getSelectedAllowedQualification(), appliedCourseModel.getSelectedSubjectList());
 	}
 	
@@ -77,7 +77,7 @@ public class ApplyOnlineRestController {
 	}
 	
 	@RequestMapping(value="/application/deleteAppliedCourse", method = RequestMethod.POST)
-	public void applyForCourse(@RequestBody Integer applicationId) {
+	public void deleteAppliedCourse(@RequestBody Integer applicationId) {
 		submittedApplicationRCService.deleteAppliedCourse(applicationId);
 	}
 }

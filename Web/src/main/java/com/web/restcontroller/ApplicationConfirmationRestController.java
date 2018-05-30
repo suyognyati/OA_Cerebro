@@ -26,9 +26,21 @@ public class ApplicationConfirmationRestController {
 		return applicationConfirmationRCService.getPrintApplicationDetail(session.getStudent());
 	}
 	
-	@RequestMapping(value="/application/paymentdetail/{collegeProgramMapId}")
-	public ApplicationFeeModel getApplicationPaymentDetail(@PathVariable(value="collegeProgramMapId") Integer collegeProgramMapId) {
+	@RequestMapping(value="/application/paymentdetail/{collegeProgramMapId}/{applicationId}")
+	public ApplicationFeeModel getApplicationPaymentDetail(
+			@PathVariable(value="collegeProgramMapId") Integer collegeProgramMapId,
+			@PathVariable(value="applicationId") Integer applicationId) {
 		ApplicationFeeModel applicationFeeModel = applicationConfirmationRCService.getFeeStructure(collegeProgramMapId);
+		applicationFeeModel.setApplicationId(applicationId);	//Setting applicationId to use for next step.
 		return applicationFeeModel;
+	}
+	
+	@RequestMapping(value="/application/payAndSubmit/{collegeProgramMapId}/{applicationId}")
+	public Boolean payApplicationFee(
+			@PathVariable(value="collegeProgramMapId") Integer collegeProgramMapId,
+			@PathVariable(value="applicationId") Integer applicationId) {
+		
+		Boolean success = applicationConfirmationRCService.submitApplication(session.getLoggedInUser(), collegeProgramMapId, applicationId);
+		return success;
 	}
 }

@@ -757,9 +757,10 @@ public class Enums {
 		Cancelled(1, "Cancelled"),
 		Partial(2, "Partial"),
 		Submitted(3, "Submitted"),
-		Accepted(4, "Accepted"),
-		Approved(5, "Approved"),
-		Completed(6, "Completed");
+		Rejected(4, "Rejected"),
+		Accepted(5, "Accepted"),
+		Approved(6, "Approved"),
+		Completed(7, "Completed");
 				
 		private int id;
 		private String value;

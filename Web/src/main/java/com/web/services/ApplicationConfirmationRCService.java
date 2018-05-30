@@ -19,4 +19,11 @@ public interface ApplicationConfirmationRCService {
 	 * @return ApplicationFeeModel
 	 */
 	ApplicationFeeModel getFeeStructure(Integer collegeProgramMapId);
+	
+	/**
+	 * Submit application by paying application fee
+	 * @param collegeProgramMapId
+	 * @return Boolean
+	 */
+	Boolean submitApplication(User vendor, Integer collegeProgramMapId, Integer applicationId);
 }

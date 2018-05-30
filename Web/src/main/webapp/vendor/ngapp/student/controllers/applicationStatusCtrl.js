@@ -41,8 +41,10 @@
 			}
 		}
 		
-		vm.payAdmissionFee = function (collegeProgramMap) {
-			$state.go("student.application.payApplicationFee", {collegeProgramMapId: collegeProgramMap.collegeProgramMapId});
+		vm.payAdmissionFee = function (collegeProgramMap, applicationId) {
+			$state.go("student.application.payApplicationFee", 
+					{collegeProgramMapId: collegeProgramMap.collegeProgramMapId, applicationId: applicationId}
+			);
 		}
 		
 		vm.printApplication = function() {

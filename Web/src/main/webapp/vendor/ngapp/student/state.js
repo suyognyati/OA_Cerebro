@@ -482,7 +482,7 @@ function StudentStates($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, 
 	})
 	
 	.state("student.application.payApplicationFee",{
-		url: "/payapplicationfee/:collegeProgramMapId",
+		url: "/payapplicationfee/:collegeProgramMapId/:applicationId",
 		templateUrl: 'ngapp/student/views/userapplication/applicationFee.html',
 		controller:"ApplicationFeeCtrl as vm",
 

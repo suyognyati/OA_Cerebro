@@ -85,6 +85,14 @@ public class SubmittedApplications {
 	@JoinColumn(name="FK_EducationalInformation")
 	private EducationalInformation educationalInformation;
 	
+	@ManyToOne
+	@JoinColumn(name="FK_Vendor")
+	private Vendor vendor;	
+	
+	@ManyToOne
+	@JoinColumn(name="FK_VendorTransaction")
+	private VendorTransaction vendorTransaction;
+	
 	@Column(name="Date")
 	private String date;
 	
@@ -132,6 +140,22 @@ public class SubmittedApplications {
 
 		public void setEducationalInformation(EducationalInformation educationalInformation) {
 			this.educationalInformation = educationalInformation;
+		}
+		
+		public Vendor getVendor() {
+			return vendor;
+		}
+
+		public void setVendor(Vendor vendor) {
+			this.vendor = vendor;
+		}
+
+		public VendorTransaction getVendorTransaction() {
+			return vendorTransaction;
+		}
+
+		public void setVendorTransaction(VendorTransaction vendorTransaction) {
+			this.vendorTransaction = vendorTransaction;
 		}
 
 		public String getDate() {

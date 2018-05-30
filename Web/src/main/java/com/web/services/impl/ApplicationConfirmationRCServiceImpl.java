@@ -13,19 +13,23 @@ import com.data.entities.CollegeProgramMap;
 import com.data.entities.Enums;
 import com.data.entities.OccupationReservation;
 import com.data.entities.PersonalDetail;
+import com.data.entities.SubmittedApplications;
 import com.data.entities.User;
 import com.data.entities.UserDetail;
+import com.data.entities.VendorTransaction;
 import com.data.services.AddressService;
 import com.data.services.CollegeFeeMapDao;
 import com.data.services.CollegeProgramFeeMapDao;
 import com.data.services.CollegeProgramMapService;
 import com.data.services.OccupationReservationService;
 import com.data.services.PersonalDetailService;
+import com.data.services.SubmittedApplicationService;
 import com.data.services.UserDetailService;
 import com.web.model.ApplicationFeeModel;
 import com.web.model.ApplicationFeeModel.FeeDetail;
 import com.web.model.PrintApplicationModel;
 import com.web.services.ApplicationConfirmationRCService;
+import com.web.services.VendorTransactionsRCService;
 import com.web.staticandconstants.StaticMethods;
 
 @Service("PrintApplicationRCService")
@@ -51,6 +55,12 @@ public class ApplicationConfirmationRCServiceImpl implements ApplicationConfirma
 	
 	@Autowired
 	CollegeFeeMapDao collegeFeeMapDao;
+	
+	@Autowired
+	SubmittedApplicationService submittedApplicationService;
+	
+	@Autowired
+	VendorTransactionsRCService vendorTransactionsRCService; 
 	
 	PrintApplicationModel printApplicationModel = null;
 	
@@ -84,6 +94,26 @@ public class ApplicationConfirmationRCServiceImpl implements ApplicationConfirma
 		applicationFeeModel.setCollege(collegeProgramMap.getCollege());
 		applicationFeeModel.setProgram(collegeProgramMap.getProgram());
 		return applicationFeeModel;
+	}
+	
+	@Override
+	public Boolean submitApplication(User vendor, Integer collegeProgramMapId, Integer applicationId) {
+		//CollegeProgramMap collegeProgramMap = collegeProgramMapService.getById(collegeProgramMapId);
+		SubmittedApplications application = submittedApplicationService.getById(applicationId);
+		
+		VendorTransaction vendorTransaction = null;
+		
+		if(application.getApplicationStatus() == Enums.ApplicationStatus.Partial.getId())
+			vendorTransaction = vendorTransactionsRCService.payApplicationFee(collegeProgramMapId, vendor.getVendor());
+		
+		if(vendorTransaction != null) {
+			application.setApplicationStatus(Enums.ApplicationStatus.Submitted.getId());
+			application.setVendorTransaction(vendorTransaction);
+			submittedApplicationService.save(application);
+			return true;
+		}
+		
+		return false;
 	}
 	
 	//Private functions for getPrintApplicationDetail
@@ -204,8 +234,8 @@ public class ApplicationConfirmationRCServiceImpl implements ApplicationConfirma
 		ApplicationFeeModel applicationFeeModel = new ApplicationFeeModel();
 		List<FeeDetail> feeDetailList = new ArrayList<FeeDetail>();
 		
-		Integer vendorAmount = 0;
-		Integer totalAmount = 0;
+		Float vendorAmount = 0f;
+		Float totalAmount = 0f;
 		
 		if(collegeProgramFeeMapList != null) {
 			for(CollegeProgramFeeMap collegeProgramFeeMap : collegeProgramFeeMapList) {
@@ -213,7 +243,7 @@ public class ApplicationConfirmationRCServiceImpl implements ApplicationConfirma
 				feeDetail.setProgramFeeId(collegeProgramFeeMap.getId());
 				feeDetail.setDisplayTitle(collegeProgramFeeMap.getFeeType().getDisplayTitle());
 				feeDetail.setFeeHead(collegeProgramFeeMap.getFeeType().getFeeHead());
-				Integer amount = collegeProgramFeeMap.getAmount();
+				Float amount = collegeProgramFeeMap.getAmount();
 				feeDetail.setAmount(amount);
 				Boolean displayPurpose = collegeProgramFeeMap.getOnlyForDisplayPurpose();
 				feeDetail.setOnlyForDisplayPurpose(displayPurpose);
@@ -228,7 +258,7 @@ public class ApplicationConfirmationRCServiceImpl implements ApplicationConfirma
 				feeDetail.setFeeId(collegeFeeMap.getId());
 				feeDetail.setDisplayTitle(collegeFeeMap.getFeeType().getDisplayTitle());
 				feeDetail.setFeeHead(collegeFeeMap.getFeeType().getFeeHead());
-				Integer amount = collegeFeeMap.getAmount();
+				Float amount = collegeFeeMap.getAmount();
 				feeDetail.setAmount(amount);
 				Boolean displayPurpose = collegeFeeMap.getOnlyForDisplayPurpose();
 				feeDetail.setOnlyForDisplayPurpose(displayPurpose);
@@ -245,4 +275,6 @@ public class ApplicationConfirmationRCServiceImpl implements ApplicationConfirma
 		
 		return applicationFeeModel; 
 	}
+
+	
 }

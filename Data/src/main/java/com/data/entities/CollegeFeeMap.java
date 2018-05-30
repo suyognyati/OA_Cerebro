@@ -19,7 +19,7 @@ public class CollegeFeeMap {
 	private Integer id;
 	
 	@Column(name="Amount")
-	private Integer amount;
+	private Float amount;
 	
 	@Column(name="OnlyForDisplayPurpose")
 	private Boolean onlyForDisplayPurpose;
@@ -43,11 +43,11 @@ public class CollegeFeeMap {
 			this.id = id;
 		}
 	
-		public Integer getAmount() {
+		public Float getAmount() {
 			return amount;
 		}
 	
-		public void setAmount(Integer amount) {
+		public void setAmount(Float amount) {
 			this.amount = amount;
 		}
 	

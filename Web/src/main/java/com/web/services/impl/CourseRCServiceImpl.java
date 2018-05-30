@@ -57,7 +57,7 @@ public class CourseRCServiceImpl implements CourseRCService{
 	}
 
 	@Override
-	public void applyForCourse(User user, Integer collegeProgramMapId, Integer selectedAllowedQualification, List<University_Subject> selectedSubjectList) {
+	public void applyForCourse(User vendor, User student, Integer collegeProgramMapId, Integer selectedAllowedQualification, List<University_Subject> selectedSubjectList) {
 		SubmittedApplications submittedApplication = new SubmittedApplications();
 		submittedApplication.setApplicationStatus(Enums.ApplicationStatus.Partial.getId());
 		CollegeProgramMap clgPrgMap = collegeProgramMapService.getById(collegeProgramMapId);
@@ -66,9 +66,10 @@ public class CourseRCServiceImpl implements CourseRCService{
 			submittedApplication.setCollegeProgramMap(clgPrgMap);
 			String frmNo = generateFormNo(clgPrgMap);
 			submittedApplication.setFormNo(frmNo);
-			submittedApplication.setUserDetail(user.getUserDetail());
+			submittedApplication.setUserDetail(student.getUserDetail());
 			submittedApplication.setDate(StaticMethods.GetCurrentDateString("dd-MM-yyyy"));
 			submittedApplication.setEducationalInformation(educationalInformation);
+			submittedApplication.setVendor(vendor.getVendor());
 		}
 		submittedApplicationService.save(submittedApplication);
 	}

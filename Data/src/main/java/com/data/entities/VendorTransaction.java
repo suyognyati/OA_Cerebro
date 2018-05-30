@@ -70,9 +70,6 @@ public class VendorTransaction {
 		public Float getBalance() {
 			return balance;
 		}
-		public void setBalance(Float balance) {
-			this.balance = balance;
-		}
 		public Date getTransactionDateTime() {
 			return transactionDateTime;
 		}
@@ -84,6 +81,23 @@ public class VendorTransaction {
 		}
 		public void setVendor(Vendor vendor) {
 			this.vendor = vendor;
+		}
+		
+		public Boolean updateBalanceFromAvailableBalance(Float availableBalance) {
+			if(this.credit == null && this.debit == null)
+				return false;
+			else if(this.credit != null && this.debit != null)
+				return false;			
+			else if(this.credit != null) {
+				this.balance = availableBalance + this.credit;
+				return true;
+			}
+			else if(this.debit != null) {
+				this.balance = availableBalance - this.debit;
+				return true;
+			}
+			
+			return false;
 		}
 	
 }

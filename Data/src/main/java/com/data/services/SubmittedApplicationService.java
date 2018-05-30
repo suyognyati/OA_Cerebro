@@ -12,4 +12,11 @@ public interface SubmittedApplicationService {
 	public List<SubmittedApplications> getByUserDetailandCollege(UserDetail userDetail, College college);
 	void deleteById(Integer submittedApplicationId);
 	List<AppliedStudentPOCO> getAppliedStudentListOfProgram(Integer collegeProgramMapId);
+	
+	/**
+	 * Get application information by ID
+	 * @param id
+	 * @return SubmittedApplications
+	 */
+	SubmittedApplications getById(Integer id);
 }

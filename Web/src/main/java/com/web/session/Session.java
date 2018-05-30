@@ -9,7 +9,6 @@ import org.springframework.stereotype.Component;
 
 import com.data.entities.College;
 import com.data.entities.User;
-import com.data.entities.UserDetail;
 import com.web.services.SessionRCService;
 
 @Component

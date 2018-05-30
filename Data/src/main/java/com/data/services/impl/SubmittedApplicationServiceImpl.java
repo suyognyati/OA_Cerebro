@@ -37,4 +37,11 @@ public class SubmittedApplicationServiceImpl implements SubmittedApplicationServ
 	public List<AppliedStudentPOCO> getAppliedStudentListOfProgram(Integer collegeProgramMapId) {
 		return submittedApplicationsJpaRepository.getMeritStudents(collegeProgramMapId);
 	}
+
+	
+	@Override
+	public SubmittedApplications getById(Integer id) {
+		return submittedApplicationsJpaRepository.findOne(id);
+	}
+	
 }

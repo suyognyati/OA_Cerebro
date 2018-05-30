@@ -10,8 +10,9 @@ public class ApplicationFeeModel {
 	College college;
 	University_Program program;
 	List<FeeDetail> feeDetailList;
-	Integer vendorAmount;
-	Integer totalAmount;
+	Float vendorAmount;
+	Float totalAmount;
+	Integer applicationId;
 
 		public College getCollege() {
 			return college;
@@ -31,24 +32,30 @@ public class ApplicationFeeModel {
 		public void setFeeDetailList(List<FeeDetail> feeDetailList) {
 			this.feeDetailList = feeDetailList;
 		}
-		public Integer getVendorAmount() {
+		public Float getVendorAmount() {
 			return vendorAmount;
 		}
-		public void setVendorAmount(Integer vendorAmount) {
+		public void setVendorAmount(Float vendorAmount) {
 			this.vendorAmount = vendorAmount;
 		}
-		public Integer getTotalAmount() {
+		public Float getTotalAmount() {
 			return totalAmount;
 		}
-		public void setTotalAmount(Integer totalAmount) {
+		public void setTotalAmount(Float totalAmount) {
 			this.totalAmount = totalAmount;
+		}
+		public Integer getApplicationId() {
+			return applicationId;
+		}
+		public void setApplicationId(Integer applicationId) {
+			this.applicationId = applicationId;
 		}
 	
 	
 	public class FeeDetail {
 		private Integer feeId;
 		private Integer programFeeId;
-		private Integer amount;
+		private Float amount;
 		private Boolean onlyForDisplayPurpose;
 		private Integer year;
 		private String displayTitle;
@@ -67,10 +74,10 @@ public class ApplicationFeeModel {
 			public void setProgramFeeId(Integer programFeeId) {
 				this.programFeeId = programFeeId;
 			}
-			public Integer getAmount() {
+			public Float getAmount() {
 				return amount;
 			}
-			public void setAmount(Integer amount) {
+			public void setAmount(Float amount) {
 				this.amount = amount;
 			}
 			public Boolean getOnlyForDisplayPurpose() {
