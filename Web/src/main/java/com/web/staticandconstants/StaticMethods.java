@@ -9,8 +9,6 @@ import org.json.simple.JSONObject;
 
 public class StaticMethods {
 	
-	//public static String UploadDocumentPath = "D:\\admissions\\";
-	
 	@SuppressWarnings("unchecked")
 	public static JSONObject ResponseJson(Boolean success, String successMessage, String errorMessage) {
 		JSONObject jsonObject = new JSONObject();
@@ -18,6 +16,19 @@ public class StaticMethods {
 		jsonObject.put("successMessage", successMessage);
 		jsonObject.put("errorMessage", errorMessage);
 		return jsonObject;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public static JSONObject ResponseJson(String key, Object value) {
+		JSONObject jsonObject = new JSONObject();
+		jsonObject.put(key, value);
+		return jsonObject;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public static JSONObject AddToJsonObject(JSONObject obj, String key, Object value) {
+		obj.put(key, value);
+		return obj;
 	}
 	
 	public static String GetCurrentDateString(String format) {

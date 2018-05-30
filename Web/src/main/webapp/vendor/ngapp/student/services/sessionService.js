@@ -6,39 +6,53 @@
 		
 		function rootScope($state, globalConstants, $rootScope) {    	
 	    	$rootScope.cookieName = "accessToken";
+	    	$rootScope.cStudentName = "loggedInStudent";
 	    	$rootScope.getDataDelay = 0;
 	    	
+	    	//This function will return access token param to pass in http calls
 	    	$rootScope.getAccessTokenParam = function() {
-	    		if(globalConstants.accessToken == null || globalConstants.accessToken == "") {
-	    			globalConstants.accessToken = $rootScope.getCookie($rootScope.cookieName);
-	    			$rootScope.getDataDelay = 1000;
-	    			if(globalConstants.accessToken == null || globalConstants.accessToken == "") {
-	    				$state.go("studentsimple.login");
-	    			}
-	    		} else {
-	    			$rootScope.getDataDelay = 0;
-	    		}
-				var accessTokenParam = "?access_token=" + globalConstants.accessToken;
+	    		var accessTokenParam = $rootScope.getAccessTokenParamByStudentName($rootScope.getStudentName());
+	    		return accessTokenParam;
+	    	}
+	    	
+	    	//This will return access token
+	    	$rootScope.getAccessToken = function() {
+	    		var accessToken = $rootScope.getCookie($rootScope.getStudentName());
+	    		return accessToken;
+	    	}
+	    	
+	    	//This function will return access token param to pass in http calls
+	    	//Here input param is student name which is cookie name.
+	    	$rootScope.getAccessTokenParamByStudentName = function(cookieName) {
+	    		var accessToken = $rootScope.getCookie(cookieName);
+	    		var accessTokenParam = "?access_token=" + accessToken;
+    			if(accessToken == null || accessToken == "") {
+    				$state.go("studentsimple.login");
+    			}
+	    		
 				return accessTokenParam;
 			}
 	    	
-	    	$rootScope.setAccessTokenParam = function(accessToken) {
-	    		var cname = $rootScope.cookieName;
-	    		var cvalue = accessToken;
-	    		var exdays = 1;
-				var d = new Date();
-			    d.setTime(d.getTime() + (exdays*24*60*60*1000));
-			    var expires = "expires="+ d.toUTCString();
-			    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
-			}	    	
+	    	//This function will give student name saved in cookie
+	    	$rootScope.getStudentName = function() {
+	    		var studentName = $rootScope.getCookie($rootScope.cStudentName);
+	    		return studentName;
+	    	}
 	    	
-	    	$rootScope.setCookie = function(cname, cvalue, exdays) {
+	    	//This function will save student name in cookie
+	    	$rootScope.setStudentName = function(cvalue, validity) {
+	    		$rootScope.setCookie($rootScope.cStudentName, cvalue, validity);
+	    	}
+	    	
+	    	//Function to save in cookie
+	    	$rootScope.setCookie = function(cname, cvalue, validity) {
 				var d = new Date();
-			    d.setTime(d.getTime() + (exdays*24*60*60*1000));
+			    d.setTime(d.getTime() + (validity*1000));
 			    var expires = "expires="+ d.toUTCString();
 			    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
 			}
 			
+	    	//Function to get in cookie
 	    	$rootScope.getCookie = function(cname) {
 			    var name = cname + "=";
 			    var decodedCookie = decodeURIComponent(document.cookie);
@@ -55,22 +69,5 @@
 			    return "";
 			}
 		}
-		/*.service("SessionService",
-					["$scope",
-					 "$http",
-					 "$state",
-					 "globalConstants",
-					 SessionService]);
-
-	function SessionService($scope, $http, $state, globalConstants) {
-		var vm = this;
-		
-		getAccessTokenParam = function() {
-			vm.accessTokenParam = "?access_token=" + globalConstants.accessTokenParam;
-			return vm.accessTokenParam;
-		}
-	};*/
-		
-	
 
 }());

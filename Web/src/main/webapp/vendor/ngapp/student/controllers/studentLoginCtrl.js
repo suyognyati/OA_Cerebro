@@ -22,43 +22,34 @@
 		vm.accessTokenParam = "";
 
 		vm.basicAuth = {
-			username : "",
-			password : ""
+			username : "", password : ""
 		};
 
 		vm.credentials = {
-		        username: "", 
-		        password: ""
+			username: "", password: ""
 		};
 			
 		vm.isInvalidUser = false;
+		
+		vm.initialise = function() {
+			vm.accessToken = $scope.getAccessToken();
+			vm.accessTokenParam = $scope.getAccessTokenParam();
+			vm.setUser();
+		}
 		
 		vm.login = function() {
 			vm.basicAuth.username = vm.credentials.username;
 			vm.basicAuth.password = vm.credentials.password;
 			var headers = vm.basicAuth ? {
-				authorization : "Basic "
-						+ btoa(vm.basicAuth.username + ":"
-								+ vm.basicAuth.password)
+				authorization : "Basic " + btoa(vm.basicAuth.username + ":" + vm.basicAuth.password)
 			} : {};
 			
 			studentLoginService.getToken(headers, vm.credentials)
 			.then(function (success){
-				
-				$scope.setAccessTokenParam(success.data.access_token);
-				vm.accessTokenParam = $scope.getAccessTokenParam();
-				$scope.getDataDelay = 0;
-				
-				studentLoginService.setUser(vm.accessTokenParam)
-				.then(function (success){
-					/*var currenturl = $location.$$absUrl;
-					var baseurl = currenturl.split("#");
-					var userpageurl = baseurl[0] + "user/";
-					$window.location.href = userpageurl;*/
-					$state.go("student.dashboard");
-				},function (error){
-					
-				});
+				vm.accessToken = success.data.access_token;
+				vm.accessTokenParam = "?access_token=" + vm.accessToken;				
+				$scope.getDataDelay = 0;				
+				vm.setUser();	//Setting loggedin user in backend and cookies 				
 			},function (error){
 				vm.accessToken = "";
     			vm.accessTokenParam = "";
@@ -67,33 +58,25 @@
 			vm.username = "";
 		};
 		
+		vm.setUser = function() {
+			studentLoginService.setUser(vm.accessTokenParam)
+			.then(function (success){					
+				vm.username = success.data.username;
+				vm.tokenexpirein = success.data.tokenexpirein;
+				$scope.setStudentName(vm.username, vm.tokenexpirein);
+				$scope.setCookie($scope.getStudentName(), vm.accessToken, vm.tokenexpirein);					
+				$state.go("student.dashboard");
+			},function (error){
+				
+			});
+		}
+		
 		vm.registerStudent = function() {
 			$window.isInvalidUser = false;
 			$window.isLoggedOutUser = false;
 			$state.go("studentsimple.register");
 		}
 		
-		vm.setCookie = function(cname, cvalue, exdays) {
-			var d = new Date();
-		    d.setTime(d.getTime() + (exdays*24*60*60*1000));
-		    var expires = "expires="+ d.toUTCString();
-		    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
-		}
-		
-		vm.getCookie = function(cname) {
-		    var name = cname + "=";
-		    var decodedCookie = decodeURIComponent(document.cookie);
-		    var ca = decodedCookie.split(';');
-		    for(var i = 0; i < ca.length; i++) {
-		        var c = ca[i];
-		        while (c.charAt(0) == ' ') {
-		            c = c.substring(1);
-		        }
-		        if (c.indexOf(name) == 0) {
-		            return c.substring(name.length, c.length);
-		        }
-		    }
-		    return "";
-		}
+		//vm.initialise();
 	};
 }());
