@@ -3,7 +3,7 @@ package com.data.poco;
 /**
 * <h1>AppliedStudentPOCO</h1>
 * This class is used to retrieved data from database by 
-* <b>SubmittedApplications.getAllMeritStudents</b>
+* <b>Applications.getAllMeritStudents</b>
 * This class gives data to generate merit list.
 */
 

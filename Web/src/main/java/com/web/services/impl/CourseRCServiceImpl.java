@@ -11,14 +11,14 @@ import com.data.entities.CollegeProgramMap;
 import com.data.entities.CourseGroupLevelOne;
 import com.data.entities.EducationalInformation;
 import com.data.entities.Enums;
-import com.data.entities.SubmittedApplications;
+import com.data.entities.Application;
 import com.data.entities.University_Subject;
 import com.data.entities.User;
 import com.data.services.CollegeProgramMapService;
 import com.data.services.CollegeSubjectMapService;
 import com.data.services.CourseGroupLevelOneService;
 import com.data.services.EducationalInformationService;
-import com.data.services.SubmittedApplicationService;
+import com.data.services.ApplicationService;
 import com.web.model.AppliedCourseModel;
 import com.web.model.SubjectModel;
 import com.web.services.CourseRCService;
@@ -34,7 +34,7 @@ public class CourseRCServiceImpl implements CourseRCService{
 	CollegeSubjectMapService collegeSubjectMapService;
 	
 	@Autowired 
-	SubmittedApplicationService submittedApplicationService;
+	ApplicationService applicationService;
 	
 	@Autowired
 	CourseGroupLevelOneService courseGroupLevelOneService;
@@ -58,20 +58,20 @@ public class CourseRCServiceImpl implements CourseRCService{
 
 	@Override
 	public void applyForCourse(User vendor, User student, Integer collegeProgramMapId, Integer selectedAllowedQualification, List<University_Subject> selectedSubjectList) {
-		SubmittedApplications submittedApplication = new SubmittedApplications();
-		submittedApplication.setApplicationStatus(Enums.ApplicationStatus.Partial.getId());
+		Application application = new Application();
+		application.setApplicationStatus(Enums.ApplicationStatus.Partial.getId());
 		CollegeProgramMap clgPrgMap = collegeProgramMapService.getById(collegeProgramMapId);
 		EducationalInformation educationalInformation = educationalInformationService.getById(selectedAllowedQualification);
 		if(clgPrgMap != null) {
-			submittedApplication.setCollegeProgramMap(clgPrgMap);
+			application.setCollegeProgramMap(clgPrgMap);
 			String frmNo = generateFormNo(clgPrgMap);
-			submittedApplication.setFormNo(frmNo);
-			submittedApplication.setUserDetail(student.getUserDetail());
-			submittedApplication.setDate(StaticMethods.GetCurrentDateString("dd-MM-yyyy"));
-			submittedApplication.setEducationalInformation(educationalInformation);
-			submittedApplication.setVendor(vendor.getVendor());
+			application.setFormNo(frmNo);
+			application.setUserDetail(student.getUserDetail());
+			application.setDate(StaticMethods.GetCurrentDateString("dd-MM-yyyy"));
+			application.setEducationalInformation(educationalInformation);
+			application.setVendor(vendor.getVendor());
 		}
-		submittedApplicationService.save(submittedApplication);
+		applicationService.save(application);
 	}
 	
 	private String generateFormNo(CollegeProgramMap collegeProgramMap) {
@@ -84,19 +84,19 @@ public class CourseRCServiceImpl implements CourseRCService{
 
 	@Override
 	public List<AppliedCourseModel> getAppliedCourseDetails(User user, College college) {
-		List<SubmittedApplications> submittedApplicationList = submittedApplicationService.getByUserDetailandCollege(user.getUserDetail(), college);
+		List<Application> applicationList = applicationService.getByUserDetailandCollege(user.getUserDetail(), college);
 		List<AppliedCourseModel> appliedCourses = new ArrayList<>();
 		
-		for(SubmittedApplications submittedApplication : submittedApplicationList) {
+		for(Application application : applicationList) {
 			AppliedCourseModel appliedCourseModel = new AppliedCourseModel();
-			appliedCourseModel.setApplicationId(submittedApplication.getApplicationId());
-			if(Enums.ApplicationStatus.get(submittedApplication.getApplicationStatus()) != null) {				
-				appliedCourseModel.setApplicationStatus(Enums.ApplicationStatus.getKeyValuePair(submittedApplication.getApplicationStatus()));
+			appliedCourseModel.setApplicationId(application.getApplicationId());
+			if(Enums.ApplicationStatus.get(application.getApplicationStatus()) != null) {				
+				appliedCourseModel.setApplicationStatus(Enums.ApplicationStatus.getKeyValuePair(application.getApplicationStatus()));
 			}
-			appliedCourseModel.setCollegeProgramMap(submittedApplication.getCollegeProgramMap());
-			appliedCourseModel.setDate(submittedApplication.getDate());
-			appliedCourseModel.setFormNo(submittedApplication.getFormNo());
-			appliedCourseModel.setStatusComments(submittedApplication.getStatusComments());
+			appliedCourseModel.setCollegeProgramMap(application.getCollegeProgramMap());
+			appliedCourseModel.setDate(application.getDate());
+			appliedCourseModel.setFormNo(application.getFormNo());
+			appliedCourseModel.setStatusComments(application.getStatusComments());
 			
 			appliedCourses.add(appliedCourseModel);
 		}			

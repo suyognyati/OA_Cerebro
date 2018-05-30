@@ -19,7 +19,7 @@ import com.web.services.CourseRCService;
 import com.web.services.EducationalInformationRCService;
 import com.web.services.ProgramCategoryRCService;
 import com.web.services.ProgramRCService;
-import com.web.services.SubmittedApplicationRCService;
+import com.web.services.ApplicationRCService;
 import com.web.session.Session;
 
 @RestController
@@ -39,7 +39,7 @@ public class ApplyOnlineRestController {
 	CourseRCService courseRCService;
 	
 	@Autowired
-	SubmittedApplicationRCService submittedApplicationRCService;
+	ApplicationRCService applicationRCService;
 	
 	@Autowired
 	EducationalInformationRCService educationalInformationService; 
@@ -78,6 +78,6 @@ public class ApplyOnlineRestController {
 	
 	@RequestMapping(value="/application/deleteAppliedCourse", method = RequestMethod.POST)
 	public void deleteAppliedCourse(@RequestBody Integer applicationId) {
-		submittedApplicationRCService.deleteAppliedCourse(applicationId);
+		applicationRCService.deleteAppliedCourse(applicationId);
 	}
 }

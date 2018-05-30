@@ -28,7 +28,7 @@
 		<link href="<c:url value='/static/css/angular-datepicker.css' />" rel="stylesheet" />
 		
 		<!-- My Custom Styles -->
-		<link href="<c:url value='/user/css/userstyle.css' />" rel="stylesheet" />
+		<link href="<c:url value='css/mystyle.css' />" rel="stylesheet" />
 		
 		<link href="<c:url value='/static/css/newui/left-nav.css' />" rel="stylesheet" />
 		<link href="<c:url value='/static/css/newui/aside-menu.css' />" rel="stylesheet" />
@@ -66,7 +66,6 @@
 		<script src="<c:url value='/static/vendors/pm-image-crop-master/compile/unminified/ng-img-crop.js' />"></script>
 		
 		<!-- Custom js -->
-		<script src="<c:url value='/user/js/user.js' />"></script>
 		<script src="<c:url value='js/collegeadmin.js' />"></script>
 		
 		<!-- AngularJS CoreUI App scripts -->

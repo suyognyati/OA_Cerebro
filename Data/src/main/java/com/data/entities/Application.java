@@ -48,12 +48,12 @@ import com.data.poco.AppliedStudentPOCO;
 
 @NamedNativeQueries({
 	@NamedNativeQuery(
-			name = "SubmittedApplications.getAllMeritStudents",
+			name = "Applications.getAllMeritStudents",
 			query = "SELECT sa.*, "
 					+ "pd.MiddleName, pd.FirstName, pd.LastName, "
 					+ "ors.Category, ors.Caste, "
 					+ "ei.EvaluationType, ei.MarksObtain, ei.TotalMarks "
-					+ "FROM SubmittedApplications as sa "
+					+ "FROM Applications as sa "
 					+ "LEFT JOIN PersonalDetails as pd ON (sa.FK_UserDetail = pd.FK_UserDetail) "
 					+ "LEFT JOIN OccupationReservation as ors ON (sa.FK_UserDetail = ors.FK_UserDetail) "
 					+ "LEFT JOIN EducationalInformation as ei ON (sa.FK_EducationalInformation = ei.EducationalInformationId) "
@@ -62,8 +62,8 @@ import com.data.poco.AppliedStudentPOCO;
 })
 
 @Entity
-@Table(name="SubmittedApplications")
-public class SubmittedApplications {
+@Table(name="Applications")
+public class Application {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)

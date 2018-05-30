@@ -13,7 +13,7 @@ import com.data.entities.CollegeProgramMap;
 import com.data.entities.Enums;
 import com.data.entities.OccupationReservation;
 import com.data.entities.PersonalDetail;
-import com.data.entities.SubmittedApplications;
+import com.data.entities.Application;
 import com.data.entities.User;
 import com.data.entities.UserDetail;
 import com.data.entities.VendorTransaction;
@@ -23,7 +23,7 @@ import com.data.services.CollegeProgramFeeMapDao;
 import com.data.services.CollegeProgramMapService;
 import com.data.services.OccupationReservationService;
 import com.data.services.PersonalDetailService;
-import com.data.services.SubmittedApplicationService;
+import com.data.services.ApplicationService;
 import com.data.services.UserDetailService;
 import com.web.model.ApplicationFeeModel;
 import com.web.model.ApplicationFeeModel.FeeDetail;
@@ -57,7 +57,7 @@ public class ApplicationConfirmationRCServiceImpl implements ApplicationConfirma
 	CollegeFeeMapDao collegeFeeMapDao;
 	
 	@Autowired
-	SubmittedApplicationService submittedApplicationService;
+	ApplicationService applicationService;
 	
 	@Autowired
 	VendorTransactionsRCService vendorTransactionsRCService; 
@@ -99,7 +99,7 @@ public class ApplicationConfirmationRCServiceImpl implements ApplicationConfirma
 	@Override
 	public Boolean submitApplication(User vendor, Integer collegeProgramMapId, Integer applicationId) {
 		//CollegeProgramMap collegeProgramMap = collegeProgramMapService.getById(collegeProgramMapId);
-		SubmittedApplications application = submittedApplicationService.getById(applicationId);
+		Application application = applicationService.getById(applicationId);
 		
 		VendorTransaction vendorTransaction = null;
 		
@@ -109,7 +109,7 @@ public class ApplicationConfirmationRCServiceImpl implements ApplicationConfirma
 		if(vendorTransaction != null) {
 			application.setApplicationStatus(Enums.ApplicationStatus.Submitted.getId());
 			application.setVendorTransaction(vendorTransaction);
-			submittedApplicationService.save(application);
+			applicationService.save(application);
 			return true;
 		}
 		

@@ -12,10 +12,10 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
-import com.data.entities.SubmittedApplications;
+import com.data.entities.Application;
 import com.data.poco.AppliedStudentPOCO;
 import com.data.repository.CollegeProgramMapJPARepository;
-import com.data.repository.SubmittedApplicationsJpaRepository;
+import com.data.repository.ApplicationJpaRepository;
 
 import config.data.PersistenceConfig;
 
@@ -23,25 +23,25 @@ import config.data.PersistenceConfig;
 @ContextConfiguration(classes = { PersistenceConfig.class }, loader = AnnotationConfigContextLoader.class)
 public class GenerateMeritList {
 	@Autowired
-	SubmittedApplicationsJpaRepository submittedApplicationsJpaRepository;
+	ApplicationJpaRepository applicationsJpaRepository;
 	
 	@Autowired
 	CollegeProgramMapJPARepository collegeProgramMapJPARepository;
 	
 	@Test
-	public void testSubmittedApplicationsJpaFind() {
-		List<SubmittedApplications> submittedApplicationsList = submittedApplicationsJpaRepository.findAll();
-		for (SubmittedApplications submittedApplication : submittedApplicationsList) {
-			System.out.println("\n\n\n\n Form No : " + submittedApplication.getFormNo() + " Submitted by : " + submittedApplication.getUserDetail().getFirstName() + "\n\n\n\n");
+	public void testApplicationsJpaFind() {
+		List<Application> applicationsList = applicationsJpaRepository.findAll();
+		for (Application application : applicationsList) {
+			System.out.println("\n\n\n\n Form No : " + application.getFormNo() + " Submitted by : " + application.getUserDetail().getFirstName() + "\n\n\n\n");
 		}
-		assertNotNull(submittedApplicationsList);
+		assertNotNull(applicationsList);
 	}
 	
 	@Test
 	public void testGeneratedMeritList() {
 		//CollegeProgramMap collegeProgramMap = collegeProgramMapJPARepository.findOne(1);
-		//List<SubmittedApplications> submittedApplicationsList = submittedApplicationsJpaRepository.findByCollegeProgramMapId(collegeProgramMap);
-		List<AppliedStudentPOCO> appliedStudentPOCOList = submittedApplicationsJpaRepository.getMeritStudents(1);
+		//List<Applications> applicationsList = applicationsJpaRepository.findByCollegeProgramMapId(collegeProgramMap);
+		List<AppliedStudentPOCO> appliedStudentPOCOList = applicationsJpaRepository.getMeritStudents(1);
 		
 		for(AppliedStudentPOCO appliedStudentPOCO : appliedStudentPOCOList ) {
 			System.out.println(appliedStudentPOCO.getFormNo());

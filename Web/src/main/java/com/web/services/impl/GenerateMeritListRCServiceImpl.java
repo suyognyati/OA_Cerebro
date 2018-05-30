@@ -13,7 +13,7 @@ import com.data.services.CollegeProgramMapService;
 import com.data.services.EducationalInformationService;
 import com.data.services.OccupationReservationService;
 import com.data.services.PersonalDetailService;
-import com.data.services.SubmittedApplicationService;
+import com.data.services.ApplicationService;
 import com.data.services.UserDetailService;
 import com.web.model.GenerateMeritListModel;
 import com.web.services.GenerateMeritListRCService;
@@ -37,7 +37,7 @@ public class GenerateMeritListRCServiceImpl implements GenerateMeritListRCServic
 	CollegeProgramMapService collegeProgramMapService;
 	
 	@Autowired
-	SubmittedApplicationService submittedApplicationService;
+	ApplicationService applicationService;
 	
 	GenerateMeritListModel generateMeritListModel = null;
 	
@@ -51,7 +51,7 @@ public class GenerateMeritListRCServiceImpl implements GenerateMeritListRCServic
 		
 		if(collegeProgramMap != null) {
 			University_Program program = collegeProgramMap.getProgram();
-			List<AppliedStudentPOCO> appliedStudentListOfProgram = submittedApplicationService.getAppliedStudentListOfProgram(collegeProgramMap.getCollegeProgramMapId());
+			List<AppliedStudentPOCO> appliedStudentListOfProgram = applicationService.getAppliedStudentListOfProgram(collegeProgramMap.getCollegeProgramMapId());
 			
 			generateMeritListModel.setProgramCode(program.getUniversityProgramCode());
 			generateMeritListModel.setProgramName(program.getUniversityProgramName());
