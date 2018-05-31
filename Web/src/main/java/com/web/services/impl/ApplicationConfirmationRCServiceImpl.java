@@ -16,7 +16,7 @@ import com.data.entities.OccupationReservation;
 import com.data.entities.PersonalDetail;
 import com.data.entities.StudentSelectedSubject;
 import com.data.entities.User;
-import com.data.entities.UserDetail;
+import com.data.entities.Student;
 import com.data.entities.VendorTransaction;
 import com.data.services.AddressService;
 import com.data.services.ApplicationService;
@@ -26,7 +26,7 @@ import com.data.services.CollegeProgramMapService;
 import com.data.services.OccupationReservationService;
 import com.data.services.PersonalDetailService;
 import com.data.services.StudentSelectedSubjectsDao;
-import com.data.services.UserDetailService;
+import com.data.services.StudentService;
 import com.web.model.ApplicationFeeModel;
 import com.web.model.ApplicationFeeModel.FeeDetail;
 import com.web.model.PrintApplicationModel;
@@ -38,7 +38,7 @@ import com.web.staticandconstants.StaticMethods;
 public class ApplicationConfirmationRCServiceImpl implements ApplicationConfirmationRCService {
 	
 	@Autowired
-	UserDetailService userDetailService; 
+	StudentService studentService; 
 	
 	@Autowired
 	PersonalDetailService personalDetailService;
@@ -79,7 +79,7 @@ public class ApplicationConfirmationRCServiceImpl implements ApplicationConfirma
 		
 		Application application = applicationService.getById(applicationId);
 		
-		List<StudentSelectedSubject> studentSelectedSubject = studentSelectedSubjectsDao.getSelectedSubjectOfApplication(application, collegeProgramMap, user.getUserDetail());
+		List<StudentSelectedSubject> studentSelectedSubject = studentSelectedSubjectsDao.getSelectedSubjectOfApplication(application, collegeProgramMap, user.getStudent());
 		printApplicationModel.setStudentSelectedSubjectList(studentSelectedSubject);
 		
 		getPersonalDetail(user);
@@ -131,13 +131,13 @@ public class ApplicationConfirmationRCServiceImpl implements ApplicationConfirma
 	
 	//Private functions for getPrintApplicationDetail
 	private void getPersonalDetail(User user) {
-		UserDetail userDetail = user.getUserDetail();
-		PersonalDetail personalDetail = personalDetailService.getByUserDetail(user.getUserDetail());
+		Student student = user.getStudent();
+		PersonalDetail personalDetail = personalDetailService.getByStudent(user.getStudent());
 		
-		if(userDetail != null) {
-			printApplicationModel.setBirthDate(userDetail.getDateOfBirth());
-			printApplicationModel.setMobileNo(userDetail.getMobileNo());
-			printApplicationModel.setEmail(userDetail.getEmail());			
+		if(student != null) {
+			printApplicationModel.setBirthDate(student.getDateOfBirth());
+			printApplicationModel.setMobileNo(student.getMobileNo());
+			printApplicationModel.setEmail(student.getEmail());			
 		}
 		
 		if(personalDetail != null) {
@@ -180,7 +180,7 @@ public class ApplicationConfirmationRCServiceImpl implements ApplicationConfirma
 	}
 	
 	private void getAddress(User user) {
-		Address address = addressService.getByUserDetail(user.getUserDetail());
+		Address address = addressService.getByStudent(user.getStudent());
 		
 		if(address != null) {
 			printApplicationModel.setFlatNo(address.getFlatNo());
@@ -213,7 +213,7 @@ public class ApplicationConfirmationRCServiceImpl implements ApplicationConfirma
 	}
 	
 	private void getOccupation(User user) {
-		OccupationReservation occupationAndReservation = occupationReservationService.getByUserDetail(user.getUserDetail());
+		OccupationReservation occupationAndReservation = occupationReservationService.getByStudent(user.getStudent());
 	
 		if(occupationAndReservation != null) {	
 			if(occupationAndReservation.getOccupation() != null

@@ -5,7 +5,7 @@ import java.util.List;
 import com.data.entities.Application;
 import com.data.entities.CollegeProgramMap;
 import com.data.entities.StudentSelectedSubject;
-import com.data.entities.UserDetail;
+import com.data.entities.Student;
 
 public interface StudentSelectedSubjectsDao {
 
@@ -23,5 +23,5 @@ public interface StudentSelectedSubjectsDao {
 	 * @param student
 	 * @return List<StudentSelectedSubject>
 	 */
-	public List<StudentSelectedSubject> getSelectedSubjectOfApplication(Application application, CollegeProgramMap collegeProgramMap, UserDetail student);
+	public List<StudentSelectedSubject> getSelectedSubjectOfApplication(Application application, CollegeProgramMap collegeProgramMap, Student student);
 }

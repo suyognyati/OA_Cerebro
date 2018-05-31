@@ -8,17 +8,17 @@
 	
 	function ProfileDetailService($http) {
 		return {
-			getUserDetail : function() {
+			getStudentProfile : function(accessTokenParam) {
 				return $http({
 					method: 'GET',
-					url: '/Web/rest/userDetail/getUserDetail/'
+					url: '/Web/rest/student/get/' + accessTokenParam
 				})
 			},
-			saveUserDetail: function (userDetail) {
+			saveStudentProfile: function (studentProfile, accessTokenParam) {
 				return $http({
                     method: 'POST',
-                    url: '/Web/rest/userDetail/saveUserDetail/',
-                    data: userDetail/*,
+                    url: '/Web/rest/student/save/' + accessTokenParam,
+                    data: studentProfile/*,
                     headers : { 'Content-Type': 'application/x-www-form-urlencoded' }*/
                 });
             },

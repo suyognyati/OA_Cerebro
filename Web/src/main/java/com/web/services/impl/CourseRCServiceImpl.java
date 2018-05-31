@@ -71,7 +71,7 @@ public class CourseRCServiceImpl implements CourseRCService{
 			application.setCollegeProgramMap(clgPrgMap);
 			String frmNo = generateFormNo(clgPrgMap);
 			application.setFormNo(frmNo);
-			application.setUserDetail(student.getUserDetail());
+			application.setStudent(student.getStudent());
 			application.setDate(StaticMethods.GetCurrentDate());
 			application.setEducationalInformation(educationalInformation);
 			application.setVendor(vendor.getVendor());
@@ -82,7 +82,7 @@ public class CourseRCServiceImpl implements CourseRCService{
 		for(University_Subject subject : selectedSubjectList) {
 			StudentSelectedSubject studentselectedSubject = new StudentSelectedSubject();
 			studentselectedSubject.setSubject(subject);
-			studentselectedSubject.setStudent(application.getUserDetail());
+			studentselectedSubject.setStudent(application.getStudent());
 			studentselectedSubject.setCollegeProgramMap(application.getCollegeProgramMap());
 			studentselectedSubject.setApplication(application);
 			studentSelectedSubjectList.add(studentselectedSubject);
@@ -100,7 +100,7 @@ public class CourseRCServiceImpl implements CourseRCService{
 
 	@Override
 	public List<AppliedCourseModel> getAppliedCourseDetails(User user, College college) {
-		List<Application> applicationList = applicationService.getByUserDetailandCollege(user.getUserDetail(), college);
+		List<Application> applicationList = applicationService.getByStudentandCollege(user.getStudent(), college);
 		List<AppliedCourseModel> appliedCourses = new ArrayList<>();
 		
 		for(Application application : applicationList) {

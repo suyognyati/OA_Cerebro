@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.data.entities.DocumentList;
 import com.data.entities.Enums;
-import com.data.entities.UserDetail;
+import com.data.entities.Student;
 import com.data.entities.UserDocument;
 import com.data.repository.UserDocumentJpaRepository;
 import com.data.services.DocumentListService;
@@ -29,30 +29,30 @@ public class UserDocumentServiceImpl implements UserDocumentService{
 	}
 	
 	@Override
-	public List<UserDocument> getByUserDetail(UserDetail userDetail) {
+	public List<UserDocument> getByStudent(Student student) {
 		List<Integer> stateIn = new ArrayList<Integer>();
 		stateIn.add(Enums.DocumentState.Deleted.getId());
-		return userDocumentJPARepository.findByUserDetailAndStateNotIn(userDetail, stateIn);
+		return userDocumentJPARepository.findByStudentAndStateNotIn(student, stateIn);
 	}
 
 	@Override
-	public List<UserDocument> getByDocumentFor(UserDetail userDetail, Integer documentFor) {
-		return userDocumentJPARepository.findByUserDetailAndDocumentDocumentFor(userDetail, documentFor);
+	public List<UserDocument> getByDocumentFor(Student student, Integer documentFor) {
+		return userDocumentJPARepository.findByStudentAndDocumentDocumentFor(student, documentFor);
 	}
 
 	@Override
-	public List<UserDocument> getByDocuments(UserDetail userDetail, List<DocumentList> documentList) {
+	public List<UserDocument> getByDocuments(Student student, List<DocumentList> documentList) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Boolean addByDocumentFor(UserDetail userDetail, Integer documentFor) {
+	public Boolean addByDocumentFor(Student student, Integer documentFor) {
 		List<DocumentList> documentList = documentListService.getByDocumentFor(documentFor);
 		if(documentList.size() > 0) {
 			List<UserDocument> userDocuments = new ArrayList<UserDocument>();
 			for(DocumentList document : documentList) {
-				List<UserDocument> existingDocuments = userDocumentJPARepository.findByUserDetailAndDocument(userDetail, document);
+				List<UserDocument> existingDocuments = userDocumentJPARepository.findByStudentAndDocument(student, document);
 				if(existingDocuments != null && existingDocuments.size() > 0) {
 					Boolean needUpdate = false;
 					for(UserDocument userDocument : existingDocuments) {
@@ -66,7 +66,7 @@ public class UserDocumentServiceImpl implements UserDocumentService{
 					}
 				} else {
 					UserDocument userDocument = new UserDocument();
-					userDocument.setUserDetail(userDetail);
+					userDocument.setStudent(student);
 					userDocument.setDocument(document);
 					userDocuments.add(userDocument);
 				}
@@ -77,8 +77,8 @@ public class UserDocumentServiceImpl implements UserDocumentService{
 	}
 
 	@Override
-	public Boolean deleteByDocumentFor(UserDetail userDetail, Integer documentFor) {
-		List<UserDocument> userDocuments = getByDocumentFor(userDetail, documentFor);
+	public Boolean deleteByDocumentFor(Student student, Integer documentFor) {
+		List<UserDocument> userDocuments = getByDocumentFor(student, documentFor);
 		if(userDocuments.size() > 0) {
 			for(UserDocument userDocument : userDocuments) {
 				userDocument.setState(Enums.DocumentState.Deleted.getId());

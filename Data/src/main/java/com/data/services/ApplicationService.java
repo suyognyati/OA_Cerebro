@@ -4,12 +4,12 @@ import java.util.List;
 
 import com.data.entities.Application;
 import com.data.entities.College;
-import com.data.entities.UserDetail;
+import com.data.entities.Student;
 import com.data.poco.AppliedStudentPOCO;
 
 public interface ApplicationService {
 	public Application save(Application application);
-	public List<Application> getByUserDetailandCollege(UserDetail userDetail, College college);
+	public List<Application> getByStudentandCollege(Student student, College college);
 	void deleteById(Integer applicationId);
 	List<AppliedStudentPOCO> getAppliedStudentListOfProgram(Integer collegeProgramMapId);
 	

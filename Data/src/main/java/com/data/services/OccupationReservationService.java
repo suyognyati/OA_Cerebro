@@ -1,10 +1,10 @@
 package com.data.services;
 
 import com.data.entities.OccupationReservation;
-import com.data.entities.UserDetail;
+import com.data.entities.Student;
 
 public interface OccupationReservationService {
-	OccupationReservation getByUserDetail(UserDetail userDetail);
+	OccupationReservation getByStudent(Student student);
 	void save(OccupationReservation occupationReservation);
 }
 

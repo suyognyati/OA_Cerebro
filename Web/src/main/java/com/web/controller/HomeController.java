@@ -52,16 +52,16 @@ public class HomeController {
 		
 		model.addAttribute("Bearer", accessTokenValue);
 		model.addAttribute("vendor", session.getLoggedInUser());
-		model.addAttribute("vendordetail", session.getLoggedInUser().getUserDetail());
+		model.addAttribute("vendordetail", session.getLoggedInUser().getStudent());
 		model.addAttribute("user", session.getStudent());
-		model.addAttribute("userdetail", session.getStudent().getUserDetail());
+		model.addAttribute("student", session.getStudent().getStudent());
 		return "user/UserPageofVendor";
 	}
 	
 	@RequestMapping(value = { "student/" }, method = RequestMethod.GET)
 	public String userPage(ModelMap model) {
 		//Set current logged in user details
-		sessionService.setLoggedInUserDetails();
+		sessionService.setLoggedInUser();
 		
 		//Set current logged in user details to get profile details
 		Integer userId = 0;
@@ -74,7 +74,7 @@ public class HomeController {
 		
 		
 		model.addAttribute("user", session.getLoggedInUser());
-		model.addAttribute("userdetail", session.getLoggedInUser().getUserDetail());
+		model.addAttribute("student", session.getLoggedInUser().getStudent());
 		return "user/StudentView_newUI";
 	}
 	
@@ -95,17 +95,17 @@ public class HomeController {
 		
 		model.addAttribute("Bearer", accessTokenValue);
 		model.addAttribute("user", session.getStudent());
-		model.addAttribute("userdetail", session.getStudent().getUserDetail());
+		model.addAttribute("student", session.getStudent().getStudent());
 		return "user/StudentView";
 	}
 
 	@RequestMapping(value = { "vendor/" }, method = RequestMethod.GET)
 	public String vendorPage(ModelMap model) {
 		Integer collegeId = 1;
-		sessionService.setLoggedInUserDetails();
+		sessionService.setLoggedInUser();
 		sessionService.setCollege(collegeId);
 		model.addAttribute("vendor", session.getLoggedInUser());
-		model.addAttribute("vendordetail", session.getLoggedInUser().getUserDetail());
+		model.addAttribute("vendordetail", session.getLoggedInUser().getStudent());
 		return "vendor/vendor_newUI"; //VendorPage-topnavbar";
 	}
 	
@@ -119,9 +119,9 @@ public class HomeController {
 	public String collegeAdmin(ModelMap model) {
 		Integer collegeId = 1;
 		sessionService.setCollege(collegeId);
-		sessionService.setLoggedInUserDetails();
+		sessionService.setLoggedInUser();
 		model.addAttribute("collegeadmin", session.getLoggedInUser());
-		model.addAttribute("collegeadmindetail", session.getLoggedInUser().getUserDetail());
+		model.addAttribute("collegeadmindetail", session.getLoggedInUser().getStudent());
 		return "collegeadmin/college_admin";
 	}
 

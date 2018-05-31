@@ -32,7 +32,7 @@ import com.data.poco.AppliedStudentPOCO;
 		                @ColumnResult(name="FormNo"),
 		                @ColumnResult(name="StatusComments"),
 		                @ColumnResult(name="FK_CollegeProgramMap"),
-		                @ColumnResult(name="FK_UserDetail"),
+		                @ColumnResult(name="FK_Student"),
 		                @ColumnResult(name="FK_EducationalInformation"),
 		                @ColumnResult(name="FirstName"),
 		                @ColumnResult(name="MiddleName"),
@@ -56,8 +56,8 @@ import com.data.poco.AppliedStudentPOCO;
 					+ "ors.Category, ors.Caste, "
 					+ "ei.EvaluationType, ei.MarksObtain, ei.TotalMarks "
 					+ "FROM Applications as sa "
-					+ "LEFT JOIN PersonalDetails as pd ON (sa.FK_UserDetail = pd.FK_UserDetail) "
-					+ "LEFT JOIN OccupationReservation as ors ON (sa.FK_UserDetail = ors.FK_UserDetail) "
+					+ "LEFT JOIN PersonalDetails as pd ON (sa.FK_Student = pd.FK_Student) "
+					+ "LEFT JOIN OccupationReservation as ors ON (sa.FK_Student = ors.FK_Student) "
 					+ "LEFT JOIN EducationalInformation as ei ON (sa.FK_EducationalInformation = ei.EducationalInformationId) "
 					+ "WHERE FK_CollegeProgramMap = :collegeProgramMapId",
 			resultSetMapping = "appliedStudentPOCOMapping")
@@ -80,8 +80,8 @@ public class Application {
 	private CollegeProgramMap collegeProgramMap;
 	
 	@ManyToOne
-	@JoinColumn(name="FK_UserDetail")
-	private UserDetail userDetail;
+	@JoinColumn(name="FK_Student")
+	private Student student;
 	
 	@ManyToOne
 	@JoinColumn(name="FK_EducationalInformation")
@@ -128,12 +128,12 @@ public class Application {
 			this.collegeProgramMap = collegeProgramMap;
 		}
 	
-		public UserDetail getUserDetail() {
-			return userDetail;
+		public Student getStudent() {
+			return student;
 		}
 
-		public void setUserDetail(UserDetail userDetail) {
-			this.userDetail = userDetail;
+		public void setStudent(Student student) {
+			this.student = student;
 		}
 
 		public EducationalInformation getEducationalInformation() {

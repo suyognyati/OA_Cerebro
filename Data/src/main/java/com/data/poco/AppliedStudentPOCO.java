@@ -1,5 +1,7 @@
 package com.data.poco;
 
+import java.util.Date;
+
 /**
 * <h1>AppliedStudentPOCO</h1>
 * This class is used to retrieved data from database by 
@@ -13,7 +15,7 @@ public class AppliedStudentPOCO {
 	
 	private Integer applicationStatus;
 	
-	private String date;
+	private Date date;
 	
 	private String formNo;
 	
@@ -21,7 +23,7 @@ public class AppliedStudentPOCO {
 	
 	private Integer collegeProgramMap;	
 	
-	private Integer userDetailId;
+	private Integer studentId;
 	
 	private Integer educationalInformationId;
 	
@@ -42,7 +44,7 @@ public class AppliedStudentPOCO {
 	private Integer totalMarks;
 	
 	public AppliedStudentPOCO(
-			Integer applicationId, Integer applicationStatus, String date, String formNo, String statusComments, Integer collegeProgramMap, Integer userDetailId,
+			Integer applicationId, Integer applicationStatus, Date date, String formNo, String statusComments, Integer collegeProgramMap, Integer studentId,
 			Integer educationalInformationId, String firstName, String middleName, String lastName, Integer category, String caste,
 			Integer evaluationType, Integer marksObtain, Integer totalMarks) {
 		this.applicationId = applicationId;
@@ -51,7 +53,7 @@ public class AppliedStudentPOCO {
 		this.formNo = formNo;		
 		this.statusComments = statusComments;
 		this.collegeProgramMap = collegeProgramMap;
-		this.userDetailId = userDetailId;
+		this.studentId = studentId;
 		this.educationalInformationId = educationalInformationId;
 		this.firstName = firstName;
 		this.middleName = middleName;
@@ -79,11 +81,11 @@ public class AppliedStudentPOCO {
 		this.applicationStatus = applicationStatus;
 	}
 
-	public String getDate() {
+	public Date getDate() {
 		return date;
 	}
 
-	public void setDate(String date) {
+	public void setDate(Date date) {
 		this.date = date;
 	}
 
@@ -111,12 +113,12 @@ public class AppliedStudentPOCO {
 		this.collegeProgramMap = collegeProgramMap;
 	}
 
-	public Integer getUserDetailId() {
-		return userDetailId;
+	public Integer getStudentId() {
+		return studentId;
 	}
 
-	public void setUserDetailId(Integer userDetailId) {
-		this.userDetailId = userDetailId;
+	public void setStudentId(Integer studentId) {
+		this.studentId = studentId;
 	}
 
 	public Integer getEducationalInformationId() {

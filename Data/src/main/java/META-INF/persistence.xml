@@ -22,7 +22,7 @@
 		<class>com.data.entities.University_University</class>
 		<class>com.data.entities.University</class>
 		<class>com.data.entities.User</class>
-		<class>com.data.entities.UserDetail</class>
+		<class>com.data.entities.Student</class>
 		<class>com.data.entities.UserDocument</class>
 		<class>com.data.entities.UserRole</class>
 	</persistence-unit>

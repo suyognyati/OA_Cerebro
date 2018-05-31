@@ -69,7 +69,7 @@
 													</div>
 													<div class="col-md-8 col-sm-8"
 														style="padding-left: 50px; padding-top: 10px; color:#333;">
-														<label><span>${userdetail.firstName}</span>&nbsp;<span>${userdetail.lastName}</span></label>
+														<label><span>${student.firstName}</span>&nbsp;<span>${student.lastName}</span></label>
 														<input type="button" class="btn btn-primary"
 															value="View Profile"> <br>
 														<br> <a href="<c:url value="/logout" />"

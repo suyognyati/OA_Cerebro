@@ -3,7 +3,7 @@ package com.data.services;
 import java.util.List;
 
 import com.data.entities.QualificationLevel;
-import com.data.entities.UserDetail;
+import com.data.entities.Student;
 
 public interface QualificationLevelService {
 	QualificationLevel getById(Integer id);
@@ -42,10 +42,10 @@ public interface QualificationLevelService {
 	
 	/**
 	 * This will give QualificationLevelIdList of filled Educational Information where multirefered will be false.
-	 * @param userDetail
+	 * @param student
 	 * @return List<Integer>
 	 */
-	List<Integer> getQualificationLevelIdListWithNoMultireferedForFilledEducationalInformation(UserDetail userDetail, Integer qualificationGroup);
+	List<Integer> getQualificationLevelIdListWithNoMultireferedForFilledEducationalInformation(Student student, Integer qualificationGroup);
 	
 	/**
 	 * This will give count of qualificationGroupLevel under qualificationGroup

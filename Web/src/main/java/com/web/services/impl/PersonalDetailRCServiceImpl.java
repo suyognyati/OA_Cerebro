@@ -12,10 +12,10 @@ import com.data.entities.Enums.VisaSponsoringAgency;
 import com.data.entities.Enums.VisaType;
 import com.data.entities.PersonalDetail;
 import com.data.entities.User;
-import com.data.entities.UserDetail;
+import com.data.entities.Student;
 import com.data.services.GeoLocationsService;
 import com.data.services.PersonalDetailService;
-import com.data.services.UserDetailService;
+import com.data.services.StudentService;
 import com.data.services.UserDocumentService;
 import com.web.model.PersonalDetailModel;
 import com.web.services.PersonalDetailRCService;
@@ -28,7 +28,7 @@ public class PersonalDetailRCServiceImpl implements PersonalDetailRCService {
 	PersonalDetailService personalDetailService;
 	
 	@Autowired
-	UserDetailService userDetailService; 
+	StudentService studentService; 
 	
 	@Autowired
 	GeoLocationsService geoLocationService;
@@ -38,20 +38,20 @@ public class PersonalDetailRCServiceImpl implements PersonalDetailRCService {
 	
 	public PersonalDetailModel getPersonalDetail(User user){
 		PersonalDetailModel personalDetailModel = new PersonalDetailModel();
-		PersonalDetail personalDetail = personalDetailService.getByUserDetail(user.getUserDetail());
-		personalDetailModel = setPersonalDetailModelObject(personalDetailModel, user.getUserDetail(), personalDetail);
+		PersonalDetail personalDetail = personalDetailService.getByStudent(user.getStudent());
+		personalDetailModel = setPersonalDetailModelObject(personalDetailModel, user.getStudent(), personalDetail);
 		return personalDetailModel;
 	}
 	
 	public void savePersonalDetail(PersonalDetailModel personalDetailModel, User user){
-		//Updating data in UserDetail Table
-		user.getUserDetail().setDateOfBirth(personalDetailModel.getBirthDate());
+		//Updating data in Student Table
+		user.getStudent().setDateOfBirth(personalDetailModel.getBirthDate());
 		
 		//Updating data in PersonalDetail Table
-		PersonalDetail personalDetail = personalDetailService.getByUserDetail(user.getUserDetail());
+		PersonalDetail personalDetail = personalDetailService.getByStudent(user.getStudent());
 		if(personalDetail == null) {
 			personalDetail = new PersonalDetail();
-			personalDetail.setUserDetail(user.getUserDetail());
+			personalDetail.setStudent(user.getStudent());
 		}
 		
 		personalDetail = setPersonalDetailObject(personalDetail, personalDetailModel/*, address*/);
@@ -59,23 +59,23 @@ public class PersonalDetailRCServiceImpl implements PersonalDetailRCService {
 		//Updating required document list as per filled data
 		if(personalDetail.getIsNameChanged() != null) {
 			if(personalDetail.getIsNameChanged()) {
-				userDocumentService.addByDocumentFor(user.getUserDetail(), Enums.DocumentsFor.NameChanged.getId());
+				userDocumentService.addByDocumentFor(user.getStudent(), Enums.DocumentsFor.NameChanged.getId());
 			} else {
-				userDocumentService.deleteByDocumentFor(user.getUserDetail(), Enums.DocumentsFor.NameChanged.getId());
+				userDocumentService.deleteByDocumentFor(user.getStudent(), Enums.DocumentsFor.NameChanged.getId());
 			}
 		}
 		
 		if(personalDetail.getEducationGapInYrs() != null && personalDetail.getEducationGapInYrs() > 0) {
-			userDocumentService.addByDocumentFor(user.getUserDetail(), Enums.DocumentsFor.EducationGap.getId());
+			userDocumentService.addByDocumentFor(user.getStudent(), Enums.DocumentsFor.EducationGap.getId());
 		} else {
-			userDocumentService.deleteByDocumentFor(user.getUserDetail(), Enums.DocumentsFor.EducationGap.getId());
+			userDocumentService.deleteByDocumentFor(user.getStudent(), Enums.DocumentsFor.EducationGap.getId());
 		}
 		
 		if(personalDetail.getCountryOfCitizenship() != null 
 				&& personalDetail.getCountryOfCitizenship().getCountryName().compareToIgnoreCase(StaticConstants.StrINDIA) == 0) {
-			userDocumentService.deleteByDocumentFor(user.getUserDetail(), Enums.DocumentsFor.Passport.getId());
+			userDocumentService.deleteByDocumentFor(user.getStudent(), Enums.DocumentsFor.Passport.getId());
 		} else {
-			userDocumentService.addByDocumentFor(user.getUserDetail(), Enums.DocumentsFor.Passport.getId());			
+			userDocumentService.addByDocumentFor(user.getStudent(), Enums.DocumentsFor.Passport.getId());			
 		}
 		
 		personalDetailService.save(personalDetail);
@@ -83,16 +83,16 @@ public class PersonalDetailRCServiceImpl implements PersonalDetailRCService {
 	}
 
 	private PersonalDetailModel setPersonalDetailModelObject(PersonalDetailModel personalDetailModel, 
-			UserDetail userDetail, PersonalDetail personalDetail) {
+			Student student, PersonalDetail personalDetail) {
 		
-		if(userDetail != null) {
-			if(userDetail.getLastName() != null) {
-				personalDetailModel.setLastName(userDetail.getLastName().toUpperCase());
+		if(student != null) {
+			if(student.getLastName() != null) {
+				personalDetailModel.setLastName(student.getLastName().toUpperCase());
 			}
-			if(userDetail.getFirstName() != null) {
-				personalDetailModel.setFirstName(userDetail.getFirstName().toUpperCase());
+			if(student.getFirstName() != null) {
+				personalDetailModel.setFirstName(student.getFirstName().toUpperCase());
 			}
-			personalDetailModel.setBirthDate(userDetail.getDateOfBirth());
+			personalDetailModel.setBirthDate(student.getDateOfBirth());
 		}
 		if(personalDetail != null) {
 			personalDetailModel.setLastName(personalDetail.getLastName());

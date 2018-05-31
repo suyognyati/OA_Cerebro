@@ -24,7 +24,7 @@
 				<div class="table-responsive" ng-repeat="qualificationType in vm.qualificationList">
 					<div class="col-sm-12">
 						<label class="" Style="font-size: large;">{{qualificationType.name}}</label>
-						<span ng-if="qualificationType.isMultireferedAvailableUnderQualificationGroup || qualificationType.subQualificationList.length < qualificationType.qualificationGroupLevelCount">
+						<span ng-if="qualificationType.isMultireferedAvailableUnderQualificationGroup || qualificationType.subQualificationList == null || qualificationType.subQualificationList.length < qualificationType.qualificationGroupLevelCount">
 							[<i class="glyphicon glyphicon-plus glyphicon-plus-custom" style="cursor: pointer;"
 		                       	ng-click="vm.createNewQualification(qualificationType.qualificationGroup, qualificationType.qualificationGroupLevel)"/>]
 	                    </span>

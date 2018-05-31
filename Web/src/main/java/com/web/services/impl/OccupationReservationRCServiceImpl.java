@@ -21,32 +21,32 @@ public class OccupationReservationRCServiceImpl implements OccupationReservation
 	UserDocumentService userDocumentService;
 	
 	public OccupationReservationModel getOccupationReservation(User user) {
-		OccupationReservation occupationAndReservation = occupationReservationService.getByUserDetail(user.getUserDetail());
+		OccupationReservation occupationAndReservation = occupationReservationService.getByStudent(user.getStudent());
 		OccupationReservationModel occupationAndReservationModel = new OccupationReservationModel();
 		occupationAndReservationModel = setOccupationAndReservationModelObject(occupationAndReservationModel, occupationAndReservation);
 		return occupationAndReservationModel;
 	}
 
 	public void saveOccupationReservation(OccupationReservationModel occupationAndReservationModel, User user) {
-		OccupationReservation occupationAndReservation = occupationReservationService.getByUserDetail(user.getUserDetail());
+		OccupationReservation occupationAndReservation = occupationReservationService.getByStudent(user.getStudent());
 		if(occupationAndReservation == null) {
 			occupationAndReservation = new OccupationReservation();
-			occupationAndReservation.setUserDetail(user.getUserDetail());
+			occupationAndReservation.setStudent(user.getStudent());
 		}
 		occupationAndReservation = setOccupationAndReservationObject(occupationAndReservation, occupationAndReservationModel);
 		
 		if(occupationAndReservation.getIsEligibleForEBC() != null) {
 			if(occupationAndReservation.getIsEligibleForEBC()) {
-				userDocumentService.addByDocumentFor(user.getUserDetail(), Enums.DocumentsFor.EBC.getId());
+				userDocumentService.addByDocumentFor(user.getStudent(), Enums.DocumentsFor.EBC.getId());
 			} else {
-				userDocumentService.deleteByDocumentFor(user.getUserDetail(), Enums.DocumentsFor.EBC.getId());
+				userDocumentService.deleteByDocumentFor(user.getStudent(), Enums.DocumentsFor.EBC.getId());
 			}
 		}
 		
 		if(occupationAndReservation.getCategory() == Enums.Category.GEN.getId()) {
-			userDocumentService.deleteByDocumentFor(user.getUserDetail(), Enums.DocumentsFor.Caste.getId());
+			userDocumentService.deleteByDocumentFor(user.getStudent(), Enums.DocumentsFor.Caste.getId());
 		} else {
-			userDocumentService.addByDocumentFor(user.getUserDetail(), Enums.DocumentsFor.Caste.getId());
+			userDocumentService.addByDocumentFor(user.getStudent(), Enums.DocumentsFor.Caste.getId());
 		}
 		
 		occupationReservationService.save(occupationAndReservation);

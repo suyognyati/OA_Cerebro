@@ -1,8 +1,8 @@
 package com.web.services;
 
-import com.web.model.UserDetailModel;
+import com.web.model.StudentModel;
 
 public interface RegisterRCService {
 	Boolean IsUserAvailable(String userName);
-	Boolean CreateUser(UserDetailModel userDetailModel);
+	Boolean CreateUser(StudentModel studentModel);
 }

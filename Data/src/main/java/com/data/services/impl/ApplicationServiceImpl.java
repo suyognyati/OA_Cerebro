@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.data.entities.College;
 import com.data.entities.Application;
-import com.data.entities.UserDetail;
+import com.data.entities.Student;
 import com.data.poco.AppliedStudentPOCO;
 import com.data.repository.ApplicationJpaRepository;
 import com.data.services.ApplicationService;
@@ -24,8 +24,8 @@ public class ApplicationServiceImpl implements ApplicationService {
 	}
 	
 	@Override
-	public List<Application> getByUserDetailandCollege(UserDetail userDetail, College college) {
-		return applicationJpaRepository.findByUserDetailAndCollegeProgramMapCollege(userDetail, college);
+	public List<Application> getByStudentandCollege(Student student, College college) {
+		return applicationJpaRepository.findByStudentAndCollegeProgramMapCollege(student, college);
 	}
 
 	@Override

@@ -24,7 +24,7 @@ public class StudentSelectedSubject {
 	
 	@ManyToOne
 	@JoinColumn(name="FK_Student")
-	private UserDetail student;
+	private Student student;
 	
 	@ManyToOne
 	@JoinColumn(name="FK_CollegeProgramMap")
@@ -46,10 +46,10 @@ public class StudentSelectedSubject {
 		public void setSubject(University_Subject subject) {
 			this.subject = subject;
 		}	
-		public UserDetail getStudent() {
+		public Student getStudent() {
 			return student;
 		}	
-		public void setStudent(UserDetail student) {
+		public void setStudent(Student student) {
 			this.student = student;
 		}	
 		public CollegeProgramMap getCollegeProgramMap() {

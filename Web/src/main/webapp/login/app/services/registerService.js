@@ -15,11 +15,11 @@
 					data: username
 				})
 			},
-			createuser : function(userDetailModel) {
+			createuser : function(studentModel) {
 				return $http({
 					method: "POST",
 					url: "/Web/login/createuser",
-					data: userDetailModel
+					data: studentModel
 				})
 			}
 		}

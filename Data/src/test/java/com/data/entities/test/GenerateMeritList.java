@@ -32,7 +32,7 @@ public class GenerateMeritList {
 	public void testApplicationsJpaFind() {
 		List<Application> applicationsList = applicationsJpaRepository.findAll();
 		for (Application application : applicationsList) {
-			System.out.println("\n\n\n\n Form No : " + application.getFormNo() + " Submitted by : " + application.getUserDetail().getFirstName() + "\n\n\n\n");
+			System.out.println("\n\n\n\n Form No : " + application.getFormNo() + " Submitted by : " + application.getStudent().getFirstName() + "\n\n\n\n");
 		}
 		assertNotNull(applicationsList);
 	}

@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.web.model.UserDetailModel;
+import com.web.model.StudentModel;
 import com.web.services.RegisterRCService;
 
 @RestController
@@ -28,8 +28,8 @@ public class RegisterRestController {
 	
 	@SuppressWarnings("unchecked")
 	@RequestMapping(value = "/createuser", method = RequestMethod.POST)
-	public ResponseEntity<JSONObject> createUser(@RequestBody UserDetailModel userDetailModel) {
-		Boolean isUserCreated = registerService.CreateUser(userDetailModel);
+	public ResponseEntity<JSONObject> createUser(@RequestBody StudentModel studentModel) {
+		Boolean isUserCreated = registerService.CreateUser(studentModel);
 		JSONObject obj = new JSONObject();
 		obj.put("isUserCreated", isUserCreated);
 		return new ResponseEntity<JSONObject>(obj, HttpStatus.OK);

@@ -102,10 +102,10 @@ function StudentStates($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, 
 		params: { subtitle: 'Welcome to home' },
 	})
 	/*
-	.state("student.profile.userDetail",{
-		url: "/userdetails",
-		templateUrl: 'ngapp/student/views/studentprofile/userDetailView.html',
-        controller: 'UserDetailCtrl as vm',
+	.state("student.profile.studentProfile",{
+		url: "/StudentProfile",
+		templateUrl: 'ngapp/student/views/studentprofile/studentProfileView.html',
+        controller: 'studentProfileCtrl as vm',
 		
       //page title goes here
 		ncyBreadcrumb: {
@@ -119,8 +119,8 @@ function StudentStates($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, 
 				return $ocLazyLoad.load({
 					serie: true,
 					files: [
-					        'ngapp/student/controllers/userDetailCtrl.js',
-					        'ngapp/student/services/userDetailService.js'
+					        'ngapp/student/controllers/studentProfileCtrl.js',
+					        'ngapp/student/services/studentProfileService.js'
 					        ]
 				});
 			}]
@@ -150,21 +150,21 @@ function StudentStates($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, 
 			}]
 		}
 	})
-	.state('student.profile.userDetail', {
-		url: '/userdetail',
-		templateUrl: 'ngapp/student/views/studentprofile/userDetailView.html',
-		controller: 'UserDetailCtrl as vm',
+	.state('student.profile.studentProfile', {
+		url: '/studentProfile',
+		templateUrl: 'ngapp/student/views/studentprofile/studentProfileView.html',
+		controller: 'StudentProfileCtrl as vm',
 
 		ncyBreadcrumb: {
-			label: 'User Detail',
+			label: 'Profile',
 		},
-		params: { subtitle: 'User Details' },
+		params: { subtitle: 'Profile' },
 		resolve: {
 			loadMyCtrl: ['$ocLazyLoad', function($ocLazyLoad) {
 				return $ocLazyLoad.load({
 					serie: true,
 					files: [
-					        'ngapp/student/controllers/userDetailCtrl.js',
+					        'ngapp/student/controllers/studentProfileCtrl.js',
 					        'ngapp/student/services/profileDetailService.js'
 					        ]
 				});

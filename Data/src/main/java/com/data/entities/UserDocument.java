@@ -32,8 +32,8 @@ public class UserDocument {
 	private DocumentList document;
 	
 	@OneToOne
-	@JoinColumn(name="FK_UserDetail", nullable = false)
-	private UserDetail userDetail;
+	@JoinColumn(name="FK_Student", nullable = false)
+	private Student student;
 
 		public Integer getUserDocumentId() {
 			return userDocumentId;
@@ -72,10 +72,10 @@ public class UserDocument {
 			this.document = document;
 		}
 	
-		public UserDetail getUserDetail() {
-			return userDetail;
+		public Student getStudent() {
+			return student;
 		}	
-		public void setUserDetail(UserDetail userDetail) {
-			this.userDetail = userDetail;
+		public void setStudent(Student student) {
+			this.student = student;
 		}		
 }

@@ -24,7 +24,7 @@ public class CollegeVendorMap {
 	
 	@ManyToOne
 	@JoinColumn(name="FK_Vendor")
-	UserDetail vendor;
+	Vendor vendor;
 	
 	@Column(name="Enabled")
 	Boolean enabled;
@@ -45,11 +45,11 @@ public class CollegeVendorMap {
 		this.college = college;
 	}
 
-	public UserDetail getVendor() {
+	public Vendor getVendor() {
 		return vendor;
 	}
 
-	public void setVendor(UserDetail vendor) {
+	public void setVendor(Vendor vendor) {
 		this.vendor = vendor;
 	}
 

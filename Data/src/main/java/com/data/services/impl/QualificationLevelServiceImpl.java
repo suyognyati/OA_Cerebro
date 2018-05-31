@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.data.entities.EducationalInformation;
 import com.data.entities.QualificationLevel;
-import com.data.entities.UserDetail;
+import com.data.entities.Student;
 import com.data.repository.EducationalInformationJpaRepository;
 import com.data.repository.QualificationLevelJpaRepository;
 import com.data.services.QualificationLevelService;
@@ -76,10 +76,10 @@ public class QualificationLevelServiceImpl implements QualificationLevelService 
 
 	@Override
 	public List<Integer> getQualificationLevelIdListWithNoMultireferedForFilledEducationalInformation(
-			UserDetail userDetail, Integer qualificationGroup) {
+			Student student, Integer qualificationGroup) {
 		List<Integer> qualificationLevelIdList = new ArrayList<Integer>();
 		
-		List<EducationalInformation> educationalInformationList = educationalInformationJpaRepository.findByUserDetailAndQualificationLevelQualificationGroupAndQualificationLevelMultiReferred(userDetail, qualificationGroup, false);
+		List<EducationalInformation> educationalInformationList = educationalInformationJpaRepository.findByStudentAndQualificationLevelQualificationGroupAndQualificationLevelMultiReferred(student, qualificationGroup, false);
 		for(EducationalInformation educationalInformation : educationalInformationList) {
 			QualificationLevel qualificationLevel = educationalInformation.getQualificationLevel();
 			if(qualificationLevel != null)

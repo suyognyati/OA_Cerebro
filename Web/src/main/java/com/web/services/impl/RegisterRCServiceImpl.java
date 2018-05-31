@@ -5,13 +5,13 @@ import org.springframework.stereotype.Service;
 
 import com.data.entities.StudentCredentials;
 import com.data.entities.User;
-import com.data.entities.UserDetail;
+import com.data.entities.Student;
 import com.data.entities.UserRole;
 import com.data.services.StudentCredentialsService;
-import com.data.services.UserDetailService;
+import com.data.services.StudentService;
 import com.data.services.UserRoleService;
 import com.data.services.UserService;
-import com.web.model.UserDetailModel;
+import com.web.model.StudentModel;
 import com.web.services.RegisterRCService;
 import com.web.staticandconstants.StaticConstants;
 
@@ -25,7 +25,7 @@ public class RegisterRCServiceImpl implements RegisterRCService {
 	UserRoleService userRoleService;
 	
 	@Autowired
-	UserDetailService userDetailService;
+	StudentService studentService;
 	
 	@Autowired
 	StudentCredentialsService studentCredentialsService;
@@ -35,26 +35,26 @@ public class RegisterRCServiceImpl implements RegisterRCService {
 		return (user == null) ? true : false;
 	}
 	
-	public Boolean CreateUser(UserDetailModel userDetailModel) {
-		if(!IsUserAvailable(userDetailModel.getUserName())) {
+	public Boolean CreateUser(StudentModel studentModel) {
+		if(!IsUserAvailable(studentModel.getUserName())) {
 			return false;
 		}
 		
 		//First creating user detail 
-		UserDetail userDetail = new UserDetail();
-		userDetail.setFirstName(userDetailModel.getFirstName());
-		userDetail.setLastName(userDetailModel.getLastName());
-		userDetail.setEmail(userDetailModel.getEmail());
-		userDetail.setMobileNo(userDetailModel.getMobileNo());
-		userDetail.setDateOfBirth(userDetailModel.getBirthDate());
-		userDetail = userDetailService.save(userDetail);
+		Student student = new Student();
+		student.setFirstName(studentModel.getFirstName());
+		student.setLastName(studentModel.getLastName());
+		student.setEmail(studentModel.getEmail());
+		student.setMobileNo(studentModel.getMobileNo());
+		student.setDateOfBirth(studentModel.getBirthDate());
+		student = studentService.save(student);
 		
 		//Creating user
 		User user = new User();
-		user.setUserName(userDetailModel.getUserName());
-		user.setPassword(userDetailModel.getPassword());
+		user.setUserName(studentModel.getUserName());
+		user.setPassword(studentModel.getPassword());
 		user.setEnabled(1);
-		user.setUserDetail(userDetail);
+		user.setStudent(student);
 		user = userService.save(user);
 		
 		//Assigning role to user as ROLE_STUDENT
@@ -65,8 +65,8 @@ public class RegisterRCServiceImpl implements RegisterRCService {
 		
 		//Creating new credential for rest apis
 		StudentCredentials studentCredential = new StudentCredentials();
-		studentCredential.setClient_id(userDetailModel.getUserName());
-		studentCredential.setClient_secret(userDetailModel.getPassword());
+		studentCredential.setClient_id(studentModel.getUserName());
+		studentCredential.setClient_secret(studentModel.getPassword());
 		studentCredentialsService.createStudent(studentCredential, 60*60, 24*60*60);
 		
 		return true;

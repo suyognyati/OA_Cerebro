@@ -4,7 +4,7 @@ import org.springframework.stereotype.Service;
 
 import com.data.entities.College;
 import com.data.entities.CollegeVendorMap;
-import com.data.entities.UserDetail;
+import com.data.entities.Vendor;
 import com.data.repository.CollegeVendorMapJpaRepository;
 import com.data.services.CollegeVendorMapDao;
 
@@ -16,7 +16,7 @@ public class CollegeVendorMapDaoImpl implements CollegeVendorMapDao {
 	Boolean enable = true;
 	
 	@Override
-	public CollegeVendorMap getCollegesOfVendor(UserDetail vendor) {
+	public CollegeVendorMap getCollegesOfVendor(Vendor vendor) {
 		enable = true;
 		return collegeVendorMapJpaRepository.findByVendorAndEnabled(vendor, enable);
 	}
@@ -28,7 +28,7 @@ public class CollegeVendorMapDaoImpl implements CollegeVendorMapDao {
 	}
 
 	@Override
-	public CollegeVendorMap getDisabledCollegesOfVendor(UserDetail vendor) {
+	public CollegeVendorMap getDisabledCollegesOfVendor(Vendor vendor) {
 		enable = false;
 		return collegeVendorMapJpaRepository.findByVendorAndEnabled(vendor, enable);
 	}

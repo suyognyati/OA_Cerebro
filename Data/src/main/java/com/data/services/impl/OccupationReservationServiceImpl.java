@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.data.entities.OccupationReservation;
-import com.data.entities.UserDetail;
+import com.data.entities.Student;
 import com.data.repository.OccupationReservationJpaRepository;
 import com.data.services.OccupationReservationService;
 
@@ -14,8 +14,8 @@ public class OccupationReservationServiceImpl implements OccupationReservationSe
 	@Autowired
 	OccupationReservationJpaRepository occupationReservationJpaRepository;
 	
-	public OccupationReservation getByUserDetail(UserDetail userDetail) {
-		return occupationReservationJpaRepository.findByUserDetail(userDetail);
+	public OccupationReservation getByStudent(Student student) {
+		return occupationReservationJpaRepository.findByStudent(student);
 	}
 	
 	public void save(OccupationReservation occupationReservation) {

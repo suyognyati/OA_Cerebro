@@ -14,7 +14,7 @@ import com.data.services.EducationalInformationService;
 import com.data.services.OccupationReservationService;
 import com.data.services.PersonalDetailService;
 import com.data.services.ApplicationService;
-import com.data.services.UserDetailService;
+import com.data.services.StudentService;
 import com.web.model.GenerateMeritListModel;
 import com.web.services.GenerateMeritListRCService;
 
@@ -22,7 +22,7 @@ import com.web.services.GenerateMeritListRCService;
 public class GenerateMeritListRCServiceImpl implements GenerateMeritListRCService {
 
 	@Autowired
-	UserDetailService userDetailService; 
+	StudentService studentService; 
 	
 	@Autowired
 	PersonalDetailService personalDetailService;

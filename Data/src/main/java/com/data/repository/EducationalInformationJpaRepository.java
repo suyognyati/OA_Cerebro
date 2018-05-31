@@ -7,34 +7,34 @@ import org.springframework.stereotype.Repository;
 
 import com.data.entities.EducationalInformation;
 import com.data.entities.QualificationLevel;
-import com.data.entities.UserDetail;
+import com.data.entities.Student;
 
 @Repository("educationalInformationJpaRepository")
 public interface EducationalInformationJpaRepository extends JpaRepository<EducationalInformation, Integer> {
 	List<EducationalInformation> 
-		findByUserDetailOrderByQualificationLevelQualificationGroupAscQualificationLevelQualificationGroupLevelAsc
-		(UserDetail userDetail);
+		findByStudentOrderByQualificationLevelQualificationGroupAscQualificationLevelQualificationGroupLevelAsc
+		(Student student);
 	List<EducationalInformation> 
-		findByUserDetailOrderByQualificationLevelQualificationGroupDescQualificationLevelQualificationGroupLevelDesc
-		(UserDetail userDetail);
-	EducationalInformation getByUserDetailAndQualificationLevel(UserDetail userDetail, QualificationLevel qualificationLevel);
-	EducationalInformation getByUserDetailAndEducationalInformationId(UserDetail userDetail, Integer educationalInformationId);
+		findByStudentOrderByQualificationLevelQualificationGroupDescQualificationLevelQualificationGroupLevelDesc
+		(Student student);
+	EducationalInformation getByStudentAndQualificationLevel(Student student, QualificationLevel qualificationLevel);
+	EducationalInformation getByStudentAndEducationalInformationId(Student student, Integer educationalInformationId);
 	
 	/**
 	 * This function will give all allowed qualification to apply for perticuler program
-	 * @param userDetail
+	 * @param student
 	 * @param qualificationLevels
 	 * @return List of EducationalInformation
 	 */
 	List<EducationalInformation> 
-		findByUserDetailAndQualificationLevelInOrderByQualificationLevelQualificationGroupAscQualificationLevelQualificationGroupLevelAsc
-		(UserDetail userDetail, List<QualificationLevel> qualificationLevels);
+		findByStudentAndQualificationLevelInOrderByQualificationLevelQualificationGroupAscQualificationLevelQualificationGroupLevelAsc
+		(Student student, List<QualificationLevel> qualificationLevels);
 	
 	/**
 	 * This will give educational detail where QualificationLevel does not support MultiRefered
-	 * @param userDetail
+	 * @param student
 	 * @param multiRefered
 	 * @return List of EducationalInformation
 	 */
-	List<EducationalInformation> findByUserDetailAndQualificationLevelQualificationGroupAndQualificationLevelMultiReferred(UserDetail userDetail, Integer qualificationGroup, Boolean multiRefered);
+	List<EducationalInformation> findByStudentAndQualificationLevelQualificationGroupAndQualificationLevelMultiReferred(Student student, Integer qualificationGroup, Boolean multiRefered);
 }

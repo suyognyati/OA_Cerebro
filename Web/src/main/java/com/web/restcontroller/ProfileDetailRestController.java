@@ -16,12 +16,12 @@ import com.web.model.AddressModel;
 import com.web.model.EducationModel;
 import com.web.model.OccupationReservationModel;
 import com.web.model.PersonalDetailModel;
-import com.web.model.UserDetailModel;
+import com.web.model.StudentModel;
 import com.web.services.AddressRCService;
 import com.web.services.EducationalInformationRCService;
 import com.web.services.OccupationReservationRCService;
 import com.web.services.PersonalDetailRCService;
-import com.web.services.UserDetailRCService;
+import com.web.services.StudentRCService;
 import com.web.session.Session;
 import com.web.staticandconstants.StaticConstants;
 import com.web.staticandconstants.StaticMethods;
@@ -32,7 +32,7 @@ import com.web.staticandconstants.StaticMethods;
 public class ProfileDetailRestController {
 	
 	@Autowired
-	UserDetailRCService userDetailService;
+	StudentRCService studentRCService;
 	
 	@Autowired
 	PersonalDetailRCService personalDetailService;
@@ -50,15 +50,15 @@ public class ProfileDetailRestController {
 	OccupationReservationRCService occupationReservationRCService;
 	
 	
-	@RequestMapping(value="/userDetail/getUserDetail/")
-	public UserDetailModel getUserDetail(Model model){
+	@RequestMapping(value="/student/get/")
+	public StudentModel getStudent(Model model){
 		System.out.println("BasicDetailRestController - getBasicDetail");
-		return userDetailService.getUserDetail();
+		return studentRCService.getStudent();
 	}
 	
-	@RequestMapping(value="/userDetail/saveUserDetail/", method=RequestMethod.POST)
-	public void saveUserDetail(@RequestBody UserDetailModel basicDetailModel) {
-		userDetailService.saveUserDetail(basicDetailModel);
+	@RequestMapping(value="/student/save/", method=RequestMethod.POST)
+	public void saveStudent(@RequestBody StudentModel basicDetailModel) {
+		studentRCService.saveStudent(basicDetailModel);
 	}
 	
 	@RequestMapping(value="/personalDetail/getPersonalDetail/")

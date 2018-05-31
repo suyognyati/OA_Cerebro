@@ -8,10 +8,10 @@ import org.springframework.stereotype.Repository;
 import com.data.entities.Application;
 import com.data.entities.CollegeProgramMap;
 import com.data.entities.StudentSelectedSubject;
-import com.data.entities.UserDetail;
+import com.data.entities.Student;
 
 @Repository("studentSelectedSubjectsJpaRepository")
 public interface StudentSelectedSubjectJpaRepository extends JpaRepository<StudentSelectedSubject, Integer> {
  
-	List<StudentSelectedSubject> findByApplicationAndCollegeProgramMapAndStudent(Application application, CollegeProgramMap collegeProgramMap, UserDetail student);
+	List<StudentSelectedSubject> findByApplicationAndCollegeProgramMapAndStudent(Application application, CollegeProgramMap collegeProgramMap, Student student);
 }

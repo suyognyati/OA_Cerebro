@@ -2,15 +2,18 @@
 	"use strict";
 	angular
 		.module("app")
-		.controller("UserDetailCtrl",
+		.controller("StudentProfileCtrl",
 					["$http",
+					 "$scope",
 					 "profileDetailService",
-					 UserDetailCtrl]);
+					 StudentProfileCtrl]);
 	
-	function UserDetailCtrl($http, profileDetailService) {
+	function StudentProfileCtrl($http, $scope, profileDetailService) {
 		var vm = this;
 		
-		profileDetailService.getUserDetail()
+		vm.accessTokenParam = $scope.getAccessTokenParam();
+		
+		profileDetailService.getStudentProfile(vm.accessTokenParam)
 		.then(function(success) {
 			vm.basicdetail = success.data;
 		}, function(error) {
@@ -19,7 +22,7 @@
 		
 		
 		vm.submit = function() {
-			profileDetailService.saveUserDetail(vm.basicdetail)
+			profileDetailService.saveStudentProfile(vm.basicdetail, vm.accessTokenParam)
 			.then(function(success) {
                 vm.successMessage = "Detail saved successfully";
 			}, function(error) {

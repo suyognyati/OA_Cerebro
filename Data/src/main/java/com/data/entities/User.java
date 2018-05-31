@@ -27,8 +27,8 @@ public class User {
 	private Integer enabled;
 	
 	@ManyToOne
-	@JoinColumn(name="FK_UserDetail")
-	UserDetail userDetail;
+	@JoinColumn(name="FK_Student")
+	Student student;
 	
 	@ManyToOne
 	@JoinColumn(name="FK_Vendor")
@@ -63,11 +63,11 @@ public class User {
 		this.enabled = enabled;
 	}
 
-	public UserDetail getUserDetail() {
-		return userDetail;
+	public Student getStudent() {
+		return student;
 	}
-	public void setUserDetail(UserDetail userDetail) {
-		this.userDetail = userDetail;
+	public void setStudent(Student student) {
+		this.student = student;
 	}
 
 	public Vendor getVendor() {

@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.data.entities.College;
 import com.data.entities.User;
-import com.data.entities.UserDetail;
+import com.data.entities.Student;
 import com.data.services.CollegeService;
 import com.web.services.SessionRCService;
 
@@ -24,10 +24,10 @@ public class SessionServiceImpl implements SessionService {
 	CollegeService collegeService;
 	
 	User user = null;
-	UserDetail userDetail = null;
+	Student student = null;
 	
 	@Override
-	public void setLoggedInUserDetails() {
+	public void setLoggedInUser() {
 		String username = getPrincipal();
 		user = sessionRCService.GetUser(username);		
 		session.setLoggedInUser(user);		

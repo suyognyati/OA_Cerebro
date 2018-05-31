@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import com.data.entities.Application;
 import com.data.entities.CollegeProgramMap;
 import com.data.entities.StudentSelectedSubject;
-import com.data.entities.UserDetail;
+import com.data.entities.Student;
 import com.data.repository.StudentSelectedSubjectJpaRepository;
 import com.data.services.StudentSelectedSubjectsDao;
 
@@ -24,7 +24,7 @@ public class StudentSelectedSubjectsDaoImpl implements StudentSelectedSubjectsDa
 	}
 	
 	@Override
-	public List<StudentSelectedSubject> getSelectedSubjectOfApplication(Application application, CollegeProgramMap collegeProgramMap, UserDetail student){
+	public List<StudentSelectedSubject> getSelectedSubjectOfApplication(Application application, CollegeProgramMap collegeProgramMap, Student student){
 		return studentSelectedSubjectjpaRepository.findByApplicationAndCollegeProgramMapAndStudent(application, collegeProgramMap, student);
 	}
 }

@@ -8,11 +8,11 @@ import com.data.entities.Enums;
 import com.data.entities.OccupationReservation;
 import com.data.entities.PersonalDetail;
 import com.data.entities.User;
-import com.data.entities.UserDetail;
+import com.data.entities.Student;
 import com.data.services.AddressService;
 import com.data.services.OccupationReservationService;
 import com.data.services.PersonalDetailService;
-import com.data.services.UserDetailService;
+import com.data.services.StudentService;
 import com.web.model.ApplicantsModel;
 import com.web.services.ApplicantsRCService;
 
@@ -20,7 +20,7 @@ import com.web.services.ApplicantsRCService;
 public class ApplicantsDetailRCServiceImpl implements ApplicantsRCService {
 
 	@Autowired
-	UserDetailService userDetailService; 
+	StudentService studentService; 
 	
 	@Autowired
 	PersonalDetailService personalDetailService;
@@ -47,13 +47,13 @@ public class ApplicantsDetailRCServiceImpl implements ApplicantsRCService {
 	
 	private void getPersonalDetail(User user) {
 		
-		UserDetail userDetail = user.getUserDetail();
-		PersonalDetail personalDetail = personalDetailService.getByUserDetail(user.getUserDetail());
+		Student student = user.getStudent();
+		PersonalDetail personalDetail = personalDetailService.getByStudent(user.getStudent());
 		
-		if(userDetail != null) {
-			applicantsModel.setBirthDate(userDetail.getDateOfBirth());
-			applicantsModel.setMobileNo(userDetail.getMobileNo());
-			applicantsModel.setEmail(userDetail.getEmail());
+		if(student != null) {
+			applicantsModel.setBirthDate(student.getDateOfBirth());
+			applicantsModel.setMobileNo(student.getMobileNo());
+			applicantsModel.setEmail(student.getEmail());
 		}
 		if(personalDetail != null) {
 			if(personalDetail.getLastName() != null) {
@@ -125,7 +125,7 @@ public class ApplicantsDetailRCServiceImpl implements ApplicantsRCService {
 	}
 
 	private void getAddress(User user) {
-		Address address = addressService.getByUserDetail(user.getUserDetail());
+		Address address = addressService.getByStudent(user.getStudent());
 		
 		if(address != null) {
 			applicantsModel.setFlatNo(address.getFlatNo());
@@ -162,7 +162,7 @@ public class ApplicantsDetailRCServiceImpl implements ApplicantsRCService {
 	}
 	
 	private void getOccupation(User user) {
-		OccupationReservation occupationAndReservation = occupationReservationService.getByUserDetail(user.getUserDetail());
+		OccupationReservation occupationAndReservation = occupationReservationService.getByStudent(user.getStudent());
 				
 		if(occupationAndReservation != null) {
 			applicantsModel.setIsSelfEmployed(occupationAndReservation.getIsSelfEmployed());

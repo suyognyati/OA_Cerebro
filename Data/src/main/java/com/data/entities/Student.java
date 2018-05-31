@@ -13,13 +13,13 @@ import javax.persistence.Table;
  */
 
 @Entity
-@Table(name="UserDetails")
-public class UserDetail {
+@Table(name="User_Students")
+public class Student {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="UserDetailId")
-	private Integer userDetailId;
+	@Column(name="Id")
+	private Integer id;
 	
 	@Column(name="FirstName")
 	private String firstName;
@@ -36,12 +36,12 @@ public class UserDetail {
 	@Column(name="MobileNo")
 	private String mobileNo;
 	
-	//UserDetailId
-	public Integer getUserDetailId() {
-		return userDetailId;
+	//Id
+	public Integer getId() {
+		return id;
 	}
-	public void setUserDetailId(Integer userId) {
-		this.userDetailId = userId;
+	public void setId(Integer id) {
+		this.id = id;
 	}
 	
 	//FirstName
