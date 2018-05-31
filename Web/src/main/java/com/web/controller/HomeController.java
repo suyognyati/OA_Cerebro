@@ -1,7 +1,5 @@
 package com.web.controller;
 
-import java.util.Collection;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -9,8 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.oauth2.common.OAuth2AccessToken;
-import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -29,35 +25,6 @@ public class HomeController {
 	@Autowired
 	private SessionService sessionService;
 	
-	@Autowired
-    private TokenStore tokenStore;
-	
-	@RequestMapping(value = { "vendor/user/" }, method = RequestMethod.GET)
-	public String userPageForVendor(ModelMap model) {
-		String userName = session.getStudentName();
-		String accessTokenValue = "";
-		Collection<OAuth2AccessToken> accessTokens = null;
-		if(userName != null && userName != "") {
-			accessTokens = tokenStore.findTokensByClientId(userName);
-	        for(OAuth2AccessToken accessToken : accessTokens) {
-	        	if(accessToken.isExpired() == false) {
-	        		accessTokenValue = accessToken.getValue();
-	        		break;	
-	        	}
-	        }
-		}
-		if(accessTokenValue == null || accessTokenValue == "") {
-			return "redirect:/vendor/";
-		}
-		
-		model.addAttribute("Bearer", accessTokenValue);
-		model.addAttribute("vendor", session.getLoggedInUser());
-		model.addAttribute("vendordetail", session.getLoggedInUser().getStudent());
-		model.addAttribute("user", session.getStudent());
-		model.addAttribute("student", session.getStudent().getStudent());
-		return "user/UserPageofVendor";
-	}
-	
 	@RequestMapping(value = { "student/" }, method = RequestMethod.GET)
 	public String userPage(ModelMap model) {
 		
@@ -65,30 +32,9 @@ public class HomeController {
 		model.addAttribute("user", session.getStudent());
 		model.addAttribute("student", session.getStudent().getStudent());
 		
-		return "user/StudentView_newUI";
+		return "student/student";
 	}
 	
-	@RequestMapping(value = { "user/studentview/" }, method = RequestMethod.GET)
-	public String studentViewPage(ModelMap model) {
-		String userName = session.getStudentName();
-		String accessTokenValue = "";
-		Collection<OAuth2AccessToken> accessTokens = null;
-		if(userName != null && userName != "") {
-			accessTokens = tokenStore.findTokensByClientId(userName);
-	        for(OAuth2AccessToken accessToken : accessTokens) {
-	        	if(accessToken.isExpired() == false) {
-	        		accessTokenValue = accessToken.getValue();
-	        		break;	
-	        	}
-	        }
-		}
-		
-		model.addAttribute("Bearer", accessTokenValue);
-		model.addAttribute("user", session.getStudent());
-		model.addAttribute("student", session.getStudent().getStudent());
-		return "user/StudentView";
-	}
-
 	@RequestMapping(value = { "vendor/" }, method = RequestMethod.GET)
 	public String vendorPage(ModelMap model) {
 		Integer collegeId = 1;
@@ -96,12 +42,12 @@ public class HomeController {
 		sessionService.setCollege(collegeId);
 		model.addAttribute("vendor", session.getLoggedInUser());
 		model.addAttribute("vendordetail", session.getLoggedInUser().getStudent());
-		return "vendor/vendor_newUI"; //VendorPage-topnavbar";
+		return "vendor/vendor"; //VendorPage-topnavbar";
 	}
 	
 	@RequestMapping(value = "admin/", method = RequestMethod.GET)
 	public String adminPage(ModelMap model) {
-		model.addAttribute("user", getPrincipal());
+		model.addAttribute("admin", getPrincipal());
 		return "admin";
 	}
 	
@@ -112,12 +58,12 @@ public class HomeController {
 		sessionService.setLoggedInUser();
 		model.addAttribute("collegeadmin", session.getLoggedInUser());
 		model.addAttribute("collegeadmindetail", session.getLoggedInUser().getStudent());
-		return "collegeadmin/college_admin";
+		return "collegeadmin/collegeadmin";
 	}
 
 	@RequestMapping(value = "db/", method = RequestMethod.GET)
 	public String dbaPage(ModelMap model) {
-		model.addAttribute("user", getPrincipal());
+		model.addAttribute("db", getPrincipal());
 		return "dba";
 	}
 
@@ -129,7 +75,7 @@ public class HomeController {
 
 	@RequestMapping(value = "login", method = RequestMethod.GET)
 	public String loginPage() {
-		return "login-angular";
+		return "login/login-angular";
 	}
 
 	@RequestMapping(value = "logout", method = RequestMethod.GET)
