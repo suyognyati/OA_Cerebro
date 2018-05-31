@@ -10,6 +10,7 @@ public class Enums {
 		
 	public static class KeyValuePair {
 		int key;
+		int sequenceNo;
 		String value;
 		
 		public int getKey() {
@@ -17,6 +18,12 @@ public class Enums {
 		}
 		public void setKey(int key) {
 			this.key = key;
+		}
+		public int getSequenceNo() {
+			return sequenceNo;
+		}
+		public void setSequenceNo(int sequenceNo) {
+			this.sequenceNo = sequenceNo;
 		}
 		public String getValue() {
 			return value;
@@ -754,26 +761,28 @@ public class Enums {
 	}
 	
 	public enum ApplicationStatus {
-		Cancelled(1, "Cancelled"),
-		Partial(2, "Partial"),
-		Submitted(3, "Submitted"),
-		Rejected(4, "Rejected"),
-		Accepted(5, "Accepted"),
-		Approved(6, "Approved"),
-		Completed(7, "Completed");
+		Cancelled(1, 1, "Cancelled"),
+		Partial(2, 2, "Partial"),
+		Submitted(3, 3, "Submitted"),
+		Rejected(4, 4, "Rejected"),
+		Accepted(5, 5, "Accepted"),
+		Approved(6, 6, "Approved"),
+		Completed(7, 7, "Completed");
 				
 		private int id;
+		private int sequenceNo;
 		private String value;
 		private static final Map<Integer, ApplicationStatus> lookup = new HashMap<Integer, ApplicationStatus>();
 		private static final List<KeyValuePair> enumList = new ArrayList<KeyValuePair>();
 		
-		private ApplicationStatus(int id, String value) { this.id = id; this.value = value; }
+		private ApplicationStatus(int id, int sequenceNo, String value) { this.id = id; this.sequenceNo = sequenceNo; this.value = value; }
 		
 		static {
 			for (ApplicationStatus s : EnumSet.allOf(ApplicationStatus.class)) {
 				lookup.put(s.getId(), s);
 				KeyValuePair ms = new KeyValuePair();
 				ms.key = s.getId();
+				ms.sequenceNo = s.getSequenceNo();
 				ms.value = s.getValue();
 				enumList.add(ms);
 			}
@@ -781,12 +790,14 @@ public class Enums {
 
 		public int getId() { return id; }
 		public String getValue() { return value; }
+		public int getSequenceNo() { return sequenceNo;	}		
 		public static ApplicationStatus get(int id) { return lookup.get(id); }
 		public static List<KeyValuePair> getEnumList() { return enumList; }
 		public static KeyValuePair getKeyValuePair(int id) {
 			KeyValuePair kvp = new KeyValuePair();
 			ApplicationStatus as = get(id);
 			kvp.key = as.id;
+			kvp.sequenceNo = as.sequenceNo;
 			kvp.value = as.value;
 			return kvp;
 		}

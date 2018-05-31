@@ -11,7 +11,7 @@ import com.web.services.ApplicationConfirmationRCService;
 import com.web.session.Session;
  
 @RestController
- 
+@RequestMapping(value="/rest")
 public class ApplicationConfirmationRestController {
 
 	@Autowired
@@ -20,7 +20,7 @@ public class ApplicationConfirmationRestController {
 	@Autowired
 	Session session;
 	
-	@RequestMapping(value="/printApplication/getPrintDetail/{collegeProgramMapId}/{applicationId}")
+	@RequestMapping(value="/application/getPrintDetail/{collegeProgramMapId}/{applicationId}")
 	public PrintApplicationModel getPrintApplicationDetail(
 			@PathVariable(value="collegeProgramMapId") Integer collegeProgramMapId, 
 			@PathVariable(value="applicationId") Integer applicationId) {

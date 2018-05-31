@@ -34,7 +34,9 @@
 				if(vm.response == false) {
 					alert("Error while paying. Please try again");
 				} else {
-					$state.go("student.application.applicationStatus");
+					$state.go("student.application.printApplication", 
+							{collegeProgramMapId: vm.collegeProgramMapId, applicationId: vm.applicationId}
+					);
 				}
 			}, function(error) {
 				vm.response = {};

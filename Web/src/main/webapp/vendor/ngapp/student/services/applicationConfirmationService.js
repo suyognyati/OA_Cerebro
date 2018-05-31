@@ -8,24 +8,24 @@
 	
 	function ApplicationConfirmationService($http) {
 		return{
-			getPrintApplicationDetail : function(collegeProgramMapId, applicationId){
+			getPrintApplicationDetail : function(collegeProgramMapId, applicationId, accessTokenParam){
 				return $http({
 					method: "GET",
-					url: "/Web/printApplication/getPrintDetail/" + collegeProgramMapId + "/" + applicationId
+					url: "/Web/rest/application/getPrintDetail/" + collegeProgramMapId + "/" + applicationId + accessTokenParam
 				})
 			},
 			
 			getFeeDetail : function(collegeProgramMapId, applicationId, accessTokenParam) {
 				return $http({
 					method: "GET",
-					url: "/Web/application/paymentdetail/" + collegeProgramMapId + "/" + applicationId
+					url: "/Web/rest/application/paymentdetail/" + collegeProgramMapId + "/" + applicationId + accessTokenParam
 				})
 			},
 			
 			payAndSubmit : function(collegeProgramMapId, applicationId, accessTokenParam) {
 				return $http({
 					method: "GET",
-					url: "/Web/application/payAndSubmit/" + collegeProgramMapId + "/" + applicationId
+					url: "/Web/rest/application/payAndSubmit/" + collegeProgramMapId + "/" + applicationId + accessTokenParam
 				})
 			},
 			
@@ -39,7 +39,7 @@
 			getListofQualification : function(accessTokenParam) {
 				return $http({
 					method: "GET",
-					url: "/Web/educationalInformation/getListofQualification/"
+					url: "/Web/rest/educationalInformation/getListofQualification/" + accessTokenParam
 				})
 			},
 		}

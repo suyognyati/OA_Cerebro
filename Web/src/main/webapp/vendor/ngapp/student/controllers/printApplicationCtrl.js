@@ -13,16 +13,13 @@
 	function PrintApplicationCtrl($scope, $http, $window, $state, applicationConfirmationService) {
 		var vm = this;
 		
-		var userId = 1;
-
-		vm.accessToken = $window.bearer_token;
-		vm.accessTokenParam = "?access_token=" + vm.accessToken;
+		vm.accessTokenParam = $scope.getAccessTokenParam();
 		
 		vm.collegeProgramMapId = $state.params.collegeProgramMapId;
 		vm.applicationId = $state.params.applicationId;
 		
 		vm.getPrintDetail = function() {
-			applicationConfirmationService.getPrintApplicationDetail(vm.collegeProgramMapId, vm.applicationId)
+			applicationConfirmationService.getPrintApplicationDetail(vm.collegeProgramMapId, vm.applicationId, vm.accessTokenParam)
 			.then(function(success) {
 				vm.printDetail = success.data;
 			}, function(error) {
@@ -30,20 +27,18 @@
 			})
 		}
 		
-		applicationConfirmationService.setApplicant(userId)
-		.then(function(success) {
+		vm.getQualificationDetail = function() {
 			applicationConfirmationService.getListofQualification(vm.accessTokenParam)
 			.then(function(success) {
 				vm.qualificationList = success.data;
 			}, function(error) {
 				vm.qualificationList = error.data;
 			})
-		}, function(error) {
-			vm.qualificationList = {};
-		})
+		}
 		
 		setTimeout(function() {
 		    vm.getPrintDetail();
+		    vm.getQualificationDetail();
 		}, $scope.getDataDelay);
 	};
 }());
