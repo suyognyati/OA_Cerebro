@@ -2,7 +2,7 @@ package com.web.services;
 
 import com.data.entities.User;
 
-public interface SessionRCService {
+public interface UserRCService {
 	User GetUser(Integer userId);
 	User GetUser(String userName);
 }

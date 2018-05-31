@@ -4,18 +4,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.data.entities.User;
-import com.data.services.StudentService;
 import com.data.services.UserService;
-import com.web.services.SessionRCService;
+import com.web.services.UserRCService;
 
 @Service("sessionRCService")
-public class SessionRCServiceImpl implements SessionRCService {
+public class UserRCServiceImpl implements UserRCService {
 
 	@Autowired
 	UserService userService;
-	
-	@Autowired
-	StudentService studentService;
 	
 	public User GetUser(Integer userId) {
 		return userService.getByUserId(userId);

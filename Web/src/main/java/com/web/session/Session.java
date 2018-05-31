@@ -9,13 +9,13 @@ import org.springframework.stereotype.Component;
 
 import com.data.entities.College;
 import com.data.entities.User;
-import com.web.services.SessionRCService;
+import com.web.services.UserRCService;
 
 @Component
 @Scope(value="session",proxyMode=ScopedProxyMode.TARGET_CLASS)
 public class Session {
 	@Autowired
-	SessionRCService sessionService;
+	UserRCService sessionService;
 	
 	private String StudentName = null;
 	private User Student = null;

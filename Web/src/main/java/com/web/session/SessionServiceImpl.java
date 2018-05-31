@@ -9,7 +9,7 @@ import com.data.entities.College;
 import com.data.entities.User;
 import com.data.entities.Student;
 import com.data.services.CollegeService;
-import com.web.services.SessionRCService;
+import com.web.services.UserRCService;
 
 @Service("sessionService")
 public class SessionServiceImpl implements SessionService {
@@ -18,7 +18,7 @@ public class SessionServiceImpl implements SessionService {
 	private Session session;
 	
 	@Autowired
-	private SessionRCService sessionRCService;
+	private UserRCService sessionRCService;
 	
 	@Autowired
 	CollegeService collegeService;
