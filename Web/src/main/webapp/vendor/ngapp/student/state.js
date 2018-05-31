@@ -536,7 +536,7 @@ function StudentStates($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, 
 	})
 	
 	.state('student.profileview.profileDetail', {
-		url: '/profiledetail',
+		url: '/profiledetail?:studentId',
 		templateUrl: userBasePath + 'ngapp/studentview/views/profileView.html',
 		controller:"ProfileViewCtrl as vm",
 		ncyBreadcrumb: {
@@ -555,7 +555,7 @@ function StudentStates($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, 
 		}
 	})
 	.state('student.profileview.educationalDetail', {
-		url: '/educationaldetail',
+		url: '/educationaldetail?:studentId',
 		templateUrl: userBasePath + 'ngapp/studentview/views/educationalView.html',
 		controller:"EducationalViewCtrl as vm",
 		ncyBreadcrumb: {

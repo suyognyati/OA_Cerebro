@@ -60,21 +60,11 @@ public class HomeController {
 	
 	@RequestMapping(value = { "student/" }, method = RequestMethod.GET)
 	public String userPage(ModelMap model) {
-		//Set current logged in user details
-		sessionService.setLoggedInUser();
 		
-		//Set current logged in user details to get profile details
-		Integer userId = 0;
-		if(session.getLoggedInUser() != null && session.getLoggedInUser().getUserId() != null) {
-			userId = session.getLoggedInUser().getUserId();
-			sessionService.setApplicant(userId);
-			//Setting applicant as fixed so no body can change it
-			session.setIsApplicantFixed(true);
-		}
+		sessionService.setStudent();
+		model.addAttribute("user", session.getStudent());
+		model.addAttribute("student", session.getStudent().getStudent());
 		
-		
-		model.addAttribute("user", session.getLoggedInUser());
-		model.addAttribute("student", session.getLoggedInUser().getStudent());
 		return "user/StudentView_newUI";
 	}
 	

@@ -20,10 +20,11 @@ public class Session {
 	private String StudentName = null;
 	private User Student = null;
 	
+	private String LoggedInUserName = null;
 	private User LoggedInUser = null;
 	
-	private Boolean isApplicantFixed = false;
-	private User Applicant = null;
+	/*private Boolean isApplicantFixed = false;
+	private User Applicant = null;*/
 	
 	private Integer collegeId = null;
 	private College College = null;
@@ -33,25 +34,22 @@ public class Session {
 	/* Getter Setter of Student */
 	
 	public String getStudentName() {
-		return StudentName;
-	}
-
-	public void setStudentName()	{
 		StudentName = getPrincipal();
+		return StudentName;
 	}
 	
 	public User getStudent() {
 		return Student;
 	}
-
-	public void setStudent() {
-		if(StudentName == null)
-			setStudentName();
-		Student = sessionService.GetUser(StudentName);
+	public void setStudent(User student) {
+		this.Student = student;
 	}
 	
-	/* Getter setter */
-	
+	public String getLoggedInUserName() {
+		LoggedInUserName = getPrincipal();
+		return LoggedInUserName;
+	}
+
 	public User getLoggedInUser() {
 		return LoggedInUser;
 	}
@@ -59,20 +57,27 @@ public class Session {
 		LoggedInUser = loggedInUser;
 	}
 
-	public Boolean getIsApplicantFixed() {
+	/*public Boolean getIsApplicantFixed() {
 		return isApplicantFixed;
 	}
 	public void setIsApplicantFixed(Boolean isApplicantFixed) {
 		this.isApplicantFixed = isApplicantFixed;
-	}
+	}*/
 
-	public User getApplicant() {
-		return Applicant;
+	/*public User getStudent() {
+		//return Applicant;
+		if(Applicant != null) {
+			User tempStudent = Applicant;
+			if(!isApplicantFixed)
+				Applicant = null;
+			return tempStudent;
+		}
+		return Student;
 	}
-	public void setApplicant(User applicant) {
+	public void setStudent(User applicant) {
 		if(!isApplicantFixed)
 			Applicant = applicant;
-	}
+	}*/
 
 	public Integer getCollegeId() {
 		return collegeId;
@@ -87,7 +92,9 @@ public class Session {
 	public void setCollege(College college) {
 		College = college;
 	}
-
+	
+	
+	
 	/**
 	 * Gives the currently logged in user name
 	 * */

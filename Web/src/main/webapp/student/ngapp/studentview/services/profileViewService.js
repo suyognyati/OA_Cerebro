@@ -14,13 +14,13 @@
 					url: "/Web/applicants/setApplicant/" + userId
 				})
 			},
-            getApplicant : function() {
+            getApplicantDetail : function() {
 				return $http({
 					method: "GET",
 					url: "/Web/applicants/getDetail/"
 				})
 			},
-			getListofQualification : function(accessTokenParam) {
+			getListofQualification : function() {
 				return $http({
 					method: "GET",
 					url: "/Web/educationalInformation/getListofQualification/"

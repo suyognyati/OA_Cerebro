@@ -7,7 +7,7 @@ import com.data.entities.User;
 import com.data.services.UserService;
 import com.web.services.UserRCService;
 
-@Service("sessionRCService")
+@Service("userRCService")
 public class UserRCServiceImpl implements UserRCService {
 
 	@Autowired

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.web.session.Session;
+import com.web.session.SessionService;
 import com.web.staticandconstants.StaticMethods;
 
 @RestController
@@ -22,13 +23,16 @@ public class InitRestController {
 	Session session;
 	
 	@Autowired
+	SessionService sessionService;
+	
+	@Autowired
     private TokenStore tokenStore;
 	
 	@RequestMapping(value="/setuser/", method=RequestMethod.GET)
-	public JSONObject setUser(Model model){
-		session.setStudentName();
-		session.setStudent();
+	public JSONObject setStudent(Model model){
+		sessionService.setStudent();		
 		JSONObject obj = StaticMethods.ResponseJson("username", session.getStudent().getUserName());
+		StaticMethods.AddToJsonObject(obj, "studentId", session.getStudent().getUserId());
 		StaticMethods.AddToJsonObject(obj, "tokenexpirein", tokenExpiresIn(session.getStudentName()));
 		return obj;
 	}

@@ -12,8 +12,12 @@
 					 ProfileViewCtrl]);
 
 	function ProfileViewCtrl($state, $http, $httpParamSerializer, profileViewService, $scope, $window) {
-		var userId = 1;
 		var vm = this;
+		vm.studentId = null
+		
+		if($state.params.studentId != null)
+			vm.studentId = $state.params.studentId;
+		
 		vm.indianCitizenship = true;
 		vm.applicantdetailTemp = {};
 
@@ -29,19 +33,25 @@
 					occupationDetail : false,
 					reservationDetail : false};
 
-		profileViewService.setApplicant(userId)
-		.then(function(success) {
-			profileViewService.getApplicant()
+		vm.setApplicantAndGetDetail = function(studentId) {
+			profileViewService.setApplicant(studentId)
+			.then(function(success) {
+				vm.getApplicantDetail();
+			}, function(error) {
+				vm.applicantdetail = {};
+			})
+		}
+
+		vm.getApplicantDetail = function() {
+			profileViewService.getApplicantDetail()
 			.then(function(success) {
 				vm.applicantdetail = success.data;
 				vm.initModel();
 			}, function(error) {
 				vm.applicantdetail = {};
 			})
-		}, function(error) {
-			vm.applicantdetail = {};
-		})
-
+		}
+		
 		vm.initModel = function() {
 			if(vm.applicantdetail.countryOfCitizenship.countryName == "India") {
 				vm.indianCitizenship = true
@@ -78,6 +88,17 @@
 			
 			setActiveOnSubMenu(id);
 		}
+		
+		vm.loadApplicantDetail = function() {
+			if(vm.studentId == null) {
+				vm.getApplicantDetail();
+			} else {
+				vm.setApplicantAndGetDetail(vm.studentId);
+			}
+		}
+		
+		vm.loadApplicantDetail();
+		
 	};
 
 }());

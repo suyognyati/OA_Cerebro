@@ -11,28 +11,35 @@
 
 	function EducationalViewCtrl($http, $window, $state, profileViewService) {
 
-		var userId = 1;
 		var vm = this;
+		vm.studentId = null
 		vm.qualificationList = [];
 		if($state.params.success != null)
 			vm.success = $state.params.success;
+		
+		if($state.params.studentId != null)
+			vm.studentId = $state.params.studentId;
 
-		vm.accessToken = $window.bearer_token;
-		vm.accessTokenParam = "?access_token=" + vm.accessToken;
-
-		profileViewService.setApplicant(userId)
-		.then(function(success) {
-			profileViewService.getListofQualification(vm.accessTokenParam)
+		//This function will set user first and then will call to get details.
+		//When external module will call this controller then this function will be useful.
+		vm.setApplicantAndGetQualifications = function(studentId) {
+			profileViewService.setApplicant(studentId)
+			.then(function(success) {
+				vm.getQualifications();
+			}, function(error) {
+				vm.qualificationList = {};
+			})
+		}
+		
+		vm.getQualifications = function() {
+			profileViewService.getListofQualification()
 			.then(function(success) {
 				vm.qualificationList = success.data;
 			}, function(error) {
 				vm.qualificationList = error.data;
 			})
-		}, function(error) {
-			vm.qualificationList = {};
-		})
-
-
+		}
+		
 		vm.qualificationDetail = function(qualificationGroup, qualificationId) {
 			var view = mapView(qualificationGroup);
 
@@ -54,6 +61,17 @@
 
 			return view;
 		}
+		
+	
+		vm.initEducationView = function() {
+			if(vm.studentId == null) {
+				vm.getQualifications();
+			} else {
+				vm.setApplicantAndGetQualifications(vm.studentId);
+			}
+		}
+		
+		vm.initEducationView();
 	};
 
 }());

@@ -35,12 +35,12 @@ public class ProfileViewRestController {
 	
 	@RequestMapping(value="/applicants/setApplicant/{applicantId}")
 	public void setApplicant(@PathVariable(value="applicantId") Integer applicantId) {
-		sessionService.setApplicant(applicantId);
+		sessionService.setStudent(applicantId);
 	}
 	
 	@RequestMapping(value="/applicants/getDetail/")
 	public ApplicantsModel getApplicantsDetail(Model model){
-		return applicantsDetailRCService.getApplicantDetail(session.getApplicant());
+		return applicantsDetailRCService.getApplicantDetail(session.getStudent());
 	}
 	
 	@RequestMapping(value="/educationalInformation/getEducationalInformation/")
@@ -50,13 +50,13 @@ public class ProfileViewRestController {
 	
 	@RequestMapping(value="/educationalInformation/getListofQualification/")
 	public List<EducationModel.Qualification> getListofQualification(Model model){
-		return educationalInformationService.getListofQualification(session.getApplicant());
+		return educationalInformationService.getListofQualification(session.getStudent());
 	}
 	
 	@RequestMapping(value="/educationalInformation/getQualificationDetail/{qualificationId}", method=RequestMethod.GET)
 	public EducationModel.QualificationDetail getQualificationDetail(
 			@PathVariable(value="qualificationId") Integer qualificationId){
-		return educationalInformationService.getQualificationDetail(session.getApplicant(), qualificationId);
+		return educationalInformationService.getQualificationDetail(session.getStudent(), qualificationId);
 	}	
 	
 }
