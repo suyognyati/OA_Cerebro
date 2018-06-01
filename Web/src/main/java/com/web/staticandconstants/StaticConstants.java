@@ -10,6 +10,11 @@ public class StaticConstants {
 	public static final String StrINDIA = "India";
 	public static final Logger LOGGER = LoggerFactory.getLogger(WebConfig.class);
 	
+	private static final Integer secondsInMinute = 60;
+	private static final Integer secondsInHour = (60 * secondsInMinute);
+	private static final Integer secondsInDay = (24 * secondsInHour);
+	public static final Integer httpSessionTimeOut = 4 * secondsInHour;
+	
 	public static class ROLE {
 		
 		public static final String SUPERADMIN = "SUPERADMIN";

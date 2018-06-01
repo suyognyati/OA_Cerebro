@@ -27,4 +27,15 @@ public class StudentSelectedSubjectsDaoImpl implements StudentSelectedSubjectsDa
 	public List<StudentSelectedSubject> getSelectedSubjectOfApplication(Application application, CollegeProgramMap collegeProgramMap, Student student){
 		return studentSelectedSubjectjpaRepository.findByApplicationAndCollegeProgramMapAndStudent(application, collegeProgramMap, student);
 	}
+	
+	@Override
+	public List<StudentSelectedSubject> getSelectedSubjectOfApplication(Integer applicationId) {
+		return studentSelectedSubjectjpaRepository.findByApplicationApplicationId(applicationId);
+	}
+	
+	@Override
+	public Boolean deleteBySelectedSubjectList(List<StudentSelectedSubject> selectedSubjectList) {		
+		studentSelectedSubjectjpaRepository.delete(selectedSubjectList);
+		return true;
+	}
 }

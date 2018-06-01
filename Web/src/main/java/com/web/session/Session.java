@@ -23,15 +23,9 @@ public class Session {
 	private String LoggedInUserName = null;
 	private User LoggedInUser = null;
 	
-	/*private Boolean isApplicantFixed = false;
-	private User Applicant = null;*/
-	
 	private Integer collegeId = null;
 	private College College = null;
 	
-	
-	
-	/* Getter Setter of Student */
 	
 	public String getStudentName() {
 		StudentName = getPrincipal();
@@ -56,28 +50,6 @@ public class Session {
 	public void setLoggedInUser(User loggedInUser) {
 		LoggedInUser = loggedInUser;
 	}
-
-	/*public Boolean getIsApplicantFixed() {
-		return isApplicantFixed;
-	}
-	public void setIsApplicantFixed(Boolean isApplicantFixed) {
-		this.isApplicantFixed = isApplicantFixed;
-	}*/
-
-	/*public User getStudent() {
-		//return Applicant;
-		if(Applicant != null) {
-			User tempStudent = Applicant;
-			if(!isApplicantFixed)
-				Applicant = null;
-			return tempStudent;
-		}
-		return Student;
-	}
-	public void setStudent(User applicant) {
-		if(!isApplicantFixed)
-			Applicant = applicant;
-	}*/
 
 	public Integer getCollegeId() {
 		return collegeId;

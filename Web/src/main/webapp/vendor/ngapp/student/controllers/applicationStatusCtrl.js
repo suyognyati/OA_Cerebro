@@ -29,14 +29,19 @@
 			if(canDelete == true) {
 				applyOnlineService.deleteApplication(applicationId, vm.accessTokenParam)
 				.then(function(success) {
-					var count = 0;
-					angular.forEach(vm.appliedCourses, function(value, key) {
-						if(value.applicationId == applicationId) {
-							vm.appliedCourses.splice(count, 1);
-						}
-						count++;
-					});
+					if(success.data.deleted == true) {
+						var count = 0;
+						angular.forEach(vm.appliedCourses, function(value, key) {
+							if(value.applicationId == applicationId) {
+								vm.appliedCourses.splice(count, 1);
+							}
+							count++;
+						});
+					} else {
+						alert("Error while deleting application");
+					}
 				}, function(error) {
+					alert("Error while deleting application");
 				})
 			}
 		}

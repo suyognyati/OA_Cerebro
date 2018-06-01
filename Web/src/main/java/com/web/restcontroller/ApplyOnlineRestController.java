@@ -2,6 +2,7 @@ package com.web.restcontroller;
 
 import java.util.List;
 
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,6 +22,7 @@ import com.web.services.ProgramCategoryRCService;
 import com.web.services.ProgramRCService;
 import com.web.services.ApplicationRCService;
 import com.web.session.Session;
+import com.web.staticandconstants.StaticMethods;
 
 @RestController
 @RequestMapping(value="/rest")
@@ -77,7 +79,8 @@ public class ApplyOnlineRestController {
 	}
 	
 	@RequestMapping(value="/application/deleteAppliedCourse", method = RequestMethod.POST)
-	public void deleteAppliedCourse(@RequestBody Integer applicationId) {
-		applicationRCService.deleteAppliedCourse(applicationId);
+	public JSONObject deleteAppliedCourse(@RequestBody Integer applicationId) {
+		Boolean success = applicationRCService.deleteAppliedCourse(applicationId);		
+		return StaticMethods.ResponseJson("deleted", success);
 	}
 }

@@ -24,4 +24,18 @@ public interface StudentSelectedSubjectsDao {
 	 * @return List<StudentSelectedSubject>
 	 */
 	public List<StudentSelectedSubject> getSelectedSubjectOfApplication(Application application, CollegeProgramMap collegeProgramMap, Student student);
+	
+	/**
+	 * This function will provide selected subject list for application.
+	 * @param applicationId
+	 * @return List<StudentSelectedSubject>
+	 */
+	public List<StudentSelectedSubject> getSelectedSubjectOfApplication(Integer applicationId);
+	
+	/**
+	 * Delete student selected subjects by studentSelectedSubject list.
+	 * @param studentSelectedSubjectList
+	 * @return Boolean
+	 */
+	public Boolean deleteBySelectedSubjectList(List<StudentSelectedSubject> studentSelectedSubjectList);
 }
