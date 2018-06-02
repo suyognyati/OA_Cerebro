@@ -1,11 +1,14 @@
 package com.web.staticandconstants;
 
+import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
 import org.json.simple.JSONObject;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class StaticMethods {
 	
@@ -45,5 +48,60 @@ public class StaticMethods {
 	public static Integer GetCourseStartYear() {
 		Calendar today = Calendar.getInstance();
 		return today.get(Calendar.YEAR);
+	}
+	
+	public static DateFormat GetDateFormat(String format) {
+		DateFormat dateFormat = new SimpleDateFormat(format);
+		return dateFormat;
+	}
+	
+	/**
+	 * This function will convert object to json string
+	 * @param object
+	 * @return String
+	 */
+	public static String GetJsonStringFromObject(Object object) {
+		ObjectMapper objectMapper = new ObjectMapper();
+		return convertToJsonString(objectMapper, object);
+	}
+	
+	/**
+	 * This function will convert object to json string by replacing dates in given format
+	 * @param object
+	 * @param dateFormat
+	 * @return String
+	 */
+	public static String GetJsonStringFromObject(Object object, String dateFormat) {
+		ObjectMapper objectMapper = new ObjectMapper();
+		//objectMapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
+		objectMapper.setDateFormat(GetDateFormat(dateFormat));
+		return convertToJsonString(objectMapper, object);
+	}
+	
+	/**
+	 * This function will convert object to json string by replacing dates in given format
+	 * @param object
+	 * @param dateFormat
+	 * @return String
+	 */
+	public static String GetJsonStringFromObject(Object object, DateFormat dateFormat) {
+		ObjectMapper objectMapper = new ObjectMapper();
+		//objectMapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
+		objectMapper.setDateFormat(dateFormat);
+		return convertToJsonString(objectMapper, object);
+	}
+	
+	
+	
+	/* ---------------------------------- Private functions -------------------------------------*/	
+	
+	private static String convertToJsonString(ObjectMapper objectMapper, Object object) {
+		String returnJson = ""; 
+		try {
+			returnJson = objectMapper.writeValueAsString(object);
+		} catch(IOException e) {
+			
+		}
+		return returnJson;
 	}
 }

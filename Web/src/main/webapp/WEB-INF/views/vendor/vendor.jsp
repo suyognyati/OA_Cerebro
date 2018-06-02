@@ -38,7 +38,7 @@
 		
 		<!-- My Custom Styles -->
 		<link href="<c:url value='/student/css/userstyle.css' />" rel="stylesheet" />
-		
+		<link href="<c:url value='/static/css/cursor.css' />" rel="stylesheet" />
 		<link href="<c:url value='/static/css/newui/left-nav.css' />" rel="stylesheet" />
 		<link href="<c:url value='/static/css/newui/aside-menu.css' />" rel="stylesheet" />
 		<link href="<c:url value='/static/css/newui/main-content.css' />" rel="stylesheet" />		

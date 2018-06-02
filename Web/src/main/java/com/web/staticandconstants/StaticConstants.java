@@ -32,4 +32,12 @@ public class StaticConstants {
 		public static final String ROLE_STUDENT = DatabaseRolePrefix + STUDENT;
 	}
 	
+	/*Date formats*/
+	public static class DATEFORMAT {
+		public static final String ddMMyyyy = "dd-MM-yyyy";
+		public static final String yyyyMMdd = "yyyy-MM-dd";
+		
+	}
+	
+	
 }

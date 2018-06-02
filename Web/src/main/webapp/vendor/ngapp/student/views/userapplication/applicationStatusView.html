@@ -61,9 +61,16 @@
 					        </div>
 						</td>
 					    <td>
-					    	<div ng-click="vm.deleteApplication(appliedCourse.applicationId)"> 
+					    	<div ng-if="appliedCourse.applicationStatus.sequenceNo <= 2">
+						    	<div ng-click="vm.deleteApplication(appliedCourse.applicationId)"> 
+									<a href="#" style="font-size: 25px;">
+							          <span class="glyphicon glyphicon-trash"></span>
+							        </a>
+						        </div>
+					        </div>
+					        <div ng-if="appliedCourse.applicationStatus.sequenceNo > 2"> 
 								<a href="#" style="font-size: 25px;">
-						          <span class="glyphicon glyphicon-trash"></span>
+						          <span class="glyphicon glyphicon-trash not-allowed-disabled"></span>
 						        </a>
 					        </div>
 						</td>

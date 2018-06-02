@@ -1,5 +1,6 @@
 package com.web.restcontroller;
 
+import java.io.IOException;
 import java.util.List;
 
 import org.json.simple.JSONObject;
@@ -9,19 +10,23 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import com.web.model.AppliedCourseModel;
 import com.web.model.EducationModel;
 import com.web.model.ProgramCategoriesModel;
 import com.web.model.ProgramModel;
 import com.web.model.SubjectModel;
+import com.web.services.ApplicationRCService;
 import com.web.services.CourseRCService;
 import com.web.services.EducationalInformationRCService;
 import com.web.services.ProgramCategoryRCService;
 import com.web.services.ProgramRCService;
-import com.web.services.ApplicationRCService;
 import com.web.session.Session;
+import com.web.staticandconstants.StaticConstants;
 import com.web.staticandconstants.StaticMethods;
 
 @RestController
@@ -73,9 +78,9 @@ public class ApplyOnlineRestController {
 	}
 	
 	@RequestMapping(value="/subject/getAppliedCourses", method = RequestMethod.GET)
-	public List<AppliedCourseModel> getAppliedCourses() {
+	public String getAppliedCourses() {
 		List<AppliedCourseModel> appliedCoursemodel = courseRCService.getAppliedCourseDetails(session.getStudent(), session.getCollege());
-		return appliedCoursemodel;
+		return StaticMethods.GetJsonStringFromObject(appliedCoursemodel, StaticConstants.DATEFORMAT.ddMMyyyy);
 	}
 	
 	@RequestMapping(value="/application/deleteAppliedCourse", method = RequestMethod.POST)
