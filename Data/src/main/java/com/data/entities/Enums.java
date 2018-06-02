@@ -802,4 +802,56 @@ public class Enums {
 			return kvp;
 		}
 	}
+	
+	public enum SocialReservations {
+		ActiveServiceman_WardofActiveServiceman(1, 1, "Active Serviceman/Ward of Active Serviceman"),
+		BelowPoverty_LineStudent(2, 2, "Below Poverty Line Student"),
+		Deserted_Divorced_WidowedWomen(3, 3, "Deserted/Divorced/Widowed Women"),
+		ExServiceman_WardofExServiceman(4, 4, "Ex-Serviceman/Ward of Ex-Serviceman"),
+		FreedomFighter_WardofFreedomFighter(5, 5, "Freedom Fighter/Ward of Freedom Fighter"),
+		KashmirMigrant(6, 6, "Kashmir Migrant"),
+		MemberofEarthquakeAffectedFamily(7, 7, "Member of Earthquake Affected Family"),
+		MemberofFlood_FamineAffectedFamily(8, 8, "Member of Flood/Famine Affected Family"),
+		MemberofProjectAffectedFamily(9, 9, "Member of Project Affected Family"),
+		ResidentofTribalArea(10, 10, "Resident of Tribal Area"),
+		ResidentofDisputed_Boundary_Area(11, 11, "Resident of Disputed Boundary Area"),
+		TeacherinInnovativeSchool(12, 12, "Teacher in 'Innovative School'"),
+		UniversityStaffQuota(13, 13, "University Staff Quota"),
+		WardofTransferredCentral_StateGovernmentEmployee(14, 14, "Ward of Transferred Central/State Government Employee"),
+		WardofPrimaryTeacher(15, 15, "Ward of Primary Teacher"),
+		WardofSecondaryTeacher(16, 16, "Ward of Secondary Teacher");
+				
+		private int id;
+		private int sequenceNo;
+		private String value;
+		private static final Map<Integer, SocialReservations> lookup = new HashMap<Integer, SocialReservations>();
+		private static final List<KeyValuePair> enumList = new ArrayList<KeyValuePair>();
+		
+		private SocialReservations(int id, int sequenceNo, String value) { this.id = id; this.sequenceNo = sequenceNo; this.value = value; }
+		
+		static {
+			for (SocialReservations s : EnumSet.allOf(SocialReservations.class)) {
+				lookup.put(s.getId(), s);
+				KeyValuePair ms = new KeyValuePair();
+				ms.key = s.getId();
+				ms.sequenceNo = s.getSequenceNo();
+				ms.value = s.getValue();
+				enumList.add(ms);
+			}
+		}
+
+		public int getId() { return id; }
+		public String getValue() { return value; }
+		public int getSequenceNo() { return sequenceNo;	}		
+		public static SocialReservations get(int id) { return lookup.get(id); }
+		public static List<KeyValuePair> getEnumList() { return enumList; }
+		public static KeyValuePair getKeyValuePair(int id) {
+			KeyValuePair kvp = new KeyValuePair();
+			SocialReservations as = get(id);
+			kvp.key = as.id;
+			kvp.sequenceNo = as.sequenceNo;
+			kvp.value = as.value;
+			return kvp;
+		}
+	}
 }

@@ -217,15 +217,16 @@ function StudentStates($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, 
 		url: '/educationinformation/:qualification/:qualificationGroup?:qualificationId:newQualification',
 		templateUrl:
 			function (stateParams){
-				if((stateParams.qualificationGroup >= 1 && stateParams.qualificationGroup <= 2)
-						/*&& stateParams.qualification == "ssc"*/) {
-					return "ngapp/student/views/studentprofile/sscView.html"
-				} else if((stateParams.qualificationGroup == 3)
-						/*&& stateParams.qualification == "hsc"*/) {
-					return "ngapp/student/views/studentprofile/hscView.html"
-				} else if(stateParams.qualificationGroup >= 4
-						/*&& stateParams.qualification == "diploma"*/) {
-					return "ngapp/student/views/studentprofile/diplomaView.html"
+				if((stateParams.qualificationGroup >= 1 && stateParams.qualificationGroup <= 2)) {
+					return "ngapp/student/views/studentprofile/qualifications/sscView.html"
+				} else if((stateParams.qualificationGroup == 3)) {
+					return "ngapp/student/views/studentprofile/qualifications/hscView.html"
+				} else if(stateParams.qualificationGroup == 4) {
+					return "ngapp/student/views/studentprofile/qualifications/diplomaView.html"
+				} else if(stateParams.qualificationGroup == 5) {
+					return "ngapp/student/views/studentprofile/qualifications/degreeView.html"
+				} else if(stateParams.qualificationGroup >= 6) {
+					return "ngapp/student/views/studentprofile/qualifications/pgView.html"
 				} else {
 					return false;
 				}
@@ -580,15 +581,16 @@ function StudentStates($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, 
 		url: '/educationaldetail/:qualification/:qualificationGroup/:qualificationId',
 		templateUrl:
 		function (stateParams){
-			if(stateParams.qualificationGroup == 1
-					/*&& stateParams.qualification == "ssc"*/) {
+			if((stateParams.qualificationGroup >= 1 && stateParams.qualificationGroup <= 2)) {
 				return userBasePath + "ngapp/studentview/views/qualificationDetailView/sscView.html"
-			} else if((stateParams.qualificationGroup >= 2 && stateParams.qualificationGroup <= 3)
-					/*&& stateParams.qualification == "hsc"*/) {
+			} else if(stateParams.qualificationGroup == 3) {
 				return userBasePath + "ngapp/studentview/views/qualificationDetailView/hscView.html"
-			} else if(stateParams.qualificationGroup == 4
-					/*&& stateParams.qualification == "diploma"*/) {
+			} else if(stateParams.qualificationGroup == 4) {
 				return userBasePath + "ngapp/studentview/views/qualificationDetailView/diplomaView.html"
+			} else if(stateParams.qualificationGroup == 5) {
+				return userBasePath + "ngapp/studentview/views/qualificationDetailView/degreeView.html"
+			} else if(stateParams.qualificationGroup == 6) {
+				return userBasePath + "ngapp/studentview/views/qualificationDetailView/pgView.html"
 			} else {
 				return false;
 			}

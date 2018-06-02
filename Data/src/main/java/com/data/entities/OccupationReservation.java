@@ -57,9 +57,13 @@ public class OccupationReservation {
 	@Column(name="SpeciallyAbled")
 	private Integer speciallyAbled;
 	
+	@Column(name="SocialReservation")
+	String socialReservation;
+	
 	@OneToOne
 	@JoinColumn(name="FK_Student", nullable = false)
 	Student student;
+	
 	
 		//Occupation and Reservation Id
 		public Integer getOccupationReservationId() {
@@ -171,6 +175,42 @@ public class OccupationReservation {
 		}
 		public void setSpeciallyAbled(Integer speciallyAbled) {
 			this.speciallyAbled = speciallyAbled;
+		}
+
+		//Social Reservation
+		public String getSocialReservation() {
+			return socialReservation;
+		}
+		public Integer[] getSocialReservationArray() {
+			String socialReservation = this.socialReservation;
+			if(socialReservation == null) {
+				return null;
+			}
+			String [] strArraySocialReservation = socialReservation.split(",");
+			Integer [] intArraySocialReservation = null;
+			
+			if(strArraySocialReservation.length > 0) {
+				int arrayLen = strArraySocialReservation.length;
+				intArraySocialReservation = new Integer[arrayLen];
+				for(int i = 0; i < arrayLen; i++) {
+					try {
+						intArraySocialReservation[i] = Integer.parseInt(strArraySocialReservation[i]);
+					} catch(Exception e) {
+						System.out.println("Number format exception");
+					}
+				}
+			}
+			return intArraySocialReservation;
+		}
+		public void setSocialReservation(Integer[] socialReservations) {
+			Integer[] arraySocialReservation = socialReservations;
+			String strSocialReservation = "";
+			for(Integer intSocialReservation : arraySocialReservation) {
+				if(!strSocialReservation.equals(""))
+					strSocialReservation += ",";
+				strSocialReservation = strSocialReservation + intSocialReservation;
+			}
+			this.socialReservation = strSocialReservation;
 		}
 
 		//For which User

@@ -26,6 +26,8 @@ public class OccupationReservationModel {
 	private List<Enums.KeyValuePair> motherTongueList;
 	private Integer speciallyAbled;
 	private List<Enums.KeyValuePair> speciallyAbledList;
+	private Integer[] selectedSocialReservations;
+	private List<Enums.KeyValuePair> socialReservationList;
 	
 	
 		//Is Self Employed
@@ -54,7 +56,7 @@ public class OccupationReservationModel {
 		
 		//Occupation
 		public Integer getOccupation() {
-			return occupation == null ? 0 : occupation;
+			return occupation;
 		}
 		public void setOccupation(Integer occupation) {
 			this.occupation = occupation;
@@ -110,7 +112,7 @@ public class OccupationReservationModel {
 		
 		//Category
 		public Integer getCategory() {
-			return category == null ? 0 : category;
+			return category;
 		}
 		public void setCategory(Integer category) {
 			this.category = category;
@@ -126,7 +128,7 @@ public class OccupationReservationModel {
 		
 		//Religion
 		public Integer getReligion() {
-			return religion == null ? 0 : religion;
+			return religion;
 		}
 		public void setReligion(Integer religion) {
 			this.religion = religion;
@@ -142,7 +144,7 @@ public class OccupationReservationModel {
 		
 		//Mother Tongue
 		public Integer getMotherTongue() {
-			return motherTongue == null ? 0 : motherTongue;
+			return motherTongue;
 		}
 		public void setMotherTongue(Integer motherTongue) {
 			this.motherTongue = motherTongue;
@@ -158,7 +160,7 @@ public class OccupationReservationModel {
 		
 		//Specially Abled
 		public Integer getSpeciallyAbled() {
-			return speciallyAbled == null ? 0 : speciallyAbled;
+			return speciallyAbled;
 		}
 		public void setSpeciallyAbled(Integer speciallyAbled) {
 			this.speciallyAbled = speciallyAbled;
@@ -171,4 +173,21 @@ public class OccupationReservationModel {
 		public void setSpeciallyAbledList(List<Enums.KeyValuePair> speciallyAbledList) {
 			this.speciallyAbledList = speciallyAbledList;
 		}
+		
+		//Selected social reservation list
+		public Integer[] getSelectedSocialReservations() {
+			return selectedSocialReservations;
+		}
+		public void setSelectedSocialReservations(Integer[] selectedSocialReservations) {
+			this.selectedSocialReservations = selectedSocialReservations;
+		}
+		
+		//Available social reservation list
+		public List<Enums.KeyValuePair> getSocialReservationList() {
+			return socialReservationList;
+		}
+		public void setSocialReservationList(List<Enums.KeyValuePair> socialReservationList) {
+			this.socialReservationList = socialReservationList;
+		}
+
 }

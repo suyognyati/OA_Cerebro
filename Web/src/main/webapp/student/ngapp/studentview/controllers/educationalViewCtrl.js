@@ -58,6 +58,8 @@
 				view = "diploma";
 			else if(qualificationGroup == 5)
 				view = "degree";
+			else if(qualificationGroup == 6)
+				view = "pg";
 
 			return view;
 		}

@@ -86,7 +86,7 @@
 							<select class="selectpicker" data-width="100%"
 									data-live-search="true"
 									id="selfoccupation"
-									name="selfOccupation" title="-- Select --"
+									name="selfOccupation" title="-- Select --" data-size="10"
 									tabindex="4"
 									ng-model="vm.occupationandreservation.occupation"
 									ng-options="occupationList.key as occupationList.value for occupationList in vm.occupationandreservation.occupationList"
@@ -165,7 +165,7 @@
 							<select class="selectpicker" data-width="100%"
 									data-live-search="true"
 									id="parentsoccupation"
-									name="parentsOccupation" title="-- Select --"
+									name="parentsOccupation" title="-- Select --" data-size="10"
 									tabindex="7"
 									ng-model="vm.occupationandreservation.occupation"
 									ng-options="occupationList.key as occupationList.value for occupationList in vm.occupationandreservation.occupationList"
@@ -253,7 +253,7 @@
 						<select class="selectpicker" data-width="100%"
 								data-live-search="true"
 								id="category"
-								name="category" title="-- Select --"
+								name="category" title="-- Select --" data-size="10"
 								tabindex="10"
 								ng-model="vm.occupationandreservation.category"
 								ng-options="categoryList.key as categoryList.value for categoryList in vm.occupationandreservation.categoryList"
@@ -287,7 +287,7 @@
 						<select class="selectpicker" data-width="100%"
 								data-live-search="true"
 								id="religion"
-								name="religion" title="-- Select --"
+								name="religion" title="-- Select --" data-size="10"
 								tabindex="11"
 								ng-model="vm.occupationandreservation.religion"
 								ng-options="religionList.key as religionList.value for religionList in vm.occupationandreservation.religionList"
@@ -337,7 +337,7 @@
 						<select class="selectpicker" data-width="100%"
 								data-live-search="true"
 								id="mothertongue"
-								name="motherTongue" title="-- Select --"
+								name="motherTongue" title="-- Select --" data-size="10"
 								tabindex="13"
 								ng-model="vm.occupationandreservation.motherTongue"
 								ng-options="motherTongueList.key as motherTongueList.value for motherTongueList in vm.occupationandreservation.motherTongueList"
@@ -372,7 +372,7 @@
 						<select class="selectpicker" data-width="100%"
 								data-live-search="true"
 								id="speciallyabled"
-								name="speciallyAbled" title="-- Select --"
+								name="speciallyAbled" title="-- Select --" data-size="10"
 								tabindex="14"
 								ng-model="vm.occupationandreservation.speciallyAbled"
 								ng-options="speciallyAbledList.key as speciallyAbledList.value for speciallyAbledList in vm.occupationandreservation.speciallyAbledList">
@@ -388,7 +388,7 @@
 				</div>
 			</div>
 
-			<div class="row">
+			<!-- <div class="row">
 				<div class="col-sm-12 form-group">
 					<div class="col-sm-2">
 						<label for="socialreservation"
@@ -398,11 +398,11 @@
 						<div ng-dropdown-multiselect="" 
 							style="width:100%"
 							tabindex="15" 
-							options="vm.occupationandreservation.socialReservations" 
+							options="vm.occupationandreservation.socialReservationList" 
 							selected-model="vm.occupationandreservation.selectedSocialReservations" 
 							extra-settings="vm.multiSelectComboBoxSettings"
 							translation-texts="vm.multiSelectComboBoxDefaultText"
-							events="vm.multiSelectEvents">
+							events="vm.multiSelectEvents"> -->
 								<!-- <toggle-dropdown>
 									<textarea
 										class="form-control"
@@ -412,203 +412,37 @@
 										>
 									</textarea>
 								</toggle-dropdown> -->
-						</div>
+						<!-- </div>
 						Selected categories :
 						<pre class="ng-binding">{{vm.occupationandreservation.selectedSocialReservations|json}}</pre>
 						
 					</div>
-					<!-- <div class="col-sm-3">
-						Selected categories :
-						<pre class="ng-binding">{{vm.occupationandreservation.selectedSocialReservations|json}}</pre>
-					</div> -->
 				</div>
-			</div>
+			</div> -->
 			
-			<!-- <div class="row">
+			<!-- Temporary -->
+			
+			<div class="row">
 				<div class="col-sm-12 form-group">
 					<div class="col-sm-2">
 						<label for="socialreservation"
 							   class="labelclass">Social Reservation</label>
 					</div>
-					<div class="col-sm-6">
-						<input type="checkbox"
-							   name="socialreservation"
-							   id="socialreservation1"
-							   value="1"
-							   tabindex="16">
-						<label for="socialreservation1">Ex-Serviceman/Ward of Ex-Serviceman</label>
-					</div>
-					<div class="col-sm-4">
-						<input type="checkbox"
-							   name="socialreservation"
-							   id="socialreservation4"
-							   value="2"
-							   tabindex="16">
-						<label for="socialreservation4">Ward of Primary Teacher</label>
+					<div class="col-sm-10">
+						<select class="selectpicker" multiple 								
+								data-actions-box="true"
+								id="speciallyabled"
+								name="speciallyAbled" title="-- Select --" data-size="10"
+								data-selected-text-format="count"
+								data-width="100%"
+								data-live-search="true"
+								tabindex="14"
+								ng-model="vm.occupationandreservation.selectedSocialReservations"
+								ng-options="speciallyAbledList.key as speciallyAbledList.value for speciallyAbledList in vm.occupationandreservation.socialReservationList">
+						</select>						
 					</div>
 				</div>
 			</div>
-
-			<div class="row">
-				<div class="col-sm-12 form-group">
-					<div class="col-sm-2">
-					</div>
-					<div class="col-sm-6">
-						<input type="checkbox"
-							   name="socialreservation"
-							   id="socialreservation2"
-							   value="3"
-							   tabindex="17">
-						<label for="socialreservation2">Active Serviceman/Ward of Active Serviceman</label>
-					</div>
-					<div class="col-sm-4">
-						<input type="checkbox"
-							   name="socialreservation"
-							   id="socialreservation5"
-							   value="4"
-							   tabindex="18">
-						<label for="socialreservation5">Ward of Secondary Teacher</label>
-					</div>
-				</div>
-			</div>
-
-			<div class="row">
-				<div class="col-sm-12 form-group">
-					<div class="col-sm-2">
-					</div>
-					<div class="col-sm-6">
-						<input type="checkbox"
-							   name="socialreservation"
-							   id="socialreservation3"
-							   value="5"
-							   tabindex="19">
-						<label for="socialreservation3">Freedom Fighter/Ward of Freedom Fighter</label>
-					</div>
-					<div class="col-sm-4">
-						<input type="checkbox"
-							   name="socialreservation"
-							   id="socialreservation6"
-							   value="6"
-							   tabindex="20">
-						<label for="socialreservation6">Deserted/Divorced/Widowed Women</label>
-					</div>
-				</div>
-			</div>
-
-			<div class="row">
-				<div class="col-sm-12 form-group">
-					<div class="col-sm-2">
-					</div>
-					<div class="col-sm-6">
-						<input type="checkbox"
-							   name="socialreservation"
-							   id="socialreservation7"
-							   value="7"
-							   tabindex="21">
-						<label for="socialreservation7">Member of Project Affected Family</label>
-					</div>
-					<div class="col-sm-4">
-						<input type="checkbox"
-							   name="socialreservation"
-							   id="socialreservation8"
-							   value="8"
-							   tabindex="22">
-						<label for="socialreservation8">Member of Earthquake Affected Family</label>
-					</div>
-				</div>
-			</div>
-
-			<div class="row">
-				<div class="col-sm-12 form-group">
-					<div class="col-sm-2">
-					</div>
-					<div class="col-sm-6">
-						<input type="checkbox"
-							   name="socialreservation"
-							   id="socialreservation9"
-							   value="9"
-							   tabindex="23">
-						<label for="socialreservation9">Member of Flood/Famine Affected Family</label>
-					</div>
-					<div class="col-sm-4">
-						<input type="checkbox"
-							   name="socialreservation"
-							   id="socialreservation10"
-							   value="10"
-							   tabindex="24">
-						<label for="socialreservation10">Resident of Tribal Area</label>
-					</div>
-				</div>
-			</div>
-
-			<div class="row">
-				<div class="col-sm-12 form-group">
-					<div class="col-sm-2">
-					</div>
-					<div class="col-sm-6">
-						<input type="checkbox"
-							   name="socialreservation"
-							   id="socialreservation12"
-							   value="11"
-							   tabindex="25">
-						<label for="socialreservation12">Resident of Disputed Boundary Area</label>
-					</div>
-					<div class="col-sm-4">
-						<input type="checkbox"
-							   name="socialreservation"
-							   id="socialreservation11"
-							   value="12"
-							   tabindex="26">
-						<label for="socialreservation11">Kashmir Migrant</label>
-					</div>
-				</div>
-			</div>
-
-			<div class="row">
-				<div class="col-sm-12 form-group">
-					<div class="col-sm-2">
-					</div>
-					<div class="col-sm-6">
-						<input type="checkbox"
-							   name="socialreservation"
-							   id="socialreservation13"
-							   value="13"
-							   tabindex="27">
-						<label for="socialreservation13">Below Poverty Line Student</label>
-					</div>
-					<div class="col-sm-4">
-						<input type="checkbox"
-							   name="socialreservation"
-							   id="socialreservation14"
-							   value="14"
-							   tabindex="28">
-						<label for="socialreservation14">Teacher in 'Innovative School'</label>
-					</div>
-				</div>
-			</div>
-
-			<div class="row">
-				<div class="col-sm-12 form-group">
-					<div class="col-sm-2">
-					</div>
-					<div class="col-sm-6">
-						<input type="checkbox"
-							   name="socialreservation"
-							   id="socialreservation16"
-							   value="15"
-							   tabindex="29">
-						<label for="socialreservation16">Ward of Transferred Central/State Government Employee</label>
-					</div>
-					<div class="col-sm-4">
-						<input type="checkbox"
-							   name="socialreservation"
-							   id="socialreservation15"
-							   value="16"
-							   tabindex="30">
-						<label for="socialreservation15">University Staff Quota</label>
-					</div>
-				</div>
-			</div> -->
 
 		</div>
 	</div>

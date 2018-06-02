@@ -1,0 +1,248 @@
+<form class="panel panel-default panel-body" name="diplomadetailform" novalidate>
+	<div class="group">
+		<div class=" groupHeadingStyle">Board/University/School Details</div>
+		<div class="group-body">
+			<div class="row">
+			<div class="col-sm-12 form-group">
+					<label for="examboard" class="group-label displayInline">Examination Board : </label>
+					<span class="formData displayInline">{{vm.qualificationDetail.certifyingBody}}</span>
+			</div>
+			</div>
+		<div ng-show="vm.qualificationDetail.certifyingBody == 1 || vm.qualificationDetail.certifyingBody == 2">
+			<div class="row">
+				<div class="col-sm-12 form-group">
+					<label for="isLocalBody" class="group-label displayInline">Board : </label>
+					<span class="formData displayInline">{{vm.qualificationDetail.isLocalBody}}</span>
+				</div>
+			</div>
+		<div ng-show="vm.qualificationDetail.isLocalBody==1">
+			<div class="row">
+				<div class="col-sm-12 form-group">
+					<label for="state" class="group-label displayInline">State : </label>
+					<span class="formData displayInline">{{vm.qualificationDetail.stateId}}</span>
+				</div>
+			</div>
+			</div>
+		<div ng-show="vm.qualificationDetail.isLocalBody==2">
+			<div class="row">
+				<div class="col-sm-12 form-group">
+					<label for="country" class="group-label displayInline">Country : </label>
+					<span class="formData displayInline">{{vm.qualificationDetail.countryId}}</span>
+				</div>
+			</div>
+		</div>
+		</div>
+		<div ng-show="vm.qualificationDetail.certifyingBody == 1">		
+		<div ng-show="vm.qualificationDetail.isLocalBody==1">
+			<div class="row">
+				<div class="col-sm-12 form-group">
+					<label for="board" class="group-label displayInline">Board : </label>
+					<span class="formData displayInline">{{vm.qualificationDetail.boardId}}</span>
+				</div>
+			</div>
+		<div ng-show="vm.qualificationDetail.isLocalBody==2">
+			<div class="row">
+				<div class="col-sm-12 form-group">
+					<label for="foreignBody_BoardUniversityName" class="group-label displayInline">Name of Board : </label>
+					<span class="formData displayInline">{{vm.qualificationDetail.foreignBody_BoardUniversityName}}</span>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12 form-group">
+						<label for="foreignBody_AreaStdCodePhone" class="group-label displayInline">Board Area STD Code - Phone : </label>
+						<span class="formData displayInline">{{vm.qualificationDetail.foreignBody_AreaStdCodePhone}}</span>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12 form-group">
+						<label for="foreignBody_EmailId" class="group-label displayInline">Board Email Id : </label>
+						<span class="formData displayInline">{{vm.qualificationDetail.foreignBody_EmailId}}</span>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12 form-group">
+						<label for="foreignBody_URL" class="group-label displayInline">Board URL</label>
+						<span class="formData displayInline">{{vm.qualificationDetail.foreignBody_URL}}</span>
+				</div>
+			</div>
+		</div>
+		</div>
+		</div>
+		<div ng-show="vm.qualificationDetail.certifyingBody == 2">		
+		<div ng-show="vm.qualificationDetail.isLocalBody==1">
+			<div class="row">
+				<div class="col-sm-12 form-group">
+						<label for="university" class="group-label displayInline">University : </label>
+						<span class="formData displayInline">{{vm.qualificationDetail.universityId}}</span>
+				</div>
+			</div>
+		</div>
+		<div ng-show="vm.qualificationDetail.isLocalBody==2">
+			<div class="row">
+				<div class="col-sm-12 form-group">
+						<label for="foreignBody_BoardUniversityName" class="group-label displayInline">Name of University : </label>
+						<span class="formData displayInline">{{vm.qualificationDetail.foreignBody_BoardUniversityName}}</span>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12 form-group">
+						<label for="foreignBody_AreaStdCodePhone" class="group-label displayInline">University Area STD Code - Phone</label>
+						<span class="formData displayInline">{{vm.qualificationDetail.foreignBody_AreaStdCodePhone}}</span>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12 form-group">
+						<label for="foreignBody_EmailId" class="group-label displayInline">University Email Id : </label>
+						<span class="formData displayInline">{{vm.qualificationDetail.foreignBody_EmailId}}</span>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12 form-group">
+						<label for="foreignBody_URL" class="group-label displayInline">University URL></label>
+						<span class="formData displayInline">{{vm.qualificationDetail.foreignBody_URL}}</span>
+				</div>
+			</div>
+		</div>
+		</div>
+		<div ng-show="vm.qualificationDetail.certifyingBody == 3">
+			<div class="row">
+				<div class="col-sm-12 form-group">
+						<label for="otherbodyname" class="group-label displayInline">Name of Other Exam / Certifying Body : </label>
+						<span class="formData displayInline">{{vm.qualificationDetail.otherBodyName}}</span>
+				</div>
+			</div>
+		</div>
+			<div class="row">
+				<div class="col-sm-12 form-group">
+							<label for="schoolCollegeName" class="group-label displayInline">Name of College : </label>
+							 <span class="formData displayInline">{{vm.qualificationDetail.schoolCollegeName}}</span>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12 form-group">
+							<label for="diplomaname" class="group-label displayInline">Name of Diploma : </label>
+							 <span class="formData displayInline">{{vm.qualificationDetail.qualificationName}}</spam>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12 form-group">
+							<label for="schoolCollegeName" class="group-label displayInline">Name of College : </label>
+						   	<span class="formData displayInline">{{vm.qualificationDetail.schoolCollegeName}}</span>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12 form-group">
+							<label for="diplomaname" class="group-label displayInline">Name of Diploma : </label>
+						   	<span class="formData displayInline">{{vm.qualificationDetail.qualificationName}}</span>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12 form-group">
+							<label for="academicYear" class="group-label displayInline">Academic Year : </label>
+						   	<span class="formData displayInline">{{vm.qualificationDetail.academicYear}}</span>
+				</div>
+			</div>
+		<div ng-show="vm.qualificationDetail.certifyingBody == 3">
+			<div class="row">
+				<div class="col-sm-12 form-group">
+							<label for="collegeaddress" class="group-label displayInline">College Address : </label>
+							<span class="formData displayInline">{{vm.qualificationDetail.schoolCollegeAddress}}</span>
+				</div>
+			</div>
+		</div>
+		</div>
+	</div>
+	<div class="group">
+		<div class=" groupHeadingStyle">Marksheet Details</div>
+		<div class="group-body">
+			<div class="row">
+				<div class="col-sm-4 form-group">
+							<label for="dateofresult" class="group-label">Date of Result</label>
+						   <div class="formData">{{vm.qualificationDetail.passingMonth}} / {{vm.qualificationDetail.passingYear}}</div>
+				</div>
+				<div class="col-sm-4">
+							<label for="examSeatNo" class="group-label">Roll No/ Seat No</label>
+						   	<div class="formData">{{vm.qualificationDetail.examSeatNo}}</div>
+				</div>
+				<div class="col-sm-4">
+							<label for="marksheetno" class="group-label">Marksheet No</label>
+						   	<div class="formData">{{vm.qualificationDetail.marksheetNo}}</div>
+				</div>
+			</div>
+			<div class="row">
+				<div ng-show="vm.qualificationDetail.evaluationType==1">
+					<div class="col-sm-4">
+							<label for="marksObtain" class="group-label">Total Marks Obtained</label>
+							<div class="formData">{{vm.qualificationDetail.marksObtain}}</div>
+					</div>
+					<div class="col-sm-4">
+							<label for="totalMarks" class="group-label">Out of</label>
+							<div class="formData">{{vm.qualificationDetail.totalMarks}}</div>
+					</div>
+				</div>
+				<div ng-show="vm.qualificationDetail.evaluationType==2">
+					<div class="col-sm-4">
+							<label for="grade" class="group-label">Grade</label>
+							<div class="formData">{{vm.qualificationDetail.grade}}</div>
+					</div>
+					<div class="col-sm-4">
+							<label for="cgpa" class="group-label">CGPA</label>
+							<div class="formData">{{vm.qualificationDetail.cgpa}}</div>
+					</div>
+				</div>
+				<div class="col-sm-4 form-group">
+					<label for="percentage" class="group-label">Percentage</label>
+					<div class="formData">{{vm.qualificationDetail.percentage}}%</div>
+				</div>
+			</div>				
+		</div>
+	</div>
+</form>
+		
+	
+		
+	
+		
+		<!-- <div class="row">
+			<div class="col-sm-12 form-group">
+				<div class="col-sm-3">
+						<label for="marksorgrade"
+							   class="labelclass">If your result has Marks or Grades
+						<span style="color:red"><big> * </big></span></label>
+				</div>
+				<div class="col-sm-9 form-inline form-group" style="padding-top:7px">
+					<div class="col-sm-2">
+						<input type="radio" 
+							   name="marksorgrade" 
+							   id="marks"
+							   value="1"
+							   tabindex="27"
+							   ng-model="vm.qualificationDetail.evaluationType"
+							   required>
+						<label for="marks">Marks</label>
+					</div>
+					<div class="col-sm-2">
+						<input type="radio" 
+							   name="marksorgrade" 
+							   id="grades"
+							   value="2"
+							   tabindex="28"
+							   ng-model="vm.qualificationDetail.evaluationType"
+							   required>
+						<label for="grades">Grades</label>
+					</div>
+				</div>
+			</div>
+		</div> -->
+
+<script type="text/javascript">
+	
+	$(".selectpicker").selectpicker("refresh");
+	var delay = 1000;
+	
+	setTimeout(function() {
+		//alert("Hi alert");
+		$(".selectpicker").selectpicker("refresh");
+	}, delay);
+	
+</script>

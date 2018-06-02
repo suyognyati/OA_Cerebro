@@ -69,12 +69,14 @@ public class OccupationReservationRCServiceImpl implements OccupationReservation
 			occupationAndReservationModel.setReligion(occupationAndReservation.getReligion());
 			occupationAndReservationModel.setMotherTongue(occupationAndReservation.getMotherTongue());
 			occupationAndReservationModel.setSpeciallyAbled(occupationAndReservation.getSpeciallyAbled());
+			occupationAndReservationModel.setSelectedSocialReservations(occupationAndReservation.getSocialReservationArray());
 		}
 		occupationAndReservationModel.setOccupationList(Enums.Occupation.getEnumList());
 		occupationAndReservationModel.setCategoryList(Enums.Category.getEnumList());
 		occupationAndReservationModel.setReligionList(Enums.Religion.getEnumList());
 		occupationAndReservationModel.setMotherTongueList(Enums.MotherTongue.getEnumList());
 		occupationAndReservationModel.setSpeciallyAbledList(Enums.SpeciallyAbled.getEnumList());
+		occupationAndReservationModel.setSocialReservationList(Enums.SocialReservations.getEnumList());
 		
 		return occupationAndReservationModel;
 	}
@@ -95,6 +97,7 @@ public class OccupationReservationRCServiceImpl implements OccupationReservation
 		occupationAndReservation.setReligion(occupationAndReservationModel.getReligion());
 		occupationAndReservation.setMotherTongue(occupationAndReservationModel.getMotherTongue());
 		occupationAndReservation.setSpeciallyAbled(occupationAndReservationModel.getSpeciallyAbled());
+		occupationAndReservation.setSocialReservation(occupationAndReservationModel.getSelectedSocialReservations());
 		
 		return occupationAndReservation;
 	}
