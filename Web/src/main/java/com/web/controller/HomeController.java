@@ -28,7 +28,7 @@ public class HomeController {
 	@RequestMapping(value = { "student/" }, method = RequestMethod.GET)
 	public String userPage(ModelMap model) {
 		
-		sessionService.setStudent();
+		sessionService.setStudentUser();
 		model.addAttribute("user", session.getStudent());
 		model.addAttribute("student", session.getStudent().getStudent());
 		

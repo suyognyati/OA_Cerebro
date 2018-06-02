@@ -52,11 +52,16 @@
 						<td>{{appliedStudent.fullName}}</td>
 						<td>{{appliedStudent.categoryValue}}</td>
 						<td>{{appliedStudent.marksObtain}} / {{appliedStudent.totalMarks}}</td>
-					    <td><a class="glyphicon glyphicon-eye-open" role="button" data-container="body" data-toggle="popover"
-					    		data-trigger="focus" title="Student Detail"></a></td>
+					    <td style="text-align:center">
+					    	<a class="glyphicon glyphicon-eye-open" id="button" role="button" 
+					    		data-toggle="modal"	data-trigger="focus" title="Student Detail"
+					    		data-target="#studentModal" ng-click="vm.studentModal(appliedStudent.studentId)">
+					    	</a>
+					    </td>
 					</tr>
 				</tbody>
 			</table>
+			
 			<dir-pagination-controls
 				max-size="5"
 				direction-links="true"
@@ -66,6 +71,24 @@
 			Item per page : <input type="text" ng-model="vm.itemPerPage" style="width: 40px; text-align: right;" /> 
 		</div>
 	</div>
+	 
+	<div class="modal fade" id="studentModal" role="dialog">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h5 class="modal-title">Student Profile Detail</h5>
+				</div>
+				<div class="modal-body">
+					<ui-view></ui-view>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+
 </div>
 
 <script type="text/javascript">
@@ -73,6 +96,11 @@
 	$(".selectpicker").selectpicker("refresh");
 	var delay = 1000;
 
+	function onclick(studentProfileDetail){
+		var data = studentProfileDetail.button.data();
+		data.attribute
+	}
+	
 	setTimeout(function() {
 		$(".selectpicker").selectpicker("refresh");
 	}, delay);

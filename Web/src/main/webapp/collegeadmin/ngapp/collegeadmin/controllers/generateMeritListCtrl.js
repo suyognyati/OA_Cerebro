@@ -65,6 +65,10 @@
 			$state.go("collegeadmin.selectProgram");
 		}
 		
+		vm.studentModal = function(studentId) {
+			$state.go("collegeadmin.meritList.profile",{studentId:studentId});
+		}
+		
 		setTimeout(function() {
 			vm.getMeritList();
 		}, $scope.getDataDelay);

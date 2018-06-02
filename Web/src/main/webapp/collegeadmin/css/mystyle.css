@@ -112,3 +112,14 @@ clt, .clt ul, .clt li {
 	/* margin:10px; */ 
 	padding:20px;
 }
+
+
+/* Scrollbar for div which is in profile detail view */
+#profileviewcontent
+{
+	z-index: 1019;
+	height: 400px;
+	-ms-overflow-style: scrollbar;
+	overflow: auto;
+	transition: all 0.3s;
+}

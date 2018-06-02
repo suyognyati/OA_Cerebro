@@ -33,9 +33,9 @@ public class ProfileViewRestController {
 	@Autowired
 	EducationalInformationRCService educationalInformationService;
 	
-	@RequestMapping(value="/applicants/setApplicant/{applicantId}")
-	public void setApplicant(@PathVariable(value="applicantId") Integer applicantId) {
-		sessionService.setStudent(applicantId);
+	@RequestMapping(value="/applicants/setStudentUser/{studentId}")
+	public void setStudentUserByStudentId(@PathVariable(value="studentId") Integer studentId) {
+		sessionService.setStudentUserByStudentId(studentId);
 	}
 	
 	@RequestMapping(value="/applicants/getDetail/")

@@ -32,6 +32,7 @@
 		
 		<link href="<c:url value='/static/css/newui/left-nav.css' />" rel="stylesheet" />
 		<link href="<c:url value='/static/css/newui/aside-menu.css' />" rel="stylesheet" />
+		<link href="<c:url value='/student/css/userstyle.css' />" rel="stylesheet" />
 		<link href="<c:url value='css/mystyle.css' />" rel="stylesheet" />
      
 	<!-- LOADING SCRIPTS -->	
@@ -66,6 +67,7 @@
 		<script src="<c:url value='/static/vendors/pm-image-crop-master/compile/unminified/ng-img-crop.js' />"></script>
 		
 		<!-- Custom js -->
+		<script src="<c:url value='/student/js/user.js' />"></script>
 		<script src="<c:url value='js/collegeadmin.js' />"></script>
 		
 		<!-- AngularJS CoreUI App scripts -->

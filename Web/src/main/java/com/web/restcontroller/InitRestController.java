@@ -30,7 +30,7 @@ public class InitRestController {
 	
 	@RequestMapping(value="/setuser/", method=RequestMethod.GET)
 	public JSONObject setStudent(Model model){
-		sessionService.setStudent();		
+		sessionService.setStudentUser();		
 		JSONObject obj = StaticMethods.ResponseJson("username", session.getStudent().getUserName());
 		StaticMethods.AddToJsonObject(obj, "studentId", session.getStudent().getUserId());
 		StaticMethods.AddToJsonObject(obj, "tokenexpirein", tokenExpiresIn(session.getStudentName()));

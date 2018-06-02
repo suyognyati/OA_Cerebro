@@ -1,5 +1,7 @@
 package com.data.services.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,11 +20,23 @@ public class UserServiceImpl implements UserService {
 		return userJpaRepository.findOne(userId);
 	}
 	
+	@Override
 	public User getByUserName(String userName) {
 		return userJpaRepository.findByUserName(userName);
 	}
 	
+	@Override
 	public User save(User user) {
 		return userJpaRepository.save(user);
+	}
+
+	@Override
+	public User getByStudentId(Integer studentId) {
+		List<User> users = userJpaRepository.findByStudentId(studentId);
+		if(users != null && users.size() > 0)
+			return users.get(0);
+		else {
+			return null;
+		}
 	}
 }

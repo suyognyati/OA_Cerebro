@@ -13,12 +13,17 @@ public class UserRCServiceImpl implements UserRCService {
 	@Autowired
 	UserService userService;
 	
-	public User GetUser(Integer userId) {
+	public User getUser(Integer userId) {
 		return userService.getByUserId(userId);
 	}
 	
-	public User GetUser(String userName) {
+	public User getUser(String userName) {
 		return userService.getByUserName(userName);
+	}
+
+	@Override
+	public User getUserByStudentId(Integer studentId) {
+		return userService.getByStudentId(studentId);
 	}
 	
 }

@@ -11,7 +11,7 @@
 			setApplicant : function(userId) {
 				return $http({
 					method: "GET",
-					url: "/Web/applicants/setApplicant/" + userId
+					url: "/Web/applicants/setStudentUser/" + userId
 				})
 			},
             getApplicantDetail : function() {

@@ -6,4 +6,5 @@ public interface UserService {
 	User getByUserId(Integer userId);
 	User getByUserName(String userName);
 	User save(User user);
+	User getByStudentId(Integer studentId);
 }

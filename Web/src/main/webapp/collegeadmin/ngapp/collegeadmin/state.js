@@ -10,6 +10,10 @@
 
 	function StudentStates($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, $breadcrumbProvider) {
 
+		var contextPath = "/Web";
+		var userPath = "/student/"
+		var userBasePath = contextPath + userPath;
+		
 		$stateProvider
 
 		.state('collegeadmin.dashboard', {
@@ -79,7 +83,91 @@
 			params: { subtitle: 'Provisional Admission' }			
 		})
 		
+		/*START - Student profile view states*/
+		
+		.state('collegeadmin.meritList.profile', {
+			url: '/profiledetail?:studentId',
+			templateUrl: userBasePath + 'ngapp/studentview/views/profileView.html',
+			controller:"ProfileViewCtrl as vm",
+			ncyBreadcrumb: {
+				label: 'Profile Detail',
+			},
+			params: { subtitle: 'Search colleges' },
+			resolve: {
+				loadMyCtrl: ['$ocLazyLoad', function($ocLazyLoad) {
+					return $ocLazyLoad.load({
+						files: [
+							userBasePath + 'ngapp/studentview/controllers/profileViewCtrl.js',
+							userBasePath + 'ngapp/studentview/services/profileViewService.js'
+						]
+					});
+				}]
+			}
+		})
+		.state('collegeadmin.meritList.educationalDetail', {
+			url: '/educationaldetail?:studentId',
+			templateUrl: userBasePath + 'ngapp/studentview/views/educationalView.html',
+			controller:"EducationalViewCtrl as vm",
+			ncyBreadcrumb: {
+				label: 'Educational Detail',
+			},
+			params: { 
+				subtitle: 'Educational Detail',
+				baseState: 'student.profileview'
+			},
+			resolve: {
+				loadMyCtrl: ['$ocLazyLoad', function($ocLazyLoad) {
+					return $ocLazyLoad.load({
+						files: [
+							userBasePath + 'ngapp/studentview/controllers/educationalViewCtrl.js',
+							userBasePath + 'ngapp/studentview/services/profileViewService.js'
+						]
+					});
+				}]
+			}
+		})
+		.state('collegeadmin.meritList.qualificationDetail', {
+			url: '/educationaldetail/:qualification/:qualificationGroup/:qualificationId',
+			templateUrl:
+			function (stateParams){
+				if(stateParams.qualificationGroup == 1
+						/*&& stateParams.qualification == "ssc"*/) {
+					return userBasePath + "ngapp/studentview/views/qualificationDetailView/sscView.html"
+				} else if((stateParams.qualificationGroup >= 2 && stateParams.qualificationGroup <= 3)
+						/*&& stateParams.qualification == "hsc"*/) {
+					return userBasePath + "ngapp/studentview/views/qualificationDetailView/hscView.html"
+				} else if(stateParams.qualificationGroup == 4
+						/*&& stateParams.qualification == "diploma"*/) {
+					return userBasePath + "ngapp/studentview/views/qualificationDetailView/diplomaView.html"
+				} else {
+					return false;
+				}
+
+				//return basePath + "templates/states/" + stateParams.qualification + "View.html"
+			},
+			controller:"QualificationDetailCtrl as vm",
+			ncyBreadcrumb: {
+				label: 'Qualification Detail',
+			},
+			params: {
+				subtitle: 'Educational Detail',
+			},
+			resolve: {
+				loadMyCtrl: ['$ocLazyLoad', function($ocLazyLoad) {
+					return $ocLazyLoad.load({
+						files: [
+							userBasePath + 'ngapp/studentview/controllers/qualificationDetailCtrl.js',
+							userBasePath + 'ngapp/studentview/services/profileViewService.js'
+						]
+					});
+				}]
+			}
+		})
+		
+		/*END - Student profile view states*/
 
 	};
+	
+	
 
 }());

@@ -23,28 +23,34 @@ public class SessionServiceImpl implements SessionService {
 	@Override
 	public void setLoggedInUser() {
 		String username = session.getLoggedInUserName();
-		User user = userRCService.GetUser(username);		
+		User user = userRCService.getUser(username);		
 		session.setLoggedInUser(user);
 	}
 	
 	@Override
-	public void setStudent() {
+	public void setStudentUser() {
 		String username = session.getStudentName();
-		User user = userRCService.GetUser(username);		
+		User user = userRCService.getUser(username);		
 		session.setStudent(user);
 	}
 	
 	@Override
-	public void setStudent(Integer userId) {
-		User user = userRCService.GetUser(userId);		
+	public void setStudentUser(Integer userId) {
+		User user = userRCService.getUser(userId);		
 		session.setStudent(user);		
 	}
 	
 	@Override
-	public void setStudent(String userName) {
-		User user = userRCService.GetUser(userName);		
+	public void setStudentUser(String userName) {
+		User user = userRCService.getUser(userName);		
 		session.setStudent(user);		
-	}	
+	}
+	
+	@Override
+	public void setStudentUserByStudentId(Integer studentId) {
+		User user = userRCService.getUserByStudentId(studentId);		
+		session.setStudent(user);		
+	}
 
 	@Override
 	public void setCollege(Integer collegeId) {

@@ -31,21 +31,20 @@ public class ApplicantsDetailRCServiceImpl implements ApplicantsRCService {
 	@Autowired
 	OccupationReservationService occupationReservationService;
 	
-	ApplicantsModel applicantsModel = null;
+	
 	
 	@Override
 	public ApplicantsModel getApplicantDetail(User user) {
-		if(applicantsModel == null)
-			applicantsModel = new ApplicantsModel();
+		ApplicantsModel applicantsModel = new ApplicantsModel();
 		
-		getPersonalDetail(user);
-		getAddress(user);
-		getOccupation(user);
+		getPersonalDetail(applicantsModel, user);
+		getAddress(applicantsModel, user);
+		getOccupation(applicantsModel, user);
 		
 		return applicantsModel;
 	}
 	
-	private void getPersonalDetail(User user) {
+	private void getPersonalDetail(ApplicantsModel applicantsModel, User user) {
 		
 		Student student = user.getStudent();
 		PersonalDetail personalDetail = personalDetailService.getByStudent(user.getStudent());
@@ -124,7 +123,7 @@ public class ApplicantsDetailRCServiceImpl implements ApplicantsRCService {
 		}
 	}
 
-	private void getAddress(User user) {
+	private void getAddress(ApplicantsModel applicantsModel, User user) {
 		Address address = addressService.getByStudent(user.getStudent());
 		
 		if(address != null) {
@@ -161,7 +160,7 @@ public class ApplicantsDetailRCServiceImpl implements ApplicantsRCService {
 		}
 	}
 	
-	private void getOccupation(User user) {
+	private void getOccupation(ApplicantsModel applicantsModel, User user) {
 		OccupationReservation occupationAndReservation = occupationReservationService.getByStudent(user.getStudent());
 				
 		if(occupationAndReservation != null) {
