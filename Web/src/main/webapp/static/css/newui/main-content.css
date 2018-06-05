@@ -6,3 +6,12 @@
 	overflow: auto;
 	transition: all 0.3s;
 }
+
+#maincontent-collegeadmin
+{
+	z-index: 1019;
+	height: calc(100vh - 52px - 41px);
+	-ms-overflow-style: scrollbar;
+	overflow: auto;
+	transition: all 0.3s;
+}

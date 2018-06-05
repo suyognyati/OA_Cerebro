@@ -69,6 +69,10 @@
 				vm.search.programLevelId = vm.selectedCategoryId;
 		}
 		
+		vm.setCategoryWeightage = function(programId) {
+			$state.go("collegeadmin.setCategoryWeightage", {programId:programId})
+		}
+		
 		setTimeout(function() {
 			vm.getProgramCategories();
 			vm.getPrograms();

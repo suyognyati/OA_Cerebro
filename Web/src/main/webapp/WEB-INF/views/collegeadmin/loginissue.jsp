@@ -6,7 +6,9 @@
 	<title>Online Admission</title>
 </head>
 <body>
-	Dear <strong>${user}</strong>, You are not authorized to access this page
+	Dear <strong>${collegeadmin.userName}</strong>, There is a issue while login.
+	Your detail may be miss-match or not authorized with college.
+	Please contact your administrator; 
 	<a href="<c:url value="/logout" />">Logout</a>
 </body>
 </html>

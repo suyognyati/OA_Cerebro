@@ -59,7 +59,7 @@ import com.data.poco.AppliedStudentPOCO;
 					+ "LEFT JOIN PersonalDetails as pd ON (sa.FK_Student = pd.FK_Student) "
 					+ "LEFT JOIN OccupationReservation as ors ON (sa.FK_Student = ors.FK_Student) "
 					+ "LEFT JOIN EducationalInformation as ei ON (sa.FK_EducationalInformation = ei.EducationalInformationId) "
-					+ "WHERE FK_CollegeProgramMap = :collegeProgramMapId",
+					+ "WHERE FK_CollegeProgramMap = :collegeProgramMapId ORDER BY ei.MarksObtain DESC",
 			resultSetMapping = "appliedStudentPOCOMapping")
 })
 

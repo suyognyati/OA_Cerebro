@@ -53,6 +53,26 @@
 				}]
 			}
 		})
+		.state('collegeadmin.setCategoryWeightage', {
+			url: '/setweightage/:programId',
+			templateUrl: 'ngapp/collegeadmin/views/categoryWeightageView.html',
+			controller:"CategoryWeightageCtrl as vm",
+			ncyBreadcrumb: {
+				label: 'Select Program',
+			},
+			params: { subtitle: 'Select Program' },
+			resolve: {
+				loadMyCtrl: ['$ocLazyLoad', function($ocLazyLoad) {
+					return $ocLazyLoad.load({
+						files: [
+							'ngapp/collegeadmin/controllers/categoryWeightageCtrl.js',
+							'ngapp/collegeadmin/services/programService.js'
+							
+						]
+					});
+				}]
+			}
+		})
 		.state('collegeadmin.meritList', {
 			url: '/meritList/:programLevelId/:programId',
 			templateUrl: 'ngapp/collegeadmin/views/generateMeritListView.html',

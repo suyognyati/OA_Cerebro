@@ -10,15 +10,16 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.web.model.GenerateMeritListModel;
 import com.web.model.ProgramCategoriesModel;
+import com.web.model.ProgramCategoryWeightageModel;
 import com.web.model.ProgramModel;
 import com.web.services.GenerateMeritListRCService;
 import com.web.services.ProgramCategoryRCService;
+import com.web.services.ProgramCategoryWeightageRCService;
 import com.web.services.ProgramRCService;
 import com.web.session.Session;
 
 @RestController
-@RequestMapping(value="/generateMeritList")
-
+//@RequestMapping(value="/generateMeritList")
 public class GenerateMeritListRestController {
 
 	@Autowired
@@ -33,23 +34,31 @@ public class GenerateMeritListRestController {
 	@Autowired
 	GenerateMeritListRCService generateMeritListRCService;
 	
-	@RequestMapping(value="/programCategories/get/")
+	@Autowired
+	ProgramCategoryWeightageRCService programCategoryWeightageRCService;
+	
+	@RequestMapping(value="/generateMeritList/programCategories/get/")
 	public List<ProgramCategoriesModel> get(Model model){
 		return programCategoryRCService.getProgramCategories();
 	}
 	
-	@RequestMapping(value="/getPrograms/{programCategoryId}")
+	@RequestMapping(value="/generateMeritList/getPrograms/{programCategoryId}")
 	public List<ProgramModel> getPrograms(@PathVariable(value="programCategoryId") Integer programCategoryId){
 		return programService.getProgramsByCategory(session.getCollegeId(), programCategoryId);
 	}
 	
-	@RequestMapping(value="/getAllPrograms/")
+	@RequestMapping(value="/generateMeritList/getAllPrograms/")
 	public List<ProgramModel> getAllProgramsOfCollege(){
 		return programService.getAllProgramsOfCollege(session.getCollegeId());
 	}
 	
-	@RequestMapping(value="/getMeritList/{programId}")
+	@RequestMapping(value="/generateMeritList/getMeritList/{programId}")
 	public GenerateMeritListModel getMeritList(@PathVariable(value="programId") Integer programId){
 		return generateMeritListRCService.getMeritList(session.getCollegeId(), programId);
+	}
+	
+	@RequestMapping(value="/program/getCategoryWeightage/{programId}")
+	public ProgramCategoryWeightageModel getCategoryWeightage(@PathVariable(value="programId") Integer programId){
+		 return programCategoryWeightageRCService.getCategoryWeightageByProgramId(programId, session.getCollege());
 	}
 }

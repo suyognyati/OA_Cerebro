@@ -765,9 +765,10 @@ public class Enums {
 		Partial(2, 2, "Partial"),
 		Submitted(3, 3, "Submitted"),
 		Rejected(4, 4, "Rejected"),
-		Accepted(5, 5, "Accepted"),
-		Approved(6, 6, "Approved"),
-		Completed(7, 7, "Completed");
+		Waiting(5, 5, "Waiting"),
+		Accepted(6, 6, "Accepted"),
+		Approved(7, 7, "Approved"),
+		Completed(8, 8, "Completed");
 				
 		private int id;
 		private int sequenceNo;

@@ -42,6 +42,7 @@
 						    <th width="30%">Program Name</th>
 						    <th width="10%">Faculty/College</th>
 						    <th width="30%">No. of Applied Students</th>
+						    <th width="8%">Set reservation value</th>
 						    <th width="12%">Select</th>
 						</tr>
 					</thead>
@@ -51,6 +52,16 @@
 							<td>{{program.programName}}</td>
 							<td>{{program.facultyOrCollege}}</td>
 							<td></td>
+							<td>
+								<!-- <a class="glyphicon glyphicon-pencil " style="cursor: pointer;"
+								data-toggle="modal"	data-trigger="focus" title="Student Detail"
+					    		data-target="#categorymodal"></a> -->
+					    		
+					    		<a class="glyphicon glyphicon-pencil " style="cursor: pointer;" 
+					    			ng-click="vm.setCategoryWeightage(program.programId)">
+					    		</a>
+					    		
+							</td>
 							<td><input type="button" value="Select" class="btn btn-success btn-block topMargin" 
 										ng-click="vm.generateMeritList(program.programId, program.programLevelId)">
 							</td>
@@ -67,6 +78,24 @@
 			</div>
 		</div>
 	</div>
+	
+	<div class="modal fade" id="categorymodal" role="dialog">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h5 class="modal-title">Category Weightage</h5>
+				</div>
+				<div class="modal-body">
+					<ui-view></ui-view>
+				</div>
+				<!-- <div class="modal-footer">
+					<input type="button" class="btn btn-success btn-block topMargin"/>
+				</div> -->
+			</div>
+		</div>
+	</div>
+	
 </div>
 
 <script type="text/javascript">

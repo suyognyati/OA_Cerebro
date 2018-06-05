@@ -13,7 +13,10 @@ public class StaticConstants {
 	private static final Integer secondsInMinute = 60;
 	private static final Integer secondsInHour = (60 * secondsInMinute);
 	private static final Integer secondsInDay = (24 * secondsInHour);
+	
 	public static final Integer httpSessionTimeOut = 4 * secondsInHour;
+	
+	public static final Integer ProgramCategoryTotalName = 0;
 	
 	public static class ROLE {
 		

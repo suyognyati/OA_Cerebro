@@ -8,7 +8,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	
-	<title>CoreUI - Open Source Bootstrap Admin Template</title>
+	<title>Online Admission</title>
 
 	<!-- LOADING STYLE SHEET -->
 		<!-- Styles from vendor -->
@@ -32,6 +32,7 @@
 		
 		<link href="<c:url value='/static/css/newui/left-nav.css' />" rel="stylesheet" />
 		<link href="<c:url value='/static/css/newui/aside-menu.css' />" rel="stylesheet" />
+		<link href="<c:url value='/static/css/newui/main-content.css' />" rel="stylesheet" />
 		<link href="<c:url value='/student/css/userstyle.css' />" rel="stylesheet" />
 		<link href="<c:url value='css/mystyle.css' />" rel="stylesheet" />
      

@@ -13,6 +13,9 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.data.entities.College;
+import com.data.entities.CollegeStaff;
+import com.data.entities.User;
 import com.web.session.Session;
 import com.web.session.SessionService;
 
@@ -53,12 +56,29 @@ public class HomeController {
 	
 	@RequestMapping(value = "collegeadmin/", method = RequestMethod.GET)
 	public String collegeAdmin(ModelMap model) {
-		Integer collegeId = 1;
-		sessionService.setCollege(collegeId);
+		Boolean success = false;
 		sessionService.setLoggedInUser();
-		model.addAttribute("collegeadmin", session.getLoggedInUser());
-		model.addAttribute("collegeadmindetail", session.getLoggedInUser().getStudent());
-		return "collegeadmin/collegeadmin";
+		User collegeAdmin = session.getLoggedInUser();
+		if(collegeAdmin != null) {
+			CollegeStaff collegeStaff = collegeAdmin.getCollegeStaff();
+			if(collegeStaff != null) {
+				College college = collegeStaff.getCollege();
+				if(college != null && college.getCollegeId() != null) {
+					session.setCollegeId(college.getCollegeId());
+					session.setCollege(college);
+					success = true;
+				}
+			}
+		}
+		if(success) {
+			model.addAttribute("collegeadmin", session.getLoggedInUser());
+			model.addAttribute("collegeadmindetail", session.getLoggedInUser().getStudent());
+			return "collegeadmin/collegeadmin";
+		} else {
+			model.addAttribute("collegeadmin", session.getLoggedInUser());
+			model.addAttribute("collegeadmindetail", session.getLoggedInUser().getStudent());
+			return "collegeadmin/loginissue";
+		}
 	}
 
 	@RequestMapping(value = "db/", method = RequestMethod.GET)
