@@ -7,4 +7,6 @@ public interface ProgramCategoryWeightageRCService {
 
 	ProgramCategoryWeightageModel getCategoryWeightage(Integer collegeProgramMapId, College college);
 	ProgramCategoryWeightageModel getCategoryWeightageByProgramId(Integer programId, College college);
+	
+	Boolean setCategoryWeightage(ProgramCategoryWeightageModel programCategoryWeightageModel);
 }

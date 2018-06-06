@@ -82,6 +82,26 @@
 				<div class="modal-body">
 					<ui-view></ui-view>
 				</div>
+				<div class="modal-footer" ng-if="vm.showButton == false">
+					<div class="row">
+						<div class="col-sm-4"></div>
+						<div class="col-sm-4"></div>
+						<div class="col-sm-4">
+							<input type="button" class="btn btn-success btn-block topMargin" 
+	    							value="View Educational Informtion" ng-click="vm.studentModalEducationInformation(appliedStudent.studentId)">
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer" ng-if="vm.flag == true">
+					<div class="row">
+						<div class="col-sm-4"></div>
+						<div class="col-sm-4"></div>
+						<div class="col-sm-4">
+							<input type="button" class="btn btn-success btn-block topMargin" 
+	    							value="Back to Educational Informtion" ng-click="vm.studentModalEducationInformation(appliedStudent.studentId)">
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>

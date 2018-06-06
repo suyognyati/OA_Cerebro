@@ -133,7 +133,7 @@
 			},
 			params: { 
 				subtitle: 'Educational Detail',
-				baseState: 'student.profileview'
+				baseState: 'collegeadmin.meritList'
 			},
 			resolve: {
 				loadMyCtrl: ['$ocLazyLoad', function($ocLazyLoad) {
@@ -150,15 +150,16 @@
 			url: '/educationaldetail/:qualification/:qualificationGroup/:qualificationId',
 			templateUrl:
 			function (stateParams){
-				if(stateParams.qualificationGroup == 1
-						/*&& stateParams.qualification == "ssc"*/) {
+				if((stateParams.qualificationGroup >= 1 && stateParams.qualificationGroup <= 2)) {
 					return userBasePath + "ngapp/studentview/views/qualificationDetailView/sscView.html"
-				} else if((stateParams.qualificationGroup >= 2 && stateParams.qualificationGroup <= 3)
-						/*&& stateParams.qualification == "hsc"*/) {
+				} else if(stateParams.qualificationGroup == 3) {
 					return userBasePath + "ngapp/studentview/views/qualificationDetailView/hscView.html"
-				} else if(stateParams.qualificationGroup == 4
-						/*&& stateParams.qualification == "diploma"*/) {
+				} else if(stateParams.qualificationGroup == 4) {
 					return userBasePath + "ngapp/studentview/views/qualificationDetailView/diplomaView.html"
+				} else if(stateParams.qualificationGroup == 5) {
+					return userBasePath + "ngapp/studentview/views/qualificationDetailView/degreeView.html"
+				} else if(stateParams.qualificationGroup == 6) {
+					return userBasePath + "ngapp/studentview/views/qualificationDetailView/pgView.html"
 				} else {
 					return false;
 				}

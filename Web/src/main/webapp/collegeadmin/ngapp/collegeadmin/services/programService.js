@@ -33,6 +33,13 @@
 					url: "/Web/program/getCategoryWeightage/" + programId
 				})
 			},
+			setCategoryWeightage : function(programCategoryWeightageModel) {
+				return $http({
+					method: 'POST',
+					url: "/Web/program/setCategoryWeightage/",
+					data: programCategoryWeightageModel
+				})
+			},
 			
 		}
 	}

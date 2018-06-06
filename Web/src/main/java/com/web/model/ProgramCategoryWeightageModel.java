@@ -11,6 +11,8 @@ public class ProgramCategoryWeightageModel {
 	CollegeProgramMap collegeProgramMap;
 	ProgramCategoryWeightage programCategoryWeightageCount;
 	List<CategoryWeightage> categoryWeightageList;
+	//To accept data from view
+	List<ProgramCategoryWeightage> programCategoryWeightageList;
 		
 		public CollegeProgramMap getCollegeProgramMap() {
 			return collegeProgramMap;
@@ -29,8 +31,15 @@ public class ProgramCategoryWeightageModel {
 		}
 		public void setCategoryWeightageList(List<CategoryWeightage> categoryWeightageList) {
 			this.categoryWeightageList = categoryWeightageList;
+		}		
+		public List<ProgramCategoryWeightage> getProgramCategoryWeightageList() {
+			return programCategoryWeightageList;
 		}
-		
+		public void setProgramCategoryWeightageList(List<ProgramCategoryWeightage> programCategoryWeightageList) {
+			this.programCategoryWeightageList = programCategoryWeightageList;
+		}
+
+
 		public class CategoryWeightage {
 			KeyValuePair category;
 			ProgramCategoryWeightage programCategoryWeightage;

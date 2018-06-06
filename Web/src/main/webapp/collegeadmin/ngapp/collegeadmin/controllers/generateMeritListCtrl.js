@@ -67,6 +67,12 @@
 		
 		vm.studentModal = function(studentId) {
 			$state.go("collegeadmin.meritList.profile",{studentId:studentId});
+			vm.showButton = false;
+		}
+		
+		vm.studentModalEducationInformation = function(studentId){
+			$state.go("collegeadmin.meritList.educationalDetail",{studentId:studentId});
+			vm.showButton = true;
 		}
 		
 		setTimeout(function() {

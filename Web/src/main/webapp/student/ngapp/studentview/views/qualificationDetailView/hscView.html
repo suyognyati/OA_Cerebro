@@ -5,7 +5,10 @@
 			<div class="row">
 				<div class="col-sm-12 form-group">
 					<label for="isLocalBody" class="group-label displayInline">Board : </label>
-					<span class="formData displayInline">{{vm.qualificationDetail.isLocalBody}}</span>
+					<<span class="formData displayInline" ng-if="vm.qualificationDetail.isLocalBody == 1">
+						Indian</span>
+					<span class="formData displayInline" ng-if="vm.qualificationDetail.isLocalBody == 2">
+						Foreign</span>
 				</div>
 			</div>
 			<div class="row">
@@ -54,7 +57,7 @@
 			</div>
 			<div class="row">
 				<div class="col-sm-12 form-group">
-					<label for="foreignBody_EmailId" class="group-label displayInline">Stream : </label>
+					<label for="stream" class="group-label displayInline">Stream : </label>
 					<span class="formData displayInline">{{vm.qualificationDetail.stream}}</span>
 				</div>
 			</div>

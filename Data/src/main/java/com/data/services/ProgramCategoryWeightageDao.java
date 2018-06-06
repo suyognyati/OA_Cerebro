@@ -24,4 +24,11 @@ public interface ProgramCategoryWeightageDao {
 	 * @return
 	 */
 	List<ProgramCategoryWeightage> getByCollegeProgramMap(CollegeProgramMap collegeProgramMap);
+	
+	/**
+	 * This function will save the category weightage to database.
+	 * @param programCategoryWeightageList
+	 * @return Boolean
+	 */
+	Boolean saveProgramCategoryWeightage(List<ProgramCategoryWeightage> programCategoryWeightageList);
 }

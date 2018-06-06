@@ -20,6 +20,8 @@
 		vm.accessToken = $window.bearer_token;
 		vm.accessTokenParam = "?access_token=" + vm.accessToken;
 
+		vm.flag = true;
+		
 		vm.getQualificationDetail = function() {
 			profileViewService.getQualificationDetail(qualificationId, vm.accessTokenParam)
 			.then(function(success) {

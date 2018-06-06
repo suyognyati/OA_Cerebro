@@ -4,9 +4,9 @@
 			<button type="button" class="navbar-toggle collapsed"
 				data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
 				<span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
 			</button>
 			<div class="navbar-header">
 				<a class="navbar-brand no-padding" href="#"> <img alt="Brand" src="img/OAP.png" class="fix-image-to-div">
@@ -15,7 +15,7 @@
 			<div>
 				<ul class="nav navbar-nav">
 					<li class="nav-item">
-                        <a id="sidebarCollapse" class="nav-link navbar-toggler aside-menu-toggler" href="">
+						<a id="sidebarCollapse" class="nav-link navbar-toggler aside-menu-toggler" href="">
 							<i class="icon-menu"></i>
 						</a>
 					</li>
@@ -25,21 +25,18 @@
 				id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
 					<li ng-class="{active: $state.includes('collegeadmin')}">
-                              <a ui-sref="collegeadmin.dashboard">Home <span class="sr-only">(current)</span></a>
-                         </li>
+						<a ui-sref="collegeadmin.dashboard">Home <span class="sr-only">(current)</span></a>
+					</li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 					<li class="dropdown">
 						<!-- <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a> -->
 						<a href="" class="dropdown-toggle profileimg-top-bottom-padding" data-toggle="dropdown">
-                                   <img src="img/avatars/6.jpg" class="img-circle profileimg" width="40px" height="35px">
-                                   <span class="caret"></span>
-                              </a>
+							<img src="img/avatars/6.jpg" class="img-circle profileimg" width="40px" height="35px">
+							<span class="caret"></span>
+						</a>
 						<ul class="dropdown-menu">
-							<li><a href="">Action</a></li>
-							<li><a href="">Another action</a></li>
-							<li><a href="">Something else here</a></li>
-							<li role="separator" class="divider"></li>
+							<!-- <li role="separator" class="divider"></li> -->
 							<li><a href="/Web/logout">Logout</a></li>
 						</ul>
 					</li>

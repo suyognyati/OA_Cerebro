@@ -11,12 +11,16 @@
 	
 	function CategoryWeightageCtrl($http, $state, $scope, programService) {
 		var vm = this;
+		vm.data = {};
+		vm.localdata = {};
+		vm.localdata.totalWeightage = 0;
+		vm.localdata.totalWeightagePercentage = 0;
 		$scope.Math = Math;
 		
 		vm.search = {};
 		
 		vm.programId = $state.params.programId;
-		vm.showWeightageTable = false;
+		vm.showWeightageTable = true;
 		
 		vm.itemPerPage = 10;		
 		
@@ -25,9 +29,8 @@
 			programService.getCategoryWeightage(vm.programId)
 			.then(function(success){
 				if(success.data != null) {
-					vm.categoryWeightageList = success.data.categoryWeightageList;
-					vm.programCategoryWeightageCount = success.data.programCategoryWeightageCount;
-					vm.init(vm.categoryWeightageList);
+					vm.data = success.data;
+					vm.init();
 				}
 				else
 					vm.categoryWeightageList = {};
@@ -38,36 +41,20 @@
 		}
 		
 		vm.init = function() {
-			
-			vm.totalIntake = vm.programCategoryWeightageCount.weightage;
-			/*angular.forEach(categoryWeightageList, function(categoryWeightage) {
-				if(categoryWeightage.programCategoryWeightage.categoryName == 0) {
-					vm.totalIntake = categoryWeightage.programCategoryWeightage.weightage;
-				}
-			});*/
-			
-			/*for(var categoryWeightage in categoryWeightageList) {
-				if(categoryWeightage.programCategoryWeightage.categoryName == 0) {
-					vm.totalIntake = categoryWeightage.programCategoryWeightage.weightage;
-				}
-			}*/
-			
-			
-			
-			/*var allCategory = {};
-			allCategory.key = 0;
-			allCategory.value = vm.labelForAllCategory;
-			data.reservationList.splice(0, 0, allCategory);
-			vm.categoryId = 0;
-			
-			angular.forEach(data.appliedStudentList, function(appliedStudent) {
-				appliedStudent.fullName = appliedStudent.firstName + " " + appliedStudent.middleName + " " + appliedStudent.lastName;
-				appliedStudent.categoryValue = vm.getCategoryValue(appliedStudent.category);
-			});*/
+			vm.totalIntake = vm.data.programCategoryWeightageCount.weightage;
+			if(vm.totalIntake == null) {
+				vm.showWeightageTable = false;
+			}
+			vm.data.programCategoryWeightageList = [];	//Defining array list
 		}
 		
 		vm.setCategoryWiseWeightage = function() {
 			vm.showWeightageTable = true;
+		}
+		
+		vm.resetIntake = function() {
+			vm.getWeightage();
+			vm.showWeightageTable = false;
 		}
 		
 		vm.weightageChanged = function(categoryWeightage) {
@@ -88,21 +75,57 @@
 		}
 		
 		vm.totalWeightage = function () {
-			var totalWeightage = 0;
-			angular.forEach(vm.categoryWeightageList, function(categoryWeightage) {
-				totalWeightage += categoryWeightage.programCategoryWeightage.weightage;
+			vm.localdata.totalWeightage = 0;
+			angular.forEach(vm.data.categoryWeightageList, function(categoryWeightage) {
+				vm.localdata.totalWeightage += categoryWeightage.programCategoryWeightage.weightage;
 			});
 			
-			return totalWeightage;
+			return vm.localdata.totalWeightage;
+			//return totalWeightage;
 		}
 		
 		vm.totalWeightagePercentage = function() {
-			var totalWeightagePercentage = 0;
-			angular.forEach(vm.categoryWeightageList, function(categoryWeightage) {
-				totalWeightagePercentage += categoryWeightage.programCategoryWeightage.weightagePercentage;
+			vm.localdata.totalWeightagePercentage = 0;
+			angular.forEach(vm.data.categoryWeightageList, function(categoryWeightage) {
+				vm.localdata.totalWeightagePercentage += categoryWeightage.programCategoryWeightage.weightagePercentage;
 			});
 			
-			return Math.round(totalWeightagePercentage);
+			return Math.round(vm.localdata.totalWeightagePercentage);
+			//return Math.round(totalWeightagePercentage);
+		}
+		
+		vm.submit = function() {
+			if(vm.totalIntake == vm.localdata.totalWeightage && vm.localdata.totalWeightagePercentage == 100) {
+				
+				vm.data.programCategoryWeightageCount.weightage = vm.totalIntake;
+				vm.data.programCategoryWeightageCount.weightagePercentage = 100;
+				vm.setProgramCategoryWeightageList(vm.data.categoryWeightageList);
+				
+				var data = {};
+				data.collegeProgramMap = vm.data.collegeProgramMap;
+				data.programCategoryWeightageCount = vm.data.programCategoryWeightageCount;
+				data.programCategoryWeightageList = vm.data.programCategoryWeightageList;
+				
+				programService.setCategoryWeightage(data)
+				.then(function(success){
+					if(success.data == true) {
+						
+					} else {
+						
+					}
+				},function(error){
+					vm.categoryWeightageList = {};
+				})
+			} else {
+				alert("Weightage is not completely filled. Please fill it first");
+			}
+		}
+		
+		vm.setProgramCategoryWeightageList = function(categoryWeightage) {
+			angular.forEach(vm.data.categoryWeightageList, function(categoryWeightage) {
+				vm.data.programCategoryWeightageList.push(categoryWeightage.programCategoryWeightage);
+			});
+			
 		}
 		
 		setTimeout(function() {

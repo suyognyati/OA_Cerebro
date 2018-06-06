@@ -27,4 +27,14 @@ public class ProgramCategoryWeightageDaoImpl implements ProgramCategoryWeightage
 		return programCategoryWeightageJpaRepository.findByCollegeProgram(collegeProgramMap);
 	}
 
+	
+	@Override
+	public Boolean saveProgramCategoryWeightage(List<ProgramCategoryWeightage> programCategoryWeightageList) {
+		List<ProgramCategoryWeightage> savedList = programCategoryWeightageJpaRepository.save(programCategoryWeightageList);
+		if(savedList != null && savedList.size() > 0)
+			return true;
+		else
+			return false;
+	}
+
 }

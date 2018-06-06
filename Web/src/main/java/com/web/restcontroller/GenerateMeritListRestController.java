@@ -5,7 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.web.model.GenerateMeritListModel;
@@ -60,5 +62,11 @@ public class GenerateMeritListRestController {
 	@RequestMapping(value="/program/getCategoryWeightage/{programId}")
 	public ProgramCategoryWeightageModel getCategoryWeightage(@PathVariable(value="programId") Integer programId){
 		 return programCategoryWeightageRCService.getCategoryWeightageByProgramId(programId, session.getCollege());
+	}
+	
+	@RequestMapping(value="/program/setCategoryWeightage/", method=RequestMethod.POST)
+	public Boolean setCategoryWeightage(@RequestBody ProgramCategoryWeightageModel programCategoryWeightageModel){
+		 programCategoryWeightageRCService.setCategoryWeightage(programCategoryWeightageModel);
+		 return true;
 	}
 }

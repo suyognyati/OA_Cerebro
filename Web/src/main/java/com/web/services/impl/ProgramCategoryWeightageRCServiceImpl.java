@@ -95,4 +95,22 @@ public class ProgramCategoryWeightageRCServiceImpl implements ProgramCategoryWei
 		return programCategoryWeightageModel;
 	}
 
+	
+	@Override
+	public Boolean setCategoryWeightage(ProgramCategoryWeightageModel programCategoryWeightageModel) {
+		List<ProgramCategoryWeightage> programCategoryWeightageList = new ArrayList<ProgramCategoryWeightage>();
+		
+		ProgramCategoryWeightage programCategoryWeightage = programCategoryWeightageModel.getProgramCategoryWeightageCount();
+		programCategoryWeightage.setCategoryName(StaticConstants.ProgramCategoryTotalName);
+		
+		//Adding first entry which is total of all weightage
+		programCategoryWeightageList.add(programCategoryWeightageModel.getProgramCategoryWeightageCount());
+		//Adding other entries
+		for(ProgramCategoryWeightage pcw : programCategoryWeightageModel.getProgramCategoryWeightageList()) {
+			programCategoryWeightageList.add(pcw);
+		}
+		
+		return programCategoryWeightageDao.saveProgramCategoryWeightage(programCategoryWeightageList);
+	}
+
 }
